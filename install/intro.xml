@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 96c9d88bad9a7d7d44bfb7f26c226df7ee9ddf26 Maintainer: ktretyak Status: ready -->
+<!-- $Revision$ -->
+  <chapter xml:id="install.general" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+   <title>Загальні Інструкції Встановлення</title>
+   <para>
+    Перед початком встановлення, вам необхідно знати для чого ви будете
+		використовувати PHP. Існують три основні області застосування PHP,
+		як вже і говорилось на сторінці
+    <link linkend="intro-whatcando">Що може робити PHP?</link>:
+    <itemizedlist>
+     <listitem><simpara>Веб-сайти та веб-застосунки (скрипти на стороні сервера)</simpara></listitem>
+     <listitem><simpara>Скрипти командного рядка</simpara></listitem>
+     <listitem><simpara>Стільникові (GUI) застосунки</simpara></listitem>
+    </itemizedlist>
+   </para>
+   <para>
+    Для першої та найбільш поширеної області, вам потрібно три речі: Саму PHP,
+		веб-сервер та веб-браузер. Ви мабуть вже маєте веб-браузер, а також в
+    залежності від налаштувань вашої Операційної Системи, ви також маєте
+    веб-сервер (наприклад Apache на Linux та MacOS X; IIS на Windows).
+    Ви також можете орендувати хостинг. В цьому випадку, вам не потрібно
+    встановлювати будь-що своє, а лише писати PHP скрипти, завантажувати їх на
+		ваш хост, та проглядати результат в браузері. 
+   </para>
+   <para>
+    У випадку налаштування сервера та PHP на власному комп'ютері, ви маєте два
+    варіанти для підключення PHP до сервера. Для багатьох серверів PHP має
+    прямий модуль інтерфейса (так званий SAPI). Такі сервера мають
+    Apache, Microsoft Internet Information Server,
+    Netscape та сервери iPlanet. Багато інших серверів мають підтримку для
+		ISAPI, інтерфейс Microsoft module (наприклад OmniHTTPd). Якщо PHP не
+    підтримує модуль для вашого веб-сервера, ви можете завжди використовувати
+    її як CGI чи FastCGI процесор. Це означає, що ви повинні налаштувати ваш
+    сервер, щоб використовувати CGI-запуск PHP при обробці всіх файлів PHP.
+   </para>
+   <para>
+    Якщо ви також зацікавлені щоб використовувати PHP через командний рядок
+    (наприклад, щоб писати скрипти автоматичного генерування певних зображень
+		offline, чи обробляти текстові файли, в залежності від деяких аргументів,
+    які ви передаєте), вам завжди потрібні обробники командного рядка.
+		Детальнішу інформацію можна прочитати в розділі
+		<link linkend="features.commandline">використання PHP в командному рядку</link>.
+		В цьому випадку, вам не потрібен ані сервер, ані браузер.
+   </para>
+   <para>
+    На PHP ви можете також писати стільникові GUI застосунки, використовуючи
+    PHP-GTK розширення. Це повністю інший підхід, ніж написання веб-сторінок,
+    оскільки ви не виводите HTML, а управляєте вікнами та об'єктами всередині
+    них. Більш детальну інформацію про PHP-GTK можна прочитати на
+    <link xlink:href="&url.php.gtk;">їх сайті</link>. PHP-GTK не входить в
+    офіційну поставку	PHP.
+   </para>
+   <para>
+    Від тепер, в цьому розділі розглядаються налаштування PHP
+    для веб-серверів на Unix та Windows із серверним модулем інтерфейсів та CGI
+		обробником. Ви можете також знайти інформацію для обробників командного
+		рядка в наступних розділах.
+   </para>
+   <para>
+    Сирий код PHP та бінарні пакети для Windows можете знайти на
+    <link xlink:href="&url.php.downloads;">&url.php.downloads;</link>.
+   </para>
+  </chapter>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

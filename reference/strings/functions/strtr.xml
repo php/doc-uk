@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: e0815cb568f8d20e1d9cef365c68f9e48bfea2ea Maintainer: ktretyak Status: ready -->
+<!-- $Revision$ -->
+<refentry xmlns="http://docbook.org/ns/docbook" xml:id="function.strtr" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <refnamediv>
+  <refname>strtr</refname>
+  <refpurpose>Перекладає символи або замінює підрядки</refpurpose>
+ </refnamediv>
+ 
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>strtr</methodname>
+   <methodparam><type>string</type><parameter>str</parameter></methodparam>
+   <methodparam><type>string</type><parameter>from</parameter></methodparam>
+   <methodparam><type>string</type><parameter>to</parameter></methodparam>
+  </methodsynopsis>
+  <methodsynopsis>
+   <type>string</type><methodname>strtr</methodname>
+   <methodparam><type>string</type><parameter>str</parameter></methodparam>
+   <methodparam><type>array</type><parameter>replace_pairs</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   Якщо передається три аргументи, ця функція повертає копію
+   <parameter>str</parameter>, де всі входження кожного (однобайтного)
+   символу в <parameter>from</parameter> були перекладені на відповідний
+   символ в <parameter>to</parameter>, тобто, кожне входження
+   <literal>$from[$n]</literal> було замінено на <literal>$to[$n]</literal>,
+   де <literal>$n</literal> є коректне зміщенням в обох аргументах.
+  </para>
+  <para>
+   Якщо <parameter>from</parameter> та <parameter>to</parameter> мають
+   різну довжину, додаткові символи, в довшому із них, будуть ігноруватись.
+   Довжина значення, що повертається, буде такою ж як і
+   довжина параметра <parameter>str</parameter>.
+  </para>
+  <para>
+   Якщо передається два аргументи, другий аргумент повинен бути масивом
+   (<type>array</type>) в форматі <literal>array('from' => 'to', ...)</literal>.
+   Функція повертає рядок (<type>string</type>), де всі ключі
+   масива були замінені їх відповідними значеннями. Спочатку замінюються
+   найдовші ключі. Як тільки певний підрядок було замінено, його нове значення
+   виключається з пошуку для наступних замін.
+  </para>
+  <para>
+   В даному випадку, ключі та їх значення можуть мати будь-яку довжину,
+   за умови, що немає порожніх ключів; окрім цього, довжина повернутого значення
+   може відрізнятись від довжини, що має <parameter>str</parameter>.
+   Хоча, ця функція буде більш ефективною, коли всі ключі мають однаковий розмір.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>str</parameter></term>
+     <listitem>
+      <para>
+       Рядок (<type>string</type>), який буде перекладатись.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>from</parameter></term>
+     <listitem>
+      <para>
+       Рядок, кожен символ якого шукається в параметрі <parameter>str</parameter>.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>to</parameter></term>
+     <listitem>
+      <para>
+       Рядок, кожен символ якого використовується для заміни відповідного йому по порядку символа в параметрі <parameter>from</parameter>. Якщо певний символ не має свого відповідника - він ігнорується. Відсутність відповідника може бути за умови різних довжин рядків в параметрах <parameter>to</parameter> та <parameter>from</parameter>.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>replace_pairs</parameter></term>
+     <listitem>
+      <para>
+       Параметр <parameter>replace_pairs</parameter> (пара для заміни) може
+       використовуватись замість <parameter>to</parameter> та
+       <parameter>from</parameter>. В такому випадку, масив повинен бути
+	   в форматі <literal>array('from' => 'to', ...)</literal>. 
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ 
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   Повертається перекладений рядок (<type>string</type>).
+  </para>
+  <para>
+   Якщо <parameter>replace_pairs</parameter> (пара для заміни) містить ключ,
+   що є пустим рядком (<literal>""</literal>), буде повернено &false;.
+   Якщо <parameter>str</parameter> не є скалярним, то його тип не буде змінено
+   на рядковий, натомість буде згенеровано попередження та повернено &null;. 
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>strtr</function> здійснює переклад байт-в-байт</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+//В цій формі, strtr() здійснює переклад байт-в-байт
+//Таким чином, ми тут припускаємо однобайтне кодування:
+$addr = strtr($addr, "äåö", "aao");
+?>
+]]>
+    </programlisting>
+   </example>
+  </para>
+  <para>
+   Наступний приклад демонструє поведінку <function>strtr</function>, коли їй
+   передається всього два параметра. Зверніть увагу на приорітет заміни
+   (<literal>"h"</literal> не замінено на <literal>"-"</literal>, оскільки
+   існують довші співпадіння ключів) та як замінений текст виключається з
+   наступних пошуків.
+  </para>
+  <example>
+   <title>Використання <function>strtr</function> з двома аргументами</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+$trans = array("h" => "-", "hello" => "hi", "hi" => "hello");
+echo strtr("hi all, I said hello", $trans);
+?>
+]]>
+    </programlisting>
+    &example.outputs;
+    <screen>
+<![CDATA[
+hello all, I said hi
+]]>
+    </screen>
+  </example>
+  <para>
+   Ці два режими поведінки суттєво відрізняються. З трьома аргументами,
+   <function>strtr</function> буде замінювати байти; з двома - можуть
+   замінятись і довші підрядки.
+  </para>
+  <example>
+   <title>Порівняння поведінки <function>strtr</function> в кожному з двох режимів</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+echo strtr("baab", "ab", "01"),"\n";
+
+$trans = array("ab" => "01");
+echo strtr("baab", $trans);
+?>
+]]>
+    </programlisting>
+    &example.outputs;
+    <screen>
+<![CDATA[
+1001
+ba01
+]]>
+    </screen>
+  </example>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>str_replace</function></member>
+    <member><function>preg_replace</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

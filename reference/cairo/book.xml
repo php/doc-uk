@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 8b6d169424ff189bb563ef4c3f35f8adff3f42c5 Maintainer: ktretyak Status: ready -->
+<!-- $Revision$ -->
+
+<book xml:id="book.cairo" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>Cairo</title>
+ <titleabbrev>Cairo</titleabbrev>
+
+ <preface xml:id="intro.cairo">
+  &reftitle.intro;
+  <para>
+   Cairo є рідним розширенням PHP для створення та редагування графіки
+   використовуючи бібліотеку Cairo Graphics.
+  </para>
+  <para>
+    Cairo Graphics є 2D бібліотекою написаною на C з підтримкою
+    декількох пристроїв виводу. На даний момент є підтримка для
+    X Window System, Quartz, Win32, буферів зображення, PostScript,
+    PDF, та файлового виводу SVG. Експерементальна серверна сторона включає
+    OpenGL (через glitz), XCB, BeOS, OS/2, та DirectFB. Дана бібліотека також
+    має підтримку для двох типів маніпуляцій тексту та прошарку. API "toy"
+    забезпечує якісну підтримку демо, та API значків (glyphs), хоча
+    більш функціональніше працює з допоміжною бібліотекою, такою як pango.
+    Підтримка шрифтів серверної частини включає FreeType, Quartz, Win32, та
+	шрифти User.
+  </para>
+  <para>
+   Є два типи комп'ютерної графіки - векторна та растрова. Растрова графіка
+   представляє зображення масивом пікселів. Векторна графіка використовує
+   геометричні примітиви, такі як точки, лінії, криві або полігони для
+   представлення зображень. Примітиви створюються за допомогою матиматичних
+   рівнянь. Бібліотека Cairo Graphics застосовує векторний підхід для графіки,
+   що дозволяє зменшувати розміри, нескінченне збільшення та переміщення,
+   масштабування та обертання без погіршення якості зображень.
+  </para>
+  <para>
+   Операції в бібліотеці cairo graphics включають згладжування та заповнення
+   кубічних кривих Безьє, трансформацію та компонування напівпрозорих зображень,
+   згладженну візуалізацію тексту. Всі операції малювання можуть бути перетворені
+   через будь-яку афінну трансформацію (масштабування, обертання, скошення,
+   та інші). Це є дуже подібним до операцій малювання для PostScript та PDF.
+  </para>
+  <para>
+    PHP Розширення Cairo спрямоване на те, щоб надавати підтримку для всіх
+    офіційно підтримуваних шрифтів та оболонки на стороні сервера, а також
+    на розкриття всієї доступної функціональності в cairo для користувачів PHP.
+  </para>
+
+
+ </preface>
+
+ &reference.cairo.setup;
+ &reference.cairo.constants;
+ &reference.cairo.examples;
+ &reference.cairo.reference;
+
+ &reference.cairo.cairo;
+ &reference.cairo.cairocontext;
+ &reference.cairo.cairoexception;
+ &reference.cairo.cairostatus;
+
+ &reference.cairo.cairosurface;
+ &reference.cairo.cairosvgsurface;
+ &reference.cairo.cairoimagesurface;
+ &reference.cairo.cairopdfsurface;
+ &reference.cairo.cairopssurface;
+ &reference.cairo.cairosurfacetype;
+
+
+ &reference.cairo.cairofontface;
+ &reference.cairo.cairofontoptions;
+ &reference.cairo.cairofontslant;
+ &reference.cairo.cairofonttype;
+ &reference.cairo.cairofontweight;
+ &reference.cairo.cairoscaledfont;
+ &reference.cairo.cairotoyfontface;
+
+ &reference.cairo.cairopatterntype;
+ &reference.cairo.cairopattern;
+ &reference.cairo.cairogradientpattern;
+ &reference.cairo.cairosolidpattern;
+ &reference.cairo.cairosurfacepattern;
+ &reference.cairo.cairolineargradient;
+ &reference.cairo.cairoradialgradient;
+
+ &reference.cairo.cairoantialias;
+ &reference.cairo.cairocontent;
+ &reference.cairo.cairoextend;
+ &reference.cairo.cairoformat;
+ &reference.cairo.cairofillrule;
+ &reference.cairo.cairofilter;
+ &reference.cairo.cairohintmetrics;
+ &reference.cairo.cairohintstyle;
+ &reference.cairo.cairolinecap;
+ &reference.cairo.cairolinejoin;
+ &reference.cairo.cairomatrix;
+ &reference.cairo.cairooperator;
+ &reference.cairo.cairopath;
+ &reference.cairo.cairopslevel;
+ &reference.cairo.cairosubpixelorder;
+ &reference.cairo.cairosvgversion;
+</book>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
+

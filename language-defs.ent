@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 0abaad099e3ec6064ed8cf31553dcd5e3e3fdfba Maintainer: ktretyak Status: ready -->
+<!-- $Revision$ -->
+
+<!-- Part titles used mostly in manual.xml itself -->
+<!ENTITY PHPManual         "Посібник по PHP">
+<!ENTITY Seealso           "Дивіться також">
+<!ENTITY Date              "Дата:">
+<!ENTITY GettingStarted    "З чого почати">
+<!ENTITY InstallAndConfigure "Встановлення та Налаштування">
+<!ENTITY Installation      "Встановлення">
+<!ENTITY LanguageReference "Довідник для PHP">
+<!ENTITY Features          "Можливості">
+<!ENTITY Security          "Безпека">
+<!ENTITY FunctionReference "Довідник Функцій">
+<!ENTITY VariableandTypeRelatedExtensions         "Розширення, що Відносяться до Змінних та Типів">
+<!ENTITY TextProcessing                           "Обробка Текста">
+<!ENTITY AffectingPHPsBehaviour                   "Вплив на Поведінку PHP">
+<!ENTITY SessionExtensions                        "Розширення для роботи із сесіями">
+<!ENTITY OtherBasicExtensions                     "Інші Базові Розширення">
+<!ENTITY DatabaseExtensions                       "Розширення для Роботи з Базами Даних">
+<!ENTITY AbstractionLayers                        "Абстрактні Прошарки">
+<!ENTITY VendorSpecificDatabaseExtensions         "Постачальники Окремих Розширень Баз Даних">
+<!ENTITY XMLManipulation                          "Маніпуляції з XML">
+<!ENTITY WebServices                              "Веб-сервіси">
+<!ENTITY CreditCardProcessing                     "Обробка Кредитних Карток">
+<!ENTITY MathematicalExtensions                   "Математичні Розширення">
+<!ENTITY CryptographyExtensions                   "Криптографічні Розширення">
+<!ENTITY HumanLanguageandCharacterEncodingSupport "Підтримка Людської Мови та Кодування Символів">
+<!ENTITY FileSystemRelatedExtensions              "Розширення, що Відносяться до Файлової Системи">
+<!ENTITY ProcessControlExtensions                 "Розширення, що Контролює Обробку">
+<!ENTITY MailRelatedExtensions                    "Розширення, що Стосується Пошти">
+<!ENTITY AuthenticationServices                   "Сервіс Автентифікації">
+<!ENTITY OtherServices                            "Інші Сервіси">
+<!ENTITY CompressionExtensions                    "Розширення для Архівації та Стиснення">
+<!ENTITY CalendarandEventRelatedExtensions        "Розширення, що Стосуються Дати й Часу">
+<!ENTITY NonTextMIMEOutput                        "Вивід Нетекстових MIME">
+<!ENTITY ImageProcessingandGeneration             "Обробка та Генерація Зображень">
+<!ENTITY AudioFormatsManipulation                 "Маніпуляції Аудіо Форматів">
+<!ENTITY CommandLineSpecificExtensions            "Розширення Призначені для Командного Рядка">
+<!ENTITY WindowsOnlyExtensions                    "Розширення Суто для Windows">
+<!ENTITY ServerSpecificExtensions                 "Спеціальні Розширення Сервера">
+<!ENTITY SearchEngineExtensions                   "Розширення Рушіїв Пошуку">
+<!ENTITY MiscExtensions                           "Різні Розширення">
+<!ENTITY Appendices        "Додатки">
+<!ENTITY PEAR              "PEAR: Репозиторій PHP Розширень та Застосунків">
+<!ENTITY FAQ               "FAQ: Часті Запитання й Відповіді">
+<!ENTITY FAQabbrev         "FAQ">
+<!ENTITY Internals         "Що в середені PHP та Рушія Zend">
+<!ENTITY Internals2        "PHP в Ядрі: Керівництво Хакера">
+<!ENTITY ZendAPI           "Zend API: Взламуємо Ядро PHP">
+<!ENTITY IndexListing      "Список в Алфавітному Порядку">
+<!ENTITY FunctionListing   "Список Функцій та Методів">
+<!ENTITY FunctionListingDescription   "Список всіх функцій та методів в керівництві">
+<!ENTITY ExampleListing    "Список прикладів">
+<!ENTITY ExampleListingDescription   "Список всіх прикладів в керівництві">
+<!ENTITY ChangelogListingTitle "Журнал Змін">
+<!ENTITY ChangelogListingDescription "Були здійснені наступні зміни  з класами/функціями/методами цього розширення.">
+<!ENTITY ChangelogListingBundledDescription "Були здійснені наступні зміни з функціями, що входять в комплект розширення.">
+<!ENTITY CHMEdition        "HTML Варіант Довідки">
+<!ENTITY ReservedConstants "Предвизначені Константи">
+<!ENTITY MissingStuff      "Відсутні Речі">
+<!ENTITY AndSeveralOthers  "Та інші">
+<!ENTITY Version           "Версія">
+<!ENTITY Description       "Опис">
+<!ENTITY Changeable        "Можна змінювати">
+<!ENTITY ConfigureOptions  "Параметри Конфігурації">
+<!ENTITY Default           "За промовчанням">
+<!ENTITY Definition        "Визначення">
+<!ENTITY Functions         "Функції">
+<!ENTITY Name              "Ім'я">
+<!ENTITY Alias             "Псевдонім">
+<!ENTITY Type              "Тип">
+<!ENTITY Changelog         "Журнал Змін">
+<!ENTITY Methods           "Методи">
+<!ENTITY InheritedMethods  "Успадковані методи">
+<!ENTITY InheritedProperties "Успадковані властивості">
+<!ENTITY Properties        "Властивості">
+<!ENTITY Constants         "Константи">
+<!ENTITY NotAvailable      "Недоступно">
+
+<!-- These are used in reference/$extname/reference.xml and other
+supplemental files to mark section titles -->
+<!ENTITY reftitle.changelog    '<title xmlns="http://docbook.org/ns/docbook">Журнал Змін</title>'>
+<!ENTITY reftitle.classes      '<title xmlns="http://docbook.org/ns/docbook">Предвизначені Класи</title>'>
+<!ENTITY reftitle.classsynopsis '<title xmlns="http://docbook.org/ns/docbook">Короткий Огляд Класа</title>'>
+<!ENTITY reftitle.constants    '<title xmlns="http://docbook.org/ns/docbook">Предвизначені Константи</title>'>
+<!ENTITY reftitle.constructor  '<title xmlns="http://docbook.org/ns/docbook">Конструктор</title>'>
+<!ENTITY reftitle.description  '<title xmlns="http://docbook.org/ns/docbook">Опис</title>'>
+<!ENTITY reftitle.encoding     '<title xmlns="http://docbook.org/ns/docbook">Кодування</title>'>
+<!ENTITY reftitle.examples     '<title xmlns="http://docbook.org/ns/docbook">Приклади</title>'>
+<!ENTITY reftitle.exceptions   '<title xmlns="http://docbook.org/ns/docbook">Винятки</title>'>
+<!ENTITY reftitle.errors       '<title xmlns="http://docbook.org/ns/docbook">Помилки/Винятки</title>'>
+<!ENTITY reftitle.faq          '<title xmlns="http://docbook.org/ns/docbook">&FAQ;</title>'>
+<!ENTITY reftitle.install      '<title xmlns="http://docbook.org/ns/docbook">Встановлення</title>'>
+<!ENTITY reftitle.intro        '<title xmlns="http://docbook.org/ns/docbook">Вступ</title>'>
+<!ENTITY reftitle.indices      '<title xmlns="http://docbook.org/ns/docbook">Індекси</title>'>
+<!ENTITY reftitle.interfacesynopsis '<title xmlns="http://docbook.org/ns/docbook">Короткий Огляд Інтерфеса</title>'>
+<!ENTITY reftitle.methods      '<title xmlns="http://docbook.org/ns/docbook">Методи</title>'>
+<!ENTITY reftitle.mysqlnd      '<title xmlns="http://docbook.org/ns/docbook">Лише Рідний Драйвер MySQL</title>'>
+<!ENTITY reftitle.notes        '<title xmlns="http://docbook.org/ns/docbook">Примітки</title>'>
+<!ENTITY reftitle.parameters   '<title xmlns="http://docbook.org/ns/docbook">Параметри</title>'>
+<!ENTITY reftitle.options      '<title xmlns="http://docbook.org/ns/docbook">Опції</title>'>
+<!ENTITY reftitle.properties   '<title xmlns="http://docbook.org/ns/docbook">Властивості</title>'>
+<!ENTITY reftitle.required     '<title xmlns="http://docbook.org/ns/docbook">Вимоги</title>'>
+<!ENTITY reftitle.resources    '<title xmlns="http://docbook.org/ns/docbook">Типи Ресурсів</title>'>
+<!ENTITY reftitle.runtime      '<title xmlns="http://docbook.org/ns/docbook">Налаштування під час виконання</title>'>
+<!ENTITY reftitle.returnvalues '<title xmlns="http://docbook.org/ns/docbook">Значення, що повертаються</title>'>
+<!ENTITY reftitle.seealso      '<title xmlns="http://docbook.org/ns/docbook">Прогляньте Також</title>'>
+<!ENTITY reftitle.setup        '<title xmlns="http://docbook.org/ns/docbook">Встановлення/Налаштування</title>'>
+<!ENTITY reftitle.unicode      '<title xmlns="http://docbook.org/ns/docbook">Юнікод</title>'>
+<!ENTITY reftitle.usage        '<title xmlns="http://docbook.org/ns/docbook">Використання</title>'>

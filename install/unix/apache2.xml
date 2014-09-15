@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 96c9d88bad9a7d7d44bfb7f26c226df7ee9ddf26 Maintainer: ktretyak Status: ready -->
+<!-- $Revision$ -->
+   <sect1 xml:id="install.unix.apache2" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Apache 2.x на Unix системах</title>
+    <para>
+     Цей розділ містить замітки та підказки призначені для встановлення
+		 Apache 2.x з PHP на Unix системах.
+    </para>
+   
+    &warn.apache2.compat;
+    
+    <!-- para>
+     <link xlink:href="&url.apache2.docs;">Документація на сайті Apache</link> 
+     є найбільш авторитетним джерелом інформації про сервер Apache 2.x.
+     Там можна знайти більше інформації про параметри інсталяції для Apache.
+    </para -->
+
+    <para>
+     Саму останню версію HTTP-сервера Apache можна отримати на
+     <link xlink:href="&url.apache;">сторінці завантаження Apache</link>.
+		 Також скачайте потрібну версію PHP (див. навігаційну панель вгорі).
+         Тут ви знайдете лише короткий опис для базового встановлення
+		 Apache 2.x та PHP. Детальнішу інформацію можна прочитати в
+     <link xlink:href="&url.apache2.docs;">Документації Apache</link>.
+     Ми навмисне оминемо зазначення конкретного номера версії, щоб не плутати
+     вас при виконанні наведених тут інструкцій. Внизу в прикладах, 'NN' потрібно
+     замінити версією Apache, яку збираєтесь використовувати.
+    </para>
+
+    <para>
+     В даний момент є дві версії Apache 2.x - це 2.0 та 2.2.
+     Хоча є певні причини для вибору однієї чи іншої версії, але 2.2 є зараз
+     самою останньою, та вона є рекомендованою. Тим не менше, наведені тут
+     інструкції мають працювати для обох версій.
+    </para>
+
+     <orderedlist>
+     <listitem>
+     <para>Скачавши HTTP-сервер Apache, розпаковуємо його:</para>
+
+     <example>
+     <screen>
+<![CDATA[
+gzip -d httpd-2_x_NN.tar.gz
+tar -xf httpd-2_x_NN.tar
+]]>
+     </screen>
+     </example>
+     </listitem>
+
+     <listitem>
+     <para>Аналогічно, розпаковуємо сирці PHP:</para>
+
+     <example>
+     <screen>
+<![CDATA[
+gunzip php-NN.tar.gz
+tar -xf php-NN.tar
+]]>
+     </screen>
+     </example>
+     </listitem>
+   
+     <listitem>
+     <para>
+     Далі збираємо та встановлюємо Apache. Детальніші рекоментації читайте
+	 на сайті Apache.
+     </para>
+
+     <example>
+     <screen>
+<![CDATA[
+cd httpd-2_x_NN
+./configure --enable-so
+make
+make install
+]]>
+     </screen>
+     </example>
+     </listitem>
+
+     <listitem>
+ <para>
+    Тепер ви маєте Apache 2.x.NN доступний за адресою /usr/local/apache2,
+	  зі встановленим стандартним модулем MPM prefork та конфігурацією, яка
+	  дозволяє додавати інші потрібні модулі. Щоб перевірити інсталяцію,
+	  використовуйте звичайну процедуру для старта сервера Apache, наприклад таку:
+    <example>
+    <screen>
+<![CDATA[
+/usr/local/apache2/bin/apachectl start
+]]>
+    </screen>
+    </example>
+
+    та зупиніть сервер, щоб перейти до встановлення PHP:
+
+    <example>
+    <screen>
+<![CDATA[
+/usr/local/apache2/bin/apachectl stop
+]]>
+    </screen>
+    </example>
+ </para>
+ </listitem>
+
+ <listitem>
+
+<para>
+Тепер конфігуруємо та збираємо PHP. Наприклад, визначаємо які саме розширення
+будуть включені в PHP. Запустіть <command>./configure --help</command> щоб
+побачити список доступних параметрів. В нашому прикладі, ми робимо просту
+конфігурацію Apache 2 додаючи підтримку MySQL.
+</para>
+
+<para>
+Якщо ви збираєте Apache із сирців, як описано вище, в наступному прикладі шлях
+буде відповідати розташуванню apxs, але якщо ви ставили Apache по іншому, вам
+потрібно відповідно змінити шлях до apxs. Зауважте, що деякі дистрибутиви
+можуть перейменувати apxs в apxs2.
+ </para>
+     <example>
+     <screen>
+<![CDATA[
+cd ../php-NN
+./configure --with-apxs2=/usr/local/apache2/bin/apxs --with-mysql
+make
+make install
+]]>
+      </screen>
+     </example>
+
+     <para>
+    Якщо ви вирішете змінити конфігурацію після інсталяції, вам потрібно
+    запустити заново кроки: configure, make, та make install. Але після
+    цього не забудьте перезапустити Apache, щоб зміни були задіяні.
+    Перекомпільовувати Apache не потрібно.
+    </para>
+         
+    <para>
+    Зверніть увагу, що якщо не сказано іншого, то 'make install' буде також
+		встановлювати PEAR, PHP CLI, певні сервіси PHP, такі як phpize, та інше.
+    </para>
+
+    </listitem>
+
+  <listitem>
+  <para>
+  Встановлення php.ini 
+  </para>
+    
+     <example>
+     <screen>
+<![CDATA[
+cp php.ini-development /usr/local/lib/php.ini
+]]>
+      </screen>
+     </example>
+
+    <para>
+    Ви можете редагувати файл .ini додаючи потрібні опції PHP. Якщо схочете
+		щоб php.ini розташовувався в іншому місці, використовуйте
+		<command>--with-config-file-path=/some/path</command> на 5 кроці.
+    </para>
+   
+    <para>
+    Якщо ви змінете свій вибір на php.ini-production, краще прочитати список
+		відмінностей, між файлами .ini, щоб розуміти як це вплине на
+		поведінку PHP.
+    </para>
+
+    </listitem>
+
+    <listitem>
+
+ <para>
+   Відредагуйте httpd.conf, щоб завантажувався модуль PHP. Шлях, який зазначено
+	 праворуч від запису LoadModule, повинен вказувати на розташування модуля PHP
+   у вашій системі. Команда <command>make install</command>, про яку тут
+	 згадувалось раніше, повинна вже була зробити це, але краще перевірити ще раз.
+</para>
+
+      <example>
+        <programlisting role="apache-conf">
+<![CDATA[
+LoadModule php5_module modules/libphp5.so
+]]>
+       </programlisting>
+      </example>
+
+      </listitem>
+
+      <listitem>
+
+    <para>
+    Скажіть Apache, щоб обробляв розширення .php через PHP. Замість того, щоб
+		використовувати лише директиву Apache <command>AddType</command>, ми хочемо
+		уникнути потенційної небезпеки завантаження та створення файлів, таких як
+    exploit.php.jpg, які будуть оброблятись через PHP. Використовуючи цей приклад,
+		ви можете додати будь-яке розширення (можна й не одне), яке буде оброблятись
+		через PHP. Ми вказали .php лише в якості приклада.
+    </para>
+
+
+      <example>
+        <programlisting role="apache-conf">
+<![CDATA[
+<FilesMatch \.php$>
+    SetHandler application/x-httpd-php
+</FilesMatch>
+]]>
+       </programlisting>
+      </example>
+
+    <para>
+    Або ж, якщо ми хочемо дозволити щоб файли .php, .php2, .php3, .php4, .php5,
+		.php6, та .phtml оброблялись через PHP, але ніякі інші, ми напишемо таке:
+    </para>
+
+      <example>
+        <programlisting role="apache-conf">
+<![CDATA[
+<FilesMatch "\.ph(p[2-6]?|tml)$">
+    SetHandler application/x-httpd-php
+</FilesMatch>
+]]>
+       </programlisting>
+      </example>
+
+    <para>
+    Або щоб дозволити файли .phps обробляти через php source filter, та
+		показувати їх вміст з підсвідкою синтаксиса, використовуйте таке:
+    </para>
+
+      <example>
+        <programlisting role="apache-conf">
+<![CDATA[
+<FilesMatch "\.phps$">
+    SetHandler application/x-httpd-php-source
+</FilesMatch>
+]]>
+       </programlisting>
+      </example>
+
+    <para>
+    Можна використовувати модуль mod_rewrite, щоб дозволити показувати сирцевий
+		код з підсвідкою синтаксиса в файлах з розширенням .php, без
+		необхідності їх переіменовувати чи копіювати до файлів .phps:
+   </para>
+
+      <example>
+        <programlisting role="apache-conf">
+<![CDATA[
+RewriteEngine On
+RewriteRule (.*\.php)s$ $1 [H=application/x-httpd-php-source]
+]]>
+       </programlisting>
+      </example>
+
+    <para>
+    Не слід включати php source filter на промислових системах, де він може
+		розкрити конфіденційну або іншу важливу інформацію розміщену в сирцевому коді.
+    </para>
+
+    </listitem>
+
+    <listitem>
+   <para>
+   Використовуйте стандартну процедуру щоб запустити сервер Apache, наприклад так:
+   </para>
+  
+   <example>
+   <screen>
+<![CDATA[
+/usr/local/apache2/bin/apachectl start
+]]>
+       </screen>
+      </example>
+
+          <para>АБО так:</para>
+
+   <example>
+   <screen>
+<![CDATA[
+service httpd restart
+]]>
+       </screen>
+      </example>
+
+   </listitem>
+     </orderedlist>
+
+    <para>
+     Дотримуючись зазначених вище кроків, ви запустите веб-сервер Apache2 з
+     підтримкою PHP як модуля <literal>SAPI</literal>. Звичайно, є значно більше
+     параметрів доступних для Apache та PHP. Більше інформації можна отримати
+		 ввівши в консолі <command>./configure --help</command> в їх кореневих каталогах.
+    </para>
+    <para>
+     Apache можна зробити багатопотоковим, вибравши
+     <filename>worker</filename> MPM, замість стандартного
+     <filename>prefork</filename> MPM, при збірці Apache. Це робиться через
+     додавання наступного параметра для
+		 <command>./configure</command>, на 3 кроці:
+    </para>
+    <example>
+    <screen>
+<![CDATA[
+--with-mpm=worker
+]]>
+    </screen>
+    </example>
+    <para>
+     Не варто бездумно використовувати цю опцію, використовуйте її лише якщо
+		 розумієте всі наслідки такого рішення. В документації для Apache
+     стосовно <link xlink:href="&url.apache2.mpm;">Молулів MPM</link>
+     значно детальніше розкрита ця тема.
+    </para>
+    <note>
+     <para>
+      Прогляньте розділ "Часто задавані питання" з приводу
+			<link linkend="faq.installation.apache.multiviews">Apache MultiViews 
+      </link>, де знайдете відповідь "чи можна їх використовувати разом з PHP".
+     </para>
+    </note>
+    <note>
+     <para>
+      Щоб побудувати версію багатопотокового Apache, цільова система повинна
+			мати підтримку потоків. В цьому випадку, PHP потрібно також збирати з
+			експерементальною Zend Thread Safety (ZTS). Цю конфігурацію підтримують
+			не всі розширення. Ми рекомендуємо встановлювати Apache зі стандартним
+			модулем <filename>prefork</filename> MPM.
+     </para>
+    </note>
+   </sect1>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

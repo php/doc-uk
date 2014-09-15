@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 0abaad099e3ec6064ed8cf31553dcd5e3e3fdfba Maintainer: ktretyak Status: ready -->
+<!-- $Revision$ -->
+
+<!--
+  Entities for the categorized extension list, so it does not need
+  to be translated, and thus it is not going to be outdated.
+-->
+
+<!ENTITY extcat.intro '<title xmlns="http://docbook.org/ns/docbook">Список/Класифікація Розширення</title>
+<para xmlns="http://docbook.org/ns/docbook">Цей додаток класифікує по різним
+критеріям більш, ніж 150 розширень, задокументованих в Керівництві PHP.</para>'>
+
+<!ENTITY extcat.alphabetical '<title xmlns="http://docbook.org/ns/docbook">В алфавітному порядку</title>'>
+
+<!-- ======================================================================= -->
+
+<!ENTITY extcat.purpose '<title xmlns="http://docbook.org/ns/docbook">Ціль</title>'>
+
+<!ENTITY extcat.purpose.basic '<title xmlns="http://docbook.org/ns/docbook">Основні Розширення PHP</title>'>
+<!ENTITY extcat.purpose.basic.vartype '<title xmlns="http://docbook.org/ns/docbook">Розширення, що стосуються Змінних та Типів</title>'>
+<!ENTITY extcat.purpose.basic.text '<title xmlns="http://docbook.org/ns/docbook">Обробка Текста</title>'>
+<!ENTITY extcat.purpose.basic.php "<title xmlns='http://docbook.org/ns/docbook'>Вплив на Поведінку PHP</title>">
+<!ENTITY extcat.purpose.basic.session '<title xmlns="http://docbook.org/ns/docbook">Розширення для Сесій</title>'>
+<!ENTITY extcat.purpose.basic.other '<title xmlns="http://docbook.org/ns/docbook">Інші Основні Розширення</title>'>
+
+<!ENTITY extcat.purpose.database '<title xmlns="http://docbook.org/ns/docbook">Розширення для Баз Даних</title>'>
+<!ENTITY extcat.purpose.database.abstract '<title xmlns="http://docbook.org/ns/docbook">Абстрактні Прошарки</title>'>
+<!ENTITY extcat.purpose.database.vendors '<title xmlns="http://docbook.org/ns/docbook">Постачальники Окремих Розширень Баз Даних</title>'>
+
+<!ENTITY extcat.purpose.xml '<title xmlns="http://docbook.org/ns/docbook">Маніпуляції з XML</title>'>
+
+<!ENTITY extcat.purpose.webservice '<title xmlns="http://docbook.org/ns/docbook">Веб-сервіси</title>'>
+
+<!ENTITY extcat.purpose.creditcard '<title xmlns="http://docbook.org/ns/docbook">Обробка Кредитних Карток</title>'>
+   
+<!ENTITY extcat.purpose.mathcrypto '<title xmlns="http://docbook.org/ns/docbook">Математика та Криптографіка</title>'>
+<!ENTITY extcat.purpose.mathcrypto.math '<title xmlns="http://docbook.org/ns/docbook">Математичні Розширення</title>'>
+<!ENTITY extcat.purpose.mathcrypto.crypto '<title xmlns="http://docbook.org/ns/docbook">Криптографічні Розширення</title>'>
+
+<!ENTITY extcat.purpose.international '<title xmlns="http://docbook.org/ns/docbook">Підтримка Людської Мови та Кодування Символів</title>'>
+   
+<!ENTITY extcat.purpose.fileprocess '<title xmlns="http://docbook.org/ns/docbook">Файлова Система та Контроль Обробки</title>'>
+<!ENTITY extcat.purpose.fileprocess.file '<title xmlns="http://docbook.org/ns/docbook">Розширення, що Відносяться до Файлової Системи</title>'>
+<!ENTITY extcat.purpose.fileprocess.process '<title xmlns="http://docbook.org/ns/docbook">Розширення, що Контролює Обробку</title>'>
+
+<!ENTITY extcat.purpose.remote '<title xmlns="http://docbook.org/ns/docbook">Доступні Сервіси</title>'>
+<!ENTITY extcat.purpose.remote.mail '<title xmlns="http://docbook.org/ns/docbook">Розширення, що Стосується Пошти</title>'>
+<!ENTITY extcat.purpose.remote.auth '<title xmlns="http://docbook.org/ns/docbook">Сервіс Автентифікації</title>'>
+<!ENTITY extcat.purpose.remote.other '<title xmlns="http://docbook.org/ns/docbook">Інші Сервіси</title>'>
+
+<!ENTITY extcat.purpose.compression '<title xmlns="http://docbook.org/ns/docbook">Розширення для Архівації та Стиснення</title>'>
+
+<!ENTITY extcat.purpose.calendar '<title xmlns="http://docbook.org/ns/docbook">Розширення, що Стосуються Дати й Часу</title>'>
+
+<!ENTITY extcat.purpose.utilspec '<title xmlns="http://docbook.org/ns/docbook">Використання Області Певних Розширень</title>'>
+<!ENTITY extcat.purpose.utilspec.nontext '<title xmlns="http://docbook.org/ns/docbook">Нетекстовий вивід MIME</title>'>
+<!ENTITY extcat.purpose.utilspec.image '<title xmlns="http://docbook.org/ns/docbook">Обробка та Генерація Зображень</title>'>
+<!ENTITY extcat.purpose.utilspec.audio '<title xmlns="http://docbook.org/ns/docbook">Маніпуляції Аудіо Форматів</title>'>
+<!ENTITY extcat.purpose.utilspec.cmdline '<title xmlns="http://docbook.org/ns/docbook">Розширення Призначені для Командного Рядка</title>'>
+<!ENTITY extcat.purpose.utilspec.windows '<title xmlns="http://docbook.org/ns/docbook">Розширення Суто для Windows</title>'>
+<!ENTITY extcat.purpose.utilspec.server '<title xmlns="http://docbook.org/ns/docbook">Спеціальні Розширення Сервера</title>'>
+    
+<!-- ======================================================================= -->
+
+<!ENTITY extcat.membership '<title xmlns="http://docbook.org/ns/docbook">По складу</title>'>
+
+<!ENTITY extcat.membership.core '<title xmlns="http://docbook.org/ns/docbook">Розширення Ядра</title>
+<para xmlns="http://docbook.org/ns/docbook">Це насправді не розширення.
+Вони є частиною ядра PHP, та не повинні виключатись з бінарників
+PHP за допомогою опцій компіляції.</para>'>
+
+<!ENTITY extcat.membership.bundled '<title xmlns="http://docbook.org/ns/docbook">Пакетні Розширення</title>
+<para xmlns="http://docbook.org/ns/docbook">Ці розширення поставляються разом з PHP.</para>'>
+
+<!ENTITY extcat.membership.external '<title xmlns="http://docbook.org/ns/docbook">Зовнішні Розширення</title>
+<para xmlns="http://docbook.org/ns/docbook">Ці розширення поставляються разом з PHP,
+але для того, щоб їх компілювати, потрібні зовнішні бібліотеки.</para>'>
+
+<!ENTITY extcat.membership.pecl '<title xmlns="http://docbook.org/ns/docbook">Розширення PECL</title>
+<para xmlns="http://docbook.org/ns/docbook">Ці розширення доступні в
+<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link>.
+Вони можуть потребувати зовнішніх бібліотек. Існує більше PECL
+розширень, але вони покищо недокументовані в Керівництві PHP.</para>'>
+
+<!-- ======================================================================= -->
+
+<!ENTITY extcat.state '<title xmlns="http://docbook.org/ns/docbook">Стан</title><para xmlns="http://docbook.org/ns/docbook">
+Ця частина списку розширень, що непризначені для виробничого використання - вони
+або дуже "старі" (застарілі), або "нові" (експерементальні).</para>'>
+
+<!ENTITY extcat.state.deprecated '<title xmlns="http://docbook.org/ns/docbook">Застарілі Розширення</title>
+<para xmlns="http://docbook.org/ns/docbook">Ці розширення вже застарілі,
+та зазвичай замінені на інші розширення.</para>'>
+
+<!ENTITY extcat.state.experimental '<title xmlns="http://docbook.org/ns/docbook">Експерементальні Розширення</title>
+<para xmlns="http://docbook.org/ns/docbook">Поведінка цих розширень - 
+включаючи назви їх функцій та будь-що інше документоване про ці розширення
+ - можуть змінюватись без попереджень в описі релізів PHP.
+Ви їх можете використовувати на власний ризик.</para>'>
+

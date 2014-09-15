@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 4de5cce5d886bf7ea08db8583141ff9715b47073 Maintainer: ktretyak Status: ready -->
+<!-- $Revision$ -->
+
+<appendix xml:id="sqlite3.constants" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ &reftitle.constants;
+ &extension.constants;
+ <para>
+  <variablelist>
+   <varlistentry xml:id="constant.sqlite3-assoc">
+    <term>
+     <constant>SQLITE3_ASSOC</constant>
+     (<type>integer</type>)
+    </term>
+    <listitem>
+     <simpara>
+      Визначеє, що метод <methodname>Sqlite3Result::fetchArray</methodname>
+			повинен повертати масив, індексований по назві колонки,
+      у відповідний набір результатів.
+     </simpara>
+    </listitem>
+   </varlistentry>
+   <varlistentry xml:id="constant.sqlite3-num">
+    <term>
+     <constant>SQLITE3_NUM</constant>
+     (<type>integer</type>)
+    </term>
+    <listitem>
+     <simpara>
+      Визначеє, що метод <methodname>Sqlite3Result::fetchArray</methodname>
+      повинен повертати масив, індексований по номеру колонки,
+      у відповідний набір результатів, починаючи з колонки 0.
+     </simpara>
+    </listitem>
+   </varlistentry>
+   <varlistentry xml:id="constant.sqlite3-both">
+    <term>
+     <constant>SQLITE3_BOTH</constant>
+     (<type>integer</type>)
+    </term>
+    <listitem>
+     <simpara>
+      Визначеє, що метод <methodname>Sqlite3Result::fetchArray</methodname>
+      повинен повертати масив, індексований по назві колонки та по її номеру,
+      у відповідний набір результатів, починаючи з колонки 0.
+     </simpara>
+    </listitem>
+   </varlistentry>
+   <varlistentry xml:id="constant.sqlite3-integer">
+    <term>
+     <constant>SQLITE3_INTEGER</constant>
+     (<type>integer</type>)
+    </term>
+    <listitem>
+     <simpara>
+      Представляє клас зберігання SQLite3 INTEGER.
+     </simpara>
+    </listitem>
+   </varlistentry>
+   <varlistentry xml:id="constant.sqlite3-float">
+    <term>
+     <constant>SQLITE3_FLOAT</constant>
+     (<type>integer</type>)
+    </term>
+    <listitem>
+     <simpara>
+      Представляє клас зберігання SQLite3 REAL (FLOAT).
+     </simpara>
+    </listitem>
+   </varlistentry>
+   <varlistentry xml:id="constant.sqlite3-text">
+    <term>
+     <constant>SQLITE3_TEXT</constant>
+     (<type>integer</type>)
+    </term>
+    <listitem>
+     <simpara>
+      Представляє клас зберігання SQLite3 TEXT.
+     </simpara>
+    </listitem>
+   </varlistentry>
+   <varlistentry xml:id="constant.sqlite3-blob">
+    <term>
+     <constant>SQLITE3_BLOB</constant>
+     (<type>integer</type>)
+    </term>
+    <listitem>
+     <simpara>
+      Представляє клас зберігання SQLite3 BLOB.
+     </simpara>
+    </listitem>
+   </varlistentry>
+   <varlistentry xml:id="constant.sqlite3-null">
+    <term>
+     <constant>SQLITE3_NULL</constant>
+     (<type>integer</type>)
+    </term>
+    <listitem>
+     <simpara>
+      Представляє клас зберігання SQLite3 NULL.
+     </simpara>
+    </listitem>
+   </varlistentry>
+   <varlistentry xml:id="constant.sqlite3-open-readonly">
+    <term>
+     <constant>SQLITE3_OPEN_READONLY</constant>
+     (<type>integer</type>)
+    </term>
+    <listitem>
+     <simpara>
+      Визначає, що база даних SQLite3 буде відкрита лише для читання.
+     </simpara>
+    </listitem>
+   </varlistentry>
+   <varlistentry xml:id="constant.sqlite3-open-readwrite">
+    <term>
+     <constant>SQLITE3_OPEN_READWRITE</constant>
+     (<type>integer</type>)
+    </term>
+    <listitem>
+     <simpara>
+      Визначає, що база даних SQLite3 буде відкрита для читання та запису.
+     </simpara>
+    </listitem>
+   </varlistentry>
+   <varlistentry xml:id="constant.sqlite3-open-create">
+    <term>
+     <constant>SQLITE3_OPEN_CREATE</constant>
+     (<type>integer</type>)
+    </term>
+    <listitem>
+     <simpara>
+      Визначає, що буде створена база даних SQLite3, якщо вона ще не створена.
+     </simpara>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+ </para>
+</appendix>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
+
