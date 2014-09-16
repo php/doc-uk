@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: d55539cc0cc5a858fae5242a02cded46baaa2ac7 Maintainer: ktretyak Status: ready -->
+<!-- EN-Revision: 8b5940cadeb4f1c8492f4a7f70743a2be807cf39 Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
+<!-- CREDITS: ktretyak -->
 <refentry xml:id="function.uniqid" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>uniqid</refname>
@@ -20,7 +21,7 @@
   </para>
   <warning>
    <para>
-    Ця функція не створює випадкового непередбачуваного рядка.
+    Ця функція не створює випадкових непередбачуваних рядків.
     <emphasis>Вона не повинна використовуватись з метою безпеки.</emphasis>
     Користуйтесь криптографічними безпечними функціями/генераторами та
     криптографічними хеш-функціями, що створюють непередбачувані безпечні ID.
@@ -97,37 +98,6 @@ printf("uniqid('', true): %s\r\n", uniqid('', true));
 ]]>
     </programlisting>
    </example>
-  </para>
- </refsect1>
-
- <refsect1 role="changelog">
-  &reftitle.changelog;
-  <para>
-   <informaltable>
-    <tgroup cols="2">
-     <thead>
-      <row>
-       <entry>&Version;</entry>
-       <entry>&Description;</entry>
-      </row>
-     </thead>
-     <tbody>
-      <row>
-       <entry>5.0.0</entry>
-       <entry>
-        Додано необов'язковий параметр <parameter>prefix</parameter>.
-       </entry>
-      </row>
-      <row>
-       <entry>4.3.1</entry>
-       <entry>
-        Для параметра <parameter>prefix</parameter> збільшено ліміт
-		довжини до 114 символів.
-       </entry>
-      </row>
-     </tbody>
-    </tgroup>
-   </informaltable>
   </para>
  </refsect1>
 

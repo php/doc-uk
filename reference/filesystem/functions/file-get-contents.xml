@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 33040b3b1b95210112f7b3b71f57a1c005de1a3b Maintainer: ktretyak Status: ready -->
+<!-- EN-Revision: e41aab5ecacf449e51179886c17f1d41735b0234 Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
+<!-- CREDITS: ktretyak -->
 <refentry xmlns="http://docbook.org/ns/docbook" xml:id="function.file-get-contents">
  <refnamediv>
   <refname>file_get_contents</refname> 
@@ -61,60 +62,6 @@
 		(<link linkend="ini.include-path">include path</link>).
        </para>
       </note>
-      <!-- FIXME PHP_6
-      <para>
-       The value of <parameter>flags</parameter> can be any combination of 
-       the following flags (with some restrictions), joined with the
-       <link linkend="language.operators.bitwise">binary OR (|)
-       operator</link>.
-      </para>
-      <para>
-       <table>
-        <title>Available flags</title>
-        <tgroup cols="2">
-         <thead>
-          <row>
-           <entry>Flag</entry>
-           <entry>Description</entry>
-          </row>
-         </thead>
-         <tbody>
-          <row>
-           <entry>
-            <constant>FILE_USE_INCLUDE_PATH</constant>
-           </entry>
-           <entry>
-            Search for <parameter>filename</parameter> in the include directory.
-            See <link linkend="ini.include-path">include_path</link> for more
-            information.
-           </entry>
-          </row>
-          <row>
-           <entry>
-            <constant>FILE_TEXT</constant>
-           </entry>
-           <entry>
-            As of PHP 6, the default encoding of the read
-            data is UTF-8. You can specify a different encoding by creating a 
-            custom context or by changing the default using 
-            <function>stream_default_encoding</function>. This flag cannot be 
-            used with <constant>FILE_BINARY</constant>. 
-           </entry>
-          </row>
-          <row>
-           <entry>
-            <constant>FILE_BINARY</constant>
-           </entry>
-           <entry>
-            With this flag, the file is read in binary mode. This is the default
-            setting and cannot be used with <constant>FILE_TEXT</constant>. 
-           </entry>
-          </row>
-         </tbody>
-        </tgroup>
-       </table>
-      </para>
-      -->
      </listitem>
     </varlistentry>
     <varlistentry>
@@ -258,26 +205,11 @@ $file = file_get_contents('http://www.example.com/', false, $context);
       </row>
      </thead>
      <tbody>
-      <!-- FIXME PHP_6
-      <row>
-       <entry>6.0.0</entry>
-       <entry>
-        The <parameter>use_include_path</parameter> parameter was replaced by
-        the <parameter>flags</parameter> parameter.
-       </entry>
-      </row>
-      -->
       <row>
        <entry>5.1.0</entry>
        <entry>
         Додано параметри <parameter>offset</parameter> та
         <parameter>maxlen</parameter>.
-       </entry>
-      </row>
-      <row>
-       <entry>5.0.0</entry>
-       <entry>
-        Додано підтримку контекста.
        </entry>
       </row>
      </tbody>

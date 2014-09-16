@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!DOCTYPE translation SYSTEM "../dtds/translation.dtd">
+<!DOCTYPE translation SYSTEM "../doc-base/phpbook/phpbook-xsml/translation.dtd">
 
 <translation>
 
- <intro>
-  The Ukrainian translation of the PHP Documentation is managed
-  by Kostya Tretyak.
- </intro>
-
  <translators>
-  <person name="Kostya Tretyak" email="ktretyakgm@gmail.com" />
+  <person name="Костя Третяк" email="ktretyak.in.ua@gmail.com" nick="ktretyak" vcs="yes" />
  </translators>
-  
- <work-in-progress>
- </work-in-progress>
 
 </translation>
