@@ -86,7 +86,7 @@
        Параметр <parameter>replace_pairs</parameter> (пара для заміни) може
        використовуватись замість <parameter>to</parameter> та
        <parameter>from</parameter>. В такому випадку, масив повинен бути
-	   в форматі <literal>array('from' => 'to', ...)</literal>. 
+     в форматі <literal>array('from' => 'to', ...)</literal>. 
       </para>
      </listitem>
     </varlistentry>

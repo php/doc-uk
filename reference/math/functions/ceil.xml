@@ -36,7 +36,7 @@
   &reftitle.returnvalues;
   <para>
    Значення, що має тип даних <type>float</type>, але яке заокруглене від
-	 <parameter>value</parameter> до найближчого більшого цілого.
+   <parameter>value</parameter> до найближчого більшого цілого.
   </para>
  </refsect1>
  <refsect1 role="examples">

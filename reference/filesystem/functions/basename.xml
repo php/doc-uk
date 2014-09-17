@@ -32,7 +32,7 @@
       </para>
       <para>
        На Windows, в якості роздільників директорій використовується як прямий слеш
-			 (<literal>/</literal>) так і зворотній (<literal>\</literal>). В інших
+       (<literal>/</literal>) так і зворотній (<literal>\</literal>). В інших
        середовищах - це прямий слеш (<literal>/</literal>).
       </para>
      </listitem>

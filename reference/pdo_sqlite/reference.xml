@@ -62,7 +62,7 @@
           <listitem>
            <para>
             Щоб створити базу даних в пам'яті, додайте запис
-						<literal>:memory:</literal> після префікса DSN.
+            <literal>:memory:</literal> після префікса DSN.
            </para>
           </listitem>
          </itemizedlist>
@@ -95,7 +95,7 @@
           <listitem>
            <para>
             Щоб створити базу даних в пам'яті, додайте запис
-						<literal>:memory:</literal> після префікса DSN.
+            <literal>:memory:</literal> після префікса DSN.
            </para>
           </listitem>
          </itemizedlist>

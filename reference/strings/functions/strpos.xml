@@ -37,7 +37,7 @@
      <term><parameter>needle</parameter></term>
      <listitem>
       <para>
-			 Підрядок, який шукається в рядку <parameter>haystack</parameter>.
+       Підрядок, який шукається в рядку <parameter>haystack</parameter>.
        Якщо параметр <parameter>needle</parameter> не є рядком, він конвертується
        в ціле число (integer) та сприймається як порядковий номер (код) символа.
       </para>

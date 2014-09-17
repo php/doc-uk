@@ -2,7 +2,7 @@
 <!-- EN-Revision: e40edda1fc95c67825fb01a32256d56b8035b54c Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
 <sect1 xml:id="install.unix.nginx" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
- <title>Nginx 1.4.x on Unix systems</title>
+ <title>Nginx 1.4.x на Unix системах</title>
 
  <para>
   This documentation will cover installing and configuring PHP with

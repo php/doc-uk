@@ -52,7 +52,7 @@
       <para>
        Якщо дані (<parameter>data</parameter>) є ресурсом потоку
        (<type>stream</type>), залишок буфера цього потоку буде скопійовано до
-	   зазначеного файла.
+     зазначеного файла.
        Це схоже на використання <function>stream_copy_to_stream</function>.
       </para>
       <para>

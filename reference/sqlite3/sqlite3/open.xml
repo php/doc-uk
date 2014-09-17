@@ -31,7 +31,7 @@
      <listitem>
       <para>
        Шлях до бази даних SQLite, або рядок із записом <literal>:memory:</literal>,
-			 щоб використовувати базу даних в пам'яті.
+       щоб використовувати базу даних в пам'яті.
       </para>
      </listitem>
     </varlistentry>
@@ -40,25 +40,25 @@
      <listitem>
       <para>
        Необов'язковий флаг, для визначення - як саме
-			 відкривати базу даних SQLite. За промовчанням, при відкритті використовується
+       відкривати базу даних SQLite. За промовчанням, при відкритті використовується
        <literal>SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE</literal>.
        <itemizedlist>
         <listitem>
          <para>
           <literal>SQLITE3_OPEN_READONLY</literal>: Відкриває базу даних лише
-					для читання.
+          для читання.
          </para>
         </listitem>
         <listitem>
          <para>
           <literal>SQLITE3_OPEN_READWRITE</literal>: Відкриває базу даних для
-					читання та запису.
+          читання та запису.
          </para>
         </listitem>
         <listitem>
          <para>
           <literal>SQLITE3_OPEN_CREATE</literal>: Створює базу даних,
-					якщо вона не існує.
+          якщо вона не існує.
          </para>
         </listitem>
        </itemizedlist>
@@ -70,7 +70,7 @@
      <listitem>
       <para>
        Необов'язковий ключ шифра, що використовується при шифруванні та
-			 дешифруванні бази даних SQLite.
+       дешифруванні бази даних SQLite.
       </para>
      </listitem>
     </varlistentry>
