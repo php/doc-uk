@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: e40edda1fc95c67825fb01a32256d56b8035b54c Maintainer: ktretyak Status: ready -->
+<!-- EN-Revision: e40edda1fc95c67825fb01a32256d56b8035b54c Maintainer: ktretyak Status: wip -->
 <!-- $Revision$ -->
 <sect1 xml:id="install.unix.nginx" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Nginx 1.4.x на Unix системах</title>

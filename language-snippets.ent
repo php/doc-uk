@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: ba08db8805ddb14cbab613c893dd47eacbda22f2 Maintainer: ktretyak Status: notready -->
+<!-- EN-Revision: ba08db8805ddb14cbab613c893dd47eacbda22f2 Maintainer: ktretyak Status: wip -->
 
 <!-- Keep 'em sorted -->
 
@@ -41,7 +41,7 @@
 Недотримання даної умови змусить PHP виконувати програму до її завершення.</para></note>'>
 
 <!ENTITY note.func-callback '<note xmlns="http://docbook.org/ns/docbook"><simpara>Замість назви функції,
-можна передавати масив, що містить посилання на об`єкт та назву метода.</simpara></note>'>
+можна передавати масив, що містить посилання на об&apos;єкт та назву метода.</simpara></note>'>
 
 <!ENTITY note.func-callback-exceptions '<note xmlns="http://docbook.org/ns/docbook"><para>Зворотні виклики,
 зареєстровані через такі функції як <function>call_user_func</function> та <function>call_user_func_array</function>
@@ -104,8 +104,8 @@ as of PHP 4.1.0. For more information, read the manual section on
 ця функція застосовує внутрішній буфер видачі, отже вона не може використовуватись всередині функції зворотнього виклику
 <function>ob_start</function>.</para></note>'>
 
-<!ENTITY note.filesystem-time-res '<note xmlns="http://docbook.org/ns/docbook"><para>Note that time resolution may differ
-from one file system to another.</para></note>'>
+<!ENTITY note.filesystem-time-res '<note xmlns="http://docbook.org/ns/docbook"><para>Зауважте, що на різних
+операційних системах, обробка часу може відрізнятись.</para></note>'>
 
 <!ENTITY note.uses-autoload '<note xmlns="http://docbook.org/ns/docbook">
 <para>Using this function will use any registered
@@ -150,7 +150,7 @@ linkend="book.outcontrol">output-control functions</link> can be used to capture
 the output of this function, and save it in a
 <type>string</type> (for example).</simpara></tip>'>
 
-<!ENTITY tip.userlandnaming '<tip xmlns="http://docbook.org/ns/docbook"><simpara>See also the
+<!ENTITY tip.userlandnaming '<tip xmlns="http://docbook.org/ns/docbook"><simpara>Прогляньте також
 <xref linkend="userlandnaming" />.</simpara></tip>'>
 
 
@@ -276,11 +276,11 @@ currently not documented; only its argument list is available.
 
 <!-- Misc -->
 
-<!ENTITY version.exists.asof 'This exists as of PHP '>
+<!ENTITY version.exists.asof 'Існує, починаючи з PHP '>
 
-<!ENTITY version.trunk.after.53 '<emphasis xmlns="http://docbook.org/ns/docbook">This change
-exists in the <link linkend="about.phpversions">development version</link> of PHP, and will
-probably exist after 5.3.</emphasis>'>
+<!ENTITY version.trunk.after.53 '<emphasis xmlns="http://docbook.org/ns/docbook">Ця зміна
+існує в <link linkend="about.phpversions">версії PHP, що розробляється</link>, та ймовірно
+буде впроваджена починаючи з 5.3.</emphasis>'>
 
 <!ENTITY version.trunk.changelog 'В майбутньому'>
 
@@ -352,7 +352,7 @@ files from the PHP folder into the Windows system directory also works
 
 <!ENTITY manual.migration.seealso 'Прогляньте також керівництво по міграції для версій PHP'>
 
-<!ENTITY style.oop 'Об`єктно-орієнтований стиль'>
+<!ENTITY style.oop 'Об&apos;єктно-орієнтований стиль'>
 <!ENTITY style.procedural 'Процедурний стиль'>
 
 <!ENTITY resource '<link xmlns="http://docbook.org/ns/docbook" linkend="language.types.resource">resource</link>'>
@@ -573,12 +573,12 @@ conn</parameter></term><listitem><para>An MCVE_CONN resource returned by
 <!-- Date and time entities -->
 <!ENTITY date.timezone.intro.title '<title xmlns="http://docbook.org/ns/docbook">Список Підтримуваних Часових Зон</title>'>
 
-<!ENTITY date.timezone.intro "<para xmlns='http://docbook.org/ns/docbook'>
-Here you'll find the complete list of timezones supported by PHP, which are
+<!ENTITY date.timezone.intro '<para xmlns="http://docbook.org/ns/docbook">
+Here you&apos;ll find the complete list of timezones supported by PHP, which are
 meant to be used with e.g. <function>date_default_timezone_set</function>.
-</para><note xmlns='http://docbook.org/ns/docbook'><simpara>The latest version of the timezone database can be
-installed via PECL's <link xlink:href='&url.pecl.package.get;timezonedb' xmlns:xlink='http://www.w3.org/1999/xlink'>timezonedb</link>.
-</simpara></note>">
+</para><note xmlns="http://docbook.org/ns/docbook"><simpara>The latest version of the timezone database can be
+installed via PECL&apos;s <link xlink:href="&url.pecl.package.get;timezonedb" xmlns:xlink="http://www.w3.org/1999/xlink">timezonedb</link>.
+</simpara></note>'>
 
 <!ENTITY date.timezone.bc '<simpara xmlns="http://docbook.org/ns/docbook">Please do not use any of the timezones
 listed here (besides UTC), they only exist for backward compatible reasons.
@@ -620,24 +620,24 @@ returned by <function>timezone_open</function></para></listitem></varlistentry>'
 <!ENTITY date.datetime.retval.changelog '<row xmlns="http://docbook.org/ns/docbook"><entry>5.3.0</entry><entry>Changed the
 return value on success from &null; to <classname>DateTime</classname>.</entry></row>'>
 
-<!ENTITY date.datetime.return.modifiedobjectorfalseforfailure 'Returns the <classname xmlns="http://docbook.org/ns/docbook">DateTime</classname> object for method chaining&return.falseforfailure;.'>
+<!ENTITY date.datetime.return.modifiedobjectorfalseforfailure 'Повертає об&apos;єкт <classname xmlns="http://docbook.org/ns/docbook">DateTime</classname> для ланцюжка пов&apos;язаних методів &return.falseforfailure;.'>
 
-<!ENTITY date.timezone.dbversion 'This list is based upon the timezone database version'>
+<!ENTITY date.timezone.dbversion 'Цей список засновано на версії бази даних часових зон'>
 
-<!ENTITY date.timezone.africa 'Africa'>
-<!ENTITY date.timezone.america 'America'>
-<!ENTITY date.timezone.antarctica 'Antarctica'>
-<!ENTITY date.timezone.arctic 'Arctic'>
-<!ENTITY date.timezone.asia 'Asia'>
-<!ENTITY date.timezone.atlantic 'Atlantic'>
-<!ENTITY date.timezone.australia 'Australia'>
-<!ENTITY date.timezone.europe 'Europe'>
-<!ENTITY date.timezone.indian 'Indian'>
-<!ENTITY date.timezone.pacific 'Pacific'>
-<!ENTITY date.timezone.others 'Others'>
+<!ENTITY date.timezone.africa 'Африка'>
+<!ENTITY date.timezone.america 'Америка'>
+<!ENTITY date.timezone.antarctica 'Антартика'>
+<!ENTITY date.timezone.arctic 'Арктика'>
+<!ENTITY date.timezone.asia 'Азія'>
+<!ENTITY date.timezone.atlantic 'Атлантика'>
+<!ENTITY date.timezone.australia 'Австралія'>
+<!ENTITY date.timezone.europe 'Європа'>
+<!ENTITY date.timezone.indian 'Індійський'>
+<!ENTITY date.timezone.pacific 'Тихоокеанський'>
+<!ENTITY date.timezone.others 'Інші'>
 
-<!ENTITY date.formats 'Valid formats are explained in <link xmlns="http://docbook.org/ns/docbook" linkend="datetime.formats">Date and Time Formats</link>.'>
-<!ENTITY date.formats.parameter 'A date/time string. &date.formats;'>
+<!ENTITY date.formats 'Пояснення коректних форматів пояснено в <link xmlns="http://docbook.org/ns/docbook" linkend="datetime.formats">Формати Дати й Часу</link>.'>
+<!ENTITY date.formats.parameter 'Рядок дати/часу. &date.formats;'>
 
 <!-- DomXml Notes -->
 <!ENTITY node.inserted 'This node will not show up in the document unless it
@@ -715,7 +715,7 @@ that is typically created using <function>fopen</function>.</para>'>
 <!ENTITY haru.error '<para xmlns="http://docbook.org/ns/docbook">Throws a <classname>HaruException</classname> on error.</para>'>
 
 <!-- ODBC -->
-<!ENTITY odbc.connection.id '<para xmlns="http://docbook.org/ns/docbook">Ідентифікатор з`єднання ODBC,
+<!ENTITY odbc.connection.id '<para xmlns="http://docbook.org/ns/docbook">Ідентифікатор з&apos;єднання ODBC,
 для уточнень продивіться <function>odbc_connect</function>.</para>'>
 
 <!ENTITY odbc.parameter.search 'This parameter accepts the following search patterns:
