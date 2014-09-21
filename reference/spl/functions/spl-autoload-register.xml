@@ -15,12 +15,12 @@
    <methodparam choice="opt"><type>bool</type><parameter>prepend</parameter><initializer>false</initializer></methodparam>
   </methodsynopsis>
   <para>
-   Реєструє функцію автозавантаження в стекі функцій spl, та активує цей стек, якщо
-   його не було активовано раніше. 
+   Реєструє функцію автозавантаження в черзі функцій spl, та активує цю чергу, якщо
+   її не було активовано раніше. 
   </para>
   <para>
    Якщо ваш код містить функцію, що впроваджує механізм <function>__autoload</function>,
-   то її потрібно явно реєструвати в стеку __autoload. Така необхідність є,
+   то її потрібно явно реєструвати в черзі __autoload. Така необхідність є,
    оскільки <function>spl_autoload_register</function> буде фактично замінювати
    механізм кешування для функції <function>__autoload</function>
    або через функцію <function>spl_autoload</function>, або через
@@ -64,7 +64,7 @@
       <para>
        Якщо цей параметр дорівнює TRUE, то функція
        <function>spl_autoload_register</function> поставить
-       <parameter>autoload_function</parameter> на початок свого стеку, а не
+       <parameter>autoload_function</parameter> на початок черги, а не
        позаду.
       </para>
      </listitem>
