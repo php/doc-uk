@@ -2,6 +2,12 @@
 <!DOCTYPE translation SYSTEM "../doc-base/phpbook/phpbook-xsml/translation.dtd">
 
 <translation>
+ <intro>
+  Це файл, згенерований /repository/phpdoc/doc-base/trunk/scripts/revcheck.php.
+  Він дає змогу швидко переглянути файли, які потрібно оновити, а також людей,
+  які з ними працювали. Лінки на доступні інструменти розміщуються на правій
+  бічній панелі.
+ </intro>
 
  <translators>
   <person name="Костя Третяк" email="ktretyak.in.ua@gmail.com" nick="ktretyak" vcs="yes" />
