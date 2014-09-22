@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 9481fbe0e0281d68ac46a6624132cd771bd3ed0c Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
-<!-- CREDITS: ktretyak -->
 <refentry xmlns="http://docbook.org/ns/docbook" xml:id="function.array-map">
  <refnamediv>
   <refname>array_map</refname>

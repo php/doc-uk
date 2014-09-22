@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: ba08db8805ddb14cbab613c893dd47eacbda22f2 Maintainer: ktretyak Status: wip -->
+<!-- $Revision$ -->
 
 <!-- Keep 'em sorted -->
 
@@ -88,11 +89,11 @@
 off</emphasis>. Співтовариство PHP рекомендує не покладатись на цю директиву,
 а використовувати інші варіанти, такі як &link.superglobals;.</para></note>'>
 
-<!ENTITY note.is-superglobal "<note xmlns='http://docbook.org/ns/docbook'><para>Це є 'суперглобальна',
+<!ENTITY note.is-superglobal '<note xmlns="http://docbook.org/ns/docbook"><para>Це є "суперглобальна",
 або автоматична глобальна змінна. Тобто ця змінна доступна у всіх областях видимості скрипта,
 та її не потрібно оголошувати як <command>global $variable;</command>, щоб отримати
-доступ до неї всередині функції або метода.
-</para></note>">
+доступ до неї всередині функції чи метода.
+</para></note>'>
 
 <!ENTITY note.superglobals '<note xmlns="http://docbook.org/ns/docbook"><title>Superglobals: availability note
 </title><para>Superglobal arrays such as <varname>$_GET</varname>,
@@ -688,7 +689,7 @@ it is inserted with (e.g.) <function xmlns="http://docbook.org/ns/docbook">DOMNo
 
 <!-- FileSystem entities -->
 <!ENTITY fs.emits.warning.on.failure '<para xmlns="http://docbook.org/ns/docbook">
-Upon failure, an <constant>E_WARNING</constant> is emitted.
+При збоях, буде видаватись <constant>E_WARNING</constant>.
 </para>'>
 
 <!ENTITY fs.validfp.all '<para xmlns="http://docbook.org/ns/docbook">The file pointer must be valid, and must point to
@@ -709,21 +710,21 @@ that is typically created using <function>fopen</function>.</para>'>
 <!ENTITY gnupg.identifier '<para xmlns="http://docbook.org/ns/docbook">The gnupg identifier, from a call to
 <function>gnupg_init</function> or <classname>gnupg</classname>.</para>'>
 
-<!ENTITY gnupg.fingerprint '<para xmlns="http://docbook.org/ns/docbook">The fingerprint key.</para>'>
+<!ENTITY gnupg.fingerprint '<para xmlns="http://docbook.org/ns/docbook">Відбиток ключа.</para>'>
 
 <!-- HaruDoc -->
-<!ENTITY haru.error '<para xmlns="http://docbook.org/ns/docbook">Throws a <classname>HaruException</classname> on error.</para>'>
+<!ENTITY haru.error '<para xmlns="http://docbook.org/ns/docbook">При помилці кидає <classname>HaruException</classname>.</para>'>
 
 <!-- ODBC -->
 <!ENTITY odbc.connection.id '<para xmlns="http://docbook.org/ns/docbook">Ідентифікатор з&apos;єднання ODBC,
 для уточнень продивіться <function>odbc_connect</function>.</para>'>
 
-<!ENTITY odbc.parameter.search 'This parameter accepts the following search patterns:
-"&#x25;" to match zero or more characters, and "_" to match a single character.'>
+<!ENTITY odbc.parameter.search 'Цей параметр приймає наступні маски пошуку:
+"&#x25;" - щоб вибирати нуль чи більше символів, та "_" щоб вибирався одиночний символ.'>
 
 <!-- OAUTH -->
-<!ENTITY oauth.callback.error 'Emits an <constant xmlns="http://docbook.org/ns/docbook">E_ERROR</constant> level
-error if the callback function cannot be called, or was not specified.'>
+<!ENTITY oauth.callback.error 'Видає помилку рівня <constant xmlns="http://docbook.org/ns/docbook">E_ERROR</constant>,
+якщо функція зворотнього виклику (callback) не може бути викликаною, або не була визначеною.'>
 
 <!ENTITY oauth.changelog.error.null 'Раніше повертався &null; в разі помилки, замість &false;.'>
 
@@ -882,7 +883,7 @@ linkend="features.safe-mode">safe mode</link> is enabled, PHP checks whether
 the directory in which the script is operating has the same UID (owner) as the
 script that is being executed.</simpara></note>'>
 
-<!ENTITY note.open-basedir.func '<note xmlns="http://docbook.org/ns/docbook"><para>This function is affected by <link
+<!ENTITY note.open-basedir.func '<note xmlns="http://docbook.org/ns/docbook"><para>Ця функція залежить від <link
 linkend="ini.open-basedir">open_basedir</link>.</para></note>'>
 
 
@@ -894,8 +895,8 @@ language construct and not a function, it cannot be called using
 <!-- Common pieces in features/safe-mode.xml
      Jade doesn't allow in-line entities, so I put them here... Though they
      should have been inline in safe-mode.xml -->
-<!ENTITY sm.uidcheck 'Checks whether the files or directories being operated
-upon have the same UID (owner) as the script that is being executed.'>
+<!ENTITY sm.uidcheck 'Перевіряє, чи мають файли/директорії, з якими ви збираєтесь працювати,
+такий же UID (власника), що і скрипт, який буде виконуватись.'>
 
 <!ENTITY warn.sm.exec '<warning xmlns="http://docbook.org/ns/docbook"><simpara>With <link linkend="features.safe-mode">safe mode</link> enabled,
 the command string is escaped with <function>escapeshellcmd</function>. Thus,
