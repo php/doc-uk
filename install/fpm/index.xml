@@ -2,7 +2,7 @@
 <!-- EN-Revision: 8b6d169424ff189bb563ef4c3f35f8adff3f42c5 Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
   <chapter xml:id="install.fpm" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-   <title>FastCGI Process Manager (FPM)</title>
+   <title>Менеджер процесів FastCGI (FPM)</title>
    <para>
     FPM (FastCGI Process Manager) є альтернативною реалізацією PHP FastCGI
     з деякими додатковими можливостями, корисними (в основному) для
@@ -19,7 +19,7 @@
      <listitem>
       <para>
        запуск робочих процесів (workers) з довільними uid/gid/chroot/середовищем, 
-       прослуховування на різних портах та використання різних php.ini (замінюючи safe_mode);
+       прослуховування на різних портах та з використанням різних php.ini (замінюючи safe_mode);
       </para>
      </listitem>
      <listitem>
