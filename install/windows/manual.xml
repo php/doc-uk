@@ -1,56 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 14af302c9c0e561fa6f9cdd956268758ba9a89c5 Maintainer: ktretyak Status: wip -->
+<!-- EN-Revision: 14af302c9c0e561fa6f9cdd956268758ba9a89c5 Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
    <sect1 xml:id="install.windows.manual" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Manual Installation Steps</title>
+    <title>Ручне встановлення</title>
     <para>
-     This section contains instructions for manually installing and configuring 
-     PHP on Microsoft Windows. 
+     Цей розділ містить інструкції для ручного встановлення та конфігурування
+     PHP на Microsoft Windows. 
     </para>
     <sect2 xml:id="install.windows.manual.download">
-     <title>Selecting and downloading the PHP distribution package</title>
+     <title>Вибір та скачування пакета PHP</title>
      <para>
-      Download the PHP zip binary distribution from 
-      <link xlink:href="&url.php.win.downloads;">PHP for Windows: Binaries and Sources</link>. 
-      There are several different versions of the zip package - choose the version that is suitable for 
-      the web server being used:
+      Скачайте бінарний архів PHP зі сторінки
+      <link xlink:href="&url.php.win.downloads;">PHP для Windows: Бінарники та Сирці</link>. 
+      Існує декілька різних zip-архівів - виберіть версію, відповідну до вашого
+      веб-сервера:
       <itemizedlist spacing="compact">
        <listitem>
         <para>
-         If PHP is used with IIS then choose PHP 5.3 <emphasis>VC9 Non Thread Safe</emphasis> or 
-         PHP 5.2 <emphasis>VC6 Non Thread Safe</emphasis>;
+         Якщо PHP використовується з IIS, то вибирайте PHP <emphasis>VC11 Non Thread Safe</emphasis> або 
+         PHP з <emphasis>VC9 Non Thread Safe</emphasis>;
         </para>
        </listitem>
        <listitem>
         <para>
-         If PHP is used with IIS7 or greater and PHP 5.3+, then the VC9 binaries of PHP should be used.
+         Якщо PHP використовується з IIS7 або вище, та PHP 5.3+, то потрібно вибирати бінарники PHP <emphasis>VC11 Non Thread Safe</emphasis>.
         </para>
        </listitem>
        <listitem>
         <para>
-         If PHP is used with Apache 1 or Apache 2 then choose PHP 5.3 <emphasis>VC6</emphasis> or 
+         Якщо PHP використовується з Apache 1 або Apache 2 то вибирайте PHP 5.3 <emphasis>VC6</emphasis> чи
          PHP 5.2 <emphasis>VC6</emphasis>.
         </para>
        </listitem>
       </itemizedlist>
       <note>
        <para>
-        VC9 Versions are compiled with the Visual Studio 2008 compiler and have improvements 
-        in performance and stability. The VC9 versions require you to have the 
-        <link xlink:href="&url.microsoft.vc9.x86;">Microsoft 2008 C++ Runtime (x86)</link> or 
-        the <link xlink:href="&url.microsoft.vc9.x64;">Microsoft 2008 C++ Runtime (x64)</link> installed.
+        VC11 версії компільовані на Visual Studio 2012 та мають покращення в
+        продуктивності і стабільності. Версії VC9 потребують встановлених
+        <link xlink:href="&url.microsoft.vc9.x86;">Microsoft 2008 C++ Runtime (x86)</link> або 
+        <link xlink:href="&url.microsoft.vc9.x64;">Microsoft 2008 C++ Runtime (x64)</link>.
        </para>
       </note>
      </para>
     </sect2>
     <sect2 xml:id="install.windows.manual.package">
-     <title>The PHP package structure and content</title>
+     <title>Структура та вміст PHP-пакета</title>
      <para>
-      Unpack the content of the zip archive into a directory of your choice, for 
-      example C:\PHP\. The directory and file structure extracted from the zip will 
-      look as below:
+      Розпакуйте вміст zip-архіву куди вам буде зручно, наприклад в C:\PHP\.
+      Директорія та файлова структура після розпакування матиме приблизно такий вигляд:
       <example>
-       <title>PHP 5 package structure</title>
+       <title>Структура пакета з PHP 5</title>
         <programlisting>
 <![CDATA[
 
@@ -58,9 +57,9 @@ c:\php
    |
    +--dev
    |  |
-   |  |-php5ts.lib                 -- php5.lib in non thread safe version
+   |  |-php5ts.lib                 -- файл php5.lib є у версії "non thread safe" (без багатопоточності)
    |
-   +--ext                          -- extension DLLs for PHP
+   +--ext                          -- DLL-розширення для PHP
    |  |
    |  |-php_bz2.dll
    |  |
@@ -68,34 +67,34 @@ c:\php
    |  |
    |  |-...
    |
-   +--extras                       -- empty 
+   +--extras                       -- пусто 
    |
-   +--pear                         -- initial copy of PEAR
+   +--pear                         -- ініціалізуюча копія PEAR
    |
    |
-   |-go-pear.bat                   -- PEAR setup script
-   |
-   |-...
-   |
-   |-php-cgi.exe                   -- CGI executable
-   |
-   |-php-win.exe                   -- executes scripts without an opened command prompt
-   |
-   |-php.exe                       -- Command line PHP executable (CLI)
+   |-go-pear.bat                   -- скрипт встановлення PEAR
    |
    |-...
    |
-   |-php.ini-development           -- default php.ini settings
+   |-php-cgi.exe                   -- виконуючий файл CGI
    |
-   |-php.ini-production            -- recommended php.ini settings
+   |-php-win.exe                   -- файл, що виконує скрипти без відкриття консолі
    |
-   |-php5apache2_2.dll             -- does not exist in non thread safe version
-   |
-   |-php5apache2_2_filter.dll      -- does not exist in non thread safe version
+   |-php.exe                       -- виконуючий файл для командного рядка (CLI)
    |
    |-...
    |
-   |-php5ts.dll                    -- core PHP DLL ( php5.dll in non thread safe version)
+   |-php.ini-development           -- налаштування php.ini за промовчанням
+   |
+   |-php.ini-production            -- рекомендовані php.ini налаштування
+   |
+   |-php5apache2_2.dll             -- відсутній у версії "non thread safe" (без багатопоточності)
+   |
+   |-php5apache2_2_filter.dll      -- відсутній у версії "non thread safe" (без багатопоточності)
+   |
+   |-...
+   |
+   |-php5ts.dll                    -- ядро PHP DLL (php5.dll - у версії "non thread safe")
    | 
    |-...
 
@@ -104,168 +103,204 @@ c:\php
       </example>
      </para>
      <para>
-      Below is the list of the modules and executables included in the PHP zip 
-      distribution:
+      Нижче наведено список модулів та виконавчих файлів вміщених в PHP zip-архів:
       <itemizedlist spacing="compact">
        <listitem>
         <para>
-         <filename>go-pear.bat</filename> - the PEAR setup script. Refer to <link xlink:href="&url.pear.installation;">Installation (PEAR)</link> 
-         for more details.
+         <filename>go-pear.bat</filename> - скрипт для встановлення PEAR.
+         Детальнішу інформацію можна знайти на сторінці
+         <link xlink:href="&url.pear.installation;">Встановлення (PEAR)</link>.
         </para>
        </listitem>
        <listitem>
         <para>
-         <filename>php-cgi.exe</filename> - CGI executable that can be used when running PHP on IIS via CGI or FastCGI.
+         <filename>php-cgi.exe</filename> - виконавчий CGI-файл, який може
+         використовуватись при запуску PHP на IIS через CGI або FastCGI.
         </para>
        </listitem>
        <listitem>
         <para>
-         <filename>php-win.exe</filename> - the PHP executable for executing PHP scripts without using a command line window 
-         (for example PHP applications that use Windows GUI).
+         <filename>php-win.exe</filename> - файл для виконання PHP-скриптів
+         без використання консолі (наприклад PHP-застосунки, що використовують
+         Windows GUI).
         </para>
        </listitem>
        <listitem>
         <para>
-         <filename>php.exe</filename> - the PHP executable for executing PHP scripts within a command line interface (CLI).
+         <filename>php.exe</filename> - файл для виконання PHP скриптів через консоль (CLI).
         </para>
        </listitem>
        <listitem>
         <para>
-         <filename>php5apache2_2.dll</filename> - Apache 2.2.X module.
+         <filename>php5apache2_2.dll</filename> - модуль Apache 2.2.X.
         </para>
        </listitem>
        <listitem>
         <para>
-         <filename>php5apache2_2_filter.dll</filename> - Apache 2.2.X filter.
+         <filename>php5apache2_2_filter.dll</filename> - фільтр Apache 2.2.X.
         </para>
        </listitem>
       </itemizedlist>
      </para>
     </sect2>
     <sect2 xml:id="install.windows.manual.phpini">
-     <title>Changing the <filename>php.ini</filename> file</title>
+     <title>Зміна файла <filename>php.ini</filename></title>
      <para>
-     After the php package content has been extracted, copy the <filename>php.ini-production</filename> into <filename>php.ini</filename>
-     in the same folder. If necessary, it is also possible to place the <filename>php.ini</filename> into any other location of your choice 
-     but that will require additional configuration steps as described in <link linkend="configuration.file">PHP Configuration</link>.
+     Після того, як php-пакет розпакували, скопіюйте файл
+     <filename>php.ini-production</filename> в ту ж папку, та перейменуйте його на
+     <filename>php.ini</filename>. Якщо необхідно, файл <filename>php.ini</filename>
+     можна розміщувати в будь-якому іншому місці, але це вимагає додаткових
+     кроків <link linkend="configuration.file">конфігурування PHP</link>.
      </para>
      <para>
-      The <filename>php.ini</filename> file tells PHP how to configure itself, and how to work with the 
-      environment that it runs in. Here are a number of settings for the <filename>php.ini</filename> file 
-      that help PHP work better with Windows. Some of these are optional. There are 
-      many other directives that may be relevant to your environment - refer to the 
-      <link linkend="ini.list">list of php.ini directives</link> for more information.
+      Файл <filename>php.ini</filename> говорить PHP, яку їй мати конфігурацію,
+      та як працювати в тому середовищі, де її встановлено. Далі наведено кілька
+      налаштувань файла <filename>php.ini</filename>, що допомагають PHP
+      працювати краще у Windows. Деякі з них є необов'язковими. Також є багато
+      інших директив, що можуть стосуватись вашого середовища - прогляньте
+      <link linkend="ini.list">список директив php.ini</link> для детальнішої інформації.
      </para>
      <para>
-      Required directives:
+      Необхідні директиви:
       <itemizedlist spacing="compact">
        <listitem>
         <para>
-         <varname>extension_dir</varname> = <literal>&lt;path to extension directory&gt;</literal> - The <varname>extension_dir</varname> needs 
-         to point to the directory where PHP extensions files are stored. The path can be absolute 
-         (i.e. &quot;C:\PHP\ext&quot;) or relative (i.e. &quot;.\ext&quot;). Extensions that are listed lower in the <filename>php.ini</filename> file need 
-         to be located in the <varname>extension_dir</varname>.
+         <varname>extension_dir</varname> = <literal>&lt;шлях до директорії
+         розширень&gt;</literal> - <varname>extension_dir</varname> повинен 
+         вказувати на директорію, де зберігаються файли розширення PHP. Шлях може
+         бути абсолютним (напр. &quot;C:\PHP\ext&quot;) або відносним
+         (напр. &quot;.\ext&quot;). Розширення, які йтимуть нижче в списку
+         файла <filename>php.ini</filename> повинні розміщуватись в цій директорії
+         <varname>extension_dir</varname>.
         </para>
        </listitem>
        <listitem>
         <para>
-         <varname>extension</varname> = <literal>xxxxx.dll</literal> - For each extension you wish to enable, you need a corresponding &quot;extension=&quot; 
-         directive that tells PHP which extensions in the <varname>extension_dir</varname> to load at startup time.
+         <varname>extension</varname> = <literal>xxxxx.dll</literal> - Для кожного
+         розширення, яке ви хочете підключити, повинен бути відповідний запис
+         з директивою &quot;extension=&quot;, що говорить PHP, які саме розширення в
+         <varname>extension_dir</varname> потрібно завантажувати при старті.
         </para>
        </listitem>
        <listitem>
         <para>
-         <varname>log_errors</varname> = <literal>On</literal> - PHP has an error logging facility that can be used to send errors to a file, 
-         or to a service (i.e. syslog) and works in conjunction with the <varname>error_log</varname> directive below. When running under IIS, 
-         the <varname>log_errors</varname> should be enabled, with a valid <varname>error_log</varname>.
+         <varname>log_errors</varname> = <literal>On</literal> - PHP має
+         механізм ведення логів помилок, який можна використовувати щоб відправити
+         помилки до файла або до сервіса (напр. syslog). Цей механізм працює в
+         зв'язці з директивою <varname>error_log</varname>, яку зазначено нижче.
+         При роботі на IIS, <varname>log_errors</varname> потрібно включати з
+         визначеним <varname>error_log</varname>.
         </para>
        </listitem>
        <listitem>
         <para>
-         <varname>error_log</varname> = <literal>&lt;path to the error log file&gt;</literal> - The error_log needs to specify the absolute, 
-         or relative path to the file where PHP errors should be logged. This file needs to be writable for the web server. 
-         The most common places for this file are in various TEMP directories, for example &quot;C:\inetpub\temp\php-errors.log&quot;.
+         <varname>error_log</varname> = <literal>&lt;шлях до файла логу
+         помилок&gt;</literal> - Директиву error_log потрібно визначати через
+         абсолютний або відносний шлях до файла, де повинні зберігатись логи
+         помилок PHP. Веб-сервер повинен мати права на запис до цього файла.
+         Найбільш звичне місце для нього - тимчасові (TEMP) директорії,
+         наприклад,
+         &quot;C:\inetpub\temp\php-errors.log&quot;.
         </para>
        </listitem>
        <listitem>
         <para>
-         <varname>cgi.force_redirect</varname> = <literal>0</literal> - This directive is required for running under IIS. 
-         It is a directory security facility required by many other web servers. However, enabling it under IIS will 
-         cause the PHP engine to fail on Windows. 
+         <varname>cgi.force_redirect</varname> = <literal>0</literal> - Дана
+         директива необхідна для роботи PHP на IIS. Це засіб захисту директорії,
+         який вимагається багатьма іншими веб-серверами. Тим не менш, встановлення
+         ненульового значення для неї, викличе проблеми роботи ядра PHP під IIS на Windows.
         </para>
        </listitem>
        <listitem>
         <para>
-         <varname>cgi.fix_pathinfo</varname> = <literal>1</literal> - This lets PHP access real path info following the CGI Spec. 
-         The IIS FastCGI implementation needs this set.
+         <varname>cgi.fix_pathinfo</varname> = <literal>1</literal> - Дозволяє
+         PHP мати доступ до інформації про real path (реальний шлях), згідно зі
+         специфікацією CGI. Впровадження FastCGI на IIS потребує цього визначення.
         </para>
        </listitem>
        <listitem>
         <para>
-         <varname>fastcgi.impersonate</varname> = <literal>1</literal> - FastCGI under IIS supports the ability to impersonate 
-         security tokens of the calling client. This allows IIS to define the security context that the request runs under.
+         <varname>fastcgi.impersonate</varname> = <literal>1</literal> - FastCGI
+         на IIS підтримує здатність ідентифікувати маркери безпеки викликаючого
+         клієнта. Це дозволяє IIS визначати контекст безпеки, під яким було
+         запущено запит.
         </para>
        </listitem>
        <listitem>
         <para>
-         <varname>fastcgi.logging</varname> = <literal>0</literal> - FastCGI logging should be disabled on IIS. If it is left enabled, 
-         then any messages of any class are treated by FastCGI as error conditions which will cause IIS to generate an HTTP 500 exception.
+         <varname>fastcgi.logging</varname> = <literal>0</literal> - Запис
+         FastCGI-логів потрібно відключити на IIS. Якщо цього не зробити, 
+         то будь-які повідомлення від будь-якого класу будуть сприйматись
+         FastCGI як помилки умов, через що IIS генеруватиме HTTP 500 винятки.
         </para>
        </listitem>
       </itemizedlist>
      </para>
      <para>
-      Optional directives
+      Необов'язкові директиви:
       <itemizedlist spacing="compact">
        <listitem>
         <para>
-         <varname>max_execution_time</varname> = <literal>##</literal> - This directive tells PHP the maximum amount of time that it can spend 
-         executing any given script. The default for this is 30 seconds. Increase the value of this directive if PHP application take long time to execute.
+         <varname>max_execution_time</varname> = <literal>##</literal> - Ця
+         директива визначає максимальну кількість часу, яку PHP може витратити
+         на виконання будь-якого сценарію. За промовчанням встановлено 30 секунд.
+         Збільшіть значення цієї директиви, якщо застосунок PHP потребує більше
+         часу.
         </para>
        </listitem>
        <listitem>
         <para>
-         <varname>memory_limit</varname> = <literal>###M</literal> - The amount of memory available for the PHP process, in Megabytes. 
-         The default is 128, which is fine for most PHP applications. Some of the more complex ones might need more.
+         <varname>memory_limit</varname> = <literal>###M</literal> - Кількість
+         доступної пам'яті для процесів PHP, в мегабайтах. За промовчанням -
+         128 МБ, що є цілком достатньо для більшості PHP застосунків, але
+         інколи цього буває недостатньо.
         </para>
        </listitem>
        <listitem>
         <para>
-         <varname>display_errors</varname> = <literal>Off</literal> - This directive tells PHP whether to include any error messages in the 
-         stream that it returns to the Web server. If this is set to &quot;On&quot;, then PHP will send whichever classes of errors 
-         that you define with the <varname>error_reporting</varname> directive back to web server as part of the error stream. 
-         For security reasons it is recommended to set it to &quot;Off&quot; on production servers in order not to reveal any 
-         security sensitive information that is often included in the error messages.
+         <varname>display_errors</varname> = <literal>Off</literal> - Ця
+         директива говорить PHP, чи потрібно включати будь-які помилки в потік,
+         що повертається до веб-сервера. Якщо задати значення &quot;On&quot;,
+         то PHP буде відправляти помилки, визначені через директиву
+         <varname>error_reporting</varname>. З міркувань безпеки, рекомендовано
+         встановлювати значення &quot;Off&quot; на робочих серверах, щоб часом
+         не відправити певну інформацію, небажану для розголошення, разом з помилками.
         </para>
        </listitem>
        <listitem>
         <para>
-         <varname>open_basedir</varname> = <literal>&lt;paths to directories, separated by semicolon&gt;</literal>, e.g. 
-         openbasedir=&quot;C:\inetpub\wwwroot;C:\inetpub\temp&quot;. This directive specified the directory paths where PHP 
-         is allowed to perform file system operations. Any file operation outside of the specified paths will result in an error. 
-         This directive is especially useful for locking down the PHP installation in shared hosting environments to prevent 
-         PHP scripts from accessing any files outside of the web site's root directory.
+         <varname>open_basedir</varname> = <literal>&lt;шляхи до директорій,
+         розділені крапкою з комою&gt;</literal>, наприклад,
+         openbasedir=&quot;C:\inetpub\wwwroot;C:\inetpub\temp&quot;. Ця директива
+         визначає шляхи до директорій, де для PHP є дозвіл на виконання операцій
+         з файловою системою. Будь-які операції з файлами, за межами визначених
+         шляхів, призводитиме до помилки. Ця директива особливо корисна для
+         обмеження PHP, яка встановлена в середовищі загального хостинга
+         (shared hosting), з метою запобігання доступів для PHP-скриптів до
+         будь-яких файлів за межами кореневої директорії веб-сервера.
         </para>
        </listitem>
        <listitem>
          <para>
-          <varname>upload_max_filesize</varname> = <literal>###M</literal> and <varname>post_max_size</varname> = <literal>###M</literal> - 
-          The maximum allowed size of an uploaded file and post data respectively. The values of these directives should be 
-          increased if PHP applications need to perform large uploads, such as for example photos or video files.
+          <varname>upload_max_filesize</varname> = <literal>###M</literal> та
+          <varname>post_max_size</varname> = <literal>###M</literal> - Максимально
+          дозволені розміри файлів, що завантажуються на сервер, та відправляються
+          методом POST, відповідно. Значення цих директив потрібно збільшити,
+          якщо є необхідність обробляти великі файли, наприклад, фото чи відео.
          </para>
         </listitem>
       </itemizedlist>
      </para>
     <para>
-     PHP is now setup on your system.  The next step is to choose a web
-     server, and enable it to run PHP.  Choose a web server from the table of 
-     contents.
+     Далі, після встановлення PHP на вашу систему, потрібно вибрати веб-сервер,
+     та включити в ньому підтримку для PHP.
     </para>
     <para>
-     In addition to running PHP via a web server, PHP can run from the command
-     line just like a <literal>.BAT</literal> script. See
-     <link linkend="install.windows.commandline">Command Line PHP on Microsoft
-     Windows</link> for further details.
+     Окрім роботи через веб-сервер, PHP також може працювати і через командний
+     рядок, як <literal>.BAT</literal> скрипт. Детальнішу інформацію з цього
+     приводу можна отримати в розділі
+     <link linkend="install.windows.commandline">Командний рядок PHP на Microsoft
+     Windows</link>.
     </para>
     </sect2>
    </sect1>

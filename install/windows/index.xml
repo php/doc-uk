@@ -1,48 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: e25c6f5a11badcd1ed5d75c32826a38acd5cd406 Maintainer: ktretyak Status: wip -->
+<!-- EN-Revision: e25c6f5a11badcd1ed5d75c32826a38acd5cd406 Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
   <chapter xml:id="install.windows" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-   <title>Installation on Windows systems</title>
+   <title>Встановлення на Windows системи</title>
    <para>
-    This section applies to Windows 98/Me and Windows NT/2000/XP/2003. PHP 
-    will not work on 16 bit platforms such as Windows 3.1 and sometimes 
-    we refer to the supported Windows platforms as Win32.
+    Цей розділ застосовується до Windows 98/Me та Windows NT/2000/XP/2003. PHP 
+    може не працювати на 16-ти бітних платформах таких як Windows 3.1, та інколи
+    ми уточнюємо, які саме платформи Windows підтримуються, наприклад на Win32.
    </para>
    <note>
     <para>
-     Windows XP/2003 is no longer supported as of PHP 5.5.0.
+     Windows XP/2003 не підтримується починаючи з PHP 5.5.0.
     </para>
    </note>
    <note>
     <para>
-     Windows 98/Me/NT4 is no longer supported as of PHP 5.3.0.
+     Windows 98/Me/NT4 не підтримується починаючи з PHP 5.3.0.
     </para>
    </note>
    <note>
     <para>
-     Windows 95 is no longer supported as of PHP 4.3.0.
+     Windows 95 не підтримується починаючи з PHP 4.3.0.
     </para>
    </note>
    <para>
-    If you have a development environment such as Microsoft Visual Studio, you can also 
-    <link linkend="install.windows.building">build</link>
-    PHP from the original source code.
+    Якщо ви маєте середовище для розробки, таке як Microsoft Visual Studio, ви
+    можете також <link linkend="install.windows.building">зібрати</link>
+    PHP з оригінальних сирців.
    </para>
    <para>
-    Once you have PHP installed on your Windows system, you may also
-    want to <link linkend="install.windows.extensions">load various extensions</link>
-    for added functionality.
+    Після встановлення PHP на Windows системі, можете ще додатково
+    <link linkend="install.windows.extensions">скачати деякі розширення</link>.
    </para>
    
    &install.windows.manual;
    <!-- &install.windows.iis; -->
    &install.windows.iis6;
-   &install.windows.iis7;   
+   &install.windows.iis7;
    &install.windows.apache1;
    &install.windows.apache2;
    &install.windows.sun;
-   &install.windows.sambar;
-   &install.windows.xitami;
+   <!-- &install.windows.sambar;
+   &install.windows.xitami; -->
    &install.windows.building;
    &install.windows.extensions;
    &install.windows.commandline;
