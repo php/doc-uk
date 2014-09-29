@@ -112,9 +112,8 @@ cgi.force_redirect = 0
    </example>
   </para>
   <para>
-   Конфігурацію IIS для підключення PHP, яку наведено в цьому прикладі,
-   можна налаштувати або за допомогою інтерфейса для управління IIS (Менеджера
-   Управління IIS), або використовуючи інструмент командного рядка.
+   В IIS підключити PHP можна або за допомогою інтерфейса для управління IIS
+   (Менеджера Управління IIS), або використовуючи інструмент командного рядка.
   </para>
   <sect3 xml:id="install.windows.iis7.fastcgi.conf.ui">
    <title>Використання Менеджера Управління IIS для підключення PHP</title>
@@ -148,7 +147,7 @@ cgi.force_redirect = 0
       </step>
       <step>
        <para>
-        В діалоговому вікні, що з'явилось введіть таке:
+        В діалоговому вікні, що з'явилось зробіть наступне:
         <itemizedlist spacing="compact">
          <listitem>
           <simpara>Через кому, шляхи запитів,
@@ -158,23 +157,23 @@ cgi.force_redirect = 0
           </simpara>
          </listitem>
          <listitem>
-          <simpara>В полі "Модуль": FastCgiModule</simpara>
+          <simpara>В полі "Модуль" введіть: FastCgiModule</simpara>
          </listitem>
          <listitem>
-          <simpara>В полі "Виконавчий файл" (англ. Executable):
+          <simpara>В полі "Виконавчий файл" (англ. Executable) введіть:
             C:\[Шлях до папки, де встановлено PHP]\php-cgi.exe</simpara>
          </listitem>
          <listitem>
-          <simpara>В полі Ім'я (англ. Name): PHP_via_FastCGI</simpara>
+          <simpara>В полі Ім'я (англ. Name) введіть: PHP_via_FastCGI</simpara>
          </listitem>
         </itemizedlist>
        </para>
       </step>
       <step>
        <simpara>
-        Тут же клікніть кнопку &quot;Обмеження Запитів&quot; (англ. Request
-         Restrictions), а потім на закладці "Співставлення" (англ. "Mapping")
-         виберіть варіанти, де говориться коли потрібно викликати даний обробник;
+        В цьому ж діалоговому вікні клікніть кнопку &quot;Обмеження Запитів&quot;
+        (англ. Request Restrictions), а потім на закладці "Співставлення" (англ.
+         "Mapping") виберіть варіанти, коли саме потрібно викликати даний обробник;
         </simpara>
       </step>
       <step>
@@ -212,7 +211,7 @@ cgi.force_redirect = 0
     Замініть значення параметра <varname>scriptProcessor</varname> на абсолютний
     шлях до файла <filename>php-cgi.exe</filename>.
     <example>
-     <title>Підключення PHP</title>
+     <title>Конфігурування IIS для обробки PHP</title>
      <programlisting>
 <![CDATA[
 %windir%\system32\inetsrv\appcmd set config /section:system.webServer/handlers ^
@@ -242,7 +241,7 @@ scriptProcessor='c:\PHP\php-cgi.exe',resourceType='Either']
    Використовуючи IIS, рекомендується в PHP підключити уособлення FastCGI.
    Воно контролюється директивою <varname>fastcgi.impersonate</varname> у файлі
    <filename>php.ini</filename>. Коли уособлення включено, PHP буде виконувати всі
-   операції на файловій системі від імені облікового запису користувача, який
+   операції на файловій системі від імені облікового запису користувача, якого
    визначено через систему автентифікації IIS. Це гарантує, що навіть коли один і
    той самий PHP-процес є спільним для різних веб сайтів, PHP-скрипти, на
    цих сайтах, не зможуть отримати доступ до файлів один одного, до поки
@@ -307,8 +306,8 @@ icacls C:\inetpub\wwwroot\upload /grant IUSR:(OI)(CI)(M)
  <sect2 xml:id="install.windows.iis7.defaultdoc">
   <title>Встановлення <filename>index.php</filename> як документу за промовчанням для IIS</title>
   <para>
-   Документ за промовчанням використовується для HTTP-запитів, в яких не визначено
-   назву документа (а тільки назву директорії або і без неї). В PHP-застосунках
+   Документ за промовчанням використовується для HTTP-запитів, в яких не зазначено
+   назву документа (а тільки назву директорії або й без неї). В PHP-застосунках
    для цих цілей, зазвичай, використовується <filename>index.php</filename>.
    Щоб додати <filename>index.php</filename> в якості документу за промовчанням
    для IIS, використовуйте цю команду:
@@ -325,20 +324,20 @@ icacls C:\inetpub\wwwroot\upload /grant IUSR:(OI)(CI)(M)
   </para>
  </sect2>
  <sect2 xml:id="install.windows.iis7.recycling">
-  <title>Конфігурація Повторного Використання FastCGI та PHP</title>
+  <title>Конфігурування Повторного Використання FastCGI та PHP</title>
   <para>
    Сконфігуруйте налаштування IIS FastCGI для повторного використання PHP-процесів,
    за допомогою команди показаної нижче. Налаштування FastCGI
-   <varname>instanceMaxRequests</varname> контролює "як за багато запитів буде
+   <varname>instanceMaxRequests</varname> контролює - як за багато запитів буде
    оброблятись одиночним процесом <filename>php-cgi.exe</filename> перед тим, як IIS
-   його видалить". Змінна середовща PHP <varname>PHP_FCGI_MAX_REQUESTS</varname>
-   контролює "як за багато запитів може оброблятись одиночним процесом
+   його видалить. Змінна середовща PHP <varname>PHP_FCGI_MAX_REQUESTS</varname>
+   контролює - як за багато запитів може оброблятись одиночним процесом
    <filename>php-cgi.exe</filename> перед тим, як він почне свій новий цикл
-   (перезапуститься)". Переконайтесь, що значення визначене для FastCGI
-   <varname>InstanceMaxRequests</varname> є меншим або рівним значенню визначеному
+   (перезапуститься). Переконайтесь, що значення вказане для FastCGI
+   <varname>InstanceMaxRequests</varname> є меншим або рівним значенню вказаному
    для <varname>PHP_FCGI_MAX_REQUESTS</varname>.
    <example>
-    <title>Конфігурація Повторного Використання FastCGI та PHP</title>
+    <title>Конфігурування Повторного Використання FastCGI та PHP</title>
     <programlisting>
 <![CDATA[
 %windir%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi ^
@@ -383,8 +382,8 @@ icacls C:\inetpub\wwwroot\upload /grant IUSR:(OI)(CI)(M)
    змінити шлях за промовчанням для файла <filename>php.ini</filename>,
    використовуючи змінну середовища <varname>PHPRC</varname>. Щоб повідомити PHP,
    що треба завантажувати конфігураційний файл з нового місця, запустіть команду,
-   наведену нижче. Абсолютний шлях до директорії з файлом <filename>php.ini</filename>,
-   потрібно вказати як значення для змінної середовища <varname>PHPRC</varname>.
+   наведену нижче. Також потрібно вказати абсолютний шлях до директорії з файлом
+   <filename>php.ini</filename> як значення для змінної середовища <varname>PHPRC</varname>.
    <example>
     <title>Зміна розташування файла <filename>php.ini</filename></title>
     <programlisting>

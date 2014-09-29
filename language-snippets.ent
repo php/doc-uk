@@ -1273,11 +1273,11 @@ documents. The possible values for <parameter>encoding</parameter> are:
 Детальніше - читайте в розділі
 <link linkend="faq.installation.apache2">Apache2 з потоковим MPM</link></para></warning>'>
 
-<!ENTITY note.apache.slashes '<note xmlns="http://docbook.org/ns/docbook"><simpara>Remember that when adding
-path values in the Apache configuration files on Windows, all backslashes
-such as <filename>c:\directory\file.ext</filename> should be converted to
-forward slashes: <filename>c:/directory/file.ext</filename>. A trailing
-slash may also be necessary for directories.</simpara></note>'>
+<!ENTITY note.apache.slashes '<note xmlns="http://docbook.org/ns/docbook"><simpara>Пам&apos;ятайте,
+що коли ви додаєте значення шляху в конфігураційному файлі Apache на Windows,
+всі зворотні слеші, такі як <filename>c:\directory\file.ext</filename> потрібно конвертувати
+прямими слешами: <filename>c:/directory/file.ext</filename>. Слеш в кінці також є
+обов&apos;язковим, коли вказуєте директорію.</simpara></note>'>
 
 <!-- Snippets and titles for the contributors section -->
 <!ENTITY Credit.Authors.and.Contributors 'Автори та Співробітники'>
@@ -1349,7 +1349,7 @@ using public key authentication, use the
 <!ENTITY link.http.request.info '<link xmlns="http://docbook.org/ns/docbook" linkend="http.request.info">Request/response information</link>'>
 <!ENTITY returns.http.response 'Returns the HTTP response(s) as string on
 success, or &false; on failure.'>
-<!ENTITY returns.http.false.orexits 'Returns &false; or <emphasis xmlns="http://docbook.org/ns/docbook">exits</emphasis> on success'>
+<!ENTITY returns.http.false.orexits 'Повертає &false; або <emphasis xmlns="http://docbook.org/ns/docbook">exits</emphasis> в разі успіху'>
 <!ENTITY returns.session.storage.retval 'The return value (usually &true; on success, &false; on failure). Note this value is returned internally to PHP for processing.'>
 <!ENTITY http.request.affects 'Affects the following request method(s) only:'>
 <!ENTITY http.request.affects.any 'Affects any request method.'>
@@ -1400,7 +1400,7 @@ The XMLWriter <type>resource</type> that is being modified. This resource comes 
 <!ENTITY fann.train.description '<para xmlns="http://docbook.org/ns/docbook">Neural network training data <type>resource</type>.</para>'>
 <!ENTITY fann.errdat.description '<para xmlns="http://docbook.org/ns/docbook">Either neural network <type>resource</type> or neural network trainining data <type>resource</type>.</para>'>
 <!ENTITY fann.return.void '<para xmlns="http://docbook.org/ns/docbook">No value is returned.</para>'>
-<!ENTITY fann.return.bool '<para xmlns="http://docbook.org/ns/docbook">Returns &true; on success, or &false; otherwise.</para>'>
+<!ENTITY fann.return.bool '<para xmlns="http://docbook.org/ns/docbook">Повертає &true; при успіху, або &false; в противному разі.</para>'>
 <!ENTITY fann.return.ann '<para xmlns="http://docbook.org/ns/docbook"> Returns a neural network <type>resource</type> on success, or &false; on error.</para>'>
 <!ENTITY fann.return.train '<para xmlns="http://docbook.org/ns/docbook"> Returns a train data <type>resource</type> on success, or &false; on error.</para>'>
 
@@ -1538,7 +1538,7 @@ because libxml is enabled by default.</para>'>
 property is updated if a valid context is passed to the caller function.</para></note>'>
 
 <!-- Gmagick -->
-<!ENTITY gmagick.return.success 'Returns &true; on success.'>
+<!ENTITY gmagick.return.success 'Повертає &true; в разі успіху.'>
 <!ENTITY gmagick.gmagickexception.throw 'Throws an
 <classname xmlns="http://docbook.org/ns/docbook">GmagickException</classname> on error.'>
 
@@ -1732,11 +1732,11 @@ paths</simpara></warning>
 
 <!-- Mongo -->
 <!ENTITY mongo.setreadpreference.parameters '<variablelist xmlns="http://docbook.org/ns/docbook"><varlistentry><term><parameter>read_preference</parameter></term><listitem><para>The read preference mode: <constant>MongoClient::RP_PRIMARY</constant>, <constant>MongoClient::RP_PRIMARY_PREFERRED</constant>, <constant>MongoClient::RP_SECONDARY</constant>, <constant>MongoClient::RP_SECONDARY_PREFERRED</constant>, or <constant>MongoClient::RP_NEAREST</constant>.</para></listitem></varlistentry><varlistentry><term><parameter>tags</parameter></term><listitem><para>An array of zero or more tag sets, where each tag set is itself an array of criteria used to match tags on replica set members.</para></listitem></varlistentry></variablelist>'>
-<!ENTITY mongo.setreadpreference.returnvalues '<para xmlns="http://docbook.org/ns/docbook">Returns &true; on success, or &false; otherwise.</para>'>
+<!ENTITY mongo.setreadpreference.returnvalues '<para xmlns="http://docbook.org/ns/docbook">Повертає &true; при успіху, або &false; в противному разі.</para>'>
 <!ENTITY mongo.setreadpreference.errors '<para xmlns="http://docbook.org/ns/docbook">Emits <constant>E_WARNING</constant> if either parameter is invalid, or if one or more tag sets are provided with the <constant>MongoClient::RP_PRIMARY</constant> read preference mode.</para>'>
 <!ENTITY mongo.getreadpreference.returnvalues '<para xmlns="http://docbook.org/ns/docbook">This function returns an array describing the read preference. The array contains the values <literal>type</literal> for the string read preference mode (corresponding to the <classname>MongoClient</classname> constants), and <literal>tagsets</literal> containing a list of all tag set criteria. If no tag sets were specified, <literal>tagsets</literal> will not be present in the array.</para>'>
 <!ENTITY mongo.setwriteconcern.parameters '<variablelist xmlns="http://docbook.org/ns/docbook"><varlistentry><term><parameter>w</parameter></term><listitem><para>The write concern. This may be an integer denoting the number of servers required to acknowledge the write, or a string mode (e.g. "majority").</para></listitem></varlistentry><varlistentry><term><parameter>wtimeout</parameter></term><listitem><para>The maximum number of milliseconds to wait for the server to satisfy the write concern.</para></listitem></varlistentry></variablelist>'>
-<!ENTITY mongo.setwriteconcern.returnvalues '<para xmlns="http://docbook.org/ns/docbook">Returns &true; on success, or &false; otherwise.</para>'>
+<!ENTITY mongo.setwriteconcern.returnvalues '<para xmlns="http://docbook.org/ns/docbook">Повертає &true; при успіху, або &false; в противному разі.</para>'>
 <!ENTITY mongo.setwriteconcern.errors '<para xmlns="http://docbook.org/ns/docbook">Emits <constant>E_WARNING</constant> if the <literal>w</literal> parameter is not an integer or string value.</para>'>
 <!ENTITY mongo.getwriteconcern.returnvalues '<para xmlns="http://docbook.org/ns/docbook">This function returns an array describing the write concern. The array contains the values <literal>w</literal> for an integer acknowledgement level or string mode, and <literal>wtimeout</literal> denoting the maximum number of milliseconds to wait for the server to satisfy the write concern.</para>'>
 <!ENTITY mongo.command.parameters.maxtimems '<listitem xmlns="http://docbook.org/ns/docbook"><para><literal>"maxTimeMS"</literal></para><para>Specifies a cumulative time limit in milliseconds for processing the operation (does not include idle time). If the operation is not completed within the timeout period, a <classname>MongoExecutionTimeoutException</classname> will be thrown.</para></listitem>'>

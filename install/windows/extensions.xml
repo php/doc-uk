@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: ba08db8805ddb14cbab613c893dd47eacbda22f2 Maintainer: ktretyak Status: wip -->
+<!-- EN-Revision: ba08db8805ddb14cbab613c893dd47eacbda22f2 Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
    <sect1 xml:id="install.windows.extensions" xmlns="http://docbook.org/ns/docbook">
-    <title>Installation of extensions on Windows</title>
+    <title>Встановлення розширень на Windows</title>
     <para>
-     After installing PHP and a web server on Windows, you will probably want to
-     install some extensions for added functionality. You can choose which
-     extensions you would like to load when PHP starts by modifying your
-     &php.ini;. You can also load a module dynamically in your script using
-     <function>dl</function>.
+     Після встановлення PHP та веб-сервера на Windows, ймовірно ви захочете
+     підключити деякі розширення, що додають функціональність. Ви можете вибрати
+     які розширення потрібно завантажувати під час старту PHP, для цього змініть
+     файл &php.ini;. Також можна динамічно підключати модулі всередині скриптів,
+     використовуючи функцію <function>dl</function>.
     </para>
     <para>
-     The DLLs for PHP extensions are prefixed with <literal>php_</literal>.
+     Бібліотеки DLL для розширень PHP мають префікс <literal>php_</literal>.
     </para>
     <para>
-     Many extensions are <emphasis>built into</emphasis> the Windows version
-     of PHP. This means additional DLL files, and the 
-     <link linkend="ini.extension">extension</link> directive, are  
-     <emphasis>not</emphasis> used to load these extensions. The Windows 
-     <link linkend ="install.windows.extensions.overview">PHP Extensions</link>
-     table lists extensions that require, or used to require, additional PHP 
-     DLL files. Here's a list of built in extensions (updated PHP 5.0.4):
+     Багато розширень <emphasis>вбудовано</emphasis> у Windows-версіях PHP.
+     Це означає, що додаткові DLL-файли та директиви
+     <link linkend="ini.extension">розширень</link>  
+     <emphasis>не</emphasis> використовуються для завантаження цих розширень.
+     Нижче в таблиці наведено список необхідних
+     <link linkend ="install.windows.extensions.overview">PHP Розширень</link>
+     для Windows, що потребують додаткові PHP DLL-файли. Це список вбудованих
+     розширень (оновлено в PHP 5.0.4):
      <link linkend="book.bc">BCMath</link>,
      <link linkend="book.calendar">Caledar</link>,
      <link linkend="book.com">COM</link>,
@@ -40,16 +41,16 @@
      <link linkend="book.zlib">Zlib</link>.
     </para>
     <para>
-     The default location PHP searches for extensions is
-     <filename class="directory">C:\php5</filename>. To change this
-     setting to reflect your setup of PHP edit your &php.ini; file:
+     За промовчанням PHP шукає розширення в
+     <filename class="directory">C:\php5</filename>. Щоб змінити це налаштування
+     у відповідності до вашого встановлення PHP, змініть файл &php.ini;:
      <itemizedlist>
       <listitem>
        <para>
-        You will need to change the
-        <link linkend ="ini.extension-dir">extension_dir</link> setting to
-        point to the directory where your extensions lives, or where you have
-        placed your <filename>php_*.dll</filename> files. For example:
+        Вам потрібно змінити налаштування
+        <link linkend ="ini.extension-dir">extension_dir</link>, щоб вказати
+        директорію, де знаходяться розширення, або де ви розмістили ваші
+        файли <filename>php_*.dll</filename>. Наприклад так:
         <informalexample>
          <programlisting role="ini">
 <![CDATA[
@@ -61,17 +62,17 @@ extension_dir = C:\php\extensions
       </listitem>
      <listitem>
       <para>
-       Enable the extension(s) in &php.ini; you want to use by uncommenting the
-       <literal>extension=php_*.dll</literal> lines in &php.ini;. This is done
-       by deleting the leading ; from the extension you want to load. 
+       Підключіть потрібні розширення у файлі &php.ini; розкоментувавши рядок
+       <literal>extension=php_*.dll</literal>. Це робиться шляхом видалення
+       символа крапки з комою ; на початку директиви.
        <example>
-        <title>Enable <link linkend="book.bzip2">Bzip2</link> extension for PHP-Windows</title>
+        <title>Підключення розширення <link linkend="book.bzip2">Bzip2</link> для PHP на Windows</title>
          <programlisting role="ini">
 <![CDATA[
-// change the following line from ...
+// знайдіть такий рядок ...
 ;extension=php_bz2.dll
 
-// ... to
+// ... і змініть його так
 extension=php_bz2.dll
 ]]>
          </programlisting>
@@ -80,312 +81,312 @@ extension=php_bz2.dll
      </listitem>
       <listitem>
        <para>
-        Some of the extensions need extra DLLs to work. Couple of them can be
-        found in the distribution package, in the main folder, but some, for example Oracle
-        (<filename>php_oci8.dll</filename>) require DLLs which are not bundled
-        with the distribution package. Don't forget to include <filename
-         class="directory">C:\php</filename> in the system
-        <envar>PATH</envar> (this process is explained in a separate <link
-         linkend="faq.installation.addtopath">FAQ entry</link>).
+        Деякі розширення потребують додаткових DLL для своєї роботи. Кілька з них
+        можна знайти в пакеті дистрибутива, в кориневій директорії, але деякі,
+        наприклад, для Oracle (<filename>php_oci8.dll</filename>) вимагають DLL, які
+        не входять в дистрибутив. Не забудьте включити <filename
+         class="directory">C:\php</filename> до системної змінної
+        <envar>PATH</envar> (цей процес пояснено в окремому розділі <link
+         linkend="faq.installation.addtopath">ЧАПів</link>).
        </para>
      </listitem>
      <listitem>
       <para>
-       Some of these DLLs are not bundled with the PHP distribution. See each
-       extensions documentation page for details. Also, read the manual 
-       section titled <link linkend="install.pecl">Installation of PECL 
-       extensions</link> for details on <acronym>PECL</acronym>. An 
-       increasingly large number of PHP extensions are found in 
-       <acronym>PECL</acronym>, and these extensions require a
-       <link linkend="install.pecl.downloads">separate download</link>.
+       Перейшовши по лінкам в наведеній таблиці, можна прочитати документацію
+       до кожного з розширень. Також прочитайте розділ з назвою
+       <link linkend="install.pecl">Встановлення розширень PECL</link>, щоб
+       дізнатись більше про <acronym>PECL</acronym>. Все більше
+       PHP-розширень можна знайти в <acronym>PECL</acronym>, але вони
+       доступні в <link linkend="install.pecl.downloads">окремому завантаженні</link>.
       </para>
      </listitem>
     </itemizedlist>
    <note>
     <simpara>
-     If you are running a server module version of PHP
-     remember to restart your web server to reflect your changes to &php.ini;.
+     Якщо ви запустили PHP як модуль, не забудьте перезавантажити веб-сервер
+     щоб внесені зміни в файл &php.ini; набули чинності.
     </simpara>
    </note>
    </para>
 
    <para>
-    The following table describes some of the extensions available and required
-    additional dlls.   
+    В наступній таблиці описано деякі розширення, що вимагають додаткових DLL.
     <table xml:id="install.windows.extensions.overview">
-     <title>PHP Extensions</title>
+     <title>PHP-розширення</title>
      <tgroup cols="3">
       <thead>
        <row>
-        <entry>Extension</entry>
-        <entry>Description</entry>
-        <entry>Notes</entry>
+        <entry>Розширення</entry>
+        <entry>Опис</entry>
+        <entry>Замітки</entry>
        </row>
       </thead>
       <tbody>
   <row>
    <entry>php_bz2.dll</entry>
-   <entry><link linkend="book.bzip2">bzip2</link> compression functions</entry>
-   <entry>None</entry>
+   <entry>Функції стиснення <link linkend="book.bzip2">bzip2</link></entry>
+   <entry>Відсутні</entry>
   </row>
   <row>
    <entry>php_calendar.dll</entry>
-   <entry><link linkend="book.calendar">Calendar</link> conversion functions</entry>
-   <entry>None</entry>
+   <entry>Функції перетворень <link linkend="book.calendar">Календаря</link></entry>
+   <entry>Відсутні</entry>
   </row>
   <row>
    <entry>php_crack.dll</entry>
-   <entry><link linkend="book.crack">Crack</link> functions</entry>
-   <entry>None</entry>
+   <entry>Функції <link linkend="book.crack">Crack</link></entry>
+   <entry>Відсутні</entry>
   </row>
   <row>
    <entry>php_ctype.dll</entry>
-   <entry><link linkend="book.ctype">ctype</link> family functions</entry>
-   <entry>None</entry>
+   <entry>Функції родини <link linkend="book.ctype">ctype</link></entry>
+   <entry>Відсутні</entry>
   </row>
   <row>
    <entry>php_curl.dll</entry>
-   <entry><link linkend="book.curl">CURL</link>, Client URL library functions</entry>
-   <entry>Requires: <filename>libeay32.dll</filename>, 
-   <filename>ssleay32.dll</filename> (bundled)</entry>
+   <entry>Функції бібліотеки <link linkend="book.curl">CURL</link></entry>
+   <entry>Потребують: <filename>libeay32.dll</filename>, 
+   <filename>ssleay32.dll</filename> (є в комплекті)</entry>
   </row>
   <row>
    <entry>php_dba.dll</entry>
-   <entry><link linkend="book.dba">DBA</link>: DataBase (dbm-style) 
-   Abstraction layer functions</entry>
-   <entry>None</entry>
+   <entry>Функції <link linkend="book.dba">DBA</link>: Абстрактний прошарок
+   DataBase (dbm-style) 
+   </entry>
+   <entry>Відсутні</entry>
   </row>
   <row>
    <entry>php_dbase.dll</entry>
-   <entry><link linkend="book.dbase">dBase</link> functions</entry>
-   <entry>None</entry>
+   <entry>Функції <link linkend="book.dbase">dBase</link></entry>
+   <entry>Відсутні</entry>
   </row>
   <row>
    <entry>php_dbx.dll</entry>
-   <entry><link linkend="book.dbx">dbx</link> functions</entry>
+   <entry>Функції <link linkend="book.dbx">dbx</link></entry>
    <entry></entry>
   </row>
   <row>
    <entry>php_exif.dll</entry>
-   <entry><link linkend="book.exif">EXIF</link> functions</entry>
-   <entry>
-    <link linkend="book.mbstring">php_mbstring.dll</link>. And, 
-    <filename>php_exif.dll</filename> must be loaded <literal>after</literal> 
-    <filename>php_mbstring.dll</filename> in &php.ini;.
+   <entry>Функції <link linkend="book.exif">EXIF</link></entry>
+   <entry>Потребують бібліотеки
+    <link linkend="book.mbstring">php_mbstring.dll</link>. А бібліотеку 
+    <filename>php_exif.dll</filename> потрібно завантажувати
+    <literal>після</literal> 
+    <filename>php_mbstring.dll</filename> в файлі &php.ini;.
    </entry>
   </row>
   <row>
    <entry>php_fbsql.dll</entry>
-   <entry><link linkend="book.fbsql">FrontBase</link> functions</entry>
-   <entry>None</entry>
+   <entry>Функції <link linkend="book.fbsql">FrontBase</link></entry>
+   <entry>Відсутні</entry>
   </row>
   <row>
    <entry>php_fdf.dll</entry>
-   <entry><link linkend="book.fdf">FDF</link>: Forms Data Format functions.</entry>
-   <entry>Requires: <filename>fdftk.dll</filename> (bundled)</entry>
+   <entry>Функції <link linkend="book.fdf">FDF</link>: Функції Формата Даних.</entry>
+   <entry>Потребують: <filename>fdftk.dll</filename> (є в комплекті)</entry>
   </row>
   <row>
    <entry>php_filepro.dll</entry>
-   <entry><link linkend="book.filepro">filePro</link> functions</entry>
+   <entry>Функції <link linkend="book.filepro">filePro</link></entry>
    <entry>Read-only access</entry>
   </row>
   <row>
    <entry>php_ftp.dll</entry>
-   <entry><link linkend="book.ftp">FTP</link> functions</entry>
-   <entry>None</entry>
+   <entry>Функції <link linkend="book.ftp">FTP</link></entry>
+   <entry>Відсутні</entry>
   </row>
   <row>
    <entry>php_gd2.dll</entry>
-   <entry><link linkend="book.image">GD</link> library image functions</entry>
+   <entry>Функції бібліотеки <link linkend="book.image">GD</link> для зображень</entry>
    <entry>GD2</entry>
   </row>
   <row>
    <entry>php_gettext.dll</entry>
-   <entry><link linkend="book.gettext">Gettext</link> functions</entry>
+   <entry>Функції <link linkend="book.gettext">Gettext</link></entry>
    <entry>
-    PHP &lt;= 4.2.0 requires <filename>gnu_gettext.dll</filename> (bundled), 
-    PHP &gt;= 4.2.3 requires <filename>libintl-1.dll</filename>,
-    <filename>iconv.dll</filename> (bundled).
+    PHP &lt;= 4.2.0 потребує <filename>gnu_gettext.dll</filename> (є в комплекті), 
+    PHP &gt;= 4.2.3 потребує <filename>libintl-1.dll</filename>,
+    <filename>iconv.dll</filename> (є в комплекті).
    </entry>
   </row>
-  <row>
+  <row>Потребують бібліотек
    <entry>php_hyperwave.dll</entry>
-   <entry>HyperWave functions</entry>
-   <entry>None</entry>
+   <entry>та функцій HyperWave</entry>
+   <entry>Відсутні</entry>
   </row>
   <row>
    <entry>php_iconv.dll</entry>
-   <entry><link linkend="book.iconv">ICONV</link> characterset conversion</entry>
+   <entry>Функції перетворень символів <link linkend="book.iconv">ICONV</link></entry>
    <entry>
-    Requires: <filename>iconv-1.3.dll</filename> (bundled), <filename>iconv.dll</filename>
+    Потребують: <filename>iconv-1.3.dll</filename> (є в комплекті), <filename>iconv.dll</filename>
    </entry>
   </row>
   <row>
    <entry>php_ifx.dll</entry>
-   <entry><link linkend="book.ifx">Informix</link> functions</entry>
-   <entry>Requires: Informix libraries</entry>
+   <entry>Функції <link linkend="book.ifx">Informix</link></entry>
+   <entry>Потребують: бібліотек Informixibraries</entry>
   </row>
   <row>
    <entry>php_iisfunc.dll</entry>
-   <entry>IIS management functions</entry>
-   <entry>None</entry>
+   <entry>та функцій управління IIS</entry>
+   <entry>Відсутні</entry>
   </row>
   <row>
    <entry>php_imap.dll</entry>
-   <entry><link linkend="book.imap">IMAP</link> POP3 and NNTP functions</entry>
-   <entry>None</entry>
+   <entry><link linkend="book.imap">IMAP</link> Функції POP3 та NNTP</entry>
+   <entry>Відсутні</entry>
   </row>
   <row>
    <entry>php_ingres.dll</entry>
-   <entry><link linkend="book.ingres">Ingres</link> functions</entry>
-   <entry>Requires: Ingres libraries</entry>
+   <entry>Функції <link linkend="book.ingres">Ingres</link></entry>
+   <entry>Потребують: бібліотек Ingres</entry>
   </row>
   <row>
    <entry>php_interbase.dll</entry>
-   <entry><link linkend="book.ibase">InterBase</link> functions</entry>
-   <entry>Requires: <filename>gds32.dll</filename> (bundled)</entry>
+   <entry>Функції <link linkend="book.ibase">InterBase</link></entry>
+   <entry>Потребують: <filename>gds32.dll</filename> (є в комплекті)</entry>
   </row>
   <row>
    <entry>php_ldap.dll</entry>
-   <entry><link linkend="book.ldap">LDAP</link> functions</entry>
+   <entry>Функції <link linkend="book.ldap">LDAP</link></entry>
    <entry>
-    Requires <filename>libeay32.dll</filename>, 
-    <filename>ssleay32.dll</filename> (bundled)
+    Потребують: <filename>libeay32.dll</filename>, 
+    <filename>ssleay32.dll</filename> (є в комплекті)
    </entry>
   </row>
   <row>
    <entry>php_mbstring.dll</entry>
-   <entry><link linkend="book.mbstring">Multi-Byte String</link> functions</entry>
-   <entry>None</entry>
+   <entry>Функції <link linkend="book.mbstring">Multi-Byte String</link></entry>
+   <entry>Відсутні</entry>
   </row>
   <row>
    <entry>php_mcrypt.dll</entry>
-   <entry><link linkend="book.mcrypt">Mcrypt Encryption</link> functions</entry>
-   <entry>Requires: <filename>libmcrypt.dll</filename></entry>
+   <entry>Функції <link linkend="book.mcrypt">Mcrypt Encryption</link></entry>
+   <entry>Потребують: <filename>libmcrypt.dll</filename></entry>
   </row>
   <row>
    <entry>php_mhash.dll</entry>
-   <entry><link linkend="book.mhash">Mhash</link> functions</entry>
-   <entry>Requires: <filename>libmhash.dll</filename> (bundled)</entry>
+   <entry>Функції <link linkend="book.mhash">Mhash</link></entry>
+   <entry>Потребують: <filename>libmhash.dll</filename> (є в комплекті)</entry>
   </row>
   <row>
    <entry>php_mime_magic.dll</entry>
-   <entry><link linkend="book.mime-magic">Mimetype</link> functions</entry>
-   <entry>Requires: <filename>magic.mime</filename> (bundled)</entry>
+   <entry>Функції <link linkend="book.mime-magic">Mimetype</link></entry>
+   <entry>Потребують: <filename>magic.mime</filename> (є в комплекті)</entry>
   </row>
   <row>
    <entry>php_ming.dll</entry>
-   <entry><link linkend="book.ming">Ming</link> functions for Flash</entry>
-   <entry>None</entry>
+   <entry><link linkend="book.ming">Ming</link> Функції для Flash</entry>
+   <entry>Відсутні</entry>
   </row>
   <row>
    <entry>php_msql.dll</entry>
-   <entry><link linkend="book.msql">mSQL</link> functions</entry>
-   <entry>Requires: <filename>msql.dll</filename> (bundled)</entry>
+   <entry>Функції <link linkend="book.msql">mSQL</link></entry>
+   <entry>Потребують: <filename>msql.dll</filename> (є в комплекті)</entry>
   </row>
   <row>
    <entry>php_mssql.dll</entry>
-   <entry><link linkend="book.mssql">MSSQL</link> functions</entry>
-   <entry>Requires: <filename>ntwdblib.dll</filename> (bundled)</entry>
+   <entry>Функції <link linkend="book.mssql">MSSQL</link></entry>
+   <entry>Потребують: <filename>ntwdblib.dll</filename> (є в комплекті)</entry>
   </row>
   <row>
    <entry>php_mysql.dll</entry>
-   <entry><link linkend="book.mysql">MySQL</link> functions</entry>
-   <entry>Requires <filename>libmysql.dll</filename> (bundled)</entry>
+   <entry>Функції <link linkend="book.mysql">MySQL</link></entry>
+   <entry>Потребують: <filename>libmysql.dll</filename> (є в комплекті)</entry>
   </row>
   <row>
    <entry>php_mysqli.dll</entry>
-   <entry><link linkend="book.mysqli">MySQLi</link> functions</entry>
-   <entry>Requires <filename>libmysql.dll</filename>
-    (<filename>libmysqli.dll</filename> in PHP &lt;= 5.0.2) (bundled)</entry>
+   <entry>Функції <link linkend="book.mysqli">MySQLi</link></entry>
+   <entry>Потребують: <filename>libmysql.dll</filename>
+    (<filename>libmysqli.dll</filename> in PHP &lt;= 5.0.2) (є в комплекті)</entry>
   </row>
   <row>
    <entry>php_oci8.dll</entry>
-   <entry><link linkend="book.oci8">Oracle 8</link> functions</entry>
-   <entry>Requires: Oracle 8.1+ client libraries</entry>
+   <entry>Функції <link linkend="book.oci8">Oracle 8</link></entry>
+   <entry>Потребують: Oracle 8.1+ client libraries</entry>
   </row>
   <row>
    <entry>php_openssl.dll</entry>
-   <entry><link linkend="book.openssl">OpenSSL</link> functions</entry>
-   <entry>Requires: <filename>libeay32.dll</filename> (bundled)</entry>
+   <entry>Функції <link linkend="book.openssl">OpenSSL</link></entry>
+   <entry>Потребують: <filename>libeay32.dll</filename> (є в комплекті)</entry>
   </row>
   <row>
    <entry>php_pdf.dll</entry>
-   <entry><link linkend="book.pdf">PDF</link> functions</entry>
-   <entry>None</entry>
+   <entry>Функції <link linkend="book.pdf">PDF</link></entry>
+   <entry>Відсутні</entry>
   </row>
   <row>
    <entry>php_pgsql.dll</entry>
-   <entry><link linkend="book.pgsql">PostgreSQL</link> functions</entry>
-   <entry>None</entry>
+   <entry>Функції <link linkend="book.pgsql">PostgreSQL</link></entry>
+   <entry>Відсутні</entry>
   </row>
   <row>
    <entry>php_shmop.dll</entry>
-   <entry><link linkend="book.shmop">Shared Memory</link> functions</entry>
-   <entry>None</entry>
+   <entry>Функції <link linkend="book.shmop">Shared Memory</link></entry>
+   <entry>Відсутні</entry>
   </row>
   <row>
    <entry>php_snmp.dll</entry>
-   <entry><link linkend="book.snmp">SNMP</link> get and walk functions</entry>
-   <entry>NT only!</entry>
+   <entry>Функції <link linkend="book.snmp">SNMP</link></entry>
+   <entry>Тільки на Windows NT!</entry>
   </row>
   <row>
    <entry>php_soap.dll</entry>
-   <entry><link linkend="book.soap">SOAP</link> functions</entry>
-   <entry>None</entry>
+   <entry>Функції <link linkend="book.soap">SOAP</link></entry>
+   <entry>Відсутні</entry>
   </row>
   <row>
    <entry>php_sockets.dll</entry>
-   <entry><link linkend="book.sockets">Socket</link> functions</entry>
-   <entry>None</entry>
+   <entry>Функції <link linkend="book.sockets">Socket</link></entry>
+   <entry>Відсутні</entry>
   </row>
   <row>
    <entry>php_sybase_ct.dll</entry>
-   <entry><link linkend="book.sybase">Sybase</link> functions</entry>
-   <entry>Requires: Sybase client libraries</entry>
+   <entry>Функції <link linkend="book.sybase">Sybase</link></entry>
+   <entry>Потребують: Sybase client libraries</entry>
   </row>
   <row>
    <entry>php_tidy.dll</entry>
-   <entry><link linkend="book.tidy">Tidy</link> functions</entry>
-   <entry>None</entry>
+   <entry>Функції <link linkend="book.tidy">Tidy</link></entry>
+   <entry>Відсутні</entry>
   </row>
   <row>
    <entry>php_tokenizer.dll</entry>
-   <entry><link linkend="book.tokenizer">Tokenizer</link> functions</entry>
-   <entry>None</entry>
+   <entry>Функції <link linkend="book.tokenizer">Tokenizer</link></entry>
+   <entry>Відсутні</entry>
   </row>
   <row>
    <entry>php_w32api.dll</entry>
-   <entry>W32api functions</entry>
-   <entry>None</entry>
+   <entry>Потребують: функцій W32api</entry>
+   <entry>Відсутні</entry>
   </row>
   <row>
    <entry>php_xmlrpc.dll</entry>
-   <entry><link linkend="book.xmlrpc">XML-RPC</link> functions</entry>
-   <entry>Requires: <filename>iconv.dll</filename> (bundled)</entry>
+   <entry>Функції <link linkend="book.xmlrpc">XML-RPC</link></entry>
+   <entry>Потребують: <filename>iconv.dll</filename> (є в комплекті)</entry>
   </row>
   <row>
    <entry>php_xslt.dll</entry>
-   <entry>XSLT functions</entry>
+   <entry>Потребують: функцій XSLT</entry>
    <entry>
-    Requires <filename>sablot.dll</filename>, <filename>expat.dll</filename>,
-    <filename>iconv.dll</filename> (bundled).
+    Потребують: <filename>sablot.dll</filename>, <filename>expat.dll</filename>,
+    <filename>iconv.dll</filename> (є в комплекті).
    </entry>
   </row>
   <row>
    <entry>php_yaz.dll</entry>
-   <entry><link linkend="book.yaz">YAZ</link> functions</entry>
-   <entry>Requires: <filename>yaz.dll</filename> (bundled)</entry>
+   <entry>Функції <link linkend="book.yaz">YAZ</link></entry>
+   <entry>Потребують: <filename>yaz.dll</filename> (є в комплекті)</entry>
   </row>
   <row>
    <entry>php_zip.dll</entry>
-   <entry><link linkend="book.zip">Zip File</link> functions</entry>
+   <entry>Функції <link linkend="book.zip">Zip File</link></entry>
    <entry>Read only access</entry>
   </row>
   <row>
    <entry>php_zlib.dll</entry>
-   <entry><link linkend="book.zlib">ZLib</link> compression functions</entry>
-   <entry>None</entry>
+   <entry><link linkend="book.zlib">ZLib</link> Функції стиснення</entry>
+   <entry>Відсутні</entry>
   </row>
        </tbody>
       </tgroup>
