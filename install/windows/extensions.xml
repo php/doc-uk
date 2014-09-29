@@ -209,9 +209,9 @@ extension=php_bz2.dll
     <filename>iconv.dll</filename> (є в комплекті).
    </entry>
   </row>
-  <row>Потребують бібліотек
+  <row>
    <entry>php_hyperwave.dll</entry>
-   <entry>та функцій HyperWave</entry>
+   <entry>Функції HyperWave</entry>
    <entry>Відсутні</entry>
   </row>
   <row>
