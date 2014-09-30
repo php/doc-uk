@@ -4,7 +4,7 @@
  <sect1 xml:id="language.oop5.visibility" xmlns="http://docbook.org/ns/docbook">
   <title>Область видимості</title>
   <para>
-   Область видимості властивостей або методів можуть визначатись через
+   Області видимості властивостей або методів можуть визначатись через
    ключові слова <emphasis>public</emphasis>,
    <emphasis>protected</emphasis> чи
    <emphasis>private</emphasis>. Доступ до членів класа оголошених

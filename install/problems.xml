@@ -3,19 +3,18 @@
 <!-- $Revision$ -->
 
   <chapter xml:id="install.problems" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-   <title>Problems?</title>
+   <title>Виникли проблеми?</title>
 
    <sect1 xml:id="install.problems.faq">
-    <title>Read the FAQ</title>
+    <title>Читайте ЧАП</title>
     <simpara>
-     Some problems are more common than others. The most
-     common ones are listed in the <link linkend="faq">PHP
-     FAQ</link>, part of this manual.
+     Деякі проблеми виникають частіше інших. Найбільш часті
+     з них, перераховані в розділі <link linkend="faq">ЧАПи в PHP</link> цього посібника.
     </simpara>
    </sect1>
 
    <sect1 xml:id="install.problems.support">
-    <title>Other problems</title>
+    <title>Інші проблеми</title>
 
     <simpara>
      If you are still stuck, someone on the PHP installation mailing list may be

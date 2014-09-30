@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 14af302c9c0e561fa6f9cdd956268758ba9a89c5 Maintainer: ktretyak Status: wip -->
+<!-- EN-Revision: 14af302c9c0e561fa6f9cdd956268758ba9a89c5 Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
    <sect1 xml:id="install.windows.commandline" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>Командний рядок PHP на Microsoft Windows</title>
     <para>
-     This section contains notes and hints specific to getting PHP running
-     from the command line for Windows.
+    Ця сторінка містить замітки та підказки стосовно запуску PHP
+    з командного рядка Windows.
     </para>
     <note>
      <para>
-      You should read the <link linkend="install.windows.manual">manual
-      installation steps</link> first!
+      Спершу, прочитайте <link linkend="install.windows.manual">Ручне
+      Встановлення PHP</link>!
      </para>
     </note>
     <para>
-     Getting PHP to run from the command line can be performed without making
-     any changes to Windows.
+     PHP можна запустити з командного рядка без необхідності вносити будь-які
+     зміни до Windows.
      <screen>
 <![CDATA[
 C:\PHP5\php.exe -f "C:\PHP Scripts\script.php" -- -arg1 -arg2 -arg3
@@ -24,46 +24,47 @@ C:\PHP5\php.exe -f "C:\PHP Scripts\script.php" -- -arg1 -arg2 -arg3
     </para>
 
     <para>
-     But there are some easy steps that can be followed to make this simpler.
-     Some of these steps should already have been taken, but are repeated here
-     to be able to provide a complete step-by-step sequence.
+     Але існує кілька простих кроків, пройшовши які можна спростити синтаксис
+     таких команд. Деякі з цих кроків ви повинні були вже пройти, але повторіть
+     їх знову, щоб пройти повну покрокову послідовність.
       
      
      <itemizedlist>
       
       <note>
        <para>
-        Both <envar>PATH</envar> and <envar>PATHEXT</envar> are important pre-existing system variables in Windows, and care should be taken to not overwrite either variable, only to add to them.
+        Такі предвизначені змінні Windows як <envar>PATH</envar> та
+        <envar>PATHEXT</envar> є важливими системними змінними, і слід проявити
+        обережність, щоб не перезаписати їх, а лише доповнити.
        </para>
       </note>
 
       <listitem>
        <para>
-        Append the location of the PHP executable (<filename>php.exe</filename>,
-        <filename>php-win.exe</filename> or <filename>php-cli.exe</filename>
-        depending upon your PHP version and display preferences) to the
-        <envar>PATH</envar> environment variable. Read more about how to
-        add your PHP directory to <envar>PATH</envar> in the <link
-        linkend="faq.installation.addtopath">corresponding FAQ entry</link>.
+        Додайте місцерозташування виконавчих файлів PHP (<filename>php.exe</filename>,
+        <filename>php-win.exe</filename> або <filename>php-cli.exe</filename>
+        в залежності від вашої версії PHP та параметрів відображення) до змінної
+        середовища <envar>PATH</envar>. Прочитайте більше про те як додати вашу
+        директорію PHP до <envar>PATH</envar> у відповідному пункті <link
+        linkend="faq.installation.addtopath">ЧАПу</link>.
        </para>
       </listitem>
 
       <listitem>
        <para>
-        Append the <literal>.PHP</literal> extension to the
-        <varname>PATHEXT</varname> environment variable. This can be done
-        at the same time as amending the <envar>PATH</envar> environment
-        variable. Follow the same steps as described in the <link
-        linkend="faq.installation.addtopath">FAQ</link> but amend the
-        <varname>PATHEXT</varname> environment variable rather than the
-        <envar>PATH</envar> environment variable.
+        Допишіть розширення <literal>.PHP</literal> до змінної середовища
+        <varname>PATHEXT</varname>. Це можна зробити разом з внесенням змін
+        до змінної середовища <envar>PATH</envar>. Пройдіть такі ж кроки, які
+        описані у <link
+        linkend="faq.installation.addtopath">ЧАПі</link> для <envar>PATH</envar>,
+        але внесіть відповідні зміни на цей раз до <varname>PATHEXT</varname>.
         <note>
          <para>
-          The position in which you place the <literal>.PHP</literal> will
-          determine which script or program is executed when there are matching
-          filenames. For example, placing <literal>.PHP</literal> before
-          <literal>.BAT</literal> will cause your script to run, rather than
-          the batch file, if there is a batch file with the same name.
+          Позиція, де ви розмістите <literal>.PHP</literal> буде визначати, яка
+          програма або скрипт виконаються при співпадінні з назвою файла.
+          Накриклад, розміщення <literal>.PHP</literal> перед
+          <literal>.BAT</literal> буде викликати ваш скрипт для запуску, а не
+          batch-файл, якщо навіть batch-файл матиме таке ж ім'я.
          </para>
         </note>
        </para>
@@ -71,8 +72,8 @@ C:\PHP5\php.exe -f "C:\PHP Scripts\script.php" -- -arg1 -arg2 -arg3
 
       <listitem>
        <para>
-        Associate the <literal>.PHP</literal> extension with a file type. This
-        is done by running the following command:
+        Додайте асоціацію розширення <literal>.PHP</literal> з типом файла. Це
+        можна зробити запустивши наступну команду:
         <screen>
 <![CDATA[
 assoc .php=phpfile
@@ -83,8 +84,8 @@ assoc .php=phpfile
 
       <listitem>
        <para>
-        Associate the <literal>phpfile</literal> file type with the appropriate
-        PHP executable. This is done by running the following command:
+        Додайте асоціацію типу файла <literal>phpfile</literal> з відповідним
+        виконавчим PHP-файлом. Це можна зробити запустивши наступну команду:
         <screen>
 <![CDATA[
 ftype phpfile="C:\PHP5\php.exe" -f "%1" -- %~2
@@ -97,15 +98,16 @@ ftype phpfile="C:\PHP5\php.exe" -f "%1" -- %~2
     </para>
 
     <para>
-     Following these steps will allow PHP scripts to be run from any directory
-     without the need to type the PHP executable or the <literal>.PHP</literal>
-     extension and all parameters will be supplied to the script for processing.
+     Ці кроки дозволять запускати PHP-скрипти з будь-якої директорії без
+     необхідності вводити шлях до виконавчого файла PHP або зазначати розширення
+     <literal>.PHP</literal>, а всі параметри стануть застосовними до скрипта
+     для його обробки.
     </para>
 
     <para>
-     The example below details some of the registry changes that can be made manually.
+     В нижньому прикладі деталізовано кілька змін реєстра, які можна зробити вручну.
      <example>
-      <title>Registry changes</title>
+      <title>Зміни реєстра</title>
       <screen>
 <![CDATA[
 Windows Registry Editor Version 5.00
@@ -137,14 +139,14 @@ Windows Registry Editor Version 5.00
     </para>
 
     <para>
-     With these changes the same command can be written as:
+     Ці зміни дозволять писати команди, аналогічні таким:
      <screen>
 <![CDATA[
 "C:\PHP Scripts\script" -arg1 -arg2 -arg3
 ]]>
      </screen>
-     or, if your <literal>"C:\PHP Scripts"</literal> path is in the
-     <envar>PATH</envar> environment variable:
+     або, якщо ваш шлях в змінній середовища <envar>PATH</envar> є
+     таким: <literal>"C:\PHP Scripts"</literal>, то можна писати аналогічне до:
      <screen>
 <![CDATA[
 script -arg1 -arg2 -arg3
@@ -154,21 +156,21 @@ script -arg1 -arg2 -arg3
 
     <note>
      <para>
-      There is a small problem if you intend to use this technique and use your
-      PHP scripts as a command line filter, like the example below:
+      Існує невелика проблема, якщо ви маєте намір використовувати цю техніку
+      разом з PHP-скриптом в якості фільтру командного рядка, як показано нижче:
       <screen>
 <![CDATA[
 dir | "C:\PHP Scripts\script" -arg1 -arg2 -arg3
 ]]>
       </screen>
-      or
+      або
       <screen>
 <![CDATA[
 dir | script -arg1 -arg2 -arg3
 ]]>
       </screen>
-      You may find that the script simply hangs and nothing is output.
-      To get this operational, you need to make another registry change.
+      Ви можете виявити, що скрипт зависає і нічого не виводить. Щоб проводити
+      такі операції, вам потрібно зробити наступні зміни реєстра:
       <screen>
 <![CDATA[
 Windows Registry Editor Version 5.00
@@ -177,7 +179,7 @@ Windows Registry Editor Version 5.00
 "InheritConsoleHandles"=dword:00000001
 ]]>
       </screen>
-      Further information regarding this issue can be found in this <link
+      Можна продовжити читання інформації на цю тему в <link
       xlink:href="http://support.microsoft.com/default.aspx?scid=kb;en-us;321788">Microsoft
       Knowledgebase Article : 321788</link>.
      </para>

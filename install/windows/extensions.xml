@@ -228,7 +228,7 @@ extension=php_bz2.dll
   </row>
   <row>
    <entry>php_iisfunc.dll</entry>
-   <entry>та функцій управління IIS</entry>
+   <entry>Функції управління IIS</entry>
    <entry>Відсутні</entry>
   </row>
   <row>
