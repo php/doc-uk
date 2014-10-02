@@ -320,9 +320,9 @@ service httpd restart
     </para>
     <note>
      <para>
-      Прогляньте розділ "Часто задавані питання" з приводу
+      Прогляньте розділ "Часто задавані питання (ЧАП)" з приводу
       <link linkend="faq.installation.apache.multiviews">Apache MultiViews 
-      </link>, де знайдете відповідь "чи можна їх використовувати разом з PHP".
+      </link>, де знайдете відповідь "чи можна використовувати цю опцію разом з PHP".
      </para>
     </note>
     <note>

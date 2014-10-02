@@ -44,8 +44,8 @@
 <!ENTITY MiscExtensions                           "Різні Розширення">
 <!ENTITY Appendices        "Додатки">
 <!ENTITY PEAR              "PEAR: Репозиторій PHP Розширень та Застосунків">
-<!ENTITY FAQ               "FAQ: Часті Запитання й Відповіді">
-<!ENTITY FAQabbrev         "FAQ">
+<!ENTITY FAQ               "ЧАП: Часті Питання й Відповіді">
+<!ENTITY FAQabbrev         "ЧАП">
 <!ENTITY Internals         "Що в середені PHP та Рушія Zend">
 <!ENTITY Internals2        "PHP в Ядрі: Керівництво Хакера">
 <!ENTITY ZendAPI           "Zend API: Взламуємо Ядро PHP">

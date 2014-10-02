@@ -27,7 +27,7 @@
    Повертає тип інтерфейса, у вигляді рядка в нижньому регістрі.
   </para>
   <para>
-   Хоча всі можливі варіанти не обмежується цим сиском, можливі значення, що повертаються:
+   Хоча всі можливі варіанти не обмежуються цим сиском, але деякі з них такі:
    <literal>aolserver</literal>, <literal>apache</literal>, 
    <literal>apache2filter</literal>, <literal>apache2handler</literal>, 
    <literal>caudium</literal>, <literal>cgi</literal> (до PHP 5.3), 

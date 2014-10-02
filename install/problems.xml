@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 96c9d88bad9a7d7d44bfb7f26c226df7ee9ddf26 Maintainer: ktretyak Status: wip -->
+<!-- EN-Revision: 96c9d88bad9a7d7d44bfb7f26c226df7ee9ddf26 Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
 
   <chapter xml:id="install.problems" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -17,41 +17,39 @@
     <title>Інші проблеми</title>
 
     <simpara>
-     If you are still stuck, someone on the PHP installation mailing list may be
-     able to help you. You should check out the archive first, in case
-     someone already answered someone else who had the same problem as
-     you. The archives are available from the support page on <link
-      xlink:href="&url.php.support;">&url.php.support;</link>. To subscribe to the PHP installation
-     mailing list, send an empty mail to <link
+     Якщо ви все ще застрягли, можливо дехто зі списку розсилки встановлення PHP
+     готовий допомогти вам. Але, для початку, вам варто пошукати відповідь в
+     архіві, можливо вже хтось мав такі ж проблеми. Архіви доступні на сторінці
+     підтримки на <link
+      xlink:href="&url.php.support;">&url.php.support;</link>. Щоб підписатись
+     на список розсилки встановлення PHP, напишіть пустий лист на <link
      xlink:href="mailto:&email.php.install.subscribe;">&email.php.install.subscribe;</link>.
-     The mailing list address is <link
+     Список розсилки має адресу <link
      xlink:href="mailto:&email.php.install;">&email.php.install;</link>.
     </simpara>
     <simpara>
-     If you want to get help on the mailing list, please try to be
-     precise and give the necessary details about your environment
-     (which operating system, what PHP version, what web server, if
-     you are running PHP as CGI or a server module, &safemode;, etc.), and
-     preferably enough code to make others able to reproduce and test
-     your problem.
+     Якщо ви хочете отримати допомогу зі списку розсилки, будь-ласка, намагайтесь
+     бути точним та надавайте необхідні деталі про ваше середовище (яка операційна,
+     система, яка версія PHP, який веб-сервер, чи у вас запущено PHP як CGI чи
+     як модуль сервера, &safemode;, і т.д.), та достатній об'єм коду, щоб інші
+     могли відтворити та тестувати вашу проблему.
     </simpara>
    </sect1>
 
    <sect1 xml:id="install.problems.bugs">
-    <title>Bug reports</title>
+    <title>Звіт про неполадку (баг)</title>
     <simpara>
-     If you think you have found a bug in PHP, please report it.  The
-     PHP developers probably don't know about it, and unless you
-     report it, chances are it won't be fixed. You can report bugs
-     using the bug-tracking system at <link
-     xlink:href="&url.php.bugs;">&url.php.bugs;</link>. Please do not
-     send bug reports in mailing list or personal letters. The
-     bug system is also suitable to submit feature requests.
+     Якщо ви вважаєте, що знайшли неполадку в PHP, прохання повідомити про неї.
+     Можливо розробники PHP її полагодять. Ви можете повідомити про неполадки
+     використовуючи систему, що відслідковує їх <link
+     xlink:href="&url.php.bugs;">&url.php.bugs;</link>. Прохання не відправляти
+     звіти про неполадки через списки розсилки або в персональних листах. Система
+     для неполадок також підходить для побажань стосовно функціональності.
     </simpara>
     <simpara>
-     Read the <link 
-     xlink:href="&url.php.bugs.howtoreport;">How to report a bug</link> 
-     document before submitting any bug reports!
+     Прочитайте документ <link 
+     xlink:href="&url.php.bugs.howtoreport;">Як звітувати про неполадку</link>,
+     перед тим як відправляти такий звіт!
     </simpara>
    </sect1>
   </chapter>

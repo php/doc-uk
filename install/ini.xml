@@ -38,7 +38,7 @@
       <literal>[HKEY_LOCAL_MACHINE\SOFTWARE\PHP\x.y.z]</literal>,
       <literal>[HKEY_LOCAL_MACHINE\SOFTWARE\PHP\x.y]</literal> та
       <literal>[HKEY_LOCAL_MACHINE\SOFTWARE\PHP\x]</literal>, де
-      x, y та z означають цифри версій PHP. Якщо значення для
+      x, y та z означають цифри версії PHP. Якщо значення для
       <literal>IniFilePath</literal> знаходиться в будь-якому з цих ключів, воно
       буде використовуватись як місцерозташування файла <literal>php.ini</literal>
       (Тільки у Windows).

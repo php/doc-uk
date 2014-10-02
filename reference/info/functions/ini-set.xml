@@ -31,6 +31,7 @@
       <para>
       </para>
       <para>
+       Назва параметра конфігурації.
        Не всі параметри доступні для змін через функцію
        <function>ini_set</function>. Список всіх доступних параметрів наведено
        в <link linkend="ini.list">додатку</link>.
@@ -60,7 +61,7 @@
   &reftitle.examples;
   <para>
    <example>
-    <title>Setting an ini option</title>
+    <title>Встановлення ini-параметра</title>
     <programlisting role="php">
 <![CDATA[
 <?php

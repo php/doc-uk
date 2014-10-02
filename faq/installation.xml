@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: ba08db8805ddb14cbab613c893dd47eacbda22f2 Maintainer: ktretyak Status: wip -->
+<!-- EN-Revision: ba08db8805ddb14cbab613c893dd47eacbda22f2 Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
  <chapter xml:id="faq.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Інсталяція</title>
-  <titleabbrev>Інсталяція</titleabbrev>
+  <title>Встановлення</title>
+  <titleabbrev>Встановлення</titleabbrev>
 
   <para>
    Цей розділ містить загальні питання по встановленню PHP. PHP доступна майже
@@ -29,16 +29,16 @@
       інтуїтивно-зрозумілого та легкого для навчання інтерфейсу мови. Гнучкість
       та потужність PHP спирається на стабільність та надійність базової
       платформи. Потрібно щоб працювала ОС, працював веб-сервер, та працювали
-      сторонні бібліотеки з'єднані разом. Коли будь-хто з них зупинеться,
+      сторонні бібліотеки з'єднані разом. Якщо будь-хто з них зупинеться, то для
       PHP потрібен спосіб для виявлення цієї проблеми та швидкого виправлення.
-      Коли ви створюєте звичайні умови розробки більш складними, при цьому не
+      Коли ви робите звичайні умови розробки більш складними, при цьому не
       маючи повністю розділених виконавчих потоків, повністю розділених сегментів
-      пам'яті, та міцьного майданчику для експерементальних своїх розробок, то це
+      пам'яті, та міцьного майданчику для експерементальних розробок, то це
       означає, що у вашої PHP-системі з'являються слабкі місця.
      </para>
      <para>
       Якщо ви хочете використовувати потоковий MPM, спробуйте сконфігурувати
-      FastCGI, під яким PHP можна надавати її власний простір пам'яті.  
+      FastCGI, під яким можна виділяти окремий простір пам'яті для PHP.  
      </para>
     </answer>
    </qandaentry>
@@ -54,7 +54,7 @@
       За промовчанням в Unix-системах він повинен бути в
       <filename>/usr/local/lib</filename>, що визначається як
       <filename>&lt;шлях-встановлення&gt;/lib</filename>.
-      Більшість користувачів змінює це під час компіляції через флаг 
+      Більшість користувачів змінює його під час компіляції через флаг 
       <link linkend="configure.with-config-file-path">--with-config-file-path</link>.
       Тобто, наприклад, це можна зробити так:
       <programlisting role="shell">
@@ -62,22 +62,22 @@
       </programlisting>
       Після чого потрібно скопіювати вміст файла <filename>php.ini-development</filename>
       з дистрибутива до <filename>/etc/php.ini</filename> та змінити його
-      як забажаєте.
+      під себе.
      </para>
       <programlisting role="shell">
 --with-config-file-scan-dir=PATH 
       </programlisting>
      <para>
-      У Windows шлях за промовчанням для &php.ini; знаходиться в директорії з
-      назвою Windows. Якщо ви використовуєте веб-сервер Apache, файл &php.ini;
-      спочатку шукається в директорії, де встановлено Apaches, наприклад
-      <filename>c:\program files\apache group\apache</filename>. В такому разі
+      У Windows, шлях за промовчанням для &php.ini;, веде до директорії Windows.
+      Якщо ви використовуєте веб-сервер Apache, файл &php.ini;
+      спочатку шукається в директорії, де встановлено Apache, наприклад в
+      <filename>c:\program files\apache group\apache</filename>. В такому разі,
       ви можете мати кілька різних файлів &php.ini; для різних версій Apache
-      на одній й тій самій машині.
+      на одній і тій самій машині.
      </para>
      <para>
      Прочитайте також інформацію про <link
-     linkend="configuration.file">Конфігураційний файл</link>.
+     linkend="configuration.file">Файл конфігурації</link>.
      </para>
     </answer>
    </qandaentry>
@@ -85,23 +85,24 @@
    <qandaentry xml:id="faq.installation.nodata">
     <question>
      <para>
-      Unix: I installed PHP, but every time I load a document, I get the 
-      message 'Document Contains No Data'! What's going on here?
+      Unix: Я встановив PHP, але кожен раз завантажуючи документ, я отримую
+      повідомлення 'Document Contains No Data'! (Документ не містить даних)
+      Чому так відбувається?
      </para>
     </question>
     <answer>
      <para>
-      This probably means that PHP is having some sort of problem
-      and is core-dumping. Look in your server error log to see if
-      this is the case, and then try to reproduce the problem with
-      a small test case. If you know how to use 'gdb', it is very
-      helpful when you can provide a backtrace with your bug report
-      to help the developers pinpoint the problem.  If you are using
-      PHP as an Apache module try something like:
+      Це ймовірно означає, що в PHP виникли деякі проблеми, та її ядро впало.
+      Продивіться журнали помилок сервера, та спробуйте відтворити
+      проблему створивши невеличкий тест. Якщо ви знаєте як використовувати 'gdb',
+      це може бути дуже корисним, бо ви можете надати зворотній слід (backtrace)
+      разом з вашим звітом про неполадку, щоб допомогти розробникам точно
+      визначити проблему. Якщо ви використовуєте PHP як модуль Apache, спробуйте
+      щось схоже на це:
       <itemizedlist>
        <listitem>
         <para>
-         Stop your httpd processes
+         Зупиніть процес httpd, та виконайте наступну команду:
         </para>
        </listitem>
        <listitem>
@@ -111,48 +112,49 @@
        </listitem>
        <listitem>
         <para>
-         Stop your httpd processes
+         Зупиніть процес httpd, та виконайте наступну команду:
         </para>
        </listitem>
        <listitem>
         <para>
-         &gt; run -X -f /path/to/httpd.conf
+         &gt; run -X -f /шлях/до/httpd.conf
         </para>
        </listitem>
        <listitem>
         <para>
-         Then fetch the URL causing the problem with your browser
+         Потім через браузер викличте URL, що викликає вашу проблему, та
+         виконайте наступну команду:
         </para>
        </listitem>      
        <listitem>
         <para>
-         &gt; run -X -f /path/to/httpd.conf
+         &gt; run -X -f /шлях/до/httpd.conf
         </para>
        </listitem>      
        <listitem>
         <para>
-         If you are getting a core dump, gdb should inform you of this now
+         Якщо ядро впаде, gdb повинен проінформувати вас про це
         </para>
        </listitem>      
        <listitem>
         <para>
-         type: bt
+         виконайте команду: bt
         </para>
        </listitem>
        <listitem>
         <para>
-         You should include your backtrace in your bug report. This should be submitted to 
+         Вам потрібно включити отриманий зворотній слід (backtrace) у звіт про
+         неполадку на сайті 
          <link xlink:href="&url.php.bugs;">&url.php.bugs;</link> 
         </para>
        </listitem>
       </itemizedlist>
      </para>
      <para>
-      If your script uses the regular expression functions
-      (<function>preg_match</function> and friends), you should make sure 
-      that you compiled PHP and Apache with the same regular 
-      expression package. This should happen automatically with
-      PHP and Apache 1.3.x
+      Якщо ваш скрипт використовує функцію регулярного виразу
+      (<function>preg_match</function> та подібні), потрібно переконатись, що
+      ви зібрали PHP та Apache з одним і тим же пакетом регулярних виразів.
+      Це повинно відбуватись автоматично з PHP та Apache 1.3.x
      </para>
     </answer>
    </qandaentry>
@@ -160,35 +162,35 @@
    <qandaentry xml:id="faq.installation.processing">
     <question>
      <para>
-      Unix: I installed PHP using RPMS, but Apache isn't processing the 
-      PHP pages! What's going on here?
+      Unix: Я встановив PHP використовуючи RPMS, але Apache не обробляє сторінки
+      PHP! Чому так відбувається?
      </para>
     </question>
     <answer>
      <para>
-      Assuming you installed both Apache and PHP from RPM packages, 
-      you need to uncomment or add some or all of the following lines
-      in your &httpd.conf; file:
+      Якщо припустити, що ви встановили Apache та PHP з пакетів RPM, то в такому
+      разі, вам потрібно розкоментувати або додати кілька або всі рядки у ваш
+      файл &httpd.conf;:
       <programlisting role="apache-conf">
 <![CDATA[
-# Extra Modules
+# Додаткові модулі
 AddModule mod_php.c
 AddModule mod_perl.c
 
-# Extra Modules
+# Додаткові модулі
 LoadModule php_module         modules/mod_php.so
 LoadModule php5_module        modules/libphp5.so
 LoadModule perl_module        modules/libperl.so
 ]]>
       </programlisting>
-      And add:
+      Та додати:
       <programlisting role="apache-conf">
 <![CDATA[
 AddType application/x-httpd-php .php
 ]]>
       </programlisting>
-      ... to the global properties, or to the properties of the 
-      VirtualDomain you want to have PHP support added to.
+      ... до глобальних властивостей, або до властивостей VirtualDomain,
+      куди ви хочете додати підтримку PHP.
      </para>
     </answer>
    </qandaentry>
@@ -196,17 +198,17 @@ AddType application/x-httpd-php .php
    <qandaentry xml:id="faq.installation.frontpage">
     <question>
      <para>
-      Unix: I patched Apache with the FrontPage extensions patch, and
-      suddenly PHP stopped working. Is PHP incompatible with the
-      Apache FrontPage extensions?
+      Unix: Я залатав Apache за допомогою розширення FrontPage, але раптово
+      PHP перестав працювати. Виходить, що PHP з розширенням FrontPage для
+      Apache несумісні?
      </para>
     </question>
     <answer>
      <para>
-      No, PHP works fine with the FrontPage extensions. The problem
-      is that the FrontPage patch modifies several Apache structures,
-      that PHP relies on. Recompiling PHP (using 'make clean ; make')
-      after the FP patch is applied would solve the problem.
+      Ні, PHP добре працює з розширенням FrontPage. Проблема в тому, що латка
+      FrontPage змінює деякі структури Apache, на які PHP покладається.
+      Перекомпіляція PHP (використовуючи 'make clean ; make')
+      після встановлення латки FrontPage, повинна вирішити цю проблему.
      </para>
     </answer>
    </qandaentry>
@@ -214,18 +216,16 @@ AddType application/x-httpd-php .php
    <qandaentry xml:id="faq.installation.blankscreen">
     <question>
      <para>
-      Unix/Windows: I have installed PHP, but when I try to
-      access a PHP script file via my browser, I get a blank screen.
+      Unix/Windows: Я встановив PHP, але коли намагаюсь викликати PHP-скрипти
+      через браузер, то отримую пустий екран.
      </para>
     </question>
     <answer>
      <para>
-      Do a 'view source' in the web browser and you will probably
-      find that you can see the source code of your PHP script.
-      This means that the web server did not send the script to
-      PHP for interpretation. Something is wrong with the server
-      configuration - double check the server configuration against
-      the PHP installation instructions.
+      Прогляньте сирцевий код (view source) у веб-браузері, і ви мабуть побачите
+      сирцевий код PHP-скрипта. Це означає, що веб-сервер не відправляє скрипт до
+      PHP-інтерпритатора. Тобто є якісь помилки в конфігурації веб-сервера, то ж
+      двічі перевірте цю конфігурацію, дотримуючись інструкцій встановлення PHP.
      </para>
     </answer>
    </qandaentry>
@@ -233,24 +233,21 @@ AddType application/x-httpd-php .php
    <qandaentry xml:id="faq.installation.500error">
     <question>
      <para>
-      Unix/Windows: I have installed PHP, but when try to
-      access a PHP script file via my browser, I get a
-      server 500 error.
+      Unix/Windows: Я встановив PHP, але коли намагаюсь викликати PHP-скрипт
+      через веб-браузер, то отримую помилку сервера 500.
      </para>
     </question>
     <answer>
      <para>
-      Something went wrong when the server tried to run PHP. To
-      get to see a sensible error message, from the command line,
-      change to the directory containing the PHP executable
-      (<filename>php.exe</filename> on Windows) and run
-      <command>php -i</command>. If PHP has any problems running,
-      then a suitable error message will be displayed which will
-      give you a clue as to what needs to be done next. If you
-      get a screen full of HTML codes (the output of the
-      <function>phpinfo</function> function) then PHP is working,
-      and your problem may be related to your server configuration
-      which you should double check.
+      Щось помилкове стається, коли веб-сервер намагається запустити PHP. Щоб
+      побачити зрозумілі повідомлення помилок, з командного рядка, змініть
+      поточну директорію на ту, де знаходиться виконавчий файл PHP
+      (у Windows це <filename>php.exe</filename>) та запустіть
+      <command>php -i</command>. Якщо PHP матиме будь-яку проблему, то вона покаже
+      відповідне повідомлення помилки, яке дасть вам уявлення "що робити далі".
+      Якщо ж вам видається повен екран HTML-коду (що є виводом функції
+      <function>phpinfo</function>), то PHP працює справно, і проблема можливо
+      стосується конфігурації веб-сервера, яку вам потрібно двічі перевірити.
      </para>
     </answer>
    </qandaentry>
@@ -258,8 +255,8 @@ AddType application/x-httpd-php .php
    <qandaentry xml:id="faq.installation.undefinedsyms">
     <question>
      <para> 
-      Some operating systems: I have installed PHP without errors,
-      but when I try to start Apache I get undefined symbol errors:
+      Деякі Операційні Системи: Я встановив PHP без помилок, але коли намагаюсь
+      запустити Apache, то отримую помилки "undefined symbol" (невизначений символ):
       <programlisting role="shell">
 [mybox:user /src/php5] root# apachectl configtest
  apachectl: /usr/local/apache/bin/httpd Undefined symbols:
@@ -270,10 +267,9 @@ AddType application/x-httpd-php .php
     </question>
     <answer>
      <para>
-      This has actually nothing to do with PHP, but with the MySQL
-      client libraries. Some need <option
-      role="configure">--with-zlib</option>, others do not. This
-      is also covered in the MySQL FAQ.
+      Це повідомлення насправді стосується не PHP, а клієнтської бібліотеки MySQL.
+      В деяких випадках потрібно <option role="configure">--with-zlib</option>,
+      а в деяких - ні. Дана проблема згадана в ЧАПі MySQL.
      </para>
     </answer>
    </qandaentry>
@@ -281,8 +277,8 @@ AddType application/x-httpd-php .php
    <qandaentry xml:id="faq.installation.cgierror">
     <question>
      <para>
-      Windows: I have installed PHP, but when I try to access
-      a PHP script file via my browser, I get the error:
+      Windows: Я встановив PHP, але коли намагаюсь доступитись до PHP-скриптів
+      через веб-браузер, то отримую таку помилку:
       <screen>
 <![CDATA[
 cgi error:
@@ -295,42 +291,40 @@ cgi error:
     </question>
     <answer>
      <para>
-      This error message means that PHP failed to output anything
-      at all. To get to see a sensible error message, from the
-      command line, change to the directory containing the PHP
-      executable (<filename>php.exe</filename> on Windows) and run
-      <command>php -i</command>. If PHP has any problems running,
-      then a suitable error message will be displayed which will
-      give you a clue as to what needs to be done next. If you
-      get a screen full of HTML codes (the output of the
-      <function>phpinfo</function> function) then PHP is working.
+      Це повідомлення означає, що PHP не змогла взагалі нічого вивести. Щоб отримати
+      зрозуміле повідомлення про помилку, з командного рядка, змініть поточну
+      директорію на ту, де знаходиться виконавчий файл PHP
+      (у Windows це <filename>php.exe</filename>) та запустіть команду
+      <command>php -i</command>. Якщо PHP матиме будь-яку проблему, то вона покаже
+      відповідне повідомлення помилки, яке дасть вам уявлення "що робити далі".
+      Якщо ж вам видається повен екран HTML-коду (що є виводом функції
+      <function>phpinfo</function>), то PHP працює справно.
      </para>
      <para>
-      Once PHP is working at the command line, try accessing the
-      script via the browser again. If it still fails then it
-      could be one of the following:
+      Як тільки PHP справно запрацює, з командного рядка, спробуйте знову
+      доступитись до скрипта через браузер. Якщо проблема ще залишається, то
+      причина може бути однією з наступних:
      </para>
      <itemizedlist>
       <listitem>
        <simpara>
-        File permissions on your PHP script,
-        <filename>php.exe</filename>, <filename>php5ts.dll</filename>,
-        &php.ini; or any PHP extensions you are trying to load are such
-        that the anonymous internet user
-        <literal>ISUR_&lt;machinename&gt;</literal> cannot access them.
+        Анонімний інтернет-користувач <literal>ISUR_&lt;тут-ім'я-машини&gt;</literal>,
+        через відсутність прав, не може отримати доступ до PHP-скриптів,
+        <filename>php.exe</filename>, <filename>php5ts.dll</filename>, &php.ini;
+        або до будь-якого PHP-розширення, яке ви намагаєтесь завантажити.
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        The script file does not exist (or possibly isn't where you
-        think it is relative to your web root directory). Note that
-        for IIS you can trap this error by ticking the 'check file
-        exists' box when setting up the script mappings in the
-        Internet Services Manager. If a script file does not exist
-        then the server will return a 404 error instead. There is
-        also the additional benefit that IIS will do any
-        authentication required for you based on the NTLanMan
-        permissions on your script file.
+        Файла зі скриптом не існує (або, можливо, він не там, де ви його уявляєте,
+        по відношенню до кореневої директорії вашого веб-сервера). Зауважте, що
+        в IIS ви можете попастись на це повідомлення, якщо поставите галочку
+        'check file exists' (перевіряти наявність файла) під час налаштування
+        співставлення скриптів (їх мапінгу) в Менеджері Internet Services.
+        Насправді, якщо файлу зі скриптом не існує, то веб-сервер повертатиме 404
+        помилку. Також існує додаткова перевага в тому, що IIS буде виконувати
+        будь-яку автентифікацію, яка базується на NTLanMan-дозволах для файлів
+        зі скриптами.
        </simpara>
       </listitem>
      </itemizedlist>
@@ -340,20 +334,20 @@ cgi error:
    <qandaentry xml:id="faq.installation.phpandiis">
     <question>
      <para>
-      Windows: I've followed all the instructions, but still can't
-      get PHP and IIS to work together!
+      Windows: Я дотримувався всіх інструкцій, але все ще не можу запустити PHP
+      та IIS, для їх сумісної роботи!
      </para>
     </question>
     <answer>
      <para>
-      Make sure any user who needs to run a PHP script has the rights
-      to run <filename>php.exe</filename>! IIS uses an anonymous user
-      which is added at the time IIS is installed. This user needs
-      rights to <filename>php.exe</filename>. Also, any authenticated
-      user will also need rights to execute <filename>php.exe</filename>.
-      And for IIS4 you need to tell it that PHP is a script engine.
-      Also, you will want to read 
-      <link linkend="faq.installation.forceredirect">this faq</link>.
+      Переконайтесь, що всі користувачі, кому потрібно запускати PHP-скрипти,
+      мають права на запуск <filename>php.exe</filename>! IIS використовує
+      анонімного користувача, який додається під час встановлення IIS. Цьому
+      користувачу потрібні права на запуск <filename>php.exe</filename>. Права
+      на запуск <filename>php.exe</filename> також потрібні для будь-якого
+      авторизованого користувача. А IIS4, потрібно повідомити, що PHP є
+      скриптовою системою. Також, вам буде цікаво прочитати
+      <link linkend="faq.installation.forceredirect">цей пункт ЧАПу</link>.
      </para>
     </answer>
    </qandaentry>
@@ -361,24 +355,24 @@ cgi error:
    <qandaentry xml:id="faq.installation.forceredirect">
     <question>
      <para>
-       When running PHP as CGI with IIS, PWS, OmniHTTPD or Xitami,
-       I get the following error: <literal>Security Alert! PHP CGI 
-       cannot be accessed directly.</literal>.
+       При запуску PHP як CGI на IIS, PWS, OmniHTTPD або Xitami,
+       я отримую наступну помилку: <literal>Security Alert! PHP CGI 
+       cannot be accessed directly.</literal>
      </para>
     </question>
     <answer>
      <para>
-      You must set the <link linkend="ini.cgi.force-redirect">
-      cgi.force_redirect</link> directive to <literal>0</literal>.
-      It defaults to <literal>1</literal> so be sure the directive
-      isn't commented out (with a <literal>;</literal>).  Like
-      all directives, this is set in &php.ini;
+      Вам потрібно встановити для директиви <link linkend="ini.cgi.force-redirect">
+      cgi.force_redirect</link> значення <literal>0</literal> (за промовчанням
+      встановлено <literal>1</literal>), а також переконайтесь, цю що директиву
+      не закоментовано (через символ крапки-з-комою <literal>;</literal>). Як і всі
+      директиви, вона також знаходиться у файлі &php.ini;
      </para>
      <para>
-      Because the default is <literal>1</literal>, it's critical
-      that you're 100% sure that the correct &php.ini; file is being 
-      read.  Read <link linkend="faq.installation.findphpini">this faq</link>
-      for details.
+      Оскільки за промовчанням встановлено <literal>1</literal>, то дуже важливо,
+      щоб ви переконались на 100%, що буде читатись коректний файл &php.ini;.
+      Читайте детальніше в
+      <link linkend="faq.installation.findphpini">цьому пункті ЧАПу</link>.
      </para>
     </answer>
    </qandaentry>
@@ -386,28 +380,27 @@ cgi error:
    <qandaentry xml:id="faq.installation.findphpini">
     <question>
      <para>
-      How do I know if my &php.ini; is being found and read?  It
-      seems like it isn't as my changes aren't being implemented.
+      Як я можу переконатись, що мій файл &php.ini; знаходиться та читається?
+      Схоже, що коли я його змінюю, мої зміни не впроваджуються.
      </para>
     </question>
     <answer>
      <para>
-      To be sure your &php.ini; is being read by PHP, make a call to
-      <function>phpinfo</function>. Near the top, there will be a
-      listing called <literal>Configuration File (php.ini)</literal>.
-      This will tell you where PHP is looking for &php.ini; and
-      whether or not it's being read. If just a directory <envar>PATH</envar> exists,
-      then it's not being read, and you should put your &php.ini;
-      in that directory. If &php.ini; is included within the <envar>PATH</envar>,
-      it is being read.
+      Щоб переконатись, що файл &php.ini; читається через PHP, викличте функцію
+      <function>phpinfo</function>. Вгорі виведеної таблиці, знайдіть пункт
+      <literal>Configuration File (php.ini)</literal>, де буде перелік, де саме
+      PHP шукає файл &php.ini; та чи було його прочитано. Якщо вказати тільки
+      директорію <envar>PATH</envar>, то файл не буде прочитано; вам слід покласти
+      &php.ini; в цю директорію. Якщо &php.ini; знаходиться в <envar>PATH</envar>,
+      його буде прочитано.
      </para>
      <para>
-      If &php.ini; is being read and you're running PHP as a module,
-      then be sure to restart your web server after making changes to
-      &php.ini; 
+      Якщо &php.ini; знаходиться в місці, де він читається, та PHP запущено як
+      модуль, то переконайтесь, що ви перезапустили веб-сервер після внесення
+      змін до &php.ini; 
      </para>
      <para>
-      See also <function>php_ini_loaded_file</function>.
+      Також прогляньте <function>php_ini_loaded_file</function>.
      </para>
     </answer>
    </qandaentry>
@@ -415,74 +408,75 @@ cgi error:
    <qandaentry xml:id="faq.installation.addtopath">
     <question>
      <para>
-      How do I add my PHP directory to the <envar>PATH</envar>
-      on Windows?
+      Як я можу додати директорію PHP до <envar>PATH</envar> на Windows?
      </para>
     </question>
     <answer>
      <para>
-      On Windows NT+ and Windows Server 2000+:
+      На Windows NT+ та Windows Server 2000+:
       <itemizedlist>
        <listitem><para>
-        Go to Control Panel and open the System icon (Start -&gt; Settings
-        -&gt; Control Panel -&gt; System, or just Start -&gt; Control Panel
-        -&gt; System for Windows XP/2003+)
+        Перейдіть в Панель Керування та клікніть на ярлику
+        Система (Старт -&gt; Налаштування
+        -&gt; Панель Керування -&gt; Система, або просто Старт -&gt; Панель
+        Керування -&gt; Система на Windows XP/2003+)
        </para></listitem>
        <listitem><para>
-        Go to the Advanced tab
+        Перейдіть на закладку Додатково
        </para></listitem>
        <listitem><para>
-        Click on the 'Environment Variables' button
+        Клікніть кнопку 'Змінні середовища'
        </para></listitem>
        <listitem><para>
-        Look into the 'System Variables' pane
+        Огляньте блок 'Системні Змінні'
        </para></listitem>
        <listitem><para>
-        Find the Path entry (you may need to scroll to find it)
+        Знайдіть запис Path (можливо потрібно прокрутити список,
+         щоб знайти цю змінну)
        </para></listitem>
        <listitem><para>
-        Double click on the Path entry
+        Подвійним кліком відкрийте знайдений запис Path
        </para></listitem>
        <listitem><para>
-        Enter your PHP directory at the end, including ';' before (e.g.
-        <literal>;C:\php</literal>)
+        Допишіть до існуючого запису символ ';' (якщо його немає в кінці) і далі
+        впишіть шлях до вашої директорії PHP (напр. <literal>;C:\php</literal>)
        </para></listitem>
        <listitem><para>
-        Press OK
+        Натискайте OK
        </para></listitem>
       </itemizedlist>
      </para>
      <para>
-      On Windows 98/Me you need to edit the <filename>autoexec.bat</filename>
-      file:
+      У Windows 98/Me вам потрібно змінити файл <filename>autoexec.bat</filename>:
       <itemizedlist>
        <listitem><para>
-        Open the Notepad (Start -&gt; Run and enter notepad)
+        Відкрийте Блокнот (Старт -&gt; Виконати та введіть notepad)
        </para></listitem>
        <listitem><para>
-        Open the <filename>C:\autoexec.bat</filename> file
+        Відкрийте файл <filename>C:\autoexec.bat</filename>
        </para></listitem>
        <listitem><para>
-        Locate the line with PATH=C:\WINDOWS;C:\WINDOWS\COMMAND;..... and add:
-        <literal>;C:\php</literal> to the end of the line
+        Знайдіть рядок із PATH=C:\WINDOWS;C:\WINDOWS\COMMAND;..... та допишіть:
+        <literal>;C:\php</literal> в кінець рядка
        </para></listitem>
        <listitem><para>
-        Save the file and restart your computer
+        Збережіть файл та перезапустіть ком'ютер
        </para></listitem>
       </itemizedlist>
      </para>
      <note>
       <simpara>
-       Be sure to reboot after following the steps above to ensure that the
-       <envar>PATH</envar> changes are applied.
+       Не забудьте перезавантажитись після того, як пройдете зазначені вище
+       кроки, щоб зміни для <envar>PATH</envar> були задіяні.
       </simpara>
      </note>
      <para>
-      The PHP manual used to promote the copying of files into the Windows
-      system directory, this is because this directory
-      (<filename>C:\Windows</filename>, <filename>C:\WINNT</filename>, etc.)
-      is by default in the system's <envar>PATH</envar>. Copying files into the Windows
-      system directory has long since been deprecated and may cause problems.
+      В даному PHP посібнику ще залишились рекомендації копіювання файлів в
+      системну директорію Windows. Такі рекомендації писались тільки через те,
+      що ця директорія (<filename>C:\Windows</filename>,
+      <filename>C:\WINNT</filename>, і т.д.) є за промовчанням в системній
+      змінній <envar>PATH</envar>. На даний момент, рекомендація копіювання файлів в
+      системну директорію Windows давно вже є застарілою та може спричиняти проблеми.
      </para>
     </answer>
    </qandaentry>
@@ -490,64 +484,63 @@ cgi error:
    <qandaentry xml:id="faq.installation.phprc">
     <question>
      <para>
-      How do I make the &php.ini; file available to PHP on windows?
+      Як зробити доступним файл &php.ini; для PHP на Windows?
      </para>
     </question>
     <answer>
      <para>
-      There are several ways of doing this. If you are using Apache, read
-      their installation specific instructions (<link
+      Є кілька варіантів це зробити. Якщо ви використовуєте Apache, прочитайте
+      призначені для нього інструкції встановлення (<link
        linkend="install.windows.apache1">Apache 1</link>, <link
-       linkend="install.windows.apache2">Apache 2</link>), otherwise you must
-      set the <varname>PHPRC</varname> environment variable:
+       linkend="install.windows.apache2">Apache 2</link>), в іншому випадку - ви
+      повинні встановити змінну середовища <varname>PHPRC</varname>:
      </para>
      <para>
-      On Windows NT, 2000, XP and 2003:
+      На Windows NT, 2000, XP та 2003:
       <itemizedlist>
        <listitem><para>
-        Go to Control Panel and open the System icon (Start -&gt; Settings
-        -&gt; Control Panel -&gt; System, or just Start -&gt; Control Panel
-        -&gt; System for Windows XP/2003)
+        Перейдіть в Панель Керування та клікніть ярлик Система (Старт -&gt;
+        Налаштування -&gt; Панель Керування -&gt; Система, або просто Старт -&gt;
+        Панель Керування -&gt; Система на Windows XP/2003)
        </para></listitem>
        <listitem><para>
-        Go to the Advanced tab
+        Перейдіть на закладку Додатково
        </para></listitem>
        <listitem><para>
-        Click on the 'Environment Variables' button
+        Клікніть кнопку 'Змінні Середовища'
        </para></listitem>
        <listitem><para>
-        Look into the 'System variables' pane
+        Знайдіть область 'Системні змінні'
        </para></listitem>
        <listitem><para>
-         Click on 'New' and enter 'PHPRC' as the variable name and the
-         directory where &php.ini; is located as the variable value (e.g.
-         <literal>C:\php</literal>)
+         Клікніть 'Нова' та введіть 'PHPRC' як назву змінної, а
+         шлях до директорії, де розміщено &php.ini; як значення цієї змінної
+         (наприклад <literal>C:\php</literal>)
        </para></listitem>
        <listitem><para>
-        Press OK and restart your computer
+        Натискайте OK та перезавантажуйте ком'ютер
        </para></listitem>
       </itemizedlist>
      </para>
      <para>
-      On Windows 98/Me you need to edit the <filename>autoexec.bat</filename>
-      file:
+      На Windows 98/Me вам потрібно змінити файл <filename>autoexec.bat</filename>:
       <itemizedlist>
        <listitem><para>
-        Open the Notepad (Start -&gt; Run and enter notepad)
+        Відкрийте Notepad (Старт -&gt; Виконати та введіть notepad)
        </para></listitem>
        <listitem><para>
-        Open the <filename>C:\autoexec.bat</filename> file
+        Відкрийте файл <filename>C:\autoexec.bat</filename>
        </para></listitem>
        <listitem><para>
-        Add a new line to the end of the file: <literal>set
-         PHPRC=C:\php</literal> (replace <literal>C:\php</literal> with the
-        directory where &php.ini; is located). Please note that the path
-        cannot contain spaces. For instance, if you have installed PHP in
-        <filename>C:\Program Files\PHP</filename>, you would enter
-        <filename>C:\PROGRA~1\PHP</filename> instead.
+        Додайте новий рядок в кінець файла та допишіть в нього: <literal>set
+        PHPRC=C:\php</literal> (тільки замініть <literal>C:\php</literal> на
+        шлях до директорії, де розміщено &php.ini;). Пам'ятайте, що шлях
+        до директорії не може містити пробіли. Наприклад, якщо ви встановили PHP
+        в <filename>C:\Program Files\PHP</filename>, вам потрібно вписувати
+        замість нього шлях <filename>C:\PROGRA~1\PHP</filename>.
        </para></listitem>
        <listitem><para>
-        Save the file and restart your computer
+        Збережіть файл та перезавантажте комп'ютер
        </para></listitem>
       </itemizedlist>
      </para>      
@@ -557,25 +550,24 @@ cgi error:
    <qandaentry xml:id="faq.installation.apache.multiviews">
     <question>
      <para>
-      Is it possible to use Apache content negotiation (MultiViews option)
-      with PHP?
+      Чи можна використовувати Apache Content Negotiation (опцію MultiViews)
+      разом з PHP?
      </para>
     </question>
     <answer>
      <para>
-      If links to PHP files include extension, everything works perfect. This
-      FAQ is only for the case when links to PHP files don't include extension
-      and you want to use content negotiation to choose PHP files from URL
-      with no extension.
-      In this case, replace the line <literal>AddType application/x-httpd-php
-      .php</literal> with:
+      Якщо посилатись на файли PHP разом з розширенням, то все працює справно.
+      Цей пункт ЧАПу призначений тільки для випадку, коли посилання на файли PHP
+      не містять розширення, та ви хочете використовувати Content Negotiation для
+      вибору файлів PHP з URL без розширень. В цьому випадку, замініть рядок
+      <literal>AddType application/x-httpd-php .php</literal> на такий:
       <programlisting role="apache-conf">
 <![CDATA[
 AddHandler php5-script php
 AddType text/html php
 ]]>
      </programlisting>
-     This solution doesn't work for Apache 1 as PHP module doesn't catch
+     Це рішення не працює для Apache 1, оскільки модуль PHP не ловить
      <literal>php-script</literal>.
      </para>
     </answer>
@@ -584,15 +576,17 @@ AddType text/html php
    <qandaentry xml:id="faq.installation.requestmethods">
     <question>
      <para>
-      Is PHP limited to process GET and POST request methods only?
+      Чи можна зробити обмеження з боку PHP, щоб обробляти тільки запити від
+      методів GET та POST?
      </para>
     </question>
     <answer>
      <para>
-      No, it is possible to handle any request method, e.g. CONNECT. Proper
-      response status can be sent with <function>header</function>.
-      If only GET and POST methods should be handled, it can be achieved with
-      this Apache configuration:
+      Ні, навпаки - можна обробляти запити, що відправляються будь-яким методом,
+      наприклад, CONNECT. Правильну відповідь статуса можна відправляти через
+      функцію <function>header</function>. Якщо ж вам потрібно, щоб оброблялись
+      тільки методи GET та POST, цього можна добитись завдяки наступній
+      конфігурації Apache:
       <programlisting role="apache-conf">
 <![CDATA[
 <LimitExcept GET POST>
