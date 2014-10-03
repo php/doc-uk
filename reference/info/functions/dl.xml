@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: e900578fcc7dabd07d4320ae71ebfec10435de65 Maintainer: ktretyak Status: wip -->
+<!-- EN-Revision: e900578fcc7dabd07d4320ae71ebfec10435de65 Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
 <refentry xml:id="function.dl" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>dl</refname>
-  <refpurpose>Loads a PHP extension at runtime</refpurpose>
+  <refpurpose>Завантажує розширення PHP під час виконання</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -14,18 +14,18 @@
    <methodparam><type>string</type><parameter>library</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Loads the PHP extension given by the parameter
+   Завантажує розширення PHP, що задається через параметр
    <parameter>library</parameter>.
   </para>
   <para>
-   Use <function>extension_loaded</function> to test whether a given
-   extension is already available or not. This works on both built-in
-   extensions and dynamically loaded ones (either through &php.ini; or
-   <function>dl</function>).
+   Використовуйте <function>extension_loaded</function>, щоб перевірити, чи задане
+   розширення вже доступне, чи ні. Ця функція працює в обох варіантах: для
+   вбудованих розширень та для тих, що динамічно завантажуються (тобто для
+   завантажених через &php.ini;, та для завантажених через <function>dl</function>).
   </para>
   <warning>
    <simpara>
-    This function has been removed from some SAPIs in PHP 5.3.
+    Ця функція видалена з деяких SAPI в PHP 5.3.
    </simpara>
   </warning>
  </refsect1>
@@ -38,51 +38,52 @@
      <term><parameter>library</parameter></term>
      <listitem>
       <para>
-       This parameter is <emphasis>only</emphasis> the filename of the
-       extension to load which also depends on your platform. For example,
-       the <link linkend="ref.sockets">sockets</link> extension (if compiled
-       as a shared module, not the default!) would be called 
-       <filename>sockets.so</filename> on Unix platforms whereas it is called
-       <filename>php_sockets.dll</filename> on the Windows platform.
+       Через цей параметр передається <emphasis>тільки</emphasis> назва файла
+       розширення для завантаження, яка також залежить від платформи. Наприклад,
+       розширення <link linkend="ref.sockets">sockets</link> (якщо
+       скомпільоване як завантажуваний модуль, а не як модуль за промовчанням!)
+       буде називатись <filename>sockets.so</filename> на Unix-платформах, в той
+       час як на Windows-платформах воно буде називатись
+       <filename>php_sockets.dll</filename>.
       </para>
       <para>
-       The directory where the extension is loaded from depends on your
-       platform:
+       Директорія, звідки розширення завантажується, залежить від платформи:
       </para>
       <para>
-       Windows - If not explicitly set in the &php.ini;, the extension is
-       loaded from <filename>C:\php4\extensions\</filename> (PHP 4) or 
-       <filename>C:\php5\</filename> (PHP 5) by default.
+       Windows - Якщо явно не підключено у файлі &php.ini;, за промовчанням,
+       розширення завантажується із <filename>C:\php4\extensions\</filename>
+       (PHP 4) або <filename>C:\php5\</filename> (PHP 5).
       </para>
       <para>
-       Unix - If not explicitly set in the &php.ini;, the default extension
-       directory depends on
+       Unix - Якщо явно не підключено у файлі &php.ini;, за промовчанням,
+       директорія розширення залежить від
        <itemizedlist>
         <listitem>
          <simpara>
-          whether PHP has been built with <literal>--enable-debug</literal>
-          or not
+          чи було зібрано PHP з параметром <literal>--enable-debug</literal>,
+          чи ні
          </simpara>
         </listitem>
         <listitem>
          <simpara>
-          whether PHP has been built with (experimental) ZTS (Zend Thread Safety)
-          support or not
+          чи було зібрано PHP з підтримкою (експерементального) ZTS (Zend Thread Safety),
+          чи ні
          </simpara>
         </listitem>
         <listitem>
          <simpara>
-          the current internal <literal>ZEND_MODULE_API_NO</literal> (Zend
-          internal module API number, which is basically the date on which a
-          major module API change happened, e.g. <literal>20010901</literal>)
+          поточний внутрішній номер <literal>ZEND_MODULE_API_NO</literal>
+          (внутрішній номер API Zend-модуля, який, як правило, є датою major-зміни
+          модуля API, наприклад <literal>20010901</literal>)
          </simpara>
         </listitem>
        </itemizedlist>
-       Taking into account the above, the directory then defaults to
+       Беручи до уваги вищезазначене, маємо такі директорії для розширень за
+       промовчанням
        <literal>&lt;install-dir&gt;/lib/php/extensions/ &lt;debug-or-not&gt;-&lt;zts-or-not&gt;-ZEND_MODULE_API_NO</literal>,
-       e.g.
+       наприклад
        <filename>/usr/local/php/lib/php/extensions/debug-non-zts-20010901</filename>
-       or
+       або
        <filename>/usr/local/php/lib/php/extensions/no-debug-zts-20010901</filename>.
       </para>
      </listitem>
@@ -94,13 +95,13 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   &return.success; If the functionality of loading modules is not available
-   or has been disabled (either by setting
-   <link linkend="ini.enable-dl">enable_dl</link> off or by enabling &safemode;
-   in &php.ini;) an <constant>E_ERROR</constant> is emitted
-   and execution is stopped. If <function>dl</function> fails because the
-   specified library couldn't be loaded, in addition to &false; an
-   <constant>E_WARNING</constant> message is emitted.
+   &return.success; Якщо механізм завантаження модулів недоступний чи відключений
+   (або через значення off для директиви
+   <link linkend="ini.enable-dl">enable_dl</link>, або через включення &safemode;
+   у файлі &php.ini;), то видається повідомлення помилки <constant>E_ERROR</constant>
+   та припиняється виконання. Якщо <function>dl</function> провалюється через
+   те, що зазначену бібліотеку не можна завантажити, на додаток до &false; буде
+   видаватись повідомлення <constant>E_WARNING</constant>.
   </para>
  </refsect1>
 
@@ -108,11 +109,11 @@
   &reftitle.examples;
   <para>
    <example>
-    <title><function>dl</function> examples</title>
+    <title>Використання <function>dl</function></title>
     <programlisting role="php">
 <![CDATA[
 <?php
-// Example loading an extension based on OS
+// Приклад завантаження розширення, виходячи з ОС
 if (!extension_loaded('sqlite')) {
     if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
         dl('php_sqlite.dll');
@@ -121,7 +122,7 @@ if (!extension_loaded('sqlite')) {
     }
 }
 
-// Or, the PHP_SHLIB_SUFFIX constant is available as of PHP 4.3.0
+// Або, використовуючи константу PHP_SHLIB_SUFFIX, що доступна починаючи з PHP 4.3.0
 if (!extension_loaded('sqlite')) {
     $prefix = (PHP_SHLIB_SUFFIX === 'dll') ? 'php_' : '';
     dl($prefix . 'sqlite.' . PHP_SHLIB_SUFFIX);
@@ -148,11 +149,10 @@ if (!extension_loaded('sqlite')) {
       <row>
        <entry>5.3.0</entry>
        <entry>
-        <function>dl</function> is now disabled in some SAPIs due to
-        stability issues.  The only SAPIs that
-        allow <function>dl</function> are CLI and Embed.  Use
-        the <link linkend="ini.extension">Extension Loading
-        Directives</link> instead.
+        <function>dl</function> виключено в деяких SAPI, в зв'язку з
+        нестабільністю. Для функції <function>dl</function> доступними SAPI
+        залишаються тільки CLI та Embed. Замість неї використовуйте
+        <link linkend="ini.extension">Директиви Завантаження Розширень</link>.
        </entry>
       </row>
      </tbody>
@@ -165,15 +165,14 @@ if (!extension_loaded('sqlite')) {
   &reftitle.notes;
   <note>
    <para>
-    <function>dl</function> is <emphasis>not</emphasis> supported when
-    PHP is built with ZTS support. Use
-    the <link linkend="ini.extension">Extension Loading
-    Directives</link> instead.
+    Функція <function>dl</function> <emphasis>НЕ</emphasis> підтримується коли
+    PHP зібрана з підтримкою ZTS. Замість неї використовуйте
+    <link linkend="ini.extension">Директиви Завантаження Розширень</link>.
    </para>
   </note>
   <note>
    <para>
-    <function>dl</function> is case sensitive on Unix platforms.
+    <function>dl</function> є регістро-чутливою на Unix-платформах.
    </para>
   </note>
   &note.sm.disabled;
@@ -183,7 +182,7 @@ if (!extension_loaded('sqlite')) {
   &reftitle.seealso;
   <para>
    <simplelist>
-    <member><link linkend="ini.extension">Extension Loading Directives</link></member>
+    <member><link linkend="ini.extension">Директиви Завантаження Розширень</link></member>
     <member><function>extension_loaded</function></member>
    </simplelist>
   </para>
