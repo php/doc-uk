@@ -4,7 +4,7 @@
   <sect1 xml:id="install.fpm.install" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
    <title>Встановлення</title>
     <sect2 xml:id="install.fpm.install.compiling">
-     <title>Збірка з сирців</title>
+     <title>Збірка із сирців</title>
      <para>
       Для того щоб включити FPM при збірці PHP, потрібно додати
       <literal>--enable-fpm</literal> до вашого конфігураційного рядка.

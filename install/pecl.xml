@@ -1,53 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 2bb07c8c43f028c665a33bfc08a22639e9e35dc6 Maintainer: ktretyak Status: wip -->
+<!-- EN-Revision: 2bb07c8c43f028c665a33bfc08a22639e9e35dc6 Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
 
 <chapter xml:id="install.pecl" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
- <title>Installation of PECL extensions</title>
+ <title>Встановлення розширень PECL</title>
 
  <sect1 xml:id="install.pecl.intro">
-  <title>Introduction to PECL Installations</title>
+  <title>Вступ для встановлення PECL</title>
   <simpara>
-   <link xlink:href="&url.pecl;">PECL</link> is a repository of PHP extensions that
-   are made available to you via the <link xlink:href="&url.php.pear;">PEAR</link>
-   packaging system.  This section of the manual is intended to demonstrate
-   how to obtain and install PECL extensions.
+   <link xlink:href="&url.pecl;">PECL</link> є сховищем (репозиторієм) розширень
+   PHP, які доступні через систему пакетів
+   <link xlink:href="&url.php.pear;">PEAR</link>. Цей розділ посібника
+   призначається для ознайомлення з можливістю отримання та встановлення
+   розширень PECL.
   </simpara>
   <simpara>
-   These instructions assume <literal>/your/phpsrcdir/</literal> is the path
-   to the PHP source distribution, and that <literal>extname</literal> is the name of the
-   PECL extension.  Adjust accordingly.  These instructions also assume a 
-   familiarity with the <link xlink:href="&url.php.pear.cli;">pear command</link>.
-   The information in the PEAR manual for the <literal>pear</literal> command also
-   applies to the <literal>pecl</literal> command.
+   В наступних інструкціях припускається, що <literal>/your/phpsrcdir/</literal>
+   є шляхом до сирців дистрибутива PHP, а <literal>extname</literal> - є назвою
+   розширення PECL, так що вносьте відповідні корективи. В цих інструкціях також
+   припускається, що ви знайомі з
+   <link xlink:href="&url.php.pear.cli;">командою pear</link>. Інформація в
+   посібнику PEAR для команди <literal>pear</literal> також застосовна для
+   команди <literal>pecl</literal>.
   </simpara>
   <simpara>
-   To be useful, a shared extension must be built, installed, and loaded.  The
-   methods described below provide you with various instructions on how to
-   build and install the extensions, but they do not automatically load them.
-   Extensions can be loaded by adding an <link
-   linkend="ini.extension">extension</link> directive to the &php.ini;
-   file, or through the use of the <function>dl</function> function.
+   Щоб бути корисним, загальне розширення потрібно зібрати, встановити, та
+   підключити. Нижче описано кілька варіантів того, як збирати та встановлювати
+   розширення. Такі розширення підключаються не автоматично, а через директиву
+   <link linkend="ini.extension">extension</link> у файлі &php.ini;, або
+   використовуючи функцію <function>dl</function>.
   </simpara>
   <simpara>
-   When building PHP modules, it's important to have known-good versions 
-   of the required tools (autoconf, automake, libtool, etc.) See the 
-   <link xlink:href="&url.php.anongit;">Anonymous Git Instructions</link> for 
-   details on the required tools, and required versions.
+   При побудові модулів PHP, важливо використовувати добре відомі версії
+   необхідних інструментів (autoconf, automake, libtool, і т.д.) Прогляньте
+   <link xlink:href="&url.php.anongit;">Інструкції для Анонімного
+   Git-доступа</link> для детальнішого ознайомлення з необхідними інструментами
+   та версіями.
   </simpara>
  </sect1>
 
  <sect1 xml:id="install.pecl.downloads">
-  <title>Downloading PECL extensions</title>
+  <title>Завантаження розширень PECL</title>
   <simpara>
-   There are several options for downloading PECL extensions, such as:
+   Існує кілька опцій для завантаження розширень PECL:
   </simpara>
   <itemizedlist>
    <listitem>
     <simpara>
-     The <literal>pecl install extname</literal> command downloads the
-     extensions code automatically, so in this case there is no need
-     for a separate download.
+     Команда <literal>pecl install extname</literal> завантажує розширення
+     автоматично, так що в цьому випадку, не потрібно окремих завантажень.
     </simpara>
    </listitem>
    <listitem>
@@ -55,10 +56,9 @@
      <link xlink:href="&url.pecl;">&url.pecl;</link>
     </simpara>
     <simpara>
-     The PECL web site contains information about the different extensions
-     that are offered by the PHP Development Team.  The information available
-     here includes: ChangeLog, release notes, requirements and other similar
-     details.
+     : Веб-сайт PECL містить інформацію про різні розширення, що пропонуються
+     Командою Розробників PHP - вона в себе включає: Журнал Змін, Замітки
+     Випусків (Релізів), перелік необхідних ресурсів та інші подібні деталі.
     </simpara>
    </listitem>
    <listitem>
@@ -66,10 +66,10 @@
      <literal>pecl download extname</literal>
     </simpara>
     <simpara>
-     PECL extensions that have releases listed on the PECL web site are
-     available for download and installation using the <link
-     xlink:href="&url.php.pear.cli;">pecl command</link>.
-     Specific revisions may also be specified.
+     : Розширення PECL, які вже мають релізи, що опубліковані на сайті PECL,
+     доступні для завантаження та встановлення за допомогою <link
+     xlink:href="&url.php.pear.cli;">команд pecl</link>.
+     Можна також вказувати конкретні ревізії.
     </simpara>
    </listitem>
    <listitem>
@@ -77,10 +77,11 @@
      <acronym>SVN</acronym>
     </simpara>
     <simpara>
-     Most PECL extensions also reside in <acronym>SVN</acronym>.  A web-based view may
-     be seen at <link xlink:href="&url.php.svn;pecl/">&url.php.svn;pecl/</link>.  
-     To download straight from <acronym>SVN</acronym>, the following 
-     sequence of commands may be used:
+     : Більшість розширень PECL також знаходяться в <acronym>SVN</acronym>.
+     Через веб-браузер можна проглянути їх на
+     <link xlink:href="&url.php.svn;pecl/">&url.php.svn;pecl/</link>.  
+     Для їх безпосереднього завантаження з <acronym>SVN</acronym>, можна
+     використовувати наступну послідовність команд:
     </simpara>
     <para>
      <screen>
@@ -90,105 +91,112 @@ $ svn checkout http://svn.php.net/repository/pecl/extname/trunk extname
    </listitem>
    <listitem>
     <simpara>
-     Windows downloads
+     Завантаження для Windows :
     </simpara>
     <simpara>
-     At this time the PHP project does not compile Windows binaries for
-     PECL extensions. However, to compile PHP under Windows see the
-     chapter titled
-     <link linkend="install.windows.building">building PHP for Windows</link>.
+     На даний момент PHP-проект не компілює бінарники Windows для
+     розширень PECL. Тим не менш, щоб компілювати PHP для Windows розділ
+     з назвою
+     <link linkend="install.windows.building">Збірка PHP з сирців для Windows</link>.
     </simpara>
    </listitem>
   </itemizedlist>
  </sect1>
 
  <sect1 xml:id="install.pecl.windows">
-  <title>Installing a PHP extension on Windows</title>
+  <title>Встановлення розширень PHP на Windows</title>
   <para>
-   On Windows, you have two ways to load a PHP extension: either compile it into PHP, or 
-   load the DLL. Loading a pre-compiled extension is the easiest and preferred way.
+   На Windows, ви маєте два варіанта для завантаження розширень PHP: або
+   компілювати їх в PHP, або завантажити DLL. Завантаження вже компільованих
+   розширень є простішим та рекомендованим.
   </para>
   <para>
-   To load an extension, you need to have it available as a ".dll" file on your system. 
-   All the extensions are automatically and periodically compiled by the PHP Group 
-   (see next section for the download).
+   Щоб підключити розширення, вам потрібно мати доступний файл ".dll" на вашій
+   системі. Всі розширення автоматично та періодично компілюються Групою PHP
+   (дивіться наступний блок для завантажень).
   </para>
   <para>
-   To compile an extension into PHP, please refer to <link linkend="install.windows.building">
-   building from source</link> documentation.
+   Щоб компілювати розширення в PHP, ознайомтесь з документацією
+   <link linkend="install.windows.building">Збірка із сирців</link>.
   </para>
   <para>
-   To compile a standalone extension (aka a DLL file), please refer to <link linkend="install.windows.building">
-   building from source</link> documentation. If the DLL file is available neither with your 
-   PHP distribution nor in PECL, you may have to compile it before you can start using the 
-   extension.
+   Для компіляції окремого розширення (тобто файлу DLL), ознайомтесь з
+   документацією <link linkend="install.windows.building">Збірка із сирців</link>.
+   Якщо DLL-файл не доступний ні із дистрибутива PHP, ні із PECL, вам потрібно
+   самостійно скомпілювати це розширення перед його використанням.
   </para>
 
   <sect2 xml:id="install.pecl.windows.find">
-   <title>Where to find an extension?</title>
+   <title>Де можна знайти розширення?</title>
    <para>
-    PHP extensions are usually called "php_*.dll" (where the star represents the name of 
-    the extension) and  they are located under the "PHP\ext" folder.
+    Розширення PHP зазвичай мають назву "php_*.dll" (де зірочкою позначено назву
+    розширення) та розміщені в директорії "PHP\ext".
    </para>
    <para>
-    PHP ships with the extensions most useful to the majority of developers. They are 
-    called "core" extensions.
+    PHP поставляється з найбільш корисними розширеннями для більшості
+    розробників. Вони називаються "core" (тобто основними) розширеннями.
    </para>
    <para>
-    However, if you need functionality not provided by any core extension, you may still be 
-    able to find one in PECL. The PHP Extension Community Library (PECL) is a repository for 
-    PHP Extensions, providing a directory of all known extensions and hosting facilities for 
-    downloading and development of PHP extensions.
+    Тим не менше, якщо вам потрібна функціональність, яку не надає жодне із
+    основних розширень, вам ще можна пошукати його в PECL. PHP Extension
+    Community Library (PECL), що перекладається як Бібліотека Розширень
+    Спільноти PHP, є сховищем Розширень PHP, що надає місце під хостинг
+    всім відомим розширенням, забезпечуючи можливість для їхнього завантаження
+    та розробки.
    </para>
    <para>
-    If you have developed an extension for your own uses, you might want to think about hosting 
-    it on PECL so that others with the same needs can benefit from your time. A nice side effect 
-    is that you give them a good chance to give you feedback, (hopefully) thanks, bug reports 
-    and even fixes/patches. Before you submit your extension for hosting on PECL, please read 
-    &url.pecl.submit;.
+    Якщо ви хочете розробляти розширення для власного використання, ви можете
+    розраховувати на розміщення його на хостингу PECL, щоб інші люди також
+    могли отримати вигоду від його використання. Гарним побічним ефектом цього
+    є те, що ви даєте їм хороший шанс щоб вони тримали з вами зворотній зв'язок
+    (сподіваємось) для висловлення вдячності, для звітування про неполадки та
+    події виправлення/латання (англ. fixes/patches). Перед тим як розмістити
+    ваше розширення на хостингу PECL, прохання прочитати
+    <link xlink:href="&url.pecl.submit;">PECL submit</link>.
    </para>
   </sect2>
 
   <sect2 xml:id="install.pecl.windows.which">
-   <title>Which extension to download?</title>
+   <title>Яке розширення завантажувати?</title>
    <para>
-    <emphasis>Many times, you will find several versions of each DLL:</emphasis>
+    <emphasis>Дуже часто, ви можете знайти декілька версій кожної DLL:</emphasis>
     <itemizedlist>
      <listitem>
       <simpara>
-       Different version numbers (at least the first two numbers should match)
+       З різними номерами версій (принаймні перші дві цифри повинні збігатись)
       </simpara>
      </listitem>
      <listitem>
       <simpara>
-       Different thread safety settings
+       З різним налаштуванням збереження потоків
       </simpara>
      </listitem>
      <listitem>
       <simpara>
-       Different processor architecture (x86, x64, ...)
+       З різними архітектурами процесорів (x86, x64, ...)
       </simpara>
      </listitem>
      <listitem>
       <simpara>
-       Different debugging settings
+       З різним налаштуванням відладки
       </simpara>
      </listitem>
      <listitem>
       <simpara>
-       <literal>etc.</literal>
+       <literal>і т.д.</literal>
       </simpara>
      </listitem>
     </itemizedlist>
    </para>
    <para>
-    You should keep in mind that your extension settings should match all the 
-    settings of the PHP executable you are using. The following PHP script will 
-    tell you <emphasis>all</emphasis> about your PHP settings:
+    Також слід пам'ятати, що всі ваші налаштування розширень повинні бути
+    відповідними до всіх налаштувань, які ви використовуєте для виконавчих
+    файлів PHP. Наступний скрипт PHP може надати інформацію про
+    <emphasis>всі</emphasis> ваші налаштування PHP:
    </para>
    <para>
     <example>
-     <title><function>phpinfo</function> call</title>
+     <title>Виклик <function>phpinfo</function></title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -199,21 +207,23 @@ phpinfo();
     </example>
    </para>
    <para>
-    Or from the command line, run:
+    Або запустіть з командного рядка:
     <screen>
 <![CDATA[
-drive:\\path\to\php\executable\php.exe -i
+диск:\\шлях\до\php\php.exe -i
 ]]>
     </screen>
    </para>
   </sect2>
 
   <sect2 xml:id="install.pecl.windows.loading">
-   <title>Loading an extension</title>
+   <title>Завантаження розширень</title>
    <para>
-    The most common way to load a PHP extension is to include it in your <filename>php.ini</filename> 
-    configuration file. Please note that many extensions are already present in your 
-    <filename>php.ini</filename> and that you only need to remove the semicolon to activate them.
+    Найпоширеніший способіб підключення розширення PHP - це включення його у
+    конфігураційному файлі <filename>php.ini</filename>. Також пам'ятайте, що
+    більшість розширень вже представлено у вашому файлі
+    <filename>php.ini</filename>, та вам достатньо лише видалити символ крапки
+    з комою (тобто розкоментувати їх), щоб вони стали активними.
     <screen>
 <![CDATA[
 ;extension=php_extname.dll
@@ -226,9 +236,10 @@ extension=php_extname.dll
     </screen>
    </para>
    <para>
-    However, some web servers are confusing because they do not use the <filename>php.ini</filename> located alongside 
-    your PHP executable. To find out where your actual <filename>php.ini</filename> resides, look 
-    for its path in <function>phpinfo</function>:
+    Тим не менше, але деякі веб-сервери плутаються, оскільки не використовують
+    <filename>php.ini</filename>, який розташовано поруч з виконуючим файлом PHP.
+    Щоб знайти звідки фактично читається ваш <filename>php.ini</filename>,
+    прогляньте шлях в <function>phpinfo</function>:
     <screen>
 <![CDATA[
 Configuration File (php.ini) Path  C:\WINDOWS
@@ -241,44 +252,50 @@ Loaded Configuration File   C:\Program Files\PHP\5.2\php.ini
     </screen>
    </para>
    <para>
-    After activating an extension, save <filename>php.ini</filename>, restart the web server and check 
-    <function>phpinfo</function> again. The new extension should now have its own section.
+    Після активації розширення, збережіть <filename>php.ini</filename>,
+    перезавантажте веб-сервер, та перевірте вивід <function>phpinfo</function>
+    знову. Нове розширення тепер повинно бути в його власному блоці.
    </para>
   </sect2>
 
   <sect2 xml:id="install.pecl.windows.problemsolving">
-   <title>Resolving problems</title>
+   <title>Вирішення проблем</title>
    <para>
-    If the extension does not appear in <function>phpinfo</function>, you should check your logs to 
-    learn where the problem comes from.
+    Якщо розширення не представлено у виводі <function>phpinfo</function>,
+    вам варто перевірити ваші журнали помилок, щоб прослідкувати що є причиною
+    проблеми.
    </para>
    <para>
-    If you are using PHP from the command line (CLI), the extension loading error can be read 
-    directly on screen.
+    Якщо ви використовуєте PHP з командного рядка (CLI), помилки при
+    завантаженні розширення можна читати безпосередньо з екрана.
    </para>
    <para>
-    If you are using PHP with a web server, the location and format of the logs vary depending on 
-    your software. Please read your web server documentation to locate the logs, as it does not 
-    have anything to do with PHP itself.
+    Якщо ви використовуєте PHP із веб-сервером, розташування та формат журнала
+    помилок дуже залежать від налаштування веб-сервера. Так що прочитайте
+    документацію веб-сервера, щоб знайти журнали помилок, оскільки це не
+    залежить від самої PHP.
    </para>
    <para>
-    Common problems are the location of the DLL, the value of the "<link linkend="ini.extension-dir">
-    extension_dir</link>" setting inside <filename>php.ini</filename> and compile-time setting mismatches.
+    Поширеною проблемою є розташування DLL, значення параметра <link linkend="ini.extension-dir">
+    extension_dir</link> всередині <filename>php.ini</filename> та
+    невідповідність налаштувань під час компіляції.
    </para>
    <para>
-    If the problem lies in a compile-time setting mismatch, you probably didn't download the right DLL. 
-    Try downloading again the extension with the right settings. Again, <function>phpinfo</function> 
-    can be of great help.
+    Якщо проблема полягає у невідповідності налаштувань під час компіляції,
+    ймовірно ви не правильно завантажили DLL. Спробуйте завантажити розширення
+    знову, але з правильними налаштуваннями. Нагадаємо, <function>phpinfo</function> 
+    може дуже допомогти.
    </para>
   </sect2>
 
  </sect1>
  
  <sect1 xml:id="install.pecl.pear">
-  <title>Compiling shared PECL extensions with the pecl command</title>
+  <title>Компіляція загальнодоступних розширень PECL через команду pecl</title>
   <simpara>
-   PECL makes it easy to create shared PHP extensions. Using the 
-   <link xlink:href="&url.php.pear.cli;">pecl command</link>, do the following:
+   PECL дозволяє легко створювати загальнодоступні розширення PHP.
+   Використовуючи <link xlink:href="&url.php.pear.cli;">команду pecl</link>,
+   запустіть наступне:
   </simpara>
   <para>
    <screen>
@@ -286,17 +303,16 @@ $ pecl install extname
    </screen>
   </para>
   <simpara>
-   This will download the source for <emphasis>extname</emphasis>, 
-   compile, and install <filename>extname.so</filename> into your <link
-   linkend="ini.extension-dir">extension_dir</link>.  
-   <filename>extname.so</filename> may then be loaded via &php.ini;
+   Ця команда завантажить сирці для <emphasis>extname</emphasis>, 
+   скомпілює їх, та встановить <filename>extname.so</filename> у <link
+   linkend="ini.extension-dir">extension_dir</link>. Після чого файл 
+   <filename>extname.so</filename> можна підключати через &php.ini;
   </simpara>
   <simpara>
-   By default, the <literal>pecl</literal> command will not install
-   packages that are marked with the <literal>alpha</literal> or
-   <literal>beta</literal> state.  If no <literal>stable</literal> packages
-   are available, you may install a <literal>beta</literal> package using the
-   following command:
+   За промовчанням, команда <literal>pecl</literal> не встановлює пакети, які
+   познечені як <literal>alpha</literal> або <literal>beta</literal>. Якщо
+   стабільні (<literal>stable</literal>) пакети не доступні, ви можете
+   встановити <literal>beta</literal> пакети за допомогою наступної команди:
   </simpara>
   <para>
    <screen>
@@ -304,7 +320,7 @@ $ pecl install extname-beta
    </screen>
   </para>
   <para>
-   You may also install a specific version using this variant:
+   Ви можете також встановити конкретну версію використовуючи такий варіант:
   </para>
   <para>
    <screen>
@@ -313,26 +329,26 @@ $ pecl install extname-0.1
   </para>
   <note>
    <para>
-    After enabling the extension in &php.ini;, restarting the web service is
-    required for the changes to be picked up.
+    Після підключення розширення в &php.ini;, перезапуск веб-сервісу є
+    обов'язковим, щоб зміни набрали чинності.
    </para>
   </note>
  </sect1>
 
  <sect1 xml:id="install.pecl.phpize">
-  <title>Compiling shared PECL extensions with phpize</title>
+  <title>Компіляція загальнодоступних розширень PECL через команду phpize</title>
   <simpara>
-   Sometimes, using the <literal>pecl</literal> installer is not an option.
-   This could be because you're behind a firewall, or it could be because the
-   extension you want to install is not available as a PECL compatible
-   package, such as unreleased extensions from SVN.  If you need to build such
-   an extension, you can use the lower-level build tools to perform the build
-   manually.
+   Інколи, використання встановлювача <literal>pecl</literal> не підходить,
+   через те, що цього не дозволяє фаєрвол, або це може бути через те, що
+   розширення, яке ви хочете встановити, не доступне у вигляді пакета PECL,
+   наприклад, розширення з SVN, що ще не має релізу. Якщо вам потрібно зібрати
+   таке розширення, ви можете це зробити вручну за допомогою інструмента
+   для низькорівневої побудови.
   </simpara>
   <simpara>
-   The <literal>phpize</literal> command is used to prepare the build
-   environment for a PHP extension.  In the following sample, the sources for
-   an extension are in a directory named <filename>extname</filename>:
+   Команда <literal>phpize</literal> використовується для підготовки оточення
+   збірки розширення PHP. В наступному прикладі, сирці для розширення
+   знаходяться в директорії з назвою <filename>extname</filename>:
   </simpara>
   <para>
    <screen>
@@ -346,21 +362,22 @@ $ make
    </screen>
   </para>
   <simpara>
-   A successful install will have created <filename>extname.so</filename> and put it 
-   into the PHP 
-   <link linkend="ini.extension-dir">extensions directory</link>.  You'll need
-   to and adjust &php.ini; and add an <literal>extension=extname.so</literal>
-   line before you can use the extension.
+   В разі успішного встановлення буде створено файл
+   <filename>extname.so</filename> та покладено в
+   <link linkend="ini.extension-dir">директорію розширень</link> PHP. Вам
+   потрібно додати рядок <literal>extension=extname.so</literal> у файл
+   &php.ini;, перед тим як ви зможете використовувати розширення.
   </simpara>
   <simpara>
-   If the system is missing the <literal>phpize</literal> command, and precompiled
-   packages (like RPM's) are used, be sure to also install the appropriate 
-   devel version of the PHP package as they often include the 
-   <literal>phpize</literal> command along with the appropriate header files to 
-   build PHP and its extensions.
+   Якщо у вашій системі відсутня команда <literal>phpize</literal>, але є
+   можливість використовувати предкомпільований пакет (такий як RPM),
+   переконайтесь також, що встановили відповідну версію пакету PHP для
+   розробників, оскільки вони часто включають команду <literal>phpize</literal>
+   разом з відповідними заголовками файлів для збірки PHP та її розширень.
   </simpara>
   <simpara>
-   Execute <command>phpize --help</command> to display additional usage information.
+   Виконайте команду <command>phpize --help</command>, щоб відобразити
+   додаткову інформацію для використання.
   </simpara>
  </sect1>
  
@@ -368,20 +385,20 @@ $ make
   <title>php-config</title>
   
   <para>
-   php-config is a simple shell script for obtaining information about the
-   installed PHP configuration.
+   php-config є простим shell-скриптом для отримання інформації про
+   встановлену конфігурацію PHP.
   </para>
   
   <para>
-   When compiling extensions, if you have multiple PHP versions installed, you
-   may specify for which installation you'd like to build by using the
-   <literal>--with-php-config</literal> option during configuration, specifying
-   the path of the respective php-config script.
+   При компіляції розширень, якщо ви маєте кілька встановлених версій PHP, ви
+   повинні уточнити потрібну версію за допомогою параметра
+   <literal>--with-php-config</literal> під час
+   конфігурації, вказуючи шлях до відповідного скрипта php-config.
   </para>
   
   <para>
-   The list of command line options provided by the php-config script can be queried
-   anytime by running php-config with the <option>-h</option> switch:
+   Список параметрів командного рядка, призначених для скрипта php-config,
+   завжди можна отримати, запустивши php-config з параметром <option>-h</option>:
    <screen>
 <![CDATA[
 Usage: /usr/local/bin/php-config [OPTION]
@@ -403,58 +420,58 @@ Options:
   
   <para>
    <table>
-    <title>Command line options</title>
+    <title>Параметри командного рядка</title>
     <tgroup cols="2">
      <thead>
       <row>
-       <entry>Option</entry>
-       <entry>Description</entry>
+       <entry>Параметр</entry>
+       <entry>Опис</entry>
       </row>
      </thead>
      <tbody>
       <row>
        <entry>--prefix</entry>
-       <entry>Directory prefix where PHP is installed, e.g. /usr/local</entry>
+       <entry>Директорія, де встановлено PHP, напр. /usr/local</entry>
       </row>
       <row>
        <entry>--includes</entry>
-       <entry>List of -I options with all include files</entry>
+       <entry>Список опцій -I зі всіма файлами, що підключаються</entry>
       </row>
       <row>
        <entry>--ldflags</entry>
-       <entry>LD Flags which PHP was compiled with</entry>
+       <entry>Флаг LD, з яким PHP було компільовано</entry>
       </row>
       <row>
        <entry>--libs</entry>
-       <entry>Extra libraries which PHP was compiled with</entry>
+       <entry>Додаткова бібліотека, з якою PHP було компільовано</entry>
       </row>
       <row>
        <entry>--extension-dir</entry>
-       <entry>Directory where extensions are searched by default</entry>
+       <entry>Директорія, де, за промовчанням, розширення шукається</entry>
       </row>
       <row>
        <entry>--include-dir</entry>
-       <entry>Directory prefix where header files are installed by default</entry>
+       <entry>Директорія, де, за промовчанням, встановлено заголовні файли</entry>
       </row>
       <row>
        <entry>--php-binary</entry>
-       <entry>Full path to php CLI or CGI binary</entry>
+       <entry>Повний шлях до php CLI або бінарників CGI</entry>
       </row>
       <row>
        <entry>--php-sapis</entry>
-       <entry>Show all SAPI modules available</entry>
+       <entry>Показує всі доступні модулі SAPI</entry>
       </row>
       <row>
        <entry>--configure-options</entry>
-       <entry>Configure options to recreate configuration of current PHP installation</entry>
+       <entry>Параметри конфігурації для перестворення конфігурації для вже встановленої PHP</entry>
       </row>
       <row>
        <entry>--version</entry>
-       <entry>PHP version</entry>
+       <entry>Версія PHP</entry>
       </row>
       <row>
        <entry>--vernum</entry>
-       <entry>PHP version as integer</entry>
+       <entry>Версія PHP у вигляді цілого числа</entry>
       </row>
      </tbody>
     </tgroup>
@@ -463,12 +480,12 @@ Options:
  </sect1>
 
  <sect1 xml:id="install.pecl.static">
-  <title>Compiling PECL extensions statically into PHP</title>
+  <title>Компіляція розширення PECL статично в PHP</title>
   <simpara>
-   You might find that you need to build a PECL extension statically into your
-   PHP binary.  To do this, you'll need to place the extension source under
-   the <filename>php-src/ext/</filename> directory and tell the PHP build
-   system to regenerate its configure script.
+   Якщо вам потрібно зібрати розширення PECL статично у ваш бінарний файл PHP,
+   вам потрібно покласти сирці розширень в директорію
+   <filename>php-src/ext/</filename>, та викликати перегенерацію
+   конфігураційних скриптів через систему збірки PHP.
   </simpara>
   <para>
    <screen>
@@ -481,7 +498,7 @@ $ mv extname-x.x.x extname
    </screen>
   </para>
   <simpara>
-   This will result in the following directory:
+   В результаті буде створена наступна директорія:
   </simpara>
   <para>
    <screen>
@@ -489,7 +506,8 @@ $ mv extname-x.x.x extname
    </screen>
   </para>
   <simpara>
-   From here, force PHP to rebuild the configure script, and then build PHP as normal:
+   Після цього, виконайте заново збірку конфігураційного скрипта PHP,
+   а потім зберіть PHP як зазвичай:
   </simpara>
   <para>
    <screen>
@@ -504,15 +522,16 @@ $ make install
   </para>
   <note>
    <simpara>
-    To run the 'buildconf' script you need autoconf 2.13 and automake 1.4+
-    (newer versions of autoconf may work, but are not supported).
+    Щоб запустити скрипт 'buildconf', вам потрібен autoconf 2.13 та automake 1.4+
+    (нові версії autoconf можуть працювати, але вони не підтримуються).
    </simpara>
   </note>
   <simpara>
-   Whether <literal>--enable-extname</literal> or <literal>--with-extname
-   </literal> is used depends on the extension.  Typically an extension that 
-   does not require external libraries uses <literal>--enable</literal>.  To be
-   sure, run the following after buildconf:
+   Чи використовується <literal>--enable-extname</literal>, чи
+   <literal>--with-extname</literal>, залежить від розширень. Зазвичай,
+   розширення, які не потребують зовнішніх бібліотек, використовують
+   <literal>--enable</literal>. Щоб бути впевненим, запустіть наступну команду
+   після buildconf:
   </simpara>
   <para>
    <screen>
