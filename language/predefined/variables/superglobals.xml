@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: af4410a7e15898c3dbe83d6ea38246745ed9c6fb Maintainer: ktretyak Status: ready -->
+<!-- $Revision$ -->
+
+<phpdoc:varentry xmlns:phpdoc="http://php.net/ns/phpdoc" xml:id="language.variables.superglobals" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" role="noversion">
+ <refnamediv>
+  <refname>Суперглобальні змінні</refname>
+  <refpurpose>Суперглобальні змінні - це вбудовані змінні, які доступні у
+    всіх областях видимості</refpurpose>
+ </refnamediv>
+ 
+ <refsect1 role="description">
+  &reftitle.description;
+  <para>
+   Деякі з предвизначених змінних в PHP є "суперглобальними", що практично
+   означає, що вони є доступними у всіх областях видимості скрипта. Тобто не
+   потрібно писати <command>global $variable;</command>, щоб отримати до них
+   доступ всередині функції чи методу.
+  </para>
+  <para>
+   Такими суперглобальними змінними є:
+   <simplelist>
+    <member><varname>$GLOBALS</varname></member>
+    <member><varname>$_SERVER</varname></member>
+    <member><varname>$_GET</varname></member>
+    <member><varname>$_POST</varname></member>
+    <member><varname>$_FILES</varname></member>
+    <member><varname>$_COOKIE</varname></member>
+    <member><varname>$_SESSION</varname></member>
+    <member><varname>$_REQUEST</varname></member>
+    <member><varname>$_ENV</varname></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>4.1.0</entry>
+       <entry>
+        Вперше з'явились суперглобальні змінні в PHP.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  <note>
+   <title>Доступність змінних</title>
+   <para>
+    За промовчанням, всі суперглобальні змінні є доступними, але існують
+    директиви, що впливають на таку доступність. Детальнішу інформацію можна
+    прочитати в описі директиви
+    <link linkend="ini.variables-order">variables_order</link>.
+   </para>
+  </note>
+  <note>
+   <title>Робота з register_globals</title>
+   <para>
+    Якщо значення для застарілої директиви
+    <link linkend="ini.register-globals">register_globals</link>
+    встановлено в <literal>on</literal> (тобто, включено), то всі значення,
+    з масивів суперглобальних змінних, також будуть доступними в глобальній
+    області скрипта у вигляді окремих змінних. Наприклад,
+    <varname>$_POST['foo']</varname> буде також існувати як
+    <varname>$foo</varname>.
+   </para>
+   <para>
+    Відповідну інформацію можна знайти в пункті ЧАПу з назвою
+    "<link linkend="faq.register-globals">Який вплив має register_globals?</link>"
+   </para>
+  </note>
+  <note>
+   <title>Змінна змінних</title>
+   <para>
+    Суперглобальні змінні не можна використовувати як
+    <link linkend="language.variables.variable">змінну змінних</link>
+    всередині функції чи методу.
+   </para>
+  </note>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><link linkend="language.variables.scope">variable scope</link></member>
+    <member>Директива <link linkend="ini.variables-order">variables_order</link></member>
+    <member><link linkend="book.filter">Фільтрація даних</link></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</phpdoc:varentry>
+ 
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
+

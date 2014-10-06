@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 84b8fca68fc762fefe85acde180a38b2e77a28b9 Maintainer: ktretyak Status: wip -->
+<!-- EN-Revision: 84b8fca68fc762fefe85acde180a38b2e77a28b9 Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
 
 <sect1 xml:id="function.require" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -7,14 +7,15 @@
  <?phpdoc print-version-for="require"?>
  
  <para>
-  <literal>require</literal> is identical to <function>include</function>
-  except upon failure it will also produce a fatal <constant>E_COMPILE_ERROR</constant>
-  level error. In other words, it will halt the script whereas
-  <function>include</function> only emits a warning 
-  (<constant>E_WARNING</constant>) which allows the script to continue.
+  <literal>require</literal> є ідентичною до <function>include</function>,
+  за одним виключенням - після збою вона генеруватиме фатальну помилку рівня
+  <constant>E_COMPILE_ERROR</constant>. Іншими словами, вона припинятиме
+  виконання скрипта, тоді як <function>include</function> тільки видасть
+  попередження (<constant>E_WARNING</constant>), а скрипт буде виконуватись далі.
  </para>
  <para>
-  See the <function>include</function> documentation for how this works.
+  Прогляньте документацію <function>include</function> для уточнень, як ці
+  функції працюють.
  </para>
  
 </sect1>

@@ -330,7 +330,7 @@ icacls C:\inetpub\wwwroot\upload /grant IUSR:(OI)(CI)(M)
    за допомогою команди показаної нижче. Налаштування FastCGI
    <varname>instanceMaxRequests</varname> контролює - як за багато запитів буде
    оброблятись одиночним процесом <filename>php-cgi.exe</filename> перед тим, як IIS
-   його видалить. Змінна середовща PHP <varname>PHP_FCGI_MAX_REQUESTS</varname>
+   його видалить. Змінна оточення PHP <varname>PHP_FCGI_MAX_REQUESTS</varname>
    контролює - як за багато запитів може оброблятись одиночним процесом
    <filename>php-cgi.exe</filename> перед тим, як він почне свій новий цикл
    (перезапуститься). Переконайтесь, що значення вказане для FastCGI
@@ -380,10 +380,10 @@ icacls C:\inetpub\wwwroot\upload /grant IUSR:(OI)(CI)(M)
    PHP шукає файл <filename>php.ini</filename> в
    <link linkend="configuration.file">декількох місцях</link>, а тому можна 
    змінити шлях за промовчанням для файла <filename>php.ini</filename>,
-   використовуючи змінну середовища <varname>PHPRC</varname>. Щоб повідомити PHP,
+   використовуючи змінну оточення <varname>PHPRC</varname>. Щоб повідомити PHP,
    що треба завантажувати конфігураційний файл з нового місця, запустіть команду,
    наведену нижче. Також потрібно вказати абсолютний шлях до директорії з файлом
-   <filename>php.ini</filename> як значення для змінної середовища <varname>PHPRC</varname>.
+   <filename>php.ini</filename> як значення для змінної оточення <varname>PHPRC</varname>.
    <example>
     <title>Зміна розташування файла <filename>php.ini</filename></title>
     <programlisting>

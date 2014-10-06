@@ -44,7 +44,7 @@ C:\PHP5\php.exe -f "C:\PHP Scripts\script.php" -- -arg1 -arg2 -arg3
         Додайте місцерозташування виконавчих файлів PHP (<filename>php.exe</filename>,
         <filename>php-win.exe</filename> або <filename>php-cli.exe</filename>
         в залежності від вашої версії PHP та параметрів відображення) до змінної
-        середовища <envar>PATH</envar>. Прочитайте більше про те як додати вашу
+        оточення <envar>PATH</envar>. Прочитайте більше про те як додати вашу
         директорію PHP до <envar>PATH</envar> у відповідному пункті <link
         linkend="faq.installation.addtopath">ЧАПу</link>.
        </para>
@@ -52,9 +52,9 @@ C:\PHP5\php.exe -f "C:\PHP Scripts\script.php" -- -arg1 -arg2 -arg3
 
       <listitem>
        <para>
-        Допишіть розширення <literal>.PHP</literal> до змінної середовища
+        Допишіть розширення <literal>.PHP</literal> до змінної оточення
         <varname>PATHEXT</varname>. Це можна зробити разом з внесенням змін
-        до змінної середовища <envar>PATH</envar>. Пройдіть такі ж кроки, які
+        до змінної оточення <envar>PATH</envar>. Пройдіть такі ж кроки, які
         описані у <link
         linkend="faq.installation.addtopath">ЧАПі</link> для <envar>PATH</envar>,
         але внесіть відповідні зміни на цей раз до <varname>PATHEXT</varname>.
@@ -145,7 +145,7 @@ Windows Registry Editor Version 5.00
 "C:\PHP Scripts\script" -arg1 -arg2 -arg3
 ]]>
      </screen>
-     або, якщо ваш шлях в змінній середовища <envar>PATH</envar> є
+     або, якщо ваш шлях в змінній оточення <envar>PATH</envar> є
      таким: <literal>"C:\PHP Scripts"</literal>, то можна писати аналогічне до:
      <screen>
 <![CDATA[

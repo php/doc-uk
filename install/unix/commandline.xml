@@ -25,7 +25,7 @@
    <sect2 xml:id="install.unix.commandline.using-variables">
     <title>Використання Змінних</title>
     <simpara>
-      Деякі <link linkend="reserved.variables.server">змінні середовища
+      Деякі <link linkend="reserved.variables.server">змінні оточення
       сервера</link> невизначені в поточній
       <link xlink:href="&url.rfc;3875">специфікації CGI/1.1</link>.
       Визначені тільки наступні змінні: <varname>AUTH_TYPE</varname>, 

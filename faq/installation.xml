@@ -425,7 +425,7 @@ cgi error:
         Перейдіть на закладку Додатково
        </para></listitem>
        <listitem><para>
-        Клікніть кнопку 'Змінні середовища'
+        Клікніть кнопку 'Змінні оточення'
        </para></listitem>
        <listitem><para>
         Огляньте блок 'Системні Змінні'
@@ -493,7 +493,7 @@ cgi error:
       призначені для нього інструкції встановлення (<link
        linkend="install.windows.apache1">Apache 1</link>, <link
        linkend="install.windows.apache2">Apache 2</link>), в іншому випадку - ви
-      повинні встановити змінну середовища <varname>PHPRC</varname>:
+      повинні встановити змінну оточення <varname>PHPRC</varname>:
      </para>
      <para>
       На Windows NT, 2000, XP та 2003:
@@ -507,7 +507,7 @@ cgi error:
         Перейдіть на закладку Додатково
        </para></listitem>
        <listitem><para>
-        Клікніть кнопку 'Змінні Середовища'
+        Клікніть кнопку 'Змінні Оточення'
        </para></listitem>
        <listitem><para>
         Знайдіть область 'Системні змінні'

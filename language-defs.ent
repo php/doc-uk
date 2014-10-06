@@ -42,7 +42,7 @@
 <!ENTITY ServerSpecificExtensions                 "Спеціальні Розширення Сервера">
 <!ENTITY SearchEngineExtensions                   "Розширення Рушіїв Пошуку">
 <!ENTITY MiscExtensions                           "Різні Розширення">
-<!ENTITY Appendices        "Додатки">
+<!ENTITY Appendices        "Доповнення">
 <!ENTITY PEAR              "PEAR: Репозиторій PHP Розширень та Застосунків">
 <!ENTITY FAQ               "ЧАП: Часті Питання й Відповіді">
 <!ENTITY FAQabbrev         "ЧАП">

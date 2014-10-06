@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 6ee11c8e715a784f77ac71949ae0dd7df7b9d57e Maintainer: ktretyak Status: ready -->
+<!-- $Revision$ -->
+<refentry xml:id="function.phpcredits" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>phpcredits</refname>
+  <refpurpose>Друкує список розробників PHP</refpurpose>
+ </refnamediv>
+ 
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>bool</type><methodname>phpcredits</methodname>
+   <methodparam choice="opt"><type>int</type><parameter>flag</parameter><initializer>CREDITS_ALL</initializer></methodparam>
+  </methodsynopsis>
+  <para>
+   Ця функція друкує списки розробників PHP, модулів, і т.д. Вона може
+   генерувати відповідний HTML код для вставки на сторінку. 
+  </para>   
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>flag</parameter></term>
+     <listitem>
+      <para>
+       Щоб компонувати вивід на сторінці, можна використовувати параметр
+       <parameter>flag</parameter>.
+      </para>
+      <para>
+       <table>
+        <title>Предвизначені флаги <function>phpcredits</function></title>
+        <tgroup cols="2">
+         <thead>
+          <row>
+           <entry>назва</entry>
+           <entry>опис</entry>
+          </row>
+         </thead>
+         <tbody>
+          <row>
+           <entry>CREDITS_ALL</entry>
+           <entry>
+            Всі розробники, еквівалентно використанню: <constant>CREDITS_DOCS</constant> +
+            <constant>CREDITS_GENERAL</constant> + <constant>CREDITS_GROUP</constant> +
+            <constant>CREDITS_MODULES</constant> + <constant>CREDITS_FULLPAGE</constant>.
+            З цим флагом функція генерує повністю весь код для окремої
+            HTML-сторінки з відповідними тегами.
+           </entry>
+          </row>
+          <row>
+           <entry>CREDITS_DOCS</entry>
+           <entry>Учасники команди з розробки документації</entry>
+          </row>
+          <row>
+           <entry>CREDITS_FULLPAGE</entry>
+           <entry>
+            Зазвичай використовується в комбінації з іншими флагами. Сигналізує
+            чи потрібно генерувати повністю окрему HTML-сторінку включаючи
+            інформацію, яка виводиться завдяки іншим флагам.
+           </entry>
+          </row>
+          <row>
+           <entry>CREDITS_GENERAL</entry>
+           <entry>
+            Головні розробники: Дизайн та Концепція мови, Автори PHP
+            та модулів SAPI.
+           </entry>
+          </row>
+          <row>
+           <entry>CREDITS_GROUP</entry>
+           <entry>Список основних розробників</entry>
+          </row>
+          <row>
+           <entry>CREDITS_MODULES</entry>
+           <entry>
+            Список модулів розширень для PHP, та їхні автори
+           </entry>
+          </row>
+          <row>
+           <entry>CREDITS_SAPI</entry>
+           <entry>
+            Список модулів сервера API для PHP, та їхні автори
+           </entry>
+          </row>
+         </tbody>
+        </tgroup>
+       </table>
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   &return.success;
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title>Друк інформації про головних розробників</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+phpcredits(CREDITS_GENERAL);
+?>
+]]>
+    </programlisting>
+   </example>
+  </para>
+  <para>
+   <example>
+    <title>Друк інфи про основних розробників та групу документування</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+phpcredits(CREDITS_GROUP | CREDITS_DOCS | CREDITS_FULLPAGE);
+?>
+]]>
+    </programlisting>
+   </example>
+  </para>
+  <para>
+   <example>
+    <title>Друк інфи про всіх розробників</title>
+    <programlisting role="php">
+<![CDATA[
+<html>
+ <head>
+  <title>Моя сторінка з інфою про розробників</title>
+ </head>
+ <body>
+<?php
+// деякий ваш власний код
+phpcredits(CREDITS_ALL - CREDITS_FULLPAGE);
+// тут ще якийсь код
+?>
+ </body>
+</html>
+]]>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  <note>
+   <para>
+    У випадку використання функції <function>phpcredits</function> в режимі
+    CLI, генерує простий текст а не HTML.
+   </para>
+  </note>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>phpversion</function></member>
+    <member><function>php_logo_guid</function></member>
+    <member><function>phpinfo</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

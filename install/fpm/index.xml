@@ -18,7 +18,7 @@
      </listitem>
      <listitem>
       <para>
-       запуск робочих процесів (workers) з довільними uid/gid/chroot/середовищем, 
+       запуск робочих процесів (workers) з довільними uid/gid/chroot/оточенням, 
        прослуховування на різних портах та з використанням різних php.ini (замінюючи safe_mode);
       </para>
      </listitem>

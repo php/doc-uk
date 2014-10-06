@@ -21,12 +21,12 @@
       Спеціальне розташування модуля SAPI (визначається директивою
       <literal>PHPIniDir</literal> в Apache 2, параметром <literal>-c</literal>
       в командному рядку в CGI та CLI, параметром <literal>php_ini</literal>
-      в NSAPI, змінною середовища <literal>PHP_INI_PATH</literal> в THTTPD)
+      в NSAPI, змінною оточення <literal>PHP_INI_PATH</literal> в THTTPD)
      </simpara>
     </listitem>
     <listitem>
      <simpara>
-      Змінна середовища <varname>PHPRC</varname>. Перед PHP 5.2.0,
+      Змінна оточення <varname>PHPRC</varname>. Перед PHP 5.2.0,
       вона перевірялась після пошуку в ключі реєстра, що згадується нижче.
      </simpara>
     </listitem>
@@ -83,14 +83,14 @@
    </para>
   </note>
   <para>
-   Змінні середовища можна використовувати в &php.ini; як показано нижче.
+   Змінні оточення можна використовувати в &php.ini; як показано нижче.
   </para>
   <para>
    <example>
-    <title>Використання Змінних Середовища в &php.ini;</title>
+    <title>Використання Змінних Оточення в &php.ini;</title>
      <programlisting role="ini">
 <![CDATA[
-; PHP_MEMORY_LIMIT бере значення із середовища
+; PHP_MEMORY_LIMIT бере значення із оточення
 memory_limit = ${PHP_MEMORY_LIMIT}
 ]]>
      </programlisting>
