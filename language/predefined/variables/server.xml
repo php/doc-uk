@@ -5,30 +5,31 @@
 <phpdoc:varentry xmlns:phpdoc="http://php.net/ns/phpdoc" xml:id="reserved.variables.server" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>$_SERVER</refname>
-  <refname>$HTTP_SERVER_VARS [removed]</refname>
-  <refpurpose>Server and execution environment information</refpurpose>
+  <refname>$HTTP_SERVER_VARS [видалена]</refname>
+  <refpurpose>Інформація про серверне та виконавче оточення</refpurpose>
  </refnamediv>
  
  <refsect1 role="description">
   &reftitle.description;
   <para>
-   <varname>$_SERVER</varname> is an array containing information
-   such as headers, paths, and script locations. The entries in this
-   array are created by the web server. There is no guarantee that
-   every web server will provide any of these; servers may omit some,
-   or provide others not listed here. That said, a large number of
-   these variables are accounted for in the <link
-   xlink:href="&url.rfc;3875">CGI/1.1 specification</link>, so you should
-   be able to expect those.
+   Змінна <varname>$_SERVER</varname> є масивом (<type>array</type>), що
+   містить таку інформацію як заголовки, шляхи та розташування скриптів.
+   Записи в цьому масиві створює веб-сервер. Немає гарантії того, що кожен
+   веб-сервер буде надавати всі ці записи; веб-сервери можуть опускати деякі з
+   них, або надавати інші, незазначені в списку, наведеному нижче. Тим не
+   менше, але більша частина з цих змінних взяті на облік в
+   <link xlink:href="&url.rfc;3875">специфікації CGI/1.1</link>, отже вам варто
+   бути готовим до них.
   </para>
 
   <simpara>
-   <varname>$HTTP_SERVER_VARS</varname> contains the same initial
-   information, but is not a <link linkend="language.variables.superglobals">superglobal</link>.
-   (Note that <varname>$HTTP_SERVER_VARS</varname> and <varname>$_SERVER</varname>
-   are different variables and that PHP handles them as such). Also note that long arrays
-   were removed since PHP 5.4.0 so <varname>$HTTP_SERVER_VARS</varname> doesn't exist
-   anymore.
+   Змінна <varname>$HTTP_SERVER_VARS</varname> містить таку ж ініціалізуючу
+   інформацію, але не є
+   <link linkend="language.variables.superglobals">суперглобальною</link>.
+   (Зауважте, що <varname>$HTTP_SERVER_VARS</varname> та <varname>$_SERVER</varname>
+   є різними змінними, а тому PHP обробляє їх як такі). Також майте на увазі,
+   що масиви з довгою назвою були видалені починаючи з PHP 5.4.0, отже
+   змінної <varname>$HTTP_SERVER_VARS</varname> більше не існує.
   </simpara>
  </refsect1>
 
@@ -36,10 +37,10 @@
   &reftitle.indices;
 
   <simpara>
-   You may or may not find any of the following elements in
-   <varname>$_SERVER</varname>. Note that few, if any, of these will be
-   available (or indeed have any meaning) if running PHP on the
-   <link linkend="features.commandline">command line</link>.
+   Ви можете знайти (а можете і не знайти) будь-який з наступних елементів в
+   <varname>$_SERVER</varname>. Невелика кількість з них можуть бути
+   доступними (або дійсно матимуть значення), якщо ви запускаєте PHP з
+   <link linkend="features.commandline">командного рядка</link>.
   </simpara>
 
   <para>
@@ -48,18 +49,17 @@
      <term>'<varname>PHP_SELF</varname>'</term>
      <listitem>
       <simpara>
-       The filename of the currently executing script, relative to
-       the document root. For instance,
-       <varname>$_SERVER['PHP_SELF']</varname> in a script at the
-       address <filename>http://example.com/foo/bar.php</filename>
-       would be <filename>/foo/bar.php</filename>.
-       The <link linkend="language.constants.predefined">__FILE__</link>
-       constant contains the full path and filename of the current (i.e.
-       included) file.
+       Шлях до файла, де в даний момент запущено скрипт, відносно кореневого
+       каталогу документів веб-сервера (document root). Наприклад,
+       <varname>$_SERVER['PHP_SELF']</varname> в скрипті за адресою
+       <filename>http://example.com/foo/bar.php</filename>
+       буде <filename>/foo/bar.php</filename>.
+       Константа <link linkend="language.constants.predefined">__FILE__</link>
+       містить повний шлях та назву поточного (тобто підключеного) файла.
       </simpara>
       <simpara>
-       If PHP is running as a command-line processor this variable contains
-       the script name since PHP 4.3.0. Previously it was not available.
+       Якщо PHP запущено з командного рядка, ця змінна містить назву скрипта починаючи з
+       PHP 4.3.0, раніше це було не доступно.
       </simpara>
      </listitem>
     </varlistentry>
@@ -68,10 +68,9 @@
      <term>'<link linkend="reserved.variables.argv">argv</link>'</term>
      <listitem>
       <simpara>
-       Array of arguments passed to the script. When the script is
-       run on the command line, this gives C-style access to the
-       command line parameters. When called via the GET method, this
-       will contain the query string.
+       Масив аргументів, переданих до скрипта. Коли скрипт запущено з
+       командного рядка, то є можливість передавати до нього параметри в
+       C-стилі. При виклику через метод GET, цей масив містить рядок запиту.
       </simpara>
      </listitem>
     </varlistentry>
@@ -80,8 +79,8 @@
      <term>'<link linkend="reserved.variables.argc">argc</link>'</term>
      <listitem>
       <simpara>
-       Contains the number of command line parameters passed to the
-       script (if run on the command line).
+       Містить число параметрів, переданих до скрипта з командного рядка
+       (якщо скрипт запущено з командного рядка).
       </simpara>
      </listitem>
     </varlistentry>
@@ -90,8 +89,8 @@
      <term>'<varname>GATEWAY_INTERFACE</varname>'</term>
      <listitem>
       <simpara>
-       What revision of the CGI specification the server is using;
-       i.e. '<literal>CGI/1.1</literal>'.
+       Назва та номер ревізії специфікації CGI сервера, що використовується;
+       наприклад, '<literal>CGI/1.1</literal>'.
       </simpara>
      </listitem>
     </varlistentry>
@@ -100,8 +99,7 @@
      <term>'<varname>SERVER_ADDR</varname>'</term>
      <listitem>
       <simpara>
-       The IP address of the server under which the current script is
-       executing.
+       IP-адреса сервера, під яким поточний скрипт виконується.
       </simpara>
      </listitem>
     </varlistentry>
@@ -110,9 +108,8 @@
      <term>'<varname>SERVER_NAME</varname>'</term>
      <listitem>
       <simpara>
-       The name of the server host under which the current script is
-       executing. If the script is running on a virtual host, this
-       will be the value defined for that virtual host.
+       Назва хоста сервера, під яким поточний скрипт виконується. Якщо скрипт
+       запущено на віртуальному хості, ця змінна міститиме його назву.
       </simpara>
      </listitem>
     </varlistentry>
@@ -121,8 +118,8 @@
      <term>'<varname>SERVER_SOFTWARE</varname>'</term>
      <listitem>
       <simpara>
-       Server identification string, given in the headers when
-       responding to requests.
+       Ідентифікаційний рядок сервера, передається в заголовках при
+       відповіді на запит.
       </simpara>
      </listitem>
     </varlistentry>
@@ -131,8 +128,8 @@
      <term>'<varname>SERVER_PROTOCOL</varname>'</term>
      <listitem>
       <simpara>
-       Name and revision of the information protocol via which the
-       page was requested; i.e. '<literal>HTTP/1.0</literal>';
+       Назва та номер ревізії протоколу, через який було запитано сторінку;
+       наприклад, '<literal>HTTP/1.0</literal>';
       </simpara>
      </listitem>
     </varlistentry>
@@ -141,14 +138,16 @@
      <term>'<varname>REQUEST_METHOD</varname>'</term>
      <listitem>
       <simpara>
-       Which request method was used to access the page; i.e. '<literal>GET</literal>',
-       '<literal>HEAD</literal>', '<literal>POST</literal>', '<literal>PUT</literal>'.
+       Назву метода, що використовувався при запиті сторінки;
+       тобто '<literal>GET</literal>',
+       '<literal>HEAD</literal>', '<literal>POST</literal>',
+       '<literal>PUT</literal>'.
       </simpara>
       <note>
        <para>
-        PHP script is terminated after sending headers (it means after
-        producing any output without output buffering) if the request method
-        was <literal>HEAD</literal>.
+        Скрипт PHP завершує роботу після відправки заголовків (тобто,
+        після здійснення будь-якого виводу без його буферизації) якщо метод
+        запиту був <literal>HEAD</literal>.
        </para>
       </note>
      </listitem>
@@ -158,7 +157,7 @@
      <term>'<varname>REQUEST_TIME</varname>'</term>
      <listitem>
       <simpara>
-       The timestamp of the start of the request. Available since PHP 5.1.0.
+       Мітка часу, коли почався запит. Доступна починаючи з PHP 5.1.0.
       </simpara>
      </listitem>
     </varlistentry>
@@ -167,8 +166,8 @@
      <term>'<varname>REQUEST_TIME_FLOAT</varname>'</term>
      <listitem>
       <simpara>
-       The timestamp of the start of the request, with microsecond precision.
-       Available since PHP 5.4.0.
+       Мітка часу, коли почався запит, з точністю до мікросекунд.
+       Доступна починаючи з PHP 5.4.0.
       </simpara>
      </listitem>
     </varlistentry>
@@ -177,7 +176,7 @@
      <term>'<varname>QUERY_STRING</varname>'</term>
      <listitem>
       <simpara>
-       The query string, if any, via which the page was accessed.
+       Рядок запиту, якщо він є, через який доступились до сторінки.
       </simpara>
      </listitem>
     </varlistentry>
@@ -186,8 +185,8 @@
      <term>'<varname>DOCUMENT_ROOT</varname>'</term>
      <listitem>
       <simpara>
-       The document root directory under which the current script is
-       executing, as defined in the server's configuration file.
+       Коринева директорія документів (document root), з під якої поточний
+       скрипт викориується, як визначено в конфігураційному файлі веб-сервера.
       </simpara>
      </listitem>
     </varlistentry>
@@ -196,8 +195,8 @@
      <term>'<varname>HTTP_ACCEPT</varname>'</term>
      <listitem>
       <simpara>
-       Contents of the <literal>Accept:</literal> header from the
-       current request, if there is one.
+       Вміст заголовка <literal>Accept:</literal> з поточного запита,
+       якщо він є.
       </simpara>
      </listitem>
     </varlistentry>
@@ -206,8 +205,8 @@
      <term>'<varname>HTTP_ACCEPT_CHARSET</varname>'</term>
      <listitem>
       <simpara>
-       Contents of the <literal>Accept-Charset:</literal> header
-       from the current request, if there is one. Example:
+       Вміст заголовка <literal>Accept-Charset:</literal>
+       з поточного запита, якщо він є. Наприклад:
        '<literal>iso-8859-1,*,utf-8</literal>'.
       </simpara>
      </listitem>
@@ -217,8 +216,8 @@
      <term>'<varname>HTTP_ACCEPT_ENCODING</varname>'</term>
      <listitem>
       <simpara>
-       Contents of the <literal>Accept-Encoding:</literal> header
-       from the current request, if there is one. Example: '<literal>gzip</literal>'.
+       Вміст заголовка <literal>Accept-Encoding:</literal> з поточного запита,
+       якщо він є. Наприклад: '<literal>gzip</literal>'.
       </simpara>
      </listitem>
     </varlistentry>
@@ -227,8 +226,8 @@
      <term>'<varname>HTTP_ACCEPT_LANGUAGE</varname>'</term>
      <listitem>
       <simpara>
-       Contents of the <literal>Accept-Language:</literal> header
-       from the current request, if there is one. Example: '<literal>en</literal>'.
+       Вміст заголовка <literal>Accept-Language:</literal> з поточного запита,
+       якщо він є. Наприклад: '<literal>en</literal>'.
       </simpara>
      </listitem>
     </varlistentry>
@@ -237,8 +236,8 @@
      <term>'<varname>HTTP_CONNECTION</varname>'</term>
      <listitem>
       <simpara>
-       Contents of the <literal>Connection:</literal> header from
-       the current request, if there is one. Example: '<literal>Keep-Alive</literal>'.
+       Вміст заголовка <literal>Connection:</literal> з поточного запита,
+       якщо він є. Наприклад: '<literal>Keep-Alive</literal>'.
       </simpara>
      </listitem>
     </varlistentry>
@@ -247,8 +246,8 @@
      <term>'<varname>HTTP_HOST</varname>'</term>
      <listitem>
       <simpara>
-       Contents of the <literal>Host:</literal> header from the
-       current request, if there is one.
+       Вміст заголовка <literal>Host:</literal> з поточного запита,
+       якщо він є.
       </simpara>
      </listitem>
     </varlistentry>
@@ -257,11 +256,11 @@
      <term>'<varname>HTTP_REFERER</varname>'</term>
      <listitem>
       <simpara>
-       The address of the page (if any) which referred the user
-       agent to the current page. This is set by the user agent. Not
-       all user agents will set this, and some provide the ability
-       to modify <varname>HTTP_REFERER</varname> as a feature. In
-       short, it cannot really be trusted.
+       Адреса сторінки (якщо така є), з якої користувач перейшов
+       на поточну сторінку. Це значення встановлюється браузером. Не всі
+       браузери встановлюють це значення, а деякі надають можливість
+       модифікувати <varname>HTTP_REFERER</varname>як додаткову можливість.
+       Якщо коротко - цьому значенню не можна довіряти.
       </simpara>
      </listitem>
     </varlistentry>
@@ -270,8 +269,8 @@
      <term>'<varname>HTTP_USER_AGENT</varname>'</term>
      <listitem>
       <simpara>
-       Contents of the <literal>User-Agent:</literal> header from
-       the current request, if there is one. This is a string
+       Вміст заголовка <literal>User-Agent:</literal> з поточного запита,
+       якщо він є. This is a string
        denoting the user agent being which is accessing the page. A
        typical example is: <computeroutput>Mozilla/4.5 [en] (X11; U;
        Linux 2.2.9 i586)</computeroutput>. Among other things, you
