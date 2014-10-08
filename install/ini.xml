@@ -204,7 +204,7 @@ include_path = ".;c:\php\lib"
   
   <para>
    <table>
-    <title>Визначення режимів PHP_INI_*</title>
+    <title>Визначення режимів INI_*</title>
     <tgroup cols="2">
      <thead>
       <row>
