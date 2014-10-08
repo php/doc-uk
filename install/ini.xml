@@ -155,7 +155,7 @@ include_path = ".;c:\php\lib"
   </simpara>
   <simpara>
    Стиль конфігурування через файли .user.ini матиме ефект тільки в режимі
-    <constant>PHP_INI_PERDIR</constant> та <constant>PHP_INI_USER</constant>.
+    <constant>INI_PERDIR</constant> та <constant>INI_USER</constant>.
   </simpara>
   
   <simpara>
@@ -195,10 +195,10 @@ include_path = ".;c:\php\lib"
   <para>
    Наприклад, директива
    <link linkend="ini.output-buffering">output_buffering</link> відноситься до
-   режиму <literal>PHP_INI_PERDIR</literal>, тому вона не може встановлюватись через
+   режиму <literal>INI_PERDIR</literal>, тому вона не може встановлюватись через
    <function>ini_set</function>. Однак, директива
    <link linkend="ini.display-errors">display_errors</link> відноситься до режиму
-   <literal>PHP_INI_ALL</literal>, тому вона може встановлюватись будь-де,
+   <literal>INI_ALL</literal>, тому вона може встановлюватись будь-де,
    включаючи <function>ini_set</function>.
   </para>
   
@@ -214,7 +214,7 @@ include_path = ".;c:\php\lib"
      </thead>
      <tbody>
       <row>
-       <entry><literal>PHP_INI_USER</literal></entry>
+       <entry><literal>INI_USER</literal></entry>
        <entry>
         Значення може встановлюватись в скриптах користувача (напр. через
         <function>ini_set</function>) або у
@@ -223,18 +223,18 @@ include_path = ".;c:\php\lib"
        </entry>
       </row>
       <row>
-       <entry><literal>PHP_INI_PERDIR</literal></entry>
+       <entry><literal>INI_PERDIR</literal></entry>
        <entry>
         Значення можна встановлювати в &php.ini;, &htaccess;, &httpd.conf; чи &user-ini;
         (починаючи з PHP 5.3)
        </entry>
       </row>
       <row>
-       <entry><literal>PHP_INI_SYSTEM</literal></entry>
+       <entry><literal>INI_SYSTEM</literal></entry>
        <entry>Значення можна встановлювати в &php.ini; або &httpd.conf;</entry>
       </row>
       <row>
-       <entry><literal>PHP_INI_ALL</literal></entry>
+       <entry><literal>INI_ALL</literal></entry>
        <entry>Значення можна встановлювати будь-де</entry>
       </row>
      </tbody>
@@ -259,8 +259,8 @@ include_path = ".;c:\php\lib"
     Існує кілька директив Apache, які дозволяють вам змінити PHP-конфігурацію
     через конфігураційні файли Apache. Щоб проглянути співставлення між
     цими директивами та режимами
-    <constant>PHP_INI_ALL</constant>, <constant>PHP_INI_PERDIR</constant>,
-    або <constant>PHP_INI_SYSTEM</constant>, прогляньте додаток
+    <constant>INI_ALL</constant>, <constant>INI_PERDIR</constant>,
+    або <constant>INI_SYSTEM</constant>, прогляньте додаток
     <link linkend="ini.list">Список директив php.ini</link>.
    </para>
    
@@ -276,7 +276,7 @@ include_path = ".;c:\php\lib"
        <para>
         Встановлює значення вказаної директиви.
         Може використовуватись тільки з типами директив
-        <constant>PHP_INI_ALL</constant> та <constant>PHP_INI_PERDIR</constant>.
+        <constant>INI_ALL</constant> та <constant>INI_PERDIR</constant>.
         Щоб очистити попереднє значення, використовуйте <literal>none</literal>
         як значення.
        </para>
@@ -299,7 +299,7 @@ include_path = ".;c:\php\lib"
        <para>
         Використовується для встановлення логічного значення для директив.
         Може використовуватись тільки з типами директив
-        <constant>PHP_INI_ALL</constant> та <constant>PHP_INI_PERDIR</constant>.
+        <constant>INI_ALL</constant> та <constant>INI_PERDIR</constant>.
        </para>
       </listitem>
      </varlistentry>
@@ -381,8 +381,8 @@ include_path = ".;c:\php\lib"
     запущено з цієї директорії або її субдиректорії. Значення ключа повинно мати
     назву директиви PHP-конфігурації та мати рядковий тип (string). Константи PHP
     в середині ключів реєстра не парсяться. Хоча, тільки значення конфігурації,
-    що змінюються в <constant>PHP_INI_USER</constant>, можуть бути встановленими
-    таким чином, тоді як значеня для <constant>PHP_INI_PERDIR</constant> - не можуть.
+    що змінюються в <constant>INI_USER</constant>, можуть бути встановленими
+    таким чином, тоді як значеня для <constant>INI_PERDIR</constant> - не можуть.
    </simpara>
   </sect2>
   
