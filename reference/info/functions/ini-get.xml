@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 4e83ae28199e651a25080f54773d80cf45bcd0de Maintainer: ktretyak Status: wip -->
+<!-- EN-Revision: 4e83ae28199e651a25080f54773d80cf45bcd0de Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
 <refentry xml:id="function.ini-get" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>ini_get</refname>
-  <refpurpose>Gets the value of a configuration option</refpurpose>
+  <refpurpose>Отримує значення конфігураційного параметра</refpurpose>
  </refnamediv>
  
  <refsect1 role="description">
@@ -14,7 +14,7 @@
    <methodparam><type>string</type><parameter>varname</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Returns the value of the configuration option on success.
+   Повертає значення конфігураційного параметра, в разі успіху.
   </para>
  </refsect1>
 
@@ -26,7 +26,7 @@
      <term><parameter>varname</parameter></term>
      <listitem>
       <para>
-       The configuration option name.
+       Назва конфігураційного параметра.
       </para>
      </listitem>
     </varlistentry>
@@ -37,9 +37,9 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Returns the value of the configuration option as a string on success, or an
-   empty string for <literal>null</literal> values. Returns &false; if the
-   configuration option doesn't exist.
+   Повертає значення конфігураційного параметра у вигляді рядка, при успіху,
+   або пустий рядок для значення <literal>null</literal>. Повертає &false;,
+   якщо конфігураційного параметра не існує.
   </para>
  </refsect1>
 
@@ -47,12 +47,12 @@
   &reftitle.examples;
   <para>
    <example>
-    <title>A few <function>ini_get</function> examples</title>
+    <title>Використання <function>ini_get</function></title>
     <programlisting role="php">
 <![CDATA[
 <?php
 /*
-Our php.ini contains the following settings:
+Наш php.ini містить наступні налаштування:
 
 display_errors = On
 register_globals = Off
@@ -69,7 +69,7 @@ function return_bytes($val) {
     $val = trim($val);
     $last = strtolower($val[strlen($val)-1]);
     switch($last) {
-        // The 'G' modifier is available since PHP 5.1.0
+        // Модифікатор 'G' доступний починаючи з PHP 5.1.0
         case 'g':
             $val *= 1024;
         case 'm':
@@ -103,26 +103,26 @@ post_max_size in bytes = 8388608
  <refsect1 role="notes">
   &reftitle.notes;
   <note>
-   <title>When querying boolean values</title>
+   <title>При запитуванні логічних (boolean) значень</title>
    <para>
-    A boolean ini value of <literal>off</literal> will be returned as an
-    empty string or "0" while a boolean ini value of <literal>on</literal> will
-    be returned as "1".
-    The function can also return the literal string of INI value.
+    Логічне INI-значення <literal>off</literal> буде повертатись як пустий
+    рядок або "0", в той час як INI-значення <literal>on</literal> буде
+    повертатись у вигляді "1". Функція також може повертати INI-значення
+    як рядок у вигляді літер.
    </para>
   </note>
   <note>
-   <title>When querying memory size values</title>
+   <title>При запитуванні значення розміру пам'яті</title>
    <para>
-    Many ini memory size values, such as
-    <link linkend="ini.upload-max-filesize">upload_max_filesize</link>, are
-    stored in the &php.ini; file in shorthand notation.
-    <function>ini_get</function> will return the exact string stored in the
-    &php.ini; file and <emphasis>NOT</emphasis> its <type>integer</type>
-    equivalent.  Attempting normal arithmetic functions on these values
-    will not have otherwise expected results.  The example above shows one
-    way to convert shorthand notation into bytes, much like how the PHP
-    source does it.
+    Багато ini-значень для розміру пам'яті, такі як
+    <link linkend="ini.upload-max-filesize">upload_max_filesize</link>,
+    зберігаються у файлі &php.ini; зі скороченою нотацією.
+    <function>ini_get</function> буде повертати точно такий же рядок, який
+    зберігається у файлі &php.ini;, а <emphasis>НЕ</emphasis> його чисельний
+    (<type>integer</type>) еквівалент. При спробі виконувати звичайні
+    арифметичні дії з такими значеннями, ви матимете непередбачуваний результат.
+    Приклад, що вгорі, показує один з варіантів конвертації скорочених нотацій
+    в байти, дуже подібно до того, як це відбувається в сирцевому коді PHP.
    </para>
   </note>
  </refsect1>
@@ -141,8 +141,8 @@ post_max_size in bytes = 8388608
      <tbody>
       <row>
        <entry>5.3.0</entry>
-       <entry>Previously, the empty string was returned if the configuration
-        option didn't exist. now, &false; is returned instead.
+       <entry>Раніше повертався пустий рядок, якщо параметра конфігурації
+        не існувало. Тепер, замість цього, повертається &false;.
        </entry>
       </row>
      </tbody>

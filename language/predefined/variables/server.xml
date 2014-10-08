@@ -270,13 +270,12 @@
      <listitem>
       <simpara>
        Вміст заголовка <literal>User-Agent:</literal> з поточного запита,
-       якщо він є. This is a string
-       denoting the user agent being which is accessing the page. A
-       typical example is: <computeroutput>Mozilla/4.5 [en] (X11; U;
-       Linux 2.2.9 i586)</computeroutput>. Among other things, you
-       can use this value with <function>get_browser</function> to
-       tailor your page's output to the capabilities of the user
-       agent.
+       якщо він є. Цей рядок містить позначення браузера користувача, з якого
+       було запрошено поточну сторінку. Типовий приклад такого рядка:
+       <computeroutput>Mozilla/4.5 [en] (X11; U;
+       Linux 2.2.9 i586)</computeroutput>. Серед іншого, ви можете
+       використовувати це значення з <function>get_browser</function>, щоб
+       адаптувати вивід вашої сторінки під можливості браузера користувача.
       </simpara>
      </listitem>
     </varlistentry>
@@ -285,14 +284,13 @@
      <term>'<varname>HTTPS</varname>'</term>
      <listitem>
       <simpara>
-       Set to a non-empty value if the script was queried through the HTTPS
-       protocol.
+       Має непусте значення, якщо скрипт було запитано через протокол HTTPS.
       </simpara>
       <note>
        <simpara>
-        Note that when using ISAPI with IIS, the value will be 
-        <literal>off</literal> if the request was not made through the HTTPS
-        protocol.
+        При використанні ISAPI разом з IIS, матиме значення
+        <literal>off</literal>, якщо запит було здійснено не через протокол
+        HTTPS.
        </simpara>
       </note>
      </listitem>
@@ -302,8 +300,7 @@
      <term>'<varname>REMOTE_ADDR</varname>'</term>
      <listitem>
       <simpara>
-       The IP address from which the user is viewing the current
-       page.
+       IP-адреса, з якої користувач переглядає поточну сторінку.
       </simpara>
      </listitem>
     </varlistentry>
@@ -312,9 +309,8 @@
      <term>'<varname>REMOTE_HOST</varname>'</term>
      <listitem>
       <simpara>
-       The Host name from which the user is viewing the current
-       page.  The reverse dns lookup is based off the 
-       <varname>REMOTE_ADDR</varname> of the user.
+       Назва хоста, з якого користувач переглядає поточну сторінку. Зворотній
+       пошук DNS базується на <varname>REMOTE_ADDR</varname> користувача.
       </simpara>
       <note>
        <simpara>

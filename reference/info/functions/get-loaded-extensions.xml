@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: a9128651164a804d17c3b54142e8f272cc5f9baf Maintainer: ktretyak Status: wip -->
+<!-- EN-Revision: a9128651164a804d17c3b54142e8f272cc5f9baf Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
 <refentry xml:id="function.get-loaded-extensions" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>get_loaded_extensions</refname>
-  <refpurpose>Returns an array with the names of all modules compiled and loaded</refpurpose>
+  <refpurpose>Повертає масив, що містить назви компільованих та підключених модулів</refpurpose>
  </refnamediv>
  
  <refsect1 role="description">
@@ -14,8 +14,8 @@
    <methodparam choice="opt"><type>bool</type><parameter>zend_extensions</parameter><initializer>false</initializer></methodparam>
   </methodsynopsis>
   <para>
-   This function returns the names of all the modules compiled and
-   loaded in the PHP interpreter.
+   Ця функція повертає назви всіх компільованих та підключених модулів в
+   інтерпретаторі PHP.
   </para>
  </refsect1>
 
@@ -27,8 +27,8 @@
      <term><parameter>zend_extensions</parameter></term>
      <listitem>
       <para>
-       Only return Zend extensions, if not then regular extensions, like 
-       mysqli are listed. Defaults to &false; (return regular extensions).
+       Повертає тільки розширення Zend, в противному разі - звичайні розширення,
+       такі як mysqli. За промовчанням &false; (повертає звичайні розширення).
       </para>
      </listitem>
     </varlistentry>
@@ -39,7 +39,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Returns an indexed array of all the modules names.
+   Повертає індексований масив зі всіма назвами модулів.
   </para>
  </refsect1>
 
@@ -58,7 +58,7 @@
       <row>
        <entry>5.2.4</entry>
        <entry>
-        The optional <parameter>zend_extensions</parameter> parameter was added
+        Було додано необов'язковий параметр <parameter>zend_extensions</parameter>
        </entry>
       </row>
      </tbody>
@@ -72,7 +72,7 @@
   &reftitle.examples;
   <para>
    <example>
-    <title><function>get_loaded_extensions</function> Example</title>
+    <title>Використання <function>get_loaded_extensions</function></title>
     <programlisting role="php">
 <![CDATA[
 <?php

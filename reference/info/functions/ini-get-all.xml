@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 78954fcbb8951f25eae9a7ef831b91895a8dcf95 Maintainer: ktretyak Status: wip -->
+<!-- EN-Revision: 78954fcbb8951f25eae9a7ef831b91895a8dcf95 Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
 <refentry xml:id="function.ini-get-all" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>ini_get_all</refname>
-  <refpurpose>Gets all configuration options</refpurpose>
+  <refpurpose>Отримує всі параметри конфігурації</refpurpose>
  </refnamediv>
  
  <refsect1 role="description">
@@ -15,7 +15,7 @@
    <methodparam choice="opt"><type>bool</type><parameter>details</parameter><initializer>true</initializer></methodparam>
   </methodsynopsis>
   <para>
-   Returns all the registered configuration options.
+   Повертає всі зареєстровані параметри конфігурації.
   </para>
  </refsect1>
 
@@ -27,8 +27,8 @@
      <term><parameter>extension</parameter></term>
      <listitem>
       <para>
-       An optional extension name. If set, the function return only options
-       specific for that extension.
+       Назва розширення. Якщо для цього параметра передається значення, то функція
+       повертатиме параметри призначені тільки для цього розширення.
       </para>
      </listitem>
     </varlistentry>
@@ -36,8 +36,9 @@
      <term><parameter>details</parameter></term>
      <listitem>
       <para>
-       Retrieve details settings or only the current value for each setting.
-       Default is &true; (retrieve details).
+       Деталізація. Говорить чи потрібно надавати деталізовану інформацію про
+       налаштування, чи тільки поточне значення для кожного
+       параметра. За промовчанням &true; (надає детальну інформацію).
       </para>
      </listitem>
     </varlistentry>
@@ -48,27 +49,30 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Returns an associative array with directive name as the array key.
+   Повертає асоціативний масив, в якому назви директив є ключами.
   </para>
   <para>
-   When <parameter>details</parameter> is &true; (default) the array will
-   contain <literal>global_value</literal> (set in
-   &php.ini;), <literal>local_value</literal> (perhaps set with
-   <function>ini_set</function> or &htaccess;), and
-   <literal>access</literal> (the access level).
+   При <parameter>details</parameter> рівному &true; (за
+   промовчанням) масив буде містити <literal>global_value</literal>
+   (встановлюється в &php.ini;), <literal>local_value</literal> (може
+    встановлюватись через <function>ini_set</function> або через &htaccess;), та
+   <literal>access</literal> (рівень доступа).
   </para>
   <para>
-   When <parameter>details</parameter> is &false; the value will be the
-   current value of the option.
+   При <parameter>details</parameter> рівному &false;, значенням масива
+   буде поточне значення параметра.
   </para>
   <para>
-   See the <link linkend="configuration.changes.modes">manual section</link>
-   for information on what access levels mean.
+   Прогляньте сторінку
+   <link linkend="configuration.changes.modes">Де можна встановлювати
+   параметри</link>,
+   на якій є інформація про рівні доступа (точніше - там вони називаються
+   "режими").
   </para>
   <note>
    <para>
-    It's possible for a directive to have multiple access levels, which is
-    why <literal>access</literal> shows the appropriate bitmask values.
+    Директива може мати кілька рівнів доступа, в цьому випадку
+    <literal>access</literal> буде мати відповідну бітову маску.
    </para>
   </note>
  </refsect1>
@@ -88,7 +92,7 @@
       <row>
        <entry>5.3.0</entry>
        <entry>
-        Added <parameter>details</parameter>.
+        Додано параметр <parameter>details</parameter>.
        </entry>
       </row>
      </tbody>
@@ -101,7 +105,7 @@
   &reftitle.examples;
   <para>
    <example>
-    <title><function>ini_get_all</function> examples</title>
+    <title>Використання <function>ini_get_all</function></title>
     <programlisting role="php">
 <![CDATA[
 <?php
@@ -153,7 +157,7 @@ Array
     </screen>
    </example>
    <example>
-    <title>Disabling <parameter>details</parameter></title>
+    <title>Виключення деталізації за допомогою параметра <parameter>details</parameter></title>
     <programlisting role="php">
 <![CDATA[
 <?php

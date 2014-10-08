@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 8b5940cadeb4f1c8492f4a7f70743a2be807cf39 Maintainer: ktretyak Status: ready -->
+<!-- $Revision$ -->
+<refentry xml:id="function.get-browser" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <refnamediv>
+  <refname>get_browser</refname>
+  <refpurpose>Надає інформацію про можливості браузера користувача</refpurpose>
+ </refnamediv>
+ 
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>mixed</type><methodname>get_browser</methodname>
+   <methodparam choice="opt"><type>string</type><parameter>user_agent</parameter></methodparam>
+   <methodparam choice="opt"><type>bool</type><parameter>return_array</parameter><initializer>false</initializer></methodparam>
+  </methodsynopsis>
+  <para>
+   Намагається визначити можливості браузера користувача, шукаючи інформацію
+   про браузер в файлі <filename>browscap.ini</filename>
+   file.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>user_agent</parameter></term>
+     <listitem>
+      <para>
+       Рядок, яким позначається браузер користувача. За промовчанням,
+       використовується значення HTTP-заголовка User-Agent; тим не менше,
+       ви можете змінити це (наприклад, щоб отримати інфу за інший браузер),
+       передаючи значення для даного параметра.
+      </para>
+      <para>
+       Можна передавати для цього параметра значення &null;.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>return_array</parameter></term>
+     <listitem>
+      <para>
+       Якщо встановлено &true;, ця функція буде повертати масив
+       (<type>array</type>), а не об'єкт (<type>object</type>).
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   Повертається інформація у вигляді об'єкта чи масива, який містить
+   декілька елементів даних, репрезентуючи, наприклад, старшу і меншу (major,
+   minor) цифру версії браузера та рядок ID; Значення &true;/&false; для
+   позначень наявності такої функціональності як фрейми, JavaScript, та
+   куки; і т.д.
+  </para>
+  <para>
+   Причому, що стосується <literal>cookies</literal>, то тут йдеться про те,
+   що браузер має можливість приймати куки, але це не показує, чи у користувача
+   підключена можливість приймати куки, чи ні. Єдина можливість перевірити чи
+   приймаються куки - це відправити їх через <function>setcookie</function>,
+   перезавантажити, та перевірити наявність значення.
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title>Вивід інформації про браузер користувача</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+echo $_SERVER['HTTP_USER_AGENT'] . "\n\n";
+
+$browser = get_browser(null, true);
+print_r($browser);
+?>
+]]>
+    </programlisting>
+    &example.outputs.similar;
+    <screen>
+<![CDATA[
+Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.7) Gecko/20040803 Firefox/0.9.3
+
+Array
+(
+    [browser_name_regex] => ^mozilla/5\.0 (windows; .; windows nt 5\.1; .*rv:.*) gecko/.* firefox/0\.9.*$
+    [browser_name_pattern] => Mozilla/5.0 (Windows; ?; Windows NT 5.1; *rv:*) Gecko/* Firefox/0.9*
+    [parent] => Firefox 0.9
+    [platform] => WinXP
+    [browser] => Firefox
+    [version] => 0.9
+    [majorver] => 0
+    [minorver] => 9
+    [cssversion] => 2
+    [frames] => 1
+    [iframes] => 1
+    [tables] => 1
+    [cookies] => 1
+    [backgroundsounds] =>
+    [vbscript] =>
+    [javascript] => 1
+    [javaapplets] => 1
+    [activexcontrols] =>
+    [cdf] =>
+    [aol] =>
+    [beta] => 1
+    [win16] =>
+    [crawler] =>
+    [stripper] =>
+    [wap] =>
+    [netclr] =>
+)
+]]>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  <note>
+   <para>
+    Для того щоб ця функціональність працювала, параметр <link 
+    linkend="ini.browscap">browscap</link> у файлі конфігурації 
+    &php.ini; повинен вказувати на коректне місцерозташування файла
+    <filename>browscap.ini</filename> у вашій системі.
+   </para>
+   <para>
+    <filename>browscap.ini</filename> не поставляється з PHP, але ви можете
+    знайти йоо свіжу версію тут  - <link 
+    xlink:href="&url.browscap.download;">php_browscap.ini</link>.
+   </para>
+   <para>
+    Хоча у файлі <filename>browscap.ini</filename> міститься інформація про
+    більшість браузерів, її потрібно оновлювати для підтримки бази
+    даних в актуальному стані. Формат записів у файлі є досить очевидним.
+   </para>
+  </note>
+ </refsect1>
+
+</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

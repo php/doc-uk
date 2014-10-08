@@ -63,12 +63,12 @@
 <!ENTITY AndSeveralOthers  "Та інші">
 <!ENTITY Version           "Версія">
 <!ENTITY Description       "Опис">
-<!ENTITY Changeable        "Можна змінювати">
+<!ENTITY Changeable        "Де можна змінювати">
 <!ENTITY ConfigureOptions  "Параметри Конфігурації">
 <!ENTITY Default           "За промовчанням">
 <!ENTITY Definition        "Визначення">
 <!ENTITY Functions         "Функції">
-<!ENTITY Name              "Ім'я">
+<!ENTITY Name              "Назва">
 <!ENTITY Alias             "Псевдонім">
 <!ENTITY Type              "Тип">
 <!ENTITY Changelog         "Журнал Змін">
