@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 24e5510d907b3be789bd773c5c8c01b29e22af47 Maintainer: ktretyak Status: wip -->
+<!-- EN-Revision: 24e5510d907b3be789bd773c5c8c01b29e22af47 Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
 
 <phpdoc:varentry xmlns:phpdoc="http://php.net/ns/phpdoc" xml:id="reserved.variables.server" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -16,8 +16,8 @@
    містить таку інформацію як заголовки, шляхи та розташування скриптів.
    Записи в цьому масиві створює веб-сервер. Немає гарантії того, що кожен
    веб-сервер буде надавати всі ці записи; веб-сервери можуть опускати деякі з
-   них, або надавати інші, незазначені в списку, наведеному нижче. Тим не
-   менше, але більша частина з цих змінних взяті на облік в
+   цих змінних, або надавати інші, незазначені в списку, що наведено нижче.
+   Тим не менше, але більша частина з цих змінних взяті на облік в
    <link xlink:href="&url.rfc;3875">специфікації CGI/1.1</link>, отже вам варто
    бути готовим до них.
   </para>
@@ -38,8 +38,8 @@
 
   <simpara>
    Ви можете знайти (а можете і не знайти) будь-який з наступних елементів в
-   <varname>$_SERVER</varname>. Невелика кількість з них можуть бути
-   доступними (або дійсно матимуть значення), якщо ви запускаєте PHP з
+   <varname>$_SERVER</varname>. Невелика кількість з них може бути
+   доступною (або дійсно матиме значення), якщо ви запускаєте PHP з
    <link linkend="features.commandline">командного рядка</link>.
   </simpara>
 
@@ -59,7 +59,7 @@
       </simpara>
       <simpara>
        Якщо PHP запущено з командного рядка, ця змінна містить назву скрипта починаючи з
-       PHP 4.3.0, раніше це було не доступно.
+       PHP 4.3.0, що раніше було недоступно.
       </simpara>
      </listitem>
     </varlistentry>
@@ -70,7 +70,7 @@
       <simpara>
        Масив аргументів, переданих до скрипта. Коли скрипт запущено з
        командного рядка, то є можливість передавати до нього параметри в
-       C-стилі. При виклику через метод GET, цей масив містить рядок запиту.
+       C-стилі. При виклику через метод GET, цей масив містить рядок запита.
       </simpara>
      </listitem>
     </varlistentry>
@@ -138,7 +138,7 @@
      <term>'<varname>REQUEST_METHOD</varname>'</term>
      <listitem>
       <simpara>
-       Назву метода, що використовувався при запиті сторінки;
+       Назва метода, що використовувався при запиті сторінки;
        тобто '<literal>GET</literal>',
        '<literal>HEAD</literal>', '<literal>POST</literal>',
        '<literal>PUT</literal>'.
@@ -147,7 +147,7 @@
        <para>
         Скрипт PHP завершує роботу після відправки заголовків (тобто,
         після здійснення будь-якого виводу без його буферизації) якщо метод
-        запиту був <literal>HEAD</literal>.
+        запита був <literal>HEAD</literal>.
        </para>
       </note>
      </listitem>
@@ -185,8 +185,8 @@
      <term>'<varname>DOCUMENT_ROOT</varname>'</term>
      <listitem>
       <simpara>
-       Коринева директорія документів (document root), з під якої поточний
-       скрипт викориується, як визначено в конфігураційному файлі веб-сервера.
+       Коренева директорія документів (document root), з під якої поточний
+       скрипт виконується; вона визначається в конфігураційному файлі веб-сервера.
       </simpara>
      </listitem>
     </varlistentry>
@@ -227,7 +227,7 @@
      <listitem>
       <simpara>
        Вміст заголовка <literal>Accept-Language:</literal> з поточного запита,
-       якщо він є. Наприклад: '<literal>en</literal>'.
+       якщо він є. Наприклад: '<literal>uk</literal>'.
       </simpara>
      </listitem>
     </varlistentry>
@@ -259,8 +259,8 @@
        Адреса сторінки (якщо така є), з якої користувач перейшов
        на поточну сторінку. Це значення встановлюється браузером. Не всі
        браузери встановлюють це значення, а деякі надають можливість
-       модифікувати <varname>HTTP_REFERER</varname>як додаткову можливість.
-       Якщо коротко - цьому значенню не можна довіряти.
+       модифікувати <varname>HTTP_REFERER</varname>в якості додаткової
+       можливості. Якщо коротко - цьому значенню не можна довіряти.
       </simpara>
      </listitem>
     </varlistentry>
@@ -314,9 +314,9 @@
       </simpara>
       <note>
        <simpara>
-        Your web server must be configured to create this variable. For
-        example in Apache you'll need <literal>HostnameLookups On</literal>
-        inside &httpd.conf; for it to exist.  See also
+        Ваш веб-сервер повинен бути сконфігурований, щоб створювати цю змінну.
+        Наприклад, в Apache вам потрібно <literal>HostnameLookups On</literal>
+        у файлі &httpd.conf;, щоб вона існувала. Див. також
         <function>gethostbyaddr</function>.
        </simpara>
       </note>
@@ -327,8 +327,8 @@
      <term>'<varname>REMOTE_PORT</varname>'</term>
      <listitem>
       <simpara>
-       The port being used on the user's machine to communicate with
-       the web server.
+       Порт, який було використано на комп'ютері користувача, для зв'язку
+       з веб-сервером.
       </simpara>
      </listitem>
     </varlistentry>
@@ -337,7 +337,7 @@
      <term>'<varname>REMOTE_USER</varname>'</term>
      <listitem>
       <simpara>
-        The authenticated user.
+        Ім'я авторизованого користувача.
       </simpara>
      </listitem>
     </varlistentry>
@@ -346,7 +346,7 @@
      <term>'<varname>REDIRECT_REMOTE_USER</varname>'</term>
      <listitem>
       <simpara>
-        The authenticated user if the request is internally redirected.
+        Ім'я авторизованого користувача, якщо запит має внутрішню переадресацію.
       </simpara>
      </listitem>
     </varlistentry>
@@ -355,14 +355,14 @@
      <term>'<varname>SCRIPT_FILENAME</varname>'</term>
      <listitem>
       <para>
-       The absolute pathname of the currently executing script.
+       Абсолютний шлях до поточного скрипта, що виконується.
        <note>
         <para>
-         If a script is executed with the CLI, as a relative path,
-         such as <filename>file.php</filename> or 
+         Якщо скрипт виконується через CLI, з використанням відносного шляху,
+         такого як <filename>file.php</filename> чи
          <filename>../file.php</filename>, 
-         <varname>$_SERVER['SCRIPT_FILENAME']</varname> will 
-         contain the relative path specified by the user.
+         <varname>$_SERVER['SCRIPT_FILENAME']</varname> буде містити цей
+         відносний шлях, визначений користувачем.
         </para>
        </note>
       </para>
@@ -373,10 +373,10 @@
      <term>'<varname>SERVER_ADMIN</varname>'</term>
      <listitem>
       <simpara>
-       The value given to the SERVER_ADMIN (for Apache) directive in
-       the web server configuration file. If the script is running
-       on a virtual host, this will be the value defined for that
-       virtual host.
+       Значення, що встановлено для директиви SERVER_ADMIN (для Apache)
+       в конфігураційному файлі веб-сервера. Якщо скрипт запущено на
+       віртуальному хості, SERVER_ADMIN матиме значення, визначене для
+       даного віртуального хоста.
       </simpara>
      </listitem>
     </varlistentry>
@@ -385,18 +385,20 @@
      <term>'<varname>SERVER_PORT</varname>'</term>
      <listitem>
       <simpara>
-       The port on the server machine being used by the web server
-       for communication. For default setups, this will be '<literal>80</literal>';
-       using SSL, for instance, will change this to whatever your
-       defined secure HTTP port is.
+       Порт сервера, який використовується веб-сервером для зв'язку.
+       За промовчанням, встановлюється значення '<literal>80</literal>'.
+       Але використовуючи SSL, наприклади, це значення буде таким, яке
+       вказано в конфіг-файлі для з'єднання через безпечний HTTP-порт.
       </simpara>
       <note>
        <simpara>
-        Under the Apache 2, you must set <literal>UseCanonicalName = On</literal>, 
-        as well as <literal>UseCanonicalPhysicalPort = On</literal> in order to
-        get the physical (real) port, otherwise, this value can be spoofed and it
-        may or may not return the physical port value.
-        It is not safe to rely on this value in security-dependent contexts.
+        На Apache 2, ви повинні встановити
+        <literal>UseCanonicalName = On</literal>, а також
+        <literal>UseCanonicalPhysicalPort = On</literal> для того, щоб отримати
+        фізичний (реальний) порт, бо в іншому випадку, це значення може
+        підмінятись, а тому не буде повертатись значення фізичного порта.
+        Спиратись на це значення небезпечно в контексті, коли є потреба
+        в посиленій безпеці.
        </simpara>
       </note>
      </listitem>
@@ -406,8 +408,8 @@
      <term>'<varname>SERVER_SIGNATURE</varname>'</term>
      <listitem>
       <simpara>
-       String containing the server version and virtual host name
-       which are added to server-generated pages, if enabled.
+       Рядок, що містить версію веб-сервера та назву віртуального хоста, які
+       додаються до сторінок, якщо на веб-сервері ця функціональність підключена.
       </simpara>
      </listitem>
     </varlistentry>
@@ -416,24 +418,26 @@
      <term>'<varname>PATH_TRANSLATED</varname>'</term>
      <listitem>
       <simpara>
-       Filesystem- (not document root-) based path to the current
-       script, after the server has done any virtual-to-real
-       mapping.
+       Шлях, що базується на файловій системі (а не на шляху до кореневого
+       каталога документів), який веде до поточного скрипта. PATH_TRANSLATED
+       матиме значення, якщо створено співставлення (мапінг) між назвою
+       віртуального хоста та реальним шляхом до його каталога.
       </simpara>
       <note>
        <simpara>
-        As of PHP 4.3.2, <envar>PATH_TRANSLATED</envar> is no longer set 
-        implicitly under the Apache 2 <acronym>SAPI</acronym> in contrast 
-        to the situation in Apache 1, where it's set to the same value as 
-        the <envar>SCRIPT_FILENAME</envar> server variable when it's not 
-        populated by Apache.  This change was made to comply with the 
-        <acronym>CGI</acronym> specification that 
-        <envar>PATH_TRANSLATED</envar> should only exist if 
-        <envar>PATH_INFO</envar> is defined.
+        Починаючи з PHP 4.3.2, <envar>PATH_TRANSLATED</envar> більше не
+        встановлюється явно на <acronym>SAPI</acronym> Apache 2, на відміну 
+        від Apache 1, де для неї встановлюється те ж саме значення, що і
+        для змінної сервера <envar>SCRIPT_FILENAME</envar>, коли її не
+        заповнено через конфіг-файли. Ця зміна була зроблена для відповідності
+        зі специфікацією <acronym>CGI</acronym>, яка говорить, що змінна
+        <envar>PATH_TRANSLATED</envar> повинна існувати тільки тоді, коли
+        <envar>PATH_INFO</envar> є визначеною.
        </simpara>
        <simpara>
-        Apache 2 users may use <literal>AcceptPathInfo = On</literal> inside
-        <filename>httpd.conf</filename> to define <envar>PATH_INFO</envar>.
+        Користувачі Apache 2 можуть використовувати
+        <literal>AcceptPathInfo = On</literal> у файлі
+        <filename>httpd.conf</filename>, щоб визначити <envar>PATH_INFO</envar>.
        </simpara>
       </note>
      </listitem>
@@ -443,11 +447,10 @@
      <term>'<varname>SCRIPT_NAME</varname>'</term>
      <listitem>
       <simpara>
-       Contains the current script's path. This is useful for pages
-       which need to point to themselves.
-       The <link linkend="language.constants.predefined">__FILE__</link>
-       constant contains the full path and filename of the current (i.e.
-       included) file.
+       Містить шлях до поточного скрипта. Це є корисним для сторінок, які
+       повинні посилатись на самих себе.
+       Константа <link linkend="language.constants.predefined">__FILE__</link>
+       містить повний шлях та назву файла до поточного (тобто підключеного) файла.
       </simpara>
      </listitem>
     </varlistentry>
@@ -456,8 +459,8 @@
      <term>'<varname>REQUEST_URI</varname>'</term>
      <listitem>
       <simpara>
-       The URI which was given in order to access this page; for
-       instance, '<literal>/index.html</literal>'.
+       URI, яке передається для доступу до поточного скрипта; наприклад,
+       '<literal>/index.html</literal>'.
       </simpara>
      </listitem>
     </varlistentry>
@@ -466,9 +469,9 @@
      <term>'<varname>PHP_AUTH_DIGEST</varname>'</term>
      <listitem>
       <simpara>
-       When doing Digest HTTP authentication this variable is set 
-       to the 'Authorization' header sent by the client (which you 
-       should then use to make the appropriate validation).
+       При виконанні Digest HTTP автентифікації, цій змінній передається
+       значення заголовка 'Authorization', що присилається клієнтом (який
+       потім потрібно використовувати при відповідній перевірці).
       </simpara>
      </listitem>
     </varlistentry>
@@ -477,8 +480,8 @@
      <term>'<varname>PHP_AUTH_USER</varname>'</term>
      <listitem>
       <simpara>
-       When doing HTTP authentication this variable is set to the 
-       username provided by the user.
+       При виконанні HTTP автентифікації, цій змінній передається значення
+       імені користувача, що передає користувач.
       </simpara>
      </listitem>
     </varlistentry>
@@ -487,8 +490,8 @@
      <term>'<varname>PHP_AUTH_PW</varname>'</term>
      <listitem>
       <simpara>
-       When doing HTTP authentication this variable is set to the 
-       password provided by the user.
+       При виконанні HTTP автентифікації, цій змінній передається значення
+       пароля, що перередає користувач.
       </simpara>
      </listitem>
     </varlistentry>
@@ -497,8 +500,8 @@
      <term>'<varname>AUTH_TYPE</varname>'</term>
      <listitem>
       <simpara>
-       When doing HTTP authenticated this variable is set to the 
-       authentication type.
+       При виконанні HTTP автентифікації, цій змінній передається значення
+       типу автентифікації.
       </simpara>
      </listitem>
     </varlistentry>
@@ -507,13 +510,12 @@
      <term>'<varname>PATH_INFO</varname>'</term>
      <listitem>
       <simpara>
-       Contains any client-provided pathname information trailing the
-       actual script filename but preceding the query string, if
-       available. For instance, if the current script was accessed via
-       the
+       Містить будь-який шлях, що надається клієнтом в кінці
+       назви поточного скрипта, але передує рядку запита (якщо є).
+       Наприклад, якщо до поточного скрипта доступаються через
        URL <filename>http://www.example.com/php/path_info.php/some/stuff?foo=bar</filename>,
-       then <varname>$_SERVER['PATH_INFO']</varname> would
-       contain <literal>/some/stuff</literal>.
+       то <varname>$_SERVER['PATH_INFO']</varname> буде містити
+       <literal>/some/stuff</literal>.
       </simpara>
      </listitem>
     </varlistentry>
@@ -522,8 +524,8 @@
      <term>'<varname>ORIG_PATH_INFO</varname>'</term>
      <listitem>
       <simpara>
-       Original version of '<varname>PATH_INFO</varname>' before processed by
-       PHP.
+       Оригінальна версія '<varname>PATH_INFO</varname>' перед обробкою її
+       через PHP.
       </simpara>
      </listitem>
     </varlistentry>
@@ -547,22 +549,21 @@
       <row>
        <entry>5.4.0</entry>
        <entry>
-        <varname>$HTTP_SERVER_VARS</varname> isn't available anymore due to
-        the removal of long arrays registering.
+        Змінна <varname>$HTTP_SERVER_VARS</varname> більше не доступна через
+        те, що відповідні довгі масиви було видалено.
        </entry>
       </row>
       <row>
        <entry>5.3.0</entry>
        <entry>
-        Directive <link linkend="ini.register-long-arrays">register_long_arrays</link>
-        which caused <varname>$HTTP_SERVER_VARS</varname> to be available has been
-        deprecated.
+        Директива <link linkend="ini.register-long-arrays">register_long_arrays</link>,
+        що підключала <varname>$HTTP_SERVER_VARS</varname>, стала застарілою.
        </entry>
       </row>
       <row>
        <entry>4.1.0</entry>
        <entry>
-        Introduced <varname>$_SERVER</varname> that deprecated
+        Вводиться <varname>$_SERVER</varname> на заміну застарілої
         <varname>$HTTP_SERVER_VARS</varname>.
        </entry>
       </row>
@@ -576,7 +577,7 @@
   &reftitle.examples;
   <para>
    <example xml:id="variable.server.basic">
-    <title><varname>$_SERVER</varname> example</title>
+    <title>Використання <varname>$_SERVER</varname></title>
     <programlisting role="php">
 <![CDATA[
 <?php
@@ -603,7 +604,7 @@ www.example.com
   &reftitle.seealso;
   <para>
    <simplelist>
-    <member><link linkend="book.filter">The filter extension</link></member>
+    <member><link linkend="book.filter">Фільтрація даних</link></member>
    </simplelist>
   </para>
  </refsect1>
