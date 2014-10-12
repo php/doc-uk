@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: e41aab5ecacf449e51179886c17f1d41735b0234 Maintainer: ktretyak Status: ready -->
+<!-- $Revision$ -->
+<refentry xml:id="function.empty" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>empty</refname>
+  <refpurpose>Перевіряє чи змінна є пустою</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>bool</type><methodname>empty</methodname>
+   <methodparam><type>mixed</type><parameter>var</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   Визначає чи вважається змінна порожньою. Змінна вважається порожньою,
+   якщо її не ініціалізовано, або її значення еквівалентне до &false;.
+   Функція <function>empty</function> не генерує попередження, якщо змінна не
+   ініціалізована.
+  </para>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>var</parameter></term>
+     <listitem>
+      <para>
+       Змінна для перевірки
+      </para>
+      <note>
+       <para>
+        В раніших версіях, за PHP 5.5, <function>empty</function> підтримувала
+        тільки змінні; будь-що інше спричиняло синтаксичну помилку. Іншими
+        словами, ось такий код не працював:
+        <command>empty(trim($name))</command>.
+        Щоб уникнути помилки використовуйте
+        <command>trim($name) == false</command>.
+       </para>
+      </note>
+      <para>
+       Не видає попередження, якщо змінна не ініціалізована.
+       Тобто роботу <function>empty</function> можна описати таким
+       еквівалентним виразом <command>!isset($var) || $var == false</command>.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   Повертає &false;, якщо <parameter>var</parameter> ініціалізовано та вона має
+   непусте та ненульове значення.
+   В противному разі повертає &true;.
+  </para>
+  <para>
+   Значення наступних варіантів вважається пустим:
+   <simplelist>
+    <member><literal>""</literal> (пустий рядок)</member>
+    <member><literal>0</literal> (0 як ціле число)</member>
+    <member><literal>0.0</literal> (0 як дробне число)</member>
+    <member><literal>"0"</literal> (0 як рядок)</member>
+    <member>&null;</member>
+    <member>&false;</member>
+    <member><literal>array()</literal> (пустий масив)</member>
+    <member><literal>$var;</literal> (змінну оголошено, але вона не має значення)</member>
+   </simplelist>
+  </para>
+ </refsect1>
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>5.5.0</entry>
+       <entry>
+        <para>
+         <function>empty</function> тепер підтримує вирази, а не тільки змінні.
+        </para>
+       </entry>
+      </row>
+      <row>
+       <entry>5.4.0</entry>
+       <entry>
+        <para>
+         При перевірці нечислових зміщень рядка, повертається &true;.
+        </para>
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title>
+     Порівняння роботи функцій <function>empty</function> та <function>isset</function>.
+    </title>  
+    <programlisting role="php">
+<![CDATA[
+<?php
+$var = 0;
+
+// Оцінюється як true, оскільки $var має значення 0,
+// який empty() вважає пустим значенням
+if (empty($var)) {
+    echo '$var має або 0, або пустий рядок, або їй не встановлено значення';
+}
+
+// Оцінюється як true, оскільки для $var встановлено певне значення
+if (isset($var)) {
+    echo '$var має певне значення, хоча воно прирівнюється до пустого значення';
+}
+?>
+]]>
+    </programlisting>
+   </example>
+  </para>
+  <example>
+   <title>Робота <function>empty</function> при рядковому зміщенні</title>
+   <para>
+    PHP 5.4 змінює те, як <function>empty</function> поводиться
+    при передачі рядкового зміщення.
+   </para>
+   <programlisting role="php">
+<![CDATA[
+<?php
+$expected_array_got_string = 'somestring';
+var_dump(empty($expected_array_got_string['певний_ключ']));
+var_dump(empty($expected_array_got_string[0]));
+var_dump(empty($expected_array_got_string['0']));
+var_dump(empty($expected_array_got_string[0.5]));
+var_dump(empty($expected_array_got_string['0.5']));
+var_dump(empty($expected_array_got_string['0 Mostel']));
+?>
+]]>
+   </programlisting>
+   &example.outputs.53;
+   <screen>
+<![CDATA[
+bool(false)
+bool(false)
+bool(false)
+bool(false)
+bool(false)
+bool(false)
+]]>
+   </screen>
+   &example.outputs.54;
+   <screen>
+<![CDATA[
+bool(true)
+bool(false)
+bool(false)
+bool(false)
+bool(true)
+bool(true)
+]]>
+   </screen>
+  </example>
+ </refsect1>
+ <refsect1 role="notes">
+  &reftitle.notes;
+  &note.language-construct;
+  <note>
+   <para>
+    Коли через <function>empty</function> перевіряються недоступні властивості
+    об'єкта, викликається метод <link linkend="object.isset">__isset()</link>,
+    якщо його оголошено.
+   </para>
+  </note>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>isset</function></member>
+    <member><link linkend="object.isset">__isset()</link></member>
+    <member><function>unset</function></member>
+    <member><function>array_key_exists</function></member>
+    <member><function>count</function></member> 
+    <member><function>strlen</function></member>
+    <member><link linkend="types.comparisons">Порівняльна таблиця типів</link></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

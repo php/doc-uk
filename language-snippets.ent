@@ -887,9 +887,9 @@ script that is being executed.</simpara></note>'>
 linkend="ini.open-basedir">open_basedir</link>.</para></note>'>
 
 
-<!ENTITY note.language-construct '<note xmlns="http://docbook.org/ns/docbook"><simpara>Because this is a
-language construct and not a function, it cannot be called using
-<link linkend="functions.variable-functions">variable functions</link>.</simpara>
+<!ENTITY note.language-construct '<note xmlns="http://docbook.org/ns/docbook"><simpara>Оскільки це є
+мовна конструкція, а не функція, її не можна викликати через
+<link linkend="functions.variable-functions">змінні функції</link>.</simpara>
 </note>'>
 
 <!-- Common pieces in features/safe-mode.xml

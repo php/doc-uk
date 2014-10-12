@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: ccb5544ee6c3ab88bbb778f82bab09143cd591bb Maintainer: ktretyak Status: wip -->
+<!-- EN-Revision: ccb5544ee6c3ab88bbb778f82bab09143cd591bb Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
 <chapter xml:id="language.types" xmlns="http://docbook.org/ns/docbook">
- <title>Types</title>
+ <title>Типи</title>
 
  <sect1 xml:id="language.types.intro">
-  <title>Introduction</title>
+  <title>Введення</title>
   
   <simpara>
-   PHP supports eight primitive types.
+   PHP підтримує вісім простих типів.
   </simpara>
   
   <para>
-   Four scalar types:
+   Чотири скалярних типи:
   </para>
 
   <itemizedlist>
@@ -31,7 +31,7 @@
 
    <listitem>
     <simpara>
-     <type>float</type> (floating-point number, aka <type>double</type>)
+     <type>float</type> (число з плаваючою точкою, ще відоме як <type>double</type>)
     </simpara>
    </listitem>
 
@@ -44,7 +44,7 @@
   </itemizedlist>
 
   <para>
-   Two compound types:
+   Два змішаних типи:
   </para>
 
   <itemizedlist>
@@ -64,7 +64,7 @@
   </itemizedlist>
 
   <para>
-   And finally two special types:
+   Та два спеціальних типи:
   </para>
 
   <itemizedlist>
@@ -84,9 +84,8 @@
   </itemizedlist>
 
   <para>
-   This manual also introduces some
-   <link linkend="language.pseudo-types">pseudo-types</link> for readability
-   reasons:
+   Цей посібник також вводить кілька
+   <link linkend="language.pseudo-types">псевдо-типів</link> для зручності:
   </para>
 
   <itemizedlist>
@@ -112,54 +111,56 @@
   </itemizedlist>
   
   <para>
-   And the pseudo-variable <parameter>$...</parameter>.
+   Та псевдо-змінну <parameter>$...</parameter>.
   </para>
 
   <simpara>
-   Some references to the type "double" may remain in the manual. Consider
-   double the same as float; the two names exist only for historic reasons.
+   Деякі посилання на тип "double" може ще залишатись в посібнику. Сприймайте
+   тип "double", як і тип float; дві назви існують тільки через історичну
+   спадщину.
   </simpara>
   
   <simpara>
-   The type of a variable is not usually set by the programmer; rather, it is
-   decided at runtime by PHP depending on the context in which that variable is
-   used.
+   Типи змінних не завжди задаються програмістом; частіше, це вирішується
+   під час обробки вже самою PHP в залежності від контексту, в якому змінна
+   використовується.
   </simpara>
 
   <note>
    <simpara>
-    To check the type and value of an
-    <link linkend="language.expressions">expression</link>, use the
-    <function>var_dump</function> function.
+    Щоб перевірити тип та значення
+    <link linkend="language.expressions">виразу</link>, використовуйте
+    функцію <function>var_dump</function>.
    </simpara>
 
    <para>
-    To get a human-readable representation of a type for debugging, use the
-    <function>gettype</function> function. To check for a certain type, do
-    <emphasis>not</emphasis> use <function>gettype</function>, but rather the
-    <literal>is_<replaceable>type</replaceable></literal> functions. Some
-    examples:
+    Щоб отримати читабельне представлення типів при налагодженні
+    (debugging), використовуйте функцію <function>gettype</function>. Щоб
+    перевірити конкретний тип, <emphasis>НЕ</emphasis> використовуйте
+    <function>gettype</function>, замість неї скористайтесь функціями
+    <literal>is_<replaceable>type</replaceable></literal>. Ось деякі приклади:
    </para>
    
    <informalexample>
     <programlisting role="php">
 <![CDATA[
 <?php
-$a_bool = TRUE;   // a boolean
-$a_str  = "foo";  // a string
-$a_str2 = 'foo';  // a string
-$an_int = 12;     // an integer
+$a_bool = TRUE;   // логічний тип (англ. boolean)
+$a_str  = "foo";  // рядковий тип (англ. string)
+$a_str2 = 'foo';  // теж рядковий тип
+$an_int = 12;     // цілочисельний тип (англ. integer)
 
-echo gettype($a_bool); // prints out:  boolean
-echo gettype($a_str);  // prints out:  string
+echo gettype($a_bool); // друкуватиме:  boolean
+echo gettype($a_str);  // друкуватиме:  string
 
-// If this is an integer, increment it by four
+// Якщо змінна $an_int має цілочисельний тип (тобто integer),
+// збільшити її значення на 4
 if (is_int($an_int)) {
     $an_int += 4;
 }
 
-// If $a_bool is a string, print it out
-// (does not print out anything)
+// Якщо $a_bool має рядковий тип, надрукувати її значення
+// (оскільки умова не буде виконана, не надрукується нічого)
 if (is_string($a_bool)) {
     echo "String: $a_bool";
 }
@@ -170,18 +171,18 @@ if (is_string($a_bool)) {
   </note>
 
   <simpara>
-   To forcibly convert a variable to a certain type, either
-   <link linkend="language.types.typecasting">cast</link> the variable or use
-   the <function>settype</function> function on it.
+   Щоб примусово конвертувати змінну до певного типу, або
+   <link linkend="language.types.typecasting">приведіть</link> її тип або
+   використовуйте функцію <function>settype</function> для цього.
   </simpara>
 
   <simpara>
-   Note that a variable may be evaluated with different values in certain
-   situations, depending on what type it is at the time. For more information,
-   see the section on <link linkend="language.types.type-juggling">Type
-   Juggling</link>. <link linkend="types.comparisons">The type comparison
-   tables</link> may also be useful, as they show examples of various
-   type-related comparisons.
+   Зауважте, що змінна може мати різні значення в конкретних
+   ситуаціях, в залежності від її типу в цей час. Детальнішу інформацію можна,
+   прочитати на сторінці <link linkend="language.types.type-juggling">Маніпуляції
+   з типами</link>. Також може бути корисною
+   <link linkend="types.comparisons">Порівняльна таблиця типів</link>, оскільки
+   в ній показано різні приклади порівнянь, пов'язані з типами.
   </simpara>
  </sect1>
  

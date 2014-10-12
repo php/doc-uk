@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: f2b08c959ca4d54a96a66e623e576c35be3034be Maintainer: ktretyak Status: ready -->
+<!-- $Revision$ -->
+<appendix xml:id="types.comparisons" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>Порівняльна таблиця типів PHP</title>
+ <para>
+  Наступна таблиця демонструє поведінку 
+  <link linkend="language.types">типів</link> PHP та 
+  <link linkend="language.operators.comparison">операторів
+  порівняння</link>, як з м'яким, так і зі строгим порівнянням. Ця інформація
+  також стосується теми
+  <link linkend="language.types.type-juggling">маніпуляції з типами</link>.
+  Щоб створити цю таблицю, ми отримували натхнення від коментарів деяких
+  користувачів, та від роботи
+  <link xlink:href="&url.blueshoes.comparisons;">BlueShoes</link>.
+ </para>
+ <para>
+  Перед використанням даної таблиці, важливо розуміти типи та їх значення.
+  Наприклад, <literal>"42"</literal> має рядковий тип (<type>string</type>),
+  тоді як <literal>42</literal> має цілочисельний тип (<type>integer</type>).
+  Значення &false; має логічний тип (<type>boolean</type>), тоді як
+  <literal>"false"</literal> має рядковий тип (<type>string</type>).
+ </para>
+ <note>
+  <para>
+   HTML-форми не передають цілочисельний тип (string), дробний тип (floats),
+   та логічний тип (booleans); вони передають тільки рядковий тип. Щоб
+   перевірити, чи рядок має число, можна використовувати
+   <function>is_numeric</function>.
+  </para>
+ </note>
+ <note>
+  <para>
+   Використання спрощеної перевірки, наприклад <literal>if ($x)</literal>,
+   коли <varname>$x</varname> є невизначеною, спричинить помилку рівня
+   <constant>E_NOTICE</constant>. Краще, використовуйте
+   <function>empty</function> чи <function>isset</function> та/або спочатку
+   ініціалізуйте свою змінну.
+  </para>
+ </note>
+ <note>
+  <para>
+   Деякі арифметичні операції можуть повернути значення, представлене
+   константою <constant>NAN</constant>. Будь-яке м'яке чи строге порівняння
+   цього значення з будь-яким іншим значенням, включаючи його самого,
+   повертатиме &false; (тобто <literal>NAN != NAN</literal> та
+   <literal>NAN !== NAN</literal>). Приклади операцій, що продукуватимуть
+   <constant>NAN</constant> включаючи <literal>sqrt(-1)</literal>,
+   <literal>asin(2)</literal>, та <literal>asinh(0)</literal>.
+  </para>
+ </note>
+ <para>
+  <table>
+   <title>Порівняння типів змінної <varname>$x</varname> з типами значень, що
+   повертають певні функції PHP</title>
+   <tgroup cols="6">
+    <thead>
+     <row>
+      <entry>Вираз</entry>
+      <entry><function>gettype</function></entry>
+      <entry><function>empty</function></entry>
+      <entry><function>is_null</function></entry>
+      <entry><function>isset</function></entry>
+      <entry><type>boolean</type> : те що повертає вираз <literal>if($x)</literal></entry>
+     </row>
+    </thead>
+    <tbody>
+     <row>
+      <entry><literal>$x = "";</literal></entry>
+      <entry><type>string</type></entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry><literal>$x = null;</literal></entry>
+      <entry><type>NULL</type></entry>
+      <entry>&true;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry><literal>var $x;</literal></entry>
+      <entry><type>NULL</type></entry>
+      <entry>&true;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry><varname>$x</varname> невизначено</entry>
+      <entry><type>NULL</type></entry>
+      <entry>&true;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry><literal>$x = array();</literal></entry>
+      <entry><type>array</type></entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry><literal>$x = false;</literal></entry>
+      <entry><type>boolean</type></entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry><literal>$x = true;</literal></entry>
+      <entry><type>boolean</type></entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&true;</entry>
+     </row>
+     <row>
+      <entry><literal>$x = 1;</literal></entry>
+      <entry><type>integer</type></entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&true;</entry>
+     </row>
+     <row>
+      <entry><literal>$x = 42;</literal></entry>
+      <entry><type>integer</type></entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&true;</entry>
+     </row>
+     <row>
+      <entry><literal>$x = 0;</literal></entry>
+      <entry><type>integer</type></entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry><literal>$x = -1;</literal></entry>
+      <entry><type>integer</type></entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&true;</entry>
+     </row>
+     <row>
+      <entry><literal>$x = "1";</literal></entry>
+      <entry><type>string</type></entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&true;</entry>
+     </row>
+     <row>
+      <entry><literal>$x = "0";</literal></entry>
+      <entry><type>string</type></entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry><literal>$x = "-1";</literal></entry>
+      <entry><type>string</type></entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&true;</entry>
+     </row>
+     <row>
+      <entry><literal>$x = "php";</literal></entry>
+      <entry><type>string</type></entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&true;</entry>
+     </row>
+     <row>
+      <entry><literal>$x = "true";</literal></entry>
+      <entry><type>string</type></entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&true;</entry>
+     </row>
+     <row>
+      <entry><literal>$x = "false";</literal></entry>
+      <entry><type>string</type></entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&true;</entry>
+     </row>
+    </tbody>
+   </tgroup>
+  </table>
+ </para>
+
+ <para>
+  <table xml:id="types.comparisions-loose">
+   <title>М'яке порівняння через <literal>==</literal></title>
+   <tgroup cols="12">
+    <thead>
+     <row>
+      <entry> </entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry><literal>1</literal></entry>
+      <entry><literal>0</literal></entry>
+      <entry><literal>-1</literal></entry>
+      <entry><literal>"1"</literal></entry>
+      <entry><literal>"0"</literal></entry>
+      <entry><literal>"-1"</literal></entry>
+      <entry>&null;</entry>
+      <entry><literal>array()</literal></entry>
+      <entry><literal>"php"</literal></entry>
+      <entry><literal>""</literal></entry>
+     </row>
+    </thead>
+    <tbody>
+     <row>
+      <entry>&true;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+     </row>
+     <row>
+      <entry><literal>1</literal></entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry><literal>0</literal></entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&true;</entry>
+     </row>
+     <row>
+      <entry><literal>-1</literal></entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry><literal>"1"</literal></entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry><literal>"0"</literal></entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry><literal>"-1"</literal></entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry>&null;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+     </row>
+     <row>
+      <entry><literal>array()</literal></entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry><literal>"php"</literal></entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry><literal>""</literal></entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+     </row>
+    </tbody>
+   </tgroup>
+  </table>
+ </para>
+
+ <para>
+  <table xml:id="type.comparisons-strict">
+   <title>Строге порівняння через <literal>===</literal></title>
+   <tgroup cols="12">
+    <thead>
+     <row>
+      <entry> </entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry><literal>1</literal></entry>
+      <entry><literal>0</literal></entry>
+      <entry><literal>-1</literal></entry>
+      <entry><literal>"1"</literal></entry>
+      <entry><literal>"0"</literal></entry>
+      <entry><literal>"-1"</literal></entry>
+      <entry>&null;</entry>
+      <entry><literal>array()</literal></entry>
+      <entry><literal>"php"</literal></entry>
+      <entry><literal>""</literal></entry>
+     </row>
+    </thead>
+    <tbody>
+     <row>
+      <entry>&true;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry><literal>1</literal></entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry><literal>0</literal></entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry><literal>-1</literal></entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry><literal>"1"</literal></entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry><literal>"0"</literal></entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry><literal>"-1"</literal></entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry>&null;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry><literal>array()</literal></entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry><literal>"php"</literal></entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&false;</entry>
+     </row>
+     <row>
+      <entry><literal>""</literal></entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+     </row>
+    </tbody>
+   </tgroup>
+  </table>
+ </para>
+</appendix>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
+
