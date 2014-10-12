@@ -4,7 +4,7 @@
 <refentry xml:id="function.is-string" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>is_string</refname>
-  <refpurpose>Перевіряє - чи тип змінної є рядком</refpurpose>
+  <refpurpose>Перевіряє, чи має задана змінна рядковий тип даних.</refpurpose>
  </refnamediv>
  <refsect1 role="description">
   &reftitle.description;
@@ -13,7 +13,7 @@
    <methodparam><type>mixed</type><parameter>var</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Перевіряє - чи тип переданої змінної є рядком.
+   Перевіряє, чи має задана змінна рядковий тип даних.
   </para>
  </refsect1>
  <refsect1 role="parameters">

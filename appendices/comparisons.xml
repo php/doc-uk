@@ -51,8 +51,8 @@
  </note>
  <para>
   <table>
-   <title>Порівняння типів змінної <varname>$x</varname> з типами значень, що
-   повертають певні функції PHP</title>
+   <title>Порівняння типів значень змінної <varname>$x</varname> з типами
+   значень, що повертають певні функції PHP</title>
    <tgroup cols="6">
     <thead>
      <row>

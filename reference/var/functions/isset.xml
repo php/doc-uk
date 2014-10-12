@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: eac82849b3c30b0779c0397391f5776bceb2da0a Maintainer: ktretyak Status: wip -->
+<!-- EN-Revision: eac82849b3c30b0779c0397391f5776bceb2da0a Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
 <refentry xml:id="function.isset" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
@@ -18,17 +18,17 @@
    Визначає, чи для змінної встановлено значення та воно не рівне &null;.
   </para>
   <para>
-   Якщо змінну було видалено через <function>unset</function>, вона далі
-   перестає бути встановленою. <function>isset</function> буде повертати
-   &false;, якщо перевірити змінну, якій встановлено значення &null;.
+   Якщо змінну було видалено через <function>unset</function>, то вона більше
+   не вважається встановленою. При перевірці змінної зі значенням &null;,
+   <function>isset</function> буде повертати &false;.
    Також зауважте, що байт &null; (<literal>"\0"</literal>) не є еквівалентом
-   до константи PHP &null;.
+   PHP-константі &null;.
   </para>
   <para>
    Якщо буде передаватись кілька параметрів, то <function>isset</function> буде
    повертати &true;, тільки якщо всі параметри мають встановлене значення.
-   Оцінювання йтиме зліва на право та зупинеться там, де зустріне змінну, для
-   якої не встановлено значення.
+   Оцінювання відбуватиметься зліва на право та зупинеться там, де зустріне
+   змінну, для якої не встановлено значення.
   </para>
  </refsect1>
 
@@ -102,12 +102,12 @@
 
 $var = '';
 
-// Цей вираз оцінюватиметься як дійсний, а тому буде надруковано текст.
+// Цей вираз оцінюватиметься як дійсний, а тому текст буде надруковано.
 if (isset($var)) {
     echo "Цій змінній встановлено значення, отже текст надрукується.";
 }
 
-// В наступних прикладах ми будемо використовувати var_dump для виводу
+// В наступних прикладах ми будемо використовувати var_dump() для виводу
 // значень, що повертає isset().
 
 $a = "перевірка";
@@ -142,8 +142,8 @@ var_dump(isset($a['test']));            // TRUE
 var_dump(isset($a['foo']));             // FALSE
 var_dump(isset($a['hello']));           // FALSE
 
-// Ключ 'hello' еквівалентний NULL, так що вважається що для нього не встановлено значення
-// Якщо ви хочете перевірити значення ключа на наявність NULL, спробуйте таке: 
+// Ключ 'hello' еквівалентний NULL, а тому вважається, що для нього не встановлено значення
+// Якщо ви хочете перевірити значення ключа на наявність NULL, спробуйте це зробити так:
 var_dump(array_key_exists('hello', $a)); // TRUE
 
 // Перевірка глибших значень в масиві
@@ -204,18 +204,19 @@ bool(false)
   &reftitle.notes;
   <warning>
    <para>
-    <function>isset</function> only works with variables as passing anything
-    else will result in a parse error.  For checking if 
-    <link linkend="language.constants">constants</link> are set use the 
-    <function>defined</function> function.
+    <function>isset</function> працює тільки зі змінними, передача
+    будь-чого іншого спричинятиме виведення синтаксичної помилки. Для перевірки,
+    чи встановлено значення для
+    <link linkend="language.constants">констант</link>, використовуйте функцію
+    <function>defined</function>.
    </para>
   </warning>
   &note.language-construct;
   <note>
    <para>
-    When using <function>isset</function> on inaccessible object properties,
-    the <link linkend="object.isset">__isset()</link>
-    overloading method will be called, if declared.
+    При використанні <function>isset</function> для перевірки недоступних
+    властивостей об'єкта, буде викликатись метод
+    <link linkend="object.isset">__isset()</link>, якщо його оголошено.
    </para>
   </note>
  </refsect1>
@@ -228,10 +229,10 @@ bool(false)
     <member><link linkend="object.isset">__isset()</link></member>
     <member><function>unset</function></member>
     <member><function>defined</function></member>
-    <member><link linkend="types.comparisons">the type comparison tables</link></member>
+    <member><link linkend="types.comparisons">Порівняльна таблиця типів</link></member>
     <member><function>array_key_exists</function></member>
     <member><function>is_null</function></member>
-    <member>the error control <link linkend="language.operators.errorcontrol">@</link> operator</member>
+    <member>оператор управління виводу помилок <link linkend="language.operators.errorcontrol">@</link></member>
    </simplelist>
   </para>
  </refsect1>

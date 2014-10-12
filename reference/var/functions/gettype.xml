@@ -14,7 +14,7 @@
    <methodparam><type>mixed</type><parameter>var</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Повертає тип змінної PHP <parameter>var</parameter>. Цією функцією краще
+   Повертає тип змінної <parameter>var</parameter>. Цією функцією краще
    користуватись лише при налагодженні (debugging), щоб отримати читабельне
    представлення типів змінних. Натомість, щоб перевірити тип змінної, краще
    використовувати функції <literal>is_*</literal>.
@@ -29,7 +29,7 @@
      <term><parameter>var</parameter></term>
      <listitem>
       <para>
-       Змінну, яку потрібно перевірити.
+       Змінна, в якої перевіряється тип даних.
       </para>
      </listitem>
     </varlistentry>
@@ -40,7 +40,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Можливими значеннями рядків, що повертаються є:
+   Можливими значеннями рядків, що повертаються, є:
    <itemizedlist>
     <listitem>
      <simpara>
@@ -85,7 +85,7 @@
     </listitem>
     <listitem>
      <simpara>
-      "unknown type"
+      "unknown type" (невідомий тип)
      </simpara>
     </listitem>
    </itemizedlist>
