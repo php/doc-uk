@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: afc3f34c682418a582b0f9199db0bac4a087821f Maintainer: ktretyak Status: wip -->
+<!-- EN-Revision: afc3f34c682418a582b0f9199db0bac4a087821f Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
 <refentry xml:id="function.unset" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>unset</refname>
-  <refpurpose>Unset a given variable</refpurpose>
+  <refpurpose>Руйнує задані змінні</refpurpose>
  </refnamediv>
  
  <refsect1 role="description">
@@ -15,18 +15,17 @@
    <methodparam choice="opt"><type>mixed</type><parameter>...</parameter></methodparam>
   </methodsynopsis>
   <para>
-   <function>unset</function> destroys the specified variables. 
+   <function>unset</function> руйнує задані змінні. 
   </para>
   <para>
-   The behavior of <function>unset</function> inside of a function
-   can vary depending on what type of variable you are attempting to
-   destroy.
+   Поведінка <function>unset</function> всередині функції може варіюватись
+   в залежності від типу змінної, яку ви намагаєтесь зруйнувати.
   </para>
   <para>
-   If a globalized variable is <function>unset</function> inside of
-   a function, only the local variable is destroyed.  The variable
-   in the calling environment will retain the same value as before
-   <function>unset</function> was called.
+   Якщо через <function>unset</function> намагаються зруйнувати глобальну
+   змінну всередині функції, то в результаті буде зруйнована лише локальна
+   змінна. Змінна, в області видимості виклику, збереже таке ж
+   значення, яке в неї було перед викликом <function>unset</function>.
    <informalexample>
     <programlisting role="php">
 <![CDATA[
@@ -56,9 +55,8 @@ bar
    </informalexample>
   </para>
   <para>
-   To <function>unset</function> a global variable
-   inside of a function, then use
-   the <varname>$GLOBALS</varname> array to do so:
+   Щоб зруйнувати глобальну змінну через <function>unset</function> всередині
+   функції, використовуйте масив <varname>$GLOBALS</varname> ось так:
    <informalexample>
     <programlisting role="php">
 <![CDATA[
@@ -76,11 +74,10 @@ foo();
    </informalexample>
   </para>
   <para>
-   If a variable that is PASSED BY REFERENCE is
-   <function>unset</function> inside of a function, only the local
-   variable is destroyed.  The variable in the calling environment
-   will retain the same value as before <function>unset</function>
-   was called.
+   Якщо через <function>unset</function> намагаються зруйнувати змінну, яка
+   передається ПО ЛІНКУ всередині функції, то в результаті буде зруйнована лише локальна
+   змінна. Змінна, в області видимості виклику, збереже таке ж
+   значення, яке в неї було перед викликом <function>unset</function>.
    <informalexample>
     <programlisting role="php">
 <![CDATA[
@@ -113,10 +110,10 @@ something
    </informalexample>
   </para>
   <para>
-   If a static variable is <function>unset</function> inside of a
-   function, <function>unset</function> destroys the variable only in the
-   context of the rest of a function. Following calls will restore the
-   previous value of a variable.
+   Якщо статичну змінну руйнують через <function>unset</function> всередині
+   функції, <function>unset</function> руйнуватиме змінну тільки в контексті
+   решти коду функції. Наступні виклики будуть відновлювати попереднє
+   значення змінної.
    <informalexample>
     <programlisting role="php">
 <![CDATA[
@@ -125,10 +122,10 @@ function foo()
 {
     static $bar;
     $bar++;
-    echo "Before unset: $bar, ";
+    echo "Перед руйнуванням: $bar, ";
     unset($bar);
     $bar = 23;
-    echo "after unset: $bar\n";
+    echo "після руйнування: $bar\n";
 }
 
 foo();
@@ -144,9 +141,9 @@ foo();
    <informalexample>
     <screen>
 <![CDATA[
-Before unset: 1, after unset: 23
-Before unset: 2, after unset: 23
-Before unset: 3, after unset: 23
+Перед руйнуванням: 1, після руйнування: 23
+Перед руйнуванням: 2, після руйнування: 23
+Перед руйнуванням: 3, після руйнування: 23
 ]]>
     </screen>
    </informalexample>
@@ -161,7 +158,7 @@ Before unset: 3, after unset: 23
      <term><parameter>var</parameter></term>
      <listitem>
       <para>
-       The variable to be unset.
+       Змінна, яку потрібно зруйнувати.
       </para>
      </listitem>
     </varlistentry>
@@ -169,7 +166,7 @@ Before unset: 3, after unset: 23
      <term><parameter>...</parameter></term>
      <listitem>
       <para>
-       Another variable ...
+       Інша змінна ...
       </para>
      </listitem>
     </varlistentry>
@@ -192,25 +189,26 @@ Before unset: 3, after unset: 23
     <programlisting role="php">
 <![CDATA[
 <?php
-// destroy a single variable
+// руйнація однієї змінної
 unset($foo);
 
-// destroy a single element of an array
+// руйнація одного елемента з масива
 unset($bar['quux']);
 
-// destroy more than one variable
+// руйнація більше, ніж однієї змінної
 unset($foo1, $foo2, $foo3);
 ?>
 ]]>
     </programlisting>
    </example>
    <example>
-    <title>Using <literal>(unset)</literal> casting</title>
+    <title>Приведення типу через <literal>(unset)</literal></title>
     <para>
-     <literal>(unset)</literal> casting is often confused with the
-     <function>unset</function> function. <literal>(unset)</literal>
-     casting serves only as a <literal>NULL</literal>-type cast, for
-     completeness. It does not alter the variable it's casting.
+     Приведення типу через <literal>(unset)</literal> часто плутають з функцією
+     <function>unset</function>. Приведення типу <literal>(unset)</literal>
+     задіюється лише для приведення до типу <literal>NULL</literal>, як
+     доповнення до ряду з іншими приведеннями типів. В такому разі відбувається
+     не редагування змінної, а саме приведення її типу.
     </para>
     <programlisting role="php">
 <![CDATA[
@@ -238,20 +236,20 @@ string(6) "Felipe"
   &note.language-construct;
   <note>
    <para>
-    It is possible to unset even object properties visible in current context.
+    Є можливість руйнувати навіть властивості об'єкта в поточній області видимості.
    </para>
   </note>
   <note>
    <para>
-    It is not possible to unset <literal>$this</literal> inside an object
-    method since PHP 5.
+    Починаючи з PHP 5, немає можливості руйнувати <literal>$this</literal>
+    всередині метода об'єкта.
    </para>
   </note>
   <note>
    <para>
-    When using <function>unset</function> on inaccessible object properties,
-    the <link linkend="object.unset">__unset()</link>
-    overloading method will be called, if declared.
+    При використанні <function>unset</function> для недоступних властивостей
+    об'єкта, буде викликатись метод
+    <link linkend="object.unset">__unset()</link>, якщо його оголошено.
    </para>
   </note>
  </refsect1>

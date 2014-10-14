@@ -5,7 +5,7 @@
 <refentry xml:id="function.var-dump" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>var_dump</refname>
-  <refpurpose>Dumps information about a variable</refpurpose>
+  <refpurpose>Виводить інформацію про змінну</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -16,15 +16,15 @@
    <methodparam choice="opt"><type>mixed</type><parameter>...</parameter></methodparam>
   </methodsynopsis>
   <simpara>
-   This function displays structured information about one or more
-   expressions that includes its type and value. Arrays and objects are
-   explored recursively with values indented to show structure.
+   Ця функція виводить структуровану інформацію про один чи кілька виразів,
+   включаючи значення й тип цього значення. Масиви і об'єкти
+   відображаються рекурсивно та з відступами, при показі їх вкладених структур.
   </simpara>
   <simpara>
-   All public, private and protected properties of objects will be returned in
-   the output unless the object implements a
-   <link linkend="language.oop5.magic.debuginfo">__debugInfo()</link> method
-   (implemented in PHP 5.6.0).
+   Всі публічні, захищені та приватні властивості об'єктів будуть повертатись
+   для виводу, окрім об'єктів, де впроваджено метод
+   <link linkend="language.oop5.magic.debuginfo">__debugInfo()</link>
+   (який з'явився в PHP 5.6.0).
   </simpara>
   &tip.ob-capture;
  </refsect1>
@@ -37,7 +37,7 @@
      <term><parameter>expression</parameter></term>
      <listitem>
       <para>
-       The variable you want to dump.
+       Вираз, про який потрібно виводити інформацію.
       </para>
      </listitem>
     </varlistentry>
@@ -56,7 +56,7 @@
   &reftitle.examples;
   <para>
    <example>
-    <title><function>var_dump</function> example</title>
+    <title>Використання <function>var_dump</function></title>
     <programlisting role="php">
 <![CDATA[
 <?php

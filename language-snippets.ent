@@ -145,11 +145,11 @@ can also be used with <emphasis>some</emphasis> URL wrappers.  Refer to
 <xref linkend="wrappers"/> to determine which wrappers support
 <function>stat</function> family of functionality.</simpara></tip>'>
 
-<!ENTITY tip.ob-capture '<tip xmlns="http://docbook.org/ns/docbook"><simpara>As with anything that outputs
-its result directly to the browser, the <link
-linkend="book.outcontrol">output-control functions</link> can be used to capture
-the output of this function, and save it in a
-<type>string</type> (for example).</simpara></tip>'>
+<!ENTITY tip.ob-capture '<tip xmlns="http://docbook.org/ns/docbook"><simpara>Як і для будь-чого, що виводить
+свій результат прямо в браузер, можна використовувати <link
+linkend="book.outcontrol">функції контролю виводу</link>, для перехоплення виводу
+даних цією функцією, та збереження їх, наприклад, у вигляді рядка
+(<type>string</type>).</simpara></tip>'>
 
 <!ENTITY tip.userlandnaming '<tip xmlns="http://docbook.org/ns/docbook"><simpara>Прогляньте також
 <xref linkend="userlandnaming" />.</simpara></tip>'>
