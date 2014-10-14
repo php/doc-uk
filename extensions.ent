@@ -87,7 +87,7 @@ PHP за допомогою опцій компіляції.</para>'>
 
 <!ENTITY extcat.state '<title xmlns="http://docbook.org/ns/docbook">Стан</title><para xmlns="http://docbook.org/ns/docbook">
 Ця частина списку розширень, що непризначені для виробничого використання - вони
-або дуже "старі" (застарілі), або "нові" (експерементальні).</para>'>
+або дуже "старі" (застарілі), або "нові" (експериментальні).</para>'>
 
 <!ENTITY extcat.state.deprecated '<title xmlns="http://docbook.org/ns/docbook">Застарілі Розширення</title>
 <para xmlns="http://docbook.org/ns/docbook">Ці розширення вже застарілі,
