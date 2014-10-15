@@ -1,53 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 7f79d8835b340397d2fd6633da4d52dc535e8677 Maintainer: ktretyak Status: wip -->
+<!-- EN-Revision: 7f79d8835b340397d2fd6633da4d52dc535e8677 Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
 <sect1 xml:id="language.types.boolean">
- <title>Booleans</title>
+ <title>Логічний (Booleans)</title>
  
  <simpara>
-  This is the simplest type. A <type>boolean</type> expresses a truth value. It
-  can be either &true; or &false;. 
+  Це найпростіший тип. Логічний тип (<type>boolean</type>) виражає правдивість
+  значення, яке може бути або правдивим (&true;), або хибним (&false;).
  </simpara>
 
  <sect2 xml:id="language.types.boolean.syntax">
-  <title>Syntax</title>
+  <title>Синтаксис</title>
   <para>
-   To specify a <type>boolean</type> literal, use the constants &true; or
-   &false;. Both are case-insensitive.
+   Щоб позначати логічний тип (<type>boolean</type>) літерами, використовуються
+   константи &true; та &false;. Обидві є регістро-нечутливими.
   </para>
 
   <informalexample>
    <programlisting role="php">
 <![CDATA[
 <?php
-$foo = True; // assign the value TRUE to $foo
+$foo = True; // для змінної $foo встановлено значення TRUE
 ?>
 ]]>
    </programlisting>
   </informalexample>
 
   <para>
-   Typically, the result of an <link linkend="language.operators">operator</link>
-   which returns a <type>boolean</type> value is passed on to a
-   <link linkend="language.control-structures">control structure</link>.
+   Типово, результат від <link linkend="language.operators">оператора</link>
+   повертається зі значенням логічного типу (<type>boolean</type>) та передається
+   до <link linkend="language.control-structures">контролюючої структури</link>.
   </para>
 
   <informalexample>
    <programlisting role="php">
 <![CDATA[
 <?php
-// == is an operator which tests
-// equality and returns a boolean
+// подвійний знак дорівнює == є оператором, який перевіряє
+// рівність та повертає значення логічного типу
 if ($action == "show_version") {
-    echo "The version is 1.23";
+    echo "Це версія 1.23";
 }
 
-// this is not necessary...
+// такий вираз не є обов'язковим...
 if ($show_separators == TRUE) {
     echo "<hr>\n";
 }
 
-// ...because this can be used with exactly the same meaning:
+// ...тому що вираз з таким же сенсом можна записати так:
 if ($show_separators) {
     echo "<hr>\n";
 }
@@ -58,81 +58,87 @@ if ($show_separators) {
  </sect2>
 
  <sect2 xml:id="language.types.boolean.casting">
-  <title>Converting to boolean</title>
+  <title>Конвертування до логічного типу</title>
 
   <simpara>
-   To explicitly convert a value to <type>boolean</type>, use the
-   <literal>(bool)</literal> or <literal>(boolean)</literal> casts. However, in
-   most cases the cast is unnecessary, since a value will be automatically
-   converted if an operator, function or control structure requires a
-   <type>boolean</type> argument.
+   Щоб явно конвертувати значення до логічного типу (<type>boolean</type>),
+   використовуйте приведення типу за допомогою запису <literal>(bool)</literal>
+   чи <literal>(boolean)</literal>. Хоча, в більшості випадків приведення типу
+   необов'язкове, оскільки значення буде автоматично конвертоване, якщо
+   оператор, функція чи контролююча структура вимагає логічний аргумент
+   (<type>boolean</type>).
   </simpara>
 
   <simpara>
-   See also <link linkend="language.types.type-juggling">Type Juggling</link>.
+   Прогляньте також <link linkend="language.types.type-juggling">Маніпуляції з
+   типами</link>.
   </simpara>
    
   <para>
-   When converting to <type>boolean</type>, the following values are considered
-   &false;:
+   При конвертації <type>boolean</type>, наступні значення сприймаються як
+   хибні (&false;):
   </para>
   
   <itemizedlist>
    <listitem>
     <simpara>
-     the <link linkend="language.types.boolean">boolean</link> &false; itself
+     &false; тобто власне саме логічне хибне значення
+     (<link linkend="language.types.boolean">boolean</link>)
     </simpara>
    </listitem>
    <listitem>
     <simpara>
-     the <link linkend="language.types.integer">integer</link> 0 (zero)
+     0 тобто нуль цілочисельного типу
+     (<link linkend="language.types.integer">integer</link>)
     </simpara>
    </listitem>
    <listitem>
     <simpara>
-     the <link linkend="language.types.float">float</link> 0.0 (zero)
+     0.0 тобто нуль дробного типу
+     (<link linkend="language.types.float">float</link>)
     </simpara>
    </listitem>
    <listitem>
     <simpara>
-     the empty <link linkend="language.types.string">string</link>, and the
-     <link linkend="language.types.string">string</link> "0"
+     "" та "0" тобто пусте значення рядкового типу
+      (<link linkend="language.types.string">string</link>) та нуль як значення
+      рядкового типу (<link linkend="language.types.string">string</link>)
     </simpara>
    </listitem>
    <listitem>
     <simpara>
-     an <link linkend="language.types.array">array</link> with zero elements
+     масив (<link linkend="language.types.array">array</link>) без жодного елемента
     </simpara>
    </listitem>
    <listitem>
     <simpara>
-     an <link linkend="language.types.object">object</link> with zero member
-     variables (PHP 4 only)
+     об'єкт (<link linkend="language.types.object">object</link>) без жодної
+     властивості (тільки в PHP 4)
     </simpara>
    </listitem>
    <listitem>
     <simpara>
-     the special type <link linkend="language.types.null">NULL</link> (including
-     unset variables)
+     спеціальний тип <link linkend="language.types.null">NULL</link> (включаючи
+     зруйновані змінні, що можна отримати, наприклад, через unset() )
     </simpara>
    </listitem>
    <listitem>
     <simpara>
-     <link linkend="ref.simplexml">SimpleXML</link> objects created from empty
-     tags
+     об'єкт <link linkend="ref.simplexml">SimpleXML</link> створений з пустого
+     тега
     </simpara>
    </listitem>
   </itemizedlist>
     
   <para>
-   Every other value is considered &true; (including any
-   <link linkend="language.types.resource">resource</link>).
+   Будь-яке інше значення сприймається як правдиве (&true;) (включаючи
+   тип <link linkend="language.types.resource">ресурс</link>).
   </para>
   
   <warning>
    <simpara>
-    <literal>-1</literal> is considered &true;, like any other non-zero
-    (whether negative or positive) number!
+    <literal>-1</literal> сприймається як правдиве значення (&true;), як і будь-яке інше
+    (від'ємне чи додатнє) ненульове число!
    </simpara>
   </warning>
   
