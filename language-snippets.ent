@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: ba08db8805ddb14cbab613c893dd47eacbda22f2 Maintainer: ktretyak Status: wip -->
 <!-- $Revision$ -->
-
 <!-- Keep 'em sorted -->
 
 <!ENTITY changelog.randomseed '<row xmlns="http://docbook.org/ns/docbook"><entry>4.2.0</entry><entry>
@@ -292,6 +291,10 @@ currently not documented; only its argument list is available.
 <!ENTITY example.outputs.53 '<para xmlns="http://docbook.org/ns/docbook">Наведений вище приклад в PHP 5.3 виведе:</para>'>
 
 <!ENTITY example.outputs.54 '<para xmlns="http://docbook.org/ns/docbook">Наведений вище приклад в PHP 5.4 виведе:</para>'>
+
+<!ENTITY example.outputs.55 '<para xmlns="http://docbook.org/ns/docbook">Наведений вище приклад в PHP 5.5 виведе:</para>'>
+
+<!ENTITY example.outputs.56 '<para xmlns="http://docbook.org/ns/docbook">Наведений вище приклад в PHP 5.6 виведе:</para>'>
 
 <!ENTITY example.outputs.32bit '<para xmlns="http://docbook.org/ns/docbook">Наведений вище приклад на 32-бітних машинах виведе:</para>'>
 

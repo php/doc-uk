@@ -23,7 +23,7 @@
        </listitem>
        <listitem>
         <para>
-         Якщо PHP використовується з IIS7 або вище, та PHP 5.3+, то потрібно вибирати бінарники PHP <emphasis>VC11 Non Thread Safe</emphasis>.
+         Якщо PHP використовується з IIS7 або вище, та PHP 5.3+, то потрібно вибирати бінарники PHP VC11 Non Thread Safe.
         </para>
        </listitem>
        <listitem>

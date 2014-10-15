@@ -397,6 +397,7 @@ appcmd.exe set config  -section:system.webServer/fastCgi ^
   </para>
  </sect2>
 </sect1>
+<!-- <filename>php.ini</filename> -->
 
 <!-- Keep this comment at the end of the file
 Local variables:

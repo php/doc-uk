@@ -10,7 +10,7 @@
 <authorgroup xml:id="translators">
    <author>
     <personname>
-     <firstname>Костя</firstname><surname>Третяк</surname> <!-- shein -->
+     <firstname>Костя</firstname><surname>Третяк</surname>
     </personname>
    </author>
 </authorgroup>
@@ -28,7 +28,7 @@
     встановлених в ліцензії Creative Commons Attribution 3.0
     License або більш пізньої. Копія <link linkend="cc.license">Creative
     Commons Attribution 3.0 license</link> поширюється разом із даним керівництвом.
-    Сама свіжа версія, на даний момент, доступна за адресою
+    Найсвіжіша версія, на даний момент, доступна за адресою
    <link xlink:href="&url.cc.by;">&url.cc.by;</link>.
    </simpara>
    <simpara>
@@ -36,7 +36,7 @@
     повністю чи частково, зі змінами чи без, та у вас є питання,
     ви можете зв'язатись з власником авторського права за адресою
     <link xlink:href="mailto:&email.php.doc.license;">&email.php.doc.license;</link>.
-    Пам'ятайте, що ця адреса публічного списка розсилки.
+    Пам'ятайте, що ця адреса відображатиметься в списку публічної розсилки.
    </simpara>
   </legalnotice>
 
