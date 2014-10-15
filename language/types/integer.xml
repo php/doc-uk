@@ -2,7 +2,7 @@
 <!-- EN-Revision: 67cf4f37868965b41fcda4e51a39e3529b544879 Maintainer: ktretyak Status: wip -->
 <!-- $Revision$ -->
 <sect1 xml:id="language.types.integer">
- <title>Integers</title>
+ <title>Цілі числа (Integers)</title>
  
  <simpara>
   An <type>integer</type> is a number of the set
