@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 8e0e8cb662ebc66cfa6eba3aa8dac283d79e0337 Maintainer: ktretyak Status: ready -->
+<!-- $Revision$ -->
+
+<part xml:id="mongo.core" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+ <title>Класи Ядра</title>
+ <partintro>
+  <para>
+   Класи ядра є найбільш важливою частиною драйвера.
+  </para>
+ </partintro>
+
+ &reference.mongo.mongoclient;
+ &reference.mongo.mongodb;
+ &reference.mongo.mongocollection;
+ &reference.mongo.mongocursor;
+ &reference.mongo.mongocommandcursor;
+
+</part>
