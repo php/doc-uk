@@ -6,7 +6,7 @@
  <refnamediv>
   <refname>$_POST</refname>
   <refname>$HTTP_POST_VARS [застаріла]</refname>
-  <refpurpose>HTTP POST variables</refpurpose>
+  <refpurpose>Змінні, що передаються через HTTP методом POST</refpurpose>
  </refnamediv>
  
  <refsect1 role="description">
@@ -65,7 +65,7 @@ echo 'Hello ' . htmlspecialchars($_POST["name"]) . '!';
 ]]>
     </programlisting>
     <simpara>
-     Припустимо, що користувач відправив дані методом POST, і які містять
+     Припустимо, що користувач відправив дані методом POST, та вони містять
      змінну "name" зі значенням "Hannes"
     </simpara>
     &example.outputs.similar;
