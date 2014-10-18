@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 5554e138cc713c534ba25ba9faf28cde3a648056 Maintainer: ktretyak Status: wip -->
+<!-- EN-Revision: 5554e138cc713c534ba25ba9faf28cde3a648056 Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
 <refentry xml:id="function.intval" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>intval</refname>
-  <refpurpose>Get the integer value of a variable</refpurpose>
+  <refpurpose>Отримує цілочисельне значення змінної</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -15,11 +15,11 @@
    <methodparam choice="opt"><type>int</type><parameter>base</parameter><initializer>10</initializer></methodparam>
   </methodsynopsis>
   <para>
-   Returns the <type>integer</type> value of <parameter>var</parameter>,
-   using the specified <parameter>base</parameter> for the conversion 
-   (the default is base 10). <function>intval</function> should not be used
-   on objects, as doing so will emit an <constant>E_NOTICE</constant> level
-   error and return 1.
+   Повертає цілочисельне (<type>integer</type>) значення <parameter>var</parameter>,
+   використовуючи основу, вказану через параметр <parameter>base</parameter>,
+   для перетворень (за промовчанням база 10). Функція <function>intval</function>
+   не повинна приймати в якості параметрів об'єкти, оскільки це спричинятиме
+   виведення помилки рівня <constant>E_NOTICE</constant> та повертатиметься 1.
   </para>
  </refsect1>
 
@@ -31,7 +31,7 @@
      <term><parameter>var</parameter></term>
      <listitem>
       <para>
-       The scalar value being converted to an integer
+       Скалярне значення для конвертації до цілочисельного (integer)
       </para>
      </listitem>
     </varlistentry>
@@ -39,28 +39,28 @@
      <term><parameter>base</parameter></term>
      <listitem>
       <para>
-       The base for the conversion
+       Основа для перетворень
       </para>
       <note>
        <para>
-        If <parameter>base</parameter> is 0, the base used is determined
-        by the format of <parameter>var</parameter>:
+        Якщо <parameter>base</parameter> рівне 0, використовуватиметься база
+        визначена через формат запису <parameter>var</parameter>:
         <itemizedlist>
          <listitem>
           <simpara>
-           if string includes a "0x" (or "0X") prefix, the base is taken
-           as 16 (hex); otherwise,
+           якщо рядок включає префікс "0x" (чи "0X"), основою вважатиметься
+           16 (шістнадцядкова система числення);
           </simpara>
          </listitem>
          <listitem>
           <simpara>
-           if string starts with "0", the base is taken as 8 (octal);
-           otherwise,
+           якщо рядок починається з "0", основою вважатиметься 8 (вісімкова
+           система числення);
           </simpara>
          </listitem>
          <listitem>
           <simpara>
-           the base is taken as 10 (decimal).
+           в іншому разі основою вважатиметься 10 (десяткова система числення).
           </simpara>
          </listitem>
         </itemizedlist>
@@ -75,21 +75,22 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   The integer value of <parameter>var</parameter> on success, or 0 on
-   failure. Empty arrays return 0, non-empty arrays return 1.
+   Цілочисельне значення від <parameter>var</parameter> при успіху, або ж 0
+   при невдачі. Передаючи через параметр пустий масив, функція повертатиме 0,
+   передаючи непустий масив - повертатиме 1.
   </para>
   <para>
-   The maximum value depends on the system. 32 bit systems have a 
-   maximum signed integer range of -2147483648 to 2147483647. So for example 
-   on such a system, <literal>intval('1000000000000')</literal> will return 
-   2147483647. The maximum signed integer value for 64 bit systems is 
-   9223372036854775807.
+   Максимальне значення залежить від системи. 32-бітні системи мають максимальне
+   ціле знакове число в діапазоні від -2147483648 до 2147483647. Тобто, наприклад,
+   на таких сестемах, <literal>intval('1000000000000')</literal> буде повертати
+   2147483647. На 64-бітних системах максимальне знакове ціле число
+   рівне 9223372036854775807.
   </para>
   <para>
-   Strings will most likely return 0 although this depends on the 
-   leftmost characters of the string. The common rules of 
-   <link linkend="language.types.integer.casting">integer casting</link> 
-   apply.
+   Для рядкових значень функція, швидше за все, буде повертати 0, хоча це залежить від
+   початкових символів рядка. В цьому разі будуть застосовуватись загальні правила
+   <link linkend="language.types.integer.casting">конвертування до
+    цілочисельного</link>.
   </para>
  </refsect1>
 
@@ -97,9 +98,9 @@
   &reftitle.examples;
   <para>
    <example>
-    <title><function>intval</function> examples</title>
+    <title>Використання <function>intval</function></title>
     <para>
-     The following examples are based on a 32 bit system.
+     Наступні приклади показані для 32-бітних систем.
     </para>
     <programlisting role="php">
 <![CDATA[
@@ -132,8 +133,8 @@ echo intval(array('foo', 'bar'));     // 1
   &reftitle.notes;
   <note>
    <para>
-    The <parameter>base</parameter> parameter has no effect unless the
-    <parameter>var</parameter> parameter is a string.
+    Параметр <parameter>base</parameter> не застосовуватиметься, якщо
+    параметр <parameter>var</parameter> буде рядком.
    </para>
   </note>
  </refsect1>
@@ -153,8 +154,8 @@ echo intval(array('foo', 'bar'));     // 1
       <row>
        <entry>5.1.0</entry>
        <entry>
-        Throws <constant>E_NOTICE</constant> and
-        returns 1, when an object is passed to 
+        Кидає <constant>E_NOTICE</constant> та
+        повертає 1, при передачі об'єкта через 
         <parameter>var</parameter>.
        </entry>
       </row>
@@ -173,8 +174,8 @@ echo intval(array('foo', 'bar'));     // 1
     <member><function>strval</function></member>
     <member><function>settype</function></member>
     <member><function>is_numeric</function></member>
-    <member><link linkend="language.types.type-juggling">Type juggling</link></member>
-    <member><link linkend="ref.bc">BCMath Arbitrary Precision Mathematics Functions</link></member>
+    <member><link linkend="language.types.type-juggling">Маніпуляції з типами</link></member>
+    <member><link linkend="ref.bc">Матиматичні Функції BCMath з Довільною Точністю</link></member>
    </simplelist>
   </para>
  </refsect1>

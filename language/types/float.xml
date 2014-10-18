@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: ea5ef878791d0182c69e3fb69e05a7ddd97aad15 Maintainer: ktretyak Status: wip -->
+<!-- EN-Revision: ea5ef878791d0182c69e3fb69e05a7ddd97aad15 Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
 <sect1 xml:id="language.types.float" xmlns:xlink="http://www.w3.org/1999/xlink">
- <title>Floating point numbers</title>
+ <title>Дробний (Float)</title>
 
  <para>
-  Floating point numbers (also known as "floats", "doubles", or "real numbers")
-  can be specified using any of the following syntaxes:
+  Дробне число - число з плаваючою точкою (також відоме як "floats", "doubles", чи "real")
+  може записуватись з використанням будь-якого з наступних синтаксисів:
  </para>
 
  <informalexample>
@@ -22,7 +22,7 @@ $c = 7E-10;
  </informalexample>
 
  <para>
-  Formally:
+  Формально:
  </para>
 
  <informalexample>
@@ -36,95 +36,100 @@ EXPONENT_DNUM [+-]?(({LNUM} | {DNUM}) [eE][+-]? {LNUM})
  </informalexample>
 
  <para>
-  The size of a float is platform-dependent, although a maximum of ~1.8e308 with
-  a precision of roughly 14 decimal digits is a common value (the 64 bit IEEE
-  format).
+  Розмір дробного (float) залежить від платформи, хоча максимальне за звичай
+  рівне ~1.8e308 з точністю закругленою до 14 десяткових цифр (при 64-бітах
+  використовується формат IEEE).
  </para>
 
  <warning xml:id="warn.float-precision">
-  <title>Floating point precision</title>
+  <title>Точність дробного типу</title>
 
   <para>
-   Floating point numbers have limited precision. Although it depends on the
-   system, PHP typically uses the IEEE 754 double precision format, which will
-   give a maximum relative error due to rounding in the order of 1.11e-16.
-   Non elementary arithmetic operations may give larger errors, and, of course,
-   error propagation must be considered when several operations are
-   compounded.
+   Числа з плаваючою точкою мають обмежену точність. Хоча це залежить від
+   системи, зазвичай PHP використовує формат подвійної точності IEEE 754, який
+   дає максимальну відносну похибку заокруглення порядка 1.11e-16. Не
+   елементарні арифметичні операції можуть давати більшу похибку, та, звичайно,
+   необхідно враховувати збільшення похибки, коли обрахунок декількох операцій
+   підсилює цей ефект.
   </para>
   
   <para>
-   Additionally, rational numbers that are exactly representable as floating
-   point numbers in base 10, like <literal>0.1</literal> or
-   <literal>0.7</literal>, do not have an exact representation as floating
-   point numbers in base 2, which is used internally, no matter the size of
-   the mantissa. Hence, they cannot be converted into their internal binary
-   counterparts without a small loss of precision. This can lead to confusing
-   results: for example, <literal>floor((0.1+0.7)*10)</literal> will usually
-   return <literal>7</literal> instead of the expected <literal>8</literal>,
-   since the internal representation will be something like
+   Окрім цього, раціональні числа, які представлені саме як числа з плаваючою
+   точкою з основою 10, такі як <literal>0.1</literal> чи
+   <literal>0.7</literal>, не мають точного представлення у вигляді чисел з
+   плаваючою точкою з основою 2, незалежно від розміру мантіси (для довідки: PHP
+   використовує основу 2 для внутрішніх обрахунків). Отже, вони не можуть бути
+   конвертовані в їхні внутрішні відповідники з основою 2, без невеликих втрат
+   точності. Ця особливість може призводити до заплутаних результатів:
+   наприклад, <literal>floor((0.1+0.7)*10)</literal> за звичай буде повертати
+   <literal>7</literal>, а не очікуване <literal>8</literal>, оскільки
+   внутрішнє представлення буде приблизно таким
    <literal>7.9999999999999991118...</literal>.
   </para>
 
   <para>
-   So never trust floating number results to the last digit, and do not compare 
-   floating point numbers directly for equality. If higher precision is
-   necessary, the <link linkend="ref.bc">arbitrary precision math functions</link>
-   and <link linkend="ref.gmp">gmp</link> functions are available.
+   Так що ніколи не довіряйте дробним числам до останньої цифри, та не порівнюйте
+   дробні числа безпосередньо для рівності. Якщо необхідна висока точність, можна
+   скористатись <link linkend="ref.bc">функціями з довільною матиматичною
+   точністю</link> та функціями <link linkend="ref.gmp">gmp</link>.
   </para>
   
   <para>
-   For a "simple" explanation, see the <link xlink:href="&url.floating.point.guide;">floating point guide</link>
-   that's also titled "Why don’t my numbers add up?"
+   "Просте" пояснення можна продивитись тут
+   <link xlink:href="&url.floating.point.guide;">floating point guide</link>,
+   яке також називається "Why don’t my numbers add up?"
   </para>
  </warning>
 
  <sect2 xml:id="language.types.float.casting">
-  <title>Converting to float</title>
+  <title>Конвертація до дробного (float)</title>
   
   <para>
-   For information on converting <type>string</type>s to <type>float</type>, see
-   <link linkend="language.types.string.conversion">String conversion to
-   numbers</link>. For values of other types, the conversion is performed by
-   converting the value to <type>integer</type> first and then to
-   <type>float</type>. See
-   <link linkend="language.types.integer.casting">Converting to integer</link>
-   for more information. As of PHP 5, a notice is thrown if an
-   <type>object</type> is converted to <type>float</type>.
+   Щоб отримати інформацію про перетворення рядків (<type>string</type>) в
+   дробні числа (<type>float</type>), прогляньте
+   <link linkend="language.types.string.conversion">Перетворення рядків в
+   числа</link>. Для значень інших типів, спочатку перетворення виконуються через
+   конвертацію значень до цілочисельного (<type>integer</type>), а потім вже
+   до дробного (<type>float</type>). Прогляньте
+   <link linkend="language.types.integer.casting">Конвертація до
+   цілочисельного</link>, щоб отримати детальнішу інформацію. Починаючи з PHP 5,
+   видається повідомлення при конвертації об'єкта (<type>object</type>) до
+   дробного числа (<type>float</type>).
   </para>
 
  </sect2>
 
  <sect2 xml:id="language.types.float.comparison">
-  <title>Comparing floats</title>
+  <title>Порівняння дробного (float)</title>
 
   <para>
-   As noted in the warning above, testing floating point values for equality is
-   problematic, due to the way that they are represented internally. However,
-   there are ways to make comparisons of floating point values that work around
-   these limitations.
+   Як записано в застережені вгорі, перевірка на рівність дробних значень є
+   проблематичною, в зв'язку зі специфікою їх внутрішнього представлення. Тим
+   не менше, існують способи здійснювати порівняння дробних значень обходячи
+   згадані обмеження.
   </para>
 
   <para>
-   To test floating point values for equality, an upper bound on the relative
-   error due to rounding is used. This value is known as the machine epsilon,
-   or unit roundoff, and is the smallest acceptable difference in calculations.
+   Щоб перевірити дробне значення на рівність, використовується верхня межа
+   відносної похибки для заокруглення. Це значення відоме як машинний нуль
+   (чи машинний епсілон, або ж міра заокруглення), та є найменшою різницею, що
+    приймається при розрахунках.
   </para>
   
   <informalexample>
    <simpara>
-    <varname>$a</varname> and <varname>$b</varname> are equal to 5 digits of
-    precision.
+    <varname>$a</varname> та <varname>$b</varname> є рівними з точністю до 5-ти
+    цифр після коми.
    </simpara>
    <programlisting role="php">
 <![CDATA[
 <?php
 $a = 1.23456789;
 $b = 1.23456780;
-$epsilon = 0.00001;
+$машинний_нуль = 0.00001;
 
-if(abs($a-$b) < $epsilon) {
-    echo "true";
+if(abs($a-$b) < $машинний_нуль) {
+    echo "$a більше за $b";
 }
 ?>
 ]]>
@@ -135,16 +140,17 @@ if(abs($a-$b) < $epsilon) {
  <sect2 xml:id="language.types.float.nan">
   <title>NaN</title>
   <para>
-   Some numeric operations can result in a value represented by the constant
-   <constant>NAN</constant>. This result represents an undefined or
-   unrepresentable value in floating-point calculations. Any loose or strict
-   comparisons of this value against any other value, including itself, will
-   have a result of &false;.
+   Деякі числові операції можуть мати результат зі значення представленим
+   через константу <constant>NAN</constant>. Такі результати представляють
+   невизначені або нерепрезентативні значення в числах з плаваючою точкою.
+   Будь-які м'які чи строгі порівняння цих значень з іншими значеннями,
+   включаючи їх самих, будуть мати в результаті хибне значення (&false;).
   </para>
   <para>
-   Because <constant>NAN</constant> represents any number of different values,
-   <constant>NAN</constant> should not be compared to other values, including
-   itself, and instead should be checked for using <function>is_nan</function>.
+   Оскільки <constant>NAN</constant> представляє собою число з будь-якими
+   значеннями, <constant>NAN</constant> не можна порівнювати з іншими
+   значеннями, включаючи їх самих. Визначити наявність в результаті значення
+   NAN можна за допомогою функції <function>is_nan</function>.
   </para>
  </sect2>
 </sect1>

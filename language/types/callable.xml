@@ -2,7 +2,7 @@
 <!-- EN-Revision: a0efd60818b767c51af678fd7a62c7521665f35d Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
 <sect1 xml:id="language.types.callable">
- <title>Callbacks (Зворотні виклики)</title>
+ <title>Зворотні виклики (Callbacks)</title>
  
  <para>
   Починаючи з PHP 5.4, зворотні виклики можуть позначатись через тип
