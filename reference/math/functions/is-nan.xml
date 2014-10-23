@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 96c9d88bad9a7d7d44bfb7f26c226df7ee9ddf26 Maintainer: ktretyak Status: wip -->
+<!-- EN-Revision: 96c9d88bad9a7d7d44bfb7f26c226df7ee9ddf26 Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
 <refentry xml:id='function.is-nan' xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>is_nan</refname>
-  <refpurpose>Finds whether a value is not a number</refpurpose>
+  <refpurpose>Визначає чи значення є "не числом"</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -14,8 +14,9 @@
    <methodparam><type>float</type><parameter>val</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Checks whether <parameter>val</parameter> is 'not a number', 
-   like the result of <literal>acos(1.01)</literal>.
+   Перевіряє чи <parameter>val</parameter> є 'не числом' (що позначається
+   через константу NaN). Наприклад, результат від <literal>acos(1.01)</literal>
+   повертає NaN, тобто нечисло.
   </para>
  </refsect1>
 
@@ -27,7 +28,7 @@
      <term><parameter>val</parameter></term>
      <listitem>
       <para>
-       The value to check
+       Значення для перевірки
       </para>
      </listitem>
     </varlistentry>
@@ -38,8 +39,8 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Returns &true; if <parameter>val</parameter> is 'not a number',
-   else &false;.
+   Повертає &true; якщо <parameter>val</parameter> є 'не числом' (NaN),
+   або &false; - в противному разі.
   </para>
  </refsect1>
 
@@ -47,12 +48,11 @@
   &reftitle.examples;
   <para>
    <example>
-    <title><function>is_nan</function> example</title>
+    <title>Використання <function>is_nan</function></title>
     <programlisting role="php">
 <![CDATA[
 <?php
-// Invalid calculation, will return a 
-// NaN value
+// Невірний обрахунок буде повертати значення NaN
 $nan = acos(8);
 
 var_dump($nan, is_nan($nan));

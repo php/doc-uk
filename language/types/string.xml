@@ -2,69 +2,71 @@
 <!-- EN-Revision: eda3b067eb85fcd307682aa8966d3c017cc29be2 Maintainer: ktretyak Status: wip -->
 <!-- $Revision$ -->
 <sect1 xml:id="language.types.string">
- <title>Strings</title>
+ <title>Рядковий (Strings)</title>
 
  <para>
-  A <type>string</type> is series of characters, where a character is
-  the same as a byte. This means that PHP only supports a 256-character set,
-  and hence does not offer native Unicode support. See
-  <link linkend="language.types.string.details">details of the string
-  type</link>.
+  Рядковий тип (string) представляє собою набір символів, причому
+  кожен символ представлений відповідним байтом. Це означає, що PHP має підтримку
+  всього 256 різних символів, а отже не має вбудованої підтримки Unicode. Див.
+  <link linkend="language.types.string.details">деталі про рядковий тип</link>.
  </para>
 
  <note>
   <simpara>
-   <type>string</type> can be as large as up to 2GB (2147483647 bytes maximum)
+   Значення рядкового типу (string) може бути розміром до 2ГБ
+   (максимум 2147483647 байт)
   </simpara>
  </note>
 
  <sect2 xml:id="language.types.string.syntax">
-  <title>Syntax</title>
+  <title>Синтаксис</title>
 
   <para>
-   A <type>string</type> literal can be specified in four different ways:
+   Якщо записувати значення рядкового типу (string) літерами, то
+   це можна зробити в чотири різні способи:
   </para>
 
   <itemizedlist>
    <listitem>
     <simpara>
-     <link linkend="language.types.string.syntax.single">single quoted</link>
+     <link linkend="language.types.string.syntax.single">одинарні лапки</link>
     </simpara>
    </listitem>
    <listitem>
     <simpara>
-     <link linkend="language.types.string.syntax.double">double quoted</link>
+     <link linkend="language.types.string.syntax.double">подвійні лапки</link>
     </simpara>
    </listitem>
    <listitem>
     <simpara>
-     <link linkend="language.types.string.syntax.heredoc">heredoc syntax</link>
+     <link linkend="language.types.string.syntax.heredoc">синтаксис heredoc</link>
     </simpara>
    </listitem>
    <listitem>
     <simpara>
-     <link linkend="language.types.string.syntax.nowdoc">nowdoc syntax</link>
-     (since PHP 5.3.0)
+     <link linkend="language.types.string.syntax.nowdoc">синтаксис nowdoc</link>
+     (починаючи з PHP 5.3.0)
     </simpara>
    </listitem>
   </itemizedlist>
 
   <sect3 xml:id="language.types.string.syntax.single">
-   <title>Single quoted</title>
+   <title>Одинарні лапки</title>
 
    <para>
-    The simplest way to specify a <type>string</type> is to enclose it in single
-    quotes (the character <literal>'</literal>).
+    Найпростіший спосіб визначити рядкове значення (string) - взяти його в
+    одинарні лапки (наприклад <literal>'це рядкове значення'</literal>).
    </para>
 
    <para>
-    To specify a literal single quote, escape it with a backslash
-    (<literal>\</literal>). To specify a literal backslash, double it
-    (<literal>\\</literal>). All other instances of backslash will be treated
-    as a literal backslash: this means that the other escape sequences you
-    might be used to, such as <literal>\r</literal> or <literal>\n</literal>,
-    will be output literally as specified rather than having any special
-    meaning.
+    Щоб всередині рядкового значення впасати одинарні лапки, екрануйте їх
+    через зворотній слеш (<literal>\</literal>). Щоб всередині рядкового
+    значення вписати зворотній слеш, продублюйте його (<literal>\\</literal>).
+    Всі наступні символи зворотнього слеша будуть сприйматись буквально як
+    зворотні слеші: це означає, що всі інші екрановані послідовності можна
+    використовувати також, такі як <literal>\r</literal> або <literal>\n</literal>,
+    будуть виводитись буквально як вони записані, а не як такі, які мають
+    спеціальне значення.
    </para>
 
    <note>
@@ -73,7 +75,7 @@
      and <link linkend="language.types.string.syntax.heredoc">heredoc</link> syntaxes,
      <link linkend="language.variables">variables</link> and escape sequences
      for special characters will <emphasis>not</emphasis> be expanded when they
-     occur in single quoted <type>string</type>s.
+     occur in single quoted (string).
     </simpara>
    </note>
 
@@ -112,7 +114,7 @@ echo 'Variables do not $expand $either';
    <title>Double quoted</title>
 
    <para>
-    If the <type>string</type> is enclosed in double-quotes ("), PHP will
+    If the (string) is enclosed in double-quotes ("), PHP will
     interpret more escape sequences for special characters:
    </para>
 
@@ -183,13 +185,13 @@ echo 'Variables do not $expand $either';
    </table>
 
    <para>
-    As in single quoted <type>string</type>s, escaping any other character will
+    As in single quoted (string)s, escaping any other character will
     result in the backslash being printed too. Before PHP 5.1.1, the backslash
     in <literal>\{$var}</literal> had not been printed.
    </para>
 
    <para>
-    The most important feature of double-quoted <type>string</type>s is the fact
+    The most important feature of double-quoted (string)s is the fact
     that variable names will be expanded. See
     <link linkend="language.types.string.parsing">string parsing</link> for
     details.
@@ -200,9 +202,9 @@ echo 'Variables do not $expand $either';
    <title>Heredoc</title>
 
    <simpara>
-    A third way to delimit <type>string</type>s is the heredoc syntax:
+    A third way to delimit (string)s is the heredoc syntax:
     <literal>&lt;&lt;&lt;</literal>. After this operator, an identifier is
-    provided, then a newline. The <type>string</type> itself follows, and then
+    provided, then a newline. The (string) itself follows, and then
     the same identifier again to close the quotation. 
    </simpara>
 
@@ -255,11 +257,11 @@ bar
    </warning>
 
    <para>
-    Heredoc text behaves just like a double-quoted <type>string</type>, without
+    Heredoc text behaves just like a double-quoted (string), without
     the double quotes. This means that quotes in a heredoc do not need to be
     escaped, but the escape codes listed above can still be used. Variables are
     expanded, but the same care must be taken when expressing complex variables
-    inside a heredoc as with <type>string</type>s.
+    inside a heredoc as with (string)s.
    </para>
 
    <example> 
@@ -478,7 +480,7 @@ EOT;
    <title>Variable parsing</title>
 
    <simpara>
-    When a <type>string</type> is specified in double quotes or with heredoc,
+    When a (string) is specified in double quotes or with heredoc,
     <link linkend="language.variables">variables</link> are parsed within it. 
    </simpara>
 
@@ -488,7 +490,7 @@ EOT;
     <link linkend="language.types.string.parsing.complex">complex</link> one.
     The simple syntax is the most common and convenient. It provides a way to
     embed a variable, an <type>array</type> value, or an <type>object</type>
-    property in a <type>string</type> with a minimum of effort.
+    property in a (string) with a minimum of effort.
    </simpara>
 
    <simpara>
@@ -590,9 +592,9 @@ Robert Paulsen greeted the two .
 
     <simpara>
      Any scalar variable, array element or object property with a
-     <type>string</type> representation can be included via this syntax.
+     (string) representation can be included via this syntax.
      Simply write the expression the same way as it would appear outside the
-     <type>string</type>, and then wrap it in <literal>{</literal> and
+     (string), and then wrap it in <literal>{</literal> and
      <literal>}</literal>. Since <literal>{</literal> can not be escaped, this
      syntax will only be recognised when the <literal>$</literal> immediately
      follows the <literal>{</literal>. Use <literal>{\$</literal> to get a
@@ -734,10 +736,10 @@ echo "I'd like an {${beers::$ale}}\n";
    <title>String access and modification by character</title>
 
    <para>
-    Characters within <type>string</type>s may be accessed and modified by
+    Characters within (string)s may be accessed and modified by
     specifying the zero-based offset of the desired character after the
-    <type>string</type> using square <type>array</type> brackets, as in
-    <varname>$str[42]</varname>. Think of a <type>string</type> as an
+    (string) using square <type>array</type> brackets, as in
+    <varname>$str[42]</varname>. Think of a (string) as an
     <type>array</type> of characters for this purpose. The functions
     <function>substr</function> and <function>substr_replace</function>
     can be used when you want to extract or replace more than 1 character.
@@ -881,7 +883,7 @@ bool(false)
   </para>
 
   <para>
-   There are a number of useful functions for <type>string</type> manipulation.
+   There are a number of useful functions for (string) manipulation.
   </para>
 
   <simpara>
@@ -908,27 +910,27 @@ bool(false)
   <title>Converting to string</title>
   
   <para>
-   A value can be converted to a <type>string</type> using the
+   A value can be converted to a (string) using the
    <literal>(string)</literal> cast or the <function>strval</function> function.
    <type>String</type> conversion is automatically done in the scope of an
-   expression where a <type>string</type> is needed. This happens when using the
+   expression where a (string) is needed. This happens when using the
    <function>echo</function> or <function>print</function> functions, or when a
-   variable is compared to a <type>string</type>. The sections on
+   variable is compared to a (string). The sections on
    <link linkend="language.types">Types</link> and
    <link linkend="language.types.type-juggling">Type Juggling</link> will make
    the following clearer. See also the <function>settype</function> function.
   </para>
   
   <para>
-   A <type>boolean</type> &true; value is converted to the <type>string</type>
+   A <type>boolean</type> &true; value is converted to the (string)
    <literal>"1"</literal>. <type>Boolean</type> &false; is converted to
    <literal>""</literal> (the empty string). This allows conversion back and
-   forth between <type>boolean</type> and <type>string</type> values.
+   forth between <type>boolean</type> and (string) values.
   </para>
 
   <para> 
    An <type>integer</type> or <type>float</type> is converted to a
-   <type>string</type> representing the number textually (including the
+   (string) representing the number textually (including the
    exponent part for <type>float</type>s). Floating point numbers can be
    converted using exponential notation (<literal>4.1E+6</literal>).
   </para>
@@ -941,7 +943,7 @@ bool(false)
   </note>
 
   <para>
-   <type>Array</type>s are always converted to the <type>string</type>
+   <type>Array</type>s are always converted to the (string)
    <literal>"Array"</literal>; because of this, <function>echo</function> and
    <function>print</function> can not by themselves show the contents of an
    <type>array</type>. To view a single element, use a construction such as
@@ -950,7 +952,7 @@ bool(false)
   </para>
 
   <para>
-   <type>Object</type>s in PHP 4 are always converted to the <type>string</type>
+   <type>Object</type>s in PHP 4 are always converted to the (string)
    <literal>"Object"</literal>. To print the values of object properties for
    debugging reasons, read the paragraphs below. To get an object's class name,
    use the <function>get_class</function> function. As of PHP 5, the
@@ -959,7 +961,7 @@ bool(false)
   </para>
 
   <para>
-   <type>Resource</type>s are always converted to <type>string</type>s with the
+   <type>Resource</type>s are always converted to (string)s with the
    structure <literal>"Resource id #1"</literal>, where <literal>1</literal>
    is the resource number assigned to the <type>resource</type> by PHP at
    runtime. While the exact structure of this string should not be relied on
@@ -975,14 +977,14 @@ bool(false)
   
   <para>
    As stated above, directly converting an <type>array</type>,
-   <type>object</type>, or <type>resource</type> to a <type>string</type> does
+   <type>object</type>, or <type>resource</type> to a (string) does
    not provide any useful information about the value beyond its type. See the
    functions <function>print_r</function> and <function>var_dump</function> for
    more effective means of inspecting the contents of these types.
   </para>
   
   <para>
-   Most PHP values can also be converted to <type>string</type>s for permanent
+   Most PHP values can also be converted to (string)s for permanent
    storage. This method is called serialization, and is performed by the
    <function>serialize</function> function. If the PHP engine was built with
    <link linkend="ref.wddx">WDDX</link> support, PHP values can also be
@@ -995,21 +997,21 @@ bool(false)
   <title>String conversion to numbers</title>
 
   <simpara>
-   When a <type>string</type> is evaluated in a numeric context, the resulting
+   When a (string) is evaluated in a numeric context, the resulting
    value and type are determined as follows.
   </simpara>
 
   <simpara>
-   If the <type>string</type> does not contain any of the characters '.', 'e',
+   If the (string) does not contain any of the characters '.', 'e',
    or 'E' and the numeric value fits into integer type limits (as defined by
-   <constant>PHP_INT_MAX</constant>), the <type>string</type> will be evaluated
+   <constant>PHP_INT_MAX</constant>), the (string) will be evaluated
    as an <type>integer</type>. In all other cases it will be evaluated as a
    <type>float</type>.
   </simpara>
 
   <para>
-   The value is given by the initial portion of the <type>string</type>. If the
-   <type>string</type> starts with valid numeric data, this will be the value
+   The value is given by the initial portion of the (string). If the
+   (string) starts with valid numeric data, this will be the value
    used. Otherwise, the value will be 0 (zero). Valid numeric data is an
    optional sign, followed by one or more digits (optionally containing a
    decimal point), followed by an optional exponent. The exponent is an 'e' or
@@ -1067,7 +1069,7 @@ echo "\$foo==$foo; type is " . gettype ($foo) . "<br />\n";
   <title>Details of the String Type</title>
   
   <para>
-   The <type>string</type> in PHP is implemented as an array of bytes and an
+   The (string) in PHP is implemented as an array of bytes and an
    integer indicating the length of the buffer. It has no information about how
    those bytes translate to characters, leaving that task to the programmer.
    There are no limitations on the values the string can be composed of; in
