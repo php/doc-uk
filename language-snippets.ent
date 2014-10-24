@@ -1843,6 +1843,7 @@ paths</simpara></warning>
    </para>
   </listitem>
  </varlistentry>
+'>
 
 <!-- Migration Guide snippets -->
 <!ENTITY migration56.openssl.peer-verification '
