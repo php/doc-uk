@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: eda3b067eb85fcd307682aa8966d3c017cc29be2 Maintainer: ktretyak Status: wip -->
+<!-- EN-Revision: 285c8b2b89440bdb4b2178ed960411c8a8314de0 Maintainer: ktretyak Status: wip -->
 <!-- $Revision$ -->
 
 <sect1 xml:id="control-structures.declare" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -37,6 +37,25 @@ declare (directive)
    The encoding directive was added in PHP 5.3.0
   </simpara>
  </note>
+ <para>
+  As directives are handled as the file is being compiled, only literals may
+  be given as directive values. Variables and constants cannot be used. To
+  illustrate:
+  <informalexample>
+   <programlisting role="php">
+<![CDATA[
+<?php
+// This is valid:
+declare(ticks=1);
+
+// This is invalid:
+const TICK_VALUE = 1;
+declare(ticks=TICK_VALUE);
+?>
+]]>
+   </programlisting>
+  </informalexample>
+ </para>
  <para>
   The <literal>statement</literal> part of the
   <literal>declare</literal> block will be executed - how
