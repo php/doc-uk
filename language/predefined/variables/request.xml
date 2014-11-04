@@ -11,7 +11,7 @@
  <refsect1 role="description">
   &reftitle.description;
   <para>
-   Асоціативний масив (<type>array</type>), що, за промовчанням, містить
+   Асоціативний масив (<type>array</type>), що, початково, містить
    <varname>$_GET</varname>,
    <varname>$_POST</varname>&listendand;
    <varname>$_COOKIE</varname>.

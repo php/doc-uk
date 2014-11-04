@@ -6,7 +6,7 @@
    <title>Стандартні Предвизначені Константи</title>
    <simpara>
     Всі константи з <link linkend="extensions.membership.core">Розширення
-    Ядра</link> в PHP є визначеними за промовчанням.
+    Ядра</link> в PHP є визначеними початково.
    </simpara>
  </sect2>
 

@@ -65,7 +65,7 @@
 <!ENTITY Description       "Опис">
 <!ENTITY Changeable        "Де можна змінювати">
 <!ENTITY ConfigureOptions  "Параметри Конфігурації">
-<!ENTITY Default           "За промовчанням">
+<!ENTITY Default           "Початково">
 <!ENTITY Definition        "Визначення">
 <!ENTITY Functions         "Функції">
 <!ENTITY Name              "Назва">

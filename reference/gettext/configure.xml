@@ -6,7 +6,7 @@
  <para>
   Щоб підключити підтримку GNU gettext в PHP, потрібно збирати PHP з параметром
   <option role="configure">--with-gettext[=DIR]</option>, де DIR - це директорія,
-  куди ви встановили gettext, за промовчанням - <filename>/usr/local</filename>.
+  куди ви встановили gettext, початково - <filename>/usr/local</filename>.
  </para>
 </section>
 

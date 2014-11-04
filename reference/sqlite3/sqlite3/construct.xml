@@ -43,7 +43,7 @@
      <listitem>
       <para>
        Необов'язковий флаг, для визначення - як саме
-       відкривати базу даних SQLite. За промовчанням, при відкритті використовується
+       відкривати базу даних SQLite. Початково, при відкритті використовується
        <literal>SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE</literal>.
        <itemizedlist>
         <listitem>

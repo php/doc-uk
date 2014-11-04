@@ -51,7 +51,7 @@
     </question>
     <answer>
      <para>
-      За промовчанням в Unix-системах він повинен бути в
+      Початково в Unix-системах він повинен бути в
       <filename>/usr/local/lib</filename>, що визначається як
       <filename>&lt;шлях-встановлення&gt;/lib</filename>.
       Більшість користувачів змінює його під час компіляції через флаг 
@@ -68,7 +68,7 @@
 --with-config-file-scan-dir=PATH 
       </programlisting>
      <para>
-      У Windows, шлях за промовчанням для &php.ini;, веде до директорії Windows.
+      У Windows початково, шлях для &php.ini;, веде до директорії Windows.
       Якщо ви використовуєте веб-сервер Apache, файл &php.ini;
       спочатку шукається в директорії, де встановлено Apache, наприклад в
       <filename>c:\program files\apache group\apache</filename>. В такому разі,
@@ -363,13 +363,13 @@ cgi error:
     <answer>
      <para>
       Вам потрібно встановити для директиви <link linkend="ini.cgi.force-redirect">
-      cgi.force_redirect</link> значення <literal>0</literal> (за промовчанням
+      cgi.force_redirect</link> значення <literal>0</literal> (початково
       встановлено <literal>1</literal>), а також переконайтесь, цю що директиву
       не закоментовано (через символ крапки-з-комою <literal>;</literal>). Як і всі
       директиви, вона також знаходиться у файлі &php.ini;
      </para>
      <para>
-      Оскільки за промовчанням встановлено <literal>1</literal>, то дуже важливо,
+      Оскільки початково встановлено <literal>1</literal>, то дуже важливо,
       щоб ви переконались на 100%, що буде читатись коректний файл &php.ini;.
       Читайте детальніше в
       <link linkend="faq.installation.findphpini">цьому пункті ЧАПу</link>.
@@ -474,7 +474,7 @@ cgi error:
       В даному PHP посібнику ще залишились рекомендації копіювання файлів в
       системну директорію Windows. Такі рекомендації писались тільки через те,
       що ця директорія (<filename>C:\Windows</filename>,
-      <filename>C:\WINNT</filename>, і т.д.) є за промовчанням в системній
+      <filename>C:\WINNT</filename>, і т.д.) початково є в системній
       змінній <envar>PATH</envar>. На даний момент, рекомендація копіювання файлів в
       системну директорію Windows давно вже є застарілою та може спричиняти проблеми.
      </para>

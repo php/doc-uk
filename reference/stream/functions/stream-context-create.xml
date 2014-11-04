@@ -31,7 +31,7 @@
        <literal>$arr['wrapper']['option'] = $value</literal>.
       </para>
       <para>
-       Значення за промовчанням для пустого масиву.
+       Початкове значення для пустого масиву.
       </para>
      </listitem>
     </varlistentry>

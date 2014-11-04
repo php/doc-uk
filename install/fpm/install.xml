@@ -15,12 +15,12 @@
      <itemizedlist>
       <listitem>
        <para>
-        <literal>--with-fpm-user</literal> - встановлює користувача FPM (за промовчанням - nobody).
+        <literal>--with-fpm-user</literal> - встановлює користувача FPM (початково - nobody).
        </para>
       </listitem>
       <listitem>
        <para>
-        <literal>--with-fpm-group</literal> - встановлює групу FPM (за промовчанням - nobody).
+        <literal>--with-fpm-group</literal> - встановлює групу FPM (початково - nobody).
        </para>
       </listitem>
      </itemizedlist>

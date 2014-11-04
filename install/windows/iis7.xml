@@ -14,7 +14,7 @@
  <sect2 xml:id="install.windows.iis7.fastcgi.enable">
   <title>Підключення підтримки FastCGI в IIS</title>
   <para>
-   Модуль FastCGI за промовчанням відключений в IIS. Кроки для його підключення
+   Модуль FastCGI початково відключений в IIS. Кроки для його підключення
    відрізняються в залежності від версії Windows.
   </para>
   <para>
@@ -249,7 +249,7 @@ scriptProcessor='c:\PHP\php-cgi.exe',resourceType='Either']
    автентифікації IIS.
   </para>
   <para>
-   Наприклад в IIS 7, за промовчанням, включено анонімну автентифікацію, для якої
+   Наприклад в IIS 7, початково, включено анонімну автентифікацію, для якої
    використовується спеціальний вбудований обліковий запис користувача IUSR.
    Це означає, що для того, щоб IIS виконав PHP-скрипт, необхідно щоб користувач
    IUSR мав права на читання цього скрипта. Якщо PHP-скрипт повинен виконати
@@ -258,8 +258,8 @@ scriptProcessor='c:\PHP\php-cgi.exe',resourceType='Either']
   </para>
   <para>
    Щоб призначити певний обліковий запис користувача для такої анонімної
-   автентифікації в IIS 7, використовуйте наступну команду. Замініть назву
-   сайта за промовчанням &quot;Default Web Site&quot; на назву вашого сайта. У виведеному
+   автентифікації в IIS 7, використовуйте наступну команду. Замініть початкову
+   назву сайта &quot;Default Web Site&quot; на назву вашого сайта. У виведеному
    XML-елементі конфігурації знайдіть атрибут <varname>userName</varname>.
    <example>
     <title>Визначення облікового запису, який буде використовуватись як анонімна сутність IIS</title>
@@ -304,15 +304,15 @@ icacls C:\inetpub\wwwroot\upload /grant IUSR:(OI)(CI)(M)
   </para>
  </sect2>
  <sect2 xml:id="install.windows.iis7.defaultdoc">
-  <title>Встановлення <filename>index.php</filename> як документу за промовчанням для IIS</title>
+  <title>Встановлення <filename>index.php</filename> як початкового документа для IIS</title>
   <para>
-   Документ за промовчанням використовується для HTTP-запитів, в яких не зазначено
+   Початковий документ використовується для HTTP-запитів, в яких не зазначено
    назву документа (а тільки назву директорії або й без неї). В PHP-застосунках
    для цих цілей, зазвичай, використовується <filename>index.php</filename>.
-   Щоб додати <filename>index.php</filename> в якості документу за промовчанням
+   Щоб додати <filename>index.php</filename> в якості початкового документа
    для IIS, використовуйте цю команду:
    <example>
-    <title>Встановлення <filename>index.php</filename> за промовчанням</title>
+    <title>Встановлення <filename>index.php</filename> як початкового</title>
     <programlisting>
 <![CDATA[
 %windir%\system32\inetsrv\appcmd.exe set config ^
@@ -379,7 +379,7 @@ icacls C:\inetpub\wwwroot\upload /grant IUSR:(OI)(CI)(M)
   <para>
    PHP шукає файл <filename>php.ini</filename> в
    <link linkend="configuration.file">декількох місцях</link>, а тому можна 
-   змінити шлях за промовчанням для файла <filename>php.ini</filename>,
+   змінити початковий шлях для файла <filename>php.ini</filename>,
    використовуючи змінну оточення <varname>PHPRC</varname>. Щоб повідомити PHP,
    що треба завантажувати конфігураційний файл з нового місця, запустіть команду,
    наведену нижче. Також потрібно вказати абсолютний шлях до директорії з файлом

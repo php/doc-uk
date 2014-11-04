@@ -4,7 +4,7 @@
   <sect1 xml:id="install.unix.commandline" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
    <title>CGI та командний рядок</title>
    <para>
-    За промовчанням, PHP збирається одночасно як <acronym>CLI</acronym> та
+    Початково, PHP збирається одночасно як <acronym>CLI</acronym> та
     <acronym>CGI</acronym> програма, що може використовуватись для CGI-обробки.
     Якщо у вас встановлено веб-сервер, який має підтримку PHP як модуля, вам це
     дозволяє вигравати у продуктивності. Тим не менш, CGI версія дозволяє

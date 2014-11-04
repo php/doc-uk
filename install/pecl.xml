@@ -309,7 +309,7 @@ $ pecl install extname
    <filename>extname.so</filename> можна підключати через &php.ini;
   </simpara>
   <simpara>
-   За промовчанням, команда <literal>pecl</literal> не встановлює пакети, які
+   Початково, команда <literal>pecl</literal> не встановлює пакети, які
    познечені як <literal>alpha</literal> або <literal>beta</literal>. Якщо
    стабільні (<literal>stable</literal>) пакети недоступні, ви можете
    встановити <literal>beta</literal> пакети за допомогою наступної команди:
@@ -446,11 +446,11 @@ Options:
       </row>
       <row>
        <entry>--extension-dir</entry>
-       <entry>Директорія, де, за промовчанням, розширення шукаються</entry>
+       <entry>Директорія, де, початково, розширення шукаються</entry>
       </row>
       <row>
        <entry>--include-dir</entry>
-       <entry>Директорія, де, за промовчанням, встановлено заголовні файли</entry>
+       <entry>Директорія, де, початково, встановлено заголовні файли</entry>
       </row>
       <row>
        <entry>--php-binary</entry>

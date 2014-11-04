@@ -31,7 +31,7 @@
        будь-який інший метод HTTP, що підтримується віддаленим сервером.
       </para>
       <para>
-       За промовчанням - <constant>GET</constant>.
+       Початково - <constant>GET</constant>.
       </para>
      </listitem>
     </varlistentry>
@@ -61,7 +61,7 @@
        визначено user-agent в опціях контекста <literal>header</literal> вище.
       </para>
       <para>
-       За промовчанням використовується директива
+       Початково використовується директива
        <link linkend="ini.user-agent">user_agent</link>
        з файла &php.ini;.
       </para>
@@ -105,7 +105,7 @@
        вимагають його.
       </para>
       <para>
-       За промовчанням &false;.
+       Початково &false;.
       </para>
      </listitem>
     </varlistentry>
@@ -120,7 +120,7 @@
        <literal>Location</literal>. Для відключення встановіть <literal>0</literal>.
       </para>
       <para>
-       За промовчанням <literal>1</literal>.
+       Початково <literal>1</literal>.
       </para>
      </listitem>
     </varlistentry>
@@ -136,7 +136,7 @@
      переадресацій.
       </para>
       <para>
-       За промовчанням <literal>20</literal>.
+       Початково <literal>20</literal>.
       </para>
      </listitem>
     </varlistentry>
@@ -150,7 +150,7 @@
        Версія HTTP-протоколу.
       </para>
       <para>
-       За промовчанням <literal>1.0</literal>.
+       Початково <literal>1.0</literal>.
       </para>
       <note>
        <para>
@@ -173,7 +173,7 @@
        <type>float</type> (наприклад <literal>10.5</literal>).
       </para>
       <para>
-       За промовчанням використовується значення директиви
+       Початково використовується значення директиви
        <link linkend="ini.default-socket-timeout">default_socket_timeout</link>
        з файлу &php.ini;.
       </para>
@@ -189,7 +189,7 @@
        Отримувати вміст навіть при неуспішних кодах статуса.
       </para>
       <para>
-       За промовчанням &false;.
+       Початково &false;.
       </para>
      </listitem>
     </varlistentry>

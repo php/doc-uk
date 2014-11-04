@@ -6,7 +6,7 @@
 <!ENTITY changelog.randomseed '<row xmlns="http://docbook.org/ns/docbook"><entry>4.2.0</entry><entry>
 Генератор випадкових чисел ініціалізується автоматично.</entry></row>'>
 
-<!ENTITY installation.enabled.disable 'Це розширення доступне за промовчанням.
+<!ENTITY installation.enabled.disable 'Це розширення доступне як початкове.
 Воно може бути виключене за допомогою наступних опцій під час збірки: '>
 
 <!-- Cautions -->
@@ -84,7 +84,7 @@
 
 <!ENTITY note.registerglobals '<note xmlns="http://docbook.org/ns/docbook"><title>register_globals: важлива
 замітка</title><para>Починаючи з PHP 4.2.0, значення директиви PHP
-<link linkend="ini.register-globals">register_globals</link> за промовчанням встановлено в <emphasis>
+<link linkend="ini.register-globals">register_globals</link> початково встановлено в <emphasis>
 off</emphasis>. Співтовариство PHP рекомендує не покладатись на цю директиву,
 а використовувати інші варіанти, такі як &link.superglobals;.</para></note>'>
 
@@ -1274,7 +1274,7 @@ documents. The possible values for <parameter>encoding</parameter> are:
 <!-- Snippets for the installation section -->
 <!ENTITY warn.apache2.compat '<warning xmlns="http://docbook.org/ns/docbook"><para>Ми не рекомендуємо
 використовувати потоковий MPM в промисловому оточенні з Apache 2.
-Замість нього використовуйте prefork MPM, який за промовчанням йде з Apache 2.0 та 2.2.
+Замість нього використовуйте prefork MPM, який початково йде з Apache 2.0 та 2.2.
 Детальніше - читайте в розділі
 <link linkend="faq.installation.apache2">Apache2 з потоковим MPM</link></para></warning>'>
 

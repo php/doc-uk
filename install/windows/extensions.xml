@@ -41,7 +41,7 @@
      <link linkend="book.zlib">Zlib</link>.
     </para>
     <para>
-     За промовчанням PHP шукає розширення в
+     Початково, PHP шукає розширення в
      <filename class="directory">C:\php5</filename>. Щоб змінити це налаштування
      у відповідності до вашого встановлення PHP, змініть файл &php.ini;:
      <itemizedlist>
