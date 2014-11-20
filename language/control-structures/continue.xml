@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 55713d3fa09bd9702d8fcca5ddc60e5f304bbef7 Maintainer: ktretyak Status: wip -->
+<!-- EN-Revision: eb251805677e732b5c72dde230c3adfd310a7064 Maintainer: ktretyak Status: wip -->
 <!-- $Revision$ -->
 
 <sect1 xml:id="control-structures.continue" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -83,7 +83,7 @@ for ($i = 0; $i < 5; ++$i) {
 ]]>
    </screen>
    <para>
-    but this script will output:
+    but, in PHP versions below 5.4.0, this script will output:
    </para>
    <screen>
 <![CDATA[
@@ -97,6 +97,12 @@ for ($i = 0; $i < 5; ++$i) {
     <literal>print</literal> is passed to <literal>continue</literal> as the
     numeric argument.)
    </para>
+   <note>
+    <para>
+     As of PHP 5.4.0, the above example will raise an
+     <constant>E_COMPILE_ERROR</constant> error.
+    </para>
+   </note>
   </informalexample>
  </para>
  <para>
