@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: af4410a7e15898c3dbe83d6ea38246745ed9c6fb Maintainer: ktretyak Status: wip -->
+<!-- EN-Revision: 2927fdd59938f9e9a3569860120d7b4885d3de18 Maintainer: ktretyak Status: wip -->
 <!-- $Revision$ -->
 <sect1 xml:id="language.types.object">
  <title>Objects</title>
@@ -46,9 +46,26 @@ $bar->do_foo();
    modified. If a value of any other type is converted to an
    <type>object</type>, a new instance of the <literal>stdClass</literal>
    built-in class is created. If the value was &null;, the new instance will be
-   empty. <type>Array</type>s convert to an <type>object</type> with properties
-   named by keys, and corresponding values. For any other value, a member
-   variable named <literal>scalar</literal> will contain the value.
+   empty. An <type>array</type> converts to an <type>object</type> with properties
+   named by keys and corresponding values, with the exception of numeric keys which 
+   will be inaccessible unless iterated.
+  </para>
+
+  <informalexample>
+   <programlisting role="php">
+<![CDATA[
+<?php
+$obj = (object) array('1' => 'foo');
+var_dump(isset($obj->{'1'})); // outputs 'bool(false)'
+var_dump(key($obj)); // outputs 'int(1)'
+?>
+]]>
+   </programlisting>
+  </informalexample>
+
+  <para>
+   For any other value, a member variable named <literal>scalar</literal> will contain 
+   the value.
   </para>
 
   <informalexample>
