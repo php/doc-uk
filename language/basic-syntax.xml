@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 6b24e8069b857871c4ec3968b2c79c7be8244160 Maintainer: ktretyak Status: ready -->
+<!-- EN-Revision: 9c02dc54d852d871cbcfcda05df9855333e8bc78 Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
  <chapter xml:id="language.basic-syntax" xmlns="http://docbook.org/ns/docbook">
   <title>Базовий синтаксис</title>
@@ -15,12 +15,12 @@
    </para>
    <para>
     PHP також дозволяє короткий відкриваючий тег <literal>&lt;?</literal> (в
-    цьому випадку закриваючий тег не змінюється),
+    цьому випадку закриваючий тег не змінюється,
     але використовуйте його обережно,
     оскільки він доступний, тільки якщо його підключено через директиву
     <link linkend="ini.short-open-tag">short_open_tag</link> у конфігураційному
     файлі &php.ini;, або якщо PHP було сконфігуровано з параметром
-    <option>--enable-short-tags</option>.
+    <option>--enable-short-tags</option>).
    </para>
    <para>
     Якщо файл має лише PHP-код, краще не вказувати закриваючий тег PHP в кінці
