@@ -95,7 +95,7 @@ supplemental files to mark section titles -->
 <!ENTITY reftitle.install      '<title xmlns="http://docbook.org/ns/docbook">Встановлення</title>'>
 <!ENTITY reftitle.intro        '<title xmlns="http://docbook.org/ns/docbook">Вступ</title>'>
 <!ENTITY reftitle.indices      '<title xmlns="http://docbook.org/ns/docbook">Індекси</title>'>
-<!ENTITY reftitle.interfacesynopsis '<title xmlns="http://docbook.org/ns/docbook">Короткий Огляд Інтерфеса</title>'>
+<!ENTITY reftitle.interfacesynopsis '<title xmlns="http://docbook.org/ns/docbook">Короткий Огляд Інтерфейса</title>'>
 <!ENTITY reftitle.methods      '<title xmlns="http://docbook.org/ns/docbook">Методи</title>'>
 <!ENTITY reftitle.mysqlnd      '<title xmlns="http://docbook.org/ns/docbook">Лише Рідний Драйвер MySQL</title>'>
 <!ENTITY reftitle.notes        '<title xmlns="http://docbook.org/ns/docbook">Примітки</title>'>
