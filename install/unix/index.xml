@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 034fd4357cc259a51953de9805ebaf80200448d4 Maintainer: ktretyak Status: ready -->
+<!-- EN-Revision: cf247b9c7cb5dbfbfdc4ce9b4745882ed99cc98a Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
   <chapter xml:id="install.unix" xmlns="http://docbook.org/ns/docbook">
    <title>Встановлення на Unix системи</title>
@@ -84,7 +84,8 @@
      </listitem>
      <listitem>
       <simpara>
-       bison: Версії 1.28 (переважно), 1.35, або 1.75
+       bison: Version 1.28 (preferred), 1.35, or 1.75 (for PHP &lt;= 5.4),
+        2.4.x &lt;= 2.7.x (for PHP 5.5), 2.4.x &lt;= 3.0.0 (for PHP 5.6)
       </simpara>
      </listitem>
     </itemizedlist>

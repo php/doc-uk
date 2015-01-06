@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: d5e05486ba5c0ccfb45e9a92fc95adf2762ab289 Maintainer: ktretyak Status: wip -->
+<!-- EN-Revision: 204bc2974d707bed4017414b13242171d719cb7c Maintainer: ktretyak Status: wip -->
 <!-- $Revision$ -->
  <chapter xml:id="language.constants" xmlns="http://docbook.org/ns/docbook">
   <title>Constants</title>
@@ -71,7 +71,8 @@ define("__FOO__", "something");
    <simpara>
     Only scalar data (<type>boolean</type>, <type>integer</type>, 
     <type>float</type> and <type>string</type>) can be contained 
-    in constants prior to PHP 5.6. From PHP 5.6 onwards, it is also possible
+    in constants prior to PHP 5.6. From PHP 5.6 onwards, it is possible to 
+    define a constant as a scalar expression, and it is also possible
     to define an <type>array</type> constant. It is possible to define
     constants as a <type>resource</type>, but it should be avoided, as it can
     cause unexpected results.
@@ -115,7 +116,7 @@ define("__FOO__", "something");
      </listitem>
      <listitem>
       <simpara>
-       Constants may only be defined using the
+       Prior to PHP 5.3, Constants may only be defined using the
        <function>define</function> function, not by simple assignment;
       </simpara>
      </listitem>
