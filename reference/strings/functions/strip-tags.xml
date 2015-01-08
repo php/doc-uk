@@ -44,7 +44,7 @@
       </para>
       <note>
        <para>
-        HTML-коментарі та PHP-теги будуть видалені в будь-якому випадку. Це прописано у коді та
+        HTML-коментарі та PHP-теги будуть видалені в усякому разі. Це прописано у коді та
         не може бути змінено за допомогою <parameter>allowable_tags</parameter>.
        </para>
       </note>
@@ -102,7 +102,7 @@
     <programlisting role="php">
 <![CDATA[
 <?php
-$text = '<p>Тестовий параграф.</p><!-- Коментар --> <a href="#fragment">Якийсь текст</a>';
+$text = '<p>Абзац.</p><!-- Коментар --> <a href="#fragment">Якийсь текст</a>';
 echo strip_tags($text);
 echo "\n";
 
@@ -114,8 +114,8 @@ echo strip_tags($text, '<p><a>');
     &example.outputs;
     <screen>
 <![CDATA[
-Тестовий параграф. Якийсь текст
-<p>Тестовий параграф.</p> <a href="#fragment">Якийсь текст</a>
+Абзац. Якийсь текст
+<p>Абзац.</p> <a href="#fragment">Якийсь текст</a>
 ]]>
     </screen>
    </example>
@@ -142,8 +142,8 @@ echo strip_tags($text, '<p><a>');
   <note>
    <para>
     Імена тегів у HTML, які перевищують довжину в 1023 байта 
-    будуть розглядатися як невалідні незалежно від 
-    <parameter>allowable_tags</parameter> параметра.
+    будуть розглядатися як невалідні незалежно від параметра 
+    <parameter>allowable_tags</parameter>.
    </para>
   </note>
  </refsect1>
