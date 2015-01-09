@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision$ -->
+<!-- EN-Revision: e41aab5ecacf449e51179886c17f1d41735b0234 Maintainer: iSensetivity Status: ready -->
+<!-- Reviewed: no -->
+
+<refentry xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://docbook.org/ns/docbook" xml:id="function.sha1-file">
+ <refnamediv>
+  <refname>sha1_file</refname>
+  <refpurpose>Обчислює SHA1-хеш файлу</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>sha1_file</methodname>
+   <methodparam><type>string</type><parameter>filename</parameter></methodparam>
+   <methodparam choice="opt"><type>bool</type><parameter>raw_output</parameter><initializer>false</initializer></methodparam>
+  </methodsynopsis>
+  <simpara>
+   Обчислює SHA1-хеш файлу <parameter>filename</parameter> використовуючи 
+   <link xlink:href="&url.rfc;3174">US Secure Hash Algorithm 1</link>, 
+   та повертає цей хеш. Хеш складається з 40-символьного шістнадцяткового числа.
+  </simpara>
+ </refsect1>
+ 
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>filename</parameter></term>
+     <listitem>
+      <para>
+       Ім'я файлу.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>raw_output</parameter></term>
+     <listitem>
+      <para>
+       Якщо необов'язковий параметр <parameter>raw_output</parameter> 
+       встановлений у &true;,
+       хеш повернеться у вигляді бінарного рядка з 20 символів,
+       інакше повернеться 40-символьне шістнадцяткове число.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ 
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   У разі іспіху повертає SHA1-хеш у вигляді рядка, інакше &false;.
+  </para>
+ </refsect1>
+ 
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title>Використання <function>sha1_file</function></title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+foreach(glob('/home/Kalle/myproject/*.php') as $ent)
+{
+    if(is_dir($ent))
+    {
+        continue;
+    }
+
+    echo $ent . ' (SHA1: ' . sha1_file($ent) . ')', PHP_EOL;
+}
+?>
+]]>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>5.1.0</entry>
+       <entry>
+        Функцію змінено для роботи з потоковим API. Це означає, 
+        що її можна використовувати з обгортками, наприклад, так: 
+        <literal>sha1_file('http://example.com/..')</literal>
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+ 
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>sha1</function></member>
+    <member><function>md5_file</function></member>
+    <member><function>crc32</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
