@@ -6,7 +6,7 @@
 <refentry xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://docbook.org/ns/docbook" xml:id="function.sha1-file">
  <refnamediv>
   <refname>sha1_file</refname>
-  <refpurpose>Обчислює SHA1-хеш файлу</refpurpose>
+  <refpurpose>Обчислює SHA1-хеш файла</refpurpose>
  </refnamediv>
  <refsect1 role="description">
   &reftitle.description;
@@ -16,9 +16,9 @@
    <methodparam choice="opt"><type>bool</type><parameter>raw_output</parameter><initializer>false</initializer></methodparam>
   </methodsynopsis>
   <simpara>
-   Обчислює SHA1-хеш файлу <parameter>filename</parameter> використовуючи 
-   <link xlink:href="&url.rfc;3174">US Secure Hash Algorithm 1</link>, 
-   та повертає цей хеш. Хеш складається з 40-символьного шістнадцяткового числа.
+   Обчислює SHA1-хеш файла <parameter>filename</parameter> використовуючи 
+   <link xlink:href="&url.rfc;3174">US Secure Hash Algorithm 1</link> 
+   і повертає цей хеш. Хеш складається з 40-символьного шістнадцяткового числа.
   </simpara>
  </refsect1>
  
