@@ -6,7 +6,7 @@
 <refentry xmlns="http://docbook.org/ns/docbook" xml:id="function.implode">
  <refnamediv>
   <refname>implode</refname>
-  <refpurpose>Формує з елементів масива рядок</refpurpose>
+  <refpurpose>Формує з елементів масиву рядок</refpurpose>
  </refnamediv>
  
  <refsect1 role="description">
@@ -21,12 +21,12 @@
    <methodparam><type>array</type><parameter>pieces</parameter></methodparam>
   </methodsynopsis>
   <para>
-   За допомогою роздільника <parameter>glue</parameter> формує з елементів масива рядок.
+   За допомогою роздільника <parameter>glue</parameter> формує з елементів масиву рядок.
   </para>
   <note>
    <para>
-    З історичних причин <function>implode</function> може приймати,
-    параметри у будь-якому порядку. Проте, для узгодженості з функцією 
+    З історичних причин <function>implode</function> може приймати 
+    параметри у будь-якому порядку. Проте для узгодженості з функцією 
     <function>explode</function>, слід використовувати документований 
     порядок аргументів.
    </para>
