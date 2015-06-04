@@ -6,7 +6,7 @@
 <refentry xml:id="function.count" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>count</refname>
-  <refpurpose>Підраховує кількість елементів масиву або щось в об'єкті.</refpurpose>
+  <refpurpose>Підраховує кількість елементів масиву або чогось в об’єкті</refpurpose>
  </refnamediv>
  <refsect1 role="description">
   &reftitle.description;
@@ -16,19 +16,19 @@
    <methodparam choice="opt"><type>int</type><parameter>mode</parameter><initializer>COUNT_NORMAL</initializer></methodparam>
   </methodsynopsis>
   <para>
-   Підраховує кількість елементів масиву або щось в об'єкті.
+   Підраховує кількість елементів масиву або чогось в об’єкті.
   </para>
   <para>
-   Для об'єктів: якщо у вас встановлена
+   Для об’єктів: якщо у вас встановлена
    <link linkend="ref.spl">SPL</link>, то ви можете перехопити
-   <function>count</function> шляхом реалізації інтерфейса
+   <function>count</function> шляхом реалізації інтерфейсу
    <classname>Countable</classname>. Інтерфейс має тільки один метод,
-   <methodname>Countable::count</methodname>, який повертає значення, що від 
-   функції <function>count</function>.
+   <methodname>Countable::count</methodname>, який повертає значення, яке поверне 
+   функція <function>count</function>.
   </para>
   <para>
    Для додаткових пояснень, щодо масивів та їх роботи у PHP читайте 
-   розділ документації масиви<link linkend="language.types.array">Array</link>.
+   розділ документації <link linkend="language.types.array">Масиви</link>.
   </para>
  </refsect1>
  <refsect1 role="parameters">
@@ -39,7 +39,7 @@
      <term><parameter>array_or_countable</parameter></term>
      <listitem>
       <para>
-       Масив, або <classname>Countable</classname> об`єкт.
+       Масив або об’єкт який реалізує <classname>Countable</classname>.
       </para>
      </listitem>
     </varlistentry>
@@ -47,7 +47,7 @@
      <term><parameter>mode</parameter></term>
      <listitem>
       <para>
-       Якщо необов'язковий парамерт <parameter>mode</parameter> встановлений у
+       Якщо необов’язковий парамерт <parameter>mode</parameter> встановлений у
        <constant>COUNT_RECURSIVE</constant> (або 1), функція 
        <function>count</function>
        рахуватиме кількість елементів масиву рекурсивно.
