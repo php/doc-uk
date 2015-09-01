@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: eac82849b3c30b0779c0397391f5776bceb2da0a Maintainer: ktretyak Status: ready -->
+<!-- EN-Revision: a44a1e0b7918846659a3c91013855d2c3d674fb9 Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
 <refentry xml:id="function.isset" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
@@ -21,7 +21,7 @@
    Якщо змінну було видалено через <function>unset</function>, то вона більше
    не вважається встановленою. При перевірці змінної зі значенням &null;,
    <function>isset</function> буде повертати &false;.
-   Також зауважте, що байт &null; (<literal>"\0"</literal>) не є еквівалентом
+   Також зауважте, що символ &null; (<literal>"\0"</literal>) не є еквівалентом
    PHP-константі &null;.
   </para>
   <para>

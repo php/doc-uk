@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 55713d3fa09bd9702d8fcca5ddc60e5f304bbef7 Maintainer: ktretyak Status: wip -->
+<!-- EN-Revision: db1dbbceb7ad8fcec16cf62e85efd54a293dde75 Maintainer: ktretyak Status: wip -->
 <!-- $Revision$ -->
 
 <sect1 xml:id="control-structures.break" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -14,7 +14,8 @@
  <simpara>
   <literal>break</literal> accepts an optional numeric argument
   which tells it how many nested enclosing structures are to be
-  broken out of.
+  broken out of. The default value is <literal>1</literal>, only
+  the immediate enclosing structure is broken out of.
  </simpara>
  <para>
   <informalexample>
