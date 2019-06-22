@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision$ -->
-<!-- EN-Revision: afc3f34c682418a582b0f9199db0bac4a087821f Maintainer: iSensetivity Status: ready -->
+<!-- EN-Revision: 0fe00e3574f5267948a29692e8daddaaeb275cee Maintainer: iSensetivity Status: ready -->
 <!-- Reviewed: no -->
 
 <refentry xmlns="http://docbook.org/ns/docbook" xml:id="function.explode">
@@ -15,7 +15,7 @@
    <type>array</type><methodname>explode</methodname>
    <methodparam><type>string</type><parameter>delimiter</parameter></methodparam>
    <methodparam><type>string</type><parameter>string</parameter></methodparam>
-   <methodparam choice="opt"><type>int</type><parameter>limit</parameter></methodparam>
+   <methodparam choice="opt"><type>int</type><parameter>limit</parameter><initializer>PHP_INT_MAX</initializer></methodparam>
   </methodsynopsis>
   <para>
    Повертає масив рядків, кожен з яких є підрядком 
@@ -153,6 +153,7 @@ echo $pass; // *
 */
 $input1 = "Привіт";
 $input2 = "Привіт, народе!";
+$input3 = ',';
 var_dump( explode( ',', $input1 ) );
 var_dump( explode( ',', $input2 ) );
 
@@ -170,6 +171,11 @@ array(2)
 (
     [0] => string(6) "Привіт"
     [1] => string(8) " народе!"
+)
+array(2)
+(
+    [0] => string(0) ""
+    [1] => string(0) ""
 )
 ]]>
     </screen>
