@@ -42,11 +42,11 @@
   <para>
    Деякі арифметичні операції можуть повернути значення, представлене
    константою <constant>NAN</constant>. Будь-яке м'яке чи строге порівняння
-   цього значення з будь-яким іншим значенням, включаючи його самого,
+   цього значення з будь-яким іншим значенням, включаючи його самого, окрім &true;,
    повертатиме &false; (тобто <literal>NAN != NAN</literal> та
    <literal>NAN !== NAN</literal>). Приклади операцій, що продукуватимуть
    <constant>NAN</constant> включаючи <literal>sqrt(-1)</literal>,
-   <literal>asin(2)</literal>, та <literal>asinh(0)</literal>.
+   <literal>asin(2)</literal>, та <literal>acosh(0)</literal>.
   </para>
  </note>
  <para>
@@ -104,6 +104,14 @@
       <entry>&false;</entry>
       <entry>&true;</entry>
       <entry>&false;</entry>
+     </row>
+     <row>
+      <entry><literal>$x = array('a', 'b');</literal></entry>
+      <entry><type>array</type></entry>
+      <entry>&false;</entry>
+      <entry>&false;</entry>
+      <entry>&true;</entry>
+      <entry>&true;</entry>
      </row>
      <row>
       <entry><literal>$x = false;</literal></entry>

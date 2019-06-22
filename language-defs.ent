@@ -42,6 +42,7 @@
 <!ENTITY ServerSpecificExtensions                 "Спеціальні Розширення Сервера">
 <!ENTITY SearchEngineExtensions                   "Розширення Рушіїв Пошуку">
 <!ENTITY MiscExtensions                           "Різні Розширення">
+<!ENTITY UIExtensions                             "Розширення для роботи з GUI">
 <!ENTITY Appendices        "Доповнення">
 <!ENTITY PEAR              "PEAR: Репозиторій PHP Розширень та Застосунків">
 <!ENTITY FAQ               "ЧАП: Часті Питання й Відповіді">

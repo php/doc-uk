@@ -13,7 +13,9 @@
 <!ENTITY caution.cryptographically-insecure '<caution xmlns="http://docbook.org/ns/docbook"><para>
 Ця функція не генерує криптогафічні безпекові значення, та не повинна використовуватись
 для криптографічних цілей. Якщо вам потрібні криптографічні безпекові значення,
-натомість розгляньте можливість використання <function>openssl_random_pseudo_bytes</function>.</para></caution>'>
+натомість розгляньте можливість використання
+<function>random_int</function>, <function>random_bytes</function> або
+<function>openssl_random_pseudo_bytes</function>.</para></caution>'>
 
 <!-- Notes -->
 
