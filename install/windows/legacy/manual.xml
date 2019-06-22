@@ -1,49 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 14af302c9c0e561fa6f9cdd956268758ba9a89c5 Maintainer: ktretyak Status: ready -->
+<!-- EN-Revision: 17fc359d7eb75d7d6199db77518924f2d351ed8b Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
-   <sect1 xml:id="install.windows.manual" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+   <sect2 xml:id="install.windows.legacy.manual" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>Ручне встановлення</title>
     <para>
      Цей розділ містить інструкції для ручного встановлення та конфігурування
      PHP на Microsoft Windows. 
     </para>
-    <sect2 xml:id="install.windows.manual.download">
+    <sect3 xml:id="install.windows.legacy.manual.download">
      <title>Вибір та скачування пакета PHP</title>
      <para>
       Скачайте бінарний архів PHP зі сторінки
       <link xlink:href="&url.php.win.downloads;">PHP для Windows: Бінарники та Сирці</link>. 
-      Існує декілька різних zip-архівів - виберіть версію, відповідну до вашого
-      веб-сервера:
-      <itemizedlist spacing="compact">
-       <listitem>
-        <para>
-         Якщо PHP використовується з IIS, то вибирайте PHP <emphasis>VC11 Non Thread Safe</emphasis> або 
-         PHP з <emphasis>VC9 Non Thread Safe</emphasis>;
-        </para>
-       </listitem>
-       <listitem>
-        <para>
-         Якщо PHP використовується з IIS7 або вище, та PHP 5.3+, то потрібно вибирати бінарники PHP VC11 Non Thread Safe.
-        </para>
-       </listitem>
-       <listitem>
-        <para>
-         Якщо PHP використовується з Apache 1 або Apache 2 то вибирайте PHP 5.3 <emphasis>VC6</emphasis> чи
-         PHP 5.2 <emphasis>VC6</emphasis>.
-        </para>
-       </listitem>
-      </itemizedlist>
-      <note>
-       <para>
-        VC11 версії компільовані на Visual Studio 2012 та мають покращення в
-        продуктивності і стабільності. Версії VC9 потребують встановлених
-        <link xlink:href="&url.microsoft.vc9.x86;">Microsoft 2008 C++ Runtime (x86)</link> або 
-        <link xlink:href="&url.microsoft.vc9.x64;">Microsoft 2008 C++ Runtime (x64)</link>.
-       </para>
-      </note>
+      Існує декілька різних zip-архівів - щоб вибрати правильну версію для вас, дотримуйтесь докладного керівництва на сторінці
+      <link xlink:href="&url.php.win.downloads;">завантаження</link>.
      </para>
-    </sect2>
-    <sect2 xml:id="install.windows.manual.package">
+    </sect3>
+    <sect3 xml:id="install.windows.legacy.manual.package">
      <title>Структура та вміст PHP-пакета</title>
      <para>
       Розпакуйте вміст zip-архіву куди вам буде зручно, наприклад в C:\PHP\.
@@ -142,8 +115,8 @@ c:\php
        </listitem>
       </itemizedlist>
      </para>
-    </sect2>
-    <sect2 xml:id="install.windows.manual.phpini">
+    </sect3>
+    <sect3 xml:id="install.windows.legacy.manual.phpini">
      <title>Зміна файла <filename>php.ini</filename></title>
      <para>
      Після того, як php-пакет розпакували, скопіюйте файл
@@ -297,13 +270,14 @@ c:\php
     </para>
     <para>
      Окрім роботи через веб-сервер, PHP також може працювати і через командний
-     рядок, як <literal>.BAT</literal> скрипт. Детальнішу інформацію з цього
+     рядок, як <literal>.BAT</literal> скрипт.
+     <!--Детальнішу інформацію з цього
      приводу можна отримати в розділі
      <link linkend="install.windows.commandline">Командний рядок PHP на Microsoft
-     Windows</link>.
+     Windows</link>.-->
     </para>
-    </sect2>
-   </sect1>
+    </sect3>
+   </sect2>
 
 <!-- Keep this comment at the end of the file
 Local variables:
