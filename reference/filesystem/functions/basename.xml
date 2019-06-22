@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 631ffcb3980bd1060436612fe67baee0f8b4e5da Maintainer: ktretyak Status: ready -->
+<!-- EN-Revision: 7e4167f3f2e202ba4463fbc3851e56067f085326 Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
 <refentry xmlns="http://docbook.org/ns/docbook" xml:id="function.basename">
  <refnamediv>
@@ -18,6 +18,20 @@
    При передачі рядка, що містить шлях до файла чи директорії, ця функція
    повертає останній компонент наданого рядка.
   </para>
+  <note>
+   <para>
+    Можна сказати, що <function>basename</function> працює умовно зі "шляхами",
+    бо вона фактично не дивиться у файлову систему, та не враховує таких
+    компонентів як "<literal>..</literal>".
+   </para>
+  </note>
+  <caution>
+   <para>
+    <function>basename</function> враховує налаштування локалі, отже щоб мати
+    коректний результат при роботі з мультибайтними рядками, потрібно
+    встановлювати відповідну локаль використовуючи функцію <function>setlocale</function>.
+   </para>
+  </caution>
  </refsect1>
 
  <refsect1 role="parameters">
@@ -86,24 +100,6 @@
     </screen>
    </example>
   </para>
- </refsect1>
- 
- <refsect1 role="notes">
-  &reftitle.notes;
-  <note>
-   <para>
-    Можна сказати, що <function>basename</function> працює умовно зі "шляхами",
-    бо вона фактично не дивиться у файлову систему, та не враховує таких
-    компонентів як "<literal>..</literal>".
-   </para>
-  </note>
-  <note>
-   <para>
-    <function>basename</function> враховує налаштування локалі, отже щоб мати
-    коректний результат при роботі з мультибайтними рядками, потрібно
-    встановлювати відповідну локаль використовуючи функцію <function>setlocale</function>.
-   </para>
-  </note>
  </refsect1>
 
  <refsect1 role="seealso">

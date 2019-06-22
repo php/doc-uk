@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 96c9d88bad9a7d7d44bfb7f26c226df7ee9ddf26 Maintainer: ktretyak Status: ready -->
+<!-- EN-Revision: d7d7191c7dcd0384209ade638d6ecdd2ce203016 Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
-<section xml:id="mcrypt.installation" xmlns="http://docbook.org/ns/docbook">
+<section xml:id="mcrypt.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.install;
  <para>
-  Щоб підключити це розширення, потрібно зібрати PHP з параметром <option
-  role="configure">--with-mcrypt[=DIR]</option>. Тут DIR замініть на
-  шлях до директорії встановлення mcrypt. Переконайтесь, що  libmcrypt зібрано
-  з параметром <option role="configure">--disable-posix-threads</option>.
+  &pecl.moved;
+ </para>
+ <para>
+  &pecl.info;
+  <link xlink:href="&url.pecl.package;mcrypt">&url.pecl.package;mcrypt</link>.
  </para>
 </section>
 
