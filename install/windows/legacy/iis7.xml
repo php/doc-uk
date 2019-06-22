@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 8b6d169424ff189bb563ef4c3f35f8adff3f42c5 Maintainer: ktretyak Status: ready -->
+<!-- EN-Revision: 17fc359d7eb75d7d6199db77518924f2d351ed8b Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
 
-<sect1 xml:id="install.windows.iis7" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<sect2 xml:id="install.windows.legacy.iis7" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Microsoft IIS 7.0 і вище</title>
  <para>
   Цей розділ містить інструкції для ручного налаштування Internet Information
   Services (IIS) 7.0 і вище, для роботи з PHP на Microsoft Windows Vista SP1, 
   Windows 7, Windows Server 2008 та Windows Server 2008 R2. Інструкції
   налаштування для IIS 5.1 та IIS 6.0 на Windows XP і Windows Server 2003, знаходяться на
-  сторінці <link linkend="install.windows.iis6">Microsoft IIS 5.1 та IIS 6.0</link>.
+  сторінці <link linkend="install.windows.legacy.iis6">Microsoft IIS 5.1 та IIS 6.0</link>.
  </para>
- <sect2 xml:id="install.windows.iis7.fastcgi.enable">
+ <sect3 xml:id="install.windows.legacy.iis7.fastcgi.enable">
   <title>Підключення підтримки FastCGI в IIS</title>
   <para>
    Модуль FastCGI початково відключений в IIS. Кроки для його підключення
@@ -83,12 +83,12 @@
     </imageobject>
    </mediaobject>
   </para>
- </sect2>
- <sect2 xml:id="install.windows.iis7.fastcgi.conf">
+ </sect3>
+ <sect3 xml:id="install.windows.legacy.iis7.fastcgi.conf">
   <title>Конфігурування IIS для обробки PHP-запитів</title>
   <para>
    Скачайте та встановіть PHP у відповідності до інструкцій описаних на сторінці
-    <link linkend="install.windows.manual">Ручне Встановлення</link>
+    <link linkend="install.windows.legacy.manual">Ручне Встановлення</link>
     <note>
      <para>
       При використанні IIS, рекомендується вибирати збірку PHP "Non-thread-safe".
@@ -115,7 +115,7 @@ cgi.force_redirect = 0
    В IIS підключити PHP можна або за допомогою інтерфейса для управління IIS
    (Менеджера Управління IIS), або використовуючи інструмент командного рядка.
   </para>
-  <sect3 xml:id="install.windows.iis7.fastcgi.conf.ui">
+  <sect4 xml:id="install.windows.legacy.iis7.fastcgi.conf.ui">
    <title>Використання Менеджера Управління IIS для підключення PHP</title>
     <para>
      Потрібно пройти наступні кроки:
@@ -188,8 +188,8 @@ cgi.force_redirect = 0
       </imageobject>
      </mediaobject>
     </para>
-  </sect3>
-  <sect3 xml:id="install.windows.iis7.fastcgi.conf.cmd">
+  </sect4>
+  <sect4 xml:id="install.windows.legacy.iis7.fastcgi.conf.cmd">
    <title>Використання командного рядка для підключення PHP</title>
    <para>
     Використовуйте команду показану нижче для створення пулу процесів IIS FastCGI,
@@ -233,9 +233,9 @@ scriptProcessor='c:\PHP\php-cgi.exe',resourceType='Either']
      </para>
     </note>
    </para>
-  </sect3>
- </sect2>
- <sect2 xml:id="install.windows.iis7.impersonation">
+  </sect4>
+ </sect3>
+ <sect3 xml:id="install.windows.legacy.iis7.impersonation">
   <title>Уособлення та доступ до файлової системи</title>
   <para>
    Використовуючи IIS, рекомендується в PHP підключити уособлення FastCGI.
@@ -302,8 +302,8 @@ icacls C:\inetpub\wwwroot\upload /grant IUSR:(OI)(CI)(M)
     </programlisting>
    </example>
   </para>
- </sect2>
- <sect2 xml:id="install.windows.iis7.defaultdoc">
+ </sect3>
+ <sect3 xml:id="install.windows.legacy.iis7.defaultdoc">
   <title>Встановлення <filename>index.php</filename> як початкового документа для IIS</title>
   <para>
    Початковий документ використовується для HTTP-запитів, в яких не зазначено
@@ -322,8 +322,8 @@ icacls C:\inetpub\wwwroot\upload /grant IUSR:(OI)(CI)(M)
     </programlisting>
    </example>   
   </para>
- </sect2>
- <sect2 xml:id="install.windows.iis7.recycling">
+ </sect3>
+ <sect3 xml:id="install.windows.legacy.iis7.recycling">
   <title>Конфігурування Повторного Використання FastCGI та PHP</title>
   <para>
    Сконфігуруйте налаштування IIS FastCGI для повторного використання PHP-процесів,
@@ -350,8 +350,8 @@ icacls C:\inetpub\wwwroot\upload /grant IUSR:(OI)(CI)(M)
     </programlisting>
    </example>
   </para>
- </sect2>
- <sect2 xml:id="install.windows.iis7.timeouts">
+ </sect3>
+ <sect3 xml:id="install.windows.legacy.iis7.timeouts">
   <title>Налаштування FastCGI-таймауту</title>
   <para>
    Збільшіть таймаут для FastCGI, якщо очікується тривала робота PHP-скриптів.
@@ -373,8 +373,8 @@ icacls C:\inetpub\wwwroot\upload /grant IUSR:(OI)(CI)(M)
     </programlisting>
    </example>   
   </para>
- </sect2>
- <sect2 xml:id="install.windows.iis7.phpinilocation">
+ </sect3>
+ <sect3 xml:id="install.windows.legacy.iis7.phpinilocation">
   <title>Зміна розташування файла <filename>php.ini</filename></title>
   <para>
    PHP шукає файл <filename>php.ini</filename> в
@@ -395,9 +395,8 @@ appcmd.exe set config  -section:system.webServer/fastCgi ^
     </programlisting>
    </example>   
   </para>
- </sect2>
-</sect1>
-<!-- <filename>php.ini</filename> -->
+ </sect3>
+</sect2>
 
 <!-- Keep this comment at the end of the file
 Local variables:
