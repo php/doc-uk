@@ -1,35 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 6b4b39cc49aa32f743f1c507ba5fbfb3c47a46e0 Maintainer: ktretyak Status: ready -->
+<!-- EN-Revision: 351365Maintainer: mproshchuk Status: ready -->
 <!-- $Revision$ -->
- <chapter xml:id="language.oop5" xmlns="http://docbook.org/ns/docbook">
-  <title>Класи та Об'єкти</title>
-
-  <sect1 xml:id="oop5.intro">
-   <title>Вступ</title>
-   <para>
-    Починаючи з PHP 5, об'єктна модель була переписана для покращення
-    продуктивності та більш широких можливостей. Це стало головною зміною
-    в порівнянні з PHP 4. PHP 5 вже має повну об'єкту модель.
-   </para>
-   <para>
-    В переліку можливостей PHP 5 тепер є 
-    <link linkend="language.oop5.visibility">область видимості</link>, 
-    <link linkend="language.oop5.abstract">абстрактні</link> та 
-    <link linkend="language.oop5.final">фінальні</link> (що не наслідуються) класи і методи, 
-    а також <link linkend="language.oop5.magic">магічні методи</link>, 
-    <link linkend="language.oop5.interfaces">інтерфейси</link>, 
-    <link linkend="language.oop5.cloning">клонування</link> та 
-    <link linkend="language.oop5.typehinting">контроль типів</link> (typehinting). 
-   </para>
-   <para>
-    PHP обробляє об'єкти в той же спосіб, що і посилання чи обробники ресурсів,
-    тобто кожна змінна містить посилання на об'єкт, а не його копію. Для уточнень 
-    прогляньте <link linkend="language.oop5.references">Об'єкти та Посилання</link>
-   </para>
-   &tip.userlandnaming;
-  </sect1>
-
-  &language.oop5.basic;
+<chapter xml:id="language.oop5" xmlns="http://docbook.org/ns/docbook">
+ <title>Класи та Об'єкти</title>
+ 
+ <sect1 xml:id="oop5.intro">
+  <title>Вступ</title>
+  <para>
+   PHP має повну об'єкту модель.
+   В переліку можливостей PHP є:
+   <link linkend="language.oop5.visibility">область видимості</link>, 
+   <link linkend="language.oop5.abstract">абстрактні</link> та 
+   <link linkend="language.oop5.final">фінальні</link> класи і методи, 
+   а також <link linkend="language.oop5.magic">магічні методи</link>, 
+   <link linkend="language.oop5.interfaces">інтерфейси</link> та
+   <link linkend="language.oop5.cloning">клонування</link>.
+  </para>
+  <para>
+   PHP обробляє об'єкти в той же спосіб, що і посилання чи обробники ресурсів,
+   тобто кожна змінна містить посилання на об'єкт, а не його копію. Дивіться <link linkend="language.oop5.references">Об'єкти та Посилання</link>
+  </para>
+  &tip.userlandnaming;
+ </sect1>
+ 
+ &language.oop5.basic;
   &language.oop5.properties;
   &language.oop5.constants;
   &language.oop5.autoload;
@@ -48,13 +42,13 @@
   &language.oop5.final;
   &language.oop5.cloning;
   &language.oop5.object-comparison;
-  &language.oop5.typehinting;
   &language.oop5.late-static-bindings;
   &language.oop5.references;
   &language.oop5.serialization;
+  &language.oop5.variance;
   &language.oop5.changelog;
 </chapter>
- 
+
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

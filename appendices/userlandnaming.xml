@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision$ -->
+<!-- EN-Revision: 0ad6aa08fb58311737ae61515d12651d7f14626e Maintainer: mproshchuk Status: ready -->
+<!-- Reviewed: no -->
+
+<appendix xml:id="userlandnaming" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>Посібник з назв в користувацьому коді</title>
+ <para>
+  Цей посібник про те як краще обирати назви для ідентифікаторів у 
+  користувацькому PHP-коді. Обираючи назви, які видимі в глобальному просторі 
+  імен, важливо взяти до уваги наступні вказівки, щоби запобігти колізіям назв 
+  в наступних версіях PHP.
+ </para>
+
+ <section xml:id="userlandnaming.globalnamespace">
+  <title>Глобальний простір імен</title>
+  <para>
+   Тут наведено конструкції коду, які видимі в глобальному просторі імен:
+  </para>
+
+  <itemizedlist>
+   <listitem><para>функції</para></listitem>
+   <listitem><para>класи</para></listitem>
+   <listitem><para>інтерфейси</para></listitem>
+   <listitem><para>констанити (не константи класів)</para></listitem>
+   <listitem>
+    <para>змінні, оголошені поза функціями/методами</para>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+ <section xml:id="userlandnaming.rules">
+  <title>Правила</title>
+  <para>
+   Наступний перелік показує, які права проект PHP залишає за собою під 
+   час вибору імен для нових внутрішніх ідентифікаторів.
+   Остаточний посібник - офіційні
+   <link xlink:href="&url.userlandnaming.cs;">СТАНДАРТИ КОДУВАННЯ</link>:
+  </para>
+
+  <itemizedlist>
+   <listitem>
+    <para>
+     PHP володіє простором імен верхнього рівня, але намагається знайти такі 
+     назви, які дозволять уникнути будь-яких явних колізій.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Назви функцій мають нижнє підкреслення між словами, тоді як в іменах класів
+     використовуються обидва правила <literal>camelCase</literal> та 
+     <literal>PascalCase</literal>.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     PHP додає до глобальних назв у вигляді префікса імена розширень, з яких 
+     походять ці назви (в минулому було чимало винятків з цього правила). 
+     Наприклад:
+    </para>
+
+    <itemizedlist>
+     <listitem><para><function>curl_close</function></para></listitem>
+     <listitem><para><function>mysql_query</function></para></listitem>
+     <listitem><para>PREG_SPLIT_DELIM_CAPTURE</para></listitem>
+     <listitem><para>new DOMDocument()</para></listitem>
+     <listitem>
+      <para>
+       <function>strpos</function> (приклад минулої помилки)
+      </para>
+     </listitem>
+     <listitem><para>new SplFileObject()</para></listitem>
+    </itemizedlist>
+   </listitem>
+   <listitem>
+    <para>
+     Проте ітератори та виключення просто отримують постфікси
+     "<literal>Iterator</literal>" та "<literal>Exception</literal>."
+     Приклади:
+    </para>
+    <itemizedlist>
+     <listitem><para><classname>ArrayIterator</classname></para></listitem>
+     <listitem><para><classname>LogicException</classname></para></listitem>
+    </itemizedlist>
+   </listitem>
+   <listitem>
+    <para>
+     PHP резервує всі назви що починаються з <literal>__</literal>
+     як магічні. Тож рекомендовано не створювати ідентифікатори з 
+     <literal>__</literal> на початку, хіба що ви хочете використати 
+     задокументований магічний функціонал:
+    </para>
+    <itemizedlist>
+     <listitem><para><link linkend="object.get">__get()</link></para></listitem>
+     <listitem><para><function>__autoload</function></para></listitem>
+    </itemizedlist>
+   </listitem>
+  </itemizedlist>
+ </section>
+
+ <section xml:id="userlandnaming.tips">
+  <title>Поради</title>
+  <para>
+   Якщо потрібно, щоб код працював в довготерміновій перспективі, рекомендовано 
+   не розміщувати багато змінних, функцій чи класів в глобальному просторі імен.
+   Це дасть змогу уникнути колізій зі стороннім кодом, а також з майбутніми 
+   доповненнями до мови.
+  </para>
+  <para>
+   Ще один спосіб уникнути колізій функцій чи класів — додати їх до 
+   своїх власних <link linkend="language.namespaces">просторів імен</link>.
+  </para>
+  <informalexample>
+   <programlisting role="php">
+<![CDATA[
+<?php
+
+namespace MyProject;
+
+function my_function() {
+    return true;
+}
+
+\MyProject\my_function();
+]]>
+   </programlisting>
+  </informalexample>
+  <para>
+   Цей спосіб досі вимагає відслідковувати, які простори імен вже 
+   використовуються. Проте коли ви визначите, яку назву ви дасте власному 
+   простору імен, то зможете додавати туди всі функції та класи, не думаючи про 
+   колізію.
+  </para>
+  <para>
+   Вважається найкращою практикою обмежувати кількість змінних, доданих до 
+   глобальної області видимості, щоб запобігти конфліктам імен зі стороннім 
+   кодом.
+  </para>
+  <note>
+   <title>Область видимості змінних</title>
+   <para>
+    Відповідно до <link linkend="language.variables.scope">правил області видимості</link>
+    в PHP, змінні, оголошені всередині функцій чи методів не є в глобальній 
+    області видимості тож і не можуть конфліктувати зі змінними, оголошеними в 
+    глобальній області видимості.
+   </para>
+  </note>
+ </section>
+
+</appendix>
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
