@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: fdabefd50cedaed15fa965ea3a8be31646207a1a Maintainer: ktretyak Status: ready -->
-<!-- $Revision$ -->
+<!-- $Revision: 336468$ -->
+<!-- Reviewed: yes Maintainer: mproshchuk -->
 
  <info xmlns="http://docbook.org/ns/docbook" xml:id="bookinfo">
   &frontpage.authors;
@@ -13,6 +14,16 @@
      <firstname>Костя</firstname><surname>Третяк</surname>
     </personname>
    </author>
+ <author>
+    <personname>
+     <firstname>Микола</firstname><surname>Пухальський</surname>
+    </personname>
+   </author>
+ <author>
+    <personname>
+     <firstname>Михайло</firstname><surname>Прощук</surname>
+    </personname>
+   </author>
 </authorgroup>
 
   <copyright>
@@ -23,18 +34,18 @@
   <legalnotice xml:id="copyright" xmlns:xlink="http://www.w3.org/1999/xlink">
    <title>Авторські права</title>
    <simpara>
-    Авторські права © 1997 - <?dbtimestamp format="Y"?> належать групі документування PHP.
-    Цей матеріал може бути поширений лише дотримуючись термінів та на умовах
-    встановлених в ліцензії Creative Commons Attribution 3.0
-    License або більш пізньої. Копія <link linkend="cc.license">Creative
-    Commons Attribution 3.0 license</link> поширюється разом із даним керівництвом.
-    Найсвіжіша версія, на даний момент, доступна за адресою
-   <link xlink:href="&url.cc.by;">&url.cc.by;</link>.
+    Авторські права © 1997 - <?dbtimestamp format="Y"?> належать групі 
+    документування PHP. Цей матеріал може бути поширений лише дотримуючись 
+    термінів та на умовах, встановлених в ліцензії Creative Commons Attribution 
+    3.0 License або більш пізньої. Копія 
+    <link linkend="cc.license">Creative Commons Attribution 3.0 license</link> 
+    поширюється разом із даним посібником. Найсвіжіша на даний момент версія 
+    доступна за адресою <link xlink:href="&url.cc.by;">&url.cc.by;</link>.
    </simpara>
    <simpara>
-    Якщо ви зацікавлені в поширенні або публікації цього документа
-    повністю чи частково, зі змінами чи без, та у вас є питання,
-    ви можете зв'язатись з власником авторського права за адресою
+    Якщо ви зацікавлені в поширенні або публікації цього документа повністю чи 
+    частково, зі змінами чи без, та у вас є питання, ви можете зв'язатись з 
+    власником авторського права за адресою
     <link xlink:href="mailto:&email.php.doc.license;">&email.php.doc.license;</link>.
     Пам'ятайте, що ця адреса відображатиметься в списку публічної розсилки.
    </simpara>

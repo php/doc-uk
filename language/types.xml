@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: e8bb36e5dd60d2b8bc7ec8cdda2fa395c49e8194 Maintainer: ktretyak Status: ready -->
+<!-- EN-Revision: 1ffbadf2906a5c85d2f9437b87da3e204ea41b7a  Maintainer: mproshchuk Status: ready -->
 <!-- $Revision$ -->
+<!-- Reviewed: yes Maintainer: mproshchuk -->
 <chapter xml:id="language.types" xmlns="http://docbook.org/ns/docbook">
  <title>Типи</title>
 
  <sect1 xml:id="language.types.intro">
-  <title>Введення</title>
+  <title>Вступ</title>
   
   <simpara>
-   PHP підтримує вісім простих типів.
+   PHP підтримує десять простих типів.
   </simpara>
   
   <para>
@@ -19,13 +20,13 @@
 
    <listitem>
     <simpara>
-     <type>boolean</type>
+     <type>bool</type>
     </simpara>
    </listitem>
 
    <listitem>
     <simpara>
-     <type>integer</type>
+     <type>int</type>
     </simpara>
    </listitem>
 
@@ -44,7 +45,7 @@
   </itemizedlist>
 
   <para>
-   Два змішаних типи:
+   Чотири змішаних типи:
   </para>
 
   <itemizedlist>
@@ -61,71 +62,51 @@
     </simpara>
    </listitem>
 
-  </itemizedlist>
-
-  <para>
-   Та два спеціальних типи:
-  </para>
-
-  <itemizedlist>
-
    <listitem>
     <simpara>
-     <type>resource</type>
+     <type>callable</type>
     </simpara>
    </listitem>
 
    <listitem>
     <simpara>
-     <type>NULL</type>
-    </simpara>
-   </listitem>
-
-  </itemizedlist>
-
-  <para>
-   Цей посібник також вводить кілька
-   <link linkend="language.pseudo-types">псевдо-типів</link> для зручності:
-  </para>
-
-  <itemizedlist>
- 
-   <listitem>
-    <simpara>
-     <type>mixed</type>
-    </simpara>
-   </listitem>
- 
-   <listitem>
-    <simpara>
-     <type>number</type>
-    </simpara>
-   </listitem>
- 
-   <listitem>
-    <simpara>
-     <type>callback (відомий також як callable)</type>
+     <type>iterable</type>
     </simpara>
    </listitem>
 
   </itemizedlist>
   
   <para>
-   Та псевдо-змінну <parameter>$...</parameter>
+   Та, нарешті, два спеціальних типи:
   </para>
+  
+   <itemizedlist>
 
-  <simpara>
-   Деякі посилання на тип "double" можуть ще залишатись в посібнику. Сприймайте
-   тип "double", як і тип float; дві назви існують тільки через історичні
-   причини.
+    <listitem>
+     <simpara>
+      <type>resource</type>
+     </simpara>
+    </listitem>
+
+    <listitem>
+     <simpara>
+      <type>NULL</type>
+     </simpara>
+    </listitem>
+
+  </itemizedlist>
+
+   <simpara>
+   Деякі згадки про тип "double" можуть залишитися в посібнику. Вважайте, що 
+    "double" — це те саме, що й "float"; дві назви існують лише з історичних 
+    причин.
   </simpara>
   
   <simpara>
-   Типи змінних не завжди задаються програмістом; частіше це вирішується
-   під час обробки вже самою PHP, в залежності від контексту, в якому змінна
-   використовується.
+   Якщо програміст не визначив для певної змінної її тип, то під час виконання 
+   коду це вирішує PHP, залежно від контексту, в якому змінна використана.
   </simpara>
-
+  
   <note>
    <simpara>
     Щоб перевірити тип та значення
@@ -134,8 +115,8 @@
    </simpara>
 
    <para>
-    Щоб отримати читабельне представлення типів при налагодженні
-    (debugging), використовуйте функцію <function>gettype</function>. Щоб
+    Щоб отримати читабельне представлення типів при налагодженні, використовуйте
+    функцію <function>gettype</function>. Щоб
     перевірити конкретний тип, <emphasis>НЕ</emphasis> використовуйте
     <function>gettype</function>, замість неї скористайтесь функціями
     <literal>is_<replaceable>type</replaceable></literal>. Ось деякі приклади:
@@ -171,18 +152,17 @@ if (is_string($a_bool)) {
   </note>
 
   <simpara>
-   Щоб примусово конвертувати змінну до певного типу - або
-   <link linkend="language.types.typecasting">приведіть</link> її тип, або
-   використовуйте функцію <function>settype</function> для цього.
+   Щоб примусово конвертувати змінну до певного типу - або <link linkend="language.types.typecasting">приведіть</link>
+   її тип, або використовуйте функцію <function>settype</function> для цього.
   </simpara>
 
   <simpara>
-   Зауважте, що змінна може мати різні значення в конкретних
-   ситуаціях, в залежності від її типу в цей час. Детальнішу інформацію можна,
-   прочитати на сторінці <link linkend="language.types.type-juggling">Маніпуляції
-   з типами</link>. Також може бути корисною
-   <link linkend="types.comparisons">Порівняльна таблиця типів</link>, оскільки
-   в ній показано різні приклади порівнянь, пов'язані з типами.
+   Зауважте, що змінна може мати різні значення в конкретних випадках, залежно 
+   від її типу в цей час. Детальнішу інформацію можна прочитати на сторінці 
+   <link linkend="language.types.type-juggling">Маніпуляції з типами</link>. 
+   Також може бути корисною
+   <link linkend="types.comparisons">Порівняльна таблиця типів</link>, оскільки 
+   в ній наведено різні приклади порівнянь, пов'язані з типами.
   </simpara>
  </sect1>
  
@@ -190,12 +170,14 @@ if (is_string($a_bool)) {
  &language.types.integer;
  &language.types.float;
  &language.types.string;
+ &language.types.numeric-strings;
  &language.types.array;
+ &language.types.iterable;
  &language.types.object;
  &language.types.resource;
  &language.types.null;
  &language.types.callable;
- &language.types.pseudo-types;
+ &language.types.declarations;
  &language.types.type-juggling;
  
 </chapter>
