@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 0abaad099e3ec6064ed8cf31553dcd5e3e3fdfba Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
+<!-- Reviewed: yes Maintainer: mproshchuk -->
 
 <!--
   Entities for the categorized extension list, so it does not need
@@ -8,8 +9,8 @@
 -->
 
 <!ENTITY extcat.intro '<title xmlns="http://docbook.org/ns/docbook">Список/Класифікація Розширення</title>
-<para xmlns="http://docbook.org/ns/docbook">Цей додаток класифікує по різним
-критеріям більш, ніж 150 розширень, задокументованих в Керівництві PHP.</para>'>
+<para xmlns="http://docbook.org/ns/docbook">Цей додаток класифікує за різними
+критеріями більш ніж 150 розширень, задокументованих в Посібнику з PHP.</para>'>
 
 <!ENTITY extcat.alphabetical '<title xmlns="http://docbook.org/ns/docbook">В алфавітному порядку</title>'>
 
@@ -81,12 +82,12 @@ PHP за допомогою опцій компіляції.</para>'>
 <para xmlns="http://docbook.org/ns/docbook">Ці розширення доступні в
 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link>.
 Вони можуть потребувати зовнішніх бібліотек. Існує більше PECL
-розширень, але вони покищо недокументовані в Керівництві PHP.</para>'>
+розширень, але вони покищо недокументовані в посібнику з PHP.</para>'>
 
 <!-- ======================================================================= -->
 
 <!ENTITY extcat.state '<title xmlns="http://docbook.org/ns/docbook">Стан</title><para xmlns="http://docbook.org/ns/docbook">
-Ця частина списку розширень, що непризначені для виробничого використання - вони
+У цій частині наведено розширеня, що не призначені для виробничого використання - вони
 або дуже "старі" (застарілі), або "нові" (експериментальні).</para>'>
 
 <!ENTITY extcat.state.deprecated '<title xmlns="http://docbook.org/ns/docbook">Застарілі Розширення</title>
@@ -94,8 +95,6 @@ PHP за допомогою опцій компіляції.</para>'>
 та зазвичай замінені на інші розширення.</para>'>
 
 <!ENTITY extcat.state.experimental '<title xmlns="http://docbook.org/ns/docbook">Експерементальні Розширення</title>
-<para xmlns="http://docbook.org/ns/docbook">Поведінка цих розширень - 
-включаючи назви їх функцій та будь-що інше документоване про ці розширення
- - можуть змінюватись без попереджень в описі релізів PHP.
+<para xmlns="http://docbook.org/ns/docbook">Поведінка цих розширень (включаючи назви їх функцій та будь-що інше документоване про ці розширення) може змінюватись без попереджень в наступному випуску PHP.
 Ви їх можете використовувати на власний ризик.</para>'>
 

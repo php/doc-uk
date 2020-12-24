@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: af4410a7e15898c3dbe83d6ea38246745ed9c6fb Maintainer: ktretyak Status: ready -->
+<!-- EN-Revision: a71742330defbc0edfbc6822b4f947bf437b2f70  Maintainer: mproshchuk Status: ready -->
 <!-- $Revision$ -->
+<!-- Reviewed: yes Maintainer: mproshchuk -->
 
 <reference xml:id="reserved.variables" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Предвизначені змінні</title>
@@ -13,11 +14,6 @@
    <link linkend="language.variables.external">змінних із зовнішній джерел</link>
    до вбудованих змінних оточення, від останніх повідомлень про помилки до
    останніх отриманих заголовків.
-  </para>
-  
-  <para>
-   Прогляньте також пункт ЧАПу
-   "<link linkend="faq.register-globals">Який вплив має register_globals?</link>"
   </para>
 
  </partintro>
@@ -33,7 +29,6 @@
  &language.predefined.variables.env;
  &language.predefined.variables.cookie;
  &language.predefined.variables.phperrormsg;
- &language.predefined.variables.httprawpostdata;
  &language.predefined.variables.httpresponseheader;
  &language.predefined.variables.argc;
  &language.predefined.variables.argv;
