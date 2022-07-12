@@ -3,18 +3,19 @@
 
 <translation>
  <intro>
-  Дану інформацію згенеровано файлом
+  Інформацію про стан перекладу згенеровано файлом
   /repository/phpdoc/doc-base/trunk/scripts/revcheck.php, що дає змогу
   швидко переглянути файли, які потрібно оновити, а також людей,
   які з ними працювали.
    
-  Якщо ви хочете допомогти з перекладом документації, чи повідомити про знайдену
-  помилку, напишіть лист на групу розсилки doc-uk@lists.php.net
+  Якщо ви хочете допомогти з перекладом документації чи повідомити про знайдену
+  помилку — надішліть про це листа в список розсилки doc-uk@lists.php.net
  </intro>
 
  <translators>
   <person name="Kostya Tretyak" email="ktretyak@php.net" nick="ktretyak" vcs="yes" />
   <person name="Mykola Pukhalskyi" email="sens@ukrdub.net" nick="iSensetivity" vcs="no" />
+  <person name="Mykhailo Proshchuk" email="mproshchuk@php.net" nick="mproshchuk" vcs="yes" />
  </translators>
 
 </translation>
