@@ -1,120 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 9581609f43f84defc991ffa116fd7846eb22fe79 Maintainer: mproshchuk Status: ready -->
-<!-- $Revision$ -->
-  <chapter xml:id="install.windows" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Встановлення в системах Windows</title>
-    <para>
-      Встановлення PHP в останніх версіях Microsoft Windows та рекомендовані
-      налаштування для звичайних вебсерверів.
-    </para>
-    <note>
-      <para>
-        Якщо ви шукаєте інформацію щодо старіших систем, як от Windows XP,
-        2003, 98 чи Apache 1.x, подивіться розділ
-       <link linkend="install.windows.legacy.index">Встановлення в старих системах Windows</link>.
-      </para>
-    </note>
+<!-- EN-Revision: 8e732e84a1425cf0ab3a5b0da8fe113c7a6da85e Maintainer: mproshchuk Status: ready -->
+<chapter xml:id="install.windows" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>Встановлення в системах Windows</title>
+ <para>
+  Встановлення PHP на сучасні системи Microsoft Windows та рекомендована
+  конфігурація звичайних вебсерверів.
+ </para>
 
+ <para>
+  Офіційні випуски PHP для Windows є рекомендованими для виробничого
+  використання. Тим не менш, можна зібрати PHP з сирцевого коду. Потрібне буде
+  середовище розробки Visual Studio. Докладніше тут:
+  <link xlink:href="&url.install.windows.stepbystep;">Покрокові інструкції щодо збірки</link>.
+ </para>
+ <para>
+  <itemizedlist spacing="compact">
+   <listitem>
     <para>
-      Для готових програмних продуктів рекомендується використовувати офіційні
-      випуски PHP для Windows.
-      Хоча ви можете зібрати PHP з сирців. Для цього вам потрібне
-      середовище Visual Studio. Дивіться
-      <link xlink:href="https://wiki.php.net/internals/windows/stepbystepbuild">Покрокову інструкцію зі збірки</link>.
+     <link linkend="install.windows.commandline">Використання PHP в командному рядку Windows</link>
     </para>
+   </listitem>
+   <listitem>
+    <para>
+     <link linkend="install.cloud.azure">Встановлення PHP в Azure App Services</link>
+     (або Microsoft Azure, Windows Azure, чи (Windows) Azure Web Apps).
+    </para>
+   </listitem>
+  </itemizedlist>
+ </para>
+
+ <sect1 xml:id="install.windows.requirements">
+  <title>Вимоги до встановлення</title>
+
   <para>
-    <itemizedlist spacing="compact">
-      <listitem>
-        <para>
-          <link linkend="install.windows.legacy.commandline">Використання PHP в командному рядку Windows</link>
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          <link linkend="install.cloud.azure">Установка PHP на Azure App Services</link>
-          (Microsoft Azure, Windows Azure, або (Windows) Azure Web Apps).
-        </para>
-      </listitem>
-    </itemizedlist>
+   PHP потребує Windows 2008/Vista чи новішу на 32 чи 64 біта (<acronym>іншими
+   словами</acronym> X86 чи X64. PHP не запуститься на Windows RT/WOA/ARM).
+   Починаючи з PHP 7.2.0 системи Windows 2008 та Vista більше не підтримуються.
   </para>
 
-  <sect1 xml:id="install.windows.requirements">
-    <title>Вимоги до встановлення</title>
+  <para>
+   PHP потребує середовища виконання Visual C (CRT). Багато програм вимагають
+   його, тож воно вже має бути встановлено.
+  </para>
 
-    <para>
-      Для PHP 5.5+ потрібна щонайменше Windows 2008/Vista, або 2008r2, 2012,
-      2012r2, 2016, або 7, 8, 8.1, 10. 32-бітна чи 64-бітна (вони ж X86 чи X64.
-      PHP не працює у Windows RT/WOA/ARM).
-      Починаючи з PHP 7.2.0 системи Windows 2008 та Vista більше не
-      підтримуються.
-    </para>
+  <para>
+   Microsoft Visual C++ Redistributable для Visual Studio 2019 підходить для
+   всіх версій PHP. Детальніше за посиланням
+   <link xlink:href="https://visualstudio.microsoft.com/downloads/">https://visualstudio.microsoft.com/downloads/</link>.
+  </para>
 
-    <para>
-      PHP потребує середовища виконання Visual C (CRT). Багато додатків від
-      нього залежні, тож воно вже має бути встановлено.
-    </para>
+  <para>
+   CRT x86 МАЄ бути завантажено для збірок PHP x86 та CRT x64 для збірок PHP
+   x64.
+  </para>
 
-    <para>
-      PHP 5.5 і 5.6 потребують VC CRT 11 (Visual Studio 2012). Див.:
-      <link xlink:href="https://www.microsoft.com/en-us/download/details.aspx?id=30679">https://www.microsoft.com/en-us/download/details.aspx?id=30679</link>
-    </para>
+  <para>
+   Якщо CRT вже встановлено, установник про це повідомить і нічого не змінить.
+  </para>
 
-    <para>
-      PHP 7.0 та 7.1 потребує VC CRT 14 (Visual Studio 2015).
-      PHP 7.2, 7.3 та 7.4 потребує VC CRT 15 (Visual Studio 2017).
-      Microsoft Visual C++ Redistributable для Visual Studio 2019 підходить для
-      всіх цих версій інтерпретатора, див.
-      <link xlink:href="https://visualstudio.microsoft.com/downloads/">https://visualstudio.microsoft.com/downloads/</link>.
-    </para>
+  <para>
+   Установник CRT підтримує перемикачі командного рядка /quiet та /norestart,
+   тож можна створити сценарій для його запуску.
+  </para>
+ </sect1>
 
-    <para>
-      Ви МУСИТЕ завантажити CRT-x86 для збірок PHP-x86 та CRT-x64 для PHP-x64.
-    </para>
+ <sect1 xml:id="install.windows.pecl">
+  <title>PECL</title>
+  <para>
+   Розширення PECL попередньо зібрані для Windows і доступні на
+   <link xlink:href="http://windows.php.net/downloads/pecl/releases/">http://windows.php.net/downloads/pecl/releases/</link>
+  </para>
+  <para>
+   Деякі розширення використовують можливості, властиві лише деяким системам
+   Unix, тож вони не доступні на Windows.
+   Всі інші розширення для Windows доступні.
+  </para>
+ </sect1>
 
-    <para>
-      Якщо CRT уже встановлено, інсталятор вас повідомить.
-    </para>
-
-    <para>
-      CRT-інсталятор підтримує перемикачі командного рядка /quiet та
-      /norestart для автоматизації установлення за допомогою сценаріїв.
-    </para>
-
-    <para>
-      DLL-файли VC11 CRT можна скопіювати з локальної машини на віддалену
-      (розгортання копії), а не запускати програму встановлення на
-      віддаленій машині (наприклад, веб-сервер, до якого вам обмежили доступ).
-    </para>
-    <para>
-      VC14 CRT не годиться для розгортання копії, бо має значно більше файлів
-      DLL (у більшості назва починається з "api-*"). Якщо ви зможете знайти
-      всі і скопіюєте їх, то це спрацює (для отримання списку всіх DLL-файлів
-      спробуйте такий інструмент, як Resource Hacker).
-    </para>
-
-  </sect1>
-
-  <sect1 xml:id="install.windows.pecl">
-     <title>PECL</title>
-
-    <para>
-      Розширення PECL вже скомпільвані для Windows та доступні на:
-      <link xlink:href="http://windows.php.net/downloads/pecl/releases/">http://windows.php.net/downloads/pecl/releases/</link>
-    </para>
-
-    <para>
-      Деякі розширення використовують можливості, що характерні лише системам
-      UNIX, тож не доступні для Windows. Всі решта у Windows працюють.
-    </para>
-  </sect1>
-
-  <!-- Critical: ensure all pages in install/windows and that install/windows/legacy/index are referenced here!
-  otherwise you will get IDREF attribute errors for all links -->
-  &install.windows.tools;
-  &install.windows.recommended;
-  &install.windows.manual;
-  &install.windows.troubleshooting;
-  &install.windows.legacy.index;
+ &install.windows.tools;
+ &install.windows.recommended;
+ &install.windows.manual;
+ &install.windows.building;
+ &install.windows.commandline;
+ &install.windows.apache2;
+ &install.windows.troubleshooting;
 </chapter>
 <!-- Keep this comment at the end of the file
 Local variables:
@@ -136,3 +105,4 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
+

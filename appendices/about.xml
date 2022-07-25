@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision$ -->
-<!-- EN-Revision: 86e6094e86b84a51d00ab217ac50ce8dde33d82a Maintainer: mproshchuk Status: ready -->
-<!-- Reviewed: yes Maintainer: mproshchuk-->
+<!-- EN-Revision: fc7fe7faecea431a37e1f809b2ba3056e4ef2e1b Maintainer: mproshchuk Status: ready -->
 
 <appendix xml:id="about" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Про посібник</title>
@@ -139,7 +137,7 @@
 <![CDATA[
 strlen
 
-(PHP 4, PHP 5)
+(PHP 4, PHP 5, PHP 7)
 strlen -- Отримати довжину рядка
 
 Визначення
@@ -170,10 +168,10 @@ strlen ( string $string ) : int
       </row>
       <row>
        <entry>
-        (PHP 4, PHP 5)
+        (PHP 4, PHP 5, PHP 7)
        </entry>
        <entry>
-        strlen() була у всіх версіях PHP 4 та PHP 5.
+        strlen() була в усіх версіях PHP 4, 5 та 7.
        </entry>
       </row>
       <row>
@@ -216,7 +214,7 @@ strlen ( string $string ) : int
   <para>
    <screen>    
 <![CDATA[
-      in_array ( mixed $needle, array $haystack [, bool $strict = FALSE ] ) : bool
+      in_array ( mixed $needle, array $haystack , bool $strict = false ) : bool
 ]]>
    </screen>
   </para>
@@ -236,8 +234,8 @@ strlen ( string $string ) : int
    <parameter>haystack</parameter> (масив, в якому буде здійснено пошук) — це 
    другий параметр. Третій <emphasis>необов'язковий</emphasis> параметр 
    називається <parameter>strict</parameter>.  Усі необов'язкові параметри 
-   відділяються <emphasis>[</emphasis> квадратними дужками 
-   <emphasis>]</emphasis>. Посібник зазначає, що параметр 
+   мають початкові значення; якщо початкове значення невідоме, то це показано
+   символом <literal>?</literal>. Посібник зазначає, що параметр 
    <parameter>strict</parameter> початково є логічним &false;. Детальніше про 
    роботу функцій дивіться на сторінках посібника щодо кожної з них.
   </para>
@@ -249,8 +247,8 @@ strlen ( string $string ) : int
   <para>
    <screen> 
 <![CDATA[
-       preg_match ( string $pattern , string $subject [, array &$matches
-      [, int $flags = 0 [, int $offset = 0 ]]] ) : int
+       preg_match ( string $pattern , string $subject , array &$matches = null,
+       int $flags = 0 , int $offset = 0 ) : int|false
 ]]>
    </screen>
   </para>
@@ -265,7 +263,7 @@ strlen ( string $string ) : int
   <para>
    <screen>    
 <![CDATA[
-(PHP 4 >= 4.3.0, PHP 5)
+(PHP 4 >= 4.3.0, PHP 5, PHP 7)
 ]]>
    </screen>
   </para>
@@ -339,19 +337,21 @@ strlen ( string $string ) : int
  <sect1 xml:id="about.howtohelp">
   <title>Як допомогти покращити документацію</title>
   <para>
-   Існує три шляхи того, як кожен може удосконалити цю документацію.
+   Існує декілька шляхів того, як кожен може удосконалити цю документацію.
   </para>
   <para>
-   Якщо знайдено помилку в цьому посібнику (у будь-якій мові) — будь ласка, 
-   повідомте нас, використавши систему звітів про помилки 
-   <link xlink:href="&url.php.bugs;">&url.php.bugs;</link>.
-   Класифікуйте помилку як <literal>"Проблема документації"</literal>. Усі 
-   проблеми, пов'язані з документацією, включаючи проблеми з форматами 
+   Якщо знайдено помилку в цьому посібнику у будь-якій мові — будь ласка, 
+   повідомте про неї, використавши засіб відстеження проблем відповідного
+   мовного репозиторію на
+   <link xlink:href="https://github.com/php/?q=doc">https://github.com/php</link>;
+   до прикладу, про помилки в англійському посібнику потрібно повідомляти на
+   <link xlink:href="https://github.com/php/doc-en/issues">https://github.com/php/doc-en/issues</link>.
+   Усі проблеми, пов'язані з документацією, включаючи проблеми з форматами 
    посібника, повинні подаватися як звіти про помилки.
   </para>
   <note>
    <para>
-    Будь ласка, не зловживайте системою звітів про помилки, надсилаючи запити 
+    Будь ласка, не зловживайте засобом відстеження проблем, надсилаючи запити 
     про допомогу. Замість цього використовуйте різноманітні 
     <link xlink:href="&url.php.support;">варіанти підтримки</link>.
    </para>
@@ -361,6 +361,11 @@ strlen ( string $string ) : int
    застереження та роз'яснення для інших читачів. Але, будь ласка, не 
    повідомляйте про помилки, використовуючи систему аннотацій. Детальніше про це
    у розділі <link linkend="about.notes">"Про нотатки користувачів"</link>.
+  </para>
+  <para>
+     Також можна надсилати пул-реквести в
+     <link xlink:href="&url.php.git.mirror;doc-en">Github-дзеркало сховища
+   документації</link>.
   </para>
   <para>
    Посібник з PHP перекладений багатьма мовами. Знання англійської та іншої мови
@@ -399,9 +404,9 @@ strlen ( string $string ) : int
   <para>
    Посібник з PHP генерується різними мовами та у різних форматах, дивіться 
    <link xlink:href="&url.php.docs;">&url.php.docs;</link> для додаткової 
-   інформації. Сирцевий код на <acronym>XML</acronym> можна переглянути на 
-   <link xlink:href="&url.php.svn;">&url.php.svn;</link> чи завантажити з SVN. 
-   Документація міститься в модулі <literal>phpdoc</literal>.
+   інформації. Сирцевий код на <acronym>XML</acronym> можна завантажити чи
+   переглянути на <link xlink:href="&url.php.git.mirror;doc-en">
+   &url.php.git.mirror;doc-en</link>.
   </para>
  </sect1>
  
@@ -415,20 +420,19 @@ strlen ( string $string ) : int
    версію для показу читачеві.
   </para>
   <para>
-   Люди, що задіяні в перекладі, починають з сирцевого 
-   <acronym>XML-коду</acronym>, доступного на 
-   <link xlink:href="&url.php.svn;">&url.php.svn;</link>, та в ньому роблять 
-   переклад на свої мови. Вони <emphasis>не використовують</emphasis> 
-   згенеровані версії (такі як <acronym>HTML</acronym> або звичайний текст),
-   оскільки саме система збірки опікується перетвореннями з 
-   <acronym>XML</acronym> на читабельний формат.
+   Люди, що задіяні в перекладі, починають з сирцевого <acronym>XML-коду
+   </acronym>, доступного на <link xlink:href="&url.php.git.mirror;doc-en">
+   &url.php.git.mirror;doc-en</link>, та в ньому роблять переклад на свої
+   мови. Вони <emphasis>не використовують</emphasis> згенеровані версії (такі
+   як <acronym>HTML</acronym> або звичайний текст), саме система збірки
+   опікується перетвореннями з acronym>XML</acronym> на читабельний формат.
   </para>
   <note>
    <para>
     Аби допомогти перекладати документацію, зв'яжіться, будь ласка, з командою 
     перекладачів чи авторів, підписавшись на список розсилки phpdoc: надішліть 
-    порожнього листа на 
-    <link xlink:href="mailto:&email.php.doc.subscribe;">&email.php.doc.subscribe;</link>.
+    порожнього листа на <link xlink:href="mailto:&email.php.doc.subscribe;">
+    &email.php.doc.subscribe;</link>.
     Адреса списку розсилки — <literal>&email.php.doc;</literal>. Вкажіть у 
     повідомленні зацікавленість у перекладі посібника, і хтось відгукнеться з 
     пропозицією допомогти розпочати переклад новою мовою або зв’яже вас із 
