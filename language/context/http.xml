@@ -2,7 +2,7 @@
 <!-- EN-Revision: 2726a42e43b7b2ce0579d9e2eb969638ef39da0f Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
 
-<refentry xml:id="context.http" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" role="noversion">
+<refentry xml:id="context.http" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" annotations="verify_info:false">
  <refnamediv>
   <refname>Опції контекста HTTP</refname>
   <refpurpose>Список опцій контекста HTTP</refpurpose>
