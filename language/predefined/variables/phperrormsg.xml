@@ -2,7 +2,7 @@
 <!-- EN-Revision: d47b1af3e039d27c1fd9a265600c0b61da84dafc Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
 
-<phpdoc:varentry xmlns:phpdoc="http://php.net/ns/phpdoc" xml:id="reserved.variables.phperrormsg" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry role="variable" xml:id="reserved.variables.phperrormsg" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>$php_errormsg</refname>
   <refpurpose>Попереднє повідомлення про помилку</refpurpose>
@@ -50,7 +50,7 @@ Wrong parameter count for strpos()
   </para>
  </refsect1>
  
-</phpdoc:varentry>
+</refentry>
  
 <!-- Keep this comment at the end of the file
 Local variables:

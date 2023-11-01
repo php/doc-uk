@@ -2,7 +2,7 @@
 <!-- EN-Revision: cb0630b14901459c0bf1556e7d68f1b4c0d3796e Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
 
-<phpdoc:varentry xmlns:phpdoc="http://php.net/ns/phpdoc" xml:id="reserved.variables.get" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<refentry role="variable" xml:id="reserved.variables.get" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>$_GET</refname>
   <refname>$HTTP_GET_VARS [застаріла]</refname>
@@ -97,7 +97,7 @@ echo 'Привіт ' . htmlspecialchars($_GET["name"]) . '!';
   </para>
  </refsect1>
 
-</phpdoc:varentry>
+</refentry>
  
 <!-- Keep this comment at the end of the file
 Local variables:
