@@ -1,187 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1ffbadf2906a5c85d2f9437b87da3e204ea41b7a  Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: 5fccbe5195820cd9ec0045674312ec567ef5f6ed  Maintainer: mproshchuk Status: ready -->
 <!-- $Revision$ -->
-<!-- Reviewed: yes Maintainer: mproshchuk -->
 <chapter xml:id="language.types" xmlns="http://docbook.org/ns/docbook">
  <title>Типи</title>
 
  <sect1 xml:id="language.types.intro">
   <title>Вступ</title>
   
-  <simpara>
-   PHP підтримує десять простих типів.
-  </simpara>
-  
   <para>
-   Чотири скалярних типи:
-  </para>
-
-  <itemizedlist>
-
-   <listitem>
-    <simpara>
-     <type>bool</type>
-    </simpara>
-   </listitem>
-
-   <listitem>
-    <simpara>
-     <type>int</type>
-    </simpara>
-   </listitem>
-
-   <listitem>
-    <simpara>
-     <type>float</type> (число з плаваючою точкою, ще відоме як <type>double</type>)
-    </simpara>
-   </listitem>
-
-   <listitem>
-    <simpara>
-     <type>string</type>
-    </simpara>
-   </listitem>
-
-  </itemizedlist>
-
-  <para>
-   Чотири змішаних типи:
-  </para>
-
-  <itemizedlist>
-
-   <listitem>
-    <simpara>
-     <type>array</type>
-    </simpara>
-   </listitem>
-
-   <listitem>
-    <simpara>
-     <type>object</type>
-    </simpara>
-   </listitem>
-
-   <listitem>
-    <simpara>
-     <type>callable</type>
-    </simpara>
-   </listitem>
-
-   <listitem>
-    <simpara>
-     <type>iterable</type>
-    </simpara>
-   </listitem>
-
-  </itemizedlist>
-  
-  <para>
-   Та, нарешті, два спеціальних типи:
-  </para>
-  
+   Кожен вираз в PHP, залежно від значення, має один з вбудованих типів,
+   наведених нижче:
    <itemizedlist>
+    <listitem><simpara><type>null</type></simpara></listitem>
+    <listitem><simpara><type>bool</type></simpara></listitem>
+    <listitem><simpara><type>int</type></simpara></listitem>
+    <listitem><simpara><type>float</type> (число з плаваючою точкою)</simpara></listitem>
+    <listitem><simpara><type>string</type></simpara></listitem>
+    <listitem><simpara><type>array</type></simpara></listitem>
+    <listitem><simpara><type>object</type></simpara></listitem>
+    <listitem><simpara><type>callable</type></simpara></listitem>
+    <listitem><simpara><type>resource</type></simpara></listitem>
+   </itemizedlist>
+  </para>
 
-    <listitem>
-     <simpara>
-      <type>resource</type>
-     </simpara>
-    </listitem>
-
-    <listitem>
-     <simpara>
-      <type>NULL</type>
-     </simpara>
-    </listitem>
-
-  </itemizedlist>
-
-   <simpara>
-   Деякі згадки про тип "double" можуть залишитися в посібнику. Вважайте, що 
-    "double" — це те саме, що й "float"; дві назви існують лише з історичних 
-    причин.
-  </simpara>
+  <para>
+   PHP — це динамічно типізована мова, тобто не потрібно вказувати тип змінної,
+   оскільки він визначається під час виконання коду. Тим не менш, можливо
+   статично типувати деякі аспекти мови за допомогою
+   <link linkend="language.types.declarations">оголошення типів</link>.
+  </para>
   
-  <simpara>
-   Якщо програміст не визначив для певної змінної її тип, то під час виконання 
-   коду це вирішує PHP, залежно від контексту, в якому змінна використана.
-  </simpara>
+   <para>
+   Над кожним типом можна виконати лише певні операції.
+   Однак, якщо в операції використано вираз/змінну, тип якої не підтримує цю
+   операцію, PHP намагатиметься
+   <link linkend="language.types.type-juggling">перетворити тип</link> значення
+   в той, що підтримує її.
+   Цей процес залежить від контексту, в якому значення використоваються.
+   Більше інформації у розділі
+   <link linkend="language.types.type-juggling">Перетворення типів</link>.
+  </para>
+
+  <tip>
+   <simpara>
+    Також може бути корисною
+    <link linkend="types.comparisons">Порівняльна таблиця типів</link>, оскільки 
+    в ній наведено різні приклади порівнянь, пов'язані з типами.
+   </simpara>
+  </tip>
   
   <note>
    <simpara>
+    Можливо примусово змінити тип виразу, використавши
+    <link linkend="language.types.typecasting">приведення типів</link>.
+    А для змінних є функція <function>settype</function>.
+   </simpara>
+  </note>
+
+  <para>
     Щоб перевірити тип та значення
     <link linkend="language.expressions">виразу</link>, використовуйте
     функцію <function>var_dump</function>.
-   </simpara>
+  </para>
 
-   <para>
-    Щоб отримати читабельне представлення типів при налагодженні, використовуйте
-    функцію <function>gettype</function>. Щоб
-    перевірити конкретний тип, <emphasis>НЕ</emphasis> використовуйте
-    <function>gettype</function>, замість неї скористайтесь функціями
-    <literal>is_<replaceable>type</replaceable></literal>. Ось деякі приклади:
-   </para>
+  <para>
+   Щоб отримати читабельне представлення типів при налагодженні, використовуйте
+   функцію <function>gettype</function>.
+   Для отримання типу <link linkend="language.expressions">виразу</link> є
+   функція <function>get_debug_type</function>.
+   Проте для перевірки відповідності виразу конкретному типу використовується
+   функція <literal>is_<replaceable>type</replaceable></literal>.
+   <!-- TODO When PhD support is there: <function>is_<replaceable>type</replaceable></function> -->
    
    <informalexample>
     <programlisting role="php">
 <![CDATA[
 <?php
-$a_bool = TRUE;   // логічний тип (англ. boolean)
+$a_bool = true;   // логічний тип (англ. boolean)
 $a_str  = "foo";  // рядковий тип (англ. string)
 $a_str2 = 'foo';  // теж рядковий тип
 $an_int = 12;     // цілочисельний тип (англ. integer)
 
-echo gettype($a_bool); // друкуватиме:  boolean
-echo gettype($a_str);  // друкуватиме:  string
+echo get_debug_type($a_bool), "\n";
+echo get_debug_type($a_str), "\n";
 
 // Якщо змінна $an_int має цілочисельний тип (тобто integer),
 // збільшити її значення на 4
 if (is_int($an_int)) {
     $an_int += 4;
 }
+var_dump($an_int);
 
 // Якщо $a_bool має рядковий тип, надрукувати її значення
-// (оскільки умова не буде виконана, не надрукується нічого)
 if (is_string($a_bool)) {
     echo "String: $a_bool";
 }
 ?>
 ]]>
     </programlisting>
+    &example.outputs.8;
+    <screen>
+<![CDATA[
+bool
+string
+int(16)
+]]>
+    </screen>
    </informalexample>
+  </para>
+  <note>
+   <simpara>
+    До PHP 8.0.0, де функція <function>get_debug_type</function> не доступна,
+    можна використовувати функцію <function>gettype</function> натомість. Однак
+    її назва не канонічна.
+   </simpara>
   </note>
-
-  <simpara>
-   Щоб примусово конвертувати змінну до певного типу - або <link linkend="language.types.typecasting">приведіть</link>
-   її тип, або використовуйте функцію <function>settype</function> для цього.
-  </simpara>
-
-  <simpara>
-   Зауважте, що змінна може мати різні значення в конкретних випадках, залежно 
-   від її типу в цей час. Детальнішу інформацію можна прочитати на сторінці 
-   <link linkend="language.types.type-juggling">Маніпуляції з типами</link>. 
-   Також може бути корисною
-   <link linkend="types.comparisons">Порівняльна таблиця типів</link>, оскільки 
-   в ній наведено різні приклади порівнянь, пов'язані з типами.
-  </simpara>
  </sect1>
  
+ &language.types.type-system;
+ &language.types.null;
  &language.types.boolean;
  &language.types.integer;
  &language.types.float;
  &language.types.string;
  &language.types.numeric-strings;
  &language.types.array;
- &language.types.iterable;
  &language.types.object;
+ &language.types.enumerations;
  &language.types.resource;
- &language.types.null;
  &language.types.callable;
+ &language.types.mixed;
+ &language.types.void;
+ &language.types.never;
+ &language.types.relative-class-types;
+ &language.types.value;
+ &language.types.iterable;
  &language.types.declarations;
  &language.types.type-juggling;
- 
+
 </chapter>
- 
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml
