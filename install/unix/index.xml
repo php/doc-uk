@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: dd48d47d8be2ff78295bc1a8605807325d2f11fd Maintainer: ktretyak Status: ready -->
-<!-- $Revision$ -->
+<!-- EN-Revision: 4eeb07225f615fcde68cbefb84df2fc9bf278f1f Maintainer: mproshchuk Status: ready -->
+
   <chapter xml:id="install.unix" xmlns="http://docbook.org/ns/docbook">
    <title>Встановлення на Unix системи</title>
    <para>
     Цей розділ описує основне налаштування та встановлення PHP на Unix системи.
-    Обов'язково прочитайте всі розділи призначені для ваших платформ чи веб-сервера,
-    перш ніж почати процес.
+    Обов'язково прочитайте всі розділи призначені для ваших платформ чи
+    вебсервера, перш ніж почати процес.
    </para>
    <para>
     Як зазначено в розділі <link linkend="install.general">Загальні Інструкції
@@ -135,14 +135,12 @@
    </note>
 
    <!-- web server specific nodes -->
-   &install.unix.apache1;
    &install.unix.apache2;
    &install.unix.nginx;
    &install.unix.lighttpd-14;
    &install.unix.litespeed;
    &install.unix.commandline;
    <!-- operating system specific nodes -->
-   &install.unix.hpux;
    &install.unix.openbsd;
    &install.unix.solaris;
    <!-- distribution specific nodes -->
