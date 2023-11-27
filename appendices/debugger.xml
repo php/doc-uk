@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 027f187b3ed8cdec60db6f83baf8f62b536d1101 Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: f2f5c11726c73b2859fca9864311ba853408fb0f Maintainer: mproshchuk Status: ready -->
+
  <appendix xml:id="debugger" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Зневадження в PHP</title>
 
@@ -8,13 +9,9 @@
    <simpara>
     PHP має вбудований інтерактивний зневджувач
     <link linkend="migration56.new-features.phpdbg">phpdbg</link>.
-    Зовнішні зневаджувачі також можуть використовуватися.
-    Середовище розробки <link xlink:href="&url.zend.ide;">Zend IDE</link>
-    містить зневаджувач, є ще декілька безкоштовних зневаджувачів у вигляді
-    розширень до інтерпретатора, наприклад
-    <link xlink:href="&url.dbg;">DBG</link>,
-    <link xlink:href="&url.apd;">Advanced PHP Debugger (APD)</link> чи
-    <link xlink:href="&url.xdebug;">Xdebug</link>.
+    Більшість середовищ розробки підтримують
+    <link xlink:href="&url.xdebug;">Xdebug</link>, безкоштовний засіб
+    зневадження, який дозволяє шукати вади у вашій PHP програмі крок за кроком.
    </simpara>
   </sect1>
 
