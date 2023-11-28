@@ -425,7 +425,7 @@ strlen ( string $string ) : int
    &url.php.git.mirror;doc-en</link>, та в ньому роблять переклад на свої
    мови. Вони <emphasis>не використовують</emphasis> згенеровані версії (такі
    як <acronym>HTML</acronym> або звичайний текст), саме система збірки
-   опікується перетвореннями з acronym>XML</acronym> на читабельний формат.
+   опікується перетвореннями з <acronym>XML</acronym> на читабельний формат.
   </para>
   <note>
    <para>
