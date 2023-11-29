@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: d34e362d4670c86946707f0a8d660b0bc7897304 Maintainer: ktretyak Status: ready -->
-<!-- $Revision$ -->
+<!-- EN-Revision: 4eeb07225f615fcde68cbefb84df2fc9bf278f1f Maintainer: mproshchuk Status: ready -->
 <chapter xml:id="configuration" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
- <title>Конфігурація при запуску</title>
+ <title>Конфігурація під час запуску</title>
  
  <sect1 xml:id="configuration.file">
   <title>Файл конфігурації</title>
   
   <simpara>
-   Файл конфігурації (&php.ini;) читається при запуску PHP. Для версії PHP,
+   Файл конфігурації (&php.ini;) читається під час запуску PHP. Для версії PHP,
    яка запускається як модуль, це відбувається тільки під час старту веб-сервера.
    Для випадку, коли PHP використовується як <acronym>CGI</acronym> або як
-   <acronym>CLI</acronym>, це відбувається при кожному їх запуску.
+   <acronym>CLI</acronym>, це відбувається під час кожного запуску.
   </simpara>
   <para>
    &php.ini; шукається в наступних місцерозташуваннях (за таким порядком):
@@ -20,50 +19,58 @@
      <simpara>
       Спеціальне розташування модуля SAPI (визначається директивою
       <literal>PHPIniDir</literal> в Apache 2, параметром <literal>-c</literal>
-      в командному рядку в CGI та CLI, параметром <literal>php_ini</literal>
-      в NSAPI, змінною оточення <literal>PHP_INI_PATH</literal> в THTTPD)
+      в командному рядку в CGI та CLI).
      </simpara>
     </listitem>
     <listitem>
      <simpara>
-      Змінна оточення <varname>PHPRC</varname>. Перед PHP 5.2.0,
-      вона перевірялась після пошуку в ключі реєстра, що згадується нижче.
+      Змінна оточення <varname>PHPRC</varname>.
      </simpara>
     </listitem>
     <listitem>
      <simpara>
-      Починаючи з PHP 5.2.0, розташування файла <literal>php.ini</literal> можна
-      вказувати для різних версій PHP. Ключі реєстра піддаються перевірці в
-      такому порядку:
+      Розташування файлу <literal>php.ini</literal> можна визначати для кожної
+      версії PHP окремо. Корінь ключів регістру залежить від розрядності ОС та
+      PHP. Для 32-бітного PHP на 32-бітній ОС чи 64-бітного PHP на 64-бітній ОС
+      використовується <literal>[(HKEY_LOCAL_MACHINE\SOFTWARE\PHP]</literal>,
+      натомість для 32-бітних версій PHP на 64-бітній ОС використовується
+      <literal>[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\PHP]</literal>].
+      Коли розрядність співпадає, ключі регістру обробляються в такому порядку:
       <literal>[HKEY_LOCAL_MACHINE\SOFTWARE\PHP\x.y.z]</literal>,
       <literal>[HKEY_LOCAL_MACHINE\SOFTWARE\PHP\x.y]</literal> та
-      <literal>[HKEY_LOCAL_MACHINE\SOFTWARE\PHP\x]</literal>, де
-      x, y та z означають цифри версії PHP. Якщо значення для
+      <literal>[HKEY_LOCAL_MACHINE\SOFTWARE\PHP\x]</literal>, де x, y та z
+      означають мажорні, мінорні та патч- випуски. Для 32-бітних версій PHP на
+      64-бітних ОС ключі регістру обробляються в такому порядку:
+      <literal>[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6421Node\PHP\x.y.z]</literal>,
+      <literal>[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6421Node\PHP\x.y]</literal> та
+      <literal>[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6421Node\PHP\x]</literal>, де
+      x, y та z означають мажорні, мінорні та патч- випуски. Якщо значення для
       <literal>IniFilePath</literal> знаходиться в будь-якому з цих ключів, воно
-      буде використовуватись як місцерозташування файла <literal>php.ini</literal>
-      (Тільки у Windows).
+      буде використовуватись як розташування файла
+      <literal>php.ini</literal> (тільки у Windows).
      </simpara>
     </listitem>
     <listitem>
      <simpara>
-      <literal>[HKEY_LOCAL_MACHINE\SOFTWARE\PHP]</literal>, значення
-      <literal>IniFilePath</literal> (Тільки у Windows).
+      <literal>[HKEY_LOCAL_MACHINE\SOFTWARE\PHP]</literal> або
+      <literal>[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\PHP]</literal>, значення
+      <literal>IniFilePath</literal> (тільки у Windows).
      </simpara>
     </listitem>
     <listitem>
      <simpara>
-      Поточна робоча директорія (за виключенням CLI).
+      Поточна робоча тека (за виключенням CLI).
      </simpara>
     </listitem>
     <listitem>
      <simpara>
-      Директорія веб-сервера (для модуля SAPI), або директорія PHP
-      (в противному разі - директорія Windows).
+      Тека вебсервера (для модуля SAPI), або тека PHP
+      (в іншому випадку - тека Windows).
      </simpara>
     </listitem>
     <listitem>
      <simpara>
-      Директорія Windows (<filename class="directory">C:\windows</filename>
+      Тека Windows (<filename class="directory">C:\windows</filename>
       або <filename class="directory">C:\winnt</filename>) (для Windows), або
       параметр <literal>--with-config-file-path</literal> під час компіляції.
      </simpara>
@@ -78,8 +85,8 @@
   </para>
   <note>
    <para>
-    Веб-сервер Apache змінює директорію на кореневу при старті, в результаті чого
-    PHP читає файл &php.ini; з кореневої директорії, якщо він там існує.
+    Веб-сервер Apache змінює теку на кореневу на старті, в результаті чого
+    PHP читає файл &php.ini; з кореневої теки, якщо він там існує.
    </para>
   </note>
   <para>
@@ -100,14 +107,14 @@ memory_limit = ${PHP_MEMORY_LIMIT}
    Директиви &php.ini;, що обробляються через розширення, мають опис на
    відповідних сторінках розширень. <link linkend="ini">Список директив
    ядра</link> знаходиться в додатку. Не всі PHP-директиви описані в цьому
-   посібнику: повний їх список можна знайти в коментарях файла &php.ini; вашої
+   посібнику: повний їх список можна знайти в коментарях файлу &php.ini; вашої
    версії PHP. Окрім цього, можна прочитати
-   <link xlink:href="&url.php.git.phpini;">останню версію файла &php.ini;</link>
+   <link xlink:href="&url.php.git.phpini;">останню версію файлу &php.ini;</link>
    зі сховища Git.
   </para>
   <para>
    <example>
-    <title>Частина вмісту з файла &php.ini;</title>
+    <title>Частина вмісту з файлу &php.ini;</title>
     <programlisting role="ini">
 <![CDATA[
 ; будь-який текст після символів крапки-з-комою (;) ігнорується
@@ -129,55 +136,105 @@ include_path = ".;c:\php\lib"
    </example>
   </para>
   <para>
-   Починаючи з PHP 5.1.0, є можливість посилатись на існуючі змінні .ini з
-   середини файла .ini. Наприклад: <literal>open_basedir = ${open_basedir}
+   Дозволено посилатись на існуючі змінні .ini з середини файлу .ini. Наприклад:
+   <literal>open_basedir = ${open_basedir}
    ":/new/dir"</literal>.
   </para>
+  <sect2 xml:id="configuration.file.scan">
+   <title>Пошук файлів .ini в теках</title>
+
+   <para>
+    Дозволено налаштувати PHP для пошуку файлів .ini в теці вже після обробки
+    &php.ini;. Для цього, під час компіляції, вказується опція
+    <option role="configure">--with-config-file-scan-dir</option>. Цільову теку
+    можна перепризначити у ході виконання коду, задавши потрібне значення
+    змінній середовища <varname>PHP_INI_SCAN_DIR</varname>.
+   </para>
+
+   <para>
+    Для пошуку в різних теках треба відокремити їх роздільником шляхів
+    (<literal>;</literal> на Windows, NetWare та RISC OS; <literal>:</literal>
+    на всіх інших платформах; значення, що використовує PHP, доступне як
+    константа <constant>PATH_SEPARATOR</constant>). Якщо в
+    <varname>PHP_INI_SCAN_DIR</varname> вказано порожню теку, PHP виконає пошук
+    в теці, заданій під час компіляції опцією
+    <option role="configure">--with-config-file-scan-dir</option>.
+   </para>
+
+   <para>
+    В кожній теці PHP буде вибирати всі файли з закінченням
+    <literal>.ini</literal> у алфавітному порядку. Список оброблених файлів та
+    їхній порядок повертає <function>php_ini_scanned_files</function>, або PHP,
+    запущений з опцією <option>--ini</option>.
+   </para>
+
+   <informalexample>
+    <screen>
+<![CDATA[
+Припускається, що PHP налаштовано з --with-config-file-scan-dir=/etc/php.d,
+а роздільник — :...
+
+$ php
+  PHP обробить всі файли /etc/php.d/*.ini як файли конфігурації.
+
+$ PHP_INI_SCAN_DIR=/usr/local/etc/php.d php
+  PHP обробить всі файли /usr/local/etc/php.d/*.ini як файли конфігурації.
+
+$ PHP_INI_SCAN_DIR=:/usr/local/etc/php.d php
+  PHP обробить всі файли /etc/php.d/*.ini, потім
+  /usr/local/etc/php.d/*.ini як файли конфігурації.
+
+$ PHP_INI_SCAN_DIR=/usr/local/etc/php.d: php
+  PHP обробить всі файли /usr/local/etc/php.d/*.ini, потім
+  /etc/php.d/*.ini  як файли конфігурації.
+]]>
+    </screen>
+   </informalexample>
+  </sect2>
  </sect1>
  
  <sect1 xml:id="configuration.file.per-user">
   <title>.user.ini (додаткові конфіг-файли)</title>
   
   <simpara>
-   Починаючи з версії 5.3.0, PHP має підтримку файлів INI-конфігурації на рівні
-   директорії. Ці файли обробляються <emphasis>тільки</emphasis> через CGI/FastCGI
-   SAPI. Ця функціональність замінює застаріле розширення PECL htscanner. Якщо у
-   вас встановлено Apache, використовуйте файли &htaccess;, для досягнення
-   такого ж ефекта.
+   PHP підтримує налаштування роботи файлів INI для різних тек окремо. Ці файли
+   обробляються <emphasis>виключно</emphasis> через CGI/FastCGI SAPI. Ця
+   функціональність замінює застаріле розширення PECL htscanner. Якщо PHP
+   запускається, як модуль Apache, потрібно використовувати файли &htaccess; для
+   досягнення такого ж ефекту.
   </simpara>
   
   <simpara>
-   На додаток до головного файла &php.ini;, PHP шукає INI-файли в кожній
-   директорії, стартуючи з директорії запрошеного PHP-файла, та продовжує пошук
+   На додаток до головного файлу &php.ini;, PHP шукає INI-файли в кожній
+   теці, стартуючи з теки запрошеного PHP-файлу, та продовжує пошук
    проходячи до поточної кореневої папки (назва якої міститься в змінній
    <varname>$_SERVER['DOCUMENT_ROOT']</varname>). У випадку коли PHP-файл
-   знаходиться за межами кореневої папки, сканується лише його директорія.
+   знаходиться за межами кореневої теки, сканується лише його тека.
   </simpara>
   <simpara>
    Стиль конфігурування через файли .user.ini матиме ефект тільки в режимі
-    <constant>INI_PERDIR</constant> та <constant>INI_USER</constant>.
+   <constant>INI_PERDIR</constant> та <constant>INI_USER</constant>.
   </simpara>
   
   <simpara>
-   Дві нові INI-директиви -
-   <literal>user_ini.filename</literal> та
-   <literal>user_ini.cache_ttl</literal>,
-   <!--
-       <link linkend="ini.user-ini.filename">user_ini.filename</link> and
-       <link linkend="ini.user-ini.cache-ttl">user_ini.cache_ttl</link>
-   -->
+   Дві нові INI-директиви —
+   <link linkend="ini.user-ini.filename">user_ini.filename</link> and
+   <link linkend="ini.user-ini.cache-ttl">user_ini.cache_ttl</link>
    контролюють використання користувальницьких INI-файлів.
   </simpara>
   
   <simpara>
-   Директива <literal>user_ini.filename</literal> встановлює назву файла, яку PHP шукає в
-   кожній директорії; якщо встановлено пустий рядок, то PHP не сканує нічого.
-   Початково назва цього файла - <literal>.user.ini</literal>.
+   Директива <link linkend="ini.user-ini.filename">user_ini.filename</link>
+   встановлює назву файлу, яку PHP шукає в кожній теці; якщо встановлено пустий
+   рядок, то PHP не сканує нічого. Початково назва цього файлу —
+   <literal>.user.ini</literal>.
   </simpara>
   
   <simpara>
-   Через директиву <literal>user_ini.cache_ttl</literal> контролюється частота
-   перечитування INI-файла. Початково встановлено 300 секунд (5 хвилин).
+   Через директиву
+   <link linkend="ini.user-ini.cache-ttl">user_ini.cache_ttl</link>
+   контролюється частота перечитування INI-файлу. Початково встановлено 300
+   секунд (5 хвилин).
   </simpara>
  </sect1>
  
@@ -219,14 +276,13 @@ include_path = ".;c:\php\lib"
         Значення може встановлюватись в скриптах користувача (напр. через
         <function>ini_set</function>) або у
         <link linkend="configuration.changes.windows">Windows-реєстрі</link>.
-        Починаючи з PHP 5.3, значення можна встановлювати в &user-ini;
+        Значення можна встановлювати в &user-ini;
        </entry>
       </row>
       <row>
        <entry><literal>INI_PERDIR</literal></entry>
        <entry>
         Значення можна встановлювати в &php.ini;, &htaccess;, &httpd.conf; чи &user-ini;
-        (починаючи з PHP 5.3)
        </entry>
       </row>
       <row>
@@ -249,18 +305,17 @@ include_path = ".;c:\php\lib"
   <sect2 xml:id="configuration.changes.apache">
    <title>Запуск PHP як модуля Apache</title>
    <simpara>
-    Коли використовується PHP як модуль Apache, ви можете також змінити параметри
-    конфігурації використовуючи директиви файлів конфігурації Apache (напр.
-    &httpd.conf; та &htaccess;). Вам також потрібні
-    "AllowOverride Options" або "AllowOverride All" привілеї, щоб зробити це.
+    Коли використовується PHP як модуль Apache, можна також змінити параметри
+    конфігурації, використовуючи директиви файлів конфігурації Apache (напр.
+    &httpd.conf; та &htaccess;). Також потрібні "AllowOverride Options" або
+    "AllowOverride All" привілеї, щоб зробити це.
    </simpara>
    
    <para>
-    Існує кілька директив Apache, які дозволяють вам змінити PHP-конфігурацію
-    через конфігураційні файли Apache. Щоб проглянути співставлення між
-    цими директивами та режимами
-    <constant>INI_ALL</constant>, <constant>INI_PERDIR</constant>,
-    або <constant>INI_SYSTEM</constant>, прогляньте додаток
+    Існує кілька директив Apache, які дозволяють змінити PHP-конфігурацію через
+    конфігураційні файли Apache. Співставлення між цими директивами та режимами
+    <constant>INI_ALL</constant>, <constant>INI_PERDIR</constant>, або
+    <constant>INI_SYSTEM</constant> наведено у
     <link linkend="ini.list">Список директив php.ini</link>.
    </para>
    
@@ -372,17 +427,18 @@ include_path = ".;c:\php\lib"
    <title>Зміна PHP-конфігурації через Windows-реєстри</title>
    <simpara>
     Коли PHP запущено на Windows, значення конфігурації можна змінювати на рівні
-    директорії за допомогою реєстрів Windows. Значення конфігурації зберігаються
+    теки за допомогою реєстрів Windows. Значення конфігурації зберігаються
     в ключі реєстра <literal>HKLM\SOFTWARE\PHP\Per Directory Values</literal>,
     в суб-ключах відповідних до шляху назви. Наприклад, значення конфігурації
-    для директорії <literal>c:\inetpub\wwwroot</literal> буде зберігатись в ключі
+    для теки <literal>c:\inetpub\wwwroot</literal> буде зберігатись в ключі
     <literal>HKLM\SOFTWARE\PHP\Per Directory Values\c\inetpub\wwwroot</literal>.
-    Налаштування для директорії будуть активними для будь-якого скрипта, що
-    запущено з цієї директорії або її субдиректорії. Значення ключа повинно мати
+    Налаштування для теки будуть активними для будь-якого скрипта, що
+    запущено з цієї теки або її підтеки. Значення ключа повинно мати
     назву директиви PHP-конфігурації та мати рядковий тип (string). Константи PHP
     в середині ключів реєстра не парсяться. Хоча, тільки значення конфігурації,
     що змінюються в <constant>INI_USER</constant>, можуть бути встановленими
-    таким чином, тоді як значеня для <constant>INI_PERDIR</constant> - не можуть.
+    таким чином, тоді як значення для <constant>INI_PERDIR</constant> - не
+    можуть, бо ці значення перечитуються для кожного запиту.
    </simpara>
   </sect2>
   
