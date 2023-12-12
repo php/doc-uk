@@ -1,144 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: b8e1b1357def73f310c9f7405035b3acc0cb1eaf Maintainer: mproshchuk Status: wip -->
+<!-- EN-Revision: b8e1b1357def73f310c9f7405035b3acc0cb1eaf Maintainer: mproshchuk Status: ready -->
  <chapter xml:id="faq.databases" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Database issues</title>
-  <titleabbrev>Database issues</titleabbrev>
+  <title>Проблеми баз даних</title>
+  <titleabbrev>Проблеми баз даних</titleabbrev>
 
   <para>
-   This section holds common questions about relation between
-   PHP and databases. Yes, PHP can access virtually any
-   database available today.
+   Цей розділ містить поширені питання про зв'язок PHP з базами даних. Так, PHP
+   може мати віртуальний доступ до усіх відомих на сьогодні баз даних.
   </para>
 
   <qandaset>
    <qandaentry xml:id="faq.databases.mssql">
     <question>
      <para>
-      I heard it's possible to access Microsoft SQL Server from PHP. How?
+      Я чув, що можливо мати доступ до Microsoft SQL Server з PHP. Як?
      </para>
     </question>
     <answer>
      <para>
-      On Unix machines you can use <link linkend="ref.pdo-odbc">PDO_ODBC</link>
-      or the <link linkend="book.uodbc">Unified ODBC API</link>.
+      На машинах Unix ви можете використовувати
+      <link linkend="ref.pdo-odbc">PDO_ODBC</link> або
+      <link linkend="book.uodbc">Уніфікований ODBC API</link>.
      </para>
      <para>
-      On Windows machines you can also use <link linkend="ref.pdo-sqlsrv">PDO_SQLSRV</link>
-      or <link linkend="book.sqlsrv">SQLSRV</link>.
+       А на машинах Windows ви можете використовувати
+      <link linkend="ref.pdo-sqlsrv">PDO_SQLSRV</link> або
+      <link linkend="book.sqlsrv">SQLSRV</link>.
      </para>
      <para>
-      Also see the answer to the next question.
+      Також прочитайте відповідь на наступне питання.
      </para>
     </answer>
    </qandaentry>
 
    <qandaentry xml:id="faq.databases.access">
     <question>
-     <para>Can I access Microsoft Access databases?</para>
+     <para>Чи можу я отримати доступ до баз даних Microsoft Access?</para>
     </question>
     <answer>
      <para>
-      If you are running PHP on a Unix box and want to talk to MS Access
-      on a Windows box you will need Unix ODBC drivers.
-      <link xlink:href="&url.openlink;">OpenLink Software</link> has Unix-based
-      ODBC drivers that can do this.
+      Якщо ви запускаєте PHP в Unix і хочете зв'язуватися з MS Access у Windows,
+      потрібні драйвери Unix ODBC.
+      <link xlink:href="&url.openlink;">OpenLink Software</link> має драйвери
+      ODBC на основі Unix, які можуть це зробити.
      </para>
      <para>
-      Another alternative is to use an SQL server that has
-      Windows ODBC drivers and use that to store the data, which you can
-      then access from Microsoft Access (using ODBC) and PHP (using the
-      built in drivers), or to use an intermediary file format that Access
-      and PHP both understand, such as flat files or dBase databases.
-      On this point Tim Hayes from OpenLink software writes:
+      Інший спосіб — це використати для зберігання даних SQL-сервер, що має ODBC
+      драйвери для Windows, який буде доступним з Microsoft Access (з
+      використанням ODBC) та PHP (використовуючи вбудовані драйвери) або
+      використовувати проміжний формат файлу, зрозумілий для Access та PHP,
+      наприклад текстові файли або бази даних dBase. З цього приводу Тім Гейс з
+      OpenLink Software пише:
       <blockquote>
        <para>
-        Using another database as an intermediary is not a good idea, when you can
-        use ODBC from PHP straight to your database - i.e. with OpenLink's drivers. If
-        you do need to use an intermediary file format, OpenLink have now released
-        Virtuoso (a virtual database engine) for NT, Linux and other Unix platforms.
-        Please visit our <link xlink:href="&url.openlink;">website</link> for a free download.
+        Використання іншої бази даних як проміжної — погана ідея, коли ви можете
+        застосовувати ODBC з PHP прямо до вашої бази даних - тобто з драйверами
+        OpenLink. Якщо у вас є потреба у проміжному файловому форматі, OpenLink
+        випустив Virtuoso (віртуальний рушій бази даних) для NT, Linux та інших
+        платформ Unix. Відвідайте, будь ласка, наш
+        <link xlink:href="&url.openlink;">вебсайт</link> для вільного
+        звантаження.
        </para>
       </blockquote>
      </para>
      <para>
-      One option that has proved successful is to use MySQL and its
-      MyODBC drivers on Windows and synchronizing the databases. Steve Lawrence
-      writes:
+      Є спосіб, що заявлений, як успішний, це MySQL з власними драйверами MyODBC
+      для Windows та синхронізація баз даних. Стів Лоуренс пише:
      </para>
      <para>
       <itemizedlist>
        <listitem>
         <simpara>
-         Install MySQL on your platform according to instructions with MySQL.
-         Latest available from <link xlink:href="&url.mysql;">&url.mysql;</link>
-         No special configuration required except when you set up a database, and configure the
-         user account, you should put % in the host field, or the host name of the
-         Windows computer you wish to access MySQL with. Make a note of your server
-         name, username, and password.
+         Установіть MySQL на вашу платформу згідно з інструкціями до MySQL.
+         Найновіша версія доступна на
+         <link xlink:href="&url.mysql;">&url.mysql;</link>. Жодних особливих
+         налаштувань при встановленні не потрібно, за винятком того, що потрібно
+         буде вписати в поле "host" символ % або назву хоста комп’ютера з ОС
+         Windows, з якого ви бажаєте отримати доступ до MySQL. Занотуйте собі
+         назву вашого сервера, назву БД, ім'я користувача і пароль.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         Download the MyODBC for Windows driver from the MySQL site.
-         Install it on your Windows machine. You can test the operation with
-         the utilities included with this program.
+         Звантажте драйвер MyODBC для Windows сайту MySQL. Установіть його на
+         вашу машину Windows. Можете перевірити операції інструментом, що
+         міститься в цій програмі.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         Create a user or system dsn in your ODBC administrator, located in the
-         control panel. Make up a dsn name, enter your hostname, user name, password,
-         port, etc for you MySQL database configured in step 1.
+         Створіть користувацький або системний dsn у "адміністратор ODBC",
+         розташованій на панелі управління. заповніть назву dsn, хост, ім'я
+         користувача, пароль, порт та інші дані про вашу базу даних MySQL, яку
+         ви налаштовували на першому етапі.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         Install Access with a full install, this makes sure you get the proper
-         add-ins... at the least you will need ODBC support and the linked table
-         manager.
+         Установіть Access повністю — це гарантує, що ви отримаєте належні
+         надбудови... щонайменше вам потрібна підтримка ODBC та менеджер
+         прив'язаних таблиць.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         Now the fun part! Create a new access database. In the table
-         window right click and select Link Tables, or under the file
-         menu option, select Get External Data and then Link Tables.
-         When the file browser box comes up, select files of type: ODBC.
-         Select System dsn and the name of your dsn created in step 3.
-         Select the table to link, press OK, and presto! You can now
-         open the table and add/delete/edit data on your MySQL server!
-         You can also build queries, import/export tables to MySQL,
-         build forms and reports, etc.
+         А зараз — весела частина! Створіть нову базу даних у Access. У вікні
+         таблиці натисніть праву клавішу мишки та оберіть "Прив'язати таблиці"
+         або в пункті меню "Файл" оберіть "Отримати завнішні дані", а потім —
+         "Прив'язати таблиці". Коли з’явиться вікно браузера файлів, оберіть
+         файли типу ODBC. Оберіть "Системна dsn" та назву dsn, створену в кроці
+         3. Виберіть таблицю, яку необхідно прив'язати, натисніть "OK" і готово!
+         Тепер ви можете відкрити таблицю і додавати, видаляти, редагувати дані
+         на вашому сервері MySQL! Ви також можете будувати запити,
+         імпортувати/експортувати таблиці до/з MySQL, будувати форми і звіти,
+         багато іншого.
         </simpara>
        </listitem>
       </itemizedlist>
      </para>
      <para>
-      Tips and Tricks:
+      Поради та підказки:
       <itemizedlist>
        <listitem>
         <simpara>
-         You can construct your tables in Access and export them
-         to MySQL, then link them back in. That makes table
-         creation quick.
+         Ви можете будувати ваші таблиці в Access та експортувати їх до MySQL,
+         потім прив'язувати їх знову. Це робить створення таблиць швидшим.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         When creating tables in Access, you must have a primary
-         key defined in order to have write access to the table in
-         access. Make sure you create a primary key in MySQL before
-         linking in access
+         Під час створення таблиць у Access, додавайте первинний ключ, щоб мати
+         право на запис у таблицю через Access. Переконайтеся, що створили
+         первинний ключ в MySQL перед прив'язуванням в Access.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         If you change a table in MySQL, you have to re-link it
-         in Access. Go to tools&gt;add-ins&gt;linked table manager,
-         cruise to your ODBC DSN, and select the table to re-link
-         from there. you can also move your dsn source around there,
-         just hit the always prompt for new location checkbox before
-         pressing OK.
+         Якщо ви змінили таблицю в MySQL, вам треба прив'язати її знову в
+         Access. Перейдіть до "засоби&gt;надбудови&gt;менеджер прив'язаних
+         таблиць", прокрутіть до ваших ODBC DSN, оберіть звідти таблицю для
+         повторного прив'язування. Ви також можете перемістити туди своє джерело
+         dsn, просто поставивши галочку "Завжди запитувати нове розташування",
+         перш ніж натиснути OK.
         </simpara>
        </listitem>
       </itemizedlist>

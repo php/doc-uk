@@ -17,7 +17,7 @@
   <para>
    Ця нова мінорна версія приносить з собою ряд
    <link linkend="migration83.new-features">нових можливостей</link> та
-   <link linkend="migration83.incompatible">деяких несумісностей</link>, котрі
+   <link linkend="migration83.incompatible">деяких несумісностей</link>, які
    потрібно перевірити перед перемиканням версій PHP виробничих середовищ.
   </para>
 

@@ -3,7 +3,7 @@
 <appendix xml:id="transports" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Перелік підтримуваних транспортних протоколів у сокетах</title>
  <para>
-  Нижче наведено список різноманітних транспортних протоколів в URL стилі, котрі
+  Нижче наведено список різноманітних транспортних протоколів в URL стилі, які
   вбудовані в PHP для використання з функціями сокетів на основі потоків, як-от
   <function>fsockopen</function> і <function>stream_socket_client</function>.
   Цих протоколів <emphasis>немає</emphasis> у

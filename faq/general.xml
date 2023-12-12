@@ -1,73 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 9a07a968506c613b3e9f6e508edaf0801061aa25 Maintainer: mproshchuk Status: wip -->
+<!-- EN-Revision: 9a07a968506c613b3e9f6e508edaf0801061aa25 Maintainer: mproshchuk Status: ready -->
 <chapter xml:id="faq.general" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>General Information</title>
-  <titleabbrev>General Information</titleabbrev>
+  <title>Загальні відомості</title>
+  <titleabbrev>Загальні відомості</titleabbrev>
 
   <para>
-   This section holds the most general questions about PHP:
-   what it is and what it does.
+   Цей розділ містить найзагальніші питання про PHP: що це таке і що робить.
   </para>
 
   <qandaset>
    <qandaentry xml:id="faq.general.what">
     <question>
-     <para>What is PHP?</para>
+     <para>Що таке PHP?</para>
     </question>
     <answer>
      <para>
-      From the <link linkend="preface">preface of the manual</link>:
+      З <link linkend="preface">Передмови посібника</link>:
      </para>
      <para>
-      PHP is an HTML-embedded scripting language. Much of
-      its syntax is borrowed from C, Java and Perl with a couple of unique
-      PHP-specific features thrown in. The goal of the language is to
-      allow web developers to write dynamically generated pages quickly.
+      PHP — це скриптова мова, чий код можна вписувати в HTML. Велика частина її
+      синтаксису запозичена у C, Java і Perl, з додаванням кількох унікальних
+      особливостей PHP. Мета мови — дати змогу веброзробникам швидко розробляти
+      динамічні сторінки.
      </para>
     </answer>
    </qandaentry>
 
    <qandaentry xml:id="faq.general.acronym">
     <question>
-     <para>What does PHP stand for?</para>
+     <para>Що означає "PHP"?</para>
     </question>
     <answer>
      <para>
-     PHP stands for <emphasis>PHP: Hypertext Preprocessor</emphasis>. 
-     This confuses many people because the first word of the acronym is 
-     the acronym. This type of acronym is called a recursive acronym. 
-     For more information, the curious can visit 
-     <link xlink:href="&url.foldoc;">Free On-Line Dictionary of Computing</link>
-     or the
-     <link xlink:href="&url.wiki.recursive-acronym;">Wikipedia entry on
-     recursive acronyms</link>.
+     PHP означає <emphasis>PHP: Hypertext Preprocessor</emphasis>
+     (гіпертекстовий препроцесор). Це спантеличує багатьох, бо перше слово
+     акроніму і є цим акронімом. Такий вид акронімів називається рекурсивним.
+     Охочі дізнатися докладніше можуть відвідати
+     <link xlink:href="&url.foldoc;">Безкоштовний онлайн-словник з
+     обчислювальної техніки</link> або 
+     <link xlink:href="&url.wiki.recursive-acronym;">запис у Вікіпедії про
+     рекурсивні акроніми</link>.
      </para>
     </answer>
    </qandaentry>
 
    <qandaentry xml:id="faq.general.relation-versions">
     <question>
-     <para>What is the relation between the versions?</para>
+     <para>Який зв'язок між версіями?</para>
     </question>
     <answer>
      <para>
-      PHP/FI 2.0 is an early and no longer supported version of PHP. PHP 3
-      is the successor to PHP/FI 2.0 and is a lot nicer. PHP 8 is the current
-      generation of PHP, which uses the Zend
-      engine 4 which, among other things, offers many additional
-      <link linkend="language.oop5">OOP</link> features.
+      PHP/FI 2.0 — стара і більше не підтримувана версія PHP. PHP 3 є
+      наступницею PHP/FI 2.0 і набагато кращою. PHP 8 є сучасним поколінням PHP,
+      яке використовує Zend engine 4, який, серед іншого, пропонує багато
+      додаткових можливостей <link linkend="language.oop5">ООП</link>.
      </para>
     </answer>
    </qandaentry>
 
    <qandaentry xml:id="faq.general.running-concurent">
     <question>
-     <para>Can I run several versions of PHP at the same time?</para>
+     <para>Чи можу я запускати кілька версій PHP водночас?</para>
     </question>
     <answer>
      <para>
-       Yes. See the <filename>INSTALL</filename> file that is included
-       in the PHP source distribution.
+       Так. Прочитайте файл <filename>INSTALL</filename>, який є у дистрибутиві
+       PHP.
      </para>
     </answer>
    </qandaentry>
@@ -75,18 +73,17 @@
    <qandaentry xml:id="faq.general.bug">
     <question>
      <para>
-      I think I found a bug! Who should I tell?
+      Здається, я знайшов ваду! Кому я маю сказати?
      </para>
     </question>
     <answer>
      <para>
-      You should go to the PHP Bug Database and make sure the bug
-      isn't a known bug.  If you don't see it in the database, use
-      the reporting form to report the bug.  It is important to use
-      the bug database instead of just sending an email to one of the
-      mailing lists because the bug will have a tracking number assigned
-      and it will then be possible for you to go back later and check
-      on the status of the bug.  The bug database can be found at 
+      Вам потрібно зайти на PHP Bug Database та упевнитись, що про дану ваду ще
+      не повідомлено. Якщо ви не бачите її в базі даних, використайте форму для
+      надсилання звітів, щоб повідомити про ваду. Важливо використовувати базу
+      даних, щоб ваді призначили номер відстеження, а не просто надіслати
+      електронного листа комусь з списків розсилки. Так ви зможете повернутися
+      пізніше і перевірити стан вади. База даних про вади знаходиться за адресою
       <link xlink:href="&url.php.bugs;">&url.php.bugs;</link>.
      </para>
     </answer>

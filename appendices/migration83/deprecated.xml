@@ -134,7 +134,7 @@
   </para>
 
   <para>
-   INI налаштування <literal>assert.*</literal> застаріли. Детально:
+   INI налаштування <literal>assert.*</literal> застаріли. Докладно:
    <link linkend="migration83.other-changes.ini">Зміни в обробці файлів INI
    </link>.
   </para>

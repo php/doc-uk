@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 8b647de71ab443cb2784a82902bfc87728d587ae Maintainer: mproshchuk Status: wip -->
+<!-- EN-Revision: 8b647de71ab443cb2784a82902bfc87728d587ae Maintainer: mproshchuk Status: ready -->
  <chapter xml:id="faq.html" xmlns="http://docbook.org/ns/docbook">
-  <title>PHP and HTML</title>
-  <titleabbrev>PHP and HTML</titleabbrev>
+  <title>PHP та HTML</title>
+  <titleabbrev>PHP та HTML</titleabbrev>
 
   <para>
-   PHP and HTML interact a lot: PHP can generate HTML, and HTML
-   can pass information to PHP.  Before reading these faqs, it's
-   important you learn how to retrieve <link linkend="language.variables.external">
-   variables from external sources</link>.  The manual page on
-   this topic includes many examples as well.
+   PHP та HTML глибоко взаємодіють: PHP може генерувати HTML, а HTML може
+   передавати інформацію до PHP. Перед читанням цих ЧаПів важливо, щоб ви
+   навчилися отримувати <link linkend="language.variables.external">змінні зі
+   зовнішніх джерел</link>. Сторінка посібника на цю тему також містить багато
+   прикладів.
   </para>
 
   <qandaset>
    <qandaentry xml:id="faq.html.encoding">
     <question>
      <para>
-      What encoding/decoding do I need when I pass a value through a form/URL?
+      Яке кодування/декодування мені потрібно робити, коли я передаю значення
+      через форму або URL?
      </para>
     </question>
     <answer>
      <para>
-      There are several stages for which encoding is important. Assuming that
-      you have a <type>string</type> <varname>$data</varname>, which contains
-      the string you want to pass on in a non-encoded way, these are the
-      relevant stages:
+      Є кілька етапів, для яких кодування є важливим. Припустимо, що ви маєте
+      <type>string</type> <varname>$data</varname>, яка містить рядок, який ви
+      хочете передати незакодованим. Це виглядатиме таким чином:
       <itemizedlist>
        <listitem>
         <para>
-         HTML interpretation. In order to specify a random string, you
-         <emphasis>must</emphasis> include it in double quotes, and 
-         <function>htmlspecialchars</function> the whole value.
+         HTML-інтерпретація. Задаючи випадковий рядок, ви
+         <emphasis>мусите</emphasis> помістити його у подвійні лапки та обробити
+         таке значення функцією <function>htmlspecialchars</function>.
         </para>
        </listitem>
        <listitem>
         <para>
-         URL: A URL consists of several parts. If you want your data to be
-         interpreted as one item, you <emphasis>must</emphasis> encode it with
+         URL: URL складається з частин. Аби певні дані сприймалися, як частина
+         URL, ви <emphasis>мусите</emphasis> закодувати їх за допомогою
          <function>urlencode</function>.
         </para>
        </listitem>
@@ -44,7 +44,7 @@
      </para>
      <para>
       <example>
-       <title>A hidden HTML form element</title>
+       <title>Прихований елемент HTML-форми</title>
         <programlisting role="php">
 <![CDATA[
 <?php
@@ -55,16 +55,15 @@
       </example>
       <note>
        <simpara>
-        It is wrong to <function>urlencode</function>
-        <varname>$data</varname>, because it's the browsers responsibility to
-        <function>urlencode</function> the data. All popular browsers do that
-        correctly. Note that this will happen regardless of the method (i.e.,
-        GET or POST). You'll only notice this in case of GET request though,
-        because POST requests are usually hidden.
+        Не можна <varname>$data</varname> обробляти функцією
+        <function>urlencode</function> тому, що за це відповідає браузер. Усі
+        популярні браузери роблять це правильно, незалежно від методу (себто GET
+        або POST). Це помітно у випадку GET-запиту, бо POST-запити зазвичай
+        приховані.
        </simpara>
       </note>
       <example>
-       <title>Data to be edited by the user</title>
+       <title>Дані, що редагуються користувачем</title>
         <programlisting role="php">
 <![CDATA[
 <?php
@@ -77,18 +76,17 @@
       </example>
       <note>
        <simpara>
-        The data is shown in the browser as intended, because the browser will
-        interpret the HTML escaped symbols.
+        Ці дані браузер зображує належним чином тому, що інтерпретує екрановані
+        HTML-символи.
        </simpara>
        <simpara>
-        Upon submitting, either via GET or POST, the data will be urlencoded
-        by the browser for transferring, and directly urldecoded by PHP. So in
-        the end, you don't need to do any urlencoding/urldecoding yourself,
-        everything is handled automagically.
+        Після підтвердження форми через GET або POST, браузер закодує дані в URL
+        для передавання до PHP, який їх розкодує. Тож вам не треба самостійно
+        щось кодувати, все обробиться автоматично.
        </simpara>
       </note>
       <example>
-       <title>In a URL</title>
+       <title>В URL</title>
         <programlisting role="php">
 <![CDATA[
 <?php
@@ -100,24 +98,25 @@
       </example>
       <note>
        <simpara>
-        In fact you are faking a HTML GET request, therefore it's necessary to
-        manually <function>urlencode</function> the data.
+        Якщо ви модулюєте GET-запит, необхідно власноруч застосувати
+        <function>urlencode</function> до даних.
        </simpara>
       </note>
       <note>
        <simpara>
-        You need to <function>htmlspecialchars</function> the whole URL, because the
-        URL occurs as value of an HTML-attribute. In this case, the browser
-        will first un-<function>htmlspecialchars</function> the value, and then pass
-        the URL on. PHP will understand the URL correctly, because you
-        <function>urlencode</function>d the data.
+        Вам потрібно обробити всю URL функцією
+        <function>htmlspecialchars</function>, щоб URL не сприйнялася, як код
+        HTML. В такому разі браузер виконає зворотню до
+        <function>htmlspecialchars</function> дію стосовно значення та сприйме
+        його, як URL. PHP зрозуміє URL коректно, бо ви обробили дані функцією
+        <function>urlencode</function>.
        </simpara>
        <simpara>
-        You'll notice that the <literal>&amp;</literal> in the URL is replaced
-        by <literal>&amp;amp;</literal>. Although most browsers will recover
-        if you forget this, this isn't always possible. So even if your URL is
-        not dynamic, you <emphasis>need</emphasis> to
-        <function>htmlspecialchars</function> the URL.
+        Зауважте, що символ <literal>&amp;</literal> в URL замінено на
+        <literal>&amp;amp;</literal>. Здебільшого браузери відновлять його, якщо
+        ви забудете, але не завжди. Тож навіть якщо ваша URL не динамічна, вам
+        <emphasis>потрібно</emphasis> застосувати
+        <function>htmlspecialchars</function> до URL.
        </simpara>
       </note>
      </para>
@@ -128,36 +127,35 @@
    <qandaentry xml:id="faq.html.form-image">
     <question>
      <para>
-      I'm trying to use an &lt;input type="image"&gt; tag, but 
-      the <varname>$foo.x</varname> and <varname>$foo.y</varname> variables
-      aren't available.  <varname>$_GET['foo.x']</varname> isn't existing
-      either.  Where are they?  
+      Я намагаюся використати тег &lt;input type="image"&gt;, але змінні
+      <varname>$foo.x</varname> і <varname>$foo.y</varname> недоступні.
+      <varname>$_GET['foo.x']</varname> не існує теж. Де вони?
      </para>
     </question>
     <answer>
      <para>
-      When submitting a form, it is possible to use an image instead of
-      the standard submit button with a tag like:
+      Замість звичної кнопки для надсилання форми можна використовувати
+      зображення за допомогою тегу:
       <programlisting role="html">
 <![CDATA[
 <input type="image" src="image.gif" name="foo" />
 ]]>
       </programlisting>
-      When the user clicks somewhere on the image, the accompanying form
-      will be transmitted to the server with two additional variables:
+      Коли користувач клацне десь на зображення, така форма буде передана
+      серверу з двома додатковими змінними:
       <varname>foo.x</varname> and <varname>foo.y</varname>.
      </para>
      <para>
-      Because <varname>foo.x</varname> and <varname>foo.y</varname> would
-      make invalid variable names in PHP, they are automagically converted to
-      <varname>foo_x</varname> and <varname>foo_y</varname>. That is, the
-      periods are replaced with underscores.  So, you'd access these variables
-      like any other described within the section on retrieving 
-      <link linkend="language.variables.external">variables from external 
-      sources</link>.  For example, <varname>$_GET['foo_x']</varname>.
+      Оскільки <varname>foo.x</varname> і <varname>foo.y</varname> містять в
+      назвах недозволені символи, вони автоматично перейменуються на
+      <varname>foo_x</varname> і <varname>foo_y</varname>. Тобто крапки
+      заміняться на підкреслення. Таким чином, ви матимете доступ до цих
+      змінних, як і до будь-яких інших, описаних в розділі про отримання
+      <link linkend="language.variables.external">змінних з зовнішніх
+      джерел</link>. До прикладу, <varname>$_GET['foo_x']</varname>.
       <note>
        <para>
-         Spaces in request variable names are converted to underscores.
+         Пробіли в назвах змінних запиту перетворюються на підтвердження.
        </para>
       </note>
      </para>
@@ -166,14 +164,13 @@
 
    <qandaentry xml:id="faq.html.arrays">
     <question>
-     <para>How do I create arrays in a HTML &lt;form&gt;?</para>
+     <para>Як я можу створити масиви в HTML-тегові &lt;form&gt;?</para>
     </question>
     <answer>
      <para>
-      To get your &lt;form&gt; result sent as an 
-      <link linkend="language.types.array">array</link> to your PHP script
-      you name the &lt;input&gt;, &lt;select&gt; or &lt;textarea&gt;
-      elements like this:
+      Для отримання в скрипті PHP надісланого результату як
+      <link linkend="language.types.array">array</link>, треба називати атрибути
+      тегів &lt;input&gt;, &lt;select&gt; і &lt;textarea&gt; за зразком:
       <programlisting role="html">
 <![CDATA[
 <input name="MyArray[]" />
@@ -182,9 +179,8 @@
 <input name="MyArray[]" />
 ]]>
       </programlisting>
-      Notice the square brackets after the variable name, that's what
-      makes it an array. You can group the elements into different arrays
-      by assigning the same name to different elements:
+      Квадратні дужки після назви змінної позначають її як масив. Ви можете
+      групувати елементи в різні масиви, назвавши однаково різні елементи:
       <programlisting role="html">
 <![CDATA[
 <input name="MyArray[]" />
@@ -193,9 +189,8 @@
 <input name="MyOtherArray[]" />
 ]]>
       </programlisting>
-      This produces two arrays, MyArray and MyOtherArray, that gets sent
-      to the PHP script.  It's also possible to assign specific keys
-      to your arrays:
+      Такий код створює два масиви "MyArray" та "MyOtherArray", які
+      надсилаються до скрипта PHP. Також можливо називати ключі масивів:
       <programlisting role="html">
 <![CDATA[
 <input name="AnotherArray[]" />
@@ -204,22 +199,22 @@
 <input name="AnotherArray[phone]" />
 ]]>
       </programlisting>
-      The AnotherArray array will now contain the keys 0, 1, email and phone.
+      Масив "AnotherArray" міститиме ключі 0, 1, "email" і "phone".
       </para>
       <para>
        <note>
         <para>
-         Specifying array keys is optional in HTML.  If you do not specify
-         the keys, the array gets filled in the order the elements appear in
-         the form.  Our first example will contain keys 0, 1, 2 and 3.
+         Визначення ключів масиву необов'язкове у HTML. Якщо ви не визначите їх,
+         масив заповниться в тому порядку, в якому елементи розташовані у формі.
+         Перший приклад міститиме ключі 0, 1, 2 та 3.
         </para>
        </note>
       </para>
       <para>
-      See also
-      <link linkend="ref.array">Array Functions</link> and
-      <link linkend="language.variables.external">Variables From External
-      Sources</link>.
+      Докладніше:
+      <link linkend="ref.array">Функції для масивів</link>,
+      <link linkend="language.variables.external">Змінні з зовнішніх
+      джерел</link>.
      </para>
     </answer>
    </qandaentry>
@@ -227,49 +222,48 @@
    <qandaentry xml:id="faq.html.select-multiple">
     <question>
      <para>
-      How do I get all the results from a select multiple HTML tag?
+      Як мені отримати всі вибрані варіанти з множинного виду HTML-тегу
+      &lt;select&gt;?
      </para>
     </question>
     <answer>
      <para>
-      The select multiple tag in an HTML construct allows users to
-      select multiple items from a list. These items are then passed
-      to the action handler for the form. The problem is that they
-      are all passed with the same widget name. I.e.
+      Множинний вид тегу &lt;select&gt; в HTML дозволяє користувачам обрати
+      кілька елементів з списку. Далі ці елементи передаються до обробника
+      дій форми. Проблема в тому, що вони всі передаються з однаковою назвою.
+      Тобто:
       <programlisting role="html">
 <![CDATA[
 <select name="var" multiple="yes">
 ]]>
       </programlisting>
-      Each selected option will arrive at the action handler as:
+      Обрані варіанти надійдуть до обробника дій таким чином:
       <programlisting>
 var=option1
 var=option2
 var=option3
       </programlisting>
-      Each option will overwrite the contents of the previous
-      <varname>$var</varname> variable. The solution is to use
-      PHP's "array from form element" feature. The following
-      should be used:
+      Кожен наступний обраний варіант буде переписувати попередній вміст змінної
+      <varname>$var</varname>. Рішенням є використати можливість PHP робити
+      "масив з елемента форми". Слід писати наступне:
       <programlisting role="html">
 <![CDATA[
 <select name="var[]" multiple="yes">
 ]]>
       </programlisting>
-      This tells PHP to treat <varname>$var</varname> as an array and
-      each assignment of a value to var[] adds an item to the array.
-      The first item becomes <varname>$var[0]</varname>, the next
-      <varname>$var[1]</varname>, etc. The <function>count</function>
-      function can be used to determine how many options were selected,
-      and the <function>sort</function> function can be used to sort
-      the option array if necessary.
+      Тоді PHP розглядатиме <varname>$var</varname> як масив, і кожне
+      задавання значення var[] додаватиме елемент до масиву. Перший елемент
+      стане <varname>$var[0]</varname>, наступний — <varname>$var[1]</varname>,
+      і так далі. Функція <function>count</function> може бути використана, щоб
+      визначити кількість обраних варіантів, а функція <function>sort</function>
+      — для впорядкування масиву варіантів, якщо необхідно.
      </para>
      <para>
-      Note that if you are using JavaScript the <literal>[]</literal>
-      on the element name might cause you problems when you try to
-      refer to the element by name. Use it's numerical form element
-      ID instead, or enclose the variable name in single quotes and
-      use that as the index to the elements array, for example:
+      Майте, на увазі, якщо використовуєте JavaScript, <literal>[]</literal> в
+      назві елемента може спровокувати проблеми при намаганні звернутися до
+      елемента за атрибутом "name". Краще використати атрибут "id" або вкласти
+      назву змінної в одинарні лапки та використовувати її як індекс масиву
+      елементів. Наприклад:
       <programlisting>
 variable = document.forms[0].elements['var[]'];
       </programlisting>
@@ -280,39 +274,36 @@ variable = document.forms[0].elements['var[]'];
    <qandaentry xml:id="faq.html.javascript-variable">
     <question>
      <para>
-      How can I pass a variable from Javascript to PHP?
+      Як мені передати змінну з Javascript до PHP?
      </para>
     </question>
     <answer>
      <para>
-      Since Javascript is (usually) a client-side technology, and
-      PHP is (usually) a server-side technology, and since HTTP is a
-      "stateless" protocol, the two languages cannot directly share
-      variables.
+      Оскільки код Javascript (зазвичай) виконує клієнт, а код PHP (зазвичай) —
+      сервер, а HTTP — це протокол "без стану", дві мови не мають функціоналу
+      прямого обміну змінними.
      </para>
      <para>
-      It is, however, possible to pass variables between the two.
-      One way of accomplishing this is to generate Javascript code
-      with PHP, and have the browser refresh itself, passing specific
-      variables back to the PHP script. The example below shows
-      precisely how to do this -- it allows PHP code to capture screen
-      height and width, something that is normally only possible on
-      the client side.
+      Проте є спосіб передавати змінні між ними двома. Перший шлях — згенерувати
+      код Javascript в PHP, оновити браузер, передати потрібні змінні назад до
+      скрипта PHP. Приклад нижче показує, як достеменно це зробити — він
+      дозволяє коду PHP отримати висоту і ширину екрану, що за нормальних умов
+      можливо тільки на стороні клієнта.
      </para>
      <para>
       <example>
-       <title>Generating Javascript with PHP</title>
+       <title>Генерування Javascript в PHP</title>
        <programlisting role="php">
 <![CDATA[
 <?php
 if (isset($_GET['width']) AND isset($_GET['height'])) {
-  // output the geometry variables
-  echo "Screen width is: ". $_GET['width'] ."<br />\n";
-  echo "Screen height is: ". $_GET['height'] ."<br />\n";
+  // Вивести геометричні змінні
+  echo "Ширина екрана: ". $_GET['width'] ."<br />\n";
+  echo "Висота екрана: ". $_GET['height'] ."<br />\n";
 } else {
-  // pass the geometry variables
-  // (preserve the original query string
-  //   -- post variables will need to handled differently)
+  // Передати геометричні змінні
+  // (підготувати рядок запиту
+  // — з методом POST змінні треба обробляти інакше)
 
   echo "<script language='javascript'>\n";
   echo "  location.href=\"${_SERVER['SCRIPT_NAME']}?${_SERVER['QUERY_STRING']}"

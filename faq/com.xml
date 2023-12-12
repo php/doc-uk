@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 2bb07c8c43f028c665a33bfc08a22639e9e35dc6 Maintainer: mproshchuk Status: wip -->
+<!-- EN-Revision: 2bb07c8c43f028c665a33bfc08a22639e9e35dc6 Maintainer: mproshchuk Status: ready -->
  <chapter xml:id="faq.com" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>PHP and COM</title>
-  <titleabbrev>PHP and COM</titleabbrev>
+  <title>PHP і COM</title>
+  <titleabbrev>PHP і COM</titleabbrev>
 
    <para>
-    PHP can be used to access COM and DCOM objects on Win32 platforms.
+    PHP можна використати для доступу до об'єктів COM і DCOM на платформах Win32.
    </para>
 
   <qandaset>
    <qandaentry xml:id="faq.com.q1">
     <question>
      <para>
-      I have built a DLL to calculate something. Is there any way to run this DLL under PHP ?
+      Я зібрав DLL для обчислень. Яким чином запустити цю DLL в PHP?
      </para>
     </question>
     <answer>
      <para>
-      If this is a simple DLL there is no way yet to run it from PHP. If the DLL contains a COM
-      server you may be able to access it if it implements the IDispatch interface.
+      Якщо це звичайна DLL, то її поки що не запустити з PHP. Якщо DLL містить
+      COM сервер, ви можете мати доступ до нього, якщо він реалізував
+      інтерфейс IDispatch.
      </para>
     </answer>
    </qandaentry>
@@ -26,17 +27,17 @@
    <qandaentry xml:id="faq.com.q2">
     <question>
      <para>
-      What does 'Unsupported variant type: xxxx (0xxxxx)' mean ?
+      Що означає "Unsupported variant type: xxxx (0xxxxx)"?
      </para>
     </question>
     <answer>
      <para>
-      There are dozens of VARIANT types and combinations of them. Most of them are already supported but
-      a few still have to be implemented.
-      Arrays are not completely supported. Only single dimensional indexed
-      only arrays can be passed between PHP and COM.
-      If you find other types that aren't supported, please report them as a bug (if not already reported)
-      and provide as much information as available.
+      Є десятки типів VARIANT та їхніх комбінацій. Більшість з них вже
+      підтримуються, але кілька ще на стадії впровадження. Масиви підтримуються
+      не повністю. Тільки одновимірні індексовані масиви можуть передаватися між
+      PHP та COM. Якщо ви знайшли інші типи, що не підтримуються, повідомте,
+      будь ласка, про них, як про ваду (якщо вже не повідомлено) та надайте
+      якнайбільше інформації.
      </para>
     </answer>
    </qandaentry>
@@ -44,15 +45,16 @@
    <qandaentry xml:id="faq.com.q3">
     <question>
      <para>
-      Is it possible manipulate visual objects in PHP ?
+      Чи можливо керувати візуальними об'єктами в PHP?
      </para>
     </question>
     <answer>
      <para>
-      Generally it is, but as PHP is mostly used as a web scripting language it runs in the web servers context, thus
-      visual objects will never appear on the servers desktop.
-      If you use PHP for application scripting e.g. in conjunction with PHP-GTK there is no limitation in accessing and
-      manipulating visual objects through COM.
+      Загалом так, але оскільки PHP є мовою веб-сценаріїв, її код
+      запускається в контексті вебсервера, тому візуальні об'єкти ніколи не
+      з'являться на робочому столі серверів. Якщо ви, наприклад, використовуєте
+      PHP для написання програм спільно з PHP-GTK, то нема обмежень доступу або
+      керування візуальними об'єктами через COM.
      </para>
     </answer>
    </qandaentry>
@@ -60,12 +62,13 @@
    <qandaentry xml:id="faq.com.q4">
     <question>
      <para>
-      Can I store a COM object in a session ?
+      Чи я можу зберігати об'єкт COM в сесії?
      </para>
     </question>
     <answer>
      <para>
-      No, you can't. COM instances are treated as resources and therefore they are only available in a single script's context.
+      Ні, не можете. Екземпляри COM розглядаються як ресурси, тому вони доступні
+      лише в контексті одного сеансу.
      </para>
     </answer>
    </qandaentry>
@@ -73,14 +76,14 @@
    <qandaentry xml:id="faq.com.q5">
     <question>
      <para>
-      How can I trap COM errors?
+      Як я можу перехопити помилки COM?
      </para>
     </question>
     <answer>
      <para>
-      The COM extension throws <literal>com_exception</literal>
-      exceptions, which you can catch and then inspect the <literal>code</literal>
-      member to determine what to do next.
+      Розширення COM викидає виключення <literal>com_exception</literal>, які
+      ви можете ловити, щоб визначити і оглянути проблемну частину
+      <literal>коду</literal>.
      </para>
     </answer>
    </qandaentry>
@@ -88,12 +91,12 @@
    <qandaentry xml:id="faq.com.q6">
     <question>
      <para>
-      Can I generate DLL files from PHP scripts like I can in Perl ?
+      Чи я можу генерувати файли DLL скриптами PHP, так як це робив на Perl?
      </para>
     </question>
     <answer>
      <para>
-      No, unfortunately there is no such tool available for PHP.
+      Ні, на жаль на PHP такий інструмент недоступний.
      </para>
     </answer>
    </qandaentry>
@@ -101,26 +104,26 @@
    <qandaentry xml:id="faq.com.q7">
     <question>
      <para>
-      What does 'Unable to obtain IDispatch interface for CLSID {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}' mean ?
+      Що означає "Unable to obtain IDispatch interface for CLSID {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}"?
      </para>
     </question>
     <answer>
      <para>
-      This error can have multiple reasons:
+      Ця помилка може бути з декількох причин:
       <itemizedlist>
        <listitem>
          <simpara>
-         the CLSID is wrong
+         неправильний CLSID
          </simpara>
         </listitem>
        <listitem>
          <simpara>
-         the requested DLL is missing
+         необхідна DLL відсутня
          </simpara>
         </listitem>
        <listitem>
          <simpara>
-         the requested component doesn't implement the IDispatch interface
+         запитуваний компонент не реалізує інтерфейс IDispatch
          </simpara>
         </listitem>
        </itemizedlist>
@@ -131,18 +134,18 @@
    <qandaentry xml:id="faq.com.q8">
     <question>
      <para>
-      How can I run COM object from remote server ?
+      Як мені запускати об'єкти COM з віддаленого сервера?
      </para>
     </question>
     <answer>
      <para>
-      Exactly like you run local objects. You only have to pass the IP of the remote machine as second parameter to
-      the COM constructor.
+      Так само, як і локальні об'єкти. Вам лише треба передати другим параметром
+      конструктору COM IP віддаленої машини.
      </para>
      <para>
-      Make sure that you have set
+      Переконайтеся, що ви визначили
       <link linkend="ini.com.allow-dcom">com.allow_dcom</link><literal>=</literal>&true;
-      in your &php.ini;.
+      у вашому &php.ini;.
      </para>
     </answer>
    </qandaentry>
@@ -150,12 +153,13 @@
    <qandaentry xml:id="faq.com.q9">
     <question>
      <para>
-      I get 'DCOM is disabled in C:\path...\scriptname.php on line 6', what can I do ?
+      Я отримую "DCOM is disabled in C:\path...\scriptname.php on line 6", що я
+      можу зробити?
      </para>
     </question>
     <answer>
      <para>
-      Edit your &php.ini; and set
+      Відредагуйте ваш &php.ini;, задавши
       <link linkend="ini.com.allow-dcom">com.allow_dcom</link><literal>=</literal>&true;.
      </para>
     </answer>
@@ -164,27 +168,28 @@
    <qandaentry xml:id="faq.com.q10">
     <question>
      <para>
-      Is it possible to load/manipulate an ActiveX object in a page with PHP ?
+      Чи можливо завантажувати/маніпулювати об'єктом ActiveX на сторінці за
+      допомогою PHP?
      </para>
     </question>
     <answer>
      <para>
-      This has nothing to do with PHP. ActiveX objects are loaded on client side if they are requested
-      by the HTML document. There is no relation to the PHP script and therefore there is no direct
-      server side interaction possible.
+      Це не має нічого спільного з PHP. Об'єкти ActiveX завантажуються у
+      клієнтський код за запитом документа HTML. Це не стосується скрипту PHP,
+      тому пряма взаємодія на стороні сервера неможлива.
      </para>
     </answer>
    </qandaentry>
    <qandaentry xml:id="faq.com.q11">
     <question>
      <para>
-      Is it possible to get a running instance of a component ?
+      Чи можливо отримати запущений екземпляр компонента?
      </para>
     </question>
     <answer>
      <para>
-      This is possible with the help of monikers. If you want to get multiple references to the same word instance
-      you can create that instance like shown:
+      Це можливо завдяки псевдонімам. Якщо треба отримати численні посилання на
+      той самий екземпляр слова, ви можете створити цей екземпляр, як показано:
      </para>
      <programlisting role="php">
 <![CDATA[
@@ -194,23 +199,22 @@ $word = new COM("C:\docs\word.doc");
 ]]>
      </programlisting>
      <para>
-      This will create a new instance if there is no running instance available or it will return a handle to the
-      running instance, if available.
+      Це створить новий екземпляр, якщо запущеного немає, або поверне дескриптор
+      запущеного екземпляра, якщо він доступний.
      </para>
     </answer>
    </qandaentry>
    <qandaentry xml:id="faq.com.q12">
     <question>
      <para>
-      Is there a way to handle an event sent from COM object ?
+      Чи є спосіб обробки події, надісланої з об’єкта COM?
      </para>
     </question>
     <answer>
      <para>
-      You can define an event sink and bind it using
-      <function>com_event_sink</function>.  You can use
-      <function>com_print_typeinfo</function> to have PHP generate a skeleton
-      for the event sink class.
+      Ви можете створити обробник подій і прив'язати його, використавши
+      <function>com_event_sink</function>. Щоб PHP генерував скелет для класу
+      приймача подій, є функція <function>com_print_typeinfo</function>.
      </para>
     </answer>
    </qandaentry>
@@ -218,14 +222,16 @@ $word = new COM("C:\docs\word.doc");
    <qandaentry xml:id="faq.com.q13">
     <question>
      <para>
-      I'm having problems when trying to invoke a method of a COM object 
-      which exposes more than one interface. What can I do ?
+      Не можу викликати метод об'єкта COM, який реалізує більше ніж один
+      інтерфейс. Що я можу зробити?
      </para>
     </question>
     <answer>
      <para>
-      The answer is as simple as unsatisfying. I don't know exactly but i think you can do nothing.
-      If someone has specific information about this, please let <link xlink:href="mailto:&email.harald;">me</link> know :)
+      Відповідь настільки проста, наскільки і незадовільна. Невідомо, чому так,
+      але не можна нічого з цим вдіяти. Якщо хтось має потрібну інформацію з
+      цього приводу, будь ласка,
+      <link xlink:href="mailto:&email.harald;">дайте знати</link> :)
      </para>
     </answer>
    </qandaentry>
@@ -233,13 +239,13 @@ $word = new COM("C:\docs\word.doc");
    <qandaentry xml:id="faq.com.q14">
     <question>
      <para>
-      So PHP works with COM, how about COM+ ?
+      Отже, PHP працює з COM, як щодо COM+ ?
      </para>
     </question>
     <answer>
      <para>
-      COM+ extends COM by a framework for managing components through MTS and MSMQ but there is nothing special that
-      PHP has to support to use such components.
+      COM+ розширює COM платформою для керування компонентами через MTS і MSMQ,
+      але в цьому немає нічого особливого, аби PHP мав підтримку цього продукту.
      </para>
     </answer>
    </qandaentry>
@@ -247,16 +253,16 @@ $word = new COM("C:\docs\word.doc");
    <qandaentry xml:id="faq.com.q15">
     <question>
      <para>
-      If PHP can manipulate COM objects, can we imagine to use 
-      MTS to manage components resources, in conjunction with PHP ?
+      Якщо PHP може керувати об'єктами COM, чи можемо ми уявити використання MTS
+      для керування ресурсами компонентів у поєднанні з PHP?
      </para>
     </question>
     <answer>
      <para>
-      PHP itself doesn't handle transactions yet. Thus if an error 
-      occurs no rollback is initiated. If you use components that
-      support transactions you will have to implement the 
-      transaction management yourself.
+      PHP сам ще не обробляє транзакції. Таким чином, якщо виникає помилка,
+      відкочування не починається. Якщо ви використовуєте компоненти, які
+      підтримують транзакції, вам треба власноруч реалізувати управління
+      транзакціями.
      </para>
     </answer>
    </qandaentry>

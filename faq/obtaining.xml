@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 17fc359d7eb75d7d6199db77518924f2d351ed8b Maintainer: mproshchuk Status: wip -->
+<!-- EN-Revision: 17fc359d7eb75d7d6199db77518924f2d351ed8b Maintainer: mproshchuk Status: ready -->
 <chapter xml:id="faq.obtaining" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
- <title>Obtaining PHP</title>
-  <titleabbrev>Obtaining PHP</titleabbrev>
+ <title>Отримання PHP</title>
+  <titleabbrev>Отримання PHP</titleabbrev>
 
    <para>
-    This section has details about PHP download locations, and
-    OS issues.
+    Цей розділ містить відомості про те, звідки можна завантажити PHP та про
+    проблеми з операційними системами.
    </para>
 
   <qandaset>
    <qandaentry xml:id="faq.obtaining.where">
     <question>
-     <para>Where can I obtain PHP?</para>
+     <para>Звідки я можу отримати PHP?</para>
     </question>
     <answer>
      <para>
-      You can download PHP from any of the members of the
-      PHP network of sites. These can be found at 
-      <link xlink:href="&url.php;">&url.php;</link>.
-      You can also use anonymous Git to get the absolute latest
-      version of the source. For more information, go to 
+      Ви можете завантажити PHP з будь-якого сайту мережі сайтів PHP. Їх можна
+      знайти за адресою <link xlink:href="&url.php;">&url.php;</link>. Також ви
+      можете використати анонімний Git, щоб отримати найновішу версію джерела.
+      Докладніше:
       <link xlink:href="&url.php.anongit;">&url.php.anongit;</link>.
      </para>
     </answer>
@@ -28,17 +27,17 @@
 
    <qandaentry xml:id="faq.obtaining.precompiled">
     <question>
-     <para>Are pre-compiled binary versions available?</para>
+     <para>Чи доступні попередньо скомпільовані двійкові версії?</para>
     </question>
     <answer>
      <para>
-      We only distribute precompiled binaries for Windows systems,
-      as we are not able to compile PHP for every major Linux/Unix
-      platform with every extension combination. Also note, that
-      many Linux distributions come with PHP built in these days.
-      Windows binaries can be downloaded from our <link
-      xlink:href="&url.php.downloads;">Downloads</link> page, for Linux
-      binaries, please visit your distribution's website.
+      Ми розповсюджуємо попередньо скомпільовані двійкові файли тільки для
+      систем Windows, бо ми не в змозі компілювати PHP для кожної великої
+      платформи Linux/Unix з усіма комбінаціями розширень. Зауважте, що зараз
+      багато дистрибутивів Linux постачаються з вбудованим PHP. Виконувані файли
+      для Windows можна завантажити на сторінці
+      <link xlink:href="&url.php.downloads;">Завантаження</link>, а виконувані
+      файли для Linux на сайті вашого дистрибутива.
      </para>
     </answer>
    </qandaentry>
@@ -46,15 +45,16 @@
    <qandaentry xml:id="faq.obtaining.optional">
     <question>
      <para>
-      Where can I get libraries needed to compile some of
-      the optional PHP extensions?
+      Де я можу отримати бібліотеки, необхідні для компіляції деяких вибіркових
+      розширень PHP?
      </para>
     </question>
     <answer>
      <para>
       <note>
        <simpara>
-        Those marked with a * are to the best of our knowledge not thread safe; they are not recommended for use in a multi-threaded environment.
+        Ті, що позначені "*" наскільки нам відомо, не є потоково безпечними;
+        не рекомендовано використовувати їх у багатопотоковому середовищі.
        </simpara>
       </note>
      </para>
@@ -110,7 +110,7 @@
        <listitem>
         <simpara>
          <link xlink:href="&url.sybase;">Sybase-CT* (Linux, libc5)</link> : 
-         Available locally.
+         Доступне локально.
         </simpara>
        </listitem>
        <listitem>
@@ -170,60 +170,61 @@
   
    <qandaentry xml:id="faq.obtaining.how">
     <question>
-     <para>How do I get these libraries to work?</para>
+     <para>Як змусити ці бібліотеки працювати?</para>
     </question>
     <answer>
      <para>
-      You will need to follow instructions provided with the library. Some of
-      these libraries are detected automatically when you run the 'configure'
-      script of PHP (such as the GD library), and others you will have to
-      enable using '<literal>--with-EXTENSION</literal>' options to 
-      '<literal>configure</literal>'. Run 
-      '<literal>configure --help</literal>' for a listing of these.     
+      Вам потрібно дотримуватися інструкцій, наданими з бібліотекою. Деякі з цих
+      бібліотек розпізнаються автоматично, коли ви запускаєте скрипт 'configure'
+      для PHP (наприклад бібліотека GD), а інші ви маєте увімкнути, використавши
+      опції '<literal>--with-EXTENSION</literal>' для
+      '<literal>configure</literal>'. Запустіть
+      '<literal>configure --help</literal>', щоб вивести їхній перелік.
      </para>
     </answer>
    </qandaentry>
    <qandaentry xml:id="faq.obtaining.compilent">
     <question>
      <para>
-      I got the latest version of the PHP source code from the Git
-      repository on my Windows machine, what do I need to compile it?
+      Я отримав найновішу версію початкового коду PHP зі сховища Git на мою
+      машину Windows, як мені його компілювати?
      </para>
     </question>
     <answer>
      <para>
-      See the PHP Wiki for the latest instructions: <link xlink:href="https://wiki.php.net/internals/windows/stepbystepbuild">Step by Step Build Instructions</link>
+      Перегляньте чинні інструкції для PHP тут:
+      <link xlink:href="https://wiki.php.net/internals/windows/stepbystepbuild">Покрокова інструкція зі збірки</link>
       
     </para>
     </answer>
    </qandaentry>
    <qandaentry xml:id="faq.obtaining.browscap">
     <question>
-     <para>Where do I find the Browser Capabilities File?</para>
+     <para>Де я можу знайти файл сумісності браузерів?</para>
     </question>
     <answer>
      <para>
-      You can find a <filename>browscap.ini</filename> file at 
+      Ви можете знайти файл <filename>browscap.ini</filename> на
       <link xlink:href="&url.browscap.download;">&url.browscap.download;</link>.
      </para>
     </answer>
    </qandaentry>
    <qandaentry xml:id="faq.obtaining.threadsafety">
     <question>
-     <para>What does thread safety mean when downloading PHP?</para>
+     <para>Що означає "безпека потоку" під час завантаження PHP?</para>
     </question>
     <answer>
      <para>
-      Thread Safety means that binary can work in a multithreaded webserver 
-      context, such as Apache 2 on Windows. Thread Safety works by creating 
-      a local storage copy in each thread, so that the data won't collide 
-      with another thread.
+      Безпека потоку — можливість виконання коду в контексті мультипотокового
+      вебсервера, як-от Apache 2 у Windows. Безпека потоку досягається шляхом
+      створення копії локального сховища в кожному потоці задля відсутності
+      конфлікту даних.
      </para>
      <para>
-      So what do I choose? If you choose to run PHP as a CGI binary, then 
-      you won't need thread safety, because the binary is invoked at each 
-      request. For multithreaded webservers, such as IIS5 and IIS6, you should 
-      use the threaded version of PHP.
+      То що ж вам обрати? Якщо запускатимете PHP, як виконуваний CGI, то безпека
+      потоку непотрібна, бо виконуваний файл викликатиметься заново під час
+      кожного запиту. Для мультипотокових вебсерверів, наприклад IIS5 і IIS6,
+      вам потрібна версія PHP з безпекою потоку.
      </para>
     </answer>
    </qandaentry>

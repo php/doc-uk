@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 68d6316b3cb2094e96c0d929e2ad259b204f24c4 Maintainer: ktretyak Status: wip -->
-<!-- $Revision$ -->
+<!-- EN-Revision: 0a3a57fae02391db80baeba98c9a071dc2760889 Maintainer: mproshchuk Status: ready -->
 <chapter xml:id="faq.using" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Using PHP</title>
-  <titleabbrev>Using PHP</titleabbrev>
+  <title>Використання PHP</title>
+  <titleabbrev>Використання PHP</titleabbrev>
 
   <para>
-   This section gathers many common errors that you may face 
-   while writing PHP scripts.
+   Цей розділ зібрав багато розповсюджених помилок, з якими можна зіткнутися під
+   час написання PHP-скриптів.
   </para>
 
   <qandaset>
 
    <qandaentry xml:id="faq.using.parameterorder">
+    <!-- TODO: Mention named arguments -->
     <question>
      <para>
-      I cannot remember the parameter order of PHP functions, are they random?
+      Я не пам’ятаю порядок параметрів функцій PHP, він хаотичний?
      </para>
     </question>
     <answer>
      <para>
-      PHP is a glue that brings together hundreds of external libraries, so sometimes
-      this gets messy. However, a simple rule of thumb is as follows: 
+      PHP — це "клей", який об’єднує сотні зовнішніх бібліотек, тому іноді
+      виглядає безладним. Однак просте правило полягає в наступному:
      </para>
      <para>
-      <link linkend="book.array">Array function</link> parameters are ordered
-      as "<emphasis>needle, haystack</emphasis>" whereas 
-      <link linkend="book.strings">String functions</link> are the opposite,
-      so "<emphasis>haystack, needle</emphasis>".
+      Параметри <link linkend="book.array">функцій для роботи з масивами</link>
+      розміщені у порядку "<emphasis>needle, haystack</emphasis>", натомість у
+      <link linkend="book.strings">функцій для роботи з рядками</link> навпаки —
+      "<emphasis>haystack, needle</emphasis>".
      </para>
     </answer>
    </qandaentry>
@@ -35,19 +35,19 @@
    <qandaentry xml:id="faq.using.anyform">
     <question>
      <para>
-      I would like to write a generic PHP script that can handle data coming 
-      from any form. How do I know which POST method variables are available?
+      Я б хотів написати загальний PHP-скрипт для обробки даних, що надходять з
+      форм. Як мені дізнатися, які змінні методу POST доступні?
      </para>
     </question>
     <answer>
      <para>
-      PHP offers many <link linkend="language.variables.predefined">
-      predefined variables</link>, like the superglobal <varname>
-      $_POST</varname>.  You may loop through <varname>$_POST</varname>
-      as it's an associate array of all POSTed values.  For example, let's
-      simply loop through it with &foreach;, 
-      check for <function>empty</function> values,
-      and print them out.
+      PHP пропонує багато <link linkend="language.variables.predefined">
+      попередньо визначених змінних</link>, наприклад суперглобальну
+      <varname>$_POST</varname>. Ви можете застосувати цикл до
+      <varname>$_POST</varname>, оскільки це асоціативний масив усіх значень
+      POSTу. Нехай просто пройдемося по ньому за допомогою &foreach;, 
+      перевіримо наявність <function>порожніх</function> значень, та виведемо їх
+      на екран.
       <programlisting role="php">
 <![CDATA[
 <?php
@@ -62,137 +62,47 @@ foreach ($_POST as $varname => $varvalue) {
 
 print "<pre>";
 if (empty($empty)) {
-    print "None of the POSTed values are empty, posted:\n";
+    print "Жодне значення POSTу не порожнє, ось вони:\n";
     var_dump($post);
 } else {
-    print "We have " . count($empty) . " empty values\n";
-    print "Posted:\n"; var_dump($post);
-    print "Empty:\n";  var_dump($empty);
+    print "Дано " . count($empty) . " порожніх значень.\n";
+    print "Заповнені:\n"; var_dump($post);
+    print "Порожні:\n";  var_dump($empty);
     exit;
 }
 ?>
 ]]>
       </programlisting>
      </para>
-     
-     &note.superglobals;
 
     </answer>
    </qandaentry>
 
    <qandaentry xml:id="faq.using.addslashes">
+    <!-- TODO Probably should mention not doing this... -->
     <question>
      <para>
-      I need to convert all single-quotes (') to a backslash 
-      followed by a single-quote (\'). How can I do this with a 
-      regular expression?  I'd also like to convert " to \" and
-      \ to \\.
+      Мені треба додати перед усіма одинарними лапками (') зворотню косу риску
+      (\). Як це зробити за допомогою регулярного виразу? Мені б також хотілося
+      замінити (") на (\") та (\) на (\\).
      </para>
     </question>
     <answer>
      <para>
-      Assuming this is for a database, use the escaping mechanism that
-      comes with the database. For example, use 
-      <function>mysql_real_escape_string</function> with MySQL and
-      <function>pg_escape_string</function> with PostgreSQL. There is
-      also the generic <function>addslashes</function> and
-      <function>stripslashes</function> functions, that are more
-      common with older PHP code.
+      Схоже, це для бази даних, але в ній вже існує механізм екранування
+      символів, тож використовуйте його. Для MySQL — це
+      <function>mysql_real_escape_string</function>, а для PostgreSQL —
+      <function>pg_escape_string</function>. Також є загальні функції
+      <function>addslashes</function> і <function>stripslashes</function>, які
+      частіше зустрічаються у старому коді PHP.
      </para>
-
-     &note.magicquotes.gpc;
-
     </answer>
    </qandaentry>
-   
-   <qandaentry xml:id="faq.using.stripslashes">
-    <question>
-     <para>
-      All my " turn into \" and my ' turn into \', how do I get rid of all 
-      these unwanted backslashes?  How and why did they get there?
-     </para>
-    </question>
-    <answer>
-     <para>
-      Most likely the backslashes magically exist because the PHP directive 
-      <link linkend="ini.magic-quotes-gpc">magic_quotes_gpc</link> is on.
-      This is an old feature of PHP, and should be disabled and not relied
-      upon. Also, the PHP function <function>stripslashes</function> may be
-      used to strip the backslashes from the <type>string</type>.
-     </para>
-     
-     &note.magicquotes.gpc;
-     
-    </answer>
-   </qandaentry>   
-
-   <qandaentry xml:id="faq.register-globals">
-    <question>
-     <para>
-      Який вплив має register_globals?
-     </para>
-    </question>
-    <answer>
-     &warn.deprecated.feature-5-3-0.removed-5-4-0;
-     <para>
-      First, an explanation about what this ini setting does. Let's say the
-      following URL is used:
-      <literal>http://example.com/foo.php?animal=cat</literal>
-      and in <filename>foo.php</filename> we might have the following
-      PHP code:
-     </para>
-     <para>
-      <programlisting role="php">
-<![CDATA[
-<?php
-// Using $_GET here is preferred
-echo $_GET['animal'];
-
-// For $animal to exist, register_globals must be on
-// DO NOT DO THIS
-echo $animal;
-
-// This applies to all variables, so $_SERVER too
-echo $_SERVER['PHP_SELF'];
-
-// Again, for $PHP_SELF to exist, register_globals must be on
-// DO NOT DO THIS
-echo $PHP_SELF;
-?>
-]]>
-     </programlisting>
-    </para>
-    <para>
-     The code above demonstrates how register_globals creates a lot of
-     variables. For years this type of coding has been frowned upon, and for
-     years it's been disabled by default. So although most web hosts disable
-     register_globals, there are still outdated articles, tutorials, and books
-     that require it to be on. Plan accordingly.
-    </para>
-    <para>
-     See also the following resources for additional information:
-     <simplelist>
-      <member>The <link linkend="ini.register-globals">register_globals</link> directive</member>
-      <member>The <link linkend="security.globals">security chapter about register globals</link></member>
-      <member><link linkend="language.variables.external">Handling external variables</link></member>
-      <member>Use <link linkend="language.variables.superglobals">superglobals</link> instead</member>
-     </simplelist>
-    </para>
-    <note>
-     <para>
-      In the example above, we used an <acronym>URL</acronym> that contained
-      a QUERY_STRING. Passing information like this is done through a GET HTTP
-      Request, so this is why the superglobal <varname>$_GET</varname> was used.
-     </para>
-    </note>
-   </answer>
-  </qandaentry>
 
    <qandaentry xml:id="faq.using.wrong-order">
     <question>
      <para>
-      When I do the following, the output is printed in 
-      the wrong order: 
+      Коли я роблю наступне, результат виводиться не за порядком: 
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -205,15 +115,15 @@ echo "myfunc($variable) = " . myfunc($variable);
 ?>
 ]]>
     </programlisting>
-     what's going on?
+     що відбувається?
      </para>
     </question>
     <answer>
      <para>
-      To be able to use the results of your function in an expression (such
-      as concatenating it with other strings in the example above), you need
-      to <function>return</function> the value, 
-      not <function>echo</function> it.
+      Щоб могти використовувати результат вашої функції у виразі (наприклад
+      приєднати його до іншого рядка, як показано вище), вам необхідно
+      <function>повернути</function> значення, а не виводити його на екран
+      конструкцією <function>echo</function>.
      </para>
     </answer>
    </qandaentry>
@@ -221,12 +131,12 @@ echo "myfunc($variable) = " . myfunc($variable);
    <qandaentry xml:id="faq.using.newlines">
     <question>
      <para>
-      Hey, what happened to my newlines?
+      Ей, чому все в одному рядку?
       <programlisting role="php">
 <![CDATA[
 <pre>
-<?php echo "This should be the first line."; ?>
-<?php echo "This should show up after the new line above."; ?>
+<?php echo "Це має бути перший рядок."; ?>
+<?php echo "Це має виводитись після символу початку рядка, що є вище."; ?>
 </pre>
 ]]>
       </programlisting>
@@ -234,18 +144,17 @@ echo "myfunc($variable) = " . myfunc($variable);
     </question>
     <answer>
      <para>
-      In PHP, the ending for a block of code is either "?&gt;" or
-      "?&gt;\n" (where \n means a newline). So in the example above,
-      the echoed sentences will be on one line, because PHP omits
-      the newlines after the block ending. This means that you need to
-      insert an extra newline after each block of PHP code to make
-      it print out one newline.
+      У PHP закінченням блоку коду є як "?&gt;", так і "?&gt;\n" (де \n означає
+      початок нового рядка). Тож у прикладі вище виведені речення будуть на
+      одній лінії, бо PHP опускає символ початку рядка. З цього випливає, що вам
+      необхідно вставити ще один символ нового рядка після кожного блоку коду
+      PHP, щоб виводився один новий рядок.
      </para>
      <para>
-      Why does PHP do this? Because when formatting normal HTML, this
-      usually makes your life easier because you don't want that newline,
-      but you'd have to create extremely long lines or otherwise make the
-      raw page source unreadable to achieve that effect.
+      Чому PHP робить це? Бо під час форматування простого HTML це, зазвичай,
+      полегшує вам життя, якщо не потрібно виводити цей символ. Бо інакше
+      доведеться створювати надто довгі рядки, щоб досягнути такого ж ефекту, а
+      це зробить код не придатним для читання.
      </para>
     </answer>
    </qandaentry>
@@ -253,20 +162,21 @@ echo "myfunc($variable) = " . myfunc($variable);
    <qandaentry xml:id="faq.using.headers-sent">
     <question>
      <para>
-      I get the message 'Warning: Cannot send session cookie - headers already
-      sent...' or 'Cannot add header information - headers already sent...'.
+      Я отримую повідомлення "Warning: Cannot send session cookie - headers
+      already sent..." або "Cannot add header information - headers already
+      sent...".
      </para>
     </question>
     <answer>
      <para>
-      The functions <function>header</function>, <function>setcookie</function>,
-      and the <link linkend="ref.session">session 
-      functions</link> need to add headers to the output stream but headers 
-      can only be sent before all other content.  There can be no output
-      before using these functions, output such as HTML.  The function 
-      <function>headers_sent</function> will check if your script has already 
-      sent headers and see also the <link linkend="ref.outcontrol">Output Control
-      functions</link>.
+      Функції <function>header</function>, <function>setcookie</function>,
+      та <link linkend="ref.session">функції для роботи з сесіями</link>
+      надсилають заголовки до потоку виводу, проте заголовки можна
+      надіслати тільки перед всім іншим вмістом. Тобто не можна нічого виводити
+      перед використанням цих функцій, наприклад код HTML. Функція
+      <function>headers_sent</function> може перевірити, чи ваш скрипт надіслав
+      заголовки. Докладніше: <link linkend="ref.outcontrol">Функції контролю
+      виводу</link>.
      </para>
     </answer>
    </qandaentry>
@@ -274,15 +184,15 @@ echo "myfunc($variable) = " . myfunc($variable);
    <qandaentry xml:id="faq.using.header">
     <question>
      <para>
-      I need to access information in the request header directly. 
-      How can I do this?
+      Мені потрібен прямий доступ до інформації в заголовку запиту. Як я можу
+      це зробити?
      </para>
     </question>
     <answer>
      <para>
-      The <function>getallheaders</function> function will do this if 
-      you are running PHP as an Apache module. So, the following bit
-      of code will show you all the request headers:
+      Це робить функція <function>getallheaders</function> за умови запуску PHP
+      як модуля Apache. Тоді наступний коротенький код покаже всі заголовки
+      запиту:
       <programlisting role="php">
 <![CDATA[
 <?php
@@ -295,9 +205,9 @@ foreach ($headers as $name => $content) {
       </programlisting>
      </para>
      <para>
-      See also 
+      Перегляньте також 
       <function>apache_lookup_uri</function>,
-      <function>apache_response_headers</function>, and
+      <function>apache_response_headers</function> та
       <function>fsockopen</function>
      </para>
     </answer>
@@ -306,22 +216,20 @@ foreach ($headers as $name => $content) {
    <qandaentry xml:id="faq.using.authentication">
     <question>
      <para>
-      When I try to use authentication with IIS I get 'No Input file specified'.
+      Коли я намагаюся використати автентифікацію за допомогою IIS, я отримую
+      'No Input file specified'.
      </para>
     </question>
     <answer>
      <para>
-      The security model of IIS is at fault here. This is a problem
-      common to all CGI programs running under IIS. A workaround is
-      to create a plain HTML file (not parsed by PHP) as the entry page
-      into an authenticated directory. Then use a META tag to redirect
-      to the PHP page, or have a link to the PHP page. PHP will
-      then recognize the authentication correctly. With the ISAPI
-      module, this is not a problem. This should not affect other
-      NT web servers. For more information, see: 
-      <link xlink:href="&url.iis;">&url.iis;</link> and the manual
-      section on <link linkend="features.http-auth">HTTP Authentication
-      </link>.
+      У цьому винна модель безпеки IIS. Це є проблемою усіх CGI-застосунків в
+      IIS. Щоб обійти її, створіть простий файл HTML (що не обробляється PHP),
+      який буде сторінкою входу в теці автентифікації. Потім використайте
+      META-тег для перенаправлення на PHP-сторінку, або посилання. PHP розпізна́є
+      спробу входу коректно. Це не повинно впливати на інші вебсервери NT.
+      Більше інформації за адресою <link xlink:href="&url.iis;">&url.iis;</link>
+      та у розділі посібника
+      <link linkend="features.http-auth">HTTP-автентифікація</link>.
      </para>
     </answer>
    </qandaentry>
@@ -329,22 +237,24 @@ foreach ($headers as $name => $content) {
    <qandaentry xml:id="faq.using.iis.sharing">
     <question>
      <para>
-      Windows: I can't access files shared on another computer using IIS
+      Windows: Я не можу отримати доступ до файлів, спільних з іншим
+      комп'ютером, використовуючи IIS.
      </para>
     </question>
     <answer>
      <para>
-      You have to change the <literal>Go to Internet Information
-      Services</literal>. Locate your PHP file and go to its properties.
-      Go to the <literal>File Security</literal> tab, <literal>Edit -&lt; 
+      Потрібно внести зміни. Перейдіть в
+      <literal>Internet Information Services</literal>. Знайдіть свій файл PHP
+      і перейдіть до його властивостей. Далі до вкладки
+      <literal>File Security</literal>, далі — <literal>Edit -&lt; 
       Anonymous access and authentication control</literal>.
      </para>
      <para>
-      You can fix the problem either by unticking <literal>Anonymous
-      Access</literal> and leaving <literal>Integrated Window
-      Authentication</literal> ticked, or, by ticking <literal>Anonymous
-      Access</literal> and editing the user as he may not have the access
-      right. 
+      Ви можете вирішити проблему, знявши галочку <literal>Anonymous
+      Access</literal> і залишивши галочку <literal>Integrated Window
+      Authentication</literal>, або поставити галочку <literal>Anonymous
+      Access</literal> і відредагувати користувача, оскільки він може не мати
+      прав доступу.
      </para>
     </answer>
    </qandaentry>
@@ -352,20 +262,20 @@ foreach ($headers as $name => $content) {
    <qandaentry xml:id="faq.using.mixml">
     <question>
      <para>
-      How am I supposed to mix XML and PHP? It complains 
-      about my &lt;?xml tags!
+      Як я можу змішувати XML та PHP? Інтерпретатор скаржиться на теги
+      "&lt;?xml"!
      </para>
     </question>
     <answer>
      <para>
-      In order to embed &lt;?xml straight into your PHP code, you'll have to turn off
-      short tags by having the PHP directive 
-      <link linkend="ini.short-open-tag">short_open_tags</link> set to 
-      <literal>0</literal>.  You cannot set this directive with 
-      <function>ini_set</function>.  Regardless of 
-      <link linkend="ini.short-open-tag">short_open_tags</link> being on or 
-      off, you can do something like: <literal>&lt;?php echo '&lt;?xml'; ?&gt;</literal>.  
-      The default for this directive is <literal>On</literal>.
+      Щоб вставляти &lt;?xml прямо у ваш код PHP, треба вимкнути короткі теги,
+      задавши директиві PHP
+      <link linkend="ini.short-open-tag">short_open_tags</link> значення
+      <literal>0</literal>. Не дозволяється використовувати для цього функцію
+      <function>ini_set</function>. Якщо вимкнути
+      <link linkend="ini.short-open-tag">short_open_tags</link>, ви зможете
+      робити щось на кшталт: <literal>&lt;?php echo '&lt;?xml'; ?&gt;</literal>.  
+      Початкове значення цієї директиви: <literal>On</literal>.
      </para>
     </answer>
    </qandaentry>
@@ -373,132 +283,67 @@ foreach ($headers as $name => $content) {
    <qandaentry xml:id="faq.using.variables">
     <question>
      <para>
-      Where can I find a complete list of variables are available to me 
-      in PHP?
+      Де я можу знайти повний список змінних, які мені доступні в PHP?
      </para>
     </question>
     <answer>
      <para>
-      Read the manual page on <link linkend="language.variables.predefined">
-      predefined variables</link> as it includes a partial list of predefined
-      variables available to your script.  A complete list of available
-      variables (and much more information) can be seen by calling the 
-      <function>phpinfo</function> function.  Be sure to read the manual 
-      section on <link linkend="language.variables.external">variables from 
-      outside of PHP</link> as it describes common scenarios for 
-      external variables, like from a HTML form, a Cookie, and the URL.
+      Прочитайте сторінку посібника про
+      <link linkend="language.variables.predefined">попередньо визначені
+      змінні</link>, вона містить неповний список попередньо визначених змінних,
+      які доступні вашому скрипту. А повний список (і багато іншої інформації)
+      виводить функція <function>phpinfo</function>. Обов'язково прочитайте
+      розділ посібника про <link linkend="language.variables.external">змінні,
+      що поза PHP</link>, оскільки він описує поширені сценарії зі зовнішніми
+      змінними, як-от з HTML-форми, Cookie та URL.
      </para>
-     
-     &note.registerglobals;
-
     </answer>
    </qandaentry>
 
    <qandaentry xml:id="faq.using.freepdf">
     <question>
      <para>
-      How can I generate PDF files without using the non-free and 
-      commercial libraries like 
-      <link linkend="ref.pdf">PDFLib</link>?  I'd like something that's 
-      free and doesn't require external PDF libraries.
+      Як генерувати файли PDF без платних комерційних бібліотек, таких як
+      PDFLib? Я б хотів щось безкоштовне і що не вимагає зовнішніх бібліотек.
      </para>
     </question>
     <answer>
      <para>
-      There are a few alternatives written in PHP such as 
-      <link xlink:href="&url.pdf.fpdf;">FPDF</link> and
+      Є альтернативи, написані на PHP:
+      <link xlink:href="&url.pdf.fpdf;">FPDF</link> та
       <link xlink:href="&url.pdf.tcpdf;">TCPDF</link>.
      </para>
-     <para>
-      There is also the <link linkend="book.haru">Haru</link> extension
-      that uses the free libHaru external library.
-     </para>
-    </answer>
-   </qandaentry>
-
-   <qandaentry xml:id="faq.using.cgi-vars">
-    <question>
-     <para>
-      I'm trying to access one of the standard CGI
-      variables (such as <varname>$DOCUMENT_ROOT</varname> or
-      <varname>$HTTP_REFERER</varname>) in a user-defined
-      function, and it can't seem to find it. What's wrong?
-     </para>
-    </question>
-    <answer>
-     <para>
-      It's important to realize that the PHP directive <link
-      linkend="ini.register-globals">register_globals</link> also affects
-      server and environment variables.  When register_globals = off (the
-      default is off since PHP 4.2.0), <varname>$DOCUMENT_ROOT</varname>
-      will not exist. Instead, use <varname>$_SERVER['DOCUMENT_ROOT']
-      </varname>.  If register_globals = on then the variables
-      <varname>$DOCUMENT_ROOT</varname> and
-      <varname>$GLOBALS['DOCUMENT_ROOT']</varname> will also exist.
-     </para>
-     <para>
-      If you're sure register_globals = on and wonder why
-      <varname>$DOCUMENT_ROOT</varname> isn't available inside functions,
-      it's because these are like any other variables and would 
-      require <literal>global $DOCUMENT_ROOT</literal> inside the
-      function.  See also the manual page on 
-      <link linkend="language.variables.scope">variable scope</link>.  It's
-      preferred to code with register_globals = off.
-     </para>
-     
-     &note.superglobals;
-
     </answer>
    </qandaentry>
 
    <qandaentry xml:id="faq.using.shorthandbytes">
     <question>
      <para>
-      A few PHP directives may also take on shorthand byte values, as opposed
-      to only <type>integer</type> byte values.  What are all the available
-      shorthand byte options?  And can I use these outside of &php.ini;?
+      Певні директиви PHP можуть мати скорочене байтове значення, крім, коли
+      воно записується виключно <type>числом</type>. Які скорочення дозволені?
      </para>
     </question>
     <answer>
      <para>
-      The available options are K (for Kilobytes), M (for Megabytes) and G (for
-      Gigabytes; available since PHP 5.1.0), these are case insensitive.
-      Anything else assumes bytes.
-      <literal>1M</literal> equals one Megabyte or <literal>1048576</literal>
-      bytes.  <literal>1K</literal> equals one Kilobyte or 
-      <literal>1024</literal> bytes.  You may not use these shorthand 
-      notations outside of &php.ini;, instead use an <type>integer</type> 
-      value of bytes.  See the <function>ini_get</function> documentation for
-      an example on how to convert these values.
+      K (для кілобайтів), M (для мегабайтів) та G (для гігабайтів) незалежно від
+      регістру символу. Все інше — це байти. <literal>1M</literal> дорівнює
+      одному мегабайту або <literal>1048576</literal> байтам.
+      <literal>1K</literal> дорівнює одному кілобайту або
+      <literal>1024</literal> байтам. Такі скорочення можна використовувати в
+      &php.ini; та в функції <function>ini_set</function>.
+      Майте на увазі, що числове значення приводиться до типу <type>int</type>;
+      наприклад <literal>0.5M</literal> трактується як <literal>0</literal>.
      </para>
      <note>
-      <title>kilobyte versus kibibyte</title>
+      <title>Кілобайти проти кібібайтів</title>
       <para>
-       The PHP notation describes one kilobyte as equalling 1024 bytes, whereas
-       the <acronym>IEC</acronym> standard considers this to be a kibibyte instead.
-       Summary: k and K = 1024 bytes.
+       Нотація PHP визначає один кілобайт рівним 1024 байтам, в той час як
+       стандарт <acronym>IEC</acronym> вважає це кібібайтом.
+       Підсумок: k та K = 1024 байтів.
       </para>
      </note>
     </answer>
    </qandaentry>
-
-   <qandaentry xml:id="faq.using.windowslocalhostissue">
-    <question>
-     <para>
-      Windows: I keep getting connection timeouts when using <literal>localhost</literal>, 
-      whereas <literal>"127.0.0.1"</literal> works?
-     </para>
-    </question>
-    <answer>
-     <para>
-      Prior to PHP 5.3.4, there was a bug in the network resolving code inside PHP that 
-      caused <literal>localhost</literal> in all stream related situations to fail if IPv6 
-      was enabled. To work around this issue you can either use <literal>"127.0.0.1"</literal> 
-      or disable IPv6 resolving in the <filename>hosts</filename> file.
-     </para>
-    </answer>
-   </qandaentry>
-
   </qandaset>
  </chapter>
 

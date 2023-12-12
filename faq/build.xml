@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: b8e1b1357def73f310c9f7405035b3acc0cb1eaf Maintainer: mproshchuk Status: wip -->
+<!-- EN-Revision: b8e1b1357def73f310c9f7405035b3acc0cb1eaf Maintainer: mproshchuk Status: ready -->
 <chapter xml:id="faq.build" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Build Problems</title>
-  <titleabbrev>Build Problems</titleabbrev>
+  <title>Проблеми збірки</title>
+  <titleabbrev>Проблеми збірки</titleabbrev>
 
   <para>
-   This section gathers most common errors that occur at 
-   build time.
+   У цьому розділі зібрано найпоширеніші помилки, які виникають під час
+   збирання PHP.
   </para>
 
   <qandaset>
    <qandaentry xml:id="faq.build.configure">
     <question>
      <para>
-      I got the latest version of PHP using the anonymous Git service, 
-      but there's no configure script!
+      Я отримав останню версію PHP, використавши анонімний сервіс Git, але в ній
+      немає скрипту конфігурації!
      </para>
     </question>
     <answer>
      <para>
-      You have to have the GNU autoconf package installed so you can
-      generate the configure script from <filename>configure.in</filename>. Just run
-      <command>./buildconf</command> in the top-level directory after getting
-      the sources from the Git server. (Also, unless you run <command>configure</command>
-      with the <literal>--enable-maintainer-mode</literal> option, the
-      configure script will not automatically get rebuilt when the
-      <filename>configure.in</filename> file is updated, so you should make sure to do that
-      manually when you notice <filename>configure.in</filename> has changed. One symptom
-      of this is finding things like @VARIABLE@ in your Makefile after
-      configure or <filename>config.status</filename> is run.)
+      У вас має бути встановленим пакунок GNU autoconf, за допомогою якого
+      зможете генерувати скрипт конфігурації з
+      <filename>configure.in</filename>. Достатньо виконати
+      <command>./buildconf</command> в початковій теці після отримання
+      початкового коду з сервера Git. (Крім того, допоки ви не запустите
+      <command>configure</command> з параметром
+      <literal>--enable-maintainer-mode</literal>, скрипт конфігурації не буде
+      автоматично перебудовано, коли файл <filename>configure.in</filename>
+      оновиться, і вам доведеться робити це вручну, коли
+      <filename>configure.in</filename> зміниться. Ознакою того є слова
+      @VARIABLE@ у вашому Makefile після запуску конфігурації чи
+      <filename>config.status</filename>.)
      </para>
     </answer>
    </qandaentry>
@@ -36,18 +38,17 @@
    <qandaentry xml:id="faq.build.configuring">
     <question>
      <para>
-      I'm having problems configuring PHP to work with Apache. 
-      It says it can't find <filename>httpd.h</filename>, but it's right where I said it is!
+      Я маю проблеми з налаштуванням PHP для роботи з Apache. Каже, що не може
+      знайти <filename>httpd.h</filename>, проте він точно там, де я вказав!
      </para>
     </question>
     <answer>
      <para>
-      You need to tell the configure/setup script the location of the
-      top-level of your Apache source tree. This means that
-      you want to specify <option 
-      role="configure">--with-apache=/path/to/apache</option>
-      and <emphasis>not</emphasis> <option 
-      role="configure">--with-apache=/path/to/apache/src</option>.
+      Ви повинні назвати скрипту конфігурації розташування початкової теки
+      початкових кодів Apache. Це означає, що треба вказати
+      <option role="configure">--with-apache=/path/to/apache</option>, а
+      <emphasis>не</emphasis> 
+      <option role="configure">--with-apache=/path/to/apache/src</option>.
      </para>
     </answer>
    </qandaentry>
@@ -55,8 +56,8 @@
    <qandaentry xml:id="faq.build.lex">
     <question>
      <para>
-      While configuring PHP (<literal>./configure</literal>), you come across
-      an error similar to the following:
+      Під час конфігурації PHP (<literal>./configure</literal>), ви натрапили на
+      помилку, подібну до наступної:
      </para>
      <para>
       <screen>
@@ -67,10 +68,11 @@
     </question>
     <answer>
      <para>
-      Be sure to read the <link linkend="install.unix">installation</link>
-      instructions carefully and note that you need both flex and bison
-      installed to compile PHP.  Depending on your setup you will install 
-      bison and flex from either source or a package, such as a RPM.
+      Уважно перечитайте інструкції зі
+      <link linkend="install.unix">встановлення</link> та майте на увазі, що вам
+      потрібні встановлені пакунки flex і bison, щоб скомпілювати PHP. Залежно
+      від ваших налаштувань, bison і flex встановлюються або з джерела, або з
+      пакета, наприклад RPM.
      </para>
     </answer>
    </qandaentry>
@@ -78,7 +80,7 @@
    <qandaentry xml:id="faq.build.apache-sharedcore">
     <question>
      <para>
-      When I try to start Apache, I get the following message:
+      Коли я намагаюся запустити Apache, отримую таке повідомлення:
      </para>
      <para>
       <screen>
@@ -89,10 +91,9 @@
     </question>
     <answer>
      <para>
-      This error usually comes up when one compiles the Apache
-      core program as a DSO library for shared usage.  Try to
-      reconfigure apache, making sure to use at least the
-      following flags:
+      Зазвичай ця помилка з'являється, коли Apache було скомпільовано, як DSO
+      для спільного використання. Спробуйте переконфігурувати Apache,
+      упевнившись, що ви використали принаймні наступні прапорці:
      </para>
      <para>
       <screen>
@@ -100,9 +101,9 @@
       </screen>
      </para>
      <para>
-      For more information, read the top-level Apache
-      <filename>INSTALL</filename> file or the Apache
-      <link xlink:href="&url.apachedso;">DSO manual page</link>.
+      Більше інформації вгорі файлу Apache'а <filename>INSTALL</filename> або на
+      <link xlink:href="&url.apachedso;">Сторінці посібника з DSO</link> від
+      Apache.
      </para>
     </answer>
    </qandaentry>
@@ -110,21 +111,22 @@
    <qandaentry xml:id="faq.build.not-found">
     <question>
      <para>
-      When I run configure, it says that it can't find the 
-      include files or library for GD, gdbm, or some other package!
+      Коли я запускаю скрипт конфігурації, він каже, що не може включити файли
+      або бібліотеку GD, gdbm, чи якогось іншого пакунка.
      </para>
     </question>
     <answer>
      <para>
-      You can make the configure script look for header files and libraries
-      in non-standard locations by specifying additional flags to pass to
-      the C preprocessor and linker, such as:
+      Ви можете зробити так, щоб скрипт конфігурації шукав файли-заголовки та
+      бібліотеки в нестандартних місцях, задавши додаткові прапорці для
+      препроцесора C і компонувальника, наприклад:
       <programlisting>
 <![CDATA[
     CPPFLAGS=-I/path/to/include LDFLAGS=-L/path/to/library ./configure
 ]]>
       </programlisting>
-      If you're using a csh-variant for your login shell (why?), it would be:
+      Якщо ви використовуєте csh-варіант оболонки для авторизації (а нащо?), це
+      буде:
       <programlisting>
 <![CDATA[
     env CPPFLAGS=-I/path/to/include LDFLAGS=-L/path/to/library ./configure
@@ -137,14 +139,14 @@
    <qandaentry xml:id="faq.build.yytname">
     <question>
      <para>
-      When it is compiling the file <filename>language-parser.tab.c</filename>, it gives me errors 
-      that say <literal>yytname undeclared</literal>.
+      Коли компілюється файл <filename>language-parser.tab.c</filename>, то
+      виводяться помилки <literal>yytname undeclared</literal>.
      </para>
     </question>
     <answer>
      <para>
-      You need to update your version of Bison. You can find the latest version
-      at <link xlink:href="&url.bison;">&url.bison;</link>.
+      Вам треба оновити пакунок Bison. Найновіша версія за адресою
+      <link xlink:href="&url.bison;">&url.bison;</link>.
      </para>
     </answer>
    </qandaentry>
@@ -152,17 +154,17 @@
    <qandaentry xml:id="faq.build.link">
     <question>
      <para>
-      When I run <command>make</command>, it seems to run fine but then fails when it tries 
-      to link the final application complaining that it can't find some files.
+      Коли я запускаю <command>make</command>, наче все йде добре, але
+      завершується невдачею під час компонування програми, скаржачись, що не
+      може знайти якісь файли.
      </para>
     </question>
     <answer>
      <para>
-      Some old versions of make that don't correctly put the compiled
-      versions of the files in the functions directory into that same
-      directory. Try running <command>cp *.o functions</command> and then
-      re-running <command>make</command> to see if that helps. If it does, you should really
-      upgrade to a recent version of GNU make.
+      Деякі старі версії make не можуть правильно помістити скомпільовані файли
+      у теки. Спробуйте запустити <command>cp *.o functions</command>, потім
+      перезапустити <command>make</command>, щоб побачити, чи це допоможе. Якщо
+      так, то вам конче треба отримати найновішу версію GNU make.
      </para>
     </answer>
    </qandaentry>
@@ -170,19 +172,18 @@
    <qandaentry xml:id="faq.build.undefined">
     <question>
      <para>
-      When linking PHP, it complains about a number of undefined references.
+      Коли компоную PHP, воно скаржиться на кількість невизначених посилань.
      </para>
     </question>
     <answer>
      <para>
-      Take a look at the link line and make sure that all of the appropriate  
-      libraries are being included at the end. Common ones that you might have
-      missed are '-ldl' and any libraries required for any database support
-      you included.
+      Подивіться на рядок з посиланнями, та упевніться, що усі необхідні
+      бібліотеки були включені. Здебільшого це "-ldl" та бібліотеки, потрібні
+      для включених баз даних.
      </para>
      <para>
-      Some people have also reported that they had to add '-ldl' immediately
-      following <filename>libphp4.a</filename> when linking with Apache.
+      Дехто каже, що треба дописати '-ldl' відразу після
+      <filename>libphp4.a</filename>, коли компонуєте модуль для Apache.
      </para>
     </answer>
    </qandaentry>
@@ -190,48 +191,45 @@
    <qandaentry xml:id="faq.build.not-running">
     <question>
      <para>
-      I have followed all the steps to install the Apache module version on 
-      Unix, and my PHP scripts show up in my browser or I am being asked to 
-      save the file.
+      Я послідовно виконав усі кроки встановлення PHP, як модуля Apache у Unix,
+      а мої скрипти показуються в браузері, як простий текст, або браузер
+      пропонує мені зберегти файл.
      </para>
     </question>
     <answer>
      <para>
-      This means that the PHP module is not getting invoked for some reason.
-      Three things to check before asking for further help:
+      Це означає, що PHP-модуль чомусь не викликається.
+      Перед проханням про додаткову допомогу треба перевірити три речі:
       <itemizedlist>
        <listitem>
         <simpara>
-         Make sure that the httpd binary you are running is the actual 
-         new httpd binary you just built.  To do this, try running: 
-         <literal>/path/to/binary/httpd -l</literal>
+         Упевніться, що запущений вами двійковий httpd — той, що ви перед
+         цим зібрали. Для цього виконайте: <literal>/path/to/binary/httpd -l</literal>
         </simpara>
         <simpara>
-         If you don't see <filename>mod_php4.c</filename> listed then
-         you are not running the right binary.  Find and install the
-         correct binary.
+         Якщо ви не бачите у списку <filename>mod_php4.c</filename>, отже
+         запущено не той двійковий файл. Знайдіть і встановіть потрібний.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         Make sure you have added the correct Mime Type to one of your 
-         <literal>Apache .conf</literal> files.  It should be: 
+         Упевніться, що ви додали правильний MIME тип у одному з ваших
+         <literal>.conf</literal> файлів Apache. Наприклад:
          <literal>AddType application/x-httpd-php .php</literal>
         </simpara>
         <simpara> 
-         Also make sure that this AddType line is not hidden away inside a
-         &lt;Virtualhost&gt; or &lt;Directory&gt; block which would
-         prevent it from applying to the location of your test script.
+         Також перевірте, чи інструкція AddType не знаходиться за межами
+         блоку &lt;Virtualhost&gt; або &lt;Directory&gt;, бо це не дозволить
+         застосувати її до вашого тестового скрипта.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         Finally, the default location of the Apache configuration files 
-         changed between Apache 1.2 and Apache 1.3.  You should check to 
-         make sure that the configuration file you are adding the AddType 
-         line to is actually being read. You can put an obvious syntax error
-         into your &httpd.conf; file or some other obvious change that will 
-         tell you if the file is being read correctly.
+         В решті решт, стандартне розташування файлів конфігурації Apache у
+         версій 1.2 і 1.3 — відрізняється. Перевірте, що файли конфігурації,
+         в які ви записали AddType, будуть прочитані. Можна навмисно внести
+         помилку у ваш файл &httpd.conf; або будь-яку іншу очевидну зміну, яка
+         сигналізуватиме, що файл прочитано коректно.
         </simpara>
        </listitem>
       </itemizedlist>
@@ -242,16 +240,17 @@
    <qandaentry xml:id="faq.build.activate-module">
     <question>
      <para>
-      It says to use: <literal>--activate-module=src/modules/php4/libphp4.a</literal>, 
-      but  that file doesn't exist, so I changed it to 
-      <literal>--activate-module=src/modules/php4/libmodphp4.a</literal> and it 
-      doesn't work!? What's going on?
+      Там сказано використати
+      <literal>--activate-module=src/modules/php4/libphp4.a</literal>, але
+      такого файлу немає, тож я замінив параметр на
+      <literal>--activate-module=src/modules/php4/libmodphp4.a</literal>, та це
+      не спрацювало! Що відбувається?
      </para>
     </question>
     <answer>
      <para>
-      Note that the <filename>libphp4.a</filename> file is not supposed to exist.  The
-      apache process will create it!
+      Зауважте, що файлу <filename>libphp4.a</filename> і не має існувати.
+      Процес Apache створить його!
      </para>
     </answer>
    </qandaentry>
@@ -259,15 +258,16 @@
    <qandaentry xml:id="faq.build.ansi">
     <question>
      <para>
-      When I try to build Apache with PHP as a static module using 
-      <literal>--activate-module=src/modules/php4/libphp4.a</literal> 
-      it tells me that my compiler is not ANSI compliant.
+      Коли я намагаюсь зібрати Apache із PHP, як статичним модулем,
+      використовуючи
+      <literal>--activate-module=src/modules/php4/libphp4.a</literal>, воно
+      каже, що мій компілятор не сумісний з ANSI.
      </para>
     </question>
     <answer>
      <para>
-      This is a misleading error message from Apache that has been fixed
-      in more recent versions.
+      Це хибне повідомлення про помилку від Apache, яке буде виправлене в
+      майбутніх версіях.
      </para>
     </answer>
    </qandaentry>
@@ -275,19 +275,20 @@
    <qandaentry xml:id="faq.build.apxs">
     <question>
      <para>
-      When I try to build PHP using <option 
-      role="configure">--with-apxs</option> I get strange error messages.
+      Коли я намагаюся зібрати PHP, використовуючи
+      <option role="configure">--with-apxs</option>, отримую дивне повідомлення
+      про помилку.
      </para>
     </question>
     <answer>
      <para>
-      There are three things to check here.  First, for some reason
-      when Apache builds the apxs Perl script, it sometimes ends up
-      getting built without the proper compiler and flags variables.
-      Find your apxs script (try the command <command>which apxs</command>), 
-      it's sometimes found in <filename>/usr/local/apache/bin/apxs</filename>
-      or <filename>/usr/sbin/apxs</filename>.
-      Open it and check for lines similar to these:
+      Треба перевірити три речі. По-перше, інколи Apache створює
+      Perl-скрипт "apxs", а останній не містить даних про потрібний
+      компілятор та поставлених прапорців. Знайдіть ваш скрипт apxs (спробуйте
+      команду <command>which apxs</command>), зазвичай він знаходиться у
+      <filename>/usr/local/apache/bin/apxs</filename> або
+      <filename>/usr/sbin/apxs</filename>. Відкрийте його і перевірте рядки,
+      схожі на ці:
       <programlisting>
 <![CDATA[
 my $CFG_CFLAGS_SHLIB  = ' ';          # substituted via Makefile.tmpl
@@ -295,9 +296,9 @@ my $CFG_LD_SHLIB      = ' ';          # substituted via Makefile.tmpl
 my $CFG_LDFLAGS_SHLIB = ' ';          # substituted via Makefile.tmpl
 ]]>
       </programlisting>
-      If this is what you see, you have found your problem.  They may 
-      contain just spaces or other incorrect values, such as 'q()'.  Change 
-      these lines to say:
+      Якщо це те, що ви бачите, проблему знайдено. Вони можуть містити тільки
+      пробіли або інші некоректні значення, такі як 'q()'.  Замініть ці рядки на
+      наступні:
       <programlisting>
 <![CDATA[
 my $CFG_CFLAGS_SHLIB  = '-fpic -DSHARED_MODULE'; # substituted via Makefile.tmpl
@@ -305,21 +306,22 @@ my $CFG_LD_SHLIB      = 'gcc';                   # substituted via Makefile.tmpl
 my $CFG_LDFLAGS_SHLIB = q(-shared);              # substituted via Makefile.tmpl 
 ]]>
       </programlisting>
-      The second possible problem should only be an issue on Red Hat 6.1
-      and 6.2.  The apxs script Red Hat ships is broken.  Look for this line:
+      Друга можлива проблема може виникати у Red Hat 6.1 та 6.2. Скрипт apxs у
+      Red Hat зламаний. Знайдіть цей рядок:
       <programlisting>
 <![CDATA[
 my $CFG_LIBEXECDIR    = 'modules';         # substituted via APACI install
 ]]>
       </programlisting>
-      If you see the above line, change it to this:
+      Якщо ви бачите такий рядок, замініть його на:
       <programlisting>
 <![CDATA[
 my $CFG_LIBEXECDIR    = '/usr/lib/apache'; # substituted via APACI install
 ]]>
       </programlisting>
-       Last, if you reconfigure/reinstall Apache, add a <command>make clean</command> 
-       to the process after <command>./configure</command> and before <command>make</command>.
+       По-третє, якщо переналаштовуєте або перевстановлюєте Apache, допишіть
+       <command>make clean</command> після <command>./configure</command> та
+       перед <command>make</command>.
      </para>
     </answer>
    </qandaentry>
@@ -327,14 +329,14 @@ my $CFG_LIBEXECDIR    = '/usr/lib/apache'; # substituted via APACI install
    <qandaentry xml:id="faq.build.microtime">
     <question>
      <para>
-      During <command>make</command>, I get errors in microtime, 
-      and a lot of <literal>RUSAGE_</literal> stuff.
+      Протягом виконання <command>make</command> часто з'являються помилки і
+      більшість про <literal>RUSAGE_</literal>.
      </para>
     </question>
     <answer>
      <para>
-      During the <command>make</command> portion of installation, 
-      if you encounter problems that look similar to this:
+      Якщо протягом виконання <command>make</command> ви зіткнулися з такими
+      проблемами:
       <programlisting>
 <![CDATA[
 microtime.c: In function `php_if_getrusage':
@@ -354,10 +356,10 @@ make: *** [all-recursive] Error 1
       </programlisting>
      </para>
      <para>
-      Your system is broken.  You need to fix your <filename>/usr/include</filename> files by
-      installing a glibc-devel package that matches your glibc.  This has
-      absolutely nothing to do with PHP.  To prove this to yourself, try this
-      simple test:
+      Ваша система зламана. Потрібно полагодити ваші файли у
+      <filename>/usr/include</filename>, встановивши пакунок glibc-devel, з тою
+      ж версією, що і у вашого glibc. Це не має абсолютно нічого спільного з
+      PHP. Щоб переконатися в цьому, спробуйте цей простий тест:
      <programlisting>
 <![CDATA[
 $ cat >test.c <<X
@@ -366,7 +368,7 @@ X
 $ gcc -E test.c >/dev/null
 ]]>
       </programlisting>
-      If that spews out errors, you know your include files are messed up. 
+      Якщо висвітяться помилки, знайте — ваші include-файли зіпсовані. 
      </para>
     </answer>
    </qandaentry>
@@ -374,27 +376,26 @@ $ gcc -E test.c >/dev/null
    <qandaentry xml:id="faq.build.mysql.tempnam">
     <question>
      <para>
-      When compiling PHP with MySQL, configure runs fine but during
-      <literal>make</literal> I get an error similar to the following:
+      Коли компілюю PHP з підтримкою MySQL, configure працює добре, але
+      виконуючи <literal>make</literal>, я отримую помилку схожу на:
       <emphasis>ext/mysql/libmysqlclient/my_tempnam.o(.text+0x46): In function 
       my_tempnam': /php4/ext/mysql/libmysqlclient/my_tempnam.c:103: the 
       use of tempnam' is dangerous, better use mkstemp'</emphasis>, 
-      what's wrong?
+      що не так?
      </para>
     </question>
     <answer>
      <para>
-      First, it's important to realize that this is a <literal>
-      Warning</literal> and not a fatal error.  Because this is
-      often the last output seen during <literal>make</literal>,
-      it may seem like a fatal error but it's not.  Of course, if
-      you set your compiler to die on Warnings, it will.  Also
-      keep in mind that MySQL support is enabled by default.
+      Найперше, важливо усвідомити, що це <literal>попередження</literal>, а не
+      фатальна помилка. Через те, що здебільшого це кінцевий вивід команди
+      <literal>make</literal>, може здатися, що це фатальна помилка, але ні.
+      Звісно, якщо ви налаштували свій компілятор "вмирати" від попереджень, то
+      це буде нею. Ще майте на увазі, що стандартно підтримка MySQL ввімкнена.
      </para>
      <note>
       <para>
-       As of PHP 4.3.2, you'll also see the following text after
-       the build (make) completes:
+       Починаючи з PHP 4.3.2, після завершення збірки (make) ви також бачитимете
+       наступний текст:
       </para>
       <para>
        <screen>
@@ -409,21 +410,22 @@ $ gcc -E test.c >/dev/null
    <qandaentry xml:id="faq.build.upgrade">
     <question>
      <para>
-      I want to upgrade my PHP. Where can I find the <command>./configure</command>
-      line that was used to build my current PHP installation?
+      Я хочу оновити мій PHP. Де я можу дізнатися повну команду
+      <command>./configure</command>, яка була виконана для збирання
+      поточної встановленої версії?
      </para>
     </question>
     <answer>
      <para>
-      Either you look at config.nice file, in the source tree of your current PHP
-      installation or, if this is not available, you simply run a 
+      У файлі config.nice, або у дереві початкових кодів встановленого PHP, якщо це
+      недоступно, можете просто запустити скрипт
       <programlisting role="php">
 <![CDATA[
        <?php phpinfo(); ?> 
 ]]>
-      </programlisting>
-      script. On top of the output the <command>./configure</command> line, that was used
-      to build this PHP installation is shown.
+      </programlisting>. Вгорі результату буде показано командний рядок
+      <command>./configure</command>, який було використано для збирання даної
+      версії PHP.
      </para>
     </answer>
    </qandaentry>
@@ -431,14 +433,14 @@ $ gcc -E test.c >/dev/null
    <qandaentry xml:id="faq.build.gdlibs">
     <question>
      <para>
-      When building PHP with the GD library it either gives strange compile errors
-      or segfaults on execution.
+      Під час збирання PHP з підтримкою GD виводяться дивні помилки компіляції
+      або під час виконання — помилки сегментації.
      </para>
     </question>
     <answer>
      <para>
-      Make sure your GD library and PHP are linked against the same depending
-      libraries (e.g. libpng).
+      Упевніться, що ваша бібліотека GD та PHP залежні від однакових бібліотек
+      (напр. libpng).
      </para>
     </answer>
    </qandaentry>   
@@ -446,19 +448,19 @@ $ gcc -E test.c >/dev/null
    <qandaentry xml:id="faq.installation.needgnu">
     <question>
      <para>
-      When compiling PHP I seemingly get random errors, like it hangs.
-      I'm using Solaris if that matters.
+      Під час компіляції PHP я, здається, отримую випадкові помилки, наче вона
+      зависає. Я використовую Solaris, якщо це важливо.
      </para>
     </question>
     <answer>
      <para>
-      Using non-GNU utilities while compiling PHP may cause problems.  Be
-      sure to use GNU tools in order to be certain that compiling PHP will
-      work.  For example, on Solaris, using either the SunOS BSD-compatible
-      or Solaris versions of <literal>sed</literal> will not work, but using
-      the GNU or Sun POSIX (xpg4) versions of <literal>sed</literal> will
-      work.  Links: <link xlink:href="&url.sed;">GNU sed</link>,
-      <link xlink:href="&url.flex;">GNU flex</link>, and
+      Використання не-GNU утиліт для компіляції PHP може спричинити проблеми.
+      Використовуйте інструменти GNU для впевненості у належній компіляції PHP.
+      Наприклад, у Solaris, використання BSD-сумісних версій
+      <literal>sed</literal> від SunOS або Solaris не спрацює, натомість версії
+      <literal>sed</literal> від GNU або Sun POSIX (xpg4) будуть працювати.
+      Посилання: <link xlink:href="&url.sed;">GNU sed</link>,
+      <link xlink:href="&url.flex;">GNU flex</link> та
       <link xlink:href="&url.bison;">GNU bison</link>.
      </para>
     </answer>

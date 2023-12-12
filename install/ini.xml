@@ -447,7 +447,7 @@ $ PHP_INI_SCAN_DIR=/usr/local/etc/php.d: php
    <para>
     Не зважаючи на те як запущено PHP, ви можете змінити конкретне значення
     директиви під час виконання вашого скрипта через функцію
-    <function>ini_set</function>. Детальнішу інформацію можна прочитати на
+    <function>ini_set</function>. Докладнішу інформацію можна прочитати на
     сторінці <function>ini_set</function>.
    </para>
    <para>
