@@ -1,31 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: f2b08c959ca4d54a96a66e623e576c35be3034be Maintainer: mproshchuk Status: wip -->
+<!-- EN-Revision: 88890f831cb49dc2b2be942039b1938217b1cc54 Maintainer: mproshchuk Status: ready -->
 <appendix xml:id="types.comparisons" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Порівняльна таблиця типів PHP</title>
  <para>
-  Наступна таблиця демонструє поведінку 
+  Наступна таблиця демонструє поведінку
   <link linkend="language.types">типів</link> PHP та 
   <link linkend="language.operators.comparison">операторів
   порівняння</link>, як з м'яким, так і зі строгим порівнянням. Ця інформація
-  також стосується теми
-  <link linkend="language.types.type-juggling">маніпуляції з типами</link>.
-  Щоб створити цю таблицю, ми отримували натхнення від коментарів деяких
-  користувачів, та від роботи
+  також стосується теми <link linkend="language.types.type-juggling">маніпуляції
+  з типами</link>. Щоб створити цю таблицю, ми отримували натхнення від
+  коментарів деяких користувачів та від роботи
   <link xlink:href="&url.blueshoes.comparisons;">BlueShoes</link>.
  </para>
  <para>
-  Перед використанням даної таблиці, важливо розуміти типи та їх значення.
+  Перед використанням даної таблиці важливо розуміти типи та їхні значення.
   Наприклад, <literal>"42"</literal> має рядковий тип (<type>string</type>),
-  тоді як <literal>42</literal> має цілочисельний тип (<type>integer</type>).
-  Значення &false; має логічний тип (<type>boolean</type>), тоді як
+  тоді як <literal>42</literal> має цілочисельний тип (<type>int</type>).
+  Значення &false; має логічний тип (<type>bool</type>), тоді як
   <literal>"false"</literal> має рядковий тип (<type>string</type>).
  </para>
  <note>
   <para>
-   HTML-форми не передають цілочисельний тип (integer), дробний тип (floats),
-   та логічний тип (booleans); вони передають тільки рядковий тип. Щоб
-   перевірити, чи рядок має число, можна використовувати
-   <function>is_numeric</function>.
+   HTML-форми не передають цілочисельний тип (int), дробовий тип (float) чи
+   логічний тип (bool); вони передають тільки рядковий тип. Щоб перевірити, чи
+   рядок має число, можна використовувати <function>is_numeric</function>.
   </para>
  </note>
  <note>
@@ -39,12 +37,12 @@
  </note>
  <note>
   <para>
-   Деякі арифметичні операції можуть повернути значення, представлене
-   константою <constant>NAN</constant>. Будь-яке м'яке чи строге порівняння
-   цього значення з будь-яким іншим значенням, включаючи його самого, окрім &true;,
-   повертатиме &false; (тобто <literal>NAN != NAN</literal> та
-   <literal>NAN !== NAN</literal>). Приклади операцій, що продукуватимуть
-   <constant>NAN</constant> включаючи <literal>sqrt(-1)</literal>,
+   Деякі арифметичні операції можуть повернути значення, представлене константою
+   <constant>NAN</constant>. Будь-яке м'яке чи строге порівняння цього значення
+   з будь-яким іншим значенням, включаючи його самого, окрім &true;, повертатиме
+   &false; (тобто <literal>NAN != NAN</literal> та
+   <literal>NAN !== NAN</literal>). Прикладами операцій, що продукуватимуть
+   <constant>NAN</constant> є <literal>sqrt(-1)</literal>,
    <literal>asin(2)</literal>, та <literal>acosh(0)</literal>.
   </para>
  </note>
@@ -60,7 +58,7 @@
       <entry><function>empty</function></entry>
       <entry><function>is_null</function></entry>
       <entry><function>isset</function></entry>
-      <entry><type>boolean</type> : те що повертає вираз <literal>if($x)</literal></entry>
+      <entry><type>bool</type> : <literal>if($x)</literal></entry>
      </row>
     </thead>
     <tbody>
@@ -97,7 +95,7 @@
       <entry>&false;</entry>
      </row>
      <row>
-      <entry><literal>$x = array();</literal></entry>
+      <entry><literal>$x = [];</literal></entry>
       <entry><type>array</type></entry>
       <entry>&true;</entry>
       <entry>&false;</entry>
@@ -105,7 +103,7 @@
       <entry>&false;</entry>
      </row>
      <row>
-      <entry><literal>$x = array('a', 'b');</literal></entry>
+      <entry><literal>$x = ['a', 'b'];</literal></entry>
       <entry><type>array</type></entry>
       <entry>&false;</entry>
       <entry>&false;</entry>
@@ -114,7 +112,7 @@
      </row>
      <row>
       <entry><literal>$x = false;</literal></entry>
-      <entry><type>boolean</type></entry>
+      <entry><type>bool</type></entry>
       <entry>&true;</entry>
       <entry>&false;</entry>
       <entry>&true;</entry>
@@ -122,7 +120,7 @@
      </row>
      <row>
       <entry><literal>$x = true;</literal></entry>
-      <entry><type>boolean</type></entry>
+      <entry><type>bool</type></entry>
       <entry>&false;</entry>
       <entry>&false;</entry>
       <entry>&true;</entry>
@@ -130,7 +128,7 @@
      </row>
      <row>
       <entry><literal>$x = 1;</literal></entry>
-      <entry><type>integer</type></entry>
+      <entry><type>int</type></entry>
       <entry>&false;</entry>
       <entry>&false;</entry>
       <entry>&true;</entry>
@@ -138,7 +136,7 @@
      </row>
      <row>
       <entry><literal>$x = 42;</literal></entry>
-      <entry><type>integer</type></entry>
+      <entry><type>int</type></entry>
       <entry>&false;</entry>
       <entry>&false;</entry>
       <entry>&true;</entry>
@@ -146,7 +144,7 @@
      </row>
      <row>
       <entry><literal>$x = 0;</literal></entry>
-      <entry><type>integer</type></entry>
+      <entry><type>int</type></entry>
       <entry>&true;</entry>
       <entry>&false;</entry>
       <entry>&true;</entry>
@@ -154,7 +152,7 @@
      </row>
      <row>
       <entry><literal>$x = -1;</literal></entry>
-      <entry><type>integer</type></entry>
+      <entry><type>int</type></entry>
       <entry>&false;</entry>
       <entry>&false;</entry>
       <entry>&true;</entry>
@@ -229,7 +227,7 @@
       <entry><literal>"0"</literal></entry>
       <entry><literal>"-1"</literal></entry>
       <entry>&null;</entry>
-      <entry><literal>array()</literal></entry>
+      <entry><literal>[]</literal></entry>
       <entry><literal>"php"</literal></entry>
       <entry><literal>""</literal></entry>
      </row>
@@ -292,8 +290,8 @@
       <entry>&false;</entry>
       <entry>&true;</entry>
       <entry>&false;</entry>
-      <entry>&true;</entry>
-      <entry>&true;</entry>
+      <entry>&false;*</entry>
+      <entry>&false;*</entry>
      </row>
      <row>
       <entry><literal>-1</literal></entry>
@@ -371,7 +369,7 @@
       <entry>&true;</entry>
      </row>
      <row>
-      <entry><literal>array()</literal></entry>
+      <entry><literal>[]</literal></entry>
       <entry>&false;</entry>
       <entry>&true;</entry>
       <entry>&false;</entry>
@@ -390,7 +388,7 @@
       <entry>&true;</entry>
       <entry>&false;</entry>
       <entry>&false;</entry>
-      <entry>&true;</entry>
+      <entry>&false;*</entry>
       <entry>&false;</entry>
       <entry>&false;</entry>
       <entry>&false;</entry>
@@ -405,7 +403,7 @@
       <entry>&false;</entry>
       <entry>&true;</entry>
       <entry>&false;</entry>
-      <entry>&true;</entry>
+      <entry>&false;*</entry>
       <entry>&false;</entry>
       <entry>&false;</entry>
       <entry>&false;</entry>
@@ -418,6 +416,7 @@
     </tbody>
    </tgroup>
   </table>
+  * &true; до PHP 8.0.0.
  </para>
 
  <para>
@@ -436,7 +435,7 @@
       <entry><literal>"0"</literal></entry>
       <entry><literal>"-1"</literal></entry>
       <entry>&null;</entry>
-      <entry><literal>array()</literal></entry>
+      <entry><literal>[]</literal></entry>
       <entry><literal>"php"</literal></entry>
       <entry><literal>""</literal></entry>
      </row>
@@ -578,7 +577,7 @@
       <entry>&false;</entry>
      </row>
      <row>
-      <entry><literal>array()</literal></entry>
+      <entry><literal>[]</literal></entry>
       <entry>&false;</entry>
       <entry>&false;</entry>
       <entry>&false;</entry>
