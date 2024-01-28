@@ -64,7 +64,7 @@
         <entry><link linkend="ini.short-open-tag">short_open_tag</link></entry>
         <entry>"1"</entry>
         <entry><constant>INI_PERDIR</constant></entry>
-        <entry><constant>INI_ALL</constant> in PHP 4.0.0. PHP_INI_PERDIR in PHP &gt;= 4.0.1.</entry>
+        <entry><constant>INI_ALL</constant> in PHP 4.0.0. <constant>INI_PERDIR</constant> in PHP &gt;= 4.0.1.</entry>
        </row>
        <row>
         <entry><link linkend="ini.asp-tags">asp_tags</link></entry>
