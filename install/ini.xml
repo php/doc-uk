@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 4eeb07225f615fcde68cbefb84df2fc9bf278f1f Maintainer: mproshchuk Status: ready -->
-<chapter xml:id="configuration" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<!-- EN-Revision: 15841d188475e59c105f57c9022873f2cd7467b5 Maintainer: mproshchuk Status: ready -->
+<chapter xml:id="configuration" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
  <title>Конфігурація під час запуску</title>
  
  <sect1 xml:id="configuration.file">
@@ -13,7 +13,7 @@
    <acronym>CLI</acronym>, це відбувається під час кожного запуску.
   </simpara>
   <para>
-   &php.ini; шукається в наступних місцерозташуваннях (за таким порядком):
+   &php.ini; шукається в наступних розташуваннях (за таким порядком):
    <itemizedlist>
     <listitem>
      <simpara>
@@ -31,9 +31,9 @@
      <simpara>
       Розташування файлу <literal>php.ini</literal> можна визначати для кожної
       версії PHP окремо. Корінь ключів регістру залежить від розрядності ОС та
-      PHP. Для 32-бітного PHP на 32-бітній ОС чи 64-бітного PHP на 64-бітній ОС
+      PHP. Для 32-бітного PHP у 32-бітній ОС чи 64-бітного PHP у 64-бітній ОС
       використовується <literal>[(HKEY_LOCAL_MACHINE\SOFTWARE\PHP]</literal>,
-      натомість для 32-бітних версій PHP на 64-бітній ОС використовується
+      натомість для 32-бітних версій PHP у 64-бітній ОС використовується
       <literal>[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\PHP]</literal>].
       Коли розрядність співпадає, ключі регістру обробляються в такому порядку:
       <literal>[HKEY_LOCAL_MACHINE\SOFTWARE\PHP\x.y.z]</literal>,
@@ -136,7 +136,7 @@ include_path = ".;c:\php\lib"
    </example>
   </para>
   <para>
-   Дозволено посилатись на існуючі змінні .ini з середини файлу .ini. Наприклад:
+   Дозволено посилатись на наявні змінні .ini з середини файлу .ini. Наприклад:
    <literal>open_basedir = ${open_basedir}
    ":/new/dir"</literal>.
   </para>
@@ -153,7 +153,7 @@ include_path = ".;c:\php\lib"
 
    <para>
     Для пошуку в різних теках треба відокремити їх роздільником шляхів
-    (<literal>;</literal> на Windows, NetWare та RISC OS; <literal>:</literal>
+    (<literal>;</literal> у Windows, NetWare та RISC OS; <literal>:</literal>
     на всіх інших платформах; значення, що використовує PHP, доступне як
     константа <constant>PATH_SEPARATOR</constant>). Якщо в
     <varname>PHP_INI_SCAN_DIR</varname> вказано порожню теку, PHP виконає пошук
@@ -261,40 +261,9 @@ $ PHP_INI_SCAN_DIR=/usr/local/etc/php.d: php
   
   <para>
    <table>
-    <title>Визначення режимів INI_*</title>
-    <tgroup cols="2">
-     <thead>
-      <row>
-       <entry>Режим</entry>
-       <entry>Що означає</entry>
-      </row>
-     </thead>
-     <tbody>
-      <row>
-       <entry><literal>INI_USER</literal></entry>
-       <entry>
-        Значення може встановлюватись в скриптах користувача (напр. через
-        <function>ini_set</function>) або у
-        <link linkend="configuration.changes.windows">Windows-реєстрі</link>.
-        Значення можна встановлювати в &user-ini;
-       </entry>
-      </row>
-      <row>
-       <entry><literal>INI_PERDIR</literal></entry>
-       <entry>
-        Значення можна встановлювати в &php.ini;, &htaccess;, &httpd.conf; чи &user-ini;
-       </entry>
-      </row>
-      <row>
-       <entry><literal>INI_SYSTEM</literal></entry>
-       <entry>Значення можна встановлювати в &php.ini; або &httpd.conf;</entry>
-      </row>
-      <row>
-       <entry><literal>INI_ALL</literal></entry>
-       <entry>Значення можна встановлювати будь-де</entry>
-      </row>
-     </tbody>
-    </tgroup>
+    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('constant.ini-mode')/*)">
+     <xi:fallback/>
+    </xi:include>
    </table>
   </para>
  </sect1>
@@ -313,7 +282,7 @@ $ PHP_INI_SCAN_DIR=/usr/local/etc/php.d: php
    
    <para>
     Існує кілька директив Apache, які дозволяють змінити PHP-конфігурацію через
-    конфігураційні файли Apache. Співставлення між цими директивами та режимами
+    конфігураційні файли Apache. Зіставлення між цими директивами та типами
     <constant>INI_ALL</constant>, <constant>INI_PERDIR</constant>, або
     <constant>INI_SYSTEM</constant> наведено у
     <link linkend="ini.list">Список директив php.ini</link>.
@@ -426,7 +395,7 @@ $ PHP_INI_SCAN_DIR=/usr/local/etc/php.d: php
   <sect2 xml:id="configuration.changes.windows">
    <title>Зміна PHP-конфігурації через Windows-реєстри</title>
    <simpara>
-    Коли PHP запущено на Windows, значення конфігурації можна змінювати на рівні
+    Коли PHP запущено у Windows, значення конфігурації можна змінювати на рівні
     теки за допомогою реєстрів Windows. Значення конфігурації зберігаються
     в ключі реєстра <literal>HKLM\SOFTWARE\PHP\Per Directory Values</literal>,
     в суб-ключах відповідних до шляху назви. Наприклад, значення конфігурації
