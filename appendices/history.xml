@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 14af302c9c0e561fa6f9cdd956268758ba9a89c5 Maintainer: mproshchuk Status: wip -->
-
 <appendix xml:id="history" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Історія PHP та пов'язаних проектів</title>
  <para>
   Народившись в середині дев'яностих, PHP пройшла довгий шлях. Від скромного
   початку і до того, як стати однією з найвидатніших мов Інтернету, еволюція PHP
-  виглядає як казка для комп'ютерників. Майте на увазі, що таке вибухове
+  виглядає, як казка для програмістів. Майте на увазі, що таке вибухове
   зростання було непростим завданням. Ті з вас, хто хоче коротко побачити, як
-  PHP виросла і стала такою, якою вона є сьогодні, читайте далі. Якщо ви хочете
-  торкнутися шматочка історії Інтернету, ви можете знайти старі випуски PHP в
+  PHP виросла і стала такою, якою вона є сьогодні — читайте далі. Якщо ви хочете
+  торкнутися частинки історії Інтернету, ви можете знайти старі випуски PHP в
   <link xlink:href="&url.php.museum;">Музеї PHP</link>.
  </para>
  
@@ -30,55 +29,49 @@
     Tools, створивши набагато більшу та багатшу реалізацію. Нова модель була
     здатна взаємодіяти з базами даних тощо, забезпечуючи структуру, з якою
     користувачі могли розробляти прості динамічні вебдодатки, такі як гостьові
-    книги.В червні 1995 року Расмус
-    <link xlink:href="&url.php.release1.0.0;">опублікував</link> для
-    громадськості сирцевий код PHP Tools, що дозволило розробникам
-    використовувати його на свій розсуд. Це також дозволило — і спонукало —
-    користувачам надсилати виправлення помилок у коді та загалом покращувати
-    його.
+    книги. У червні 1995 року Расмус <link
+    xlink:href="&url.php.release1.0.0;">опублікував</link> для громадськості
+    початковий код PHP Tools, що дозволило розробникам використовувати його на
+    свій розсуд. Це також дозволило — і спонукало — користувачам надсилати
+    виправлення помилок у коді та загалом покращувати його.
    </para>
    <para>
-    In September of that year, Rasmus expanded upon PHP and - for a
-    short time - actually dropped the PHP name.  Now referring to the
-    tools as FI (short for "Forms Interpreter"), the new implementation
-    included some of the basic functionality of PHP as we know
-    it today. It had Perl-like variables, automatic interpretation
-    of form variables, and HTML embedded syntax. The syntax itself
-    was similar to that of Perl, albeit much more limited, simple,
-    and somewhat inconsistent.  In fact, to embed the code into an
-    HTML file, developers had to use HTML comments.  Though this
-    method was not entirely well-received, FI continued to enjoy growth
-    and acceptance as a CGI tool --- but still not quite as a language.
-    However, this began to change the following month; in October, 1995,
-    Rasmus released a complete rewrite of the code.  Bringing back the
-    PHP name, it was now (briefly) named "Personal Home Page Construction
-    Kit," and was the first release to boast what was, at the time,
-    considered an advanced scripting interface. The language was
-    deliberately designed to resemble C in structure, making it an easy
-    adoption for developers familiar with C, Perl, and similar languages.
-    Having been thus far limited to UNIX and POSIX-compliant systems,
-    the potential for a Windows NT implementation was being explored.
+    У вересні того ж року Расмус розширив PHP і на короткий час фактично
+    відмовився від назви "PHP" на користь "FI" (скорочено від "Інтерпретатор
+    форм"). Нова реалізація містила деякий основний функціонал PHP, яким ми його
+    знаємо сьогодні. Вона мала змінні у стилі Perl, автоматичну інтерпретацію
+    змінних з форм та вбудований в HTML-документ код. Сам синтаксис був подібним
+    до Perl, хоча й доволі обмеженим, простим і дещо непослідовним. Насправді,
+    щоб вставляти код у HTML-файл, розробники мали використовувати
+    HTML-коментарі. Оскільки такий метод не був прийнятним для усіх, FI
+    продовжував розвиватися та сприймався радше як інструмент CGI, але не мова.
+    Проте це почало змінюватися наступного місяця. У жовтні 1995-го Расмус
+    випустив повністю переписаний код. Повернувши назву PHP, тепер він (коротко)
+    називався "Personal Home Page Construction Kit" (або українською "Набір для
+    створення особистої домашньої сторінки"), і був першим випуском, який міг
+    похвалитися тим, що на той час вважалося вдосконаленим скриптовим
+    інтерфейсом. Мова була навмисно розроблена зі структурою, що нагадувала C,
+    щоб зробити легкою адаптацію розробників, знайомих з C, Perl чи схожими
+    мовами. Досі обмежуючись системами, сумісними з UNIX і POSIX, почала
+    досліджуватись можливість впровадження в Windows NT.
    </para>
    <para>
-    The code got another complete makeover, and in April of 1996,
-    combining the names of past releases, Rasmus introduced PHP/FI.
-    This second-generation implementation began to truly evolve PHP
-    from a suite of tools into a programming language in its own
-    right.  It included built-in support for DBM, mSQL, and Postgres95
-    databases, cookies, user-defined function support, and much more.
-    That June, PHP/FI was given a version 2.0 status.  An interesting
-    fact about this, however, is that there was only one single full
-    version of PHP 2.0.  When it finally graduated from beta status
-    in November, 1997, the underlying parsing engine was already
-    being entirely rewritten.
+    Код отримав ще одне повне оновлення, тож в квітні 1996-го, комбінуючи назви
+    попередніх випусків, Расмус представив PHP/FI. Ця реалізація другого
+    покоління почала справжню еволюцію PHP із набору інструментів у окрему мову
+    програмування. Вона містила вбудовану підтримку баз даних DBM, mSQL і
+    Postgres95, кукі, підтримку користувацьких функцій та багато іншого. У
+    червні того ж року PHP/FI отримала статус версії 2.0. Однак цікавим фактом є
+    те, що існувала лише одна повна версія PHP 2.0. Коли в листопаді 1997 року
+    нарешті закінчився статусу бета-версії, основний механізм парсингу вже був
+    повністю переписаний.
    </para>
    <para>
-    Though it lived a short development life, it continued to enjoy
-    a growing popularity in still-young world of web development. In
-    1997 and 1998, PHP/FI had a cult of several thousand users around
-    the world.  A Netcraft survey as of May, 1998, indicated that
-    nearly 60,000 domains reported having headers containing
-    "PHP", indicating that the host server did indeed have it installed.
+    Хоча мова прожила короткий термін розробки, вона продовжувала користуватися
+    зростаючою популярністю у все ще молодому світі веброзробки. У 1997-му та
+    1998-му PHP/FI мала декілька тисяч прихильників по всьому світу. Опитування
+    від Netcraft у травні 1998-го нарахувало близько 60'000 доменів, які містили
+    у заголовках "PHP", вказуючи, що сервер-хост дійсно встановив його.
     This number equated to approximately 1% of all domains on the
     Internet at the time. Despite these impressive figures, the maturation
     of PHP/FI was doomed to limitations; while there were several minor

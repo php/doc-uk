@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 8b647de71ab443cb2784a82902bfc87728d587ae Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: 9e6c3416c5c285f807a734e4663c399612777d7e Maintainer: mproshchuk Status: ready -->
  <chapter xml:id="faq.html" xmlns="http://docbook.org/ns/docbook">
   <title>PHP та HTML</title>
   <titleabbrev>PHP та HTML</titleabbrev>
@@ -306,7 +306,7 @@ if (isset($_GET['width']) AND isset($_GET['height'])) {
   // — з методом POST змінні треба обробляти інакше)
 
   echo "<script language='javascript'>\n";
-  echo "  location.href=\"${_SERVER['SCRIPT_NAME']}?${_SERVER['QUERY_STRING']}"
+  echo "  location.href=\"{$_SERVER['SCRIPT_NAME']}?{$_SERVER['QUERY_STRING']}"
             . "&width=\" + screen.width + \"&height=\" + screen.height;\n";
   echo "</script>\n";
   exit();
