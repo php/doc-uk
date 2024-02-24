@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 14af302c9c0e561fa6f9cdd956268758ba9a89c5 Maintainer: mproshchuk Status: wip -->
+<!-- EN-Revision: 14af302c9c0e561fa6f9cdd956268758ba9a89c5 Maintainer: mproshchuk Status: ready -->
 <appendix xml:id="history" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
- <title>Історія PHP та пов'язаних проектів</title>
+ <title>Історія PHP та повʼязаних проектів</title>
  <para>
-  Народившись в середині дев'яностих, PHP пройшла довгий шлях. Від скромного
+  Народившись в середині девʼяностих, PHP пройшла довгий шлях. Від скромного
   початку і до того, як стати однією з найвидатніших мов Інтернету, еволюція PHP
-  виглядає, як казка для програмістів. Майте на увазі, що таке вибухове
+  виглядає, як казка для програмістів. Варто зауважити, що таке вибухове
   зростання було непростим завданням. Ті з вас, хто хоче коротко побачити, як
   PHP виросла і стала такою, якою вона є сьогодні — читайте далі. Якщо ви хочете
   торкнутися частинки історії Інтернету, ви можете знайти старі випуски PHP в
@@ -53,7 +53,7 @@
     інтерфейсом. Мова була навмисно розроблена зі структурою, що нагадувала C,
     щоб зробити легкою адаптацію розробників, знайомих з C, Perl чи схожими
     мовами. Досі обмежуючись системами, сумісними з UNIX і POSIX, почала
-    досліджуватись можливість впровадження в Windows NT.
+    досліджуватись можливість впровадження у Windows NT.
    </para>
    <para>
     Код отримав ще одне повне оновлення, тож в квітні 1996-го, комбінуючи назви
@@ -68,33 +68,32 @@
    </para>
    <para>
     Хоча мова прожила короткий термін розробки, вона продовжувала користуватися
-    зростаючою популярністю у все ще молодому світі веброзробки. У 1997-му та
-    1998-му PHP/FI мала декілька тисяч прихильників по всьому світу. Опитування
+    зростаючою популярністю у все ще молодому світі веброзробки. У 1997 та 1998
+    роках PHP/FI мала декілька тисяч прихильників по всьому світу. Дослідження
     від Netcraft у травні 1998-го нарахувало близько 60'000 доменів, які містили
-    у заголовках "PHP", вказуючи, що сервер-хост дійсно встановив його.
-    This number equated to approximately 1% of all domains on the
-    Internet at the time. Despite these impressive figures, the maturation
-    of PHP/FI was doomed to limitations; while there were several minor
-    contributors, it was still primarily developed by an individual.
+    у заголовках "PHP", вказуючи, що сервер-хост дійсно встановив його. На той
+    час це дорівнювало приблизно 1% усіх доменів в Інтернеті. Незважаючи на ці
+    разючі цифри, дорослішання PHP/FI досягало межі: хоча було кілька
+    другорядних розробників, все ж його в основному розробляла одна особа.
    </para>
    <para>
     <example>
-     <title>Example PHP/FI Code</title>
+     <title>Приклад коду на PHP/FI</title>
      <programlisting role="html">
 <![CDATA[
 <!--include /text/header.html-->
 
 <!--getenv HTTP_USER_AGENT-->
 <!--ifsubstr $exec_result Mozilla-->
-  Hey, you are using Netscape!<p>
+  О, ви використовуєте Netscape!<p>
 <!--endif-->
 
 <!--sql database select * from table where user='$username'-->
 <!--ifless $numentries 1-->
-  Sorry, that record does not exist<p>
+  Шкода, та такого запису не існує.<p>
 <!--endif exit-->
-  Welcome <!--$user-->!<p>
-  You have <!--$index:0--> credits left in your account.<p>
+  Ласкаво просимо, <!--$user-->!<p>
+  На вашому рахунку залишилося <!--$index:0--> кредитів.<p>
 
 <!--include /text/footer.html-->
 ]]>
@@ -106,98 +105,86 @@
   <sect2 xml:id="history.php3">
    <title>PHP 3</title>
    <para>
-    PHP 3.0 was the first version that closely resembles PHP as
-    it exists today. Finding PHP/FI 2.0 still inefficient and
-    lacking features they needed to power an eCommerce application
-    they were developing for a university project, Andi Gutmans and
-    Zeev Suraski of Tel Aviv, Israel, began yet another complete
-    rewrite of the underlying parser in 1997.  Approaching Rasmus
-    online, they discussed various aspects of the current
-    implementation and their redevelopment of PHP.  In an effort to
-    improve the engine and start building upon PHP/FI's existing
-    user base, Andi, Rasmus, and Zeev decided to collaborate in
-    the development of a new, independent programming language.
-    This entirely new language was released under a new name, that
-    removed the implication of limited personal use that the
-    PHP/FI 2.0 name held. It was renamed simply 'PHP', with the
-    meaning becoming a recursive acronym - PHP: Hypertext Preprocessor.
+    PHP 3.0 стала версією, з якою сучасна PHP дуже схожа. Виявивши, що PHP/FI
+    2.0 досі була неефективною, позбавленою функцій, необхідних для роботи
+    програми електронної комерції, яку розробляли для університетського проекту,
+    Енді Ґатменз та Зев Сураскі з Тель-Авіву, Ізраїль, почали ще одне повне
+    переписування основного парсера у 1997-му. Звʼязавшись з Расмусом онлайн,
+    вони обговорили різні аспекти поточного реалізації та подальшої переробки
+    PHP. Прагнучи вдосконалити рушій і почати розвивати наявну базу користувачів
+    PHP/FI, Енді, Расмус і Зев вирішили співпрацювати у розробці нової,
+    незалежної мови програмування. Вона отримала нову назву, яка більше не
+    означала обмежене особисте користування, що було закладено в назві PHP/FI
+    2.0. Вона була просто переназвана на "PHP", і стала розшифровуватися як
+    рекурсивний акронім — "PHP: Hypertext Preprocessor".
    </para>
    <para>
-    One of the biggest strengths of PHP 3.0 was its strong
-    extensibility features. In addition to providing end users
-    with a mature interface for multiple databases, protocols,
-    and APIs, the ease of extending the language itself attracted
-    dozens of developers who submitted a variety of modules. Arguably,
-    this was the key to PHP 3.0's tremendous success. Other key
-    features introduced in PHP 3.0 included object-oriented programming
-    support and a far more powerful and consistent language syntax.
+    Однією з найсильніших сторін PHP 3.0 була її масштабованість. Кінцевим
+    користувачам було надано зрілий інтерфейс для багатьох баз даних, протоколів
+    і API, а простота розширення самої мови привабила десятки розробників, які
+    створювали для неї різноманітні модулі. Можливо, це і стало ключем до
+    величезного успіху PHP 3.0. Інші основні можливості, наявні у PHP 3.0 — це
+    підтримка обʼєктно-орієнтованого програмування та значно потужніший і
+    продуманий синтаксис.
    </para>
    <para>
-    In June, 1998, with many new developers from around the world
-    joining the effort, PHP 3.0 was announced by the new PHP Development
-    Team as the official successor to PHP/FI 2.0.  Active development
-    of PHP/FI 2.0, which had all-but ceased as of November of the
-    previous year, was now officially ended.  After roughly nine months
-    of open public testing, when the announcement of the official
-    release of PHP 3.0 came, it was already installed on over 70,000
-    domains around the world, and was no longer limited to
-    POSIX-compliant operating systems.  A relatively small share of
-    the domains reporting PHP as installed were hosted on servers
-    running Windows 95, 98, and NT, and Macintosh.  At its peak, PHP 3.0
-    was installed on approximately 10% of the web servers on the
-    Internet.
+    У червні 1998-го, завдяки зусиллям багатьох нових розробників з усього
+    світу, новою Командою розробки PHP була представлена PHP 3.0, як офіційна
+    наступниця PHP/FI 2.0. Жвава розробка PHP/FI 2.0, яка майже припинилася в
+    листопаді попереднього року, так і не була завершена офіційно. Після близько
+    девʼяти місяців з часу відкриття публічного тестування, коли було випущено
+    офіційний реліз PHP 3.0, його вже було встановлено на понад 70'000 доменів
+    у світі і не тільки в POSIX-сумісних операційних системах. Відносно невелика
+    частка доменів повідомляли, що використовують PHP на серверах у Windows 95,
+    98, NT та Macintosh. На піку популярності PHP 3.0 було встановлено на
+    приблизно 10% вебсерверів в Інтернеті.
    </para>
   </sect2>
 
   <sect2 xml:id="history.php4">
    <title>PHP 4</title>
    <para>
-    By the winter of 1998, shortly after PHP 3.0 was officially
-    released, Andi Gutmans and Zeev Suraski had begun working
-    on a rewrite of PHP's core. The design goals were to improve
-    performance of complex applications, and improve the
-    modularity of PHP's code base. Such applications were made
-    possible by PHP 3.0's new features and support for a wide
-    variety of third party databases and APIs, but PHP 3.0 was
-    not designed to handle such complex applications efficiently.
+    Перед зимою 1998-го, невдовзі після офіційного випуску PHP 3.0, Енді Ґатменз
+    і Зев Сураскі почали роботу над переписуванням ядра PHP. Задум полягав у
+    покращенні швидкодії складних застосунків та у покращенні модульності
+    кодової бази PHP. Ці застосунки були можливими завдяки новому функціоналу
+    PHP 3.0 та підтримці широкого спектру сторонніх баз даних і API, але
+    інтерпретатор PHP 3.0 не був розроблений для ефективного виконання таких
+    складних програм.
    </para>
    <para>
-    The new engine, dubbed 'Zend Engine' (comprised of their
-    first names, Zeev and Andi), met these design goals
-    successfully, and was first introduced in mid 1999. PHP 4.0,
-    based on this engine, and coupled with a wide range of
-    additional new features, was officially released in May
-    2000, almost two years after its predecessor.  In addition
-    to the highly improved performance of this version, PHP 4.0
-    included other key features such as support for many more
-    web servers, HTTP sessions, output buffering, more secure
-    ways of handling user input and several new language constructs.
+    Новий рушій з назвою "Zend Engine" (складається з імен Зев та Енді)
+    повністю відповідав цим проектним цілям та був вперше представлений в
+    середині 1999-го. Версія PHP 4.0, що базувалася на цьому рушієві та поєднала
+    в собі багато нових можливостей, була офіційно випущена в травні 2000-го
+    року, майже через два роки після своєї попередниці. Разом з значно
+    збільшеною продуктивністю, PHP 4.0 містила такі нововведення, як підтримка
+    багатьох вебсерверів, HTTP-сесії, буферизація виводу, більше безпечних
+    способів обробки користувацького вводу та декілька нових мовних конструкцій.
    </para>
   </sect2>
 
   <sect2 xml:id="history.php5">
    <title>PHP 5</title>
    <para>
-    PHP 5 was released in July 2004 after long development and several
-    pre-releases. It is mainly driven by its core, the
-    <literal>Zend Engine 2.0</literal> with a
-    new object model and dozens of other new features.
+    PHP 5 була випущена в липні 2004-го року після тривалої розробки і кількох
+    пробних випусків. В основі інтерпретатора лежав рушій <literal>Zend Engine
+    2.0</literal> з новою обʼєктною моделлю і багатьма іншими можливостями.
    </para>
    <para>
-    PHP's development team includes dozens of developers, as well
-    as dozens others working on PHP-related and supporting projects,
-    such as PEAR, PECL, and documentation, and an underlying network
-    infrastructure of well over one-hundred individual web servers
-    on six of the seven continents of the world.  Though only an
-    estimate based upon statistics from previous years, it is safe
-    to presume PHP is now installed on tens or even perhaps hundreds
-    of millions of domains around the world.
+    До команди розробників PHP входять десятки розробників, а також десятки
+    інших, які працюють над пов’язаними та допоміжними проектами PHP, такими як
+    PEAR, PECL, документація, а також базова мережева інфраструктура з понад ста
+    окремих вебсерверів на шести із семи континентів світу. Хоча це лише
+    приблизні дані на основі статистики попередніх років, можна сміливо
+    припустити, що тепер PHP встановлено на десятках або навіть сотнях мільйонів
+    доменів у всьому світі.
    </para>
   </sect2>
  </sect1>
  
  <sect1 xml:id="history.php.related">
-  <title>History of PHP related projects</title>
+  <title>Історія проектів, повʼязаних з PHP</title>
   
   <!-- Hope Stig and/or Egon can do this
   
@@ -212,101 +199,90 @@
   <sect2 xml:id="history.pear">
    <title>PEAR</title>
    <para>
-    <link xlink:href="&url.php.pear;">PEAR</link>, the <literal>PHP Extension and
-    Application Repository</literal> (originally, PHP Extension and Add-on
-    Repository) is PHP's version of foundation classes, and may grow in
-    the future to be one of the key ways to distribute PHP extensions among
-    developers.
+    <link xlink:href="&url.php.pear;">PEAR</link>, <literal>PHP Extension and
+    Application Repository (укр. Сховище розширень та застосунків PHP)</literal>
+    (спочатку було PHP Extension and Add-on Repository) це PHP-версія основних
+    класів. У майбутньому воно може стати одним із ключових способів
+    розповсюдження PHP-розширень серед розробників.
    </para>
    <para>
-    PEAR was born in discussions held in the PHP Developers'
-    Meeting (PDM) held in January 2000 in Tel Aviv. It was
-    created by Stig S. Bakken, and is dedicated to his first-born
-    daughter, Malin Bakken.
+    PEAR народилося під час обговорень, що відбулися на зустрічі PHP-розробників
+    ("PDM"), що відбулася в січні 2000 року в Тель-Авіві. Творець Стіґ С. Баккен
+    присвятив його своєму первістку — доньці Малін Баккен.
    </para>
    <para>
-    Since early 2000, PEAR has grown to be a big, significant
-    project with a large number of developers working on
-    implementing common, reusable functionality for the
-    benefit of the entire PHP community. PEAR today includes
-    a wide variety of infrastructure foundation classes
-    for database access, content caching, mathematical
-    calculations, eCommerce and much more.
+    З початку 2000-го PEAR виросло до значущого проекту з великою кількістю
+    розробників, які працюють над впровадженням спільного багаторазового
+    функціоналу на користь усій спільноті PHP. Сьогодні PEAR пропонує широкий
+    вибір класів основи інфраструктури для доступу до баз даних, кешування
+    наповнення, математичних обчислень, електронної комерції та багато іншого.
    </para>
    <para>
-    More information about PEAR can be found in <link
-    xlink:href="&url.php.pear.manual;">the manual</link>.
+    Докладніше про PEAR у <link
+    xlink:href="&url.php.pear.manual;">посібнику</link>.
    </para>
   </sect2>
 
   <sect2 xml:id="history.phpqa">
-   <title>PHP Quality Assurance Initiative</title>
+   <title>Ініціатива забезпечення якості PHP</title>
    <para>
-    The <link xlink:href="&url.php.prerelease;">PHP Quality Assurance
-    Initiative</link> was set up in the summer of 2000 in response to
-    criticism that PHP releases were not being tested well enough for
-    production environments. The team now consists of a core group of
-    developers with a good understanding of the PHP code
-    base. These developers spend a lot of their time
-    localizing and fixing bugs within PHP. In addition
-    there are many other team members who test and
-    provide feedback on these fixes using a wide variety
-    of platforms.
+    <link xlink:href="&url.php.prerelease;">Ініціатива забезпечення якості
+    PHP</link> започаткована влітку 2000-го року у відповідь на критику щодо
+    недостатнього тестування випусків PHP для виробничого середовища. Натепер
+    основу команди складає група розробників, котрі добре розуміють кодову базу
+    PHP. Вони постійно виявляють та виправляють вади PHP. Разом з цим багато
+    інших членів команди перевіряють виправлення та надсилають відгуки через
+    різноманітні платформи.
    </para>
   </sect2>
 
   <sect2 xml:id="history.phpgtk">
    <title>PHP-GTK</title>
    <para>
-    <link xlink:href="&url.php.gtk;">PHP-GTK</link> is the PHP solution for
-    writing client side GUI applications. Andrei Zmievski remembers the
-    planing and creation process of PHP-GTK:
+    <link xlink:href="&url.php.gtk;">PHP-GTK</link> це PHP-рішення для написання
+    користувацьких програм з графічним інтерфейсом (GUI). Андрей Змієвскі так
+    згадує процес планування та створення PHP-GTK:
    </para>
    <blockquote>
     <para>
-     GUI programming has always been of my interests, and I found
-     that Gtk+ is a very nice toolkit, except that programming with
-     it in C is somewhat tedious. After witnessing PyGtk and GTK-Perl
-     implementations, I decided to see if PHP could be made to
-     interface with Gtk+, even minimally. Starting in August of 2000,
-     I began to have a bit more free time so that is when I started
-     experimenting. My main guideline was the PyGtk implementation
-     as it was fairly feature complete and had a nice object-oriented
-     interface. James Henstridge, the author of PyGtk, provided very
-     helpful advice during those initial stages.
+     Я завжди цікавився GUI-програмуванням і виявив, що Gtk+ — це чудовий набір
+     інструментів за винятком того, що застосовувати це на C дещо нудно.
+     Побачивши реалізації PyGtk і GTK-Perl, я вирішив перевірити, чи можна
+     змусити PHP хоч би трішки взаємодіяти з Gtk+. З серпня 2000-го, маючи
+     більше вільного часу, я почав експериментувати. Моїм головним орієнтиром
+     була реалізація PyGtk, бо була достатньо функціональною та мала гарний
+     обʼєктно-орієнтований інтерфейс. Джеймс Генстридж, творець PyGtk, дав дуже
+     корисні поради на початках.
     </para>
     <para>
-     Hand-writing the interfaces to all the Gtk+ functions was out of
-     the question, so I seized upon the idea of code-generator, similar
-     to how PyGtk did it. The code generator is a PHP program that reads
-     a set of <filename>.defs</filename> file containing the Gtk+ classes, constants, and
-     methods information and generates C code that interfaces PHP with
-     them. What cannot be generated automatically can be written by
-     hand in <filename>.overrides</filename> file.
+     Про написання інтерфейсів до всіх функцій Gtk+ вручну не могло бути й мови,
+     тож я загорівся ідеєю генератора коду, схожого з тим, який зроблено в
+     PyGtk. Генератор коду — це PHP-програма, яка зчитує вміст файлу
+     <filename>.defs</filename>, де міститься інформація про класи, константи та
+     методи Gtk+, та генерує код на C, через який PHP взаємодіє з ними. Те, що
+     не генерується автоматично, можна записати вручну в файлі
+     <filename>.overrides</filename>.
     </para>
     <para>
-     Working on the code generator and the infrastructure took some
-     time, because I could spend little time on PHP-GTK during the
-     fall of 2000. After I showed PHP-GTK to Frank Kromann, he got
-     interested and started helping me out with code generator work
-     and Win32 implementation. When we wrote the first Hello World
-     program and fired it up, it was extremely exciting. It took a
-     couple more months to get the project to a presentable condition
-     and the initial version was released on March 1, 2001. The
-     story promptly hit SlashDot.
+     Робота над генератором коду та інфраструктурою тривала довго тому, що
+     восени 2000-го я мав мало часу на PHP-GTK. Після того, як я показав
+     PHP-GTK Френку Кромману, він зацікавився та почав мені допомагати з
+     генератором коду та реалізацією для Win32. Коли ми написали першу "Hello
+     World"-програму і запустили її, це було надзвичайно захопливо. 1 березня
+     2001 року, після кількох місяців допрацювань, була випущена перша версія.
+     Ця історія відразу потрапила в SlashDot.
     </para>
     <para>
-     Sensing that PHP-GTK might be extensive, I set up separate
-     mailing lists and CVS repositories for it, as well as the
-     gtk.php.net website with the help of Colin Viebrock. The
-     documentation would also need to be done and James Moore
-     came in to help with that.
+     Розуміючи, що PHP-GTK буде розширюватися, я налаштував для неї окремий
+     список розсилки та CVS сховища, а ще вебсайт gtk.php.net з допомогою Коліна
+     Вайброка. Також необхідно було зробити документацію і Джеймс Мур згодився
+     допомогти.
     </para>
     <para>
-     Since its release PHP-GTK has been gaining popularity. We
-     have our own documentation team, the manual keeps improving,
-     people start writing extensions for PHP-GTK, and more and
-     more exciting applications with it.
+     З моменту випуску PHP-GTK набирає популярності. Ми маємо команду, що
+     розробляє документацію, посібник вдосконалюється, люди беруться писати
+     розширення для PHP-GTK та ще більше захопливих застосунків за
+     допомогою цього інструменту.
     </para>
    </blockquote>
   </sect2>
@@ -315,51 +291,47 @@
  <sect1 xml:id="history.php.books">
   <title>Books about PHP</title>
   <para>
-   As PHP grew, it began to be recognized as a world-wide popular
-   development platform. One of the most interesting ways of
-   seeing this trend was by observing the books about PHP that
-   came out throughout the years.
+   У міру розвитку PHP почали визнавати всесвітньо популярною платформою
+   розробки. Одним із найцікавіших способів побачити цю тенденцію було
+   спостереження за книгами про PHP, які виходили протягом багатьох років.
   </para>
   <para>
-   To the best of our knowledge, the first book dedicated to PHP was
-   'PHP - tvorba interaktivních internetových aplikací' (<emphasis>PHP
-   - Creating Interactive Internet Applications</emphasis>) - a Czech
-   book published in April 1999, authored by Jirka Kosek. Next month
-   followed a German book authored by Egon Schmid, Christian Cartus
-   and Richard Blume. The first book in English about PHP was
-   published shortly afterwards, and was 'Core PHP Programming' by
-   Leon Atkinson. These books covered PHP 3.0.
+   Як нам відомо, першою книгою, присвяченою PHP, була "PHP — tvorba
+   interaktivních internetových aplikací" (<emphasis>PHP — створення
+   інтерактивних інтернет-застосунків</emphasis>) чеського автора
+   Jirka Kosek, опублікована у квітні 1999 року. Наступного місяця вийшла книга
+   Еґона Шміда, Крістіана Картуса та Річарда Блюме німецькою мовою.
+   Перша книжка про PHP англійською була опублікована невдовзі після того і
+   називалася "Core PHP Programming" (укр. Основи програмування на PHP), автор —
+   Леон Аткінсон. Ці книги охоплювали PHP 3.0.
   </para>
   <para>
-   While these books were the first of their kind - they were
-   followed by a large number of books from a host of authors and
-   publishers. There are over 400 books in English, over 100 books in
-   German, and over 50 books in French or Spanish! In addition, you
-   can find books about PHP in many other languages, including
-   Korean, Japanese and Hebrew.
+   Незважаючи на те, що ці книги були першими у своєму роді, після них з'явилася
+   велика кількість книг від безлічі авторів і видавців. Існує більше 400 книг
+   англійською, більше 100 німецькою, а також більше 50 книг французькою або
+   іспанською мовами! Також можна знайти книги про PHP багатьма іншими мовами,
+   включно з корейською, японською та івритом.
   </para>
   <para>
-   Clearly, this large number of books, written by different
-   authors, published by many publishers, and their availability
-   in so many languages - are a strong testimony for PHP's
-   world-wide success.
+   Очевидно, така значна кількість книг, написаних різними авторами, видана
+   багатьма видавництвами, та їхня доступність стількома мовами — це вагоме
+   свідчення світового успіху PHP.
   </para>
  </sect1>
  
  <sect1 xml:id="history.php.publications">
-  <title>Publications about PHP</title>
+  <title>Публікації про PHP</title>
   <para>
-   To the best of our knowledge, the first article about PHP in
-   a hard-copy magazine was published in the Czech mutation of
-   Computerworld in the spring of 1998, and covered PHP 3.0. As with
-   books, this was the first in a series of many articles published
-   about PHP in various prominent magazines.
+   Наскільки нам відомо, перша стаття про PHP в друкованому журналі опублікована
+   у чеській версії Computerworld навесні 1998 року та розповідала про PHP 3.0.
+   Як і у випадку з книгами, це була перша з серії багатьох статей про PHP,
+   опублікованих в різних відомих журналах.
   </para>
   <para>
-   Articles about PHP appeared in Dr. Dobbs, Linux Enterprise,
-   Linux Magazine and many more. Articles about migrating ASP-based
-   applications to PHP under Windows even appear on <productname>Microsoft</productname>'s
-   very own <acronym>MSDN</acronym>!
+   Статті про PHP з'явилися в Dr. Dobbs, Linux Enterprise, Linux Magazine та в
+   багатьох інших. Статті про перенесення програм на базі ASP на PHP у Windows
+   навіть з’являються на <acronym>MSDN</acronym> від
+   <productname>Microsoft</productname>!
   </para>
  </sect1>
 
@@ -385,4 +357,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-
