@@ -798,7 +798,7 @@
       <row>
        <entry><link linkend="ini.zend-extension">zend_extension</link></entry>
        <entry>&null;</entry>
-       <entry>&php.ini; only</entry>
+       <entry>діє виключно в &php.ini;</entry>
        <entry></entry>
       </row>
       <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('zlib.configuration.list')/*)"><xi:fallback/></xi:include>
