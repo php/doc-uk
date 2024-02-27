@@ -26,7 +26,7 @@
   <para>
    Більшість покращень у версії PHP 5.6.x не впливають на наявний код. Є <link
    linkend="migration56.incompatible">декілька несумісностей</link> та <link
-   linkend="migration56.new-features">нововведень</link> які потрібно врахувати
+   linkend="migration56.new-features">нововведень</link>, які потрібно врахувати
    та випробувати перед перемиканням на неї у виробничому середовищі.
   </para>
 

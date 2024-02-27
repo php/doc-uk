@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 54cf5f9e3f1678ded292c9a9fe4b378e2d71fc26 Maintainer: ktretyak Status: wip -->
-<!-- $Revision$ -->
+<!-- EN-Revision: 54cf5f9e3f1678ded292c9a9fe4b378e2d71fc26 Maintainer: mproshchuk Status: wip -->
 <!-- Keep 'em sorted -->
 
 <!ENTITY changelog.randomseed '<row xmlns="http://docbook.org/ns/docbook"><entry>4.2.0</entry><entry>
