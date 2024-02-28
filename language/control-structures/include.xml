@@ -19,10 +19,10 @@
   <literal>include</literal> will finally check in the calling script's own
   directory and the current working directory before failing. The
   <literal>include</literal> construct will emit a
-  <link linkend="errorfunc.constants.errorlevels.e-warning">warning</link> if
+  <link linkend="constant.e-warning">warning</link> if
   it cannot find a file; this is different behavior from
   <function>require</function>, which will emit a
-  <link linkend="errorfunc.constants.errorlevels.e-error">fatal error</link>.
+  <link linkend="constant.e-error">fatal error</link>.
  </simpara>
  <simpara>
   If a path is defined — whether absolute (starting with a drive letter
