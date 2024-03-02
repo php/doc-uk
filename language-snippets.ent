@@ -1,130 +1,246 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 54cf5f9e3f1678ded292c9a9fe4b378e2d71fc26 Maintainer: mproshchuk Status: wip -->
-<!-- Keep 'em sorted -->
 
-<!ENTITY changelog.randomseed '<row xmlns="http://docbook.org/ns/docbook"><entry>4.2.0</entry><entry>
+<!ENTITY installation.enabled.disable
+'Це розширення початково увімкнено. Для вимкнення застосовується наступна опція
+під час компіляції: '>
+
+<!-- Not used in EN anymore -->
+<!ENTITY changelog.randomseed
+'<row xmlns="http://docbook.org/ns/docbook"><entry>4.2.0</entry><entry>
 Генератор випадкових чисел ініціалізується автоматично.</entry></row>'>
 
-<!ENTITY installation.enabled.disable 'Це розширення доступне як початкове.
-Воно може бути виключене за допомогою наступних опцій під час збірки: '>
+<!ENTITY warn.deprecated.feature-5-3-0.removed-6-0-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Цей функціонал
+<emphasis>ЗАСТАРІВ</emphasis> в PHP 5.3.0. Вкрай не рекомендується на нього
+покладатися.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.function-5-3-0.removed-6-0-0 '<warning
+xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ЗАСТАРІЛА</emphasis> в PHP 5.3.0. Вкрай не рекомендується на неї
+покладатися.</simpara></warning>'>
 
 <!-- Cautions -->
-<!ENTITY caution.cryptographically-insecure '<caution xmlns="http://docbook.org/ns/docbook"><para>
-Ця функція не генерує криптогафічні безпекові значення, та не повинна використовуватись
-для криптографічних цілей. Якщо вам потрібні криптографічні безпекові значення,
-натомість розгляньте можливість використання
-<function>random_int</function>, <function>random_bytes</function> або
-<function>openssl_random_pseudo_bytes</function>.</para></caution>'>
+<!ENTITY caution.cryptographically-insecure
+'<caution xmlns="http://docbook.org/ns/docbook">
+ <para>
+  Ця функція не генерує криптогафічно безпечні значення, тож <emphasis>не
+  повинна</emphasis> використовуватись для криптографічних цілей чи тих, що
+  вимагають використання непередбачуваних значень.
+ </para>
+ <para>
+  Якщо потрібна криптографічно безпечна випадковість, можна використати
+  <classname>Random\Randomizer</classname> разом з рушієм
+  <classname>Random\Engine\Secure</classname>. Для простих випадків є функції
+  <function>random_int</function> і <function>random_bytes</function>, які
+  забезпечують зручний і безпечний <acronym>API</acronym> до системного
+  <acronym>CSPRNG</acronym>.
+ </para>
+</caution>'>
+
+<!ENTITY caution.mt19937-tiny-seed
+'<caution xmlns="http://docbook.org/ns/docbook">
+ <para>
+  Оскільки рушій Mt19937 (“Mersenne Twister”) приймає тільки одне 32-бітне ціле
+  число як сід, кількість можливих випадкових послідовностей обмежена до лише
+  2<superscript>32</superscript> (тобто 4ʼ294ʼ967ʼ296), не зважаючи на
+  величезний період Mt19937 у 2<superscript>19937</superscript>-1.
+ </para>
+ <para>
+  Якщо покладатися на неявний чи явний випадковий сід, дуплікати зʼявляться
+  набагато швидше. Однакові сіди очікуються з імовірністю у 50&#37; менше ніж
+  через 80ʼ000 випадково згенерованих сідів, відповідно до парадоксу днів
+  народжень. Імовірність у 10&#37; настає після 30ʼ000 сідів, згенерованих
+  випадковим чином.
+ </para>
+ <para>
+  Через це Mt19937 непридатний для застосунків, де повторювані послідовності не
+  повинні виникати з більш ніж незначною ймовірністю. Якщо потрібне
+  відтворюване сідування, обидва рушії
+  <classname>Random\Engine\Xoshiro256StarStar</classname> і
+  <classname>Random\Engine\PcgOneseq128XslRr64</classname> підтримують набагато
+  довші сіди, які навряд випадково співпадуть. Якщо відтворюваність не потрібна,
+  то для цього є рушій <classname>Random\Engine\Secure</classname>, який надає
+  криптографічно безпечну випадковість.
+ </para>
+</caution>'>
 
 <!-- Notes -->
 
-<!ENTITY note.regex.deprecated '<note xmlns="http://docbook.org/ns/docbook"><para>Починаючи з версії PHP 5.3.0,
-розширення regex є застарілим із заміною на
-<link linkend="book.pcre">Розширення PCRE</link>. Виклик цієї функції
-призведе до видачі повідомлення рівня <constant>E_DEPRECATED</constant>. Прогляньте
-<link linkend="reference.pcre.pattern.posix">список відмінностей</link>,
-щоб полегшити конвертацію до PCRE.</para></note>'>
+<!ENTITY note.bin-safe
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція є бінарно
+безпечною.</simpara></note>'>
 
-<!ENTITY note.bin-safe '<note xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
-є бінарно-безпечною.</simpara></note>'>
+<!ENTITY note.clearstatcache
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Рузультати цієї функції
+кешуються. Докладніше: <function>clearstatcache</function>.</simpara></note>'>
 
-<!ENTITY note.clearstatcache '<note xmlns="http://docbook.org/ns/docbook"><simpara>
-Рузультати цієї функції кешуються. Прогляньте <function>clearstatcache</function> для
-більш детальної інформації.</simpara></note>'>
+<!ENTITY note.context-support
+'<para xmlns="http://docbook.org/ns/docbook"><type>resource</type>
+<link linkend="stream.contexts">контекст потоку</link>.</para>'>
 
-<!ENTITY note.context-support '<note xmlns="http://docbook.org/ns/docbook"><simpara>
-Підтримка контексту була додана починаючи з версії PHP 5.0.0. Опис <literal>contexts</literal> можна знайти
-в розділі <xref linkend="book.stream"/>.</simpara></note>'>
+<!ENTITY note.exec-bg
+'<note xmlns="http://docbook.org/ns/docbook"><para>Якщо програма запускається за
+допомогою цієї функції, то для продовження роботи у фоновому режимі її вивід
+повинен спрямовуватись у файл або інший вихідний потік. Недотримання цієї умови
+змусить PHP виконувати програму до її завершення.</para></note>'>
 
-<!ENTITY note.exec-bg '<note xmlns="http://docbook.org/ns/docbook"><para>Якщо
-програма запускається за допомогою цієї функції, то для продовження роботи у
-фоновому режимі, її вивід повинен спрямовуватись у файл або інший вихідний потік.
-Недотримання даної умови змусить PHP виконувати програму до її завершення.</para></note>'>
+<!ENTITY note.exec-bypass-shell
+'<note xmlns="http://docbook.org/ns/docbook"><para>У Windows
+<function>exec</function> спершу запуститься cmd.exe, щоб виконати команду. Для
+запуску зовнішньої програми без участі cmd.exe використовується
+<function>proc_open</function> з опцією
+<parameter>bypass_shell</parameter>.</para></note>'>
 
-<!ENTITY note.func-callback '<note xmlns="http://docbook.org/ns/docbook"><simpara>Замість назви функції,
-можна передавати масив, що містить посилання на об&apos;єкт та назву метода.</simpara></note>'>
+<!ENTITY note.extractto-windows
+'<note xmlns="http://docbook.org/ns/docbook"><para>Файлові системи Windows NTFS
+не підтримують використання деяких символів у назвах файлів, а саме
+<literal>&lt;|&gt;*?":</literal>. Не підтримуються також назви файлів з крапкою
+в кінці. На відміну від деяких інструментів розпакування, цей метод не замінює
+ці символи на підкреслення, а натомість не витягує такі файли.</para></note>'>
 
-<!ENTITY note.func-callback-exceptions '<note xmlns="http://docbook.org/ns/docbook"><para>Зворотні виклики,
-зареєстровані через такі функції як <function>call_user_func</function> та <function>call_user_func_array</function>
-не будуть викликатись, при наявності неспійманих винятків викинутих в попередніх зворотніх викликах.</para></note>'>
+<!ENTITY note.func-callback
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Замість назви функції,
+можна передавати масив, що містить посилання на обʼєкт та назву
+метода.</simpara></note>'>
 
-<!ENTITY note.funcbyref '<note xmlns="http://docbook.org/ns/docbook"><para>Якщо аргументи передаються через посилання,
-то будь-які зміни аргументів будуть відображені в значеннях, що повертаються цією функцією.</para></note>'>
+<!ENTITY note.func-callback-exceptions
+'<note xmlns="http://docbook.org/ns/docbook"><para>Зворотні виклики,
+зареєстровані через функції <function>call_user_func</function> і
+<function>call_user_func_array</function>, не будуть викликатись при наявності
+неспійманих винятків, викинутих в попередніх зворотніх викликах.</para></note>'>
 
-<!ENTITY note.funcnoparam '<note xmlns="http://docbook.org/ns/docbook"><para>Оскільки для визначення параметрів
-даної функції потрібен контекст виконання, її не можна передавати як параметр функції
-у версіях PHP, раніших ніж 5.3.0. Якщо функцію все ж треба передати, то спочатку її необхідно призначити змінній,
-яку вже потім можна передавати.</para></note>'>
+<!ENTITY note.funcbyref
+'<note xmlns="http://docbook.org/ns/docbook"><para>Якщо параметри передаються
+за посиланням, то будь-які зміни їхніх значень буде відображено у значеннях,
+які повертає ця функція. Починаючи з PHP 7, поточні значення також буде
+повернено, якщо параметри передано за значенням.</para></note>'>
 
-<!ENTITY note.line-endings '<note xmlns="http://docbook.org/ns/docbook"><simpara>Якщо у вас виникають проблеми
-з розпізнаванням закінчення рядків при читанні, чи створенні файлів на комьютері Macintosh, включення опції конфігурації
-<link linkend="ini.auto-detect-line-endings">auto_detect_line_endings</link>
-під час виконання, можливо вирішить дану проблему.</simpara></note>'>
+<!ENTITY note.funcnoparam
+'<note xmlns="http://docbook.org/ns/docbook"><para>Оскільки для визначення
+параметрів цієї функції потрібен контекст виконання, її не можна передавати як
+параметр функції у версіях PHP, раніших за 5.3.0. Якщо функцію все ж треба
+передати, то спочатку її необхідно призначити змінній, яку вже потім можна
+передавати.</para></note>'>
 
-<!ENTITY note.no-remote '<note xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція незастосовна
-для роботи з <link linkend="features.remote-files">віддаленими файлами</link>, оскільки
-файл повинен бути доступним через файлову систему сервера.</simpara></note>'>
+<!ENTITY note.func-named-params
+'<note xmlns="http://docbook.org/ns/docbook"><para>Починаючи з PHP 8.0.0,
+сімейство функцій func_*() стало більш прозорим щодо названих аргументів,
+обробляючи їх так, ніби всі передані позиційно, а пропущеним аргументам
+призначаються стандартні значення. Ця функція ігнорує набір невідомих названих
+варіативних аргументів. Набір невідомих названих аргументів доступний через
+варіативний параметр.</para></note>'>
 
-<!ENTITY note.not-bin-safe '<warning xmlns="http://docbook.org/ns/docbook"><simpara>
-Ця функція (покищо) не є бінарно-безпечною!</simpara></warning>'>
+<!ENTITY note.line-endings
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Якщо виникають проблеми з
+розпізнаванням закінчення рядків під час читання чи створення файлів на
+компʼютері Macintosh, може допомогти застосування директиви <link
+linkend="ini.auto-detect-line-endings">auto_detect_line_endings</link> під час
+виконання.</simpara></note>'>
 
-<!ENTITY note.no-key-association '<note xmlns="http://docbook.org/ns/docbook"><simpara>
-Ця функція призначає нові ключі для елементів в масиві (<parameter>array</parameter>).
-Вона видалятиме будь-які існуючі ключі, а не просто переупорядковує їх.</simpara></note>'>
+<!ENTITY note.no-remote
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція незастосовна
+для роботи з <link linkend="features.remote-files">віддаленими файлами</link>,
+оскільки файл повинен бути доступним через файлову систему
+сервера.</simpara></note>'>
 
-<!ENTITY note.no-windows '<note xmlns="http://docbook.org/ns/docbook"><simpara>
-Для Windows-платформ ця функція нереалізована.</simpara></note>'>
+<!ENTITY note.not-bin-safe
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara> Ця функція (поки-що)
+не є безпечною для двійкових даних!</simpara></warning>'>
 
-<!ENTITY note.no-windows.extension '<note xmlns="http://docbook.org/ns/docbook"><simpara>
-Для Windows-платформ це розширення недоступне.</simpara></note>'>
+<!ENTITY note.no-key-association
+'<note xmlns="http://docbook.org/ns/docbook"><simpara> Ця функція призначає нові
+ключі для елементів в масиві <parameter>array</parameter>. Вона видаляє
+будь-які наявні ключі, а не просто перевпорядковує їх.</simpara></note>'>
 
-<!ENTITY note.randomseed '<note xmlns="http://docbook.org/ns/docbook"><simpara>Починаючи з версії PHP 4.2.0,
-відсутня потреба ініціалізації генератора випадкових чисел функціями <function>srand</function> або
-<function>mt_srand</function>, оскільки зараз це відбувається автоматично.
+<!ENTITY note.no-windows
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Для Windows-платформ ця
+функція нереалізована.</simpara></note>'>
+
+<!ENTITY note.no-windows.extension
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Для Windows-платформ це
+розширення недоступне.</simpara></note>'>
+
+<!ENTITY note.no-zts
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція не доступна в
+інтерпретаторі PHP, зібраному з увімкненою ZTS (Безпека потоку Zend). Щоб
+перевірити, чи увімкнена ZTS, виконується команда <command>php -i</command> або
+перевіряється вбудована константа <constant>PHP_ZTS</constant>.</simpara></note>'>
+
+<!ENTITY note.randomseed
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Не потрібно
+ініціалізазувати генератор випадкових чисел функціями <function>srand</function>
+або <function>mt_srand</function>, оскільки це відбувається автоматично.
 </simpara></note>'>
 
-<!ENTITY note.registerglobals '<note xmlns="http://docbook.org/ns/docbook"><title>register_globals: важлива
-замітка</title><para>Починаючи з PHP 4.2.0, значення директиви PHP
-<link linkend="ini.register-globals">register_globals</link> початково встановлено в <emphasis>
-off</emphasis>. Співтовариство PHP рекомендує не покладатись на цю директиву,
-а використовувати інші варіанти, такі як &link.superglobals;.</para></note>'>
-
-<!ENTITY note.is-superglobal '<note xmlns="http://docbook.org/ns/docbook"><para>Це є "суперглобальна",
-або автоматична глобальна змінна. Тобто ця змінна доступна у всіх областях видимості скрипта,
-та її не потрібно оголошувати як <command>global $variable;</command> щоб отримати
+<!ENTITY note.is-superglobal
+'<note xmlns="http://docbook.org/ns/docbook"><para>Це "суперглобальна" або
+автоматична глобальна змінна. Тобто ця змінна доступна будь-де в скрипті та її
+не потрібно оголошувати як <command>global $variable;</command>, щоб отримати
 доступ до неї всередині функції чи метода.
 </para></note>'>
 
-<!ENTITY note.superglobals '<note xmlns="http://docbook.org/ns/docbook"><title>Superglobals: availability note
-</title><para>Superglobal arrays such as <varname>$_GET</varname>,
-<varname>$_POST</varname>, and <varname>$_SERVER</varname>, etc. are available
-as of PHP 4.1.0. For more information, read the manual section on
-&link.superglobals;</para></note>'>
-
-<!ENTITY note.uses-ob '<note xmlns="http://docbook.org/ns/docbook"><para>Коли передається параметр <parameter>return</parameter>,
-ця функція застосовує внутрішній буфер видачі, отже вона не може використовуватись всередині функції зворотнього виклику
+<!ENTITY note.uses-ob
+'<note xmlns="http://docbook.org/ns/docbook"><para>Якщо передано аргумент
+<parameter>return</parameter>, ця функція застосовує внутрішній буфер виводу,
+тож вона не може використовуватись всередині функції зворотнього виклику
 <function>ob_start</function>.</para></note>'>
 
-<!ENTITY note.filesystem-time-res '<note xmlns="http://docbook.org/ns/docbook"><para>Зауважте, що на різних
-операційних системах, обробка часу може відрізнятись.</para></note>'>
+<!ENTITY note.uses-ob-php70
+'<note xmlns="http://docbook.org/ns/docbook"><para> До PHP 7.1.0, якщо передано
+аргумент <parameter>return</parameter>, ця функція застосовує внутрішній буфер
+виводу, тож вона не може використовуватись всередині функції зворотнього виклику
+<function>ob_start</function>.</para></note>'>
 
-<!ENTITY note.uses-autoload '<note xmlns="http://docbook.org/ns/docbook">
-<para>Using this function will use any registered
-<link linkend="language.oop5.autoload">autoloaders</link> if the class is not already known.</para></note>'>
+<!ENTITY note.filesystem-time-res
+'<note xmlns="http://docbook.org/ns/docbook"><para>Варто зауважити, що точність
+часових міток у різних файлових систем може бути різна.</para></note>'>
 
-<!ENTITY note.network.header.sapi '<note xmlns="http://docbook.org/ns/docbook">
+<!ENTITY note.uses-autoload
+'<note xmlns="http://docbook.org/ns/docbook"><para>Ця функція буде
+використовувати будь-який зареєстрований <link
+linkend="language.oop5.autoload">автозавантажувач</link>, якщо клас ще не
+відомий.</para></note>'>
+
+<!ENTITY note.network.header.sapi
+'<note xmlns="http://docbook.org/ns/docbook">
    <para>
-    Headers will only be accessible and output when a SAPI that supports them
-    is in use.
+    Заголовки будуть доступні та виводитимуться, тільки якщо використовується
+    SAPI, який їх підтримує.
    </para>
   </note>
 '>
 
-<!ENTITY note.passwordhashing '<note xmlns="http://docbook.org/ns/docbook">
- <title>Secure password hashing</title>
+<!ENTITY note.sigchild
+'<note xmlns="http://docbook.org/ns/docbook">
  <para>
-  It is not recommended to use this function to secure passwords, due to the fast nature of this hashing algorithm. See
-  <link linkend="faq.passwords.fasthash">here</link> for details.
+  Якщо PHP скомпільовано з --enable-sigchild, значення, що повертається цією
+  функцією, не визначене.
+ </para>
+</note>
+'>
+
+<!ENTITY note.sort-unstable '<note xmlns="http://docbook.org/ns/docbook">
+ <para>
+  Якщо два члени порівняння однакові, їхній порядок зберігається. До PHP 8.0.0,
+  їхній відносний порядок у впорядкованому масиві був невизначеним.
+ </para>
+</note>
+'>
+
+<!ENTITY note.reset-index
+'<note xmlns="http://docbook.org/ns/docbook">
+ <para>
+    Скидає внутрішній вказівник масиву на перший елемент.
+ </para>
+</note>
+'>
+
+<!ENTITY note.resource-migration-8.0-dead-function
+'<note xmlns="http://docbook.org/ns/docbook">
+ <para>
+  Ця функція ні на що не впливає. До PHP 8.0.0, вона використовувалася для
+  закриття ресурсу.
  </para>
 </note>
 '>
@@ -173,16 +289,6 @@ This extension should be used at your own risk.</simpara></warning>'>
 xmlns="http://docbook.org/ns/docbook"><simpara>This feature has been
 <emphasis>DEPRECATED</emphasis> as of PHP 5.3.0. Relying on this feature
 is highly discouraged.</simpara></warning>'>
-
-<!ENTITY warn.deprecated.feature-5-3-0.removed-6-0-0 '<warning
-xmlns="http://docbook.org/ns/docbook"><simpara>This feature has been
-<emphasis>DEPRECATED</emphasis> as of PHP 5.3.0. Relying on this feature is
-highly discouraged.</simpara></warning>'>
-
-<!ENTITY warn.deprecated.function-5-3-0.removed-6-0-0 '<warning
-xmlns="http://docbook.org/ns/docbook"><simpara>This function has been
-<emphasis>DEPRECATED</emphasis> as of PHP 5.3.0. Relying on this feature is
-highly discouraged.</simpara></warning>'>
 
 <!ENTITY warn.deprecated.feature-5-3-0.removed-5-4-0 '<warning
 xmlns="http://docbook.org/ns/docbook"><simpara>This feature has been
