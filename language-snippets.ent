@@ -24,7 +24,7 @@ xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
 <!ENTITY caution.cryptographically-insecure
 '<caution xmlns="http://docbook.org/ns/docbook">
  <para>
-  Ця функція не генерує криптогафічно безпечні значення, тож <emphasis>не
+  Ця функція не генерує криптографічно безпечні значення, тож <emphasis>не
   повинна</emphasis> використовуватись для криптографічних цілей чи тих, що
   вимагають використання непередбачуваних значень.
  </para>
@@ -247,192 +247,651 @@ linkend="language.oop5.autoload">автозавантажувач</link>, якщ
 
 <!-- Tips -->
 
-<!ENTITY tip.fopen-wrapper '<tip xmlns="http://docbook.org/ns/docbook"><simpara>A URL can be used as a
-filename with this function if the <link linkend="ini.allow-url-fopen"
->fopen wrappers</link> have been enabled.
-See <function>fopen</function> for more details on how to specify the
-filename. See the <xref linkend="wrappers"/> for links to information
-about what abilities the various wrappers have, notes on their usage,
-and information on any predefined variables they may
-provide.</simpara></tip>'>
+<!ENTITY tip.fopen-wrapper
+'<tip xmlns="http://docbook.org/ns/docbook"><simpara>URL як назву файлу можна
+використовувати з цією функцією, якщо ввімкнені <link
+linkend="ini.allow-url-fopen">обгортки fopen</link>. Докладніше про те, як
+вказати назву файлу: <function>fopen</function>. На сторінці <xref
+linkend="wrappers"/> є посилання на інформацію про можливості різних обгорток,
+примітки щодо їхнього використання, інформацію про будь-які попередньо визначені
+цими обгортками змінні.</simpara></tip>'>
 
-<!ENTITY tip.fopen-wrapper.stat '<tip xmlns="http://docbook.org/ns/docbook"><simpara>As of PHP 5.0.0, this function
-can also be used with <emphasis>some</emphasis> URL wrappers.  Refer to
-<xref linkend="wrappers"/> to determine which wrappers support
-<function>stat</function> family of functionality.</simpara></tip>'>
+<!ENTITY tip.fopen-wrapper.stat
+'<tip xmlns="http://docbook.org/ns/docbook"><simpara>Починаючи з PHP 5.0.0, ця
+функція також може бути використана з <emphasis>деякими</emphasis>
+URL-обгортками. На сторінці <xref linkend="wrappers"/> вказано, які обгортки
+підтримують сімейство функцій <function>stat</function>.</simpara></tip>'>
 
-<!ENTITY tip.ob-capture '<tip xmlns="http://docbook.org/ns/docbook"><simpara>Як і для будь-чого, що виводить
-свій результат прямо в браузер, можна використовувати <link
-linkend="book.outcontrol">функції контролю виводу</link>, для перехоплення виводу
+<!ENTITY tip.ob-capture
+'<tip xmlns="http://docbook.org/ns/docbook"><simpara>Як і для будь-чого, що
+виводить свій результат прямо в браузер, можна використовувати <link
+linkend="book.outcontrol">функції контролю виводу</link> для перехоплення виводу
 даних цією функцією, та збереження їх, наприклад, у вигляді рядка
 (<type>string</type>).</simpara></tip>'>
 
-<!ENTITY tip.userlandnaming '<tip xmlns="http://docbook.org/ns/docbook"><simpara>Прогляньте також
-<xref linkend="userlandnaming" />.</simpara></tip>'>
-
+<!ENTITY tip.userlandnaming
+'<tip xmlns="http://docbook.org/ns/docbook"><simpara>Див. <xref
+linkend="userlandnaming" />.</simpara></tip>'>
 
 <!-- Warnings -->
 
-<!ENTITY warn.escapeshell '<warning xmlns="http://docbook.org/ns/docbook"><para>When allowing user-supplied data to be
-passed to this function, use
-<function>escapeshellarg</function> or <function>escapeshellcmd</function>
-to ensure that users cannot trick the system into executing arbitrary
-commands.</para></warning>'>
+<!ENTITY warn.escapeshell
+'<warning xmlns="http://docbook.org/ns/docbook"><para>Варто застосувати
+<function>escapeshellarg</function> або <function>escapeshellcmd</function> до
+даних, введених користувачами, щоб гарантувати, що користувачі не зможуть
+обманом змусити систему виконати довільні команди.</para></warning>'>
 
-<!ENTITY warn.experimental '<warning xmlns="http://docbook.org/ns/docbook"><simpara>This extension is
-<emphasis>EXPERIMENTAL</emphasis>. The behaviour of this extension including
-the names of its functions and any other documentation surrounding this
-extension may change without notice in a future release of PHP.
-This extension should be used at your own risk.</simpara></warning>'>
+<!ENTITY warn.experimental
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Це розширення —
+<emphasis>ЕКСПЕРИМЕНТАЛЬНЕ</emphasis>. Його поведінка, назви функцій та
+документація можуть бути змінені без попередження в майбутніх випусках PHP.
+Використання цього розширення є ризикованим для розробника.</simpara></warning>'>
 
-<!ENTITY warn.deprecated.feature-5-3-0 '<warning
-xmlns="http://docbook.org/ns/docbook"><simpara>This feature has been
-<emphasis>DEPRECATED</emphasis> as of PHP 5.3.0. Relying on this feature
-is highly discouraged.</simpara></warning>'>
+<!ENTITY warn.deprecated.feature-5-3-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Цей функціонал
+<emphasis>ЗАСТАРІВ</emphasis>, починаючи з PHP 5.3.0. Вкрай не рекомендується на
+нього покладатися.</simpara></warning>'>
 
-<!ENTITY warn.deprecated.feature-5-3-0.removed-5-4-0 '<warning
-xmlns="http://docbook.org/ns/docbook"><simpara>This feature has been
-<emphasis>DEPRECATED</emphasis> as of PHP 5.3.0 and <emphasis>REMOVED</emphasis>
-as of PHP 5.4.0.</simpara></warning>'>
+<!ENTITY warn.deprecated.feature-5-3-0.removed-5-4-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Цей функціонал
+<emphasis>ЗАСТАРІВ</emphasis>, починаючи з PHP 5.3.0, та
+<emphasis>ВИЛУЧЕНИЙ</emphasis> в PHP 5.4.0.</simpara></warning>'>
 
-<!ENTITY warn.deprecated.function-5-3-0.removed-5-4-0 '<warning
-xmlns="http://docbook.org/ns/docbook"><simpara>This function has been
-<emphasis>DEPRECATED</emphasis> as of PHP 5.3.0 and <emphasis>REMOVED</emphasis> as of PHP 5.4.0.</simpara></warning>'>
+<!ENTITY warn.deprecated.function-5-3-0.removed-5-4-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 5.3.0, та
+<emphasis>ВИЛУЧЕНА</emphasis> в PHP 5.4.0.</simpara></warning>'>
 
-<!ENTITY warn.deprecated.feature-5-5-0 '<warning
-xmlns="http://docbook.org/ns/docbook"><simpara>This feature has been
-<emphasis>DEPRECATED</emphasis> as of PHP 5.5.0. Relying on this feature
-is highly discouraged.</simpara></warning>'>
+<!ENTITY warn.deprecated.feature-5-5-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Цей функціонал
+<emphasis>ЗАСТАРІВ</emphasis>, починаючи з PHP 5.5.0. Вкрай не рекомендується на
+нього покладатися.</simpara></warning>'>
 
-<!ENTITY warn.deprecated.feature-5-6-0 '<warning
-xmlns="http://docbook.org/ns/docbook"><simpara>Ця можливість стала
-<emphasis>DEPRECATED</emphasis> (тобто застарілою) починаючи з PHP 5.6.0. Розраховувати
-на цю можливість настійно не рекомендується.</simpara></warning>'>
+<!ENTITY warn.deprecated.feature-5-6-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Цей функціонал
+<emphasis>ЗАСТАРІВ</emphasis>, починаючи з PHP 5.6.0. Вкрай не рекомендується на
+нього покладатися.</simpara></warning>'>
 
-<!ENTITY removed.php.future 'This deprecated feature <emphasis xmlns="http://docbook.org/ns/docbook">will</emphasis>
-certainly be <emphasis xmlns="http://docbook.org/ns/docbook">removed</emphasis> in the future.'>
+<!ENTITY warn.deprecated.feature-7-0-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Цей функціонал
+<emphasis>ЗАСТАРІВ</emphasis>, починаючи з PHP 7.0.0. Вкрай не рекомендується на
+нього покладатися.</simpara></warning>'>
 
-<!ENTITY warn.deprecated.function.removed-5-3-0 '<warning
-xmlns="http://docbook.org/ns/docbook"><simpara>This function has been
-<emphasis>DEPRECATED</emphasis> and <emphasis>REMOVED</emphasis> as of PHP 5.3.0.</simpara></warning>'>
+<!ENTITY warn.deprecated.feature-7-1-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Цей функціонал
+<emphasis>ЗАСТАРІВ</emphasis>, починаючи з PHP 7.1.0. Вкрай не рекомендується на
+нього покладатися.</simpara></warning>'>
 
-<!ENTITY warn.deprecated.function.removed-5-5-0 '<warning
-xmlns="http://docbook.org/ns/docbook"><simpara>This function has been
-<emphasis>DEPRECATED</emphasis> and <emphasis>REMOVED</emphasis> as of PHP 5.5.0.</simpara></warning>'>
+<!ENTITY warn.deprecated.function-7-1-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 7.1.0. Вкрай не рекомендується
+на неї покладатися.</simpara></warning>'>
 
-<!ENTITY warn.deprecated.alias-5-3-0 '<warning xmlns="http://docbook.org/ns/docbook">
-<simpara>This alias has been <emphasis>DEPRECATED</emphasis> as of PHP 5.3.0.  Relying
-on this alias is highly discouraged.</simpara></warning>'>
+<!ENTITY warn.deprecated.function-7-0-0.removed-8-0-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 7.0.0, та
+<emphasis>ВИЛУЧЕНА</emphasis> в PHP 8.0.0. Вкрай не рекомендується на неї
+покладатися.</simpara></warning>'>
 
-<!ENTITY warn.deprecated.func-5-4-0 '<warning xmlns="http://docbook.org/ns/docbook">
-<simpara>This function has been <emphasis>DEPRECATED</emphasis> as of PHP 5.4.0.  Relying
-on this function is highly discouraged.</simpara></warning>'>
+<!ENTITY warn.deprecated.function-7-1-0.removed-7-2-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 7.1.0, та
+<emphasis>ВИЛУЧЕНА</emphasis> в PHP 7.2.0. Вкрай не рекомендується на неї
+покладатися.</simpara></warning>'>
 
-<!ENTITY warn.deprecated.alias-5-4-0 '<warning xmlns="http://docbook.org/ns/docbook">
-<simpara>This alias has been <emphasis>DEPRECATED</emphasis> as of PHP 5.4.0.  Relying
-on this alias is highly discouraged.</simpara></warning>'>
+<!ENTITY warn.deprecated.feature-7-2-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Цей функціонал
+<emphasis>ЗАСТАРІВ</emphasis>, починаючи з PHP 7.2.0. Вкрай не рекомендується на
+нього покладатися.</simpara></warning>'>
 
-<!ENTITY warn.deprecated.func-5-5-0 '<warning xmlns="http://docbook.org/ns/docbook">
-<simpara>This function has been <emphasis>DEPRECATED</emphasis> as of PHP 5.5.0.  Relying
-on this function is highly discouraged.</simpara></warning>'>
+<!ENTITY warn.deprecated.feature-7-2-0.removed-8-0-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Цей функціонал
+<emphasis>ЗАСТАРІВ</emphasis>, починаючи з PHP 7.2.0, та
+<emphasis>ВИЛУЧЕНИЙ</emphasis> в PHP 8.0.0. Вкрай не рекомендується на нього
+покладатися.</simpara></warning>'>
 
-<!ENTITY warn.experimental.func '<warning xmlns="http://docbook.org/ns/docbook"><simpara>This function is
-<emphasis>EXPERIMENTAL</emphasis>. The behaviour of this function, its name, and
-surrounding documentation may change without notice in a future release of PHP.
-This function should be used at your own risk.
+<!ENTITY warn.deprecated.function-7-2-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 7.2.0. Вкрай не рекомендується
+на неї покладатися.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.function-7-2-0.removed-8-0-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 7.2.0, та
+<emphasis>ВИЛУЧЕНА</emphasis> в PHP 8.0.0. Вкрай не рекомендується на неї
+покладатися.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.feature-7-3-0 
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Цей функціонал
+<emphasis>ЗАСТАРІВ</emphasis>, починаючи з PHP 7.3.0. Вкрай не рекомендується на
+нього покладатися.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.function-7-3-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 7.3.0. Вкрай не рекомендується
+на неї покладатися.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.function-7-3-0.removed-8-0-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 7.3.0, та
+<emphasis>ВИЛУЧЕНА</emphasis> в PHP 8.0.0. Вкрай не рекомендується на неї
+покладатися.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.feature-7-4-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Цей функціонал
+<emphasis>ЗАСТАРІВ</emphasis>, починаючи з PHP 7.4.0. Вкрай не рекомендується на
+нього покладатися.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.function-7-4-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 7.4.0. Вкрай не рекомендується
+на неї покладатися.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.function-7-4-0.removed-8-0-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 7.4.0, та
+<emphasis>ВИЛУЧЕНА</emphasis> в PHP 8.0.0. Вкрай не рекомендується на неї
+покладатися.</simpara></warning>'>
+
+<!ENTITY warn.feature.removed-8-0-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Цей функціонал
+<emphasis>ВИЛУЧЕНИЙ</emphasis> в PHP 8.0.0.</simpara>
+</warning>'>
+
+<!ENTITY warn.deprecated.function-8-0-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 8.0.0. Вкрай не рекомендується
+на неї покладатися.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.function-8-1-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 8.1.0. Вкрай не рекомендується
+на неї покладатися.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.function-8-2-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 8.2.0. Вкрай не рекомендується
+на неї покладатися.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.feature-8-3-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Цей функціонал
+<emphasis>ЗАСТАРІВ</emphasis>, починаючи з PHP 8.3.0. Вкрай не рекомендується на
+нього покладатися.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.function-8-3-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 8.3.0. Вкрай не рекомендується
+на неї покладатися.</simpara></warning>'>
+
+<!ENTITY removed.php.future
+'Цей застарілий функціонал буде <emphasis
+xmlns="http://docbook.org/ns/docbook">обов'язково</emphasis>
+<emphasis xmlns="http://docbook.org/ns/docbook">видалено</emphasis> у
+майбутньому.'>
+
+<!ENTITY warn.deprecated.function.removed-5-3-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ЗАСТАРІЛА</emphasis> та <emphasis>ВИЛУЧЕНА</emphasis> в PHP
+5.3.0.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.function.removed-5-5-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ЗАСТАРІЛА</emphasis> та <emphasis>ВИЛУЧЕНА</emphasis> в PHP
+5.5.0.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.alias-5-3-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Цей псевдонім
+<emphasis>ЗАСТАРІВ</emphasis>, починаючи з PHP 5.3.0. Вкрай не рекомендується на
+нього покладатися.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.func-5-4-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 5.4.0. Вкрай не рекомендується
+на неї покладатися.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.alias-5-4-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Цей псевдонім
+<emphasis>ЗАСТАРІВ</emphasis>, починаючи з PHP 5.4.0. Вкрай не рекомендується на
+нього покладатися.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.func-5-5-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 5.5.0. Вкрай не рекомендується
+на неї покладатися.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.feature-5-5-0.removed-7-0-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Цей функціонал
+<emphasis>ЗАСТАРІВ</emphasis>, починаючи з PHP 5.5.0, та
+<emphasis>ВИЛУЧЕНИЙ</emphasis> в PHP 7.0.0.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.function-5-5-0.removed-7-0-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 5.5.0, та
+<emphasis>ВИЛУЧЕНА</emphasis> в PHP 7.0.0.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.function-4-1-0.removed-7-0-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 4.1.0, та
+<emphasis>ВИЛУЧЕНА</emphasis> в PHP 7.0.0.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.function-5-3-0.removed-7-0-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 5.3.0, та
+<emphasis>ВИЛУЧЕНА</emphasis> в PHP 7.0.0.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.alias-5-3-0.removed-7-0-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Цей псевдонім
+<emphasis>ЗАСТАРІВ</emphasis>, починаючи з PHP 5.3.0, та
+<emphasis>ВИЛУЧЕНИЙ</emphasis> в PHP 7.0.0.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.feature-5-6-0.removed-7-0-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Цей функціонал
+<emphasis>ЗАСТАРІВ</emphasis>, починаючи з PHP 5.6.0, та
+<emphasis>ВИЛУЧЕНИЙ</emphasis> в PHP 7.0.0.</simpara></warning>'>
+
+<!ENTITY warn.removed.function-7-0-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ВИЛУЧЕНА</emphasis> в PHP 7.0.0.</simpara></warning>'>
+
+<!ENTITY warn.removed.function-7-4-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ВИЛУЧЕНА</emphasis> в PHP 7.4.0.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.alias-7-2-0.removed-8-0-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Цей псевдонім
+<emphasis>ЗАСТАРІВ</emphasis>, починаючи з PHP 7.2.0, та
+<emphasis>ВИЛУЧЕНИЙ</emphasis> в PHP 8.0.0.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.alias-7-4-0.removed-8-0-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Цей псевдонім
+<emphasis>ЗАСТАРІВ</emphasis>, починаючи з PHP 7.4.0, та
+<emphasis>ВИЛУЧЕНИЙ</emphasis> в PHP 8.0.0.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.alias-8-0-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Цей псевдонім
+<emphasis>ЗАСТАРІВ</emphasis>, починаючи з PHP 8.0.0.</simpara></warning>'>
+
+<!ENTITY warn.removed.alias-8-0-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Цей псевдонім
+<emphasis>ВИЛУЧЕНИЙ</emphasis> в PHP 8.0.0.</simpara></warning>'>
+
+<!ENTITY warn.experimental.func
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція —
+<emphasis>ЕКСПЕРИМЕНТАЛЬНА</emphasis>. Її поведінка, назва та документація
+можуть бути змінені без попередження в майбутніх випусках PHP. Використання цієї
+функції є ризикованим для розробника.</simpara></warning>'>
+
+<!ENTITY warn.imaprecodeyaz
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Розширення <link
+linkend="book.imap">IMAP</link>, <link linkend="book.recode">recode</link> та
+<link linkend="book.yaz">YAZ</link> не можна використовувати разом тому, що вони
+використовують однакові внутнішні символи. Примітка: Версія Yaz 2.0 та новіші
+цієї проблеми не мають.</simpara></warning>'>
+
+<!ENTITY warn.install.cgi
+'<warning xmlns="http://docbook.org/ns/docbook"><para>Використання сервера в
+CGI-режимі робить його вразливим до деяких атак. В розділі <link
+linkend="security.cgi-bin">Безпека CGI</link> описано, як захиститися від
+них.</para></warning>'>
+
+<!ENTITY warn.passwordhashing
+'<warning xmlns="http://docbook.org/ns/docbook">
+ <para>
+  Не рекомендовано використовувати цю функцію для захисту паролів через її
+  швидкий алгоритм гешування. Докладніше: <link
+  linkend="faq.passwords.fasthash">ЧаПи щодо гешування паролів</link>.
+ </para>
+</warning>
+'>
+
+<!ENTITY warn.ssl-non-standard
+'<warning xmlns="http://docbook.org/ns/docbook"><para>Якщо використовувати SSL,
+Microsoft IIS порушуватиме протокол, закриваючи зʼєднання без надсилання
+індикатора <literal>close_notify</literal>. Коли буде досягнуто кінця даних, PHP
+повідомлятиме: "SSL: Fatal Protocol Error". Щоб обійти це, значення <link
+linkend="ini.error-reporting">error_reporting</link> має бути знижене до рівня,
+який не включає попереджень. PHP може виявити несправне програмне забезпечення
+сервера IIS та приховати попередження, якщо відкривати потік за допомогою
+обгортки <literal>https://</literal>. Якщо розробник використовує
+<function>fsockopen</function> для створення сокета <literal>ssl://</literal>,
+то він сам має виявляти та приховувати це попередження.</para></warning>'>
+
+<!ENTITY warn.undocumented.class
+'<warning xmlns="http://docbook.org/ns/docbook">
+ <simpara>
+  Наразі цей клас не документований. Доступний лише список його властивостей і
+  методів.
+ </simpara>
+</warning>
+'>
+
+<!ENTITY warn.undocumented.func
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Наразі ця функція не
+документована. Доступний лише список її параметрів.
 </simpara></warning>'>
 
-<!ENTITY warn.imaprecodeyaz '<warning xmlns="http://docbook.org/ns/docbook"><simpara>The <link
-linkend="book.imap">IMAP</link>, <link linkend="book.recode">recode</link>,
-<link linkend="book.yaz">YAZ</link> and <link linkend="book.cyrus">Cyrus</link>
-extensions cannot be used in conjuction, because they
-share the same internal symbols. Note: Yaz 2.0 and above does not suffer from this problem.</simpara></warning>'>
+<!-- Deprecation and removal warnings designed for use with a list of
+     alternatives. See en/reference/regex/functions/ereg.xml and
+     en/reference/regex/reference.xml for examples of these in action. -->
 
-<!ENTITY warn.install.cgi '<warning xmlns="http://docbook.org/ns/docbook"><para>Використання сервера
-в CGI-режимі, відкриває декілька можливих вразливостей. Будь-ласка, прочитайте наш розділ
-<link linkend="security.cgi-bin">Безпека CGI</link>, щоб дізнатись як захистити
-себе від таких атак.</para></warning>'>
+<!ENTITY warn.deprecated.function.4-1-0.removed.7-0-0.alternatives
+'<para xmlns="http://docbook.org/ns/docbook">
+ Ця функція <emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 4.1.0, та
+ <emphasis>ВИЛУЧЕНА</emphasis> в PHP 7.0.0.
+</para>
+<para xmlns="http://docbook.org/ns/docbook">
+ Її можна замінити на:
+</para>
+'>
 
-<!ENTITY note.magicquotes.gpc '<note xmlns="http://docbook.org/ns/docbook"><title>directive note: magic_quotes_gpc
-</title><para>The <link linkend="ini.magic-quotes-gpc">magic_quotes_gpc</link>
-directive defaults to <literal>on</literal>. It essentially runs
-<function>addslashes</function> on all GET, POST, and COOKIE data.
-<function>stripslashes</function> may be used to remove them.</para></note>'>
+<!ENTITY warn.deprecated.feature.5-3-0.removed.7-0-0.alternatives
+'<para xmlns="http://docbook.org/ns/docbook">
+ Цей функціонал <emphasis>ЗАСТАРІВ</emphasis>, починаючи з PHP 5.3.0, та
+ <emphasis>ВИЛУЧЕНИЙ</emphasis> в PHP 7.0.0.
+</para>
+<para xmlns="http://docbook.org/ns/docbook">
+ Його можна замінити на:
+</para>
+'>
 
-<!ENTITY warn.no-win32-fopen-wrapper '<warning xmlns="http://docbook.org/ns/docbook"><para>Windows versions of PHP
-prior to PHP 4.3.0 do not support access of remote files via this function,
-even if <link linkend="ini.allow-url-fopen">allow_url_fopen</link> is enabled.
-</para></warning>'>
+<!ENTITY warn.deprecated.function.5-3-0.removed.7-0-0.alternatives
+'<para xmlns="http://docbook.org/ns/docbook">
+ Ця функція <emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 5.3.0, та
+ <emphasis>ВИЛУЧЕНА</emphasis> в PHP 7.0.0.
+</para>
+<para xmlns="http://docbook.org/ns/docbook">
+ Її можна замінити на:
+</para>
+'>
 
-<!ENTITY warn.ssl-non-standard '<warning xmlns="http://docbook.org/ns/docbook"><para>When using SSL, Microsoft IIS
-will violate the protocol by closing the connection without sending a
-<literal>close_notify</literal> indicator. PHP will report this as "SSL: Fatal
-Protocol Error" when you reach the end of the data. To work around this, the
-value of <link linkend="ini.error-reporting">error_reporting</link> should be
-lowered to a level that does not include warnings.
-PHP 4.3.7 and higher can detect buggy IIS server software when you open
-the stream using the <literal>https://</literal> wrapper and will suppress the
-warning. When using <function>fsockopen</function> to create an
-<literal>ssl://</literal> socket, the developer is responsible for detecting
-and suppressing this warning.</para></warning>'>
+<!ENTITY warn.deprecated.function.5-5-0.removed.7-0-0.alternatives
+'<para xmlns="http://docbook.org/ns/docbook">
+ Ця функція <emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 5.5.0, та
+ <emphasis>ВИЛУЧЕНА</emphasis> в PHP 7.0.0.
+</para>
+<para xmlns="http://docbook.org/ns/docbook">
+ Її можна замінити на:
+</para>
+'>
 
-<!ENTITY warn.undocumented.func '<warning xmlns="http://docbook.org/ns/docbook"><simpara>This function is
-currently not documented; only its argument list is available.
-</simpara></warning>'>
+<!ENTITY warn.removed.feature.7-0-0.alternatives
+'<para xmlns="http://docbook.org/ns/docbook">
+ Цей функціонал <emphasis>ВИЛУЧЕНИЙ</emphasis> в PHP 7.0.0.
+</para>
+<para xmlns="http://docbook.org/ns/docbook">
+ Його можна замінити на:
+</para>
+'>
 
+<!ENTITY warn.removed.function.7-0-0.alternatives
+'<para xmlns="http://docbook.org/ns/docbook">
+ Ця функція <emphasis>ВИЛУЧЕНА</emphasis> в PHP 7.0.0.
+</para>
+<para xmlns="http://docbook.org/ns/docbook">
+ Її можна замінити на:
+</para>
+'>
+
+<!ENTITY warn.deprecated.feature.7-1-0.removed.7-2-0.alternatives
+'<para xmlns="http://docbook.org/ns/docbook">
+ Цей функціонал <emphasis>ЗАСТАРІВ</emphasis>, починаючи з PHP 7.1.0, та
+ <emphasis>ВИЛУЧЕНИЙ</emphasis> в PHP 7.2.0.
+</para>
+<para xmlns="http://docbook.org/ns/docbook">
+ Його можна замінити на:
+</para>
+'>
+
+<!ENTITY warn.deprecated.function.7-1-0.removed.7-2-0.alternatives
+'<para xmlns="http://docbook.org/ns/docbook">
+ Ця функція <emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 7.1.0, та
+ <emphasis>ВИЛУЧЕНА</emphasis> в PHP 7.2.0.
+</para>
+<para xmlns="http://docbook.org/ns/docbook">
+ Її можна замінити на:
+</para>
+'>
+
+<!ENTITY warn.deprecated.function-8-1-0.alternatives
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 8.1.0. Вкрай не рекомендується
+на неї покладатися.</simpara></warning>
+<para xmlns="http://docbook.org/ns/docbook">
+ Її можна замінити на:
+</para>
+'>
 
 <!-- Misc -->
 
 <!ENTITY version.exists.asof 'Існує, починаючи з PHP '>
 
-<!ENTITY version.trunk.after.53 '<emphasis xmlns="http://docbook.org/ns/docbook">Ця зміна
-існує в <link linkend="about.phpversions">версії PHP, що розробляється</link>, та ймовірно
-буде впроваджена починаючи з 5.3.</emphasis>'>
-
 <!ENTITY version.trunk.changelog 'В майбутньому'>
 
-<!ENTITY no.function.parameters '<para xmlns="http://docbook.org/ns/docbook">В цієї функції немає параметрів.</para>'>
+<!ENTITY no.function.parameters
+'<para xmlns="http://docbook.org/ns/docbook">У цієї функції немає
+параметрів.</para>'>
 
-<!ENTITY example.outputs '<para xmlns="http://docbook.org/ns/docbook">Наведений вище приклад виведе:</para>'>
+<!ENTITY example.outputs
+'<para xmlns="http://docbook.org/ns/docbook">Поданий вище приклад
+виведе:</para>'>
 
-<!ENTITY example.outputs.53 '<para xmlns="http://docbook.org/ns/docbook">Наведений вище приклад в PHP 5.3 виведе:</para>'>
+<!ENTITY example.outputs.5
+'<para xmlns="http://docbook.org/ns/docbook">В PHP 5 поданий вище приклад
+виведе:</para>'>
 
-<!ENTITY example.outputs.54 '<para xmlns="http://docbook.org/ns/docbook">Наведений вище приклад в PHP 5.4 виведе:</para>'>
+<!ENTITY example.outputs.53
+'<para xmlns="http://docbook.org/ns/docbook">В PHP 5.3 поданий вище приклад
+виведе:</para>'>
 
-<!ENTITY example.outputs.55 '<para xmlns="http://docbook.org/ns/docbook">Наведений вище приклад в PHP 5.5 виведе:</para>'>
+<!ENTITY example.outputs.54
+'<para xmlns="http://docbook.org/ns/docbook">В PHP 5.4 поданий вище приклад
+виведе:</para>'>
 
-<!ENTITY example.outputs.56 '<para xmlns="http://docbook.org/ns/docbook">Наведений вище приклад в PHP 5.6 виведе:</para>'>
+<!ENTITY example.outputs.55
+'<para xmlns="http://docbook.org/ns/docbook">В PHP 5.5 поданий вище приклад 
+виведе:</para>'>
 
-<!ENTITY example.outputs.32bit '<para xmlns="http://docbook.org/ns/docbook">Наведений вище приклад на 32-бітних машинах виведе:</para>'>
+<!ENTITY example.outputs.56
+'<para xmlns="http://docbook.org/ns/docbook">В PHP 5.6 поданий вище приклад
+виведе:</para>'>
 
-<!ENTITY example.outputs.64bit '<para xmlns="http://docbook.org/ns/docbook">Наведений вище приклад на 64-бітних машинах виведе:</para>'>
+<!ENTITY example.outputs.7
+'<para xmlns="http://docbook.org/ns/docbook">В PHP 7 поданий вище приклад
+виведе:</para>'>
 
-<!ENTITY example.outputs.similar '<para xmlns="http://docbook.org/ns/docbook">Наведений вище приклад виведе
-щось подібне до:</para>'>
+<!ENTITY example.outputs.70
+'<para xmlns="http://docbook.org/ns/docbook">В PHP 7.0 поданий вище приклад
+виведе:</para>'>
 
-<!ENTITY examples.outputs '<para xmlns="http://docbook.org/ns/docbook">Наведені вище приклади виведуть:</para>'>
+<!ENTITY example.outputs.71
+'<para xmlns="http://docbook.org/ns/docbook">В PHP 7.1 поданий вище приклад
+виведе:</para>'>
 
-<!ENTITY examples.outputs.32bit '<para xmlns="http://docbook.org/ns/docbook">Наведені вище приклади на 32-бітних машинах виведуть:</para>'>
+<!ENTITY example.outputs.72
+'<para xmlns="http://docbook.org/ns/docbook">В PHP 7.2 поданий вище приклад
+виведе:</para>'>
 
-<!ENTITY examples.outputs.64bit '<para xmlns="http://docbook.org/ns/docbook">Наведені вище приклади на 64-бітних машинах виведуть:</para>'>
+<!ENTITY example.outputs.73
+'<para xmlns="http://docbook.org/ns/docbook">В PHP 7.3 поданий вище приклад
+виведе:</para>'>
 
-<!ENTITY examples.outputs.similar '<para xmlns="http://docbook.org/ns/docbook">Наведені вище приклади виведуть
-щось подібне до:</para>'>
+<!ENTITY example.outputs.8
+'<para xmlns="http://docbook.org/ns/docbook">В PHP 8 поданий вище приклад
+виведе:</para>'>
 
-<!ENTITY array.resetspointer '<note xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція буде
-<function>reset</function> (скидати) вкізівник <type>array</type> вхідного масива після
-використання.</simpara></note>'>
+<!ENTITY example.outputs.8.similar
+'<para xmlns="http://docbook.org/ns/docbook">В PHP 8 поданий вище приклад
+виведе щось схоже на:</para>'>
 
-<!ENTITY seealso.array.sorting '<link xmlns="http://docbook.org/ns/docbook" linkend="array.sorting">Порівняння сортування функцій масива</link>'>
+<!ENTITY example.outputs.80
+'<para xmlns="http://docbook.org/ns/docbook">В PHP 8.0 поданий вище приклад
+виведе:</para>'>
 
-<!ENTITY seealso.callback 'інформація про тип <link xmlns="http://docbook.org/ns/docbook" linkend="language.types.callback">зворотній виклик</link> (callback)'>
+<!ENTITY example.outputs.81
+'<para xmlns="http://docbook.org/ns/docbook">В PHP 8.1 поданий вище приклад
+виведе:</para>'>
 
-<!ENTITY avail.register-long-arrays 'Починаючи з PHP 5.0.0, довгі
-<link xmlns="http://docbook.org/ns/docbook" linkend="language.variables.predefined">предвизначені змінні</link>
-масивів PHP можна відключити директивою
-<link xmlns="http://docbook.org/ns/docbook" linkend="ini.register-long-arrays">register_long_arrays</link>.'>
+<!ENTITY example.outputs.82
+'<para xmlns="http://docbook.org/ns/docbook">В PHP 8.2 поданий вище приклад
+виведе:</para>'>
 
-<!ENTITY ini.shorthandbytes '<simpara xmlns="http://docbook.org/ns/docbook">When an <type>integer</type> is used, the
+<!ENTITY example.outputs.82.similar
+'<para xmlns="http://docbook.org/ns/docbook">В PHP 8.2 поданий вище приклад
+виведе щось схоже на:</para>'>
+
+<!ENTITY example.outputs.83
+'<para xmlns="http://docbook.org/ns/docbook">В PHP 8.3 поданий вище приклад
+виведе:</para>'>
+
+<!ENTITY example.outputs.83.similar
+'<para xmlns="http://docbook.org/ns/docbook">В PHP 8.3 поданий вище приклад
+виведе щось схоже на:</para>'>
+
+<!ENTITY example.outputs.32bit
+'<para xmlns="http://docbook.org/ns/docbook">На 32-бітних машинах поданий вище
+приклад виведе:</para>'>
+
+<!ENTITY example.outputs.64bit
+'<para xmlns="http://docbook.org/ns/docbook">На 64-бітних машинах поданий вище
+приклад виведе:</para>'>
+
+<!ENTITY example.outputs.similar
+'<para xmlns="http://docbook.org/ns/docbook">Поданий вище приклад виведе щось
+схоже на:</para>'>
+
+<!ENTITY examples.outputs
+'<para xmlns="http://docbook.org/ns/docbook">Подані вище приклади
+виведуть:</para>'>
+
+<!ENTITY examples.outputs.32bit
+'<para xmlns="http://docbook.org/ns/docbook">На 32-бітних машинах подані вище
+приклади виведуть:</para>'>
+
+<!ENTITY examples.outputs.64bit
+'<para xmlns="http://docbook.org/ns/docbook">На 64-бітних машинах подані вище
+приклади виведуть:</para>'>
+
+<!ENTITY examples.outputs.similar
+'<para xmlns="http://docbook.org/ns/docbook">Подані вище приклади виведуть
+щось схоже на:</para>'>
+
+<!ENTITY array.resetspointer
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<function>скидатиме</function> вказівник <type>array</type> вхідного масиву
+після використання.</simpara></note>'>
+
+<!ENTITY array.changelog.by-ref
+'<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.0.0</entry>
+ <entry>
+  Тепер функція видасть <constant>E_WARNING</constant>, якщо
+  <parameter>callback</parameter> очікує параметр за посиланням.
+ </entry>
+</row>'>
+
+<!ENTITY array.changelog.require-only-one
+'<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.0.0</entry>
+ <entry>
+  Тепер ця функція може викликатись лише з одним параметром. Раніше потрібні
+  були щонайменше два.
+ </entry>
+</row>'>
+
+<!ENTITY seealso.array.sorting
+'<link xmlns="http://docbook.org/ns/docbook" linkend="array.sorting">Порівняння
+функцій, що впорядкувують масиви</link>'>
+
+<!ENTITY sort.flags.parameter
+'<varlistentry xmlns="http://docbook.org/ns/docbook">
+  <term><parameter>flags</parameter></term>
+  <listitem>
+   <para>
+    Необовʼязковий другий параметр <parameter>flags</parameter> можна
+    використовувати для зміни способу впорядкування, вказавши значення:
+   </para>
+   <para>
+    Прапорці типу впорядкування:
+    <itemizedlist>
+     <listitem>
+      <simpara><constant>SORT_REGULAR</constant> — звичайне порівняння
+      елементів. Докладніше у розділі <link
+      linkend="language.operators.comparison">Оператори
+      порівняння</link></simpara>.
+     </listitem>
+     <listitem>
+      <simpara><constant>SORT_NUMERIC</constant> — числове порівняння
+      елементів</simpara>
+     </listitem>
+     <listitem>
+      <simpara><constant>SORT_STRING</constant> — рядкове порівняння
+      елементів</simpara>
+     </listitem>
+     <listitem>
+      <simpara>
+       <constant>SORT_LOCALE_STRING</constant> — рядкове порівняння елементів,
+       відповідно до поточної локалізації. Використовується локалізація, котру
+       можна змінити за допомогою <function>setlocale</function>
+      </simpara>
+     </listitem>
+     <listitem>
+      <simpara>
+       <constant>SORT_NATURAL</constant> — "природнє" рядкове порівняння, як у
+       <function>natsort</function>
+      </simpara>
+     </listitem>
+     <listitem>
+      <simpara>
+       <constant>SORT_FLAG_CASE</constant> — можна поєднати (побітове АБО) з
+       <constant>SORT_STRING</constant> або <constant>SORT_NATURAL</constant>
+       для впорядкування рядків без урахування регістру
+      </simpara>
+     </listitem>
+    </itemizedlist>
+   </para>
+  </listitem>
+ </varlistentry>
+'>
+
+<!ENTITY sort.callback.description '<para xmlns="http://docbook.org/ns/docbook">
+ &return.callbacksort;
+</para>
+&callback.cmp;
+<caution xmlns="http://docbook.org/ns/docbook">
+ <para>
+  Якщо функція порівняння повертає <emphasis>не цілі</emphasis> значення, такі
+  як <type>float</type>, вони будуть приведені до типу <type>int</type> під час
+  повернення з функції зворотнього виклику. Тож значення, схожі на
+  <literal>0.99</literal> або <literal>0.1</literal> будуть приведені до цілого
+  <literal>0</literal>, отже члени порівняння вважатимуться однаковими.
+ </para>
+</caution>'>
+
+<!ENTITY sort.callback.description.presort
+'<caution xmlns="http://docbook.org/ns/docbook">
+ <para>
+  Сортувальна функція зворотнього виклику повинна опрацьовувати будь-яке
+  значення з будь-якого масиву у будь-якій послідовності, не залежно від їхнього
+  початкового порядку. Це тому, що кожен масив впорядковується перед порівнянням
+  його з іншими масивами. Наприклад:
+  <programlisting role="php">
+<![CDATA[
+<?php
+$arrayA = ["string", 1];
+$arrayB = [["value" => 1]];
+// $item1 та $item2 можуть бути "string", 1 чи ["value" => 1]
+$compareFunc = static function ($item1, $item2) {
+    $value1 = is_string($item1) ? strlen($item1) : (is_array($item1) ? $item1["value"] : $item1);
+    $value2 = is_string($item2) ? strlen($item2) : (is_array($item2) ? $item2["value"] : $item2);
+    return $value1 <=> $value2;
+};
+?>
+]]>
+  </programlisting>
+ </para>
+</caution>'>
+
+<!ENTITY ini.shorthandbytes '<simpara xmlns="http://docbook.org/ns/docbook">When an <type>int</type> is used, the
 value is measured in bytes. Shorthand notation, as described
 in <link linkend="faq.using.shorthandbytes">this FAQ</link>, may also be used.
 </simpara>'>
@@ -1330,7 +1789,7 @@ field_offset</parameter></term><listitem><para>The numerical field offset. The
 Instead, the <link linkend="book.mysqli">MySQLi</link> or <link linkend="ref.pdo-mysql">PDO_MySQL</link> extension should be used.
 See also <link linkend="mysqlinfo.api.choosing">MySQL: choosing an API</link> guide and
 <link linkend="faq.databases.mysql.deprecated">related FAQ</link> for more information. 
-Alternatives to this function include:</para>'>
+Її можна замінити на:</para>'>
 
 <!-- Sybase Notes -->
 <!ENTITY sybase.ct.only '<note xmlns="http://docbook.org/ns/docbook"><simpara>This function is only available when
