@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: ff6d5c7b5dca67d9d4b31411170826f886bc1d2d Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: a79f52e3f24a918822bf6af9ca74176cbeac5612 Maintainer: mproshchuk Status: ready -->
  <chapter xml:id="faq.mailinglist" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Списки розсилки</title>
   <titleabbrev>Списки розсилки</titleabbrev>
@@ -71,25 +71,16 @@
     </question>
     <answer>
      <para>
-      Якщо ви маєте труднощі з підпискою чи відпискою, можливо, це через
-      програмне забезпечення списків розсилки, яке не може використати
-      потрібний емейл. Якщо ваша адреса — <literal>joeblow@example.com</literal>
-      і ви бажаєте підписатися на php-general, надішліть ваш запит на підписку
-      на
-      <literal>php-general-subscribe-joeblow=example.com@lists.php.net</literal>
-      або ваш запит на відписку на
-      <literal>php-general-unsubscribe-joeblow=example.com@lists.php.net</literal>.
-      Використовуйте схожі адреси для інших списків розсилки.
-     </para>
-     <para>
       Найпоширеніша причина, чому людям важко скасувати підписку на наші списки
-      розсилки, пов’язана з використанням засобів пересилання пошти. До прикладу,
-      якщо ваша email-адреса — danbrown@example.com, але ви підписалися на
-      список розсилки шляхом пересилання пошти через, наприклад, адресу
-      php-lists@example.com, спроба відписати danbrown@example.com не спрацює,
-      бо ця адреса навіть не відома нашій системі. Вам необхідно відписати
-      адресу, з якої був надісланий лист. В даному випадку
-      php-lists@example.com.
+      розсилки, пов’язана з використанням засобів пересилання пошти. До
+      прикладу, якщо ваша email-адреса —
+      <literal>elephpant@example.com</literal>, але ви підписалися на список
+      розсилки через свою проміжну адресу
+      <literal>php-lists@example.com</literal>, спроба відписати
+      <literal>elephpant@example.com</literal> не спрацює, бо така адреса навіть
+      не відома нашій системі. Вам необхідно відписати адресу, з якої був
+      надісланий лист. В даному випадку
+      <literal>php-lists@example.com</literal>.
      </para>
     </answer>
    </qandaentry>
