@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 96c9d88bad9a7d7d44bfb7f26c226df7ee9ddf26 Maintainer: ktretyak Status: ready -->
-<!-- $Revision$ -->
+<!-- EN-Revision: aba94933258b1d1ce9fa5935a239804d71a481fa Maintainer: mproshchuk Status: ready -->
 <refentry xml:id="function.array-shift" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>array_shift</refname>
-  <refpurpose>Витягує перший елемент масива</refpurpose>
+  <refpurpose>Витягує елемент з початку масиву</refpurpose>
  </refnamediv>
  <refsect1 role="description">
   &reftitle.description;
@@ -13,10 +12,10 @@
    <methodparam><type>array</type><parameter role="reference">array</parameter></methodparam>
   </methodsynopsis>
   <para>
-   <function>array_shift</function> витягує перший елемент масива
-   (<parameter>array</parameter>), та повертає його, скорочуючи масив
-   на один елемент. Всі числові ключі масива будуть перетворені,
-   щоб починати відлік з нуля, тоді як рядкові ключі не змінюватимуться.
+   <function>array_shift</function> витягує з початку масиву
+   <parameter>array</parameter> елемент та повертає його значення, скорочуючи
+   масив на один елемент. Всі числові ключі масиву будуть перетворені, щоб
+   починати відлік з нуля, тоді як рядкові ключі не зміняться.
   </para>
   &array.resetspointer;
  </refsect1>
@@ -38,15 +37,15 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Повертається витягнуте значення, або &null;, якщо
-   <parameter>array</parameter> є пустим або не є масивом.
+   Повертає витягнуте значення або &null;, якщо
+   <parameter>array</parameter> є порожнім або не є масивом.
   </para>
  </refsect1>
  <refsect1 role="examples">
   &reftitle.examples;
   <para>
    <example>
-    <title>використання <function>array_shift</function></title>
+    <title>Приклад використання <function>array_shift</function></title>
     <programlisting role="php">
 <![CDATA[
 <?php

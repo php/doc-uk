@@ -891,36 +891,40 @@ $compareFunc = static function ($item1, $item2) {
  </para>
 </caution>'>
 
-<!ENTITY ini.shorthandbytes '<simpara xmlns="http://docbook.org/ns/docbook">When an <type>int</type> is used, the
-value is measured in bytes. Shorthand notation, as described
-in <link linkend="faq.using.shorthandbytes">this FAQ</link>, may also be used.
+<!ENTITY ini.shorthandbytes
+'<simpara xmlns="http://docbook.org/ns/docbook">Коли використовується
+<type>int</type>, значення вимірюється в байтах. Також можна робити скорочений
+запис, як це описано в <link linkend="faq.using.shorthandbytes">цих
+ЧаПах</link>.
 </simpara>'>
 
-<!ENTITY info.deprecated.alias 'Для зворотньої сумісності, можна використовувати
-наступний застарівший псевдонім: '>
+<!ENTITY info.deprecated.alias
+'Для зворотньої сумісності, можна використовувати такий застарілий псевдонім: '>
 
-<!ENTITY info.function.alias 'Ця функція є псевдонімом: '>
+<!ENTITY info.function.alias 'Ця функція є псевдонімом до: '>
 
-<!ENTITY info.method.alias 'Цей метод є псевдонімом: '>
+<!ENTITY info.method.alias 'Цей метод є псевдонімом до: '>
 
-<!ENTITY info.function.alias.deprecated '<simpara xmlns="http://docbook.org/ns/docbook">This function alias is
-deprecated and only exists for backwards compatibility reasons. The use of this
-function is not recommended, as it may be removed from PHP in the future.
+<!ENTITY info.function.alias.deprecated
+'<simpara xmlns="http://docbook.org/ns/docbook">Цей псевдонім функції є
+застарілим та існує тільки для зворотньої сумісності. Не рекомендується його
+використовувати, оскільки він може бути вилучений з PHP в майбутньому.
 </simpara>'>
 
-<!ENTITY ext.windows.path.dll 'In order for this extension to work, there are
-<acronym xmlns="http://docbook.org/ns/docbook">DLL</acronym> files that must be available to the Windows
-system <envar xmlns="http://docbook.org/ns/docbook">PATH</envar>.. For information on how to do this, see the
-<acronym xmlns="http://docbook.org/ns/docbook">FAQ</acronym> entitled "<link
- xmlns="http://docbook.org/ns/docbook" linkend="faq.installation.addtopath">How do I add my PHP directory to the PATH
-on Windows</link>". Although copying DLL
-files from the PHP folder into the Windows system directory also works
-(because the system directory is by default in the system&apos;s
-<envar xmlns="http://docbook.org/ns/docbook">PATH</envar>), this is not recommended.
-<emphasis xmlns="http://docbook.org/ns/docbook">This extension requires the following files to be in the
-<envar>PATH</envar>:</emphasis> '>
+<!ENTITY ext.windows.path.dll
+'Щоб це розширення працювало у Windows, системна змінна <envar
+xmlns="http://docbook.org/ns/docbook">PATH</envar> повинна мати доступ до файлів
+<acronym xmlns="http://docbook.org/ns/docbook">DLL</acronym>. Як це зробити,
+написано в <acronym xmlns="http://docbook.org/ns/docbook">ЧаПах</acronym> під
+назвою "<link xmlns="http://docbook.org/ns/docbook"
+linkend="faq.installation.addtopath">Як додати PHP-теку до PATH у
+Windows</link>". Хоча копіювання DLL-файлів з PHP-теки в системну теку Windows
+теж спрацює (тому, що системна тека зазвичай є в змінній <envar
+xmlns="http://docbook.org/ns/docbook">PATH</envar>), проте цього не слід робити.
+<emphasis xmlns="http://docbook.org/ns/docbook">Це розширення вимагає, щоб
+наступні файли були в <envar>PATH</envar>:</emphasis> '>
 
-<!ENTITY manual.migration.seealso 'Прогляньте також керівництво по міграції для версій PHP'>
+<!ENTITY manual.migration.seealso 'Див. також керівництво з переходу на версії PHP'>
 
 <!ENTITY style.oop 'Об&apos;єктно-орієнтований стиль'>
 <!ENTITY style.procedural 'Процедурний стиль'>
@@ -929,31 +933,52 @@ files from the PHP folder into the Windows system directory also works
 
 <!ENTITY foreach '<link xmlns="http://docbook.org/ns/docbook" linkend="control-structures.foreach">foreach</link>'>
 
+<!ENTITY match '<link xmlns="http://docbook.org/ns/docbook" linkend="control-structures.match">match</link>'>
+
 <!ENTITY yield '<link xmlns="http://docbook.org/ns/docbook" linkend="control-structures.yield">yield</link>'>
 
-<!ENTITY parameter.context 'Прогляньте розділ <link xmlns="http://docbook.org/ns/docbook" linkend="context">контекст</link>
-даного посібника, щоб прочитати опис <literal xmlns="http://docbook.org/ns/docbook">контекстів</literal>.'>
+<!ENTITY parameter.context
+'У розділі посібника <link xmlns="http://docbook.org/ns/docbook"
+linkend="context">контекст</link> міститься опис <literal
+xmlns="http://docbook.org/ns/docbook">контекстів</literal>.'>
 
-<!ENTITY parameter.use_include_path 'Коли встановлено в &true;, пошук назви файла також здійснюється
-в середині <link xmlns="http://docbook.org/ns/docbook" linkend="ini.include-path">include_path</link>'>
+<!ENTITY parameter.use_include_path
+'Коли встановлено &true;, пошук назви файлу також здійснюється в середині <link
+xmlns="http://docbook.org/ns/docbook"
+linkend="ini.include-path">include_path</link>'>
 
 <!-- Returns -->
+
+<!ENTITY return.type.true '<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.2.0</entry>
+ <entry>
+  Тепер повертається значення типу &true;. До цього був <type>bool</type>.
+ </entry>
+</row>'>
 
 <!ENTITY return.falseforfailure ' або &false; в разі помилки'>
 <!ENTITY return.falseforfailure.style.procedural '&style.procedural; повертає &false; в разі помилки.'>
 
-<!ENTITY return.success 'Повертає &true; в успішному випадку &return.falseforfailure;.'>
+<!ENTITY return.success 'Повертає &true; у разі успіху&return.falseforfailure;.'>
+
+<!ENTITY return.nullorfalse 'Повертає &null; у разі успіху&return.falseforfailure;.'>
 
 <!ENTITY return.void 'Не повертає значень.'>
 
-<!ENTITY return.callbacksort 'The comparison function must return an integer less than, equal to, or greater than zero if the first argument is considered to be respectively less than, equal to, or greater than the second.'>
+<!ENTITY return.true.always 'Завжди повертає &true;.'>
 
-<!ENTITY return.falseproblem '<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
-може повертати як логічне &false;, так і нелогічне значення, яке прирівнюється до &false;.
-Детальніше про це описується в розділі <link
-linkend="language.types.boolean">Логічний тип даних (Booleans)</link>. Використовуйте
-<link linkend="language.operators.comparison">оператор ===</link> щоб перевірити
-значення, яке повертає дана функція.</simpara></warning>'>
+<!ENTITY return.callbacksort
+'Порівняльна функція має повертати ціле число, котре менше, рівне або більше
+нуля, якщо перший параметр вважається відповідно меншим, рівним або більшим за
+другий.'>
+
+<!ENTITY return.falseproblem
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція може
+повертати як логічне &false;, так і не логічне значення, яке прирівнюється до
+&false;. Докладніше про це описано в розділі <link
+linkend="language.types.boolean">Логічні типи даних</link>. Для перевірки
+значення, яке повертає ця функція, використовується <link
+linkend="language.operators.comparison">оператор ===</link>.</simpara></warning>'>
 
 <!-- OpenSSL -->
 <!ENTITY openssl.param.x509 '<varlistentry xmlns="http://docbook.org/ns/docbook">
