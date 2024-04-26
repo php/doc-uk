@@ -425,7 +425,7 @@ linkend="userlandnaming" />.</simpara></tip>'>
 
 <!ENTITY removed.php.future
 'Цей застарілий функціонал буде <emphasis
-xmlns="http://docbook.org/ns/docbook">обов'язково</emphasis>
+xmlns="http://docbook.org/ns/docbook">обов&apos;язково</emphasis>
 <emphasis xmlns="http://docbook.org/ns/docbook">видалено</emphasis> у
 майбутньому.'>
 
@@ -980,75 +980,207 @@ linkend="language.types.boolean">Логічні типи даних</link>. Дл
 значення, яке повертає ця функція, використовується <link
 linkend="language.operators.comparison">оператор ===</link>.</simpara></warning>'>
 
+<!-- Standard -->
+<!ENTITY standard.changelog.calling-on-objects
+'<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.1.0</entry>
+ <entry>
+  Виклик цієї функції для об&apos;єктів є застарілим. Краще перетворити &object;
+  в &array;, застосувавши <function>get_mangled_object_vars</function>, або
+  використати методи класу, який імплементує
+  <interfacename>Iterator</interfacename>, наприклад,
+  <classname>ArrayIterator</classname>.
+ </entry>
+</row>
+<row xmlns="http://docbook.org/ns/docbook">
+ <entry>7.4.0</entry>
+ <entry>
+  Примірники класів <link xmlns="http://docbook.org/ns/docbook"
+  linkend="book.spl">SPL</link> тепер розглядаються як порожні об&apos;єкти, які
+  не мають властивостей, замість виклику метода інтерфейсу
+  <interfacename>Iterator</interfacename> з такою ж назвою, як і в цієї функції.
+ </entry>
+</row>
+'>
+
+<!ENTITY standard.changelog.binary-safe-string-comparison
+'<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.2.0</entry>
+ <entry>
+  Тепер ця функція повертає <literal>-1</literal> або <literal>1</literal>, а не
+  від&apos;ємне або додатнє число, як раніше.
+ </entry>
+</row>
+'>
+
+<!-- FileInfo -->
+<!ENTITY fileinfo.parameters.finfo
+'<para xmlns="http://docbook.org/ns/docbook">Примірник
+<classname>finfo</classname>, що повертається функцією
+<function>finfo_open</function>.</para>'>
+
+<!ENTITY fileinfo.changelog.finfo-object
+'<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.1.0</entry>
+ <entry>
+  Тепер параметр <parameter>finfo</parameter> має бути примірником
+  <classname>finfo</classname>, а не &resource;, як раніше.
+ </entry>
+</row>'>
+
 <!-- OpenSSL -->
 <!ENTITY openssl.param.x509 '<varlistentry xmlns="http://docbook.org/ns/docbook">
  <term><parameter>x509</parameter></term>
  <listitem>
   <para>
-   See <link linkend="openssl.certparams">Key/Certificate parameters</link> for a list of valid values.
+   Список можливих значень є в параграфі <link
+   linkend="openssl.certparams">Параметри ключа/сертифіката</link>.
+  </para>
+ </listitem>
+</varlistentry>'>
+
+<!ENTITY openssl.param.csr '<varlistentry xmlns="http://docbook.org/ns/docbook">
+ <term><parameter>csr</parameter></term>
+ <listitem>
+  <para>
+   Список можливих значень є в параграфі <link
+   linkend="openssl.certparams">Параметри CSR</link>.
+  </para>
+ </listitem>
+</varlistentry>'>
+
+<!ENTITY openssl.param.key '<varlistentry xmlns="http://docbook.org/ns/docbook">
+ <term><parameter>key</parameter></term>
+ <listitem>
+  <para>
+   Список можливих значень є в параграфі <link
+   linkend="openssl.certparams">Параметри публічного/приватного ключа</link>.
   </para>
  </listitem>
 </varlistentry>'>
 
 <!-- Image (GD) Notes -->
-<!ENTITY note.config.t1lib '<note xmlns="http://docbook.org/ns/docbook"><simpara>This function is only available
-if PHP is compiled using <option role="configure">--with-t1lib[=DIR]</option>.
+<!ENTITY note.config.t1lib
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція доступна тільки,
+якщо PHP скомпільовано з використанням <option
+role="configure">--with-t1lib[=DIR]</option>.
 </simpara></note>'>
 
-<!ENTITY note.config.jpeg '<note xmlns="http://docbook.org/ns/docbook"><simpara>Підтримка JPEG можлива лише у випадку
-якщо PHP скомпільовано з GD-1.8 або новішою.</simpara></note>'>
-
-<!ENTITY note.config.wbmp '<note xmlns="http://docbook.org/ns/docbook"><simpara>Підтримка WBMP можлива лише у випадку
-якщо PHP скомпільовано з GD-1.8 або новішою.</simpara></note>'>
-
-<!ENTITY note.bundled.gd '<note xmlns="http://docbook.org/ns/docbook"><simpara>This function is only available if
-PHP is compiled with the bundled version of the GD library.</simpara></note>'>
-
-<!ENTITY note.freetype '<note xmlns="http://docbook.org/ns/docbook"><simpara>This function is only available if
-PHP is compiled with freetype support (<option role="configure">--with-freetype-dir=DIR</option>)
+<!ENTITY note.freetype
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція доступна тільки,
+якщо PHP скомпільовано з підтримкою freetype (<option
+role="configure">--with-freetype-dir=DIR</option>)
 </simpara></note>'>
 
-<!ENTITY note.gd.2 '<note xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція потребує GD 2.0.1 або новішої (рекомендовано версію 2.0.28 або новішу).</simpara></note>'>
+<!ENTITY note.gd.notrequired
+'<note xmlns="http://docbook.org/ns/docbook"><para>Ця функція не потребує
+бібліотеки зображень GD.</para></note>'>
 
-<!ENTITY note.gd.notrequired '<note xmlns="http://docbook.org/ns/docbook"><para>Ця функція не потребує бібліотеки зображень GD.</para></note>'>
+<!ENTITY note.gd.interpolation
+'<note xmlns="http://docbook.org/ns/docbook"><para>На цю функцію впливає спосіб
+інтерполяції, встановлений функцією
+<function>imagesetinterpolation</function>.</para></note>'>
 
-<!ENTITY note.gd.interpolation '<note xmlns="http://docbook.org/ns/docbook"><para>This function is affected by the interpolation method set by <function>imagesetinterpolation</function>.</para></note>'>
+<!ENTITY gd.image.description
+'<varlistentry
+xmlns="http://docbook.org/ns/docbook"><term><parameter>image</parameter></term><listitem><para>Об&apos;єкт
+<classname>GdImage</classname>, що повертається однією з функцій створення
+зображення, такою як
+<function>imagecreatetruecolor</function>.</para></listitem></varlistentry>'>
 
-<!ENTITY gd.image.description '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>
-image</parameter></term><listitem><para>An image resource, returned by one of the image creation functions,
-such as <function>imagecreatetruecolor</function>.</para></listitem></varlistentry>'>
+<!ENTITY gd.font.description
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term>
+<parameter>font</parameter></term><listitem><para>Може бути 1, 2, 3, 4, 5 для
+вбудованих шрифтів в кодуванні latin2 (де більші числа відповідають більшим
+шрифтам) або примірником класу <classname>GdFont</classname>, що повертається
+функцією <function>imageloadfont</function>.</para></listitem></varlistentry>'>
 
-<!ENTITY gd.font.description '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>
-font</parameter></term><listitem><para>Can be 1, 2, 3, 4, 5 for built-in
-fonts in latin2 encoding (where higher numbers corresponding to larger fonts) or any of your
-own font identifiers registered with <function>imageloadfont</function>.
-</para></listitem></varlistentry>'>
+<!ENTITY gd.changelog.gdfont-instance '<row xmlns="http://docbook.org/ns/docbook">
+  <entry>8.1.0</entry>
+  <entry>
+  Параметром <parameter>font</parameter> тепер може бути як і примірник
+  <classname>GdFont</classname>, так і &integer;. Раніше допускався тільки
+  &integer;.
+  </entry>
+</row>'>
 
-<!ENTITY gd.return.identifier 'Повертає ідентифікатор для ресурсу зображення в разі успіху, та &false; в разі помилки.'>
+<!ENTITY gd.ttf.fontfile "
+    <varlistentry xmlns='http://docbook.org/ns/docbook'>
+     <term><parameter>fontfile</parameter></term>
+     <listitem>
+      <para>
+       Спосіб використання обраного шрифту TrueType.
+      </para>
+      <para>
+       Залежно від версії бібліотеки GD, яку використовує PHP, <emphasis>якщо
+       <parameter>fontfile</parameter> не починається з <literal>/</literal>, то
+       до назви файлу буде дописано <literal>.ttf</literal></emphasis> і
+       бібліотека шукатиме цей файл у визначеній нею теці.
+      </para>
+      <para>
+       Використовуючи версії бібліотеки GD, раніші за 2.0.18, &quot;розділювачем
+       шляхів&quot; для декількох файлів шрифтів буде символ
+       <literal>пропуску</literal>, а не крапка з комою. Ненавмисне використання
+       цієї функції призведе до попередження: <literal>Warning: Could not
+       find/open font</literal>. Єдиним рішенням для цих пошкоджених версій є
+       переміщення файлу шрифту в шлях, що не містить в назві пропусків.
+      </para>
+      <para>
+       В багатьох випадках, коли шрифт знаходиться в тій самій теці, що і
+       скрипт, який використовує його, наступний трюк позбавить від будь-яких
+       проблем з його підключенням.
+       <programlisting role='php'>
+<![CDATA[
+<?php
+// Встановити змінну середовища для GD
+putenv('GDFONTPATH=' . realpath('.'));
+
+// Назва шрифту, що буде використано (увага — відсутнє розширення .ttf)
+$font = 'SomeFont';
+?>
+]]>
+       </programlisting>
+      </para>
+      <note>
+       <para>
+        Варто зауважити, що <link linkend='ini.open-basedir'>open_basedir</link>
+        <emphasis>не</emphasis> застосовується до
+        <parameter>fontfile</parameter>.
+       </para>
+      </note>
+     </listitem>
+    </varlistentry>
+">
+
+<!ENTITY gd.return.identifier 'Повертає об&apos;єкт зображення в разі успіху або &false; в разі помилок.'>
+
+<!ENTITY gd.return.trueonerror '<caution xmlns="http://docbook.org/ns/docbook"><simpara>Проте, якщо libgd не може вивести зображення, ця функція повертає &true;.</simpara></caution>'>
+
+<!ENTITY gd.identifier.color "Ідентифікатор кольору, створений за допомогою <function xmlns='http://docbook.org/ns/docbook'>imagecolorallocate</function>.">
 
 <!ENTITY gd.value.red 'Значення червоного компонента.'>
 
 <!ENTITY gd.value.green 'Значення зеленого компонента.'>
 
-<!ENTITY gd.value.blue 'Значення блакитного компонента.'>
+<!ENTITY gd.value.blue 'Значення синього компонента.'>
 
-<!ENTITY gd.source.height 'Сирцева висота.'>
+<!ENTITY gd.source.height 'Висота початкового зображення.'>
 
-<!ENTITY gd.source.width 'Сирцева ширина.'>
+<!ENTITY gd.source.width 'Ширина початкового зображення.'>
 
-<!ENTITY gd.image.path 'Шлях для збереження файла. Якщо не встановлено або дорівнює &null;, буде повернено безпосередньо сирий потік зображення.'>
+<!ENTITY gd.image.path 'Шлях або відкритий ресурс потоку (котрий автоматично закривається після повернення з цієї функції) для збереження файла. Якщо не встановлено або дорівнює &null;, буде виведено двійковий код зображення.'>
 
 <!ENTITY gd.image.new 'Створює нове зображення з файла або URL'>
 
-<!ENTITY gd.image.source 'Ресурс сирцевого лінка для зображення.'>
+<!ENTITY gd.image.source 'Ресурс початкового зображення.'>
 
-<!ENTITY gd.image.destination 'Ресурс цільового лінка для зображення.'>
+<!ENTITY gd.image.destination 'Ресурс цільового зображення.'>
 
-<!ENTITY gd.image.output 'Видає зображення для браузера чи файла'>
+<!ENTITY gd.image.output 'Вивід зображення в браузер чи файл.'>
 
-<!ENTITY gd.image.colors 'Якщо ви створюєте зображення з файла, то розпізнання відбудеться лише для кольорів, що використовуються для зображення. Кольори, які представлені лише в палітрі розпізнані не будуть.'>
+<!ENTITY gd.image.colors 'Якщо створено зображення з файлу, розпізнаються тільки кольори, які використовуються в зображенні. Кольори, присутні тільки в палітрі, не розпізнаються.'>
 
-<!ENTITY gd.font.size 'Розмір шрифта. В залежності від версії GD, потрібно вказувати розмір в пікселях (GD1) або в типографських пунктах(GD2).'>
+<!ENTITY gd.font.size 'Розмір шрифту в пунктах.'>
 
 <!-- DBM notes -->
 
