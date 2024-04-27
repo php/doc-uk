@@ -1182,29 +1182,110 @@ $font = 'SomeFont';
 
 <!ENTITY gd.font.size 'Розмір шрифту в пунктах.'>
 
+<!ENTITY gd.constants.types
+'<simpara xmlns="http://docbook.org/ns/docbook">
+ Використовується, як значення, яке повертає функція
+ <function>imagetypes</function>
+</simpara>'>
+
+<!ENTITY gd.constants.color
+'<simpara xmlns="http://docbook.org/ns/docbook">
+ Певний колір, що можна використати замість обраного функціями
+ <function>imagecolorallocate</function> або
+ <function>imagecolorallocatealpha</function>.
+</simpara>'>
+
+<!ENTITY gd.constants.affine
+'<simpara xmlns="http://docbook.org/ns/docbook">
+ Константа типу афінного перетворення, яку використовує функція
+ <function>imageaffinematrixget</function>.
+</simpara>'>
+
+<!ENTITY gd.constants.arc
+'<simpara xmlns="http://docbook.org/ns/docbook">
+ Константа стилю, яку використовує функція
+ <function>imagefilledarc</function>.
+</simpara>'>
+
+<!ENTITY gd.constants.gd2
+'<simpara xmlns="http://docbook.org/ns/docbook">
+ Константа типу, яку використовує функція <function>imagegd2</function>.
+</simpara>'>
+
+<!ENTITY gd.constants.effect
+'<simpara xmlns="http://docbook.org/ns/docbook">
+ Ефект альфа-змішування, який використовує функція
+ <function>imagelayereffect</function>.
+</simpara>'>
+
+<!ENTITY gd.constants.filter
+'<simpara xmlns="http://docbook.org/ns/docbook">
+ Особливий GD-фільтр, який використовує функція
+ <function>imagefilter</function>.
+</simpara>'>
+
+<!ENTITY gd.constants.type
+'<simpara xmlns="http://docbook.org/ns/docbook">
+ Константа типу зображення, яку використовують функції
+ <function>image_type_to_mime_type</function> та
+ <function>image_type_to_extension</function>.
+</simpara>'>
+
+<!ENTITY gd.constants.png-filter
+'<simpara xmlns="http://docbook.org/ns/docbook">
+ Особливий PNG-фільтр, який використовує функція
+ <function>imagepng</function>.
+</simpara>'>
+
+<!ENTITY gd.constants.flip
+'<simpara xmlns="http://docbook.org/ns/docbook">
+ Використовується разом з <function>imageflip</function>, доступна, починаючи з
+ PHP 5.5.0.
+</simpara>'>
+
+<!ENTITY gd.constants.interpolation
+'<simpara xmlns="http://docbook.org/ns/docbook">
+  Використовується разом з <function>imagesetinterpolation</function>, доступна,
+  починаючи з PHP 5.5.0.
+</simpara>'>
+
+<!ENTITY gd.changlog.t1lib
+'<row xmlns="http://docbook.org/ns/docbook">
+ <entry>7.0.0</entry><entry>PHP більше не підтримує T1Lib, тому ця функція була
+ вилучена.</entry>
+</row>'>
+
+<!ENTITY gd.deprecated.gd-formats
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Формати зображень GD та
+GD2 є пропрієтарними форматами зображень libgd. Їх слід вважати
+<emphasis>застарілими</emphasis>, а використовувати тільки з метою розробки та
+тестування.</simpara></warning>'>
+
+<!ENTITY gd.changelog.image-param
+<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.0.0</entry>
+ <entry>
+  Тепер <parameter>image</parameter> має бути примірником
+  <classname>GdImage</classname>. Раніше очікувався
+  <literal>gd</literal>-<type>resource</type>.
+ </entry>
+</row>'>
+
 <!-- DBM notes -->
 
-<!ENTITY dbm.dbm-identifier.description '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>
-dbm_identifier</parameter></term><listitem><para>The DBM link identifier,
-returned by <function>dbmopen</function>.</para></listitem></varlistentry>'>
+<!ENTITY dbm.dbm-identifier.description
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term>
+<parameter>dbm_identifier</parameter></term><listitem><para>Ідентифікатор
+посилання DBM, що його повертає функція
+<function>dbmopen</function>.</para></listitem></varlistentry>'>
 
 <!-- JSON notes -->
 
 <!ENTITY json.implementation.superset '
  <note xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <para>
-   PHP implements a superset of JSON as specified in the original
-   <link xlink:href="&url.rfc;4627">RFC 4627</link> - it will also encode and
-   decode scalar types and &null;. RFC 4627 only supports these values when
-   they are nested inside an array or an object.
-  </para>
-  <para>
-   Although this superset is consistent with the expanded definition of "JSON
-   text" in the newer <link xlink:href="&url.rfc;7159">RFC 7159</link> (which
-   aims to supersede RFC 4627) and
-   <link xlink:href="&url.json.ecma;">ECMA-404</link>, this may cause
-   interoperability issues with older JSON parsers that adhere strictly to RFC
-   4627 when encoding a single scalar value.
+   PHP реалізує повний набір JSON, як визначено в стандарті <link
+   xlink:href="&url.rfc;7159">RFC 7159</link>.
   </para>
  </note>
 '>

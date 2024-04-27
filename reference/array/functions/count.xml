@@ -1,34 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision$ -->
-<!-- EN-Revision: 8b5940cadeb4f1c8492f4a7f70743a2be807cf39 Maintainer: iSensetivity Status: ready -->
-<!-- Reviewed: no -->
+<!-- EN-Revision: 3ef3e56c80f7ae6b6a7291b7eb57dc6250b50801 Maintainer: mproshchuk Status: ready -->
 
 <refentry xml:id="function.count" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>count</refname>
-  <refpurpose>Підраховує кількість елементів масиву або чогось в об’єкті</refpurpose>
+  <refpurpose>Підраховує кількість елементів масиву або об’єкту
+   <interfacename>Countable</interfacename>
+  </refpurpose>
  </refnamediv>
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
    <type>int</type><methodname>count</methodname>
-   <methodparam><type>mixed</type><parameter>array_or_countable</parameter></methodparam>
-   <methodparam choice="opt"><type>int</type><parameter>mode</parameter><initializer>COUNT_NORMAL</initializer></methodparam>
+   <methodparam><type class="union"><type>Countable</type><type>array</type></type><parameter>value</parameter></methodparam>
+   <methodparam choice="opt"><type>int</type><parameter>mode</parameter><initializer><constant>COUNT_NORMAL</constant></initializer></methodparam>
   </methodsynopsis>
   <para>
-   Підраховує кількість елементів масиву або чогось в об’єкті.
-  </para>
-  <para>
-   Для об’єктів: якщо у вас встановлена
-   <link linkend="ref.spl">SPL</link>, то ви можете перехопити
-   <function>count</function> шляхом реалізації інтерфейсу
-   <classname>Countable</classname>. Інтерфейс має тільки один метод,
-   <methodname>Countable::count</methodname>, який повертає значення, яке поверне 
-   функція <function>count</function>.
-  </para>
-  <para>
-   Для додаткових пояснень, щодо масивів та їх роботи у PHP читайте 
-   розділ документації <link linkend="language.types.array">Масиви</link>.
+   Якщо використовується для масиву, підраховує кількість його елементів. Якщо
+   використовується для об'єкта, який реалізує інтерфейс
+   <interfacename>Countable</interfacename>, то повертає результат методу
+   <methodname>Countable::count</methodname>.
   </para>
  </refsect1>
  <refsect1 role="parameters">
@@ -36,10 +27,10 @@
   <para>
    <variablelist>
     <varlistentry>
-     <term><parameter>array_or_countable</parameter></term>
+     <term><parameter>value</parameter></term>
      <listitem>
       <para>
-       Масив або об’єкт який реалізує <classname>Countable</classname>.
+       Масив або об’єкт, який реалізує <interfacename>Countable</interfacename>.
       </para>
      </listitem>
     </varlistentry>
@@ -47,19 +38,18 @@
      <term><parameter>mode</parameter></term>
      <listitem>
       <para>
-       Якщо необов’язковий парамерт <parameter>mode</parameter> встановлений у
+       Якщо необов’язковий параметр <parameter>mode</parameter> встановлений у
        <constant>COUNT_RECURSIVE</constant> (або 1), функція 
-       <function>count</function>
-       рахуватиме кількість елементів масиву рекурсивно.
-       Це особливо корисно для підрахунку всіх елементів багатовимірних масивів.
+       <function>count</function> рахуватиме кількість елементів масиву
+       рекурсивно. Це особливо корисно для підрахунку всіх елементів
+       багатовимірних масивів.
       </para>
       <caution>
        <para>
-        <function>count</function> вміє визначати рекурсію для 
-        уникнення нескінченного циклу, але при кожному виявленні 
-        виводить помилку рівня <constant>E_WARNING</constant> 
-        (у випадку, якщо масив містить себе більше одного разу) 
-        і повертає більшу кількість, ніж могло б очікуватися.
+        <function>count</function> вміє визначати рекурсію для уникнення
+        нескінченного циклу, але під час кожного виявлення виводить помилку
+        рівня <constant>E_WARNING</constant> (у випадку, якщо масив містить себе
+        більше одного разу) і повертає більшу кількість, ніж очікується.
        </para>
       </caution>
      </listitem>
@@ -70,25 +60,47 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Повертає кількість елементів у <parameter>array_or_countable</parameter>.
-   Якщо параметр не є масивом або об'єктом, що реалізує інтерфейс 
-   <classname>Countable</classname>, буде повернено 
-   <literal>1</literal>.
-   Однак є виняток. Якщо параметр <parameter>array_or_countable</parameter> є &null;,
-   тоді повернеться <literal>0</literal>.
+   Повертає кількість елементів у <parameter>value</parameter>. До PHP 8.0.0,
+   якщо параметр був не &array; або &object;, що реалізує інтерфейс
+   <interfacename>Countable</interfacename>, то поверталося
+   <literal>1</literal>, а якщо параметр <parameter>value</parameter> був
+   &null;, то повертався <literal>0</literal>.
   </para>
-  <caution>
-   <para>
-    <function>count</function> може повернути 0 як для 
-    не ініційованих змінних так і для змінних, ініційованих пустим масивом. 
-    Скористайтеся функцією <function>isset</function> аби перевірити ініційованість змінної.
-   </para>
-  </caution>
+ </refsect1>
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <informaltable>
+   <tgroup cols="2">
+    <thead>
+     <row>
+      <entry>&Version;</entry>
+      <entry>&Description;</entry>
+     </row>
+    </thead>
+    <tbody>
+     <row>
+      <entry>8.0.0</entry>
+      <entry>
+       <function>count</function> тепер не викидає
+       <classname>TypeError</classname>, коли у параметр
+       <parameter>value</parameter> передано хибні злічувані типи.
+      </entry>
+     </row>
+     <row>
+      <entry>7.2.0</entry>
+      <entry>
+       <function>count</function> тепер видаватиме попередження про хибні
+       злічувані типи, що передані в параметр <parameter>value</parameter>.
+      </entry>
+     </row>
+    </tbody>
+   </tgroup>
+  </informaltable>
  </refsect1>
  <refsect1 role="examples">
   &reftitle.examples;
   <para>
-   <example>
+   <example xml:id="count.example.basic">
     <title>Використання <function>count</function></title>
     <programlisting role="php">
 <![CDATA[
@@ -96,27 +108,74 @@
 $a[0] = 1;
 $a[1] = 3;
 $a[2] = 5;
-$result = count($a);
-// $result == 3
+var_dump(count($a));
 
 $b[0]  = 7;
 $b[5]  = 9;
 $b[10] = 11;
-$result = count($b);
-// $result == 3
-
-$result = count(null);
-// $result == 0
-
-$result = count(false);
-// $result == 1
+var_dump(count($b));
 ?>
 ]]>
     </programlisting>
+    &example.outputs;
+    <screen role="php">
+<![CDATA[
+int(3)
+int(3)
+]]>
+    </screen>
    </example>
   </para>
   <para>
-   <example>
+   <example xml:id="count.example.badexample">
+    <title>Використання <function>count</function> не з Countable|array (поганий
+    приклад — так не треба робити)</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+$b[0]  = 7;
+$b[5]  = 9;
+$b[10] = 11;
+var_dump(count($b));
+
+var_dump(count(null));
+
+var_dump(count(false));
+?>
+]]>
+    </programlisting>
+    &example.outputs;
+    <screen role="php">
+<![CDATA[
+int(3)
+int(0)
+int(1)
+]]>
+    </screen>
+    &example.outputs.72;
+    <screen role="php">
+<![CDATA[
+int(3)
+
+Warning: count(): Parameter must be an array or an object that implements Countable in … on line 12
+int(0)
+
+Warning: count(): Parameter must be an array or an object that implements Countable in … on line 14
+int(1)
+]]>
+    </screen>
+    &example.outputs.8;
+    <screen role="php">
+<![CDATA[
+int(3)
+
+Fatal error: Uncaught TypeError: count(): Argument #1 ($var) must be of type Countable .. on line 12
+]]>
+    </screen>
+   </example>
+  </para>
+  <para>
+   <example xml:id="count.example.recursive">
     <title>Використання рекурсивного <function>count</function></title>
     <programlisting role="php">
 <![CDATA[
@@ -125,14 +184,52 @@ $food = array('fruits' => array('orange', 'banana', 'apple'),
               'veggie' => array('carrot', 'collard', 'pea'));
 
 // рекурсивний count
-echo count($food, COUNT_RECURSIVE); // виведе 8
+var_dump(count($food, COUNT_RECURSIVE);
 
-// нормальний count
-echo count($food); // виведе 2
+// простий count
+var_dump(count($food);
 
 ?>
 ]]>
     </programlisting>
+    &example.outputs;
+    <screen role="php">
+<![CDATA[
+int(8)
+int(2)
+]]>
+    </screen>
+   </example>
+  </para>
+   <para>
+   <example xml:id="count.example.countable">
+    <title>Об'єкт, що реалізує <interfacename>Countable</interfacename></title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+class CountOfMethods implements Countable
+{
+    private function someMethod()
+    {
+    }
+
+    public function count(): int
+    {
+        return count(get_class_methods($this));
+    }
+}
+
+$obj = new CountOfMethods();
+var_dump(count($obj));
+?>
+]]>
+    </programlisting>
+    &example.outputs;
+    <screen role="php">
+<![CDATA[
+int(2)
+]]>
+    </screen>
    </example>
   </para>
  </refsect1>
@@ -142,7 +239,10 @@ echo count($food); // виведе 2
    <simplelist>
     <member><function>is_array</function></member>
     <member><function>isset</function></member>
+    <member><function>empty</function></member>
     <member><function>strlen</function></member>
+    <member><function>is_countable</function></member>
+    <member><link linkend="language.types.array">Масиви</link></member>
    </simplelist>
   </para>
  </refsect1>
