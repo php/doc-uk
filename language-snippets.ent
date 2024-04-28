@@ -1292,13 +1292,125 @@ GD2 є пропрієтарними форматами зображень libgd.
 
 <!-- cURL notes -->
 
-<!ENTITY curl.ch.description '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>ch</parameter>
-</term><listitem><para>A cURL handle returned by
+<!ENTITY curl.ch.description
+'<varlistentry
+xmlns="http://docbook.org/ns/docbook"><term><parameter>ch</parameter></term>
+<listitem><para>cURL-дескриптор, якого повертає
 <function>curl_init</function>.</para></listitem></varlistentry>'>
 
-<!ENTITY curl.mh.description '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>mh</parameter>
-</term><listitem><para>A cURL multi handle returned by
-<function>curl_multi_init</function>.</para></listitem></varlistentry>'>
+<!ENTITY curl.mh.description
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term>
+<parameter>mh</parameter></term><listitem><para>Мультидескриптор cURL, якого
+повертає <function>curl_multi_init</function>.</para></listitem></varlistentry>'>
+
+<!ENTITY curl.sh.description
+'<varlistentry
+xmlns="http://docbook.org/ns/docbook"><term><parameter>share_handle</parameter>
+</term><listitem><para>Спільний cURL-дескриптор, якого повертає
+<function>curl_share_init</function>.</para></listitem></varlistentry>'>
+
+<!ENTITY curl.changelog.handle-param
+'<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.0.0</entry>
+ <entry>
+  <parameter>handle</parameter> тепер має бути примірником класу
+  <classname>CurlHandle</classname>; раніше очікувався <type>resource</type>.
+ </entry>
+</row>'>
+
+<!ENTITY curl.changelog.multi-handle-param
+'<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.0.0</entry>
+ <entry>
+  <parameter>multi_handle</parameter> тепер має бути примірником класу
+  <classname>CurlMultiHandle</classname>; раніше очікувався
+  <type>resource</type>.
+ </entry>
+</row>'>
+
+<!ENTITY curl.changelog.share-handle-param
+'<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.0.0</entry>
+ <entry>
+  <parameter>share_handle</parameter> тепер має бути примірником класу
+  <classname>CurlShareHandle</classname>; раніше очікувався
+  <type>resource</type>.
+ </entry>
+</row>'>
+
+<!-- dbase notes -->
+
+<!ENTITY dbase.type-conversion
+'<para xmlns="http://docbook.org/ns/docbook">
+   Кожне поле перетворюється у відповідний тип PHP, проте:
+   <itemizedlist>
+    <listitem>
+     <simpara>
+      Дати залишаються рядками.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      Значення DateTime перетворюються в рядки.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      Цілі числа за межами діапазону
+      <constant>PHP_INT_MIN</constant>..<constant>PHP_INT_MAX</constant>
+      повертаються, як рядки.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      До dbase 7.0.0, логічні (<literal>L</literal>) перетворювалися на
+      <literal>1</literal> або <literal>0</literal>.
+     </simpara>
+    </listitem>
+   </itemizedlist>
+  </para>'>
+
+<!-- enchant entities -->
+
+<!ENTITY enchant.param.broker
+'<varlistentry xmlns="http://docbook.org/ns/docbook">
+     <term><parameter>broker</parameter></term>
+     <listitem>
+      <para>
+       Брокер Enchant, якого повертає <function>enchant_broker_init</function>.
+      </para>
+     </listitem>
+    </varlistentry>'>
+
+<!ENTITY enchant.param.dictionary
+'<varlistentry xmlns="http://docbook.org/ns/docbook">
+     <term><parameter>dictionary</parameter></term>
+     <listitem>
+      <para>
+       Словник Enchant, якого повертає
+       <function>enchant_broker_request_dict</function> або
+       <function>enchant_broker_request_pwl_dict</function>.
+      </para>
+     </listitem>
+    </varlistentry>'>
+
+<!ENTITY enchant.changelog.broker-param
+'<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.0.0</entry>
+ <entry>
+  <parameter>broker</parameter> тепер має бути примірником класу
+  <classname>EnchantBroker</classname>; раніше очікувався &resource;.
+ </entry>
+</row>'>
+
+<!ENTITY enchant.changelog.dictionary-param
+'<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.0.0</entry>
+ <entry>
+  <parameter>dictionary</parameter> тепер має бути примірником класу
+  <classname>EnchantDictionary</classname>; раніше очікувався &resource;.
+ </entry>
+</row>'>
 
 <!-- IMAP notes -->
 

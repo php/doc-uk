@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision$ -->
-<!-- EN-Revision: 8b5940cadeb4f1c8492f4a7f70743a2be807cf39 Maintainer: iSensetivity Status: ready -->
-<!-- Reviewed: no -->
+<!-- EN-Revision: 8cd7c0d8c574903e149c1da0689a8728cdf909d4 Maintainer: mproshchuk Status: ready -->
 
 <refentry xml:id="function.in-array" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
@@ -17,9 +15,9 @@
    <methodparam choice="opt"><type>bool</type><parameter>strict</parameter><initializer>&false;</initializer></methodparam>
   </methodsynopsis>
   <para>
-   Шукає значення <parameter>haystack</parameter> у <parameter>needle</parameter>.
-   Якщо параметр <parameter>strict</parameter> не встановлений,
-   використовується м'яке порівняння.
+   Шукає значення <parameter>needle</parameter> у <parameter>haystack</parameter>.
+   Якщо параметр <parameter>strict</parameter> не встановлений, використовується
+   м'яке порівняння.
   </para>
  </refsect1>
  <refsect1 role="parameters">
@@ -52,12 +50,22 @@
      <term><parameter>strict</parameter></term>
      <listitem>
       <para>
-       Якщо третій, необов'язковий параметр <parameter>strict</parameter> 
-       встановлений у &true; 
-       тоді функція <function>in_array</function> також перевірятиме і тип
-       <link linkend="language.types">types</link> 
+       Якщо третій необов'язковий параметр <parameter>strict</parameter> 
+       встановлений у &true;, то функція <function>in_array</function>
+       перевірятиме також <link linkend="language.types">типи</link> 
        <parameter>needle</parameter> у <parameter>haystack</parameter>.
       </para>
+      <note>
+       <para>
+        До PHP 8.0.0, <literal>рядковий</literal> параметр
+        <parameter>needle</parameter> відповідатиме значенню масиву
+        <literal>0</literal> в нестрогому режимі і навпаки. Це може призвести до
+        небажаних результатів. Подібні крайні випадки стаються і з іншими типами
+        також. Якщо достеменно невідомо тип використаного значення, то для
+        уникнення неочікуваної поведінки застосовується прапорець
+        <parameter>strict</parameter>.
+       </para>
+      </note>
      </listitem>
     </varlistentry>
    </variablelist>
@@ -66,8 +74,8 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Повертає &true; якщо <parameter>needle</parameter> знайдене у масиві, інакше 
-   &false;.
+   Повертає &true; якщо значення <parameter>needle</parameter> знайдене у
+   масиві, інакше — &false;.
   </para>
  </refsect1>
  <refsect1 role="examples">
@@ -89,7 +97,7 @@ if (in_array("mac", $os)) {
 ]]>
     </programlisting>
     <para>
-     Другого співпадіння не буде, тому що <function>in_array</function>
+     Другого збігу не буде, тому що <function>in_array</function>
      регістро-чутлива. Програма виведе:
     </para>
     <screen>
@@ -127,7 +135,7 @@ if (in_array(1.13, $a, true)) {
   </para>
   <para>
    <example>
-    <title>Використання <function>in_array</function>з масивом у якості needle</title>
+    <title>Використання <function>in_array</function> з шуканим-масивом</title>
     <programlisting role="php">
 <![CDATA[
 <?php

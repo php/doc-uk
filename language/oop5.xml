@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 351365Maintainer: mproshchuk Status: ready -->
-<!-- $Revision$ -->
+<!-- EN-Revision: a9a6224ca97531df0a4e4b9b16b59c3f2baf1b09 Maintainer: mproshchuk Status: ready -->
+
 <chapter xml:id="language.oop5" xmlns="http://docbook.org/ns/docbook">
- <title>Класи та Об'єкти</title>
- 
+ <title>Класи та об'єкти</title>
  <sect1 xml:id="oop5.intro">
   <title>Вступ</title>
   <para>
-   PHP має повну об'єкту модель.
-   В переліку можливостей PHP є:
+   PHP має повну обʼєктну модель. В переліку можливостей PHP є:
    <link linkend="language.oop5.visibility">область видимості</link>, 
    <link linkend="language.oop5.abstract">абстрактні</link> та 
    <link linkend="language.oop5.final">фінальні</link> класи і методи, 
@@ -18,12 +16,13 @@
   </para>
   <para>
    PHP обробляє об'єкти в той же спосіб, що і посилання чи обробники ресурсів,
-   тобто кожна змінна містить посилання на об'єкт, а не його копію. Дивіться <link linkend="language.oop5.references">Об'єкти та Посилання</link>
+   тобто кожна змінна містить посилання на об'єкт, а не його копію. Докладніше:
+   <link linkend="language.oop5.references">Об'єкти та посилання</link>.
   </para>
   &tip.userlandnaming;
  </sect1>
  
- &language.oop5.basic;
+  &language.oop5.basic;
   &language.oop5.properties;
   &language.oop5.constants;
   &language.oop5.autoload;
