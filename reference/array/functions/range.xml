@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision$ -->
-<!-- EN-Revision: 1cd19d56e1982c9947be9239b73cc8bd03ff178e Maintainer: iSensetivity Status: ready -->
-<!-- Reviewed: no -->
+<!-- EN-Revision: 62421b98a97fe576987878055e17cf755eb395af Maintainer: mproshchuk Status: ready -->
 
 <refentry xml:id="function.range" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>range</refname>
-  <refpurpose>Створює масив, який містить діапазон елементів</refpurpose>
+  <refpurpose>Створює масив, який містить послідовність елементів</refpurpose>
  </refnamediv>
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
    <type>array</type><methodname>range</methodname>
-   <methodparam><type>mixed</type><parameter>start</parameter></methodparam>
-   <methodparam><type>mixed</type><parameter>end</parameter></methodparam>
-   <methodparam choice="opt"><type>number</type><parameter>step</parameter><initializer>1</initializer></methodparam>
+   <methodparam><type class="union"><type>string</type><type>int</type><type>float</type></type><parameter>start</parameter></methodparam>
+   <methodparam><type class="union"><type>string</type><type>int</type><type>float</type></type><parameter>end</parameter></methodparam>
+   <methodparam choice="opt"><type class="union"><type>int</type><type>float</type></type><parameter>step</parameter><initializer>1</initializer></methodparam>
   </methodsynopsis>
   <para>
-   Створює масив, який містить діапазон елементів.
+   Створює масив, який містить послідовність елементів.
+  </para>
+  <para>
+   Якщо <parameter>start</parameter> і <parameter>end</parameter> мають тип
+   <type>string</type>, а <parameter>step</parameter> — <type>int</type>, то
+   отриманий масив буде послідовністю байтів. В іншому випадку отриманий масив
+   буде послідовністю чисел.
+  </para>
+  <para>
+   Послідовність буде висхідною, якщо значення <parameter>start</parameter>
+   менше або рівне <parameter>end</parameter>. Інакше послідовність буде
+   низхідною.
   </para>
  </refsect1>
  <refsect1 role="parameters">
@@ -36,7 +45,7 @@
      <term><parameter>end</parameter></term>
      <listitem>
       <para>
-       Кінцеве значення <parameter>end</parameter>, яким закінчуватиметься послідовність.
+       Останнє можливе значення послідовності.
       </para>
      </listitem>
     </varlistentry>
@@ -44,11 +53,15 @@
      <term><parameter>step</parameter></term>
      <listitem>
       <para>
-       Якщо вказано параметр <parameter>step</parameter>, 
-       він буде використовуватися як інкремент між елементами послідовності.
-       <parameter>step</parameter> повинен бути додатнім числом.
-       Якщо параметр <parameter>step</parameter> не встановлено, 
-       тоді він приймає початкове значення 1.
+       <parameter>step</parameter> визначає крок між значеннями послідовності.      
+      </para>
+      <para>
+       <parameter>step</parameter> може бути від'ємним для низхідних
+       послідовностей.
+      </para>
+      <para>
+       Якщо параметр <parameter>step</parameter> має тип <type>float</type> і не
+       має дробової частини, то він перетворюється в <type>int</type>.
       </para>
      </listitem>
     </varlistentry>
@@ -58,10 +71,165 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Повертає масив елементів від <parameter>start</parameter> до
-   <parameter>end</parameter> включно.
+   Повертає послідовність значень у вигляді масиву (<type>array</type>)
+   елементів від <parameter>start</parameter> до <parameter>end</parameter>, з
+   кроком <parameter>step</parameter>.
+  </para>
+  <para>
+   Залежно від значення <parameter>step</parameter>, останнім елементом
+   отриманого масиву є або значення <parameter>end</parameter>, або попередній
+   член послідовності.
+  </para>
+  <para>
+   Якщо <parameter>start</parameter> і <parameter>end</parameter> мають тип
+   <type>string</type>, а <parameter>step</parameter> — <type>int</type>, то
+   отриманий масив буде послідовністю байтів, зазвичай це латинські символи
+   <abbrev>ASCII</abbrev>.
+  </para>
+  <para>
+   Якщо принаймні один з параметрів <parameter>start</parameter>,
+   <parameter>end</parameter>, <parameter>step</parameter> має тип
+   <type>float</type>, то отриманий масив буде <type>float</type>-послідовністю.
+  </para>
+  <para>
+   В іншому випадку отриманий масив буде <type>int</type>-послідовністю.
   </para>
  </refsect1>
+ <refsect1 role="errors">
+  &reftitle.errors;
+  <itemizedlist>
+   <listitem>
+    <simpara>
+     Якщо <parameter>step</parameter> є <literal>0</literal>, викинеться
+     <classname>ValueError</classname>.
+    </simpara>
+   </listitem>
+   <listitem>
+    <simpara>
+     Якщо <parameter>start</parameter>, <parameter>end</parameter>,
+     або <parameter>step</parameter> не є <function>is_finite</function>,
+     викинеться <classname>ValueError</classname>.
+    </simpara>
+   </listitem>
+   <listitem>
+    <simpara>
+     Якщо <parameter>step</parameter> є від'ємним, але послідовність є висхідною
+     (напр. <code>$start &lt;= $end</code>), викинеться
+     <classname>ValueError</classname>.
+    </simpara>
+   </listitem>
+   <listitem>
+    <simpara>
+     Якщо <parameter>start</parameter> або <parameter>end</parameter> є порожнім
+     рядком <literal>''</literal>, виведеться <constant>E_WARNING</constant>, а
+     порожній рядок перетвориться на <literal>0</literal>.
+    </simpara>
+   </listitem>
+   <listitem>
+    <simpara>
+     Якщо <parameter>start</parameter> або <parameter>end</parameter> є не
+     <link linkend="language.types.numeric-strings">числовим рядком</link> та
+     має більше ніж один байт, виведеться <constant>E_WARNING</constant>.
+    </simpara>
+   </listitem>
+   <listitem>
+    <simpara>
+     Якщо <parameter>start</parameter> або <parameter>end</parameter> є рядком,
+     що неявно приводиться до <type>int</type>, коли інше граничне значення є
+     числом, то виведеться <constant>E_WARNING</constant>.
+    </simpara>
+   </listitem>
+   <listitem>
+    <simpara>
+     Якщо <parameter>step</parameter> має тип <type>float</type>, а
+     <parameter>start</parameter> і <parameter>end</parameter> є
+     не <link linkend="language.types.numeric-strings">числовими рядками</link>,
+     виведеться <constant>E_WARNING</constant>.
+    </simpara>
+   </listitem>
+  </itemizedlist>
+ </refsect1>
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <informaltable>
+   <tgroup cols="2">
+    <thead>
+     <row>
+      <entry>&Version;</entry>
+      <entry>&Description;</entry>
+     </row>
+    </thead>
+    <tbody>
+     <row>
+      <entry>8.3.0</entry>
+      <entry>
+       Тепер, якщо <parameter>start</parameter> і <parameter>end</parameter> є
+       рядками, то <function>range</function> повертатиме масив
+       (<type>array</type>) байтів. Раніше, якщо одне з граничних значень було
+       числовим рядком, то інше граничне значення було неявно приведено до
+       <type>int</type>.
+      </entry>
+     </row>
+     <row>
+      <entry>8.3.0</entry>
+      <entry>
+       Тепер виводиться <constant>E_WARNING</constant>, якщо
+       <parameter>start</parameter> або <parameter>end</parameter> є рядком, що
+       неявно приводиться до <type>int</type>, коли інше граничне значення є
+       числом.
+      </entry>
+     </row>
+     <row>
+      <entry>8.3.0</entry>
+      <entry>
+       Тепер виводиться <constant>E_WARNING</constant>, якщо
+       <parameter>start</parameter> або <parameter>end</parameter> є нечисловим
+       рядком розміром більше ніж байт.
+      </entry>
+     </row>
+     <row>
+      <entry>8.3.0</entry>
+      <entry>
+       Тепер виводиться <constant>E_WARNING</constant>, якщо
+       <parameter>start</parameter> або <parameter>end</parameter> є порожнім
+       рядком.
+      </entry>
+     </row>
+     <row>
+      <entry>8.3.0</entry>
+      <entry>
+       Тепер, якщо параметр <parameter>step</parameter> має тип <type>float</type> і не
+       має дробової частини, то він перетворюється в <type>int</type>.
+      </entry>
+     </row>
+     <row>
+      <entry>8.3.0</entry>
+      <entry>
+       Тепер викидається <classname>ValueError</classname>, якщо
+       <parameter>step</parameter> є від'ємним, а послідовність висхідна.
+      </entry>
+     </row>
+     <row>
+      <entry>8.3.0</entry>
+      <entry>
+       Тепер викидається <classname>ValueError</classname> якщо
+       <parameter>step</parameter> не є допустимим числом.
+      </entry>
+     </row>
+     <row>
+      <entry>8.3.0</entry>
+      <entry>
+       Тепер викидається <classname>TypeError</classname>, якщо параметр
+       <parameter>start</parameter> або <parameter>end</parameter> має тип
+       <type>array</type>, <type>object</type> або <type>resource</type>.
+       Раніше такі типи неявно приводились до <type>int</type>.
+      </entry>
+     </row>
+    </tbody>
+   </tgroup>
+  </informaltable>
+ </refsect1>
+
  <refsect1 role="examples">
   &reftitle.examples;
   <para>
@@ -70,40 +238,31 @@
     <programlisting role="php">
 <![CDATA[
 <?php
-// array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
-foreach (range(0, 12) as $number) {
-    echo $number;
-}
+echo implode(', ', range(0, 12)), PHP_EOL;
 
-// З параметром step
-// array(0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100)
-foreach (range(0, 100, 10) as $number) {
-    echo $number;
-}
+echo implode(', ', range(0, 100, 10)), PHP_EOL;
 
-// Використання послідовностей символів
-// array('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i');
-foreach (range('a', 'i') as $letter) {
-    echo $letter;
-}
-// array('c', 'b', 'a');
-foreach (range('c', 'a') as $letter) {
-    echo $letter;
-}
+echo implode(', ', range('a', 'i')), PHP_EOL;
+
+echo implode(', ', range('c', 'a')), PHP_EOL;
+
+echo implode(', ', range('A', 'z')), PHP_EOL;
+
 ?>
 ]]>
     </programlisting>
+    &example.outputs;
+    <screen>
+<![CDATA[
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100
+a, b, c, d, e, f, g, h, i
+c, b, a
+A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, [, \, ], ^, _, `, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z
+]]>
+    </screen>
    </example>
   </para>
- </refsect1>
- <refsect1 role="notes">
-  &reftitle.notes;
-  <note>
-   <para>
-    Значення для послідовності знаків обмежено довжиною в один символ. 
-    Якщо довжина більша одного символа, то використовується тільки перший символ.
-   </para>
-  </note>
  </refsect1>
  <refsect1 role="seealso">
   &reftitle.seealso;

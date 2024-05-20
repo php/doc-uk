@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 9c422d0dd7aaa5864487d9526696dbff01a2052c Maintainer: mproshchuk Status: ready -->
 
-<appendix xml:id="migration72" xmlns="http://docbook.org/ns/docbook">
- <title>Перехід від PHP 7.1.x до PHP 7.2.x</title>
+<appendix xml:id="migration74" xmlns="http://docbook.org/ns/docbook">
+ <title>Перехід від PHP 7.3.x до PHP 7.4.x</title>
 
  <para>
   Ця нова мінорна версія має ряд
-  <link linkend="migration72.new-features">нових можливостей</link> та
-  <link linkend="migration72.incompatible">деяких несумісностей</link>, які
+  <link linkend="migration74.new-features">нових можливостей</link> та
+  <link linkend="migration74.incompatible">деяких несумісностей</link>, які
   потрібно врахувати та випробувати перед перемиканням на неї у виробничому
   середовищі.
  </para>
 
  <para>
   &manual.migration.seealso;
-  <link linkend="migration70">7.0.x</link> та
-  <link linkend="migration71">7.1.x</link>.
+  <link linkend="migration70">7.0.x</link>,
+  <link linkend="migration71">7.1.x</link>,
+  <link linkend="migration72">7.2.x</link> та
+  <link linkend="migration73">7.3.x</link>.
  </para>
 
- &appendices.migration72.new-features;
- &appendices.migration72.new-functions;
- &appendices.migration72.constants;
- &appendices.migration72.incompatible;
- &appendices.migration72.deprecated;
- &appendices.migration72.other-changes;
+ &appendices.migration74.new-features;
+ &appendices.migration74.new-classes;
+ &appendices.migration74.new-functions;
+ &appendices.migration74.constants;
+ &appendices.migration74.incompatible;
+ &appendices.migration74.deprecated;
+ &appendices.migration74.removed-extensions;
+ &appendices.migration74.other-changes;
+ &appendices.migration74.windows-support;
 
 </appendix>
 

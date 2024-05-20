@@ -1414,22 +1414,192 @@ xmlns="http://docbook.org/ns/docbook"><term><parameter>share_handle</parameter>
 
 <!-- IMAP notes -->
 
-<!ENTITY imap.imap-stream.description '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>
-imap_stream</parameter></term><listitem><para>An IMAP stream returned by
-<function>imap_open</function>.</para></listitem></varlistentry>'>
+<!ENTITY imap.changelog.imap-param
+'<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.1.0</entry>
+ <entry>
+  Тепер параметр <parameter>imap</parameter> має бути примірником
+  <classname>IMAP\Connection</classname>; раніше очікувався дійсний &resource;
+  <literal>imap</literal>.
+ </entry>
+</row>'>
 
-<!ENTITY imap.pattern '<para xmlns="http://docbook.org/ns/docbook">Specifies where in the mailbox hierarchy
-to start searching.</para><para xmlns="http://docbook.org/ns/docbook">There are two special characters you can
-pass as part of the <parameter>pattern</parameter>:
-&apos;<literal>*</literal>&apos; and &apos;<literal>&#37;</literal>&apos;.
-&apos;<literal>*</literal>&apos; means to return all mailboxes. If you pass
-<parameter>pattern</parameter> as &apos;<literal>*</literal>&apos;, you will
-get a list of the entire mailbox hierarchy.
-&apos;<literal>&#37;</literal>&apos;
-means to return the current level only.
-&apos;<literal>&#37;</literal>&apos; as the <parameter>pattern</parameter>
-parameter will return only the top level
-mailboxes; &apos;<literal>~/mail/&#37;</literal>&apos; on <literal>UW_IMAPD</literal> will return every mailbox in the <filename>~/mail</filename> directory, but none in subfolders of that directory.</para>'>
+<!ENTITY imap.imap-parameter.imap
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term>
+<parameter>imap</parameter></term><listitem><para>Примірник
+<classname>IMAP\Connection</classname>.</para></listitem></varlistentry>'>
+
+<!-- Deprecated -->
+<!ENTITY imap.imap-stream.description
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term>
+<parameter>imap</parameter></term><listitem><para>Потік IMAP, якого повертає
+функція <function>imap_open</function>.</para></listitem></varlistentry>'>
+
+<!ENTITY imap.pattern
+'<para xmlns="http://docbook.org/ns/docbook">Визначає, де в ієрархії поштових
+скриньок почати пошук.</para><para xmlns="http://docbook.org/ns/docbook">У
+значенні параметру <parameter>pattern</parameter> можна використовувати два
+спеціальні символи: "<literal>*</literal>" і
+"<literal>&#37;</literal>". "<literal>*</literal" —
+повернути всі поштові скриньки. Якщо значення <parameter>pattern</parameter>
+дорівнюватиме "<literal>*</literal>", то повернеться список усієї
+ієрархії поштових скриньок. "<literal>&#37;</literal>" — повернути тільки
+поточний рівень. Якщо значення <parameter>pattern</parameter>
+дорівнюватиме "<literal>&#37;</literal>", то повернеться тільки верхній рівень
+поштових скриньок; "<literal>~/mail/&#37;</literal>" на
+<literal>UW_IMAPD</literal> поверне усі поштові скриньки в теці
+<filename>~/mail</filename>, крім тих, що в її підтеках.</para>'>
+
+<!ENTITY imap.mailboxname.insecure
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>
+Передавати у цей параметр неперевірені дані <emphasis>небезпечно</emphasis>,
+якщо увімкнено <link
+linkend="ini.imap.enable-insecure-rsh">imap.enable_insecure_rsh</link>.
+</simpara></warning>'>
+
+<!-- intl notes -->
+
+<!ENTITY intl.parameter.intl-calendar
+'<para xmlns="http://docbook.org/ns/docbook">Примірник
+<classname>IntlCalendar</classname>.</para>'>
+
+<!ENTITY intl.error.intl-calendar
+'<para xmlns="http://docbook.org/ns/docbook">У разі помилки також повертається
+&false;. Для визначення причини помилки використовується
+<function>intl_get_error_code</function> або налаштовується Intl для викидання
+<link linkend="ini.intl.use-exceptions">виключень</link>.</para>'>
+
+<!ENTITY intl.codepoint.parameter
+'<para xmlns="http://docbook.org/ns/docbook">Значення кодової точки типу
+<type>int</type> (наприклад, <literal>0x2603</literal> для <emphasis>U+2603
+SNOWMAN</emphasis>) або символ UTF-8 типу <type>string</type> (напр.
+<literal>"\u{2603}"</literal>)</para>'>
+
+<!ENTITY intl.codepoint.return
+'<para xmlns="http://docbook.org/ns/docbook">Якщо кодова точка була передана як
+<type>string</type> в кодуванні UTF-8, то тип значення, що повертається —
+<type>string</type>, інакше ж повернеться <type>int</type>. Повертає &null; у
+разі невдачі.</para>'>
+
+<!ENTITY intl.codepoint.example 'Тестування різних кодових точок'>
+
+<!ENTITY intl.locale-len.return
+'<para xmlns="http://docbook.org/ns/docbook">Повертає &null;, якщо довжина
+параметра <parameter>locale</parameter> перевищує
+<constant>INTL_MAX_LOCALE_LEN</constant>.</para>'>
+
+<!ENTITY intl.property.parameter
+'<para xmlns="http://docbook.org/ns/docbook">Властивість Unicode, яка шукається
+(див. конастанти <literal>IntlChar::PROPERTY_*</literal>).</para>'>
+
+<!ENTITY intl.property.example 'Тестування різних властивостей'>
+
+<!-- LDAP notes -->
+
+<!ENTITY ldap.parameter.ldap
+'Примірник <classname
+xmlns="http://docbook.org/ns/docbook">LDAP\Connection</classname>, якого
+повертає <function
+xmlns="http://docbook.org/ns/docbook">ldap_connect</function>.'>
+
+<!ENTITY ldap.parameter.result
+'Примірник <classname
+xmlns="http://docbook.org/ns/docbook">LDAP\Result</classname>, якого повертає
+<function xmlns="http://docbook.org/ns/docbook">ldap_list</function> або
+<function xmlns="http://docbook.org/ns/docbook">ldap_search</function>.'>
+
+<!ENTITY ldap.parameter.entry
+'Примірник <classname
+xmlns="http://docbook.org/ns/docbook">LDAP\ResultEntry</classname>.'>
+
+<!ENTITY ldap.warn.control-paged
+'<warning xmlns="http://docbook.org/ns/docbook">
+ <simpara>
+  Ця функція <emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 7.4.0, та
+  <emphasis>ВИЛУЧЕНА</emphasis> В PHP 8.0.0. Замість неї використовується
+  параметр <parameter>controls</parameter> функції
+  <function>ldap_search</function>. Докладніше: <link
+  linkend="ldap.controls">Елементи керування LDAP</link>.
+ </simpara>
+</warning>'>
+
+<!ENTITY ldap.changelog.controls-nullable
+'<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.0.0</entry>
+ <entry>
+  Параметр <parameter>controls</parameter> тепер може бути &null;; раніше
+  початково було <literal>[]</literal>.
+ </entry>
+</row>'>
+
+<!ENTITY ldap.changelog.ldap-object
+'<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.1.0</entry>
+ <entry>
+  Тепер параметр <parameter>ldap</parameter> має бути примірником
+  <classname>LDAP\Connection</classname>; раніше очікувався дійсний &resource;
+  <literal>ldap link</literal>.
+ </entry>
+</row>'>
+
+<!ENTITY ldap.changelog.entry-object
+'<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.1.0</entry>
+ <entry>
+  Тепер параметр <parameter>entry</parameter> має бути примірником
+  <classname>LDAP\ResultEntry</classname>; раніше очікувався дійсний
+  &resource; <literal>ldap result entry</literal>.
+ </entry>
+</row>'>
+
+<!ENTITY ldap.changelog.result-object
+'<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.1.0</entry>
+ <entry>
+  Тепер параметр <parameter>result</parameter> має бути примірником
+  <classname>LDAP\Result</classname>; раніше очікувався дійсний &resource;
+  <literal>ldap result</literal>.
+ </entry>
+</row>'>
+
+<!ENTITY ldap.changelog.return-result-object
+'<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.1.0</entry>
+ <entry>
+  Тепер повертає примірника <classname>LDAP\Result</classname>; раніше
+  повертався &resource;.
+ </entry>
+</row>'>
+
+<!ENTITY ldap.changelog.return-result-entry-object
+'<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.1.0</entry>
+ <entry>
+  Тепер повертає примірника <classname>LDAP\ResultEntry</classname>; раніше
+  повертався &resource;.
+ </entry>
+</row>'>
+
+<!ENTITY ldap.return-result
+'Повертає примірника <classname
+xmlns="http://docbook.org/ns/docbook">LDAP\Result</classname>,&return.falseforfailure;.'>
+
+<!ENTITY ldap.return-result-array
+'Повертає примірника <classname
+xmlns="http://docbook.org/ns/docbook">LDAP\Result</classname>, масив примірників
+<classname xmlns="http://docbook.org/ns/docbook">LDAP\Result</classname>,&return.falseforfailure;.'>
+
+<!ENTITY ldap.return-result-array-info
+'<para xmlns="http://docbook.org/ns/docbook">Також можливо шукати паралельно.
+Тоді перший параметр має бути масивом примірників
+<classname>LDAP\Connection</classname>. Якщо пошуковики мають використовувати
+різні базові DN і фільтр, то небхідно передати масив базових DN і/або
+масив фільтрів, як параметри. Ці масиви мають бути однакових розмірів з масивом
+примірників <classname>LDAP\Connection</classname>, оскільки перші елементи
+масивів використовуються для одного пошуку, другі використовуються для іншого і
+так далі. Виконавши паралельний пошук, повернеться масив примірників
+<classname>LDAP\Result</classname>, окрім випадків помилок, коли значення, що
+повернеться, буде &false;.</para>'>
 
 <!-- mbstring notes -->
 

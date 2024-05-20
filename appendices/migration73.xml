@@ -2,7 +2,7 @@
 <!-- EN-Revision: 9c422d0dd7aaa5864487d9526696dbff01a2052c Maintainer: mproshchuk Status: ready -->
 
 <appendix xml:id="migration73" xmlns="http://docbook.org/ns/docbook">
- <title>Migrating from PHP 7.2.x to PHP 7.3.x</title>
+ <title>Перехід від PHP 7.2.x до PHP 7.3.x</title>
 
  <para>
   Ця нова мінорна версія має ряд
