@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision$ -->
-<!-- EN-Revision: 8b5940cadeb4f1c8492f4a7f70743a2be807cf39 Maintainer: iSensetivity Status: ready -->
-<!-- Reviewed: no -->
-
-<refentry xml:id="function.shuffle" xmlns="http://docbook.org/ns/docbook">
+<!-- EN-Revision: f781803449007bb0e3a96c693e0eee067f7eb466 Maintainer: mproshchuk Status: ready -->
+<refentry xml:id="function.shuffle" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>shuffle</refname>
   <refpurpose>Перемішує масив</refpurpose>
@@ -11,12 +8,13 @@
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
-   <type>bool</type><methodname>shuffle</methodname>
+   <type>true</type><methodname>shuffle</methodname>
    <methodparam><type>array</type><parameter role="reference">array</parameter></methodparam>
   </methodsynopsis>
   <para>
    Ця функція перемішує елементи масиву у випадковому порядку.
   </para>
+  &caution.cryptographically-insecure;
  </refsect1>
  <refsect1 role="parameters">
   &reftitle.parameters;
@@ -36,7 +34,33 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   &return.success;
+   &return.true.always;
+  </para>
+ </refsect1>
+  <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>7.1.0</entry>
+       <entry>
+        Внутрішній алгоритм випадковостей <link
+        linkend="migration71.incompatible.rand-srand-aliases">було
+        змінено</link> на <link xlink:href="&url.mersenne;">Вихор
+        Мерсенна</link> замість функції rand з бібліотеки libc.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
   </para>
  </refsect1>
  <refsect1 role="examples">
@@ -61,18 +85,20 @@ foreach ($numbers as $number) {
  <refsect1 role="notes">
   &reftitle.notes;
   &note.no-key-association;
+  &note.reset-index;
  </refsect1>
  <refsect1 role="seealso">
   &reftitle.seealso;
   <para>
    <simplelist>
-    <member><function>array_rand</function></member>
+    <member><function>Random\Randomizer::shuffleArray</function></member>
+    <member><function>Random\Randomizer::shuffleBytes</function></member>
+    <member><function>Random\Randomizer::pickArrayKeys</function></member>
     <member>&seealso.array.sorting;</member>
    </simplelist>
   </para>
  </refsect1>
 </refentry>
-
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml
