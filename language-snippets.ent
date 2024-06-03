@@ -1721,19 +1721,76 @@ linkend="memcached.expiration" xmlns="http://docbook.org/ns/docbook">Термі�
 
 <!-- password notes -->
 
-<!ENTITY password.parameter.algo 'A <link xmlns="http://docbook.org/ns/docbook" linkend="password.constants">password algorithm constant</link> denoting the algorithm to use when hashing the password.'>
+<!ENTITY password.parameter.algo '<link xmlns="http://docbook.org/ns/docbook" linkend="password.constants">Константа алгоритму для паролю</link>, що позначає алгоритм для гешування пароля.'>
 
-<!ENTITY password.parameter.hash 'Хеш, створений функцією <function xmlns="http://docbook.org/ns/docbook">password_hash</function>.'>
+<!ENTITY password.parameter.hash 'Геш, створений функцією <function xmlns="http://docbook.org/ns/docbook">password_hash</function>.'>
 
-<!ENTITY password.parameter.options 'An associative array containing options. See the <link xmlns="http://docbook.org/ns/docbook" linkend="password.constants">password algorithm constants</link> for documentation on the supported options for each algorithm.'>
+<!ENTITY password.parameter.options 'Асоціативниий масив опцій. Документація щодо доступних опцій для кожного алгоритму викладена на сторінці <link xmlns="http://docbook.org/ns/docbook" linkend="password.constants">Константи алгоритмів для паролів</link>.'>
 
-<!ENTITY password.parameter.password 'Користувальницький пароль.'>
+<!ENTITY password.parameter.password 'Користувацький пароль.'>
+
+<!-- pspell notes -->
+
+<!ENTITY pspell.changelog.pspell-dictionary
+'<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.1.0</entry>
+ <entry>
+  Тепер параметр <parameter>dictionary</parameter> має бути примірником
+  <classname>PSpell\Dictionary</classname>; раніше очікувався &resource;.
+ </entry>
+</row>'>
+
+<!ENTITY pspell.changelog.pspell-config
+'<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.1.0</entry>
+ <entry>
+  Тепер параметр <parameter>config</parameter> має бути примірником
+  <classname>PSpell\Config</classname>; раніше очікувався &resource;.
+ </entry>
+</row>'>
+
+<!ENTITY pspell.parameter.pspell-dictionary
+'<para xmlns="http://docbook.org/ns/docbook">Примірник
+<classname>PSpell\Dictionary</classname>.</para>'>
+
+<!ENTITY pspell.parameter.pspell-config
+'<para xmlns="http://docbook.org/ns/docbook">Примірник
+<classname>PSpell\Config</classname>.</para>'>
+
+<!-- RNP -->
+
+<!ENTITY rnp.parameter.ffi-description 'Об&apos;єкт FFI, якого повертає rnp_ffi_create.'>
+
+<!ENTITY rnp.parameter.key-format 'Ключовий формат даних (GPG, KBX, G10).'>
+
+<!ENTITY rnp.parameter.loadsave-flags 'Варто прочитати опис прапорців RNP_LOAD_SAVE_*.'>
+
+<!-- socket entities -->
+
+<!ENTITY sockets.changelog.socket-param
+'<row xmlns="http://docbook.org/ns/docbook">
+  <entry>8.0.0</entry>
+  <entry>
+   Тепер <parameter>socket</parameter> є примірником
+   <classname>Socket</classname>; раніше це був <type>resource</type>.
+  </entry>
+ </row>'>
+
+<!ENTITY sockets.changelog.address-param
+'<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.0.0</entry>
+ <entry>
+  Тепер <parameter>address</parameter> є примірником
+  <classname>AddressInfo</classname>; раніше це був <type>resource</type>.
+ </entry>
+</row>'>
+
 
 <!-- geaman notes -->
 
-<!ENTITY gearman.parameter.host "Ім'я хоста сервера задач.">
+<!ENTITY gearman.parameter.host "Ім'я хоста сервера завдань.">
 
-<!ENTITY gearman.parameter.port 'Порт сервера задач.'>
+<!ENTITY gearman.parameter.port 'Порт сервера завдань.'>
 
 <!ENTITY gearman.parameter.functionname 'Зареєстрована функція, яку викликає робочий процес'>
 
@@ -1741,25 +1798,32 @@ linkend="memcached.expiration" xmlns="http://docbook.org/ns/docbook">Термі�
 
 <!ENTITY gearman.parameter.data 'Додаткові дані, які можуть бути потрібні для завершення роботи'>
 
-<!ENTITY gearman.parameter.context 'Контекст застосунку, що асоціюється із задачою'>
+<!ENTITY gearman.parameter.context 'Контекст застосунку, що асоціюється із завданням'>
 
-<!ENTITY gearman.parameter.unique 'Унікальний ID, що використовується для ідентифікації конкретної задачі'>
+<!ENTITY gearman.parameter.unique 'Унікальний ID завдання'>
 
-<!ENTITY gearman.parameter.jobhandle 'Дескриптор задачі, що призначається сервером Gearman'>
+<!ENTITY gearman.parameter.jobhandle 'Дескриптор завдання, що призначається сервером Gearman'>
 
 <!-- Date and time entities -->
-<!ENTITY date.timezone.intro.title '<title xmlns="http://docbook.org/ns/docbook">Список Підтримуваних Часових Зон</title>'>
+<!ENTITY date.timezone.intro.title '<title xmlns="http://docbook.org/ns/docbook">Список підтримуваних часових зон</title>'>
 
-<!ENTITY date.timezone.intro '<para xmlns="http://docbook.org/ns/docbook">
-Here you&apos;ll find the complete list of timezones supported by PHP, which are
-meant to be used with e.g. <function>date_default_timezone_set</function>.
-</para><note xmlns="http://docbook.org/ns/docbook"><simpara>The latest version of the timezone database can be
-installed via PECL&apos;s <link xlink:href="&url.pecl.package.get;timezonedb" xmlns:xlink="http://www.w3.org/1999/xlink">timezonedb</link>.
-</simpara></note>'>
+<!ENTITY date.timezone.intro
+"<para xmlns='http://docbook.org/ns/docbook'>
+Це повний список часових зон, які підтримує PHP. Вони призначені для
+використання з, наприклад, функцією
+<function>date_default_timezone_set</function>.<caution><simpara>Поведінка не
+вказаних тут часових зон є невизначеною.</simpara></caution></para><note
+xmlns='http://docbook.org/ns/docbook'><simpara>Найновішу версію бази даних
+часових зон можна отримати, встановивши PECL-розширення <link
+xlink:href='&url.pecl.package.get;timezonedb'
+xmlns:xlink='http://www.w3.org/1999/xlink'>timezonedb</link>.
+</simpara></note>">
 
-<!ENTITY date.timezone.bc '<simpara xmlns="http://docbook.org/ns/docbook">Please do not use any of the timezones
-listed here (besides UTC), they only exist for backward compatible reasons.
-</simpara>'>
+<!ENTITY date.timezone.bc
+'<simpara xmlns="http://docbook.org/ns/docbook">Не рекомендовано використовувати
+перераховані тут часові зони (крім UTC). Вони існують лише для зворотньої
+сумісності і можуть спричинити помилки. Більше того, ці часові зони можуть бути
+вилучені з бази даних часових зон IANA в будь який момент.</simpara>'>
 
 <!ENTITY date.timezone.posix-signs '<simpara xmlns="http://docbook.org/ns/docbook">
  If you disregard the above warning, please also note that the IANA
