@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: cb0630b14901459c0bf1556e7d68f1b4c0d3796e Maintainer: ktretyak Status: ready -->
-<!-- $Revision$ -->
+<!-- EN-Revision: a6d209f4ff71ccba3f1255902827f5df3e092ff9 Maintainer: mproshchuk Status: ready -->
 
 <refentry role="variable" xml:id="reserved.variables.httpresponseheader" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
@@ -13,10 +12,10 @@
   <para>
    Масив (<type>array</type>) змінної <varname>$http_response_header</varname>
    є схожим до значення, що повертає функція <function>get_headers</function>.
-   При використанні  <link linkend="wrappers.http">HTTP-обгорток</link>,
+   Використовуючи <link linkend="wrappers.http">HTTP-обгортки</link>,
    <varname>$http_response_header</varname> буде заповнена заголовками
-   HTTP-відповіді. <varname>$http_response_header</varname> буде створюватись
-   в <link linkend="language.variables.scope">локальній області</link>.
+   HTTP-відповіді. <varname>$http_response_header</varname> буде створено в
+   <link linkend="language.variables.scope">локальній області</link>.
   </para>
  </refsect1>
  
@@ -30,10 +29,10 @@
 <?php
 function get_contents() {
   file_get_contents("http://example.com");
-  var_dump($http_response_header);
+  var_dump($http_response_header); // змінна заповнена в локальній області видимості
 }
 get_contents();
-var_dump($http_response_header);
+var_dump($http_response_header); // виклик get_contents() не заповнить змінну поза областю видимості фіункції
 ?>
 ]]>
     </programlisting>
@@ -60,6 +59,9 @@ array(9) {
   [8]=>
   string(38) "Content-Type: text/html; charset=UTF-8"
 }
+
+
+Warning: Undefined variable $http_response_header
 NULL
 ]]>
     </screen>

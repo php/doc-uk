@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: cb0630b14901459c0bf1556e7d68f1b4c0d3796e Maintainer: ktretyak Status: ready -->
-<!-- $Revision$ -->
+<!-- EN-Revision: a6d209f4ff71ccba3f1255902827f5df3e092ff9 Maintainer: mproshchuk Status: ready -->
 
 <refentry role="variable" xml:id="reserved.variables.files" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>$_FILES</refname>
-  <refname>$HTTP_POST_FILES [застаріла]</refname>
   <refpurpose>Змінні завантаження файлів через HTTP</refpurpose>
  </refnamediv>
  
@@ -13,43 +11,9 @@
   &reftitle.description;
   <para>
    Асоціативний масив (<type>array</type>) елементів, завантажених в поточний
-   скрипт через HTTP методом POST.
-  </para>
-
-  <simpara>
-   Змінна <varname>$HTTP_POST_FILES</varname> містить таку ж ініціалізуючу
-   інформацію, але не є
-   <link linkend="language.variables.superglobals">суперглобальною</link>. 
-   (Зауважте, що <varname>$HTTP_POST_FILES</varname> та
-   <varname>$_FILES</varname> є різними змінними, а тому PHP обробляє
-   їх як такі)
-  </simpara>
-
- </refsect1>
- 
-
- <refsect1 role="changelog">
-  &reftitle.changelog;
-  <para>
-   <informaltable>
-    <tgroup cols="2">
-     <thead>
-      <row>
-       <entry>&Version;</entry>
-       <entry>&Description;</entry>
-      </row>
-     </thead>
-     <tbody>
-      <row>
-       <entry>4.1.0</entry>
-       <entry>
-        Введено <varname>$_FILES</varname> для заміни застарілої
-        <varname>$HTTP_POST_FILES</varname>.
-       </entry>
-      </row>
-     </tbody>
-    </tgroup>
-   </informaltable>
+   скрипт через HTTP методом POST. Структуру цього масиву наведено в розділі
+   <link linkend="features.file-upload.post-method">Завантаження методом
+   POST</link>.
   </para>
  </refsect1>
  
