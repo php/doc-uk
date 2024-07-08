@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: af6fdf16ab44bcf4d045407963e43c3d9dd2ff29 Maintainer: ktretyak Status: ready -->
-<!-- $Revision$ -->
-
+<!-- EN-Revision: a6d209f4ff71ccba3f1255902827f5df3e092ff9 Maintainer: mproshchuk Status: ready -->
 <refentry role="variable" xml:id="language.variables.superglobals" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" annotations="verify_info:false">
  <refnamediv>
   <refname>Суперглобальні змінні</refname>
-  <refpurpose>Суперглобальні змінні - це вбудовані змінні, які доступні у
-    всіх областях видимості</refpurpose>
+  <refpurpose>Вбудовані змінні, які доступні у всіх областях видимості</refpurpose>
  </refnamediv>
  
  <refsect1 role="description">
   &reftitle.description;
   <para>
-   Деякі з предвизначених змінних в PHP є "суперглобальними", що практично
-   означає, що вони є доступними у всіх областях видимості скрипта. Тобто не
-   потрібно писати <command>global $variable;</command>, щоб отримати до них
-   доступ всередині функції чи методу.
+   Деякі з попередньо визначених змінних в PHP є "суперглобальними", тобто
+   доступні у всіх областях видимості скрипта. Тож не потрібно писати
+   <command>global $variable;</command>, щоб отримати до них доступ всередині
+   функції чи методу.
   </para>
   <para>
    Такими суперглобальними змінними є:
@@ -45,25 +42,9 @@
    </para>
   </note>
   <note>
-   <title>Робота з register_globals</title>
-   <para>
-    Якщо значення для застарілої директиви
-    <link linkend="ini.register-globals">register_globals</link>
-    встановлено в <literal>on</literal> (тобто, включено), то всі значення,
-    з масивів суперглобальних змінних, також будуть доступними в глобальній
-    області скрипта у вигляді окремих змінних. Наприклад,
-    <varname>$_POST['foo']</varname> буде також існувати як
-    <varname>$foo</varname>.
-   </para>
-   <para>
-    Відповідну інформацію можна знайти в пункті ЧАПу з назвою
-    "<link linkend="faq.register-globals">Який вплив має register_globals?</link>"
-   </para>
-  </note>
-  <note>
    <title>Змінна змінних</title>
    <para>
-    Суперглобальні змінні не можна використовувати як
+    Суперглобальну змінну не можна використовувати як
     <link linkend="language.variables.variable">змінну змінних</link>
     всередині функції чи методу.
    </para>
@@ -74,7 +55,7 @@
   &reftitle.seealso;
   <para>
    <simplelist>
-    <member><link linkend="language.variables.scope">variable scope</link></member>
+    <member><link linkend="language.variables.scope">Область видимості змінної</link></member>
     <member>Директива <link linkend="ini.variables-order">variables_order</link></member>
     <member><link linkend="book.filter">Фільтрація даних</link></member>
    </simplelist>

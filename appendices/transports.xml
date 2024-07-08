@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: aab33d644359aba597e810e2fc0c0caa0d347c9c Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: 1268a5eebbd09dbc4c4d5272c2bcdc0b035c256c Maintainer: mproshchuk Status: ready -->
 <appendix xml:id="transports" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Перелік підтримуваних транспортних протоколів у сокетах</title>
  <para>
-  Нижче наведено список різноманітних транспортних протоколів в URL стилі, які
+  Нижче наведено список різноманітних транспортних протоколів в URL-стилі, які
   вбудовані в PHP для використання з функціями сокетів на основі потоків, як-от
   <function>fsockopen</function> і <function>stream_socket_client</function>.
-  Цих протоколів <emphasis>немає</emphasis> у
-  <link linkend="ref.sockets">Розширеннях для сокетів</link>.
+  Ці протоколи <emphasis>не описані</emphasis> у <link
+  linkend="ref.sockets">функціях розширення для сокетів</link>.
  </para>
 
  <para>

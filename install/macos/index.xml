@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 303198cd29c8df046344ab04d029ce084e8a045d Maintainer: ktretyak Status: ready -->
-<!-- $Revision$ -->
+<!-- EN-Revision: 12081e88fbd683e58a029153afd57f043df9721b Maintainer: mproshchuk Status: ready -->
 <chapter xml:id="install.macosx" xmlns="http://docbook.org/ns/docbook">
- <title>Встановлення на Mac OS X</title>
+ <title>Встановлення на macOS</title>
  <para>
-  Цей розділ містить замітки та підказки призначені для встановлення PHP на Mac OS X.
-  PHP йде в поставці з Macs, а її збірка має подібні кроки до
-  <link linkend="install.unix">інструкції встановлення на Unix</link>.
+  Цей розділ містить замітки та підказки щодо встановлення PHP на macOS. PHP
+  входить до складу macOS, з версії macOS X (10.0.0) і до macOS Monterey
+  (12.0.0). Процес збирання подібний до того, що в <link
+  linkend="install.unix">Керівництві зі встановлення на Unix</link>.
  </para>
  &install.macos.packages;
  &install.macos.bundled;
