@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 26e26a95fdc3aac9b464068953ea3105dee00f14 Maintainer: mproshchuk Status: ready -->
+<reference xml:id="class.php-incomplete-class" role="class" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
+
+ <title>Клас __PHP_Incomplete_Class</title>
+ <titleabbrev>__PHP_Incomplete_Class</titleabbrev>
+
+ <partintro>
+
+  <section xml:id="php-incomplete-class.intro">
+   &reftitle.intro;
+   <para>
+    Створюється функцією <function>unserialize</function> у спробі розпакувати
+    невизначений клас або той, що відсутній у списку
+    <literal>allowed_classes</literal> параметра <parameter>options</parameter>
+    функції <function>unserialize</function>.
+   </para>
+
+   <para>
+    До PHP 7.2.0, застосування <function>is_object</function> до класу
+    <classname>__PHP_Incomplete_Class</classname> повертало &false;.
+    Починаючи з PHP 7.2.0, повертається &true;.
+   </para>
+  </section>
+
+  <section xml:id="php-incomplete-class.synopsis">
+   &reftitle.classsynopsis;
+
+   <classsynopsis class="class">
+    <ooclass>
+     <classname>__PHP_Incomplete_Class</classname>
+    </ooclass>
+   </classsynopsis>
+
+   <para>
+    Цей клас не має стандартних властивостей або методів. Після створення
+    функцією <function>unserialize</function>, об'єкт матиме розпаковані
+    властивості і значення, а також властивість
+    <literal>__PHP_Incomplete_Class_Name</literal>, котра міститиме назву
+    розпакованого класу.
+   </para>
+  </section>
+
+  <section xml:id="php-incomplete-class.examples" role="examples">
+   &reftitle.examples;
+   <example xml:id="php-incomplete-class.basic-example">
+    <title>Створення за допомогою <function>unserialize</function></title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+
+class MyClass
+{
+    public string $property = "myValue";
+}
+
+$myObject = new MyClass;
+
+$foo = serialize($myObject);
+
+// розпакувати всі об'єкти як __PHP_Incomplete_Class
+$disallowed = unserialize($foo, ["allowed_classes" => false]);
+
+var_dump($disallowed);
+
+// розпакувати всі об'єкти, окрім MyClass2 та MyClass3, як об'єкт __PHP_Incomplete_Class
+$disallowed2 = unserialize($foo, ["allowed_classes" => ["MyClass2", "MyClass3"]]);
+
+var_dump($disallowed2);
+
+// розпакувати невизначений клас як об'єкт __PHP_Incomplete_Class
+$undefinedClass = unserialize('O:16:"MyUndefinedClass":0:{}');
+
+var_dump($undefinedClass);
+]]>
+    </programlisting>
+    &example.outputs;
+    <screen>
+<![CDATA[
+
+object(__PHP_Incomplete_Class)#2 (2) {
+  ["__PHP_Incomplete_Class_Name"]=>
+  string(7) "MyClass"
+  ["property"]=>
+  string(7) "myValue"
+}
+object(__PHP_Incomplete_Class)#3 (2) {
+  ["__PHP_Incomplete_Class_Name"]=>
+  string(7) "MyClass"
+  ["property"]=>
+  string(7) "myValue"
+}
+object(__PHP_Incomplete_Class)#4 (1) {
+  ["__PHP_Incomplete_Class_Name"]=>
+  string(16) "MyUndefinedClass"
+}
+
+]]>
+    </screen>
+   </example>
+  </section>
+
+ </partintro>
+
+</reference>
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

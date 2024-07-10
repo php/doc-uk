@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 46a9cdd2dbef4ec89bf65fad9930e2feb78bbb98 Maintainer: mproshchuk Status: ready -->
+<book xml:id="book.exec" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <?phpdoc extension-membership="core" ?>
+ <title>Виконання програм операційною системою</title>
+ <titleabbrev>Виконання програм</titleabbrev>
+
+ <!-- {{{ preface -->
+ <preface xml:id="intro.exec">
+  &reftitle.intro;
+  <para>
+   Ці функції забезпечують засоби для безпечного виконання команд операційною
+   системою.
+  </para>
+  <note>
+   <para>
+    Всі функції виконання задають команди у Windows за допомогою
+    <literal>cmd.exe</literal>. Тому користувач, що викликає ці функції,
+    потребує відповідних прав для запуску цієї програми. Винятком є функція
+    <function>proc_open</function> з опцією <literal>bypass_shell</literal>.
+   </para>
+  </note>
+ </preface>
+ <!-- }}} -->
+
+ &reference.exec.setup;
+ &reference.exec.reference;
+
+</book>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
+

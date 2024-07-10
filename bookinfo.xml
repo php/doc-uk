@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: fdabefd50cedaed15fa965ea3a8be31646207a1a Maintainer: ktretyak Status: ready -->
-<!-- $Revision: 336468$ -->
-<!-- Reviewed: yes Maintainer: mproshchuk -->
+<!-- EN-Revision: fdabefd50cedaed15fa965ea3a8be31646207a1a Maintainer: mproshchuk Status: ready -->
 
  <info xmlns="http://docbook.org/ns/docbook" xml:id="bookinfo">
   &frontpage.authors;
@@ -39,7 +37,7 @@
     термінів та на умовах, встановлених в ліцензії Creative Commons Attribution 
     3.0 License або більш пізньої. Копія 
     <link linkend="cc.license">Creative Commons Attribution 3.0 license</link> 
-    поширюється разом із даним посібником. Найсвіжіша на даний момент версія 
+    поширюється разом із даним посібником. Найсвіжіша на цей момент версія 
     доступна за адресою <link xlink:href="&url.cc.by;">&url.cc.by;</link>.
    </simpara>
    <simpara>

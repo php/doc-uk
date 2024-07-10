@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 3049bd1d4a1bf7c75076e817aeba02e71c0013c2 Maintainer: ktretyak Status: ready -->
-<!-- $Revision$ -->
+<!-- EN-Revision: f8682cd86a71640bf8771186d1d40881c7a0295e Maintainer: mproshchuk Status: ready -->
 <sect1 xml:id="install.unix.debian" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Замітки для Debian GNU/Linux</title>
  <para>
@@ -9,45 +8,44 @@
  </para>
  <warning>
   <para>
-   Неофіційні збірки від третіх сторін тут не згадуються. Про будь-які неполадки
-   потрібно звітувати команді Debian, якщо їх не можна відтворити використовуючи
-   останні збірки з нашої <link xlink:href="&url.php.downloads;">сторінки
-   завантаження</link>.
+   Неофіційні збірки від третіх сторін тут не згадуються. Про будь-які
+   несправності потрібно звітувати команді Debian, якщо їх не можна відтворити,
+   використовуючи останні збірки з нашої
+   <link xlink:href="&url.php.downloads;">сторінки завантажень</link>.
   </para>
  </warning>
  <para>
   Хоча загальні інструкції для встановлення PHP на Unix застосовуються також і
-  до Debian, ця сторінка містить специфічну інформацію для інших моментів, таких як
-  використання команд <literal>apt-get</literal> або <literal>aptitude</literal>.
-  Тут використовуються ці дві команди поперемінно.
+  до Debian, ця сторінка містить специфічну інформацію щодо інших моментів,
+  як наприклад використання команд <literal>apt</literal> або
+  <literal>aptitude</literal>. Тут використовуються ці дві команди по черзі.
  </para>
  <sect2 xml:id="install.unix.debian.apt">
   <title>Використання APT</title>
    <simpara>
-    По-перше, зауважте, що інші пов'язані пакети можуть потребувати
-    <literal>libapache2-mod-php5</literal> для інтеграції з Apache 2, та
+    По-перше, варто зауважити, що інші пов'язані пакети можуть потребувати
+    <literal>libapache2-mod-php</literal> для інтеграції з Apache 2, та
     <literal>php-pear</literal> для PEAR.
    </simpara>
    <simpara>
-    По-друге, перед встановленням пакетів, переконайтесь, що список пакетів оновлено.
-    Типово, це робиться через запуск команди
-    <command>apt-get update</command>.
+    По-друге, перед встановленням пакетів список пакетів має бути оновлено.
+    Типово, це робиться через запуск команди <command>apt update</command>.
    </simpara>
    <example xml:id="install.unix.debian.apt.example">
     <title>Приклад встановлення Debian з Apache 2</title>
     <programlisting role="shell">
 <![CDATA[
-# apt-get install php5-common libapache2-mod-php5 php5-cli
+# apt install php-common libapache2-mod-php php-cli
 ]]>
     </programlisting>
    </example>
    <simpara>
-    APT буде автоматично встановлювати модуль PHP 5 для Apache 2 та всі його
-    залежності, а потім активуватиме його. Apache потрібно перезапустити, щоб
-    зміни набули чинності. Наприклад:
+    APT буде автоматично встановлювати модуль PHP для Apache 2 та всі його
+    залежності, а потім активує його. Apache потрібно перезапустити, щоб зміни
+    набули чинності. Наприклад:
    </simpara>
    <example xml:id="install.unix.debian.apt.example2">
-    <title>Зупинка та запуск Apache, як тільки PHP встановлено</title>
+    <title>Зупинка та запуск Apache, коли PHP встановлено</title>
     <programlisting role="shell">
 <![CDATA[
 # /etc/init.d/apache2 stop
@@ -57,46 +55,47 @@
    </example>
  </sect2>
  <sect2 xml:id="install.unix.debian.config">
-  <title>Розширене конфігурування</title>
+  <title>Розширене налаштування</title>
    <simpara>
-    В останньому прикладі, PHP було встановлено з самими основними модулями. Дуже
-    ймовірно, що ви захочете доставити інші модулі, такі як
+    В останньому прикладі, PHP було встановлено з основними модулями. Ймовірно,
+    потрібно буде доставити інші модулі, наприклад
     <link linkend="book.mysql">MySQL</link>,
     <link linkend="book.curl">cURL</link>,
     <link linkend="book.image">GD</link>,
-    і т.д. Всі їх також можна встановити через команду <literal>apt-get</literal>.
+    та інші. Їх також можна встановити через команду <literal>apt</literal>.
    </simpara>
    <example xml:id="install.unix.debian.config.example">
-    <title>Методи пошуку додаткових пакетів для PHP 5</title>
+    <title>Методи пошуку додаткових пакетів для PHP</title>
     <programlisting role="shell">
 <![CDATA[
-# apt-cache search php5
-# aptitude search php5
-# aptitude search php5 |grep -i mysql
+# apt-cache search php
+# apt search php | grep -i mysql
+# aptitude search php
 ]]>
     </programlisting>
    </example>
    <simpara>
-    Ці методи покажуть великий список пакетів, включаючи деякі специфічні для PHP,
-    такі як php5-cgi, php5-cli та php5-dev. Визначте, які з них потрібні, та
-    встановіть їх використовуючи <literal>apt-get</literal> або
-    <literal>aptitude</literal>. Оскільки Debian виконує перевірку залежностей,
-    вам буде запропоновано, наприклад, встановити MySQL та cURL:
+    Ці методи покажуть великий список пакетів, включаючи деякі специфічні для
+    PHP, такі як php-cgi, php-cli та php-dev. Вони встановлюються за допомогою
+    <literal>apt</literal> або <literal>aptitude</literal>. Оскільки Debian
+    виконує перевірку залежностей, буде запропоновано, наприклад, встановити
+    MySQL та cURL:
    </simpara>
    <example xml:id="install.unix.debian.config.example2">
     <title>Встановлення PHP з MySQL та cURL</title>
     <programlisting role="shell">
 <![CDATA[
-# apt-get install php5-mysql php5-curl
+# apt install php-mysql php-curl
 ]]>
     </programlisting>
    </example>
    <simpara>
-    APT буде автоматично додавати відповідні рядки для різних &php.ini; пов'язаних
-    файлів, таких як <filename>/etc/php5/apache2/php.ini</filename>,
-    <filename>/etc/php5/conf.d/pdo.ini</filename>, і т.п., та в залежності від
-    розширень, буде додавати записи такі як <literal>extension=foo.so</literal>.
-    Перезапуск веб-сервера також є необхідним, щоб зміни набули чинності.
+    APT буде автоматично додавати відповідні рядки для різних &php.ini;
+    пов'язаних файлів, як от <filename>/etc/php/7.4/php.ini</filename>,
+    <filename>/etc/php/7.4/conf.d/*.ini</filename>, і схожих, та залежно від
+    розширень, буде додавати записи, наприклад
+    <literal>extension=foo.so</literal>. Перезапуск вебсервера також є
+    необхідним, щоб зміни набули чинності.
    </simpara>
  </sect2>
  <sect2 xml:id="install.unix.debian.faq">
@@ -104,25 +103,24 @@
   <itemizedlist>
    <listitem>
     <simpara>
-     Якщо скрипти PHP не обробляються веб-сервером, то ймовірно, що PHP ще не
-     додано до конфігураційного файла веб-сервера, який на Debian може знаходитись
-     тут: <filename>/etc/apache2/apache2.conf</filename>. Дивіться керівництво
-     Debian для детальнішої інформації.
+     Якщо скрипти PHP не обробляються вебсервером, то ймовірно, що PHP ще не
+     додано до конфігураційного файла вебсервера, який на Debian може
+     знаходитись тут: <filename>/etc/apache2/apache2.conf</filename>. Докладніша
+     інформація є у керівництві Debian.
     </simpara>
    </listitem>
    <listitem>
     <simpara>
-     Якщо розширення встановлено, але функції не знаходяться, переконайтесь, що
-     завантажується відповідний ini-файл та/або веб-сервер було перезапущено
+     Якщо розширення встановлено, але функції не доступні, треба переконатись,
+     що завантажується відповідний ini-файл та вебсервер було перезапущено
      після встановлення цих розширень.
     </simpara>
    </listitem>
    <listitem>
     <simpara>
      Є дві базові команди для встановлення пакетів на Debian (та інші варіанти
-     Linux): <literal>apt-get</literal> і <literal>aptitude</literal>.
-     Але пояснення тонкощів в тому, чим вони відрізняються, виходить
-     за межі даного посібника.
+     Linux): <literal>apt</literal> і <literal>aptitude</literal>. Але пояснення
+     тонкощів, в чому вони відрізняються, виходить за межі цього посібника.
     </simpara>
    </listitem>
   </itemizedlist>

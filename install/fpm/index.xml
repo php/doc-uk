@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 07821cd88ca3eba45a5a7a230c6fe61bb457b968 Maintainer: ktretyak Status: ready -->
-<!-- $Revision$ -->
+<!-- EN-Revision: 04210d535db52aed64b82572817f059059ddfebc Maintainer: mproshchuk Status: ready -->
   <chapter xml:id="install.fpm" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
    <title>Менеджер процесів FastCGI (FPM)</title>
-   <para>
-    FPM (FastCGI Process Manager) є альтернативною реалізацією PHP FastCGI
-    з деякими додатковими можливостями, корисними (в основному) для
-    високо-навантажених сайтів.
-   </para>
+   &fpm.intro;
    <para>
     Ці можливості включають:
     <itemizedlist>
@@ -18,13 +13,14 @@
      </listitem>
      <listitem>
       <para>
-       запуск робочих процесів (workers) з довільними uid/gid/chroot/оточенням, 
-       прослуховування на різних портах та з використанням різних php.ini (замінюючи safe_mode);
+       створення наборів (pools) робочих процесів (workers) з довільними
+       uid/gid/chroot/оточенням, прослуховування на різних портах та з
+       використанням різних php.ini (замінюючи safe_mode);
       </para>
      </listitem>
      <listitem>
       <para>
-       логування stdout та stderr;
+       логування stdout та stderr, що налаштовується;
       </para>
      </listitem>
      <listitem>
@@ -39,9 +35,9 @@
      </listitem>
      <listitem>
       <para>
-       "slowlog" - логування скриптів, які незвично-повільно виконуються
-        (не тільки їх імена, але і їхні PHP бектрейси, використовуючи ptrace та
-        подібні утиліти для читання даних виконавчих віддалених процесів);
+       "slowlog" - логування скриптів (не тільки назви, але і їхні
+       PHP-бектрейси, використовуючи ptrace та подібні засоби для читання даних
+       виконавчих віддалених процесів), які незвично повільно виконуються;
       </para>
      </listitem>
      <listitem>
@@ -53,17 +49,19 @@
      </listitem>
      <listitem>
       <para>
-       динамічне або статичне розмноження дочірніх процесів;
+       динамічне/на вимогу/статичне розмноження дочірніх процесів;
       </para>
      </listitem>
      <listitem>
       <para>
-       базову інформацію про статус SAPI (аналогічно до Apache mod_status);
+       базову та розширену інформацію про статус (аналогічно до Apache
+       mod_status) з підтримкою різноманітних форматів, як от json, xml та
+       openmetrics;
       </para>
      </listitem>
      <listitem>
       <para>
-       конфігураційний файл php.ini-based.
+       конфігураційний файл у форматі php.ini.
       </para>
      </listitem>
     </itemizedlist>
