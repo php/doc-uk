@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 8e732e84a1425cf0ab3a5b0da8fe113c7a6da85e Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: aff99a18960822f0ef98c23e66e5871e8725793f Maintainer: mproshchuk Status: ready -->
 <chapter xml:id="install.windows" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Встановлення в системах Windows</title>
  <para>
@@ -36,6 +36,8 @@
    PHP потребує Windows 2008/Vista чи новішу на 32 чи 64 біта (<acronym>іншими
    словами</acronym> X86 чи X64. PHP не запуститься на Windows RT/WOA/ARM).
    Починаючи з PHP 7.2.0 системи Windows 2008 та Vista більше не підтримуються.
+   Починаючи з PHP 8.3.0, системи Windows 2008 R2 та Windows 7 більше не
+   підтримуються.
   </para>
 
   <para>

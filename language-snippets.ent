@@ -2533,7 +2533,8 @@ xmlns="http://docbook.org/ns/docbook">PECL</acronym>-розширення дос
  </entry>
 </row>'>
 
-<!ENTITY pgsql.changelog.return-result-object '<row xmlns="http://docbook.org/ns/docbook">
+<!ENTITY pgsql.changelog.return-result-object
+'<row xmlns="http://docbook.org/ns/docbook">
  <entry>8.1.0</entry>
  <entry>
   Тепер повертається примірник <classname>PgSql\Result</classname>. Раніше
@@ -2568,8 +2569,8 @@ ARGS SUMMARY (як "strace -c")), вказується число 99.</para>
 <!-- BCMath Notes -->
 <!ENTITY bc.scale.description
 '<varlistentry xmlns="http://docbook.org/ns/docbook"><term>
-<parameter>scale</parameter></term><listitem><para>Необов&apos;язковий параметр, яким
-вказується кількість знаків після крапки в результаті. Якщо опущено,
+<parameter>scale</parameter></term><listitem><para>Необов&apos;язковий параметр,
+яким вказується кількість знаків після крапки в результаті. Якщо опущено,
 застосовується межа, що встановлена глобально функцією
 <function>bcscale</function>, або ж <literal>0</literal>, якщо межа ще не
 встановлена.</para></listitem></varlistentry>'>
@@ -2688,321 +2689,430 @@ mysqli (<constant>MYSQLI_REPORT_ERROR</constant>) і запитана опера
 <!-- Notes for SAPI/FPM -->
 <!ENTITY fpm.intro
 '<para xmlns="http://docbook.org/ns/docbook">FPM (FastCGI Process Manager) — це
-основна реалізація PHP FastCGI, що містить деякі функції, (здебільшого) корисні
-для сильно навантажених сайтів.</para>'>
+основна реалізація PHP FastCGI з деякими додатковими можливостями, корисними
+(здебільшого) для високо-навантажених сайтів.</para>'>
 
 <!-- SimpleXML Notes -->
-<!ENTITY simplexml.iteration '<note xmlns="http://docbook.org/ns/docbook"><simpara>SimpleXML has made a rule of adding
-iterative properties to most methods. They cannot be viewed using <function>var_dump</function>
-or anything else which can examine objects.</simpara></note>'>
+<!ENTITY simplexml.iteration
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>SimpleXML створив правило
+додавання ітеративних властивостей до більшості методів. Їх не можна побачити за
+допомогою <function>var_dump</function> або іншими способами дослідження
+об&apos;єктів.</simpara></note>'>
 
 <!-- SQLite Notes -->
-<!ENTITY sqlite.case-fold '<para xmlns="http://docbook.org/ns/docbook">The column names returned by
-<constant>SQLITE_ASSOC</constant> and <constant>SQLITE_BOTH</constant> will be
-case-folded according to the value of the
-<link linkend="ini.sqlite.assoc-case">sqlite.assoc_case</link> configuration
-option.</para>'>
+<!ENTITY sqlite.case-fold
+'<para xmlns="http://docbook.org/ns/docbook">Назви стовпців, що повертаються,
+коли увімкнено опцію <constant>SQLITE_ASSOC</constant> або
+<constant>SQLITE_BOTH</constant>, буде впорядковано відповідно до значення
+директиви <link linkend="ini.sqlite.assoc-case">sqlite.assoc_case</link>.</para>'>
 
-<!ENTITY sqlite.decode-bin '<para xmlns="http://docbook.org/ns/docbook">When the <parameter>decode_binary</parameter>
-parameter is set to &true; (the default), PHP will decode the binary encoding
-it applied to the data if it was encoded using the
-<function>sqlite_escape_string</function>.  You should normally leave this
-value at its default, unless you are interoperating with databases created by
-other sqlite capable applications.</para>'>
+<!ENTITY sqlite.decode-bin
+'<para xmlns="http://docbook.org/ns/docbook">Якщо парареметр
+<parameter>decode_binary</parameter> дорівнює &true; (стандартно), PHP декодує
+двійкові дані, ніби вони були закодовані функцією
+<function>sqlite_escape_string</function>. Якщо немає взаємодії з базами
+даних, створених програмами, що підтримують SQLite, то краще залишити стандартне
+значення.</para>'>
 
-<!ENTITY sqlite.no-unbuffered '<note xmlns="http://docbook.org/ns/docbook"><para>This function cannot be used with
-unbuffered result handles.</para></note>'>
+<!ENTITY sqlite.no-unbuffered
+'<note xmlns="http://docbook.org/ns/docbook"><para>Цю функцію не можна
+використовувати з небуферизованими дескрипторами результатів.</para></note>'>
 
-<!ENTITY sqlite.param-compat '<note xmlns="http://docbook.org/ns/docbook"><simpara>Two alternative syntaxes are
-supported for compatibility with other database extensions (such as MySQL).
-The preferred form is the first, where the <parameter>dbhandle</parameter>
-parameter is the first parameter to the function.</simpara></note>'>
+<!ENTITY sqlite.param-compat
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Для сумісності з іншими
+розширеннями баз даних (як от MySQL) підтримуються два синтаксиси. Кращою формою
+є перша, де параметр <parameter>dbhandle</parameter> є першим параметром
+функції.</simpara></note>'>
 
-<!ENTITY sqlite.result-type '<para xmlns="http://docbook.org/ns/docbook">The optional <parameter>result_type</parameter>
-parameter accepts a constant and determines how the returned array will be
-indexed. Using <constant>SQLITE_ASSOC</constant> will return only associative
-indices (named fields) while <constant>SQLITE_NUM</constant> will return
-only numerical indices (ordinal field numbers). <constant>SQLITE_BOTH</constant>
-will return both associative and numerical indices.
-<constant>SQLITE_BOTH</constant> is the default for this function.</para>'>
+<!ENTITY sqlite.result-type
+'<para xmlns="http://docbook.org/ns/docbook">Необов&apos;язковий параметр
+<parameter>result_type</parameter> має бути константою, що вказує, як
+індексувати масив, що повертається. Якщо задано
+<constant>SQLITE_ASSOC</constant>, то повернуться асоціативні індекси
+(названі поля); якщо <constant>SQLITE_NUM</constant>, то повернуться числові
+індекси (порядкові номери полів); якщо <constant>SQLITE_BOTH</constant>, то і
+числові, і асоціативні індекси. Стандартною для цієї функції є константа
+<constant>SQLITE_BOTH</constant>.</para>'>
 
 <!-- Database Notes -->
-<!ENTITY database.field-case '<note xmlns="http://docbook.org/ns/docbook"><simpara>Field names returned by this function
-are <emphasis>case-sensitive</emphasis>.</simpara></note>'>
+<!ENTITY database.field-case
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція є
+<emphasis>чутливою до регістру</emphasis> назв полів.</simpara></note>'>
 
-<!ENTITY database.fetch-null '<note xmlns="http://docbook.org/ns/docbook"><simpara>This function sets NULL fields to
-the PHP &null; value.</simpara></note>'>
+<!ENTITY database.fetch-null
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція встановлює
+NULL-полям значення PHP &null;.</simpara></note>'>
 
 <!-- MSQL Notes -->
 <!-- The msql.*.description entities are used in the parameters refsect1 -->
-<!ENTITY msql.linkid.description '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>
-link_identifier</parameter></term><listitem><para>The mSQL connection.
-If not specified, the last link opened by <function>msql_connect</function>
-is assumed. If no such link is found, the function will try to establish a
-link as if <function>msql_connect</function> was called, and use it.
-</para></listitem></varlistentry>'>
+<!ENTITY msql.linkid.description
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term>
+<parameter>link_identifier</parameter></term><listitem><para>З&apos;єднання
+mSQL. Якщо не задано, буде обрано останнє з&apos;єднання, встановлене функцією
+<function>msql_connect</function>. Якщо з&apos;єднатися не вдалось, функція
+спробує встановити нове, ніби викликавши функцію
+<function>msql_connect</function>.</para></listitem></varlistentry>'>
 
-<!ENTITY msql.result.description '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>
-result</parameter></term><listitem><para>The result <type>resource</type> that
-is being evaluated. This result comes from a call to
+<!ENTITY msql.result.description
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term>
+<parameter>result</parameter></term><listitem><para>Результат типу
+<type>resource</type> для опрацювання, якого повертає функція
 <function>msql_query</function>.</para></listitem></varlistentry>'>
 
-<!ENTITY msql.field-offset.req.description '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>
-field_offset</parameter></term><listitem><para>The numerical field offset. The
-<parameter>field_offset</parameter> starts at <literal>1</literal>.</para></listitem></varlistentry>'>
+<!ENTITY msql.field-offset.req.description
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term>
+<parameter>field_offset</parameter></term><listitem><para>Числовий зсув поля.
+Значення <parameter>field_offset</parameter> починається з
+<literal>1</literal>.</para></listitem></varlistentry>'>
 
 
 <!-- MySQL Notes -->
 <!-- The mysql.*.description entities are used in the parameters refsect1 -->
-<!ENTITY mysql.linkid.description '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>
-link_identifier</parameter></term><listitem><para>The MySQL connection. If the
-link identifier is not specified, the last link opened by
-<function>mysql_connect</function> is assumed. If no such link is found, it
-will try to create one as if <function>mysql_connect</function> was called
-with no arguments. If no connection is found or established, an
-<constant>E_WARNING</constant> level error is generated.</para></listitem>
-</varlistentry>'>
+<!ENTITY mysql.linkid.description 
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term>
+<parameter>link_identifier</parameter></term><listitem><para>З&apos;єднання
+MySQL. Якщо не задано, буде обрано останнє з&apos;єднання, встановлене функцією
+<function>mysql_connect</function>. Якщо з&apos;єднатися не вдалось, функція
+спробує встановити нове, ніби викликавши функцію
+<function>mysql_connect</function> без параметрів. Якщо з&apos;єднання не
+вдалося знайти або встановити, буде виведено повідомлення рівня
+<constant>E_WARNING</constant></para></listitem></varlistentry>'>
 
-<!ENTITY mysql.linkid-noreopen.description '<varlistentry
-xmlns="http://docbook.org/ns/docbook"><term><parameter>
-link_identifier</parameter></term><listitem><para>The MySQL connection. If the
-link identifier is not specified, the last link opened by
-<function>mysql_connect</function> is assumed. If no connection is found or
-established, an <constant>E_WARNING</constant> level error is
-generated.</para></listitem></varlistentry>'>
+<!ENTITY mysql.linkid-noreopen.description
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term>
+<parameter>link_identifier</parameter></term><listitem><para>З&apos;єднання
+MySQL. Якщо не задано, буде обрано останнє з&apos;єднання, встановлене функцією
+<function>mysql_connect</function>. Якщо з&apos;єднання не вдалося знайти або
+встановити, буде виведено повідомлення рівня
+<constant>E_WARNING</constant></para></listitem></varlistentry>'>
 
-<!ENTITY mysql.result.description '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>
-result</parameter></term><listitem><para>The result <type>resource</type> that
-is being evaluated. This result comes from a call to
+<!ENTITY mysql.result.description
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term>
+<parameter>result</parameter></term><listitem><para>Результат типу
+<type>resource</type> для опрацювання, якого повертає функція
 <function>mysql_query</function>.</para></listitem></varlistentry>'>
 
-<!ENTITY mysql.field-offset.req.description '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>
-field_offset</parameter></term><listitem><para>The numerical field offset. The
-<parameter>field_offset</parameter> starts at <literal>0</literal>. If
-<parameter>field_offset</parameter> does not exist, an error of level
-<constant>E_WARNING</constant> is also issued.</para></listitem></varlistentry>'>
+<!ENTITY mysql.field-offset.req.description
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term>
+<parameter>field_offset</parameter></term><listitem><para>Числовий зсув поля.
+Значення <parameter>field_offset</parameter> починається з <literal>0</literal>.
+Якщо зсуву <parameter>field_offset</parameter> не існує, буде виведено
+повідомлення рівня
+<constant>E_WARNING</constant>.</para></listitem></varlistentry>'>
 
-<!ENTITY mysql.alternative.note '<para xmlns="http://docbook.org/ns/docbook">This extension is deprecated as of PHP 5.5.0, and will be removed in the future.
-Instead, the <link linkend="book.mysqli">MySQLi</link> or <link linkend="ref.pdo-mysql">PDO_MySQL</link> extension should be used.
-See also <link linkend="mysqlinfo.api.choosing">MySQL: choosing an API</link> guide and
-<link linkend="faq.databases.mysql.deprecated">related FAQ</link> for more information. 
-Її можна замінити на:</para>'>
+<!ENTITY mysql.alternative.note
+'<para xmlns="http://docbook.org/ns/docbook">Це розширення застаріле, починаючи
+з PHP 5.5.0, та вилучене з PHP 7.0.0. Натомість використовуються розширення
+<link linkend="book.mysqli">MySQLi</link> або
+<link linkend="ref.pdo-mysql">PDO_MySQL</link>. Докладніше описано у керівництві
+<link linkend="mysqlinfo.api.choosing">MySQL: вибір API</link>.
+Цю функцію можна замінити на:</para>'>
+
+<!ENTITY mysql.alternative.note.4-3-0
+'<para xmlns="http://docbook.org/ns/docbook">Ця функція застаріла, починаючи з
+PHP 4.3.0, та разом з <link linkend="book.mysql">початковим розширенням
+MySQL</link> була вилучена з PHP 7.0.0. Краще використати розширення
+<link linkend="book.mysqli">MySQLi</link> або
+<link linkend="ref.pdo-mysql">PDO_MySQL</link>, які жваво розробляються.
+Докладніше описано у керівництві <link linkend="mysqlinfo.api.choosing">MySQL:
+вибір API</link>. Цю функцію можна замінити на:</para>'>
+
+<!ENTITY mysql.alternative.note.5-3-0
+'<para xmlns="http://docbook.org/ns/docbook">Ця функція застаріла, починаючи з
+PHP 5.3.0, та разом з <link linkend="book.mysql">початковим розширенням
+MySQL</link> була вилучена з PHP 7.0.0. Краще використати розширення
+<link linkend="book.mysqli">MySQLi</link> або
+<link linkend="ref.pdo-mysql">PDO_MySQL</link>, які жваво розробляються.
+Докладніше описано у керівництві <link linkend="mysqlinfo.api.choosing">MySQL:
+вибір API</link>. Цю функцію можна замінити на:</para>'>
+
+<!ENTITY mysql.alternative.note.5-4-0
+'<para xmlns="http://docbook.org/ns/docbook">Ця функція застаріла, починаючи з
+PHP 5.4.0, та разом з <link linkend="book.mysql">початковим розширенням
+MySQL</link> була вилучена з PHP 7.0.0. Краще використати розширення
+<link linkend="book.mysqli">MySQLi</link> або
+<link linkend="ref.pdo-mysql">PDO_MySQL</link>, які жваво розробляються.
+Докладніше описано у керівництві <link linkend="mysqlinfo.api.choosing">MySQL:
+вибір API</link>. Цю функцію можна замінити на:</para>'>
+
+<!ENTITY mysql.alternative.note.5-5-0
+'<para xmlns="http://docbook.org/ns/docbook">Ця функція застаріла, починаючи з
+PHP 5.5.0, та разом з <link linkend="book.mysql">початковим розширенням
+MySQL</link> була вилучена з PHP 7.0.0. Краще використати розширення
+<link linkend="book.mysqli">MySQLi</link> або
+<link linkend="ref.pdo-mysql">PDO_MySQL</link>, які жваво розробляються.
+Докладніше описано у керівництві <link linkend="mysqlinfo.api.choosing">MySQL:
+вибір API</link>. Цю функцію можна замінити на:</para>'>
+
+<!ENTITY mysql.close.connections.result.sets
+'<para xmlns="http://docbook.org/ns/docbook">
+Відкриває непостійні з&apos;єднання MySQL, а набори результатів автоматично
+знищує, коли PHP-скрипт завершується. Та незважаючи на те, що явне закриття
+з&apos;єднань і очищення наборів результатів необов&apos;язкове, робити це
+рекомендується. Це негайно вивільнить ресурси PHP та MySQL, а отже покращить
+продуктивність. Докладніше:
+<link linkend="language.types.resource.self-destruct">Вивільнення
+ресурсів</link></para>'>
 
 <!-- Sybase Notes -->
-<!ENTITY sybase.ct.only '<note xmlns="http://docbook.org/ns/docbook"><simpara>This function is only available when
-using the CT library interface to Sybase, and not with the DB library.
+<!ENTITY sybase.ct.only
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція доступна тільки
+з використанням інтерфейсу бібліотеки CT до Sybase, але не бібліотеки DB.
 </simpara></note>'>
 
-<!ENTITY sybase.db.only '<note xmlns="http://docbook.org/ns/docbook"><simpara>This function is only available when
-using the DB library interface to Sybase, and not with the CT library.</simpara></note>'>
+<!ENTITY sybase.db.only
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція доступна тільки
+з використанням інтерфейсу бібліотеки DB до Sybase, але не бібліотеки CT.
+</simpara></note>'>
 
-<!ENTITY sybase.linkid.description '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>
-link_identifier</parameter></term><listitem><para>The Sybase connection. If the
-link identifier is not specified, the last link opened by
-<function>sybase_connect</function> is assumed. If no such link is found, it
-will try to create one as if <function>sybase_connect</function> was called
-with no arguments. If no connection is found or established, an
-<constant>E_WARNING</constant> level error is generated.</para></listitem>
-</varlistentry>'>
+<!ENTITY sybase.linkid.description
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term>
+<parameter>link_identifier</parameter></term><listitem><para>З&apos;єднання
+Sybase. Якщо не задано, буде обрано останнє з&apos;єднання, встановлене функцією
+<function>sybase_connect</function>. Якщо з&apos;єднатися не вдалось, функція
+спробує встановити нове, ніби викликавши функцію
+<function>sybase_connect</function> без параметрів. Якщо з&apos;єднання не
+вдалося знайти або встановити, буде виведено повідомлення рівня
+<constant>E_WARNING</constant>.</para></listitem></varlistentry>'>
 
 <!-- CPDF Notes -->
-<!ENTITY cpdf.ul '<para xmlns="http://docbook.org/ns/docbook">The optional parameter <parameter>mode</parameter>
-determines the unit length. If it is <literal>0</literal> or omitted, the
-default unit as specified for the page is used. In other cases, the coordinates
-are measured in postscript points, disregarding the current unit.</para>'>
+<!ENTITY cpdf.ul
+'<para xmlns="http://docbook.org/ns/docbook">Необов&apos;язковий параметр
+<parameter>mode</parameter>, яким вказується одиниця довжини. Якщо задано
+<literal>0</literal> або опущено, буде обрано стандартну для поточної сторінки.
+У інших випадках координати вимірюються в пунктах postscript, без урахування
+заданої одиниці вимірювання.</para>'>
 
-<!ENTITY cpdf.mode.description '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>
-mode</parameter></term><listitem><para>The optional parameter <parameter>mode</parameter>
-determines the unit length. If it is <literal>0</literal> or omitted, the
-default unit as specified for the page is used. In other cases, the coordinates
-are measured in postscript points, disregarding the current unit.</para>
-</listitem></varlistentry>'>
+<!ENTITY cpdf.mode.description
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term>
+<parameter>mode</parameter></term><listitem><para>Необов&apos;язковий параметр
+<parameter>mode</parameter>, яким вказується одиниця довжини. Якщо задано
+<literal>0</literal> або опущено, буде обрано стандартну для поточної сторінки.
+У інших випадках координати вимірюються в пунктах postscript, без урахування
+заданої одиниці вимірювання.</para></listitem></varlistentry>'>
 
-<!ENTITY cpdf.pdf-document.description '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>
-pdf_document</parameter></term><listitem><para>The document handle, returned by
+<!ENTITY cpdf.pdf-document.description
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term>
+<parameter>pdf_document</parameter></term><listitem><para>Дескриптор документа,
+якого повертає функція
 <function>cpdf_open</function>.</para></listitem></varlistentry>'>
 
 <!-- Xattr entities -->
-<!ENTITY xattr.namespace '<para xmlns="http://docbook.org/ns/docbook">Extended attributes have two different namespaces: user
-and root. The user namespace is available to all users, while the root namespace
-is available only to users with root privileges. xattr operates on the user
-namespace  by default, but this can be changed with the
-<parameter>flags</parameter> parameter.</para>'>
+<!ENTITY xattr.namespace
+'<para xmlns="http://docbook.org/ns/docbook">Розширені атрибути мають два різні
+простори імен: "user" і "root". Простір "user" доступний усім користувачам, а
+"root" тільки тим, хто має root-права. xattr початково працює в просторі імен
+"user", але це можна змінити за допомогою параметра
+<parameter>flags</parameter>.</para>'>
 
 <!-- Notes for IPv6 -->
-<!ENTITY ipv6.brackets '<note xmlns="http://docbook.org/ns/docbook"><simpara>When specifying a numerical IPv6 address
-(e.g. <literal>fe80::1</literal>), you must enclose the IP in square
-brackets—for example, <literal>tcp://[fe80::1]:80</literal>.</simpara></note>'>
+<!ENTITY ipv6.brackets
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Вказуючи числову
+IPv6-адресу (напр. <literal>fe80::1</literal>), необхідно взяти IP-адресу в
+квадратні дужки, наприклад,
+<literal>tcp://[fe80::1]:80</literal>.</simpara></note>'>
 
-<!ENTITY ipv6.php5 '<note xmlns="http://docbook.org/ns/docbook"><simpara>IPv6 Support was added in PHP 5.0.0.
-</simpara></note>'>
+<!ENTITY ipv6.php5
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>IPv6 підтримується,
+починаючи з PHP 5.0.0.</simpara></note>'>
 
 <!-- Notes for tidy -->
-<!ENTITY note.tidy.ze2 '<note xmlns="http://docbook.org/ns/docbook"><simpara> This function is only available with
-Zend Engine 2 (PHP &gt;= 5.0.0).</simpara></note>'>
+<!ENTITY tidy.object 'Об&apos;єкт <classname xmlns="http://docbook.org/ns/docbook">Tidy</classname>.'>
 
-<!ENTITY tidy.object 'The <classname xmlns="http://docbook.org/ns/docbook">Tidy</classname> object.'>
-
-<!ENTITY note.tidy.1only '<note xmlns="http://docbook.org/ns/docbook"><simpara>This function is only available in
-Tidy 1.0. It became obsolete in Tidy 2.0, and thus has been removed.
-</simpara></note>'>
-
-<!ENTITY note.tidy.2only '<note xmlns="http://docbook.org/ns/docbook"><simpara>The optional parameters
-<parameter>config</parameter> and <parameter>encoding</parameter> were
-added in Tidy 2.0.</simpara></note>'>
-
-<!ENTITY tidy.conf-enc '<para xmlns="http://docbook.org/ns/docbook">The <parameter>config</parameter> parameter
-can be passed either as an array or as a string. If a string is passed,
-it is interpreted as the name of the configuration file, otherwise, it is
-interpreted as the options themselves. Check
-<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.tidy.conf;">&url.tidy.conf;</link>
-for an explanation about each option.</para><para>The
-<parameter>encoding</parameter> parameter sets the encoding for input/output
-documents. The possible values for <parameter>encoding</parameter> are:
+<!ENTITY tidy.conf-enc
+'<para xmlns="http://docbook.org/ns/docbook">Параметр
+<parameter>config</parameter>, що може бути як масивом, так і рядком. Рядок буде
+вважатися назвою файлу налаштувань, а масив - власне налаштуваннями. Пояснення
+всіх опцій є на сторінці <link xmlns:xlink="http://www.w3.org/1999/xlink"
+xlink:href="&url.tidy.conf;">&url.tidy.conf;</link>.</para><para>Параметр
+<parameter>encoding</parameter>, яким вказується кодування вхідних/опрацьованих
+документів. Можливі значення для <parameter>encoding</parameter>:
 <literal>ascii</literal>, <literal>latin0</literal>, <literal>latin1</literal>,
 <literal>raw</literal>, <literal>utf8</literal>, <literal>iso2022</literal>,
 <literal>mac</literal>, <literal>win1252</literal>, <literal>ibm858</literal>,
 <literal>utf16</literal>, <literal>utf16le</literal>,
-<literal>utf16be</literal>, <literal>big5</literal> and
+<literal>utf16be</literal>, <literal>big5</literal> або
 <literal>shiftjis</literal>.</para>'>
 
 <!-- Snippets for the installation section -->
-<!ENTITY warn.apache2.compat '<warning xmlns="http://docbook.org/ns/docbook"><para>Ми не рекомендуємо
-використовувати потоковий MPM в промисловому оточенні з Apache 2.
-Замість нього використовуйте prefork MPM, який початково йде з Apache 2.0 та 2.2.
-Детальніше - читайте в розділі
-<link linkend="faq.installation.apache2">Apache2 з потоковим MPM</link></para></warning>'>
+<!ENTITY warn.apache2.compat
+'<warning xmlns="http://docbook.org/ns/docbook"><para>Ми не рекомендуємо
+використовувати потоковий MPM у виробничому середовищі з Apache 2.
+Замість нього краще обрати prefork MPM, який початково йде з Apache 2.0 та 2.2.
+Докладніше — у розділі <link linkend="faq.installation.apache2">Apache 2 з
+потоковим MPM</link></para></warning>'>
 
-<!ENTITY note.apache.slashes '<note xmlns="http://docbook.org/ns/docbook"><simpara>Пам&apos;ятайте,
-що коли ви додаєте значення шляху в конфігураційному файлі Apache на Windows,
-всі зворотні слеші, такі як <filename>c:\directory\file.ext</filename> потрібно конвертувати
-прямими слешами: <filename>c:/directory/file.ext</filename>. Слеш в кінці також є
-обов&apos;язковим, коли вказуєте директорію.</simpara></note>'>
+<!ENTITY note.apache.slashes
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Варто зауважити, що у 
+файлі налаштувань Apache на Windows значення шляху (напр.
+<filename>c:\directory\file.ext</filename>) мають містити звичайні слеші, а не
+зворотні: <filename>c:/directory/file.ext</filename>. Слеш в кінці також є
+обов&apos;язковим, коли шлях веде до теки.</simpara></note>'>
 
 <!-- Snippets and titles for the contributors section -->
-<!ENTITY Credit.Authors.and.Contributors 'Автори та Співробітники'>
+<!ENTITY Credit.Authors.and.Contributors 'Автори та помічники'>
 
-<!ENTITY Credit.Introduction '<para xmlns="http://docbook.org/ns/docbook">На першій сторінці ми публікуємо імена самих активних
-на даний момент учасників розробки посібника, але є ще багато людей, котрі
-нам допомагають в процесі розробки або добре допомогли в минулому. Також є
-велика кількість людей, допомагаючих нам обслуговувати замітки
-користувачів на сторінках посібника, які постійно включаються в основну
-документацію. Всі списки нижче відсортовані в алфавітному порядку.
+<!ENTITY Credit.Introduction
+'<para xmlns="http://docbook.org/ns/docbook">На першій сторінці ми публікуємо
+імена найактивніших натепер учасників розробки посібника. Але є ще багато людей,
+котрі нам допомагають в процесі розробки або дуже допомогли в минулому. Також є
+багато тих, що допомагають нам опрацьовувати замітки користувачів на сторінках
+посібника, які постійно включаються в основну документацію. Всі списки нижче
+впорядковані за алфавітом.
 </para>'>
 
-<!ENTITY Credit.Authors.and.Editors 'Автори та Редактори'>
+<!ENTITY Credit.Authors.and.Editors 'Автори та редактори'>
 
-<!ENTITY Credit.Past.Authors.Text 'Варто відзначити наступних співробітників, які
-внесли значний вклад та/або продовжують це робити додаючи
-матеріал для посібника:'>
+<!ENTITY Credit.Past.Authors.Text 'Варто відзначити наступних учасників, які
+внесли значний вклад та/або продовжують це робити, додаючи
+матеріал до посібника:'>
 
-<!ENTITY Credit.Past.Editors.Text 'Наступні співробітники зробили значний внесок
-для редагування посібника:'>
+<!ENTITY Credit.Past.Editors.Text 'Наступні учасники зробили значний внесок
+до редагування посібника:'>
 
-<!ENTITY Credit.Note.Editors.Title 'Редактори Користувальницьких Заміток'>
+<!ENTITY Credit.Note.Editors.Title 'Редактори заміток користувачів'>
 
-<!ENTITY Credit.Note.Editors.Active 'Поточні найбільш активні редактори:'>
+<!ENTITY Credit.Note.Editors.Active 'Поточні найактивніші редактори:'>
 
-<!ENTITY Credit.Note.Editors.Inactive 'Ці люди також доклали немало зусиль
-при редагуванні користувальницьких заміток:'>
+<!ENTITY Credit.Note.Editors.Inactive 'Ці люди також доклали чимало зусиль,
+редагуючи замітки користувачів:'>
 
 <!ENTITY listendand ' та'>
 
 <!-- classkit and runkit entities -->
-<!ENTITY note.classkit.selfmanipulation '<note xmlns="http://docbook.org/ns/docbook"><simpara>This function cannot
-be used to manipulate the currently running (or chained) method.</simpara>
-</note>'>
+<!ENTITY note.classkit.selfmanipulation
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Цю функцію не можна
+використати для впливу на метод (чи ланцюжок методів), що
+виконується.</simpara></note>'>
 
-<!ENTITY note.runkit.selfmanipulation '<note xmlns="http://docbook.org/ns/docbook"><simpara>This function cannot
-be used to manipulate the currently running (or chained) method.</simpara>
-</note>'>
+<!ENTITY note.runkit.selfmanipulation
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Цю функцію не можна
+використати для впливу на метод (чи ланцюжок методів), що
+виконується.</simpara></note>'>
 
-<!ENTITY note.runkit.sandbox '<note xmlns="http://docbook.org/ns/docbook"><simpara>Sandbox support (required for
-<function>runkit_lint</function>, <function>runkit_lint_file</function>,
-and the <classname>Runkit_Sandbox</classname> class) is only available as of
-PHP 5.1.0 or specially patched versions of PHP 5.0, and requires that thread
-safety be enabled.
-See the <filename>README</filename> file included in the runkit package for
-more information.</simpara></note>'>
+<!ENTITY note.runkit.sandbox
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Підтримка Sandbox
+(необхідна для функцій <function>runkit_lint</function>,
+<function>runkit_lint_file</function> та класу
+<classname>Runkit_Sandbox</classname>) доступна, починаючи з PHP 5.1.0 або
+спеціальної зміненої версії PHP 5.0, та потребує увімкненої безпеки потоку.
+Більше інформації міститься у файлі <filename>README</filename> пакунку
+runkit.</simpara></note>'>
 
-<!ENTITY note.runkit.internal-override '<note xmlns="http://docbook.org/ns/docbook"><simpara>By default, only
-userspace functions may be removed, renamed, or modified.  In order to
-override internal functions, you must enable the
-<literal>runkit.internal_override</literal> setting in &php.ini;.</simpara>
+<!ENTITY note.runkit.internal-override
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Зазвичай тільки
+користувацькі функції можна вилучати, переназивати чи змінювати. Проте, якщо
+увімкнути директиву <literal>runkit.internal_override</literal> в
+&php.ini;, то стане можливо перевизначати вбудовані функції.</simpara>
 </note>'>
 
 <!-- SSH2 Extension -->
-<!ENTITY note.ssh2.subsystem.publickey '<note xmlns="http://docbook.org/ns/docbook"><simpara>The public key subsystem
-is used for managing public keys on a server to which the client is
-<emphasis>already</emphasis> authenticated.  To authenticate to a remote system
-using public key authentication, use the
-<function>ssh2_auth_pubkey_file</function> function instead.</simpara></note>'>
+<!ENTITY note.ssh2.subsystem.publickey
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Підсистема публічних
+ключів використовується для керування публічними ключами сервера, на якому
+клієнт <emphasis>вже</emphasis> пройшов автентифікацію. Натомість для
+автентифікації у віддаленій системі за допомогою публічного ключа застосовується
+функція <function>ssh2_auth_pubkey_file</function>.</simpara></note>'>
 
-<!-- HTTP -->
-<!ENTITY see.http.request.options '<para xmlns="http://docbook.org/ns/docbook">See the full list of &link.http.request.options;.</para>'>
-<!ENTITY see.http.configuration.force_exit 'See the &link.http.configuration;
-<link xmlns="http://docbook.org/ns/docbook" linkend="http.configuration.force-exit">http.force_exit</link> for what "exits" means.'>
-
-<!ENTITY link.http.configuration '<link xmlns="http://docbook.org/ns/docbook" linkend="http.configuration">INI setting</link>'>
-<!ENTITY link.http.request.option '<link xmlns="http://docbook.org/ns/docbook" linkend="http.request.options">request option</link>'>
-<!ENTITY link.http.request.options '<link xmlns="http://docbook.org/ns/docbook" linkend="http.request.options">request options</link>'>
-<!ENTITY link.http.request.info '<link xmlns="http://docbook.org/ns/docbook" linkend="http.request.info">Request/response information</link>'>
-<!ENTITY returns.http.response 'Returns the HTTP response(s) as string on
-success, or &false; on failure.'>
-<!ENTITY returns.http.false.orexits 'Повертає &false; або <emphasis xmlns="http://docbook.org/ns/docbook">exits</emphasis> в разі успіху'>
-<!ENTITY returns.session.storage.retval 'The return value (usually &true; on success, &false; on failure). Note this value is returned internally to PHP for processing.'>
-<!ENTITY http.request.affects 'Affects the following request method(s) only:'>
-<!ENTITY http.request.affects.any 'Affects any request method.'>
-<!ENTITY http.response.class.php51 'the <link xmlns="http://docbook.org/ns/docbook" linkend="class.httpresponse">
-<classname>HttpResponse</classname></link> class if you are using PHP 5.1.0
-and above'>
-<!ENTITY http.maynotwork.SAPI 'This may not work as expected with the following SAPI(s):'>
-<!ENTITY http.content.disposition 'The <literal xmlns="http://docbook.org/ns/docbook">Content-Disposition</literal>
-header is very useful if the data actually being sent came from a file or
-something similar, that should be &quot;saved&quot; by the client/user (i.e. by
-the browser&apos;s &quot;Save as...&quot; popup window).'>
-<!ENTITY http.use.ob_start 'For use with <function xmlns="http://docbook.org/ns/docbook">ob_start</function>.'>
-
-<!ENTITY note.http.response.recalculate.etag.lm '<note xmlns="http://docbook.org/ns/docbook"><simpara>Previously calculated or defined <literal>ETag</literal>
-   and <literal>Last-Modified</literal> will be recalculated and redefined.</simpara></note>'>
-<!ENTITY note.http.throttling.yields.process '<note xmlns="http://docbook.org/ns/docbook"><simpara>Provides a basic throttling mechanism, which will yield
-   the current process or thread until the entity has been completely sent.</simpara></note>'>
-<!ENTITY note.http.send.API '<note xmlns="http://docbook.org/ns/docbook"><simpara>This function should be used in conjunction with
-   <function>http_send_data</function>, <function>http_send_file</function> &listendand; <function>http_send_stream</function>.</simpara></note>'>
-<!ENTITY note.http.send.API.mayuse '<note xmlns="http://docbook.org/ns/docbook"><simpara>This function may be used in conjunction with
-   <function>http_send_data</function>, <function>http_send_file</function> &listendand; <function>http_send_stream</function>.</simpara></note>'>
-<!ENTITY note.http.request.encodecookies '<note xmlns="http://docbook.org/ns/docbook"><simpara>The &link.http.request.option; <literal>encodecookies</literal> controls
-   whether the cookie values should be <function>urlencode</function>d.</simpara></note>'>
-<!ENTITY note.http.request.affects.any '<note xmlns="http://docbook.org/ns/docbook"><simpara>&http.request.affects.any;</simpara></note>'>
-<!ENTITY note.http.ob.once '<note xmlns="http://docbook.org/ns/docbook"><simpara>This output handler can only be used once.</simpara></note>'>
+<!-- Session notes -->
+<!ENTITY returns.session.storage.retval
+'Результат (зазвичай &true; у разі успіху, &false; у разі невдачі). Варто
+зазначити, що значення повертається до PHP для внутрішньої обробки.'>
 
 <!-- XMLWriter Notes -->
-<!ENTITY xmlwriter.xmlwriter.description '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>
-xmlwriter</parameter></term><listitem><para>Only for procedural calls.
-The XMLWriter <type>resource</type> that is being modified. This resource comes from a call to <function>xmlwriter_open_uri</function> or <function>xmlwriter_open_memory</function>.</para></listitem></varlistentry>'>
+<!ENTITY xmlwriter.xmlwriter.description
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term>
+<parameter>writer</parameter></term><listitem><para>Тільки для процедурних
+викликів. Примірник <classname>XMLWriter</classname>, що буде оброблятися. Цей
+об&apos;єкт повертається функцією <function>xmlwriter_open_uri</function> або
+<function>xmlwriter_open_memory</function>.</para></listitem></varlistentry>'>
+
+<!ENTITY xmlwriter.changelog.writer-param '<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.0.0</entry>
+ <entry>
+  Тепер <parameter>writer</parameter> має бути примірником
+  <classname>XMLWriter</classname>. Раніше очікувався <type>resource</type>.
+ </entry>
+</row>'>
 
 <!-- SOAP notes -->
-<!ENTITY soap.wsdl.mode.only "<note xmlns='http://docbook.org/ns/docbook'><para>This function only works in WSDL mode.</para></note>">
+<!ENTITY soap.wsdl.mode.only "<note xmlns='http://docbook.org/ns/docbook'><para>Ця функція працює тільки в режимі WSDL.</para></note>">
 
 <!-- Stomp notes -->
-<!ENTITY stomp.param.link "<varlistentry xmlns='http://docbook.org/ns/docbook'><term><parameter>link</parameter></term><listitem><para>Procedural style only: The stomp link identifier returned by <function>stomp_connect</function>.</para></listitem></varlistentry>">
-<!ENTITY stomp.param.headers "<varlistentry xmlns='http://docbook.org/ns/docbook'><term><parameter>headers</parameter></term><listitem><para>Associative array containing the additional headers (example: receipt).</para></listitem></varlistentry>">
-<!ENTITY stomp.note.transaction "<note xmlns='http://docbook.org/ns/docbook'><para>A transaction header may be specified, indicating that the message acknowledgment should be part of the named transaction.</para></note>">
-<!ENTITY stomp.note.sync "<tip xmlns='http://docbook.org/ns/docbook'><simpara>Stomp is inherently asynchronous. Synchronous communication can be implemented adding a receipt header. This will cause methods to not return anything until the server has acknowledged receipt of the message or until read timeout was reached.</simpara></tip>">
+<!ENTITY stomp.param.link
+"<varlistentry xmlns='http://docbook.org/ns/docbook'><term>
+<parameter>link</parameter></term><listitem><para>Тільки процедурний стиль:
+Ідентифікатор з'єднання Stomp, якого повертає функція
+<function>stomp_connect</function>.</para></listitem></varlistentry>">
+
+<!ENTITY stomp.param.headers
+"<varlistentry xmlns='http://docbook.org/ns/docbook'><term>
+<parameter>headers</parameter></term><listitem><para>Асоціативний масив, що
+містить додаткові заголовки (наприклад:
+&quot;receipt&quot;).</para></listitem></varlistentry>">
+
+<!ENTITY stomp.note.transaction
+"<note xmlns='http://docbook.org/ns/docbook'><para>Можна вказати заголовок
+транзакції, який сигналізує, що підтвердження повідомлення має бути частиною
+названої транзакції.</para></note>">
+
+<!ENTITY stomp.note.sync
+"<tip xmlns='http://docbook.org/ns/docbook'><simpara>Stomp за своєю суттю є
+асинхронним. Синхронні з'єднання можна встановлювати, додавши заголовок
+&quot;receipt&quot;. Це призведе до того, що методи нічого не повертатимуть,
+доки сервер не підтвердить отримання повідомлення або доки не мине час
+очікування читання.</simpara></tip>">
 
 <!-- SVN notes -->
-<!ENTITY svn.relativepath "<note xmlns='http://docbook.org/ns/docbook'><simpara>Relative paths will be resolved as if the current working directory was the one that contains the PHP binary. To use the calling script&apos;s working directory, use <function>realpath</function> or dirname(__FILE__).</simpara></note>">
-<!ENTITY svn.referto.status 'Refer to <link xmlns="http://docbook.org/ns/docbook" linkend="svn.constants.status">status constants</link> for possible values.'>
-<!ENTITY svn.referto.type 'Refer to <link xmlns="http://docbook.org/ns/docbook" linkend="svn.constants.type">type constants</link> for possible values.'>
+<!ENTITY svn.relativepath
+"<note xmlns='http://docbook.org/ns/docbook'><simpara>Відносні шляхи
+розкриваються так, ніби поточною текою є та, що містить виконуваний файл PHP.
+Щоб використовувати теку, в якій виконується скрипт, застосовується функція
+<function>realpath</function> або dirname(__FILE__).</simpara></note>">
+
+<!ENTITY svn.referto.status
+'Інформація про допустимі значення є на сторінці <link
+xmlns="http://docbook.org/ns/docbook" linkend="svn.constants.status">Константи
+статусу</link>.'>
+
+<!ENTITY svn.referto.type
+'Інформація про допустимі значення є на сторінці <link
+xmlns="http://docbook.org/ns/docbook" linkend="svn.constants.type">Константи
+типу</link>.'>
 
 <!-- FANN notes -->
-<!ENTITY fann.ann.description '<para xmlns="http://docbook.org/ns/docbook">Neural network <type>resource</type>.</para>'>
-<!ENTITY fann.train.description '<para xmlns="http://docbook.org/ns/docbook">Neural network training data <type>resource</type>.</para>'>
-<!ENTITY fann.errdat.description '<para xmlns="http://docbook.org/ns/docbook">Either neural network <type>resource</type> or neural network trainining data <type>resource</type>.</para>'>
-<!ENTITY fann.return.void '<para xmlns="http://docbook.org/ns/docbook">No value is returned.</para>'>
-<!ENTITY fann.return.bool '<para xmlns="http://docbook.org/ns/docbook">Повертає &true; при успіху, або &false; в противному разі.</para>'>
-<!ENTITY fann.return.ann '<para xmlns="http://docbook.org/ns/docbook"> Returns a neural network <type>resource</type> on success, or &false; on error.</para>'>
-<!ENTITY fann.return.train '<para xmlns="http://docbook.org/ns/docbook"> Returns a train data <type>resource</type> on success, or &false; on error.</para>'>
+<!ENTITY fann.ann.description
+'<para xmlns="http://docbook.org/ns/docbook">Ресурс (<type>resource</type>)
+нейронної мережі.</para>'>
+
+<!ENTITY fann.train.description
+'<para xmlns="http://docbook.org/ns/docbook">Ресурс (<type>resource</type>)
+навчальних даних нейронної мережі.</para>'>
+
+<!ENTITY fann.errdat.description
+'<para xmlns="http://docbook.org/ns/docbook">Ресурс (<type>resource</type>)
+нейронної мережі або навчальних даних нейронної мережі.</para>'>
+
+<!ENTITY fann.return.void
+'<para xmlns="http://docbook.org/ns/docbook">Значення не повертається.</para>'>
+
+<!ENTITY fann.return.bool
+'<para xmlns="http://docbook.org/ns/docbook">Повертає &true; у разі успіху або
+&false; у разі невдачі.</para>'>
+
+<!ENTITY fann.return.ann
+'<para xmlns="http://docbook.org/ns/docbook">Повертає ресурс
+(<type>resource</type>) нейронної мережі у разі успіху або &false; у разі
+помилки.</para>'>
+
+<!ENTITY fann.return.train
+'<para xmlns="http://docbook.org/ns/docbook">Повертає ресурс
+(<type>resource</type>) тренувальних даних у разі успіху або &false; у разі
+помилки.</para>'>
+
+<!ENTITY fann.note.function.fann-2.2
+'<note xmlns="http://docbook.org/ns/docbook"><para>Ця функція доступна тільки,
+якщо розширення fann зібрано разом з libfann &gt;= 2.2.</para></note>'>
 
 <!-- Imagick generic return types -->
 <!ENTITY imagick.return.success 'Повертає &true; в разі успіху.'>
@@ -3012,89 +3122,115 @@ The XMLWriter <type>resource</type> that is being modified. This resource comes 
 <!ENTITY imagick.imagickpixeliterator.throws 'Кидає ImagickPixelIteratorException в разі помилки.'>
 
 <!-- Imagick version infos -->
-<!ENTITY imagick.method.available.0x629 'Цей метод доступний якщо Imagick був зібраний з версією ImageMagick 6.2.9 або новішою.'>
-<!ENTITY imagick.method.available.0x631 'Цей метод доступний якщо Imagick був зібраний з версією ImageMagick 6.3.1 або новішою.'>
-<!ENTITY imagick.method.available.0x632 'Цей метод доступний якщо Imagick був зібраний з версією ImageMagick 6.3.2 або новішою.'>
-<!ENTITY imagick.method.available.0x636 'Цей метод доступний якщо Imagick був зібраний з версією ImageMagick 6.3.6 або новішою.'>
-<!ENTITY imagick.method.available.0x637 'Цей метод доступний якщо Imagick був зібраний з версією ImageMagick 6.3.7 або новішою.'>
-<!ENTITY imagick.method.available.0x638 'Цей метод доступний якщо Imagick був зібраний з версією ImageMagick 6.3.8 або новішою.'>
-<!ENTITY imagick.method.available.0x639 'Цей метод доступний якщо Imagick був зібраний з версією ImageMagick 6.3.9 або новішою.'>
-<!ENTITY imagick.method.available.0x640 'Цей метод доступний якщо Imagick був зібраний з версією ImageMagick 6.4.0 або новішою.'>
-<!ENTITY imagick.method.available.0x641 'Цей метод доступний якщо Imagick був зібраний з версією ImageMagick 6.4.1 або новішою.'>
-<!ENTITY imagick.method.available.0x642 'Цей метод доступний якщо Imagick був зібраний з версією ImageMagick 6.4.2 або новішою.'>
-<!ENTITY imagick.method.available.0x643 'Цей метод доступний якщо Imagick був зібраний з версією ImageMagick 6.4.3 або новішою.'>
-<!ENTITY imagick.method.available.0x644 'Цей метод доступний якщо Imagick був зібраний з версією ImageMagick 6.4.4 або новішою.'>
-<!ENTITY imagick.method.available.0x645 'Цей метод доступний якщо Imagick був зібраний з версією ImageMagick 6.4.5 або новішою.'>
-<!ENTITY imagick.method.available.0x647 'Цей метод доступний якщо Imagick був зібраний з версією ImageMagick 6.4.7 або новішою.'>
-<!ENTITY imagick.method.available.0x649 'Цей метод доступний якщо Imagick був зібраний з версією ImageMagick 6.4.9 або новішою.'>
-<!ENTITY imagick.method.available.0x653 'Цей метод доступний якщо Imagick був зібраний з версією ImageMagick 6.5.3 або новішою.'>
-<!ENTITY imagick.method.available.0x657 'Цей метод доступний якщо Imagick був зібраний з версією ImageMagick 6.5.7 або новішою.'>
+<!ENTITY imagick.method.available.0x629 'Цей метод доступний, якщо Imagick зібраний з ImageMagick версії 6.2.9 або новішою.'>
+<!ENTITY imagick.method.available.0x631 'Цей метод доступний, якщо Imagick зібраний з ImageMagick версії 6.3.1 або новішою.'>
+<!ENTITY imagick.method.available.0x632 'Цей метод доступний, якщо Imagick зібраний з ImageMagick версії 6.3.2 або новішою.'>
+<!ENTITY imagick.method.available.0x636 'Цей метод доступний, якщо Imagick зібраний з ImageMagick версії 6.3.6 або новішою.'>
+<!ENTITY imagick.method.available.0x637 'Цей метод доступний, якщо Imagick зібраний з ImageMagick версії 6.3.7 або новішою.'>
+<!ENTITY imagick.method.available.0x638 'Цей метод доступний, якщо Imagick зібраний з ImageMagick версії 6.3.8 або новішою.'>
+<!ENTITY imagick.method.available.0x639 'Цей метод доступний, якщо Imagick зібраний з ImageMagick версії 6.3.9 або новішою.'>
+<!ENTITY imagick.method.available.0x640 'Цей метод доступний, якщо Imagick зібраний з ImageMagick версії 6.4.0 або новішою.'>
+<!ENTITY imagick.method.available.0x641 'Цей метод доступний, якщо Imagick зібраний з ImageMagick версії 6.4.1 або новішою.'>
+<!ENTITY imagick.method.available.0x642 'Цей метод доступний, якщо Imagick зібраний з ImageMagick версії 6.4.2 або новішою.'>
+<!ENTITY imagick.method.available.0x643 'Цей метод доступний, якщо Imagick зібраний з ImageMagick версії 6.4.3 або новішою.'>
+<!ENTITY imagick.method.available.0x644 'Цей метод доступний, якщо Imagick зібраний з ImageMagick версії 6.4.4 або новішою.'>
+<!ENTITY imagick.method.available.0x645 'Цей метод доступний, якщо Imagick зібраний з ImageMagick версії 6.4.5 або новішою.'>
+<!ENTITY imagick.method.available.0x647 'Цей метод доступний, якщо Imagick зібраний з ImageMagick версії 6.4.7 або новішою.'>
+<!ENTITY imagick.method.available.0x649 'Цей метод доступний, якщо Imagick зібраний з ImageMagick версії 6.4.9 або новішою.'>
+<!ENTITY imagick.method.available.0x653 'Цей метод доступний, якщо Imagick зібраний з ImageMagick версії 6.5.3 або новішою.'>
+<!ENTITY imagick.method.available.0x657 'Цей метод доступний, якщо Imagick зібраний з ImageMagick версії 6.5.7 або новішою.'>
 
-<!ENTITY imagick.constant.available 'This constant is available if Imagick has been compiled against ImageMagick version'>
+<!ENTITY imagick.method.not.available.0x700 'Цей метод не доступний, якщо Imagick зібраний з ImageMagick версії 7.0.0 або новішою.'>
+
+<!ENTITY imagick.constant.available 'Ця константа доступна, якщо Imagick зібраний з ImageMagick версії '>
+
+<!ENTITY imagick.deprecated.function-3-4-4
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ЗАСТАРІЛА</emphasis> починаючи з Imagick 3.4.4. Вкрай не
+рекомендується на неї покладатися.</simpara></warning>'>
 
 <!-- Imagick default channel information -->
-<!ENTITY imagick.default.channel.info 'Defaults to <constant xmlns="http://docbook.org/ns/docbook">Imagick::CHANNEL_DEFAULT</constant>. Refer to this list of <link xmlns="http://docbook.org/ns/docbook" linkend="imagick.constants.channel">channel constants</link>'>
+<!ENTITY imagick.default.channel.info
+'Стандартно — <constant
+xmlns="http://docbook.org/ns/docbook">Imagick::CHANNEL_DEFAULT</constant>. Див.
+список <link xmlns="http://docbook.org/ns/docbook"
+linkend="imagick.constants.channel">констант каналу</link>.'>
 
 <!-- Fuzz parameter -->
-<!ENTITY imagick.parameter.fuzz 'The amount of fuzz. For example, set fuzz to 10 and the color red at intensities of 100 and 102 respectively are now interpreted as the same color.'>
+<!ENTITY imagick.parameter.fuzz
+'Міра уподібнення кольорів. Наприклад, якщо значення fuzz дорівнює 10, то
+червоний колір з насиченістю від 100 до 102 тепер вважатиметься одним
+кольором.'>
 
 <!-- Channel parameter -->
-<!ENTITY imagick.parameter.channel 'Provide any channel constant that is valid for your channel mode. To apply to more than one channel, combine <link xmlns="http://docbook.org/ns/docbook" linkend="imagick.constants.channel">channel constants</link> using bitwise operators. &imagick.default.channel.info;'>
+<!ENTITY imagick.parameter.channel
+'Константа каналу, дійсна для поточного режиму каналу. Для застосування її до
+кількох каналів необхідно поєднати <link
+xmlns="http://docbook.org/ns/docbook"
+linkend="imagick.constants.channel">константи каналу</link> побітовими
+операторами. &imagick.default.channel.info;'>
 
 <!-- Alpha parameter -->
-<!ENTITY imagick.parameter.alpha 'The level of transparency: 1.0 is fully opaque and 0.0 is fully transparent.'>
+<!ENTITY imagick.parameter.alpha 'Рівень прозорості: 1.0 — непрозорий і 0.0 — повністю прозорий.'>
 
-<!ENTITY imagick.imagickexception.throw 'Throw an
-<classname xmlns="http://docbook.org/ns/docbook">ImagickException</classname> on error.'>
+<!ENTITY imagick.imagickexception.throw 'Викидає
+<classname xmlns="http://docbook.org/ns/docbook">ImagickException</classname>
+у разі помилки.'>
 
-<!ENTITY imagick.bestfit.note '<note xmlns="http://docbook.org/ns/docbook">
+<!ENTITY imagick.bestfit.note
+'<note xmlns="http://docbook.org/ns/docbook">
  <simpara>
-  The behavior of the parameter <parameter>bestfit</parameter> changed in Imagick 3.0.0.
-  Before this version given dimensions 400x400 an image of dimensions 200x150 would be
-  left untouched. In Imagick 3.0.0 and later the image would be scaled up to size 400x300 as
-  this is the "best fit" for the given dimensions. If <parameter>bestfit</parameter>
-  parameter is used both width and height must be given.
+  Поведінка параметра <parameter>bestfit</parameter> змінилася в Imagick 3.0.0.
+  Раніше він не діяв на зображення розмірів 400x400 та 200x150. Починаючи з
+  Imagick 3.0.0, такі зображення отримають розмір 400x300, оскільки це "найкраще
+  підходить" для заданих розмірів. Якщо параметр <parameter>bestfit</parameter>
+  використовується, необхідно вказати як висоту, так і ширину.
  </simpara>
 </note>'>
 
-<!ENTITY note.openssl.cnf '<note xmlns="http://docbook.org/ns/docbook">
+<!ENTITY note.openssl.cnf
+'<note xmlns="http://docbook.org/ns/docbook">
  <simpara>
-  You need to have a valid <filename>openssl.cnf</filename> installed for
-  this function to operate correctly.
-  See the notes under <link linkend="openssl.installation">the installation
-  section</link> for more information.
+  Для правильної роботи цієї функції необхідно встановити коректний файл
+  <filename>openssl.cnf</filename>. Докладніше про це — у примітках розділу про
+  <link linkend="openssl.installation">Встановлення OpenSSL</link>.
  </simpara>
 </note>'>
-<!ENTITY note.openssl.param-notext '<para xmlns="http://docbook.org/ns/docbook">
- The optional parameter <parameter>notext</parameter> affects
- the verbosity of the output; if it is &false;, then additional human-readable
- information is included in the output. The default value of
- <parameter>notext</parameter> is &true;.
+
+<!ENTITY note.openssl.param-notext
+'<para xmlns="http://docbook.org/ns/docbook">
+ Необов&apos;язковий параметр <parameter>notext</parameter> впливає на кількість
+ тексту у виводі. Якщо дорівнює &false;, то до виводу буде включена додаткова
+ зрозуміла людині інформація. Початковим значенням параметра
+ <parameter>notext</parameter> є &true;.
 </para>'>
 
 <!-- COM/Dotnet -->
-<!ENTITY com.variant-arith '<note xmlns="http://docbook.org/ns/docbook">
+<!ENTITY com.variant-arith
+'<note xmlns="http://docbook.org/ns/docbook">
 <para>
- As with all the variant arithmetic functions, the parameters for this function
- can be either a PHP native type (integer, string, floating point, boolean or
- &null;), or an instance of a COM, VARIANT or DOTNET class.  PHP native types
- will be converted to variants using the same rules as found in the constructor
- for the <xref linkend="class.variant"/> class.  COM and DOTNET objects
- will have the value of their default property taken and used as the variant value.
+ Як і у всіх інших варіантних арифметичних функцій, параметри цієї функції
+ можуть мати PHP-тип (ціле число, рядок, десятковий дріб, логічний або &null;)
+ або бути примірником класу COM, VARIANT чи DOTNET. Типи, вбудовані в PHP,
+ будуть перетворені у "варіанти" за правилами, описаними в конструкторі класу
+ <xref linkend="class.variant"/>. В об&apos;єктів COM і DOTNET значеннями
+ "варіантів" будуть початкові значення властивостей цих об&apos;єктів.
 </para>
 <para>
- The variant arithmetic functions are wrappers around the similarly named
- functions in the COM library; for more information on these functions, consult
- the MSDN library.  The PHP functions are named slightly differently; for example
- <function>variant_add</function> in PHP corresponds to <literal>VarAdd()
- </literal> in the MSDN documentation.
+ Варіантні арифметичні функції є надбудовами однойменних функцій бібліотеки COM.
+ Докладніша інформація про ці функції є в документації до бібліотеки MSDN.
+ Функції в PHP називаються дещо інакше, ніж в бібліотеці MDSN. Наприклад,
+ <function>variant_add</function> в PHP відповідає <literal>VarAdd()</literal> в
+ MSDN.
 </para>
 </note>
 '>
+
 <!ENTITY com.use-oo-instead '<note xmlns="http://docbook.org/ns/docbook">
  <simpara>
-  This function does not exist in PHP 5; instead, you should use the regular
-  and more natural OO syntax to access properties or call methods.
+  Цієї функції немає в PHP 5. Натомість, для доступу до властивостей або виклику
+  методів краще використовувати звичайний і більш природний
+  об&apos;єктно-орієнтований синтаксис.
  </simpara>
 </note>
 '>
