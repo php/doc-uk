@@ -440,13 +440,6 @@ if (str_contains($_SERVER['HTTP_USER_AGENT'], 'Firefox')) {
     <varname>$_REQUEST</varname>, якщо ви не впевнені, яким методом відправлено
     вам дані. Ця змінна містить об'єднані дані від методів GET, POST та COOKIE.
    </para>
-   <para>
-    В PHP також можна працювати з XForms, але, через деякий час, ви виявите, що
-    зі звичайними HTML формами працюється комфортніше. З іншого боку, хоча
-    робота з XForms не для початківців, вони також можуть вас зацікавити. В
-    наших наступних розділах є <link linkend="features.xforms">коротке
-    ознайомлення для обробки даних, отриманих з XForms</link>. 
-   </para>
   </section>
   
   <section xml:id="tutorial.whatsnext">
