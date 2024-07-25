@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 46ffb4b3fa11ea5733de780a8bcc211d8dc3d92b Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: 08bce8d11d3d2a7d0461c17138d61b9da5be817a Maintainer: mproshchuk Status: ready -->
  <chapter xml:id="tutorial" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <info><title>Простий підручник</title></info>
 
   <para>
    В цьому короткому та простому підручнику ми б хотіли показати самі основи 
-   PHP. В даному матеріалі описуюється лише створення динамічних сторінок з PHP,
+   PHP. В даному матеріалі описується лише створення динамічних сторінок з PHP,
    хоча PHP придатна не тільки для створення вебсторінок. Прогляньте розділ з
    назвою <link linkend="intro-whatcando">Що може PHP</link> для докладної
    інформації.
@@ -439,13 +439,6 @@ if (str_contains($_SERVER['HTTP_USER_AGENT'], 'Firefox')) {
     <varname>$_GET</varname>. Ще можна використовувати суперглобальну змінну
     <varname>$_REQUEST</varname>, якщо ви не впевнені, яким методом відправлено
     вам дані. Ця змінна містить об'єднані дані від методів GET, POST та COOKIE.
-   </para>
-   <para>
-    В PHP також можна працювати з XForms, але, через деякий час, ви виявите, що
-    зі звичайними HTML формами працюється комфортніше. З іншого боку, хоча
-    робота з XForms не для початківців, вони також можуть вас зацікавити. В
-    наших наступних розділах є <link linkend="features.xforms">коротке
-    ознайомлення для обробки даних, отриманих з XForms</link>. 
    </para>
   </section>
   
