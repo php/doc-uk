@@ -1440,7 +1440,7 @@ xmlns="http://docbook.org/ns/docbook"><term><parameter>share_handle</parameter>
 скриньок почати пошук.</para><para xmlns="http://docbook.org/ns/docbook">У
 значенні параметру <parameter>pattern</parameter> можна використовувати два
 спеціальні символи: "<literal>*</literal>" і
-"<literal>&#37;</literal>". "<literal>*</literal" —
+"<literal>&#37;</literal>". "<literal>*</literal>" —
 повернути всі поштові скриньки. Якщо значення <parameter>pattern</parameter>
 дорівнюватиме "<literal>*</literal>", то повернеться список усієї
 ієрархії поштових скриньок. "<literal>&#37;</literal>" — повернути тільки
@@ -2579,9 +2579,9 @@ ARGS SUMMARY (як "strace -c")), вказується число 99.</para>
 <!ENTITY note.ctype.parameter.integer
 '<note xmlns="http://docbook.org/ns/docbook"><para>
 Ціле число (<type>int</type>) від -128 до 255 включно вважається кодом символу
-ASCII (від&apos;ємні значення збільшуються на 256, щоб дає доступ до
-розширеного діапазону ASCII). Інші цілі числа вважаються рядками, що містять
-ціле десяткове число у вигляді цифр.</para></note>'>
+ASCII (від&apos;ємні значення збільшуються на 256, що дає доступ до розширеного
+діапазону ASCII). Інші цілі числа вважаються рядками, що містять ціле десяткове
+число у вигляді цифр.</para></note>'>
 
 <!ENTITY note.ctype.parameter.non-string
 '<warning xmlns="http://docbook.org/ns/docbook"><para> Починаючи з PHP 8.1.0,
@@ -3226,7 +3226,8 @@ linkend="imagick.constants.channel">константи каналу</link> по�
 </note>
 '>
 
-<!ENTITY com.use-oo-instead '<note xmlns="http://docbook.org/ns/docbook">
+<!ENTITY com.use-oo-instead
+'<note xmlns="http://docbook.org/ns/docbook">
  <simpara>
   Цієї функції немає в PHP 5. Натомість, для доступу до властивостей або виклику
   методів краще використовувати звичайний і більш природний
@@ -3236,94 +3237,211 @@ linkend="imagick.constants.channel">константи каналу</link> по�
 '>
 
 <!-- phar -->
-<!ENTITY phar.write '<note xmlns="http://docbook.org/ns/docbook"><para>This
-method requires the &php.ini; setting <literal>phar.readonly</literal> to be
-set to <literal>0</literal> in order to work for <classname>Phar</classname>
-objects.  Otherwise, a <classname>PharException</classname> will be thrown.</para></note>'>
+<!ENTITY phar.write
+'<note xmlns="http://docbook.org/ns/docbook"><para>Для роботи з об&apos;єктами
+<classname>Phar</classname> цей метод потребує, щоб директива &php.ini;
+<literal>phar.readonly</literal> мала значення <literal>0</literal>. Інакше буде
+викинуто <classname>PharException</classname>.</para></note>'>
 
-<!ENTITY phar.removed.pharcompress '<note xmlns="http://docbook.org/ns/docbook"><para>This
-method has been removed from the phar extension as of version 2.0.0.  Alternative
-implementations are available using <function>Phar::compress</function>,
-<function>Phar::decompress</function>, <function>Phar::compressFiles</function> and
-<function>Phar::decompressFiles</function>.</para></note>'>
+<!ENTITY phar.removed.pharcompress
+'<note xmlns="http://docbook.org/ns/docbook"><para>Цей метод вилучено з
+розширення phar, починаючи з версії 2.0.0. Тепер подібний функціонал реалізують
+методи <function>Phar::compress</function>,
+<function>Phar::decompress</function>, <function>Phar::compressFiles</function>
+і <function>Phar::decompressFiles</function>.</para></note>'>
 
-<!ENTITY phar.removed.pharfileinfocompress '<note xmlns="http://docbook.org/ns/docbook"><para>This
-method has been removed from the phar extension as of version 2.0.0.  Alternative
-implementations are available using <function>PharFileInfo::isCompressed</function>,
-<function>PharFileInfo::decompress</function>, and <function>PharFileInfo::compress</function>.</para></note>'>
+<!ENTITY phar.removed.pharfileinfocompress
+'<note xmlns="http://docbook.org/ns/docbook"><para>Цей метод вилучено з
+розширення phar, починаючи з версії 2.0.0. Тепер подібний функціонал реалізують
+методи <function>PharFileInfo::isCompressed</function>,
+<function>PharFileInfo::decompress</function> і
+<function>PharFileInfo::compress</function>.</para></note>'>
+
+<!ENTITY phar.note.performance
+'<note xmlns="http://docbook.org/ns/docbook">
+ <simpara>
+  Методи <function>Phar::addFile</function>,
+  <function>Phar::addFromString</function> і
+  <function>Phar::offsetSet</function> зберігають новий phar-архів після кожного
+  виклику. Якщо важлива продуктивність, то натомість необхідно використовувати
+  <function>Phar::buildFromDirectory</function> або
+  <function>Phar::buildFromIterator</function>.
+ </simpara>
+</note>'>
+
+<!ENTITY phardata.note.performance
+'<note xmlns="http://docbook.org/ns/docbook">
+ <simpara>
+  Методи <function>PharData::addFile</function>,
+  <function>PharData::addFromString</function> і
+  <function>PharData::offsetSet</function> зберігають новий phar-архів після
+  кожного виклику. Якщо важлива продуктивність, то натомість необхідно
+  використовувати <function>PharData::buildFromDirectory</function> або
+  <function>PharData::buildFromIterator</function>.
+ </simpara>
+</note>'>
 
 <!-- XML -->
-<!ENTITY libxml.required '<para xmlns="http://docbook.org/ns/docbook">This extension requires the
-<link linkend="book.libxml">libxml</link> PHP extension. This means that passing in
-<option role="configure">--enable-libxml</option> is also required, although this is implicitly accomplished
-because libxml is enabled by default.</para>'>
+<!ENTITY libxml.required
+'<para xmlns="http://docbook.org/ns/docbook">
+ Це розширення потребує підключеного PHP-розширення
+ <link linkend="book.libxml">libxml</link>. Отже, команда конфігурації має
+ містити прапорець <option role="configure">--with-libxml</option> (для версій,
+ старіших за PHP 7.4 — <option role="configure">--enable-libxml</option>), хоча
+ це все одно виконується неявно, бо libxml є стандартним розширенням.
+</para>'>
 
 <!-- XMLReader -->
-<!ENTITY xmlreader.libxml20620.note '<caution xmlns="http://docbook.org/ns/docbook"><para>This function is only available when PHP is compiled against libxml 20620 or later.</para></caution>'>
+<!ENTITY xmlreader.libxml20620.note
+'<caution xmlns="http://docbook.org/ns/docbook"><para>Ця функція доступна тільки,
+якщо PHP зібрано разом з libxml версії 20620 або новішою.</para></caution>'>
 
 <!-- inotify -->
-<!ENTITY inotify.instance.description 'Resource returned by
+<!ENTITY inotify.instance.description
+'Ресурс, що повертається функцією
 <function xmlns="http://docbook.org/ns/docbook">inotify_init</function>'>
 
 <!-- User streams -->
-<!ENTITY userstream.not.implemented.warning '<para xmlns="http://docbook.org/ns/docbook">Emits
-<constant>E_WARNING</constant> if call to this method fails
-(i.e. not implemented).</para>'>
-<!ENTITY userstream.updates.context '<note xmlns="http://docbook.org/ns/docbook"><para>The
+<!ENTITY userstream.not.implemented.warning
+'<para xmlns="http://docbook.org/ns/docbook">Виводить
+<constant>E_WARNING</constant>, якщо цей метод не вдалося викликати (напр., не
+реалізований).</para>'>
+
+<!ENTITY userstream.updates.context
+'<note xmlns="http://docbook.org/ns/docbook"><para>Властивість
 <varname linkend="streamwrapper.props.context">streamWrapper::$context</varname>
-property is updated if a valid context is passed to the caller function.</para></note>'>
+оновиться, якщо передано правильний контекст до функції виклику.</para></note>'>
 
 <!-- Gmagick -->
 <!ENTITY gmagick.return.success 'Повертає &true; в разі успіху.'>
-<!ENTITY gmagick.gmagickexception.throw 'Throws an
-<classname xmlns="http://docbook.org/ns/docbook">GmagickException</classname> on error.'>
+
+<!ENTITY gmagick.gmagickexception.throw 'Викидає
+<classname xmlns="http://docbook.org/ns/docbook">GmagickException</classname> у
+разі помилки.'>
 
 <!-- Reflection -->
-<!ENTITY reflection.export.return 'If the <parameter xmlns="http://docbook.org/ns/docbook">return</parameter> parameter
-is set to &true;, then the export is returned as a <type xmlns="http://docbook.org/ns/docbook">string</type>,
-otherwise &null; is returned.'>
+<!ENTITY reflection.export.return
+'Якщо параметр <parameter
+xmlns="http://docbook.org/ns/docbook">return</parameter> дорівнює &true;, то
+то повернеться рядок (<type
+xmlns="http://docbook.org/ns/docbook">string</type>), а інакше — &null;.'>
 
-<!ENTITY reflection.export.param.return 'Setting to &true; will return the export,
-as opposed to emitting it. Setting to &false; (the default) will do the opposite.'>
+<!ENTITY reflection.export.param.return
+'Якщо задано &true;, результат буде повернено, а якщо &false; (початково), то
+результат буде виведено.'>
 
-<!ENTITY reflection.invoke.reference 'If the function has arguments that need
-to be references, then they must be references in the passed argument list.'>
+<!ENTITY reflection.invoke.reference
+'У переданому списку параметрів мають бути посилання, якщо функція очікує
+параметри-посилання.'>
 
-<!ENTITY reflection.export.param.name 'The reflection to export.'>
+<!ENTITY reflection.export.param.name
+'Об&apos;єкт <classname>Reflection</classname>, що експортується.'>
+
+<!ENTITY reflection.getattributes.param.name
+'<varlistentry xmlns="http://docbook.org/ns/docbook">
+<term><parameter>name</parameter></term>
+<listitem>
+ <para>
+  Повернути примірники <classname>ReflectionAttribute</classname> для атрибутів
+  з даною назвою класу.
+ </para>
+</listitem>
+</varlistentry>'>
+
+<!ENTITY reflection.getattributes.param.flags
+'<varlistentry xmlns="http://docbook.org/ns/docbook">
+<term><parameter>flags</parameter></term>
+<listitem>
+ <para>
+  Прапорці, що визначають, як саме фільтрувати результати, якщо вказано параметр
+  <parameter>name</parameter>.
+ </para>
+ <para>
+  <literal>0</literal> (початкове значення) — повертаються результати для
+  атрибутів, які мають назву класу <parameter>name</parameter>.
+ </para>
+ <para>
+  <constant>ReflectionAttribute::IS_INSTANCEOF</constant> — повертаються
+  результати для атрибутів із застосуваннями <literal>instanceof</literal>.
+ </para>
+</listitem>
+</varlistentry>'>
 
 <!-- SPL -->
-<!ENTITY spl.datastructures.intro.title '<title xmlns="http://docbook.org/ns/docbook">Datastructures</title>'>
+<!ENTITY spl.datastructures.intro.title
+'<title xmlns="http://docbook.org/ns/docbook">Структури даних</title>'>
 
-<!ENTITY spl.exceptions.intro.title '<title xmlns="http://docbook.org/ns/docbook">Exceptions</title>'>
-<!ENTITY spl.exceptions.intro '<para xmlns="http://docbook.org/ns/docbook">SPL provides a set of standard Exceptions.</para><para xmlns="http://docbook.org/ns/docbook">See also the <xref linkend="reserved.exceptions" /></para>'>
+<!ENTITY spl.exceptions.intro.title
+'<title xmlns="http://docbook.org/ns/docbook">Виключення</title>'>
 
-<!ENTITY spl.files.intro.title '<title xmlns="http://docbook.org/ns/docbook">File Handling</title>'>
-<!ENTITY spl.files.intro '<partintro xmlns="http://docbook.org/ns/docbook"><para>SPL provides a number of classes to work with files.</para></partintro>'>
+<!ENTITY spl.exceptions.intro
+'<para xmlns="http://docbook.org/ns/docbook">SPL містить набір стандартних
+виключень.</para><para xmlns="http://docbook.org/ns/docbook">Також варто
+переглянути <xref linkend="reserved.exceptions" />.</para>'>
 
-<!ENTITY spl.interfaces.intro.title '<title xmlns="http://docbook.org/ns/docbook">Interfaces</title>'>
-<!ENTITY spl.interfaces.intro '<para xmlns="http://docbook.org/ns/docbook">SPL provides a set of interfaces.</para><para xmlns="http://docbook.org/ns/docbook">See also the <xref linkend="reserved.interfaces" /></para>'>
-<!ENTITY spl.interfaces.list '<title xmlns="http://docbook.org/ns/docbook">Interface list</title>'>
+<!ENTITY spl.files.intro.title
+'<title xmlns="http://docbook.org/ns/docbook">Обробка файлів</title>'>
 
-<!ENTITY spl.iterators.intro.title '<title xmlns="http://docbook.org/ns/docbook">Iterators</title>'>
-<!ENTITY spl.iterators.intro '<para xmlns="http://docbook.org/ns/docbook">SPL provides a set of iterators to traverse over objects.</para>'>
+<!ENTITY spl.files.intro
+'<partintro xmlns="http://docbook.org/ns/docbook"><para>SPL містить набір класів
+для роботи з файлами.</para></partintro>'>
 
-<!ENTITY spl.misc.intro.title '<title xmlns="http://docbook.org/ns/docbook">Miscellaneous Classes and Interfaces</title>'>
-<!ENTITY spl.misc.intro '<partintro xmlns="http://docbook.org/ns/docbook"><para>Classes and interfaces which do not fit into the other SPL categories.</para></partintro>'>
+<!ENTITY spl.interfaces.intro.title
+'<title xmlns="http://docbook.org/ns/docbook">Інтерфейси</title>'>
+
+<!ENTITY spl.interfaces.intro
+'<para xmlns="http://docbook.org/ns/docbook">SPL містить набір
+інтерфейсів.</para><para xmlns="http://docbook.org/ns/docbook">Також варто
+переглянути <xref linkend="reserved.interfaces" />.</para>'>
+
+<!ENTITY spl.interfaces.list
+'<title xmlns="http://docbook.org/ns/docbook">Список інтерфейсів</title>'>
+
+<!ENTITY spl.iterators.intro.title
+'<title xmlns="http://docbook.org/ns/docbook">Ітератори</title>'>
+
+<!ENTITY spl.iterators.intro
+'<para xmlns="http://docbook.org/ns/docbook">SPL містить набір ітераторів для
+проходження об&apos;єктів.</para>'>
+
+<!ENTITY spl.misc.intro.title
+'<title xmlns="http://docbook.org/ns/docbook">Різні класи та інтерфейси</title>'>
+
+<!ENTITY spl.misc.intro
+'<partintro xmlns="http://docbook.org/ns/docbook"><para>Класи та інтерфейси, які
+не увійшли в жодну з категорій SPL.</para></partintro>'>
+
+<!-- ZIP -->
+<!ENTITY zip.filename.separator
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Для найкращої сумісності
+рекомендується завжди використовувати косу риску (<literal>/</literal>) як
+роздільник тек в назвах ZIP-файлів.</simpara></note>'>
 
 <!-- Win32Service -->
-<!ENTITY win32service.false.error ', &false; if there is a problem with the parameters or a <link xmlns="http://docbook.org/ns/docbook" linkend="win32service.constants.errors">Win32 Error Code</link> on failure.'>
-<!ENTITY win32service.success.false.error 'Returns &true; on success&win32service.false.error;'>
-<!ENTITY win32service.noerror.false.error 'Returns <constant xmlns="http://docbook.org/ns/docbook">WIN32_NO_ERROR</constant> on success&win32service.false.error;'>
+<!ENTITY win32service.false.error
+', &false; якщо виникли складнощі з параметрами, або <link
+xmlns="http://docbook.org/ns/docbook"
+linkend="win32service.constants.errors">Код помилки Win32</link> у разі збою.'>
+
+<!ENTITY win32service.success.false.error
+'Повертає &true; у разі успіху&win32service.false.error;'>
+
+<!ENTITY win32service.noerror.false.error
+'повертається <constant
+xmlns="http://docbook.org/ns/docbook">WIN32_NO_ERROR</constant> у разі
+успіху&win32service.false.error;'>
 
 <!-- SNMP -->
-<!ENTITY snmp.set.type.values '<para xmlns="http://docbook.org/ns/docbook">
- The <acronym>MIB</acronym> defines the type of each object id. It has to be specified as a single character from the below list.
+<!ENTITY snmp.set.type.values
+'<para xmlns="http://docbook.org/ns/docbook">
+ <acronym>MIB</acronym> дає означення типу для ID об&apos;єкта. Тип можна
+ вказувати одним з символів:
 </para>
 <table xmlns="http://docbook.org/ns/docbook">
  <title>types</title>
- <tgroup cols="2">
+ <tgroup cols="2">snmp.set.type.values
   <tbody>
-   <row><entry>=</entry><entry>The type is taken from the MIB</entry></row>
+   <row><entry>=</entry><entry>Тип, взятий з MIB</entry></row>
    <row><entry>i</entry><entry>INTEGER</entry> </row>
    <row><entry>u</entry><entry>INTEGER</entry></row>
    <row><entry>s</entry><entry>STRING</entry></row>
@@ -3338,168 +3456,864 @@ to be references, then they must be references in the passed argument list.'>
  </tgroup>
 </table>
 <para xmlns="http://docbook.org/ns/docbook">
- If <constant>OPAQUE_SPECIAL_TYPES</constant> was defined while compiling the <acronym>SNMP</acronym> library, the following are also valid:
+ Якщо під час компіляції бібліотеки <acronym>SNMP</acronym> задано
+<constant>OPAQUE_SPECIAL_TYPES</constant>, будуть доступні наступні типи:
 </para>
 <table xmlns="http://docbook.org/ns/docbook">
  <title>types</title>
  <tgroup cols="2">
-  <tbody>
-   <row><entry>U</entry><entry>unsigned int64</entry></row>
-   <row><entry>I</entry><entry>signed int64</entry></row>
-   <row><entry>F</entry><entry>float</entry></row>
-   <row><entry>D</entry><entry>double</entry></row>
+  <tbody>файлів 
+   <row><entry>U</entry><entry>беззнаковий int64</entry></row>
+   <row><entry>I</entry><entry>знаковий int64</entry></row>
+   <row><entry>F</entry><entry>десятковий дріб (float)</entry></row>
+   <row><entry>D</entry><entry>десятковий дріб подвійної точності (double)</entry></row>
   </tbody>
  </tgroup>
 </table>
 '>
-<!ENTITY snmp.set.type.values.asn.mapping '<para xmlns="http://docbook.org/ns/docbook">
- Most of these will use the obvious corresponding ASN.1 type.  &apos;s&apos;, &apos;x&apos;, &apos;d&apos; and &apos;b&apos; are all different ways of specifying an OCTET STRING value, and
- the &apos;u&apos; unsigned type is also used for handling Gauge32 values.
+
+<!ENTITY snmp.set.type.values.asn.mapping
+'<para xmlns="http://docbook.org/ns/docbook">
+ Більшість з них мають зрозумілий ASN.1-тип. "s", "x", "d" та "b" вказують на
+ один тип — OCTET STRING, а беззнаковий тип "u" використовується для обробки
+ значень Gauge32.
 </para>
 '>
-<!ENTITY snmp.set.type.values.equal.note '<para xmlns="http://docbook.org/ns/docbook">
- If the MIB-Files are loaded by into the MIB Tree with "snmp_read_mib" or by specifying it in the libsnmp config, &apos;=&apos; may be used as
- the <parameter>type</parameter> parameter for all object ids as the type can then be automatically read from the MIB.
+
+<!ENTITY snmp.set.type.values.equal.note
+'<para xmlns="http://docbook.org/ns/docbook">
+ Якщо MIB-файли підключені до дерева MIB, бо вказані в налаштуваннях libsnmp або
+ за допомогою "snmp_read_mib", то потрібно задавати параметр
+ <parameter>type</parameter> зі значенням "=" для усіх ID об&apos;єктів,
+ оскільки тип можна автоматично зчитувати з MIB.
 </para>
 '>
-<!ENTITY snmp.set.type.values.bitset.note '<para xmlns="http://docbook.org/ns/docbook">
- Note that there are two ways to set a variable of the type BITS like e.g.
- "SYNTAX    BITS {telnet(0), ftp(1), http(2), icmp(3), snmp(4), ssh(5), https(6)}":
+
+<!ENTITY snmp.set.type.values.bitset.note
+'<para xmlns="http://docbook.org/ns/docbook">
+ Варто зазначити, що є два способи задати значення змінній, яка має тип BITS, як
+ от "SYNTAX    BITS {telnet(0), ftp(1), http(2), icmp(3), snmp(4), ssh(5), https(6)}":
 </para>
 <itemizedlist xmlns="http://docbook.org/ns/docbook">
  <listitem>
   <simpara>
-   Using type "b" and a list of bit numbers. This method is not recommended since GET query for the same OID would return e.g. 0xF8.
+   Використавши тип "b" та список бітових чисел. Цей спосіб не рекомендований,
+   оскільки на GET-запит для однакових OID може бути відповідь, напр., 0xF8.
   </simpara>
  </listitem>
  <listitem>
   <simpara>
-   Using type "x" and a hex number but without(!) the usual "0x" prefix.
+   Використавши тип "x" та шістнадцяткове число, проте без(!) звичного префікса
+   "0x".
   </simpara>
  </listitem>
 </itemizedlist>
 <para xmlns="http://docbook.org/ns/docbook">
- See examples section for more details.
+ Докладніше це описано у параграфі з прикладами.
 </para>
 '>
-<!ENTITY snmp.methods.exceptions_enable.refsect '<refsect1 role="errors" xmlns="http://docbook.org/ns/docbook">
+
+<!ENTITY snmp.methods.exceptions_enable.refsect
+'<refsect1 role="errors" xmlns="http://docbook.org/ns/docbook">
 &reftitle.errors;
 <para>
- This method does not throw any exceptions by default.
- To enable throwing an SNMPException exception when some of library errors occur
- the SNMP class parameter <parameter>exceptions_enabled</parameter>
- should be set to a corresponding value. See <link linkend="snmp.props.exceptions-enabled">
- <parameter>SNMP::$exceptions_enabled</parameter> explanation</link> for more details.
+ Стандартно цей метод не кидає виключення. Щоб увімкнути виключення
+ SNMPException у відповідь на помилки бібліотеки, полю
+ <parameter>exceptions_enabled</parameter> класу SNMP необхідно задати потрібне
+ значення. Докладніше: <link linkend="snmp.props.exceptions-enabled">пояснення
+ <parameter>SNMP::$exceptions_enabled</parameter></link>.
 </para>
 </refsect1>
 '>
 
 <!-- Eio -->
-<!ENTITY eio.callback.proto '<para xmlns="http://docbook.org/ns/docbook">
-<parameter xmlns="http://docbook.org/ns/docbook">callback</parameter> function is called when the request is done.
-It should match the following prototype: <programlisting role="php"><![CDATA[
+<!ENTITY eio.callback.proto
+'<para xmlns="http://docbook.org/ns/docbook">
+Функція <parameter xmlns="http://docbook.org/ns/docbook">callback</parameter>
+викликається після виконання запиту. Вона має відповідати наступному шаблону:
+<programlisting role="php"><![CDATA[
 void callback(mixed $data, int $result[, resource $req]);
 ]]></programlisting>
 <variablelist xmlns="http://docbook.org/ns/docbook">
 <varlistentry xmlns="http://docbook.org/ns/docbook">
 <term><parameter>data</parameter></term>
-<listitem><para>is custom data passed to the request.</para></listitem>
+<listitem><para>Користувацькі дані, що будуть в запиті.</para></listitem>
 </varlistentry>
 <varlistentry xmlns="http://docbook.org/ns/docbook">
 <term><parameter>result</parameter></term>
-<listitem><para>request-specific result value; basically, the value returned by corresponding
-system call.</para></listitem>
+<listitem><para>Значення результату, що стосується запиту; повертається
+системним викликом.</para></listitem>
 </varlistentry>
 <varlistentry xmlns="http://docbook.org/ns/docbook">
 <term><parameter>req</parameter></term>
-<listitem><para>is optional request resource which can be used with functions like <function>eio_get_last_error</function></para></listitem>
+<listitem><para>Необов&apos;язковий ресурс запиту, який використовують з такими
+функціями, як <function>eio_get_last_error</function></para></listitem>
 </varlistentry>
 </variablelist>
 </para>
 '>
 
-<!ENTITY eio.request.pri.values '<para
-xmlns="http://docbook.org/ns/docbook">The request priority: <constant
+<!ENTITY eio.request.pri.values
+'<para xmlns="http://docbook.org/ns/docbook">Пріоритет запиту: <constant
 xmlns="http://docbook.org/ns/docbook">EIO_PRI_DEFAULT</constant>, <constant
 xmlns="http://docbook.org/ns/docbook">EIO_PRI_MIN</constant>, <constant
-xmlns="http://docbook.org/ns/docbook">EIO_PRI_MAX</constant>, or &null;.
-If &null; passed, <parameter
-xmlns="http://docbook.org/ns/docbook">pri</parameter> internally is set to
+xmlns="http://docbook.org/ns/docbook">EIO_PRI_MAX</constant> або &null;.
+Якщо параметру <parameter xmlns="http://docbook.org/ns/docbook">pri</parameter>
+задано значення &null;, то пріоритетом буде
 <constant xmlns="http://docbook.org/ns/docbook">EIO_PRI_DEFAULT</constant>.
 </para>
 '>
 
-<!ENTITY eio.warn.relpath '<warning
-xmlns="http://docbook.org/ns/docbook"><simpara xmlns="http://docbook.org/ns/docbook">Avoid relative
-paths</simpara></warning>
+<!ENTITY eio.warn.relpath
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara
+xmlns="http://docbook.org/ns/docbook">Потрібно уникати відносних
+шляхів</simpara></warning>
 '>
 
-<!ENTITY trader.arg.array.of.real 'Array of real values.'>
-<!ENTITY trader.arg.array.of.real.high 'High price, array of real values.'>
-<!ENTITY trader.arg.array.of.real.low 'Low price, array of real values.'>
-<!ENTITY trader.arg.array.of.real.close 'Closing price, array of real values.'>
-<!ENTITY trader.arg.array.of.real.open 'Opening price, array of real values.'>
-<!ENTITY trader.arg.array.of.real.volume 'Volume traded, array of real values.'>
-<!ENTITY trader.arg.array.of.real.periods 'Array of real values.'>
-<!ENTITY trader.arg.penetration 'Percentage of penetration of a candle within another candle.'>
-<!ENTITY trader.arg.vfactor 'Volume Factor. Valid range from 1 to 0.'>
-<!ENTITY trader.arg.time.period 'Number of period. Valid range from 2 to 100000.'>
-<!ENTITY trader.arg.fast.period 'Number of period for the fast MA. Valid range from 2 to 100000.'>
-<!ENTITY trader.arg.slow.period 'Number of period for the slow MA. Valid range from 2 to 100000.'>
-<!ENTITY trader.arg.signal.period 'Smoothing for the signal line (nb of period). Valid range from 1 to 100000.'>
-<!ENTITY trader.arg.fastk.period 'Time period for building the Fast-K line. Valid range from 1 to 100000.'>
-<!ENTITY trader.arg.fastd.period 'Smoothing for making the Fast-D line. Valid range from 1 to 100000, usually set to 3.'>
-<!ENTITY trader.arg.slowk.period 'Smoothing for making the Slow-K line. Valid range from 1 to 100000, usually set to 3.'>
-<!ENTITY trader.arg.slowd.period 'Smoothing for making the Slow-D line. Valid range from 1 to 100000.'>
-<!ENTITY trader.arg.min.period 'Value less than minimum will be changed to Minimum period. Valid range from 2 to 100000'>
-<!ENTITY trader.arg.max.period 'Value higher than minimum will be changed to Maximum period. Valid range from 2 to 100000'>
-<!ENTITY trader.arg.ma.type 'Type of Moving Average. <link xmlns="http://docbook.org/ns/docbook" linkend="trader.constants">TRADER_MA_TYPE_*</link> series of constants should be used.'>
-<!ENTITY trader.arg.fast.ma.type 'Type of Moving Average for fast MA. <link xmlns="http://docbook.org/ns/docbook" linkend="trader.constants">TRADER_MA_TYPE_*</link> series of constants should be used.'>
-<!ENTITY trader.arg.slow.ma.type 'Type of Moving Average for slow MA. <link xmlns="http://docbook.org/ns/docbook" linkend="trader.constants">TRADER_MA_TYPE_*</link> series of constants should be used.'>
-<!ENTITY trader.arg.fastd.ma.type 'Type of Moving Average for Fast-D. <link xmlns="http://docbook.org/ns/docbook" linkend="trader.constants">TRADER_MA_TYPE_*</link> series of constants should be used.'>
-<!ENTITY trader.arg.slowk.ma.type 'Type of Moving Average for Slow-K. <link xmlns="http://docbook.org/ns/docbook" linkend="trader.constants">TRADER_MA_TYPE_*</link> series of constants should be used.'>
-<!ENTITY trader.arg.slowd.ma.type 'Type of Moving Average for Slow-D. <link xmlns="http://docbook.org/ns/docbook" linkend="trader.constants">TRADER_MA_TYPE_*</link> series of constants should be used.'>
-<!ENTITY trader.arg.slowk.ma.type 'Type of Moving Average for Slow-K. <link xmlns="http://docbook.org/ns/docbook" linkend="trader.constants">TRADER_MA_TYPE_*</link> series of constants should be used.'>
-<!ENTITY trader.arg.signal.ma.type 'Type of Moving Average for signal line. <link xmlns="http://docbook.org/ns/docbook" linkend="trader.constants">TRADER_MA_TYPE_*</link> series of constants should be used.'>
-<!ENTITY trader.arg.nbdevup 'Deviation multiplier for upper band. Valid range from <link xmlns="http://docbook.org/ns/docbook" linkend="constant.trader-real-min">TRADER_REAL_MIN</link> to <link xmlns="http://docbook.org/ns/docbook" linkend="constant.trader-real-max">TRADER_REAL_MAX</link>.'>
-<!ENTITY trader.arg.nbdevdn 'Deviation multiplier for lower band. Valid range from <link xmlns="http://docbook.org/ns/docbook" linkend="constant.trader-real-min">TRADER_REAL_MIN</link> to <link xmlns="http://docbook.org/ns/docbook" linkend="constant.trader-real-max">TRADER_REAL_MAX</link>.'>
-<!ENTITY trader.arg.fast.limit 'Upper limit use in the adaptive algorithm. Valid range from 0.01 to 0.99.'>
-<!ENTITY trader.arg.slow.limit 'Lower limit use in the adaptive algorithm. Valid range from 0.01 to 0.99.'>
+<!ENTITY trader.arg.array.of.real 'Масив дійсних значень.'>
+<!ENTITY trader.arg.array.of.real.high 'Найвища ціна, масив дійсних значень.'>
+<!ENTITY trader.arg.array.of.real.low 'Найнижча ціна, масив дійсних значень.'>
+<!ENTITY trader.arg.array.of.real.close 'Ціна під час закриття, масив дійсних значень.'>
+<!ENTITY trader.arg.array.of.real.open 'Ціна під час відкриття, масив дійсних значень.'>
+<!ENTITY trader.arg.array.of.real.volume 'Обсяг торгів, масив дійсних значень.'>
+<!ENTITY trader.arg.array.of.real.periods 'Масив дійсних значень.'>
+<!ENTITY trader.arg.penetration 'Відсоток проникнення одної свічки в іншу.'>
+<!ENTITY trader.arg.vfactor 'Коефіцієнт обсягу. Допустимі значення від 1 до 0.'>
+<!ENTITY trader.arg.time.period 'Число періоду. Допустимі значення від 2 до 100000.'>
+<!ENTITY trader.arg.fast.period 'Число періоду для швидкого рухомого середнього (MA). Допустимі значення від 2 до 100000.'>
+<!ENTITY trader.arg.slow.period 'Число періоду для повільного рухомого середнього (MA). Допустимі значеннян від 2 до 100000.'>
+<!ENTITY trader.arg.signal.period 'Згладжування сигнальної лінії (число періоду). Допустимі значення від 1 до 100000.'>
+<!ENTITY trader.arg.fastk.period 'Часовий проміжок побудови лінії Fast-K. Допустимі значення від 1 до 100000.'>
+<!ENTITY trader.arg.fastd.period 'Згладжування для створення лінії Fast-D. Допустимі значення від 1 до 100000, зазвичай дорівнює 3.'>
+<!ENTITY trader.arg.slowk.period 'Згладжування для створення лінії Slow-K. Допустимі значення від 1 до 100000, зазвичай дорівнює  3.'>
+<!ENTITY trader.arg.slowd.period 'Згладжування для створення лінії Slow-D. Допустимі значення від 1 до  100000.'>
+<!ENTITY trader.arg.min.period 'Значення менше за мінімальне, яке буде змінено на мінімальний період. Допустимі значення від 2 до 100000.'>
+<!ENTITY trader.arg.max.period 'Значення вище за мінімальне, яке буде змінено на максимальний період. Допустимі значення від 2 до 100000.'>
+
+<!ENTITY trader.arg.ma.type
+'Тип рухомого середнього. Застовується одна з констант
+<link xmlns="http://docbook.org/ns/docbook"
+linkend="trader.constants">TRADER_MA_TYPE_*</link>.'>
+
+<!ENTITY trader.arg.fast.ma.type
+'Тип рухомого середнього для швидкого MA. Застовується одна з констант
+<link xmlns="http://docbook.org/ns/docbook"
+linkend="trader.constants">TRADER_MA_TYPE_*</link>.'>
+
+<!ENTITY trader.arg.slow.ma.type
+'Тип рухомого середнього для повільного MA. Застовується одна з констант
+<link xmlns="http://docbook.org/ns/docbook"
+linkend="trader.constants">TRADER_MA_TYPE_*</link>.'>
+
+<!ENTITY trader.arg.fastd.ma.type
+'Тип рухомого середнього для Fast-D. Застовується одна з констант
+<link xmlns="http://docbook.org/ns/docbook"
+linkend="trader.constants">TRADER_MA_TYPE_*</link>.'>
+
+<!ENTITY trader.arg.fastk.ma.type
+'Тип рухомого середнього для Fast-K. Застовується одна з констант
+<link xmlns="http://docbook.org/ns/docbook"
+linkend="trader.constants">TRADER_MA_TYPE_*</link>.'>
+
+<!ENTITY trader.arg.slowd.ma.type
+'Тип рухомого середнього для Slow-D. Застовується одна з констант
+<link xmlns="http://docbook.org/ns/docbook"
+linkend="trader.constants">TRADER_MA_TYPE_*</link>.'>
+
+<!ENTITY trader.arg.slowk.ma.type
+'Тип рухомого середнього для Slow-K. Застовується одна з констант
+<link xmlns="http://docbook.org/ns/docbook"
+linkend="trader.constants">TRADER_MA_TYPE_*</link>.'>
+
+<!ENTITY trader.arg.signal.ma.type
+'Тип рухомого середнього для сигнальної лінії. Застовується одна з констант
+<link xmlns="http://docbook.org/ns/docbook"
+linkend="trader.constants">TRADER_MA_TYPE_*</link>.'>
+
+<!ENTITY trader.arg.nbdevup
+'Коефіцієнт відхилення для верхньої межі. Допустимі значення від <link
+xmlns="http://docbook.org/ns/docbook"
+linkend="constant.trader-real-min">TRADER_REAL_MIN</link> до
+<link xmlns="http://docbook.org/ns/docbook"
+linkend="constant.trader-real-max">TRADER_REAL_MAX</link>.'>
+
+<!ENTITY trader.arg.nbdevdn
+'Коефіцієнт відхилення для нижньої межі. Допустимі значення від <link
+xmlns="http://docbook.org/ns/docbook"
+linkend="constant.trader-real-min">TRADER_REAL_MIN</link> до
+<link xmlns="http://docbook.org/ns/docbook"
+linkend="constant.trader-real-max">TRADER_REAL_MAX</link>.'>
+
+<!ENTITY trader.arg.fast.limit 'Верхня межа адаптивного алгоритму. Допустимі значення від 0.01 до 0.99.'>
+<!ENTITY trader.arg.slow.limit 'Нижня межа адаптивного алгоритму. Допустимі значення від 0.01 до 0.99.'>
 
 <!-- Mongo -->
-<!ENTITY mongo.setreadpreference.parameters '<variablelist xmlns="http://docbook.org/ns/docbook"><varlistentry><term><parameter>read_preference</parameter></term><listitem><para>The read preference mode: <constant>MongoClient::RP_PRIMARY</constant>, <constant>MongoClient::RP_PRIMARY_PREFERRED</constant>, <constant>MongoClient::RP_SECONDARY</constant>, <constant>MongoClient::RP_SECONDARY_PREFERRED</constant>, or <constant>MongoClient::RP_NEAREST</constant>.</para></listitem></varlistentry><varlistentry><term><parameter>tags</parameter></term><listitem><para>An array of zero or more tag sets, where each tag set is itself an array of criteria used to match tags on replica set members.</para></listitem></varlistentry></variablelist>'>
-<!ENTITY mongo.setreadpreference.returnvalues '<para xmlns="http://docbook.org/ns/docbook">Повертає &true; при успіху, або &false; в противному разі.</para>'>
-<!ENTITY mongo.setreadpreference.errors '<para xmlns="http://docbook.org/ns/docbook">Emits <constant>E_WARNING</constant> if either parameter is invalid, or if one or more tag sets are provided with the <constant>MongoClient::RP_PRIMARY</constant> read preference mode.</para>'>
-<!ENTITY mongo.getreadpreference.returnvalues '<para xmlns="http://docbook.org/ns/docbook">This function returns an array describing the read preference. The array contains the values <literal>type</literal> for the string read preference mode (corresponding to the <classname>MongoClient</classname> constants), and <literal>tagsets</literal> containing a list of all tag set criteria. If no tag sets were specified, <literal>tagsets</literal> will not be present in the array.</para>'>
-<!ENTITY mongo.setwriteconcern.parameters '<variablelist xmlns="http://docbook.org/ns/docbook"><varlistentry><term><parameter>w</parameter></term><listitem><para>The write concern. This may be an integer denoting the number of servers required to acknowledge the write, or a string mode (e.g. "majority").</para></listitem></varlistentry><varlistentry><term><parameter>wtimeout</parameter></term><listitem><para>The maximum number of milliseconds to wait for the server to satisfy the write concern.</para></listitem></varlistentry></variablelist>'>
-<!ENTITY mongo.setwriteconcern.returnvalues '<para xmlns="http://docbook.org/ns/docbook">Повертає &true; при успіху, або &false; в противному разі.</para>'>
-<!ENTITY mongo.setwriteconcern.errors '<para xmlns="http://docbook.org/ns/docbook">Emits <constant>E_WARNING</constant> if the <literal>w</literal> parameter is not an integer or string value.</para>'>
-<!ENTITY mongo.getwriteconcern.returnvalues '<para xmlns="http://docbook.org/ns/docbook">This function returns an array describing the write concern. The array contains the values <literal>w</literal> for an integer acknowledgement level or string mode, and <literal>wtimeout</literal> denoting the maximum number of milliseconds to wait for the server to satisfy the write concern.</para>'>
-<!ENTITY mongo.command.parameters.maxtimems '<listitem xmlns="http://docbook.org/ns/docbook"><para><literal>"maxTimeMS"</literal></para><para>Specifies a cumulative time limit in milliseconds for processing the operation (does not include idle time). If the operation is not completed within the timeout period, a <classname>MongoExecutionTimeoutException</classname> will be thrown.</para></listitem>'>
-<!ENTITY mongo.index.parameters.background '<listitem xmlns="http://docbook.org/ns/docbook"><para><literal>"background"</literal></para><para>Builds the index in the background so that building an index does <emphasis>not</emphasis> block other database activities. Specify &true; to build in the background. The default value is &false;.</para><warning xmlns="http://docbook.org/ns/docbook"><para>Prior to MongoDB 2.6.0, index builds on secondaries were executed as foreground operations, irrespective of this option. See <link xlink:href="&url.mongodb.dochub.indexes.rs;" xmlns:xlink="http://www.w3.org/1999/xlink">Building Indexes with Replica Sets</link> for more information.</para></warning></listitem>'>
-<!ENTITY mongo.index.parameters.dropdups '<listitem xmlns="http://docbook.org/ns/docbook"><para><literal>"dropDups"</literal></para><para>Specify &true; to force creation of a unique index where the collection may contain duplicate values for a key. MongoDB will index the first occurrence of a key and delete all subsequent documents from the collection that contain a duplicate value for that key. The default value is &false;.</para><warning xmlns="http://docbook.org/ns/docbook"><para><literal>"dropDups"</literal> may delete data from your database. Use with extreme caution.</para></warning><note xmlns="http://docbook.org/ns/docbook"><para>This option is not supported on MongoDB 2.8+. Index creation will fail if the collection contains duplicate values.</para></note></listitem>'>
-<!ENTITY mongo.index.parameters.expireafterseconds '<listitem xmlns="http://docbook.org/ns/docbook"><para><literal>"expireAfterSeconds"</literal></para><para>The value of this option should specify the number of seconds after which a document should be considered expired and automatically removed from the collection. This option is only compatible with single-field indexes where the field will contain <classname>MongoDate</classname> values.</para><note xmlns="http://docbook.org/ns/docbook"><para>This feature is available in MongoDB 2.2+. See <link xlink:href="&url.mongodb.docs.expire_data;" xmlns:xlink="http://www.w3.org/1999/xlink">Expire Data from Collections by Setting TTL</link> for more information.</para></note></listitem>'>
-<!ENTITY mongo.index.parameters.name '<listitem xmlns="http://docbook.org/ns/docbook"><para><literal>"name"</literal></para><para>A optional name that uniquely identifies the index.</para><note xmlns="http://docbook.org/ns/docbook"><para>By default, the driver will generate an index name based on the index&apos;s field(s) and ordering or type. For example, a compound index <literal>array("x" => 1, "y" => -1)</literal> would be named <literal>"x_1_y_-1"</literal> and a geospatial index <literal>array("loc" => "2dsphere")</literal> would be named <literal>"loc_2dsphere"</literal>. For indexes with many fields, it is possible that the generated name might exceed MongoDB&apos;s <link xlink:href="&url.mongodb.docs.limits;#Index-Name-Length" xmlns:xlink="http://www.w3.org/1999/xlink">limit for index names</link>. The <literal>"name"</literal> option may be used in that case to supply a shorter name.</para></note></listitem>'>
-<!ENTITY mongo.index.parameters.sparse '<listitem xmlns="http://docbook.org/ns/docbook"><para><literal>"sparse"</literal></para><para>Specify &true; to create a sparse index, which only indexes documents containing a specified field. The default value is &false;.</para></listitem>'>
-<!ENTITY mongo.index.parameters.unique '<listitem xmlns="http://docbook.org/ns/docbook"><para><literal>"unique"</literal></para><para>Specify &true; to create a unique index. The default value is &false;. This option applies only to ascending/descending indexes.</para><note xmlns="http://docbook.org/ns/docbook"><para>When MongoDB indexes a field, if a document does not have a value for the field, a &null; value is indexed. If multiple documents do not contain a field, a unique index will reject all but the first of those documents. The <literal>"sparse"</literal> option may be used to overcome this, since it will prevent documents without the field from being indexed.</para></note></listitem>'>
-<!ENTITY mongo.listcollections.note '<note xmlns="http://docbook.org/ns/docbook"><simpara>This method will use the <link xlink:href="&url.mongodb.dochub.listcollections;" xmlns:xlink="http://www.w3.org/1999/xlink">listCollections</link> database command when communicating with MongoDB 2.8+. For previous database versions, the method will query the special <literal>system.namespaces</literal> collection.</simpara></note>'>
-<!ENTITY mongo.listcollections.parameters.filter '<listitem xmlns="http://docbook.org/ns/docbook"><para><literal>"filter"</literal></para><para>Optional query criteria. If provided, this criteria will be used to filter the collections included in the result.</para><para>Relevant fields that may be queried include <literal>"name"</literal> (collection name as a string, without the database name prefix) and <literal>"options" (object containing options used to create the collection).</literal>.</para><note><simpara>MongoDB 2.6 and earlier versions require the <literal>"name"</literal> criteria, if specified, to be a string value (i.e. equality match). This is because the driver must prefix the value with the database name in order to query the <literal>system.namespaces</literal> collection. Later versions of MongoDB do not have this limitation, as the driver will use the listCollections command.</simpara></note></listitem>'>
-<!ENTITY mongo.listcollections.parameters.includesystemcollections '<listitem xmlns="http://docbook.org/ns/docbook"><para><literal>"includeSystemCollections"</literal></para><para>Boolean, defaults to &false;. Determines whether system collections should be included in the result.</para></listitem>'>
-<!ENTITY mongo.writes.parameters.writeconcern '<listitem xmlns="http://docbook.org/ns/docbook"><para><literal>"w"</literal></para><para>See <link linkend="mongo.writeconcerns">Write Concerns</link>. The default value for <classname>MongoClient</classname> is <literal>1</literal>.</para></listitem>'>
-<!ENTITY mongo.writes.parameters.writeconcerntimeout '<listitem xmlns="http://docbook.org/ns/docbook"><para><literal>"wtimeout"</literal></para><para>Deprecated alias for <literal>"wTimeoutMS"</literal>.</para></listitem>'>
-<!ENTITY mongo.writes.parameters.writeconcerntimeoutms '<listitem xmlns="http://docbook.org/ns/docbook"><para><literal>"wTimeoutMS"</literal></para><para>This option specifies the time limit, in milliseconds, for <link linkend="mongo.writeconcerns">write concern</link> acknowledgement. It is only applicable when <literal>"w"</literal> is greater than <literal>1</literal>, as the timeout pertains to replication. If the write concern is not satisfied within the time limit, a <classname>MongoCursorException</classname> will be thrown. A value of <literal>0</literal> may be specified to block indefinitely. The default value for <classname>MongoClient</classname> is <literal>10000</literal> (ten seconds).</para></listitem>'>
-<!ENTITY mongo.writes.parameters.fsync '<listitem xmlns="http://docbook.org/ns/docbook"><para><literal>"fsync"</literal></para><para>Boolean, defaults to &false;. If journaling is enabled, it works exactly like <literal>"j"</literal>. If journaling is not enabled, the write operation blocks until it is synced to database files on disk. If &true;, an acknowledged insert is implied and this option will override setting <literal>"w"</literal> to <literal>0</literal>.</para><note><simpara>If journaling is enabled, users are strongly encouraged to use the <literal>"j"</literal> option instead of <literal>"fsync"</literal>. Do not use <literal>"fsync"</literal> and <literal>"j"</literal> simultaneously, as that will result in an error.</simpara></note></listitem>'>
-<!ENTITY mongo.writes.parameters.sockettimeoutms '<listitem xmlns="http://docbook.org/ns/docbook"><para><literal>"socketTimeoutMS"</literal></para><para>This option specifies the time limit, in milliseconds, for socket communication. If the server does not respond within the timeout period, a <classname>MongoCursorTimeoutException</classname> will be thrown and there will be no way to determine if the server actually handled the write or not. A value of <literal>-1</literal> may be specified to block indefinitely. The default value for <classname>MongoClient</classname> is <literal>30000</literal> (30 seconds).</para></listitem>'>
-<!ENTITY mongo.writes.parameters.journal '<listitem xmlns="http://docbook.org/ns/docbook"><para><literal>"j"</literal></para><para>Boolean, defaults to &false;. Forces the write operation to block until it is synced to the journal on disk. If &true;, an acknowledged write is implied and this option will override setting <literal>"w"</literal> to <literal>0</literal>.</para><note><simpara>If this option is used and journaling is disabled, MongoDB 2.6+ will raise an error and the write will fail; older server versions will simply ignore the option.</simpara></note></listitem>'>
-<!ENTITY mongo.writes.parameters.safe '<listitem xmlns="http://docbook.org/ns/docbook"><para><literal>"safe"</literal></para><para>Deprecated. Please use the <link linkend="mongo.writeconcerns">write concern</link> <literal>"w"</literal> option.</para></listitem>'>
-<!ENTITY mongo.writes.parameters.timeout '<listitem xmlns="http://docbook.org/ns/docbook"><para><literal>"timeout"</literal></para><para>Deprecated alias for <literal>"socketTimeoutMS"</literal>.</para></listitem>'>
-<!ENTITY mongo.errors.exceptions.writeconcern '<para xmlns="http://docbook.org/ns/docbook">Throws <classname>MongoCursorException</classname> if the <literal>"w"</literal> option is set and the write fails.</para><para xmlns="http://docbook.org/ns/docbook">Throws <classname>MongoCursorTimeoutException</classname> if the <literal>"w"</literal> option is set to a value greater than one and the operation takes longer than <varname>MongoCursor::$timeout</varname> milliseconds to complete.  This does not kill the operation on the server, it is a client-side timeout. The operation in <varname>MongoCollection::$wtimeout</varname> is milliseconds.</para>'>
-<!ENTITY mongo.errors.deprecated '<para xmlns="http://docbook.org/ns/docbook">Issues <constant>E_DEPRECATED</constant> warning</para>'>
-<!ENTITY mongo.gridfs.store.metadata.note '<note xmlns="http://docbook.org/ns/docbook"><para>These fields may also overwrite those that would be created automatically by the driver, as described in the MongoDB core documentation for the <link xlink:href="&url.mongodb.docs.gridfs;#the-files-collection" xmlns:xlink="http://www.w3.org/1999/xlink">files collection</link>. Some practical use cases for this behavior would be to specify a custom <literal>chunkSize</literal> or <literal>_id</literal> for the file.</para></note>'>
-<!ENTITY mongo.gridfs.store.return '<para xmlns="http://docbook.org/ns/docbook">Returns the <literal>_id</literal> of the saved file document. This will be a generated <classname>MongoId</classname> unless an <literal>_id</literal> was explicitly specified in the <parameter>metadata</parameter> parameter.</para>'>
-<!ENTITY mongo.mongowritebatch.writeoptions.description '<listitem xmlns="http://docbook.org/ns/docbook"><para>An array of Write Options.<informaltable><thead><row><entry>key</entry><entry>value meaning</entry></row></thead><tbody><row><entry>w (int|string)</entry><entry><link linkend="mongo.writeconcerns">Write concern</link> value</entry></row><row><entry>wtimeout (int)</entry><entry><link linkend="mongo.writeconcerns">Maximum time to wait for replication</link></entry></row><row><entry>ordered</entry><entry>Determins if MongoDB must apply this batch in order (sequentally, one item at a time) or can rearrange it. Defaults to &true;</entry></row><row><entry>j (bool)</entry><entry>Wait for journaling on the primary. This value is discouraged, use WriteConcern instead</entry></row><row><entry>fsync (bool)</entry><entry>Wait for fsync on the primary. This value is discouraged, use WriteConcern instead</entry></row></tbody></informaltable></para></listitem>'>
-<!ENTITY mongo.mongowritebatch.collection.description '<listitem xmlns="http://docbook.org/ns/docbook"><para>The <classname>MongoCollection</classname> to execute the batch on. Its <link linkend="mongo.writeconcerns">write concern</link> will be copied and used as the default write concern if none is given as <parameter>$write_options</parameter> or during <methodname>MongoWriteBatch::execute</methodname>.</para></listitem>'>
-<!ENTITY mongo.context.server ' <varlistentry xmlns="http://docbook.org/ns/docbook"> <term> <parameter>server</parameter> </term> <listitem> <para> An array containing the basic information about the server that was picked. <informaltable> <tgroup cols="2"> <thead> <row> <entry>key</entry> <entry>value</entry> </row> </thead> <tbody> <row> <entry>hash</entry> <entry>server hash, example: <literal>localhost:27017;-;X;56052</literal></entry> </row> <row> <entry>type</entry> <entry>Node type (primary/secondary/mongos/arbiter): <literal>2</literal></entry> </row> <row> <entry>max_bson_size</entry> <entry>The maximum BSON Size over the wire this node accepts: <literal>16777216</literal></entry> </row> <row> <entry>max_message_size</entry> <entry>The maximum Message Size over the wire this node accepts: <literal>48000000</literal></entry> </row> <row> <entry>request_id</entry> <entry>The request identifier for this message: <literal>42</literal></entry> </row> </tbody> </tgroup> </informaltable> </para> </listitem> </varlistentry>'> <!ENTITY mongo.context.writeoptions '<varlistentry xmlns="http://docbook.org/ns/docbook"> <term> <parameter>writeOptions</parameter> </term> <listitem> <para> <informaltable> <tgroup cols="2"> <thead> <row> <entry>key</entry> <entry>value</entry> </row> </thead> <tbody> <row> <entry>ordered</entry> <entry>boolean, if the operation (in case of batch operation) must be executed sequentually (ordered=true)</entry> </row> <row> <entry>writeConcern</entry> <entry>An array of writeConcern options (see below)</entry> </row> </tbody> </tgroup> </informaltable> <table> <title>writeConcern array values</title> <tgroup cols="2"> <thead> <row> <entry>key</entry> <entry>value</entry> </row> </thead> <tbody> <row> <entry>fsync</entry> <entry>boolean, force flushing to disk before returning</entry> </row> <row> <entry>j</entry> <entry>boolean, force journal write before returning</entry> </row> <row> <entry>wtimeout</entry> <entry>integer, milliseconds, maximum time the primary is allowed to wait to verify replication</entry> </row> <row> <entry>w</entry> <entry>integer=server count, or string=replication-tag</entry> </row> </tbody> </tgroup> </table> </para> </listitem> </varlistentry>'> <!ENTITY mongo.context.protocoloptions ' <varlistentry xmlns="http://docbook.org/ns/docbook"> <term> <parameter>protocolOptions</parameter> </term> <listitem> <para> <informaltable> <tgroup cols="2"> <thead> <row> <entry>key</entry> <entry>value</entry> </row> </thead> <tbody> <row> <entry>message_length</entry> <entry>The total size (in bytes) of the encoded message being sent over the wire</entry> </row> <row> <entry>request_id</entry> <entry>The request identifier for this message: <literal>42</literal></entry> </row> <row> <entry>namespace</entry> <entry>The MongoDB namespace used for the protocol message <literal>dbname.collectionname</literal></entry> </row> </tbody> </tgroup> </informaltable> </para> </listitem> </varlistentry>'> 
+<!ENTITY mongo.setreadpreference.parameters
+'<variablelist xmlns="http://docbook.org/ns/docbook"><varlistentry><term>
+<parameter>read_preference</parameter></term><listitem><para>Режим налаштувань
+читання: <constant>MongoClient::RP_PRIMARY</constant>,
+<constant>MongoClient::RP_PRIMARY_PREFERRED</constant>,
+<constant>MongoClient::RP_SECONDARY</constant>,
+<constant>MongoClient::RP_SECONDARY_PREFERRED</constant> або
+<constant>MongoClient::RP_NEAREST</constant>.</para></listitem></varlistentry>
+<varlistentry><term><parameter>tags</parameter></term><listitem><para>Масив з
+нуля або більше наборів тегів у вигляді масивів критеріїв, що використовуються
+для зіставлення тегів з членами набору
+реплік.</para></listitem></varlistentry></variablelist>'>
+
+<!ENTITY mongo.setreadpreference.returnvalues
+'<para xmlns="http://docbook.org/ns/docbook">Повертає &true; у разі успіху або
+&false; у разі невдачі.</para>'>
+
+<!ENTITY mongo.setreadpreference.errors
+'<para xmlns="http://docbook.org/ns/docbook">Видає
+<constant>E_WARNING</constant>, якщо будь-який параметр хибний або якщо один чи
+більше наборів тегів передано у режимі
+<constant>MongoClient::RP_PRIMARY</constant>.</para>'>
+
+<!ENTITY mongo.getreadpreference.returnvalues
+'<para xmlns="http://docbook.org/ns/docbook">Ця функція повертає масив, що
+описує налаштування читання. Він містить значення <literal>type</literal> для
+режиму налаштувань читання рядка (є одною з констант
+<classname>MongoClient</classname>) та вкладений масив
+<literal>tagsets</literal> критеріїв набору тегів. Якщо набори тегів не
+задані, <literal>tagsets</literal> буде відсутнім.</para>'>
+
+<!ENTITY mongo.setwriteconcern.parameters
+'<variablelist xmlns="http://docbook.org/ns/docbook"><varlistentry><term>
+<parameter>w</parameter></term><listitem><para>Вимоги для запису. Може бути
+цілим числом, що вказує кількість серверів, необхідних для підтвердження запису,
+або назвою режиму у вигляді рядка (напр.
+"majority").</para></listitem></varlistentry>
+<varlistentry><term><parameter>wtimeout</parameter></term><listitem><para>Час
+очікування (у мілісекундах) на виконання сервером вимог щодо
+запису.</para></listitem></varlistentry></variablelist>'>
+
+<!ENTITY mongo.setwriteconcern.returnvalues
+'<para xmlns="http://docbook.org/ns/docbook">Повертає &true; у разі успіху або
+&false; у разі невдачі.</para>'>
+
+<!ENTITY mongo.setwriteconcern.errors
+'<para xmlns="http://docbook.org/ns/docbook">Видає
+<constant>E_WARNING</constant>, якщо параметр <literal>w</literal> не є рядком
+або цілим числом.</para>'>
+
+<!ENTITY mongo.getwriteconcern.returnvalues
+'<para xmlns="http://docbook.org/ns/docbook">Ця функція повертає масив, що
+описує вимоги щодо запису. Масив містить цілочисельні або рядкові значення
+рівня підтвердження <literal>w</literal>, а також <literal>wtimeout</literal> —
+час очікування (у мілісекундах) на виконання сервером вимог щодо запису.</para>'>
+
+<!ENTITY mongo.command.parameters.maxtimems
+'<listitem xmlns="http://docbook.org/ns/docbook"><para>
+<literal>"maxTimeMS"</literal></para><para>Визначає сукупний час очікування (в
+мілісекундах) обробки операції на сервері (без урахування простою). Якщо
+операція не виконана за відведений час, буде викинуто
+<classname>MongoExecutionTimeoutException</classname>.</para></listitem>'>
+
+<!ENTITY mongo.index.parameters.background
+'<listitem xmlns="http://docbook.org/ns/docbook"><para>
+<literal>"background"</literal></para><para>Створює індекс у фоновому режимі,
+тож <emphasis>не</emphasis> призупиняє роботу бази даних. Для цього необхідно
+вказати переметру значення &true;. Початково: &false;.</para><warning
+xmlns="http://docbook.org/ns/docbook"><para>До MongoDB 2.6.0, створення індексу
+є операцією вищого пріоритету, незалежно від цього налаштування. Докладніше:
+<link xlink:href="&url.mongodb.dochub.indexes.rs;"
+xmlns:xlink="http://www.w3.org/1999/xlink">Створення індексів з наборами
+копій</link>.</para></warning></listitem>'>
+
+<!ENTITY mongo.index.parameters.dropdups
+'<listitem xmlns="http://docbook.org/ns/docbook">
+<para><literal>"dropDups"</literal></para><para>Застосовується для примусового
+створення унікального індексу ключів в колекції, що повторюються. Початково:
+&false;. Якщо задано &true;, то MongoDB проіндексує перший знайдений ключ, а
+інші документи, що містять такий самий ключ — видалить.</para>
+<warning xmlns="http://docbook.org/ns/docbook">
+<para><literal>"dropDups"</literal> може видалити дані з бази даних. Тож
+використовувати цей параметр необхідно з особливою обережністю.</para></warning>
+<note xmlns="http://docbook.org/ns/docbook"><para>Цей параметр не підтримується
+в MongoDB 2.8+,а створити індекси неможливо, якщо колекція містить однакові
+значення.</para></note></listitem>'>
+
+<!ENTITY mongo.index.parameters.expireafterseconds
+'<listitem xmlns="http://docbook.org/ns/docbook">
+<para><literal>"expireAfterSeconds"</literal></para><para>Термін дії документа в
+секундах, після закінчення якого документ буде автоматично видалено з колекції.
+Цей параметр сумісний тільки з індексами з одним полем, що містить
+<classname>MongoDate</classname>-значення.</para>
+<note xmlns="http://docbook.org/ns/docbook"><para>Цей функціонал доступний у
+MongoDB 2.2+. Докладніше: <link xlink:href="&url.mongodb.docs.expire_data;"
+xmlns:xlink="http://www.w3.org/1999/xlink">Як вказати термін дії даних в
+колекції</link>.</para></note></listitem>'>
+
+<!ENTITY mongo.index.parameters.name
+'<listitem xmlns="http://docbook.org/ns/docbook">
+<para><literal>"name"</literal></para><para>Необов&apos;язковий параметр, який
+однозначно ідентифікує індекс.</para>
+<note xmlns="http://docbook.org/ns/docbook"><para>Стандартно драйвер створює
+назву індексу на основі індексованих полів і порядку/типу. Наприклад, складений
+індекс <literal>array("x" => 1, "y" => -1)</literal> матиме назву
+<literal>"x_1_y_-1"</literal>, а геопросторовий індекс
+<literal>array("loc" => "2dsphere")</literal> називатиметься
+<literal>"loc_2dsphere"</literal>. Створена назва для індексу з багатьма полями
+може перевищити <link xlink:href="&url.mongodb.docs.limits;#Index-Name-Length"
+xmlns:xlink="http://www.w3.org/1999/xlink">допустиму довжину назви
+індексу</link> MongoDB. В такому випадку і використовується параметр
+<literal>"name"</literal>, щоб вказати коротшу назву.</para></note></listitem>'>
+
+<!ENTITY mongo.index.parameters.sparse
+'<listitem xmlns="http://docbook.org/ns/docbook">
+<para><literal>"sparse"</literal></para><para>Cтворює вибірковий індекс для
+документів, які містять вказане поле. Початково: &false;.</para></listitem>'>
+
+<!ENTITY mongo.index.parameters.unique
+'<listitem xmlns="http://docbook.org/ns/docbook">
+<para><literal>"unique"</literal></para><para>Створює унікальний індекс.
+Початково: &false;. Цей параметр стосується тільки зростаючих/спадаючих
+індексів.</para><note xmlns="http://docbook.org/ns/docbook"><para>Якщо MongoDB
+індексує поле, а документ не має значення для цього поля, то індексується
+значення &null;. Якщо кілька документів не містять певного поля, то унікальний
+індекс застосовується тільки до першого з них. Щоб уникнути індексування
+документів без полів, застосовується параметр
+<literal>"sparse"</literal>.</para></note></listitem>'>
+
+<!ENTITY mongo.listcollections.note
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>Цей метод застосовує
+команду <link xlink:href="&url.mongodb.docs.command;listCollections"
+xmlns:xlink="http://www.w3.org/1999/xlink">listCollections</link> під час роботи
+з MongoDB 2.8+. Для попередніх версій метод запитуватиме спеціальну колекцію
+<literal>system.namespaces</literal>.</simpara></note>'>
+
+<!ENTITY mongo.listcollections.parameters.filter
+'<listitem xmlns="http://docbook.org/ns/docbook">
+<para><literal>"filter"</literal></para><para>Необов&apos;язковий критерій
+запиту. Використовується для фільтрації колекцій, включених до
+результату.</para><para>Відповідні поля, які можна запитувати, включають
+<literal>"name"</literal> (назва колекції у вигляді рядка, без префіксу з назвою
+БД) та <literal>"options" (об&apos;єкт, що містить параметри створення
+колекції)</literal>.
+</para><note><simpara>MongoDB 2.6 та старіші версії потребують, щоб вказаний
+критерій <literal>"name"</literal> був рядком, оскільки під час запиту до 
+колекції <literal>system.namespaces</literal> до нього дододається префікс БД.
+Новіші версії MongoDB не мають цього обмеження, оскільки драйвер використовує
+команду "listCollections".</simpara></note></listitem>'>
+
+<!ENTITY mongo.listcollections.parameters.includesystemcollections
+'<listitem xmlns="http://docbook.org/ns/docbook">
+<para><literal>"includeSystemCollections"</literal></para><para>Визначає, чи
+включати системні колекції в результат. Початково: &false;.</para></listitem>'>
+
+<!ENTITY mongo.writes.parameters.writeconcern
+'<listitem xmlns="http://docbook.org/ns/docbook">
+<para><literal>"w"</literal></para><para>Стандартне значення для 
+<classname>MongoClient</classname>: <literal>1</literal>. Докладніше:
+<link linkend="mongo.writeconcerns">Вимоги для запису</link>.</para></listitem>'>
+
+<!ENTITY mongo.writes.parameters.writeconcerntimeout
+'<listitem xmlns="http://docbook.org/ns/docbook">
+<para><literal>"wtimeout"</literal></para><para>Застарілий псевдонім
+<literal>"wTimeoutMS"</literal>.</para></listitem>'>
+
+<!ENTITY mongo.writes.parameters.writeconcerntimeoutms
+'<listitem xmlns="http://docbook.org/ns/docbook">
+<para><literal>"wTimeoutMS"</literal></para><para>Визначає час очікування (у
+мілісекундах) на виконання <link linkend="mongo.writeconcerns">вимог щодо
+запису</link>. Працює тільки коли <literal>"w"</literal> більший за
+<literal>1</literal>, оскільки час очікування стосується реплікації. Якщо вимогу
+не задоволено у межах часу очікування, то викидається
+<classname>MongoCursorException</classname>. Значення <literal>0</literal>
+знімає обмеження в часі. Початкове значення для
+<classname>MongoClient</classname>: <literal>10000</literal> (десять
+секунд).</para></listitem>'>
+
+<!ENTITY mongo.writes.parameters.fsync
+'<listitem xmlns="http://docbook.org/ns/docbook">
+<para><literal>"fsync"</literal></para><para>Якщо &true;, вмикає підтверджені
+"INSERT", значення параметра <literal>"w"</literal> змінює на
+<literal>0</literal>, а операції запису сихронізує з файлами БД на диску.
+Початково: &false;.</para><note><simpara>Не рекомендовано використовувати цей
+параметр, якщо увімкнено журналювання, оскільки він працюватиме так само як
+<literal>"j"</literal>. Використання <literal>"fsync"</literal> разом з
+<literal>"j"</literal> призведе до помилки.</simpara></note></listitem>'>
+
+<!ENTITY mongo.writes.parameters.sockettimeoutms
+'<listitem xmlns="http://docbook.org/ns/docbook">
+<para><literal>"socketTimeoutMS"</literal></para><para>Визначає час очікування
+(у мілісекундах) на з&apos;єднання через сокет. Якщо сервер не відповів за
+відведений час, буде викинуто <classname>MongoCursorTimeoutException</classname>
+і не буде змоги визначити, чи сервер обробив запис. Значення
+<literal>-1</literal> знімає обмеження в часі. Початкове значення для
+<classname>MongoClient</classname>: <literal>30000</literal> (тридцять
+секунд).</para></listitem>'>
+
+<!ENTITY mongo.writes.parameters.journal
+'<listitem xmlns="http://docbook.org/ns/docbook">
+<para><literal>"j"</literal></para><para>Примусово блокує операції запису, щоб
+вони були синхронізовані з журналом на диску. Якщо &true;, застосовуються
+підтвердження запису, а значення параметра <literal>"w"</literal>
+змінюється на <literal>0</literal>. Початково: &false;.</para>
+<note><simpara>Якщо використати "j", кол журналювання вимкнено, MongoDB 2.6+
+видасть помилку і запис не вдасться, тоді як старіші версії просто
+ігнорувантимуть цей параметр.</simpara></note></listitem>'>
+
+<!ENTITY mongo.writes.parameters.safe
+'<listitem xmlns="http://docbook.org/ns/docbook">
+<para><literal>"safe"</literal></para><para>Застарілий параметр. Натомість
+застосовується параметр <link linkend="mongo.writeconcerns">вимог щодо
+запису</link> <literal>"w"</literal>.</para></listitem>'>
+
+<!ENTITY mongo.writes.parameters.timeout
+'<listitem xmlns="http://docbook.org/ns/docbook">
+<para><literal>"timeout"</literal></para><para>Застарілий псевдонім
+<literal>"socketTimeoutMS"</literal>.</para></listitem>'>
+
+<!ENTITY mongo.errors.exceptions.writeconcern
+'<para xmlns="http://docbook.org/ns/docbook">Викидає
+<classname>MongoCursorException</classname>, якщо задано <literal>"w"</literal>
+і запис не вдався.</para><para xmlns="http://docbook.org/ns/docbook">Викидає
+<classname>MongoCursorTimeoutException</classname>, якщо параметр
+<literal>"w"</literal> має значення, більше за 1, а операція займає більше
+ніж <varname>MongoCursor::$timeout</varname> мілісекунд. Це не припинить
+операцію на сервері. Час <varname>MongoCollection::$wtimeout</varname> задається
+в мілісекундах.</para>'>
+
+<!ENTITY mongo.errors.deprecated
+'<para xmlns="http://docbook.org/ns/docbook">Видає попередження
+<constant>E_DEPRECATED</constant>.</para>'>
+
+<!ENTITY mongo.gridfs.store.metadata.note
+'<note xmlns="http://docbook.org/ns/docbook"><para>Ці поля також можуть
+перезаписувати поля, створені автоматично драйвером, як описано в основній
+документації MongoDB для
+<link xlink:href="&url.mongodb.docs.gridfs;#the-files-collection"
+xmlns:xlink="http://www.w3.org/1999/xlink">колекцій файлів</link>. Практичним
+випадком використання такої поведінки є задати настроюваний
+<literal>chunkSize</literal> або <literal>_id</literal> для файлу.</para></note>'>
+
+<!ENTITY mongo.gridfs.store.return
+'<para xmlns="http://docbook.org/ns/docbook">Повертає <literal>_id</literal>
+збереженого файлу документу. Це згенерований <classname>MongoId</classname>, або
+явно вказаний <literal>_id</literal> в параметрі
+<parameter>metadata</parameter>.</para>'>
+
+<!ENTITY mongo.mongowritebatch.writeoptions.description
+'<listitem xmlns="http://docbook.org/ns/docbook"><para>Масив опцій запису.
+<informaltable><thead><row><entry>ключ</entry>
+<entry>значення</entry></row></thead><tbody><row><entry>w (int|string)</entry>
+<entry>значення <link linkend="mongo.writeconcerns">вимог щодо
+запису</link></entry></row><row><entry>wtimeout (int)</entry><entry><link
+linkend="mongo.writeconcerns">Допустимий час очікування
+реплікації</link></entry></row><row><entry>ordered</entry><entry>Вказує, чи
+потрібно MongoDB впорядковувати чергу. Впорядковані записи виконуються
+послідовно (тобто по одному) і виконання припиняється після першої помилки.
+Невпорядковані записи можуть виконуватися паралельно, а виконання не зупиниться
+після першої помилки. Початково: &true;</entry></row><row><entry>j
+(bool)</entry><entry>Очікувати на запис в жунал. Рекомендується використовувати
+WriteConcern натомість</entry></row><row><entry>fsync
+(bool)</entry><entry>Очікувати на fsync. Рекомендується використовувати
+WriteConcern натомість</entry></row></tbody></informaltable></para></listitem>'>
+
+<!ENTITY mongo.mongowritebatch.collection.description
+'<listitem xmlns="http://docbook.org/ns/docbook"><para>Черга
+<classname>MongoCollection</classname>. Її <link
+linkend="mongo.writeconcerns">вимоги щодо запису</link> будуть використані, якщо
+їх не надано через <parameter>$write_options</parameter> або
+<methodname>MongoWriteBatch::execute</methodname>.</para></listitem>'>
+
+<!ENTITY mongo.context.server
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term>
+<parameter>server</parameter></term><listitem><para>Масив, що містить основну
+інформацію про обраний сервер.<informaltable><tgroup
+cols="2"><thead><row><entry>ключ</entry><entry>значення</entry></row></thead>
+<tbody><row><entry>hash</entry><entry>геш сервера, наприклад:
+<literal>localhost:27017;-;X;56052</literal></entry></row>
+<row><entry>type</entry><entry>Тип вузла (primary/secondary/mongos/arbiter):
+<literal>2</literal></entry></row><row><entry>max_bson_size</entry>
+<entry>Найбільший допустимий розмір BSON для передавання по вузлу:
+<literal>16777216</literal></entry></row><row><entry>max_message_size</entry>
+<entry>Найбільший допустимий розмір повідомлення для передавання по вузлу:
+<literal>48000000</literal></entry></row><row><entry>request_id</entry>
+<entry>Ідентифікатор запиту для цього повідомлення:
+<literal>42</literal></entry></row></tbody></tgroup></informaltable></para>
+</listitem></varlistentry>'>
+
+<!ENTITY mongo.context.writeoptions
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term>
+<parameter>writeOptions</parameter></term><listitem><para>
+<informaltable><tgroup cols="2"><thead><row><entry>ключ</entry>
+<entry>значення</entry></row></thead><tbody><row><entry>ordered (bool)</entry>
+<entry>Вказує, чи має операція (у випадку операції з чергою) виконуватися
+послідовно (ordered=true)</entry></row><row<entry>writeConcern</entry>
+<entry>Масив параметрів writeConcern (див.
+нижче)</entry></row></tbody></tgroup></informaltable><table<title>значення
+масиву writeConcern</title><tgroup cols="2><thead><row>
+<entry>ключ</entry><entry>значення</entry></row></thead>
+<tbody><row><entry>fsync (bool)</entry><entry>Чи записувати примусово на диск
+дані перед поверненням результату</entry></row><row><entry>j
+(bool)</entry><entry>Чи дописувати примусово в журнал перед поверненням
+результату</entry></row><row><entry>wtimeout (int)</entry><entry>Час очікування
+(в мілісекундах) основного процесу на перевірку
+реплікації</entry></row><row><entry>w (int|string)</entry><entry>Кількість
+серверів/тег реплікації</entry></row></tbody></tgroup></table></para></listitem>
+</varlistentry>'>
+
+<!ENTITY mongo.context.protocoloptions
+'<varlistentry xmlns="http://docbook.org/ns/docbook">
+<term><parameter>protocolOptions</parameter></term>
+<listitem><para><informaltable><tgroup cols="2"><thead><row<entry>ключ</entry>
+<entry>значення</entry></row></thead><tbody><row><entry>message_length</entry>
+<entry>Загальний розмір (в байтах) закодованого повідомлення, що
+надсилається</entry></row><row><entry>request_id</entry><entry>Ідентифікатор
+запиту для цього повідомлення: <literal>42</literal></entry></row>
+<row><entry>namespace</entry><entry>Простір імен MongoDB, що використовується
+для повідомлення протоколу
+<literal>dbname.collectionname</literal></entry></row></tbody></tgroup>
+</informaltable></para></listitem></varlistentry>'>
+
+<!ENTITY mongo.alternative.class.note
+'<para xmlns="http://docbook.org/ns/docbook">Розширення, яке визначає цей клас,
+застаріло. Натомість використовується розширення <link
+linkend="set.mongodb">MongoDB</link>. Цей клас можна замінити на:</para>'>
+
+<!ENTITY mongo.noalternative.class.note
+'<para xmlns="http://docbook.org/ns/docbook">Розширення, яке визначає цей клас,
+застаріло. Натомість використовується розширення <link
+linkend="set.mongodb">MongoDB</link>. Відповідників для цього класу
+немає.</para>'>
+
+<!ENTITY mongo.alternative.method.note
+'<para xmlns="http://docbook.org/ns/docbook">Розширення, яке визначає цей метод,
+застаріло. Натомість використовується розширення <link
+linkend="set.mongodb">MongoDB</link>. Цей метод можна замінити на:</para>'>
+
+<!ENTITY mongo.noalternative.method.note
+'<para xmlns="http://docbook.org/ns/docbook">Розширення, яке визначає цей метод,
+застаріло. Натомість використовується розширення <link
+linkend="set.mongodb">MongoDB</link>. Відповідників для цього методу
+немає.</para>'>
+
+<!ENTITY mongo.alternative.phplib.note
+'<para xmlns="http://docbook.org/ns/docbook">Розширення, яке визначає цей метод,
+застаріло. Натомість використовується розширення <link
+linkend="set.mongodb">MongoDB</link>. Відповідників для цього методу немає в
+новому роширенні, проте є в
+<link linkend="mongodb.overview">PHP-бібліотеці</link>:</para>'>
+
+<!ENTITY mongo.deprecated.note '<para
+xmlns="http://docbook.org/ns/docbook">Це розширення застаріло. Натомість
+використовується розширення <link linkend="set.mongodb">MongoDB</link>.</para>'>
+
+<!-- mongodb -->
+<!ENTITY mongodb.changelog.tentative-return-types '
+       <row xmlns="http://docbook.org/ns/docbook">
+        <entry>PECL mongodb 1.15.0</entry>
+        <entry>
+         Типи значень, що повертаються методами, оголошеними, як попередні в PHP
+         8.0 та новіших версіях, викликають повідомлення про застарілий
+         функціонал в коді, що реалізує цей інтерфейс без оголошення відповідних
+         типів значень, що повертаються. Щоб приховати повідомлення про
+         застарілий функціонал, необхідно додати в код атрибут
+         <code>#[ReturnTypeWillChange]</code>.
+        </entry>
+       </row>
+'>
+
+<!ENTITY mongodb.option.collation '
+         <row xmlns="http://docbook.org/ns/docbook">
+          <entry>collation</entry>
+          <entry><type class="union"><type>array</type><type>object</type></type></entry>
+          <entry>
+           <para>
+            <link xlink:href="&url.mongodb.docs.collation;"
+            xmlns:xlink="http://www.w3.org/1999/xlink">Зіставлення</link>
+            дозволяє вказувати специфічні для мови правила порівняння рядків,
+            як от правила регістру та знаків наголосу. Під час визначення
+            зіставлень поле <literal>"locale"</literal> є обов&apos;язковим, а
+            всі інші поля — ні. Опис полів є на сторінці <link
+            xlink:href="&url.mongodb.docs.collation;#collation-document"
+            xmlns:xlink="http://www.w3.org/1999/xlink">Документ
+            зіставлення</link>.
+           </para>
+           <para>
+            Якщо зіставлення не вказано, то використовується стандартне
+            зіставлення для колекції, якщо воно вказано. Якщо ж ні, MongoDB
+            використовує просте двійкове порівняння, яке використовувалося в
+            попередніх версіях для порівняння рядків.
+           </para>
+           <para>
+            Цей параметр доступний у MongoDB 3.4+, тож його застосування у
+            старіших версіях викине виключення під час виконання.
+           </para>
+          </entry>
+         </row>
+'>
+
+<!ENTITY mongodb.option.let '
+         <row xmlns="http://docbook.org/ns/docbook">
+          <entry>let</entry>
+          <entry><type class="union"><type>array</type><type>object</type></type></entry>
+          <entry>
+           <para>
+            Карта назв і значень параметрів. Значення мають бути константами
+            або закритими виразами, які не посилаються на поля документа. Тоді
+            параметри можуть бути доступні як змінні в контексті агрегатного
+            виразу (напр. <literal>$$var</literal>).
+           </para>
+           <para>
+            Цей параметр доступний у MongoDB 5.0+, тож його застосування у
+            старіших версіях викине виключення під час виконання.
+           </para>
+          </entry>
+         </row>
+'>
+
+<!ENTITY mongodb.option.encryption.keyVaultClient '
+         <row xmlns="http://docbook.org/ns/docbook">
+          <entry>keyVaultClient</entry>
+          <entry><classname>MongoDB\Driver\Manager</classname></entry>
+          <entry>Менеджер, який використовується для маршрутизації запитів
+          ключів даних до окремого кластера MongoDB. Початково використовується
+          поточний менеджер і кластер.</entry>
+         </row>
+'>
+
+<!ENTITY mongodb.option.encryption.keyVaultNamespace '
+         <row xmlns="http://docbook.org/ns/docbook">
+          <entry>keyVaultNamespace</entry>
+          <entry><type>string</type></entry>
+          <entry>Повна назва простору імен (напр.
+          <literal>"databaseName.collectionName"</literal>), що позначає
+          колекцію, яка містить усі ключі даних, що використовуються для
+          шифрування та дешифрування. Цей параметр є обов&apos;язковим.</entry>
+         </row>
+'>
+
+<!ENTITY mongodb.option.encryption.kmsProviders '
+         <row xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink">
+          <entry>kmsProviders</entry>
+          <entry><type>array</type></entry>
+          <entry>
+           <para>
+            Документ, що містить налаштування для одного або кількох
+            KMS-провайдерів, які використовуються для шифрування ключів даних.
+            Підтримувані провайдери: <literal>"aws"</literal>,
+            <literal>"azure"</literal>, <literal>"gcp"</literal>,
+            <literal>"kmip"</literal> і <literal>"local"</literal>. Цей параметр
+            є обов&apos;язковим.
+           </para>
+           <para>
+            Якщо вказано порожній документ для <literal>"aws"</literal>,
+            <literal>"azure"</literal> або <literal>"gcp"</literal>, драйвер
+            спробує налаштувати провайдера, використовуючи <link
+            xlink:href="&url.mongodb.specs;/blob/master/source/client-side-encryption/client-side-encryption.rst#automatic-credentials">Автоматичні
+            облікові дані</link>.
+           </para>
+           <para>
+            Формат для <literal>"aws"</literal> наступний:
+           </para>
+           <programlisting role="javascript">
+<![CDATA[
+aws: {
+    accessKeyId: <string>,
+    secretAccessKey: <string>,
+    sessionToken: <string (необов&apos;язковий)>
+}
+]]>
+           </programlisting>
+           <para>
+            Формат для <literal>"azure"</literal> наступний:
+           </para>
+           <programlisting role="javascript">
+<![CDATA[
+azure: {
+    tenantId: <string>,
+    clientId: <string>,
+    clientSecret: <string>,
+    identityPlatformEndpoint: <string (необов&apos;язковий)> // Початково: "login.microsoftonline.com"
+}
+]]>
+           </programlisting>
+           <para>
+            Формат для <literal>"gcp"</literal> наступний:
+           </para>
+           <programlisting role="javascript">
+<![CDATA[
+gcp: {
+    email: <string>,
+    privateKey: <base64 string>|<MongoDB\BSON\Binary>,
+    endpoint: <string (необов&apos;язковий)> // Початково: "oauth2.googleapis.com"
+}
+]]>
+           </programlisting>
+           <para>
+            Формат для <literal>"kmip"</literal> наступний:
+           </para>
+           <programlisting role="javascript">
+<![CDATA[
+kmip: {
+    endpoint: <string>
+}
+]]>
+           </programlisting>
+           <para>
+            Формат для <literal>"local"</literal> наступний:
+           </para>
+           <programlisting role="javascript">
+<![CDATA[
+local: {
+    // 96-байтний головний ключ, що застосовується для шифрування/дешифрування ключів даних
+    key: <base64 string>|<MongoDB\BSON\Binary>
+}
+]]>
+           </programlisting>
+          </entry>
+         </row>
+'>
+<!ENTITY mongodb.option.encryption.masterKey-options-by-provider '
+  <para xmlns="http://docbook.org/ns/docbook">
+   <table>
+    <title>Налаштування провейдера <literal>"aws"</literal></title>
+    <tgroup cols="3">
+     <thead>
+      <row>
+       <entry>Назва</entry>
+       <entry>Тип</entry>
+       <entry>Опис</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>region</entry>
+       <entry>string</entry>
+       <entry>Обов&apos;язковий.</entry>
+      </row>
+      <row>
+       <entry>key</entry>
+       <entry>string</entry>
+       <entry>Обов&apos;язковий. Amazon Resource Name (ARN) для AWS customer
+       master key (CMK).</entry>
+      </row>
+      <row>
+       <entry>endpoint</entry>
+       <entry>string</entry>
+       <entry>Необов&apos;язковий. Додатковий ідентифікатор хоста для надсилання
+       запитів KMS. Може містити номер порту.</entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </table>
+  </para>
+  <para xmlns="http://docbook.org/ns/docbook">
+   <table>
+    <title>Налаштування провейдера <literal>"azure"</literal></title>
+    <tgroup cols="3">
+     <thead>
+      <row>
+       <entry>Назва</entry>
+       <entry>Тип</entry>
+       <entry>Опис</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>keyVaultEndpoint</entry>
+       <entry>string</entry>
+       <entry>Обов&apos;язковий. Хост (може бути з портом) (напр.
+       "example.vault.azure.net").</entry>
+      </row>
+      <row>
+       <entry>keyName</entry>
+       <entry>string</entry>
+       <entry>Обов&apos;язковий.</entry>
+      </row>
+      <row>
+       <entry>keyVersion</entry>
+       <entry>string</entry>
+       <entry>Необов&apos;язковий. Певна версія названого ключа. Стандартно
+       вказується версія головного ключа.</entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </table>
+  </para>
+  <para xmlns="http://docbook.org/ns/docbook">
+   <table>
+    <title>Налаштування провейдера <literal>"gcp"</literal></title>
+    <tgroup cols="3">
+     <thead>
+      <row>
+       <entry>Назва</entry>
+       <entry>Тип</entry>
+       <entry>Опис</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>projectId</entry>
+       <entry>string</entry>
+       <entry>Обов&apos;язковий.</entry>
+      </row>
+      <row>
+       <entry>location</entry>
+       <entry>string</entry>
+       <entry>Обов&apos;язковий.</entry>
+      </row>
+      <row>
+       <entry>keyRing</entry>
+       <entry>string</entry>
+       <entry>Обов&apos;язковий.</entry>
+      </row>
+      <row>
+       <entry>keyName</entry>
+       <entry>string</entry>
+       <entry>Обов&apos;язковий.</entry>
+      </row>
+      <row>
+       <entry>keyVersion</entry>
+       <entry>string</entry>
+       <entry>Необов&apos;язковий. Певна версія названого ключа. Стандартно
+       вказується версія головного ключа.</entry>
+      </row>
+      <row>
+       <entry>endpoint</entry>
+       <entry>string</entry>
+       <entry>Необов&apos;язковий. Хост (може бути з портом) (напр.
+       "cloudkms.googleapis.com").</entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </table>
+  </para>
+  <para xmlns="http://docbook.org/ns/docbook">
+   <table>
+    <title>Налаштування провейдера <literal>"kmip"</literal></title>
+    <tgroup cols="3">
+     <thead>
+      <row>
+       <entry>Назва</entry>
+       <entry>Тип</entry>
+       <entry>Опис</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>keyId</entry>
+       <entry>string</entry>
+       <entry>Необов&apos;язковий. Унікальний ідентифікатор для 96-байтного
+       об&apos;єкта керування секретними даними KMIP. Якщо не вказано,
+       об&apos;єкт генерується випадковим чином.</entry>
+      </row>
+      <row>
+       <entry>endpoint</entry>
+       <entry>string</entry>
+       <entry>Необов&apos;язковий. Хост (може бути з портом).</entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </table>
+  </para>
+'>
 
 <!-- Radius -->
 <!ENTITY radius.request.required '<note xmlns="http://docbook.org/ns/docbook"><para>A request must be created via <function>radius_create_request</function> before this function can be called.</para></note>'>

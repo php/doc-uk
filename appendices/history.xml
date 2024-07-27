@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 14af302c9c0e561fa6f9cdd956268758ba9a89c5 Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: fecf93309b34b59e23dda35530d83b0f1b05ab84 Maintainer: mproshchuk Status: ready -->
 <appendix xml:id="history" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Історія PHP та повʼязаних проектів</title>
  <para>
@@ -285,6 +285,66 @@
      допомогою цього інструменту.
     </para>
    </blockquote>
+  </sect2>
+  
+  <sect2 xml:id="history.php6">
+   <title>PHP 6</title>
+   <para>
+    Планувалося, що PHP 6 матиме глибоку підтримку Unicode в рушії та самій
+    мові. Згодом робота над цим нововведенням як і над версією загалом була
+    полишена, але інший функціонал, що призначався для PHP 6, був впроваджений в
+    PHP 5.3 (<link linkend="language.namespaces">простори імен</link>)
+    та PHP 5.4 (<link linkend="language.oop5.traits">трейти</link>, короткий
+    синтаксис масивів).
+   </para>
+  </sect2>
+
+  <sect2 xml:id="history.php7">
+   <title>PHP 7</title>
+   <para>
+    PHP 7.0 була випущена в 2015 році разом з оновленим ядром <literal>Zend
+    Engine 3.0</literal>. Ця версія мала значне покращення продуктивності (більш
+    ніж вдвічі швидша за PHP 5.6) та використання пам'яті, підтримку 64-бітних
+    інструкцій, вдосконалення роботи виключень, безпечний генератор випадкових
+    чисел, <link linkend="language.operators.comparison.coalesce">оператор
+    заміни null (??)</link>, <link linkend="language.oop5.anonymous">анонімні
+    класи</link> та інші нововведення.
+   </para>
+   <para>
+    Наступні випуски серії PHP 7 впроваджували в мову більше можливостей, як от
+    <link linkend="function.list">короткий синтаксис конструкції list</link>
+    (7.1), параметри типу <type>object</type>, типізовані значення, що
+    повертаються (7.2), новий гнучкий синтаксис
+    <link linkend="language.types.string.syntax.heredoc">heredoc</link>
+    і <link linkend="language.types.string.syntax.nowdoc">nowdoc</link>
+    (7.3), типізовані властивості (7.4), та новий
+    <link linkend="class.ffi">інтерфейс для зовнішніх функцій</link> (7.4).
+   </para>
+  </sect2>
+
+  <sect2 xml:id="history.php8">
+   <title>PHP 8</title>
+   <para>
+    Випущена у 2020 році, PHP 8.0 стала новою основною версією мови PHP.
+    Оновлення містило багато свіжих можливостей та покращень, як от
+    <link linkend="functions.named-arguments">названі параметри</link>,
+    <link linkend="language.types.declarations.composite.union">об'єднані
+    типи</link>, <link linkend="language.attributes">атрибути</link>,
+    <link linkend="language.oop5.decon.constructor.promotion">декларація
+    властивостей в параметрах конструктора</link>, вираз
+    <link linkend="control-structures.match"><literal>match</literal></link>,
+    оператор <link linkend="language.oop5.basic.nullsafe">nullsafe
+    (<literal>?-></literal>)</link>, новий JIT-компілятор, вдосконалення системи
+    типів, обробки помилок, а також узгодженості.
+   </para>
+   <para>
+    Наступні оновлення PHP 8 додали такі можливості мови:
+    <link linkend="language.enumerations">перелічуваний тип даних</link> (8.1),
+    <link linkend="language.fibers">т. зв. файбери</link> (8.1),
+    <link linkend="language.oop5.basic.class.readonly">класи тільки для
+    читання</link> (8.2), типи диз'юнктивної нормальної форми (DNF) (8.2),
+    типізовані константи класу (8.3).
+   </para>
   </sect2>
  </sect1>
 

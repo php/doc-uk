@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: ba36a88377878340feb08b36cdde88c26f34df6a Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: 2d0ae2133ccc5365c31ac675c88cda06b4877e22 Maintainer: mproshchuk Status: ready -->
  <chapter xml:id="introduction" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <info><title>Вступ</title></info>
 
@@ -79,7 +79,7 @@
     відправлення та отримання куків. Але PHP має значно ширші можливості.
    </para>
    <para>
-    Існують три основні сфери застосування PHP-скриптів.
+    Існують дві основні сфери застосування PHP-скриптів.
     <itemizedlist>
      <listitem>
       <simpara>
@@ -104,19 +104,6 @@
        використовуватись для простої обробки текстів. Докладнішу інформацію
        можна знайти в розділі <link linkend="features.commandline">Використання
        командного рядка PHP</link>.
-      </simpara>
-     </listitem>
-     <listitem>
-      <simpara>
-       Написання настільних застосунків. Мабуть PHP не найкраща мова для
-       створення настільних застосунків з графічним користувацьким інтерфейсом,
-       але якщо ви знаєте PHP дуже добре, та маєте бажання спробувати якісь
-       додаткові можливості PHP у ваших застосунках на стороні сервера, то маєте
-       можливість використовувати PHP-GTK для створення таких програм. В цьому
-       разі можна писати крос-платформові застосунки. PHP-GTK є розширенням для
-       PHP, яке недоступне в головному дистрибутиві PHP. Якщо ви зацікавлені в
-       PHP-GTK, відвідайте <link xlink:href="&url.php.gtk;">їхній
-       вебсайт</link>.
       </simpara>
      </listitem>
     </itemizedlist>

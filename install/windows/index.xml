@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: aff99a18960822f0ef98c23e66e5871e8725793f Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: 8c1eafbac90415e04846aae47cf544b4df6a3388 Maintainer: mproshchuk Status: ready -->
 <chapter xml:id="install.windows" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Встановлення в системах Windows</title>
  <para>
@@ -61,8 +61,8 @@
   </para>
 
   <para>
-   Установник CRT підтримує перемикачі командного рядка /quiet та /norestart,
-   тож можна створити сценарій для його запуску.
+   Установник CRT підтримує перемикачі командного рядка <option>/quiet</option>
+   та <option>/norestart</option>, тож можна створити сценарій для його запуску.
   </para>
  </sect1>
 

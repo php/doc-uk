@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: e443388d4249fea383d6ec2d1a338be220cf95ee Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: cf9fc93681ad1bd5dfaaf61282a0463c2531f7d5 Maintainer: mproshchuk Status: ready -->
   <chapter xml:id="install.general" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
    <title>Загальні інструкції встановлення</title>
    <para>
     Перед початком встановлення, вам необхідно знати, для чого ви будете
-    використовувати PHP. Існують три основні сфери застосування PHP, як вже
+    використовувати PHP. Існують дві основні сфери застосування PHP, як вже
     написано на сторінці <link linkend="intro-whatcando">Що може робити
     PHP?</link>:
     <itemizedlist>
@@ -12,7 +12,6 @@
      сервера)</simpara>
      </listitem>
      <listitem><simpara>Скрипти командного рядка</simpara></listitem>
-     <listitem><simpara>Прикладні (з GUI) програми</simpara></listitem>
     </itemizedlist>
    </para>
    <para>
@@ -41,14 +40,6 @@
     інформацію можна прочитати в розділі
     <link linkend="features.commandline">Використання PHP в командному
     рядку</link>. В цьому випадку вам не потрібен ані сервер, ані браузер.
-   </para>
-   <para>
-    На PHP ви можете також писати стільникові GUI-застосунки, використовуючи
-    розширення PHP-GTK. Це повністю інший підхід, ніж написання вебсторінок,
-    оскільки ви не виводите HTML, а управляєте вікнами та об'єктами всередині
-    них. Більш детальну інформацію про PHP-GTK можна прочитати на
-    <link xlink:href="&url.php.gtk;">їхньому сайті</link>. PHP-GTK не входить в
-    офіційний дистрибутив PHP.
    </para>
    <para>
     Далі в цьому розділі розглянемо налаштування PHP для вебсерверів в Unix та

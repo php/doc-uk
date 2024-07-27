@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 8b6d169424ff189bb563ef4c3f35f8adff3f42c5 Maintainer: ktretyak Status: ready -->
-<!-- $Revision$ -->
+<!-- EN-Revision: b536040d12c05c041e13028202e90d8e24fe3bf9 Maintainer: mproshchuk Status: ready -->
   <sect1 xml:id="install.fpm.install" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
    <title>Встановлення</title>
     <sect2 xml:id="install.fpm.install.compiling">
      <title>Збірка з вихідного коду</title>
      <para>
-      Для того щоб включити FPM при збірці PHP, потрібно додати
-      <literal>--enable-fpm</literal> до вашого конфігураційного рядка.
+      Для того щоб увімкнути FPM у збірці PHP, потрібно дописати
+      <literal>--enable-fpm</literal> до конфігураційного рядка.
      </para>
      <para>
       Ось декілька інших призначених для FPM конфігураційних параметрів (всі є необов'язковими):
@@ -15,15 +14,65 @@
      <itemizedlist>
       <listitem>
        <para>
-        <literal>--with-fpm-user</literal> - встановлює користувача FPM (початково - nobody).
+        <literal>--with-fpm-user</literal> - встановити користувача FPM (початково - nobody).
        </para>
       </listitem>
       <listitem>
        <para>
-        <literal>--with-fpm-group</literal> - встановлює групу FPM (початково - nobody).
+        <literal>--with-fpm-group</literal> - встановити групу FPM (початково - nobody).
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        <literal>--with-fpm-systemd</literal> - активувати інтеграцію з systemd (початково - no).
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        <literal>--with-fpm-acl</literal> - використати списки контролю доступу POSIX (початково - no).
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        <literal>--with-fpm-apparmor</literal> - активувати інтеграцію з AppArmor (початково - no).
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        <literal>--with-fpm-selinux</literal> - активувати інтеграцію з SELinux (початково - no).
        </para>
       </listitem>
      </itemizedlist>
+    </sect2>
+    
+    <sect2 role="changelog">
+     &reftitle.changelog;
+     <para>
+      <informaltable>
+       <tgroup cols="2">
+        <thead>
+         <row>
+          <entry>&Version;</entry>
+          <entry>&Description;</entry>
+         </row>
+        </thead>
+        <tbody>
+         <row>
+          <entry>8.2.0</entry>
+          <entry>
+           Додано параметр <literal>--with-fpm-selinux</literal>.
+          </entry>
+         </row>
+         <row>
+          <entry>8.0.0</entry>
+          <entry>
+           Додано параметр <literal>--with-fpm-apparmor</literal>.
+          </entry>
+         </row>
+        </tbody>
+       </tgroup>
+      </informaltable>
+     </para>
     </sect2>
   </sect1>
 
