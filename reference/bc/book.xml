@@ -1,25 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1634a886415d0ab4df195fe49d18a1c150b70758 Maintainer: ktretyak Status: ready -->
-<!-- $Revision$ -->
- 
+<!-- EN-Revision: 46a9cdd2dbef4ec89bf65fad9930e2feb78bbb98 Maintainer: mproshchuk Status: ready -->
 <book xml:id="book.bc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <?phpdoc extension-membership="bundled" ?>
- <title>Обрахунок з Довільною Математичною Точністю</title>
- <titleabbrev>Двійковий Калькулятор</titleabbrev>
- 
+ <title>BCMath — розрахунки з довільною математичною точністю</title>
+ <titleabbrev>BCMath</titleabbrev>
+
  <!-- {{{ preface -->
  <preface xml:id="intro.bc">
   &reftitle.intro;
   <para>
     Для математичних обчислень з довільною точністю PHP пропонує
-    Двійковий Калькулятор (BC Math), котрий підтримує числа будь-якого
-  розміру і точності, надані у вигляді рядка.
+    розширення BC Math, яке дозволяє оперувати числами будь-якого розміру і
+    точності, представленими у вигляді рядків, аж до
+    <literal>2147483647</literal> (<literal>0x7FFFFFFF</literal>) знаків або
+    обмежуючись виділеною пам'яттю.
   </para>
+  <para>
+   Правильними числами для BCMath є рядки, що відповідають регулярному виразу
+   <literal>/^[+-]?[0-9]*(\.[0-9]*)?$/</literal>.
+  </para>
+  <caution>
+   <para>
+    Передавання числа типу <type>float</type> в функції BCMath, які очікують
+    операнди типу <type>string</type>, може не мати бажаного ефекту через
+    спосіб, яким PHP перетворює <type>float</type>-значення в
+    <type>string</type>, а саме: рядок (<type>string</type>) може
+    отримати експонентний запис числа (що не підтримується BCMath); до PHP 8.0.0
+    символ десяткового розділювача залежить від локалі (тоді як BCMath очікує
+    крапку).
+   </para>
+   <informalexample>
+    <programlisting role="php">
+<![CDATA[
+<?php
+$num1 = 0; // (string) 0 => '0'
+$num2 = -0.000005; // (string) -0.000005 => '-5.05E-6'
+echo bcadd($num1, $num2, 6); // => '0.000000'
+
+setlocale(LC_NUMERIC, 'de_DE'); // розділювач — кома
+$num2 = 1.2; // (string) 1.2 => '1,2'
+echo bcsub($num1, $num2, 1); // => '0.0'
+?>
+]]>
+    </programlisting>
+   </informalexample>
+  </caution>
  </preface>
  <!-- }}} -->
- 
+
  &reference.bc.setup;
- &reference.bc.constants;
  &reference.bc.reference;
 
 </book>

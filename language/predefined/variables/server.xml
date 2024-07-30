@@ -1,82 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 24e5510d907b3be789bd773c5c8c01b29e22af47 Maintainer: ktretyak Status: ready -->
-<!-- $Revision$ -->
-
+<!-- EN-Revision: a6d209f4ff71ccba3f1255902827f5df3e092ff9 Maintainer: mproshchuk Status: ready -->
 <refentry role="variable" xml:id="reserved.variables.server" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>$_SERVER</refname>
-  <refname>$HTTP_SERVER_VARS [видалена]</refname>
-  <refpurpose>Інформація про серверне та виконавче оточення</refpurpose>
+
+  <refpurpose>Інформація про серверне та виконавче середовище</refpurpose>
  </refnamediv>
  
  <refsect1 role="description">
   &reftitle.description;
   <para>
-   Змінна <varname>$_SERVER</varname> є масивом (<type>array</type>), що
-   містить таку інформацію як заголовки, шляхи та розташування скриптів.
-   Записи в цьому масиві створює веб-сервер. Немає гарантії того, що кожен
-   веб-сервер буде надавати всі ці записи; веб-сервери можуть опускати деякі з
-   цих змінних, або надавати інші, незазначені в списку, що наведено нижче.
-   Тим не менше, але більша частина з цих змінних взяті на облік в
-   <link xlink:href="&url.rfc;3875">специфікації CGI/1.1</link>, отже вам варто
-   бути готовим до них.
+   Змінна <varname>$_SERVER</varname> — це масив, що містить таку інформацію як
+   заголовки, шляхи та розташування скриптів. Записи в цьому масиві створює
+   вебсервер. Немає гарантії, що кожен вебсервер буде надавати всі ці записи;
+   Деякі дані може бути опущено або надано інші, незазначені в списку, який
+   наведено нижче. Тим не менш, більша частина цих даних описані в
+   <link xlink:href="&url.rfc;3875">специфікації CGI/1.1</link> і, ймовірно,
+   будуть визначені.
   </para>
 
-  <simpara>
-   Змінна <varname>$HTTP_SERVER_VARS</varname> містить таку ж ініціалізуючу
-   інформацію, але не є
-   <link linkend="language.variables.superglobals">суперглобальною</link>.
-   (Зауважте, що <varname>$HTTP_SERVER_VARS</varname> та <varname>$_SERVER</varname>
-   є різними змінними, а тому PHP обробляє їх як такі). Також майте на увазі,
-   що масиви з довгою назвою були видалені починаючи з PHP 5.4.0, отже
-   змінної <varname>$HTTP_SERVER_VARS</varname> більше не існує.
-  </simpara>
+  <note>
+   <simpara>
+    Під час виконання PHP в <link linkend="features.commandline">командному
+    рядку</link> більшість з цих записів не доступні або мають інше значення.
+   </simpara>
+  </note>
+  <para>
+   Разом з елементами, описаними нижче, PHP створює додаткові елементи зі
+   значеннями заголовків запиту. Ці елементи матимуть ключі з назвою, що
+   складається з <literal>HTTP_</literal> та назви заголовка великими буквами та
+   підкресленнями замість дефісів. Наприклад, заголовок
+   <literal>Accept-Language</literal> буде доступний як
+   <code>$_SERVER['HTTP_ACCEPT_LANGUAGE']</code>.
+  </para>
  </refsect1>
 
  <refsect1 role="indices">
   &reftitle.indices;
 
-  <simpara>
-   Ви можете знайти (а можете і не знайти) будь-який з наступних елементів в
-   <varname>$_SERVER</varname>. Невелика кількість з них може бути
-   доступною (або дійсно матиме значення), якщо ви запускаєте PHP з
-   <link linkend="features.commandline">командного рядка</link>.
-  </simpara>
-
   <para>
    <variablelist>
     <varlistentry>
-     <term>'<varname>PHP_SELF</varname>'</term>
+     <term>"<varname>PHP_SELF</varname>"</term>
      <listitem>
       <simpara>
-       Шлях до файла, де в даний момент запущено скрипт, відносно кореневого
-       каталогу документів веб-сервера (document root). Наприклад,
-       <varname>$_SERVER['PHP_SELF']</varname> в скрипті за адресою
-       <filename>http://example.com/foo/bar.php</filename>
-       буде <filename>/foo/bar.php</filename>.
-       Константа <link linkend="language.constants.predefined">__FILE__</link>
-       містить повний шлях та назву поточного (тобто підключеного) файла.
+       Шлях до файлу, де запущено скрипт, відносно кореневої теки вебсервера
+       (document root). Наприклад, <varname>$_SERVER['PHP_SELF']</varname> в
+       скрипті за адресою <filename>http://example.com/foo/bar.php</filename>
+       буде <filename>/foo/bar.php</filename>. Константа
+       <link linkend="language.constants.predefined">__FILE__</link> містить
+       повний шлях та назву поточного (тобто підключеного) файлу.
       </simpara>
       <simpara>
-       Якщо PHP запущено з командного рядка, ця змінна містить назву скрипта починаючи з
-       PHP 4.3.0, що раніше було недоступно.
+       Якщо PHP запущено з командного рядка, ця змінна міститиме назву скрипта.
       </simpara>
      </listitem>
     </varlistentry>
 
     <varlistentry>
-     <term>'<link linkend="reserved.variables.argv">argv</link>'</term>
+     <term>"<link linkend="reserved.variables.argv">argv</link>"</term>
      <listitem>
       <simpara>
-       Масив аргументів, переданих до скрипта. Коли скрипт запущено з
-       командного рядка, то є можливість передавати до нього параметри в
-       C-стилі. При виклику через метод GET, цей масив містить рядок запита.
+       Масив аргументів, переданих до скрипта. Коли скрипт запущено з командного    
+       рядка, то є можливість передавати до нього параметри в C-стилі. Під час
+      виклику методом GET цей масив містить рядок запиту.
       </simpara>
      </listitem>
     </varlistentry>
 
     <varlistentry>
-     <term>'<link linkend="reserved.variables.argc">argc</link>'</term>
+     <term>"<link linkend="reserved.variables.argc">argc</link>"</term>
      <listitem>
       <simpara>
        Містить число параметрів, переданих до скрипта з командного рядка
@@ -86,94 +79,100 @@
     </varlistentry>
 
     <varlistentry>
-     <term>'<varname>GATEWAY_INTERFACE</varname>'</term>
+     <term>"<varname>GATEWAY_INTERFACE</varname>"</term>
      <listitem>
       <simpara>
-       Назва та номер ревізії специфікації CGI сервера, що використовується;
-       наприклад, '<literal>CGI/1.1</literal>'.
+       Назва та номер ревізії специфікації CGI сервера, що використовується.
+       Наприклад, <literal>"CGI/1.1"</literal>.
       </simpara>
      </listitem>
     </varlistentry>
 
     <varlistentry>
-     <term>'<varname>SERVER_ADDR</varname>'</term>
+     <term>"<varname>SERVER_ADDR</varname>"</term>
      <listitem>
       <simpara>
-       IP-адреса сервера, під яким поточний скрипт виконується.
+       IP-адреса сервера, на якому скрипт виконується.
       </simpara>
      </listitem>
     </varlistentry>
 
     <varlistentry>
-     <term>'<varname>SERVER_NAME</varname>'</term>
+     <term>"<varname>SERVER_NAME</varname>"</term>
      <listitem>
       <simpara>
-       Назва хоста сервера, під яким поточний скрипт виконується. Якщо скрипт
-       запущено на віртуальному хості, ця змінна міститиме його назву.
+       Назва хоста сервера, на якому скрипт виконується. Якщо скрипт запущено на
+       віртуальному хості, ця змінна міститиме його назву.
+      </simpara>
+      <note>
+       <simpara>
+        На Apache 2 потрібно встановити <literal>UseCanonicalName = On</literal>
+        і <literal>ServerName</literal>. Інакше, це значення відображатиме назву
+        хоста, надану клієнтом, яку можна підробити. Покладатися на це значення
+        в контексті безпеки — небезпечно.
+       </simpara>
+      </note>
+     </listitem>
+    </varlistentry>
+
+    <varlistentry>
+     <term>"<varname>SERVER_SOFTWARE</varname>"</term>
+     <listitem>
+      <simpara>
+       Ідентифікаційний рядок сервера, передається в заголовках у відповідь на
+       запит.
       </simpara>
      </listitem>
     </varlistentry>
 
     <varlistentry>
-     <term>'<varname>SERVER_SOFTWARE</varname>'</term>
+     <term>"<varname>SERVER_PROTOCOL</varname>"</term>
      <listitem>
       <simpara>
-       Ідентифікаційний рядок сервера, передається в заголовках при
-       відповіді на запит.
-      </simpara>
-     </listitem>
-    </varlistentry>
-
-    <varlistentry>
-     <term>'<varname>SERVER_PROTOCOL</varname>'</term>
-     <listitem>
-      <simpara>
-       Назва та номер ревізії протоколу, через який було запитано сторінку;
-       наприклад, '<literal>HTTP/1.0</literal>';
+       Назва та номер ревізії протоколу, через який було запитано сторінку.
+       Наприклад, <literal>"HTTP/1.0"</literal>.
       </simpara>
      </listitem>
     </varlistentry>
     
     <varlistentry>
-     <term>'<varname>REQUEST_METHOD</varname>'</term>
+     <term>"<varname>REQUEST_METHOD</varname>"</term>
      <listitem>
       <simpara>
-       Назва метода, що використовувався при запиті сторінки;
-       тобто '<literal>GET</literal>',
-       '<literal>HEAD</literal>', '<literal>POST</literal>',
-       '<literal>PUT</literal>'.
+       Назва метода, що використовувався під час запиту сторінки, тобто
+       <literal>"GET"</literal>, <literal>"HEAD"</literal>,
+       <literal>"POST"</literal>, <literal>"PUT"</literal>.
       </simpara>
       <note>
        <para>
-        Скрипт PHP завершує роботу після відправки заголовків (тобто,
-        після здійснення будь-якого виводу без його буферизації) якщо метод
-        запита був <literal>HEAD</literal>.
+        Скрипт PHP завершує роботу після надсилання заголовків (тобто, після
+        здійснення будь-якого виводу без його буферизації) якщо метод запиту
+        був <literal>HEAD</literal>.
        </para>
       </note>
      </listitem>
     </varlistentry>
 
     <varlistentry>
-     <term>'<varname>REQUEST_TIME</varname>'</term>
+     <term>"<varname>REQUEST_TIME</varname>"</term>
      <listitem>
       <simpara>
-       Мітка часу, коли почався запит. Доступна починаючи з PHP 5.1.0.
+       Мітка часу, коли почався запит.
       </simpara>
      </listitem>
     </varlistentry>
     
     <varlistentry>
-     <term>'<varname>REQUEST_TIME_FLOAT</varname>'</term>
+     <term>"<varname>REQUEST_TIME_FLOAT</varname>"</term>
      <listitem>
       <simpara>
        Мітка часу, коли почався запит, з точністю до мікросекунд.
-       Доступна починаючи з PHP 5.4.0.
       </simpara>
      </listitem>
     </varlistentry>
 
     <varlistentry>
-     <term>'<varname>QUERY_STRING</varname>'</term>
+     <term>"<varname>QUERY_STRING</varname>"</term>
      <listitem>
       <simpara>
        Рядок запиту, якщо він є, через який доступились до сторінки.
@@ -182,122 +181,26 @@
     </varlistentry>
 
     <varlistentry>
-     <term>'<varname>DOCUMENT_ROOT</varname>'</term>
+     <term>"<varname>DOCUMENT_ROOT</varname>"</term>
      <listitem>
       <simpara>
-       Коренева директорія документів (document root), з під якої поточний
-       скрипт виконується; вона визначається в конфігураційному файлі веб-сервера.
+       Коренева директорія документів (document root), в якій скрипт
+       виконується; вона визначається в конфігураційному файлі вебсервера.
       </simpara>
      </listitem>
     </varlistentry>
 
     <varlistentry>
-     <term>'<varname>HTTP_ACCEPT</varname>'</term>
+     <term>"<varname>HTTPS</varname>"</term>
      <listitem>
       <simpara>
-       Вміст заголовка <literal>Accept:</literal> з поточного запита,
-       якщо він є.
+       Має непорожнє значення, якщо скрипт було запитано через протокол HTTPS.
       </simpara>
      </listitem>
     </varlistentry>
 
     <varlistentry>
-     <term>'<varname>HTTP_ACCEPT_CHARSET</varname>'</term>
-     <listitem>
-      <simpara>
-       Вміст заголовка <literal>Accept-Charset:</literal>
-       з поточного запита, якщо він є. Наприклад:
-       '<literal>iso-8859-1,*,utf-8</literal>'.
-      </simpara>
-     </listitem>
-    </varlistentry>
-
-    <varlistentry>
-     <term>'<varname>HTTP_ACCEPT_ENCODING</varname>'</term>
-     <listitem>
-      <simpara>
-       Вміст заголовка <literal>Accept-Encoding:</literal> з поточного запита,
-       якщо він є. Наприклад: '<literal>gzip</literal>'.
-      </simpara>
-     </listitem>
-    </varlistentry>
-    
-    <varlistentry>
-     <term>'<varname>HTTP_ACCEPT_LANGUAGE</varname>'</term>
-     <listitem>
-      <simpara>
-       Вміст заголовка <literal>Accept-Language:</literal> з поточного запита,
-       якщо він є. Наприклад: '<literal>uk</literal>'.
-      </simpara>
-     </listitem>
-    </varlistentry>
-    
-    <varlistentry>
-     <term>'<varname>HTTP_CONNECTION</varname>'</term>
-     <listitem>
-      <simpara>
-       Вміст заголовка <literal>Connection:</literal> з поточного запита,
-       якщо він є. Наприклад: '<literal>Keep-Alive</literal>'.
-      </simpara>
-     </listitem>
-    </varlistentry>
-
-    <varlistentry>
-     <term>'<varname>HTTP_HOST</varname>'</term>
-     <listitem>
-      <simpara>
-       Вміст заголовка <literal>Host:</literal> з поточного запита,
-       якщо він є.
-      </simpara>
-     </listitem>
-    </varlistentry>
-
-    <varlistentry>
-     <term>'<varname>HTTP_REFERER</varname>'</term>
-     <listitem>
-      <simpara>
-       Адреса сторінки (якщо така є), з якої користувач перейшов
-       на поточну сторінку. Це значення встановлюється браузером. Не всі
-       браузери встановлюють це значення, а деякі надають можливість
-       модифікувати <varname>HTTP_REFERER</varname>в якості додаткової
-       можливості. Якщо коротко - цьому значенню не можна довіряти.
-      </simpara>
-     </listitem>
-    </varlistentry>
-
-    <varlistentry>
-     <term>'<varname>HTTP_USER_AGENT</varname>'</term>
-     <listitem>
-      <simpara>
-       Вміст заголовка <literal>User-Agent:</literal> з поточного запита,
-       якщо він є. Цей рядок містить позначення браузера користувача, з якого
-       було запрошено поточну сторінку. Типовий приклад такого рядка:
-       <computeroutput>Mozilla/4.5 [en] (X11; U;
-       Linux 2.2.9 i586)</computeroutput>. Серед іншого, ви можете
-       використовувати це значення з <function>get_browser</function>, щоб
-       адаптувати вивід вашої сторінки під можливості браузера користувача.
-      </simpara>
-     </listitem>
-    </varlistentry>
-
-    <varlistentry>
-     <term>'<varname>HTTPS</varname>'</term>
-     <listitem>
-      <simpara>
-       Має непусте значення, якщо скрипт було запитано через протокол HTTPS.
-      </simpara>
-      <note>
-       <simpara>
-        При використанні ISAPI разом з IIS, матиме значення
-        <literal>off</literal>, якщо запит було здійснено не через протокол
-        HTTPS.
-       </simpara>
-      </note>
-     </listitem>
-    </varlistentry>
-
-    <varlistentry>
-     <term>'<varname>REMOTE_ADDR</varname>'</term>
+     <term>"<varname>REMOTE_ADDR</varname>"</term>
      <listitem>
       <simpara>
        IP-адреса, з якої користувач переглядає поточну сторінку.
@@ -306,7 +209,7 @@
     </varlistentry>
 
     <varlistentry>
-     <term>'<varname>REMOTE_HOST</varname>'</term>
+     <term>"<varname>REMOTE_HOST</varname>"</term>
      <listitem>
       <simpara>
        Назва хоста, з якого користувач переглядає поточну сторінку. Зворотній
@@ -314,9 +217,9 @@
       </simpara>
       <note>
        <simpara>
-        Ваш веб-сервер повинен бути сконфігурований, щоб створювати цю змінну.
-        Наприклад, в Apache вам потрібно <literal>HostnameLookups On</literal>
-        у файлі &httpd.conf;, щоб вона існувала. Див. також
+        Вебсервер необхідно сконфігурувати, так щоб створювалася ця змінна.
+        Наприклад, в Apache у файлі &httpd.conf; потрібна опція
+        <literal>HostnameLookups On</literal>. Див. також
         <function>gethostbyaddr</function>.
        </simpara>
       </note>
@@ -324,17 +227,17 @@
     </varlistentry>
 
     <varlistentry>
-     <term>'<varname>REMOTE_PORT</varname>'</term>
+     <term>"<varname>REMOTE_PORT</varname>"</term>
      <listitem>
       <simpara>
-       Порт, який було використано на комп'ютері користувача, для зв'язку
-       з веб-сервером.
+       Порт, який було використано на комп'ютері користувача для зв'язку
+       з вебсервером.
       </simpara>
      </listitem>
     </varlistentry>
 
     <varlistentry>
-     <term>'<varname>REMOTE_USER</varname>'</term>
+     <term>"<varname>REMOTE_USER</varname>"</term>
      <listitem>
       <simpara>
         Ім'я авторизованого користувача.
@@ -343,7 +246,7 @@
     </varlistentry>
 
     <varlistentry>
-     <term>'<varname>REDIRECT_REMOTE_USER</varname>'</term>
+     <term>"<varname>REDIRECT_REMOTE_USER</varname>"</term>
      <listitem>
       <simpara>
         Ім'я авторизованого користувача, якщо запит має внутрішню переадресацію.
@@ -352,15 +255,15 @@
     </varlistentry>
 
     <varlistentry>
-     <term>'<varname>SCRIPT_FILENAME</varname>'</term>
+     <term>"<varname>SCRIPT_FILENAME</varname>"</term>
      <listitem>
       <para>
        Абсолютний шлях до поточного скрипта, що виконується.
        <note>
         <para>
-         Якщо скрипт виконується через CLI, з використанням відносного шляху,
-         такого як <filename>file.php</filename> чи
-         <filename>../file.php</filename>, 
+         Якщо скрипт виконується через CLI з використанням відносного шляху,
+         як от <filename>file.php</filename> чи
+         <filename>../file.php</filename>,
          <varname>$_SERVER['SCRIPT_FILENAME']</varname> буде містити цей
          відносний шлях, визначений користувачем.
         </para>
@@ -370,206 +273,151 @@
     </varlistentry>
 
     <varlistentry>
-     <term>'<varname>SERVER_ADMIN</varname>'</term>
+     <term>"<varname>SERVER_ADMIN</varname>"</term>
      <listitem>
       <simpara>
-       Значення, що встановлено для директиви SERVER_ADMIN (для Apache)
-       в конфігураційному файлі веб-сервера. Якщо скрипт запущено на
-       віртуальному хості, SERVER_ADMIN матиме значення, визначене для
-       даного віртуального хоста.
+       Значення, що встановлено для директиви SERVER_ADMIN (для Apache) в
+       конфігураційному файлі вебсервера. Якщо скрипт запущено на віртуальному
+       хості, SERVER_ADMIN матиме значення, визначене для даного віртуального
+       хоста.
       </simpara>
      </listitem>
     </varlistentry>
     
     <varlistentry>
-     <term>'<varname>SERVER_PORT</varname>'</term>
+     <term>"<varname>SERVER_PORT</varname>"</term>
      <listitem>
       <simpara>
-       Порт сервера, який використовується веб-сервером для зв'язку.
-       Початково, встановлюється значення '<literal>80</literal>'.
-       Але використовуючи SSL, наприклади, це значення буде таким, яке
-       вказано в конфіг-файлі для з'єднання через безпечний HTTP-порт.
+       Порт сервера, який використовується вебсервером для зв'язку. Початково,
+       встановлюється значення <literal>"80"</literal>. Але використовуючи,
+       наприклад, SSL, це значення буде тим, що вказано в конфігураційному файлі
+       для з'єднання через безпечний HTTP-порт.
       </simpara>
       <note>
        <simpara>
-        На Apache 2, ви повинні встановити
-        <literal>UseCanonicalName = On</literal>, а також
-        <literal>UseCanonicalPhysicalPort = On</literal> для того, щоб отримати
-        фізичний (реальний) порт, бо в іншому випадку, це значення може
-        підмінятись, а тому не буде повертатись значення фізичного порта.
-        Спиратись на це значення небезпечно в контексті, коли є потреба
-        в посиленій безпеці.
+        Для того, щоб отримати фізичний (реальний) порт на Apache 2, необхідно
+        встановити <literal>UseCanonicalName = On</literal> і
+        <literal>UseCanonicalPhysicalPort = On</literal>. В іншому випадку це
+        значення може підмінятись, а тому не буде повертатись значення фізичного
+        порту. Покладатися на це значення в контексті безпеки — небезпечно.
        </simpara>
       </note>
      </listitem>
     </varlistentry>
 
     <varlistentry>
-     <term>'<varname>SERVER_SIGNATURE</varname>'</term>
+     <term>"<varname>SERVER_SIGNATURE</varname>"</term>
      <listitem>
       <simpara>
-       Рядок, що містить версію веб-сервера та назву віртуального хоста, які
-       додаються до сторінок, якщо на веб-сервері ця функціональність підключена.
+       Рядок, що містить версію вебсервера та назву віртуального хоста, які
+       додаються до сторінок, якщо на вебсервері ця функціональність підключена.
       </simpara>
      </listitem>
     </varlistentry>
 
     <varlistentry>
-     <term>'<varname>PATH_TRANSLATED</varname>'</term>
+     <term>"<varname>PATH_TRANSLATED</varname>"</term>
      <listitem>
       <simpara>
-       Шлях, що базується на файловій системі (а не на шляху до кореневого
-       каталога документів), який веде до поточного скрипта. PATH_TRANSLATED
-       матиме значення, якщо створено співставлення (мапінг) між назвою
-       віртуального хоста та реальним шляхом до його каталога.
+       Шлях, що базується на файловій системі (а не на шляху до кореневої теки
+       документів), який веде до поточного скрипта. PATH_TRANSLATED матиме
+       значення, якщо створено зіставлення між назвою віртуального хоста та
+       реальним шляхом до його теки.
       </simpara>
       <note>
        <simpara>
-        Починаючи з PHP 4.3.2, <envar>PATH_TRANSLATED</envar> більше не
-        встановлюється явно на <acronym>SAPI</acronym> Apache 2, на відміну 
-        від Apache 1, де для неї встановлюється те ж саме значення, що і
-        для змінної сервера <envar>SCRIPT_FILENAME</envar>, коли її не
-        заповнено через конфіг-файли. Ця зміна була зроблена для відповідності
-        зі специфікацією <acronym>CGI</acronym>, яка говорить, що змінна
-        <envar>PATH_TRANSLATED</envar> повинна існувати тільки тоді, коли
-        <envar>PATH_INFO</envar> є визначеною.
-       </simpara>
-       <simpara>
-        Користувачі Apache 2 можуть використовувати
-        <literal>AcceptPathInfo = On</literal> у файлі
-        <filename>httpd.conf</filename>, щоб визначити <envar>PATH_INFO</envar>.
+        Користувачі Apache 2 можуть використовувати <literal>AcceptPathInfo =
+        On</literal> у файлі <filename>httpd.conf</filename>, щоб визначити
+        <envar>PATH_INFO</envar>.
        </simpara>
       </note>
      </listitem>
     </varlistentry>
 
     <varlistentry>
-     <term>'<varname>SCRIPT_NAME</varname>'</term>
+     <term>"<varname>SCRIPT_NAME</varname>"</term>
      <listitem>
       <simpara>
        Містить шлях до поточного скрипта. Це є корисним для сторінок, які
-       повинні посилатись на самих себе.
-       Константа <link linkend="language.constants.predefined">__FILE__</link>
-       містить повний шлях та назву файла до поточного (тобто підключеного) файла.
+       повинні посилатись на самих себе. Константа <link
+       linkend="language.constants.predefined">__FILE__</link> містить повний
+       шлях та назву поточного файлу.
       </simpara>
      </listitem>
     </varlistentry>
 
     <varlistentry>
-     <term>'<varname>REQUEST_URI</varname>'</term>
+     <term>"<varname>REQUEST_URI</varname>"</term>
      <listitem>
       <simpara>
-       URI, яке передається для доступу до поточного скрипта; наприклад,
-       '<literal>/index.html</literal>'.
+       URI, який передається для доступу до поточного скрипта. Наприклад,
+       <literal>"/index.html"</literal>.
       </simpara>
      </listitem>
     </varlistentry>
 
     <varlistentry>
-     <term>'<varname>PHP_AUTH_DIGEST</varname>'</term>
+     <term>"<varname>PHP_AUTH_DIGEST</varname>"</term>
      <listitem>
       <simpara>
-       При виконанні Digest HTTP автентифікації, цій змінній передається
-       значення заголовка 'Authorization', що присилається клієнтом (який
-       потім потрібно використовувати при відповідній перевірці).
+       Під час виконання автентифікації Digest HTTP, цій змінній передається
+       значення заголовка "Authorization" (яке потім використовується для
+       відповідної перевірки), що присилає клієнт.
       </simpara>
      </listitem>
     </varlistentry>
 
     <varlistentry>
-     <term>'<varname>PHP_AUTH_USER</varname>'</term>
+     <term>"<varname>PHP_AUTH_USER</varname>"</term>
      <listitem>
       <simpara>
-       При виконанні HTTP автентифікації, цій змінній передається значення
-       імені користувача, що передає користувач.
+       Під час HTTP-автентифікації цій змінній передається ім'я користувача.
       </simpara>
      </listitem>
     </varlistentry>
 
     <varlistentry>
-     <term>'<varname>PHP_AUTH_PW</varname>'</term>
+     <term>"<varname>PHP_AUTH_PW</varname>"</term>
      <listitem>
       <simpara>
-       При виконанні HTTP автентифікації, цій змінній передається значення
-       пароля, що перередає користувач.
+       Під час HTTP-автентифікації цій змінній передається пароль користувача.
       </simpara>
      </listitem>
     </varlistentry>
 
     <varlistentry>
-     <term>'<varname>AUTH_TYPE</varname>'</term>
+     <term>"<varname>AUTH_TYPE</varname>"</term>
      <listitem>
       <simpara>
-       При виконанні HTTP автентифікації, цій змінній передається значення
-       типу автентифікації.
+       Під час HTTP-автентифікації, цій змінній передається значення типу
+       автентифікації.
       </simpara>
      </listitem>
     </varlistentry>
 
     <varlistentry>
-     <term>'<varname>PATH_INFO</varname>'</term>
+     <term>"<varname>PATH_INFO</varname>"</term>
      <listitem>
       <simpara>
-       Містить будь-який шлях, що надається клієнтом в кінці
-       назви поточного скрипта, але передує рядку запита (якщо є).
-       Наприклад, якщо до поточного скрипта доступаються через
-       URL <filename>http://www.example.com/php/path_info.php/some/stuff?foo=bar</filename>,
-       то <varname>$_SERVER['PATH_INFO']</varname> буде містити
+       Містить будь-який шлях, вказаний клієнтом між назвою скрипта та
+       рядком запиту. Наприклад, якщо скрипт запитувати через URI
+       <filename>http://www.example.com/php/path_info.php/some/stuff?foo=bar</filename>,
+       то <varname>$_SERVER['PATH_INFO']</varname> міститиме
        <literal>/some/stuff</literal>.
       </simpara>
      </listitem>
     </varlistentry>
 
     <varlistentry>
-     <term>'<varname>ORIG_PATH_INFO</varname>'</term>
+     <term>"<varname>ORIG_PATH_INFO</varname>"</term>
      <listitem>
       <simpara>
-       Оригінальна версія '<varname>PATH_INFO</varname>' перед обробкою її
-       через PHP.
+       Необроблене інтерпретатором значення <varname>"PATH_INFO"</varname>.
       </simpara>
      </listitem>
     </varlistentry>
 
    </variablelist>
-  </para>
- </refsect1>
- 
- <refsect1 role="changelog">
-  &reftitle.changelog;
-  <para>
-   <informaltable>
-    <tgroup cols="2">
-     <thead>
-      <row>
-       <entry>&Version;</entry>
-       <entry>&Description;</entry>
-      </row>
-     </thead>
-     <tbody>
-      <row>
-       <entry>5.4.0</entry>
-       <entry>
-        Змінна <varname>$HTTP_SERVER_VARS</varname> більше не доступна через
-        те, що відповідні довгі масиви було видалено.
-       </entry>
-      </row>
-      <row>
-       <entry>5.3.0</entry>
-       <entry>
-        Директива <link linkend="ini.register-long-arrays">register_long_arrays</link>,
-        що підключала <varname>$HTTP_SERVER_VARS</varname>, стала застарілою.
-       </entry>
-      </row>
-      <row>
-       <entry>4.1.0</entry>
-       <entry>
-        Вводиться <varname>$_SERVER</varname> на заміну застарілої
-        <varname>$HTTP_SERVER_VARS</varname>.
-       </entry>
-      </row>
-     </tbody>
-    </tgroup>
-   </informaltable>
   </para>
  </refsect1>
  

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 96c9d88bad9a7d7d44bfb7f26c226df7ee9ddf26 Maintainer: ktretyak Status: wip -->
-<!-- $Revision$ -->
+<!-- EN-Revision: 96c9d88bad9a7d7d44bfb7f26c226df7ee9ddf26 Maintainer: mproshchuk Status: ready -->
  <chapter xml:id="features.sessions" xmlns="http://docbook.org/ns/docbook">
-  <title>Sessions</title>
+  <title>Сесії</title>
 
   <para>
-   Session support in PHP consists of a way to preserve certain data across
-   subsequent accesses. This enables you to build more customized applications
-   and increase the appeal of your web site. All information is in the
-   <link linkend="book.session">Session reference</link> section.
+   Підтримка сесій у PHP полягає у способі збереження певних даних для
+   наступного сеансу. Це дає змогу створювати більш гнучкі програми та
+   підвищувати привабливість вебсайту. Уся інформація є у розділі
+   <link linkend="book.session">Керівництво з сесій</link>.
   </para>
 
  </chapter>

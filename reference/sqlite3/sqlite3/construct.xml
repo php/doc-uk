@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 9cfc780d75b8b125a5330ea8b5e673992de88691 Maintainer: ktretyak Status: ready -->
-<!-- $Revision$ -->
-
+<!-- EN-Revision: 61374bbe228e8e9c55a24aba59a1e2bb2a871148 Maintainer: mproshchuk Status: wip -->
 <refentry xml:id="sqlite3.construct" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>SQLite3::__construct</refname>
@@ -12,12 +10,12 @@
 
  <refsect1 role="description">
   &reftitle.description;
-  <methodsynopsis>
+    <constructorsynopsis role="SQLite3">
    <modifier>public</modifier> <methodname>SQLite3::__construct</methodname>
    <methodparam><type>string</type><parameter>filename</parameter></methodparam>
    <methodparam choice="opt"><type>int</type><parameter>flags</parameter><initializer>SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE</initializer></methodparam>
-   <methodparam choice="opt"><type>string</type><parameter>encryption_key</parameter></methodparam>
-  </methodsynopsis>
+   <methodparam choice="opt"><type>string</type><parameter>encryptionKey</parameter><initializer>""</initializer></methodparam>
+  </constructorsynopsis>
   <para>
    Створює об'єкт класа SQLite3 та відкриває з'єднання для бази даних SQLite 3.
    Якщо база даних має шифрування, то буде спроба використати <parameter>encryption_key</parameter>
@@ -35,6 +33,9 @@
       <para>
        Шлях до бази даних SQLite, або рядок із записом <literal>:memory:</literal>,
        щоб використовувати базу даних в пам'яті.
+       If <parameter>filename</parameter> is an empty string, then a private, temporary on-disk
+       database will be created. This private database will be automatically
+       deleted as soon as the database connection is closed.
       </para>
      </listitem>
     </varlistentry>
@@ -44,23 +45,23 @@
       <para>
        Необов'язковий флаг, для визначення - як саме
        відкривати базу даних SQLite. Початково, при відкритті використовується
-       <literal>SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE</literal>.
+       <constant>SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE</constant>.
        <itemizedlist>
         <listitem>
          <para>
-          <literal>SQLITE3_OPEN_READONLY</literal>: Відкриває базу даних лише
+          <constant>SQLITE3_OPEN_READONLY</constant>: Відкриває базу даних лише
           для читання.
          </para>
         </listitem>
         <listitem>
          <para>
-          <literal>SQLITE3_OPEN_READWRITE</literal>: Відкриває базу даних для
+          <constant>SQLITE3_OPEN_READWRITE</constant>: Відкриває базу даних для
           читання та запису.
          </para>
         </listitem>
         <listitem>
          <para>
-          <literal>SQLITE3_OPEN_CREATE</literal>: Створює базу даних,
+          <constant>SQLITE3_OPEN_CREATE</constant>: Створює базу даних,
           якщо вона не існує.
          </para>
         </listitem>
@@ -69,11 +70,12 @@
      </listitem>
     </varlistentry>
     <varlistentry>
-     <term><parameter>encryption_key</parameter></term>
+     <term><parameter>encryptionKey</parameter></term>
      <listitem>
       <para>
        Необов'язковий ключ шифра, що використовується при шифруванні та
-       дешифруванні бази даних SQLite.
+       дешифруванні бази даних SQLite. If the SQLite encryption module is not installed,
+       this parameter will have no effect.
       </para>
      </listitem>
     </varlistentry>
@@ -82,18 +84,34 @@
 
  </refsect1>
 
- <refsect1 role="returnvalues">
-  &reftitle.returnvalues;
-  <para>
-   Повертає об'єкт бази даних SQLite3 при успіху.
-  </para>
- </refsect1>
-
  <refsect1 role="errors">
   &reftitle.errors;
   <para>
    Кидає <classname>Exception</classname> в разі помилки.
   </para>
+ </refsect1>
+ 
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <informaltable>
+   <tgroup cols="2">
+    <thead>
+     <row>
+      <entry>&Version;</entry>
+      <entry>&Description;</entry>
+     </row>
+    </thead>
+    <tbody>
+     <row>
+      <entry>7.0.10</entry>
+      <entry>
+       The <parameter>filename</parameter> can now be empty to use a private,
+       temporary on-disk database.
+      </entry>
+     </row>
+    </tbody>
+   </tgroup>
+  </informaltable>
  </refsect1>
 
  <refsect1 role="examples">
@@ -106,7 +124,7 @@
 <?php
 $db = new SQLite3('mysqlitedb.db');
 
-$db->exec('CREATE TABLE foo (bar STRING)');
+$db->exec('CREATE TABLE foo (bar TEXT)');
 $db->exec("INSERT INTO foo (bar) VALUES ('Це перевірка')");
 
 $result = $db->query('SELECT bar FROM foo');

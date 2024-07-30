@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: a9f96e8c83e989c5edca55ccb36ed9b7579d8a44 Maintainer: ktretyak Status: ready -->
-<!-- $Revision$ -->
+<!-- EN-Revision: f5e5b54129045a7d02c5285a88cea0abff8ffb6f Maintainer: mproshchuk Status: ready -->
  <sect1 xml:id="language.oop5.visibility" xmlns="http://docbook.org/ns/docbook">
   <title>Область видимості</title>
   <para>
-   Області видимості властивостей або методів можуть визначатись через
-   ключові слова <emphasis>public</emphasis>,
-   <emphasis>protected</emphasis> чи
-   <emphasis>private</emphasis>. Доступ до членів класа оголошених
-   як public (загальнодоступні), дозволено всюди. Члени класа оголошені
-   як protected (захищені) доступні лише всередині самого класа, а також
-   через наслідувані та батьківські класи. Члени класа оголошені як private (закриті)
-   можуть бути доступні лише через клас, де вони визначені.
+   Області видимості властивостей, методів або (починаючи з PHP 7.1.0) констант
+   можуть визначатись через ключові слова <literal>public</literal>,
+   <literal>protected</literal> чи <literal>private</literal>. Доступ до членів
+   класу, оголошених як public (загальнодоступні), дозволено всюди. Члени класу,
+   оголошені як protected (захищені), доступні лише всередині самого класу, а
+   також через класи-нащадки та батьківські класи. Члени класу, оголошені як
+   private (закриті) можуть бути доступні лише через клас, де вони визначені.
   </para>
 
   <sect2 xml:id="language.oop5.visibility-members">
    <title>Область Видимості Властивості</title>
    <para>
-    Властивості класа повинні оголошуватись як public, private, чи
-    protected. Якщо оголошення відбувається через ключове слово <emphasis>var</emphasis>,
-    то властивість буде визначена як public.
+    Властивості класу можуть оголошуватись як public, private чи protected.
+    Властивість, оголошена без ключового слова видимості, вважається
+    загальнодоступною.
    </para>
    <para>
     <example>
@@ -56,7 +54,8 @@ $obj->printHello(); // Виводить Загальнодоступна, Зах
  */
 class MyClass2 extends MyClass
 {
-    // Ми можемо перевизначити public та protected методи, але не private
+    // Ми можемо перевизначити public- та protected-властивості, але не private
+    public $public = 'Public2';
     protected $protected = 'Захищена2';
 
     function printHello()
@@ -71,34 +70,24 @@ $obj2 = new MyClass2();
 echo $obj2->public; // Працює
 echo $obj2->protected; // Фатальна помилка
 echo $obj2->private; // Невизначено
-$obj2->printHello(); // Виводить Загальнодоступна, Захищена2, Закрита
+$obj2->printHello(); // Виводить Загальнодоступна2, Захищена2, Закрита
 
 ?> 
 ]]>
      </programlisting>
     </example>
    </para>
-   <note>
-    <simpara>
-     Метод, що оголошено через ключове слово
-     <emphasis>var</emphasis>, яке було впроваджено в PHP 4,
-     покищо підтримується з метою сумісності (як синонім ключового слова public).
-     У версіях PHP 5 перед 5.1.3, таке використання буде виводити попередження
-     <constant>E_STRICT</constant>.
-    </simpara>
-   </note>
   </sect2>
 
   <sect2 xml:id="language.oop5.visiblity-methods">
-   <title>Область Видимості Метода</title>
+   <title>Область видимості метода</title>
    <para>
-    Методи класа можуть бути визначені як public, private, чи
-    protected. Методи, що оголошені без будь-якого ключового слова
-    для видимості класа, визначаються як public.
+    Методи класу можуть бути визначені як public, private чи protected. Метод,
+    оголошений без ключового слова видимості, вважається загальнодоступним.
    </para>
    <para>
     <example>
-     <title>Оголошення Метода</title>
+     <title>Оголошення метода</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -180,9 +169,75 @@ class Foo extends Bar
     }
 }
 
-$myFoo = new foo();
+$myFoo = new Foo();
 $myFoo->test(); // Bar::testPrivate 
                 // Foo::testPublic
+?>
+]]>
+     </programlisting>
+    </example>
+   </para>
+  </sect2>
+
+  <sect2 xml:id="language.oop5.visiblity-constants">
+   <title>Видимість констант</title>
+   <para>
+    Починаючи з PHP 7.1.0, константи класу можуть оголошуватись як public,
+    private чи protected. Константа, оголошена без ключового слова видимості,
+    вважається загальнодоступною.
+   </para>
+   <para>
+    <example>
+     <title>Оголошення констатн, починаючи з PHP 7.1.0</title>
+     <programlisting role="php">
+<![CDATA[
+<?php
+/**
+ * Define MyClass
+ */
+class MyClass
+{
+    // Оголошення загальнодоступної константи
+    public const MY_PUBLIC = 'public';
+
+    // Оголошення захищеної константи
+    protected const MY_PROTECTED = 'protected';
+
+    // Оголошення закритої константи
+    private const MY_PRIVATE = 'private';
+
+    public function foo()
+    {
+        echo self::MY_PUBLIC;
+        echo self::MY_PROTECTED;
+        echo self::MY_PRIVATE;
+    }
+}
+
+$myclass = new MyClass();
+MyClass::MY_PUBLIC; // Працює
+MyClass::MY_PROTECTED; // Фатальна помилка
+MyClass::MY_PRIVATE; // Фатальна помилка
+$myclass->foo(); // Працюють Public, Protected та Private
+
+
+/**
+ * Визначення MyClass2
+ */
+class MyClass2 extends MyClass
+{
+    // Це публічний метод
+    function foo2()
+    {
+        echo self::MY_PUBLIC;
+        echo self::MY_PROTECTED;
+        echo self::MY_PRIVATE; // Фатальна помилка
+    }
+}
+
+$myclass2 = new MyClass2;
+echo MyClass2::MY_PUBLIC; // Працює
+$myclass2->foo2(); // Працюють константи Public та Protected, але не Private
 ?>
 ]]>
      </programlisting>
@@ -193,11 +248,10 @@ $myFoo->test(); // Bar::testPrivate
   <sect2 xml:id="language.oop5.visibility-other-objects">
    <title>Видимість з інших об'єктів</title>
    <para>
-    Однотипні об'єкти мають доступ до методів
-    та властивостей один одного, що оголошені як private або protected,
-    навіть якщо ці об'єкти не є одним і тим же екземпляром. Це пояснюється тим,
-    що впровадження механізма видимості відбувається відносно класів цих
-    об'єктів, а не відносно самих об'єктів.
+    Однотипні об'єкти мають доступ до методів та властивостей один одного, що
+    оголошені як private або protected, навіть якщо ці об'єкти не є одним і тим
+    же примірником. Це пояснюється тим, що впровадження механізму видимості
+    відбувається відносно класів цих об'єктів, а не відносно самих об'єктів.
    </para>
    <example>
     <title>Доступ до закритих членів класу, що мають однаковий тип об'єкта</title>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 9c02dc54d852d871cbcfcda05df9855333e8bc78 Maintainer: ktretyak Status: ready -->
-<!-- $Revision$ -->
+<!-- EN-Revision: 6b09bb638aa64d1fad5f4a630a8da9a2692ce733 Maintainer: mproshchuk Status: wip -->
  <chapter xml:id="language.basic-syntax" xmlns="http://docbook.org/ns/docbook">
   <title>Базовий синтаксис</title>
   <sect1 xml:id="language.basic-syntax.phptags">
@@ -13,21 +12,52 @@
     документи, оскільки код, за межами пари з відкриваючим та закриваючим
     тегами, ігнорується обробником PHP.
    </para>
+
    <para>
-    PHP також дозволяє короткий відкриваючий тег <literal>&lt;?</literal> (в
-    цьому випадку закриваючий тег не змінюється,
-    але використовуйте його обережно,
-    оскільки він доступний, тільки якщо його підключено через директиву
-    <link linkend="ini.short-open-tag">short_open_tag</link> у конфігураційному
-    файлі &php.ini;, або якщо PHP було сконфігуровано з параметром
-    <option>--enable-short-tags</option>).
+    PHP має короткий echo-тег <literal>&lt;?=</literal>, який є скороченим
+    варіантом <code>&lt;?php echo</code>.
+   </para>
+
+   <para>
+    <example>
+     <title>PHP Opening and Closing Tags</title>
+     <programlisting role="php">
+<![CDATA[
+1.  <?php echo 'if you want to serve PHP code in XHTML or XML documents,
+                use these tags'; ?>
+
+2.  You can use the short echo tag to <?= 'print this string' ?>.
+    It's equivalent to <?php echo 'print this string' ?>.
+
+3.  <? echo 'this code is within short tags, but will only work '.
+            'if short_open_tag is enabled'; ?>
+]]>
+     </programlisting>
+    </example>
+   </para>
+
+   <para>
+    Short tags (example three) are available by default but can be disabled
+    either via the <link linkend="ini.short-open-tag">short_open_tag</link>
+    &php.ini; configuration file directive, or are disabled by default if
+    PHP is built with the <option>--disable-short-tags</option> configuration.
    </para>
    <para>
-    Якщо файл має лише PHP-код, краще не вказувати закриваючий тег PHP в кінці
-    файла. Це запобігає випадковості додавання пробіла або нового рядка після
-    закриваючого тега PHP, що може спричиняти небажаний ефект, оскільки PHP
-    починає буферизацію виводу, коли програміст не має наміру будь-що
-    виводити в своєму скрипті.
+    <note>
+     <para>
+      As short tags can be disabled it is recommended to only use the normal
+      tags (<code>&lt;?php ?&gt;</code> and <code>&lt;?= ?&gt;</code>) to
+      maximise compatibility.
+     </para>
+    </note>
+   </para>
+
+   <para>
+    If a file contains only PHP code, it is preferable to omit the PHP closing tag
+    at the end of the file.  This prevents accidental whitespace or new lines
+    being added after the PHP closing tag, which may cause unwanted effects
+    because PHP will start output buffering when there is no intention from
+    the programmer to send any output at that point in the script.
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -40,6 +70,7 @@ echo "Останній вивід";
 
 // тут скрипт завершується без додавання закриваючого тега PHP
 ]]>
+
      </programlisting>
     </informalexample>
    </para>
@@ -51,7 +82,7 @@ echo "Останній вивід";
     обробником PHP. Таким чином можна обробляти PHP-файли зі змішаним вмістом, тобто
     вбудовувати PHP-код в HTML-документи, наприклад, при створенні
     шаблонів.
-    <example>
+    <informexample>
      <programlisting role="php">
 <![CDATA[
 <p>Ця частина коду буде проігнорована PHP, але показуватиметься через браузер.</p>
@@ -59,7 +90,7 @@ echo "Останній вивід";
 <p>І цей код - також буде проігноровано PHP, але показуватиметься через браузер.</p>
 ]]>
      </programlisting>
-    </example>
+    </informexample>
     Такий код обробляється як і очікується, оскільки коли інтерпретатор PHP
     зустрічає закриваючий тег ?&gt; він просто починає виводити все, що
     знаходить, допоки не зустріне інший відкриваючий тег. Але є два виключення,
@@ -95,89 +126,15 @@ echo "Останній вивід";
     <function>echo</function> чи <function>print</function>.
    </para>
    <para>
-    Існує чотири різних пари з відкриваючими та закриваючими тегами, які можна
-    використовувати в PHP. Дві із них, &lt;?php ?&gt; та
-    &lt;script language="php"&gt; &lt;/script&gt;, завжди доступні.
-    Дві інші пари - це короткі теги та теги в стилі
-    <productname>ASP</productname>, які можна включати та відключати у
-    конфігураційному файлі &php.ini;. Отже, хоча деякі люди вважають зручними
-    короткі теги та теги в стилі <productname>ASP</productname>, вони є менш
-    портативними, та взагалі то не рекомендуються.
     <note>
      <para>
-      Якщо ви вставляєте блоки PHP вередині XML чи XHTML, вам потрібно
-      використовувати теги &lt;?php ?&gt; щоб код залишався сумісним згідно зі
-      стандартом.
-     </para>
-    </note>
-   </para>
-   <para>
-    <example>
-     <title>Різні варіанти відкриваючих та закриваючих тегів PHP</title>
-     <programlisting role="php">
-<![CDATA[
-1.  <?php echo 'якщо ви хочете обробляти PHP-код всередині XHTML або XML
-                документів, використовуйте такі теги'; ?>
-
-2.  <script language="php">
-        echo 'деякі редактори (наприклад FrontPage) не обробляють інструкції
-              всередині таких тегів';
-    </script>
-
-3.  <? echo 'цей код знаходиться всередині коротких тегів PHP'; ?>
-    А код в таких тегах <?= 'тут якийсь текст' ?>
-    є скороченням для коду <? echo 'тут якийсь текст' ?>
-
-4.  <% echo 'Також, якщо хочете, можете використовувати теги в ASP-стилі'; %>
-    А код в таких тегах <%= $змінна; %>
-    є скороченням для коду <% echo $змінна; %>
-]]>
-     </programlisting>
-    </example>
-   </para>
-   <para>
-    Хоча теги, показані в пунктах 1 та 2, завжди є доступними, теги, показані
-    в пункті 1, є найбільш вживаними, та є рекомендованим, на відміну від тегів
-    в пункті 2.
-   </para>
-   <para>
-    Короткі теги (пункт 3) є доступними, тільки якщо вони підключені через
-    директиву <link linkend="ini.short-open-tag">short_open_tag</link>
-    в конфігураційному файлі &php.ini;, або якщо PHP було сконфігуровано з
-    параметром <option>--enable-short-tags</option>.
-   </para>
-   <para>
-    Теги в стилі <productname>ASP</productname> (пункт 4) доступні, тільки коли
-    вони підключені через директиву <link linkend="ini.asp-tags">asp_tags</link>
-    в конфігураційному файлі &php.ini;.
-   </para>
-   <para>
-    <note>
-     <para>
-      Використання коротких тегів краще уникати при розробці застосунків
-      чи бібліотек, що призначаються для поширення, або при розміщенні скриптів
-      на PHP-серверах, які знаходяться не під вашим контролем, оскільки короткі
-      теги можуть не підтримуватись. Для портативності, переконайтесь, що ви
-      не використовуєте короткі теги.
-     </para>
-    </note>
-    <note>
-     <para>
-      У версіях PHP 5.2 та рініших, парсер не дозволяв використовувати
-      тільки відкриваючі теги <literal>&lt;?php</literal> без використання
-      закриваючих тегів. Це стало можливим починаючи з PHP 5.3, при наявності
-      одного чи кількох пробілів після відкриваючого тега.
-     </para>
-    </note>
-    <note>
-     <para>
-      Починаючи з PHP 5.4, короткий тег <literal>&lt;?=</literal> завжди
-      розпізнається та є дійсним, незалежно від того, чи включена директива
-      <link linkend="ini.short-open-tag">short_open_tag</link>.
+      Вставляючи блоки PHP всередину XML чи XHTML, потрібно використовувати
+      теги &lt;?php ?&gt;, щоб код відповідав стандартам.
      </para>
     </note>
    </para>
   </sect1>
+
   <sect1 xml:id="language.basic-syntax.instruction-separation">
    <title>Поділ інструкцій</title>
    <para>
@@ -187,6 +144,29 @@ echo "Останній вивід";
     потрібно завершувати останній рядок PHP-блоку символом крапки з комою.
     Закриваючий тег також зумовить видалення символа нового рядка, що йде
     безпосередньо зразу після нього, якщо він є.
+    </para>
+   <para>
+    <example>
+     <title>Example showing the closing tag encompassing the trailing newline</title>
+     <programlisting role="php">
+<![CDATA[
+<?php echo "Some text"; ?>
+No newline
+<?= "But newline now" ?>
+]]>
+     </programlisting>
+     &example.outputs;
+     <screen>
+<![CDATA[
+Some textNo newline
+But newline now
+]]>
+     </screen>
+    </example>
+   </para>
+
+   <para>
+    Examples of entering and exiting the PHP parser:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -242,10 +222,6 @@ echo "Останній вивід";
     чи <literal># ...  ?&gt;</literal> БУДЕ надруковано, оскільки закриваючий
     тег ?&gt; перериває PHP-режим та включає HTML-режим, і
     <literal>//</literal> чи <literal>#</literal> не впливають на це.
-    Якщо конфігураційна директива <link linkend="ini.asp-tags">asp_tags</link>
-    включена, такий же ефект буде з тегами <literal>// %&gt;</literal> та
-    <literal># %&gt;</literal>. Лише тег <literal>&lt;/script&gt;</literal>
-    не перериває PHP-режиму в однорядкових коментарях.
    </simpara>
    <para>
     <informalexample>

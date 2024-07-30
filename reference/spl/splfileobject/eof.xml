@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: d3c871ae1e218ab417e15731c9dee930149baad0 Maintainer: ktretyak Status: ready -->
-<!-- $Revision$ -->
-
+<!-- EN-Revision: d51166ca16fda8e766849505b84f9306ef443f71 Maintainer: mproshchuk Status: ready -->
 <refentry xml:id="splfileobject.eof" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>SplFileObject::eof</refname>
-  <refpurpose>Визначає чи досягнуто кінець файла</refpurpose>
+  <refpurpose>Визначає, чи досягнуто кіння файлу</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
-  <methodsynopsis>
+  <methodsynopsis role="SplFileObject">
    <modifier>public</modifier> <type>bool</type><methodname>SplFileObject::eof</methodname>
-   <void />
+   <void/>
   </methodsynopsis>
   <para>
    Визначає чи досягнуто кінець файла
@@ -27,7 +25,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Повертає &true; якщо було досягнено кінець файла, &false; - в противному разі.
+   Повертає &true; якщо досягнуто кінця файлу, в іншому разі — &false;.
   </para>
  </refsect1>
 

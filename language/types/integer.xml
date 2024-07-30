@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 67cf4f37868965b41fcda4e51a39e3529b544879 Maintainer: ktretyak Status: ready -->
-<!-- $Revision$ -->
+<!-- EN-Revision: 67cf4f37868965b41fcda4e51a39e3529b544879 Maintainer: mproshchuk Status: wip -->
 <sect1 xml:id="language.types.integer">
  <title>Цілочисельний (Integers)</title>
  
@@ -267,8 +266,19 @@ echo (int) ( (0.1+0.7) * 10 ); // виводить 7!
    <title>З рядкового типу</title>
 
    <simpara>
-    Прогляньте <link linkend="language.types.string.conversion">Конвертація
-    значень рядкового типу до чисел</link>
+    If the string is
+    <link linkend="language.types.numeric-strings">numeric</link>
+    or leading numeric then it will resolve to the
+    corresponding integer value, otherwise it is converted to zero
+    (<literal>0</literal>).
+   </simpara>
+  </sect3>
+
+  <sect3 xml:id="language.types.integer.casting-from-null">
+   <title>From <type>NULL</type></title>
+
+   <simpara>
+    &null; is always converted to zero (<literal>0</literal>).
    </simpara>
   </sect3>
    
