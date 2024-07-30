@@ -255,8 +255,10 @@ RewriteRule (.*\.php)s$ $1 [H=application/x-httpd-php-source]
       розкрити конфіденційну або іншу важливу інформацію, розміщену в
       початковому коді.
      </para>
-     
+
     </listitem>
+
+    <listitem>
      <para>
       Стандартну процедура запуску сервер Apache:
      </para>
@@ -276,7 +278,7 @@ service httpd restart
 ]]>
       </screen>
      </informalexample>
-
+     </listitem>
     </orderedlist>
 
     <para>
