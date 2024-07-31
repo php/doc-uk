@@ -807,7 +807,7 @@ linkend="ini.error-reporting">error_reporting</link> має бути зниже�
   <term><parameter>flags</parameter></term>
   <listitem>
    <para>
-    Необовʼязковий другий параметр <parameter>flags</parameter> можна
+    Необов&apos;язковий другий параметр <parameter>flags</parameter> можна
     використовувати для зміни способу впорядкування, вказавши значення:
    </para>
    <para>
@@ -817,7 +817,7 @@ linkend="ini.error-reporting">error_reporting</link> має бути зниже�
       <simpara><constant>SORT_REGULAR</constant> — звичайне порівняння
       елементів. Докладніше у розділі <link
       linkend="language.operators.comparison">Оператори
-      порівняння</link></simpara>.
+      порівняння</link></simpara>
      </listitem>
      <listitem>
       <simpara><constant>SORT_NUMERIC</constant> — числове порівняння
@@ -2295,14 +2295,11 @@ linkend="features.safe-mode">безпечний режим</link>, то PHP пе
 '<note xmlns="http://docbook.org/ns/docbook"><para>Ця функція залежить від <link
 linkend="ini.open-basedir">open_basedir</link>.</para></note>'>
 
-
 <!ENTITY note.language-construct
 '<note xmlns="http://docbook.org/ns/docbook"><simpara>Оскільки це мовна
 конструкція, а не функція, її не можна викликати через <link
 linkend="functions.variable-functions">змінні-функції</link> або <link
-linkend="functions.named-arguments">названі параметри</link>.</simpara>
-.</simpara>
-</note>'>
+linkend="functions.named-arguments">названі параметри</link>.</simpara></note>'>
 
 <!-- Common pieces in features/safe-mode.xml
      Jade doesn't allow in-line entities, so I put them here... Though they
@@ -2618,6 +2615,7 @@ xmlns="http://docbook.org/ns/docbook">GMP</classname> в PHP 5.6 і новіши
 <type>resource</type> в PHP 5.5 та старіших версіях, об&apos;єкт
 <classname>GMP</classname> в PHP 5.6 та новіших, або ж числовий рядок за
 можливості перетворення останнього на число.</para>'>
+
 
 <!-- MySQLi Notes -->
 <!ENTITY mysqli.result.description
@@ -3335,7 +3333,8 @@ xmlns="http://docbook.org/ns/docbook">string</type>), а інакше — &null;
 параметри-посилання.'>
 
 <!ENTITY reflection.export.param.name
-'Об&apos;єкт <classname>Reflection</classname>, що експортується.'>
+'Об&apos;єкт <classname
+xmlns="http://docbook.org/ns/docbook">Reflection</classname>, що експортується.'>
 
 <!ENTITY reflection.getattributes.param.name
 '<varlistentry xmlns="http://docbook.org/ns/docbook">
@@ -3439,7 +3438,7 @@ xmlns="http://docbook.org/ns/docbook">WIN32_NO_ERROR</constant> у разі
 </para>
 <table xmlns="http://docbook.org/ns/docbook">
  <title>types</title>
- <tgroup cols="2">snmp.set.type.values
+ <tgroup cols="2">
   <tbody>
    <row><entry>=</entry><entry>Тип, взятий з MIB</entry></row>
    <row><entry>i</entry><entry>INTEGER</entry> </row>
@@ -3462,7 +3461,7 @@ xmlns="http://docbook.org/ns/docbook">WIN32_NO_ERROR</constant> у разі
 <table xmlns="http://docbook.org/ns/docbook">
  <title>types</title>
  <tgroup cols="2">
-  <tbody>файлів 
+  <tbody>
    <row><entry>U</entry><entry>беззнаковий int64</entry></row>
    <row><entry>I</entry><entry>знаковий int64</entry></row>
    <row><entry>F</entry><entry>десятковий дріб (float)</entry></row>
@@ -4313,6 +4312,328 @@ local: {
     </tgroup>
    </table>
   </para>
+'>
+
+<!ENTITY mongodb.option.encryption.tlsOptions '
+         <row xmlns="http://docbook.org/ns/docbook">
+          <entry>tlsOptions</entry>
+          <entry><type>array</type></entry>
+          <entry>
+           <para>
+            Документ, який містить налаштування TLS для одного або кількох
+            KMS-провайдерів. Підтримуються такі провайдери:
+            <literal>"aws"</literal>, <literal>"azure"</literal>,
+            <literal>"gcp"</literal> та <literal>"kmip"</literal>. Для кожного
+            провайдера можна задавати такі параметри:
+           </para>
+           <programlisting role="javascript">
+<![CDATA[
+<provider>: {
+    tlsCaFile: <string> (необов&apos;язковий),
+    tlsCertificateKeyFile: <string> (необов&apos;язковий),
+    tlsCertificateKeyFilePassword: <string> (необов&apos;язковий),
+    tlsDisableOCSPEndpointCheck: <bool> (необов&apos;язковий)
+}
+]]>
+           </programlisting>
+          </entry>
+         </row>
+'>
+
+<!ENTITY mongodb.option.maxCommitTimeMS '
+         <row xmlns="http://docbook.org/ns/docbook">
+          <entry>maxCommitTimeMS</entry>
+          <entry>int</entry>
+          <entry>
+           <para>
+            Час (у мілісекундах), що відводиться на виконання однієї команди
+            <literal>commitTransaction</literal>.
+           </para>
+           <para>
+            Параметр <literal>maxCommitTimeMS</literal> повинен бути знаковим
+            32-бітним цілим числом, що рівне або більше за нуль.
+           </para>
+          </entry>
+         </row>
+'>
+
+<!ENTITY mongodb.option.readConcern '
+         <row xmlns="http://docbook.org/ns/docbook">
+          <entry>readConcern</entry>
+          <entry><classname>MongoDB\Driver\ReadConcern</classname></entry>
+          <entry>
+           <para>
+            Вимога щодо зчитування.
+           </para>
+           <para>
+            Цей параметр доступний в MongoDB 3.2+, тож його застосування у
+            старіших версіях викине виключення під час виконання.
+           </para>
+          </entry>
+         </row>
+'>
+
+<!ENTITY mongodb.option.readPreference '
+         <row xmlns="http://docbook.org/ns/docbook">
+          <entry>readPreference</entry>
+          <entry><classname>MongoDB\Driver\ReadPreference</classname></entry>
+          <entry>
+           <para>
+            Параметр читання для вибору сервера для операції.
+           </para>
+          </entry>
+         </row>
+'>
+
+<!ENTITY mongodb.option.session '
+         <row xmlns="http://docbook.org/ns/docbook">
+          <entry>session</entry>
+          <entry><classname>MongoDB\Driver\Session</classname></entry>
+          <entry>
+           <para>
+            Сеанс, по&apos;язаний з операцією.
+           </para>
+          </entry>
+         </row>
+'>
+
+<!ENTITY mongodb.option.transactionReadWriteConcern '
+     <warning xmlns="http://docbook.org/ns/docbook">
+      <para>
+       Для сеансу (<literal>"session"</literal>) транзакції, яка триває, не
+       можна задати параметр <literal>"readConcern"</literal> або
+       <literal>"writeConcern"</literal>. Це призведе до викидання виключення
+       <classname>MongoDB\Driver\Exception\InvalidArgumentException</classname>.
+       Ці два параметри потрібно задавати під час створення транзакції методом
+       <methodname>MongoDB\Driver\Session::startTransaction</methodname>.
+      </para>
+     </warning>
+'>
+
+<!ENTITY mongodb.option.writeConcern '
+         <row xmlns="http://docbook.org/ns/docbook">
+          <entry>writeConcern</entry>
+          <entry><classname>MongoDB\Driver\WriteConcern</classname></entry>
+          <entry>
+           <para>
+            Вимога щодо запису.
+           </para>
+          </entry>
+         </row>
+'>
+
+<!ENTITY mongodb.parameter.namespace '
+   <varlistentry xmlns="http://docbook.org/ns/docbook">
+    <term><parameter>namespace</parameter> (<type>string</type>)</term>
+    <listitem>
+     <para>
+      Повна назва простору імен (напр.
+      <literal>"databaseName.collectionName"</literal>).
+     </para>
+    </listitem>
+   </varlistentry>
+'>
+
+<!ENTITY mongodb.parameter.db '
+   <varlistentry xmlns="http://docbook.org/ns/docbook">
+    <term><parameter>db</parameter> (<type>string</type>)</term>
+    <listitem>
+     <para>
+      Назва бази даних, в якій буде виконано команду.
+     </para>
+    </listitem>
+   </varlistentry>
+'>
+
+<!ENTITY mongodb.parameter.bulkwrite '
+   <varlistentry xmlns="http://docbook.org/ns/docbook">
+    <term><parameter>bulk</parameter> (<classname>MongoDB\Driver\BulkWrite</classname>)</term>
+    <listitem>
+     <para>
+      Записи, які потрібно зробити.
+     </para>
+    </listitem>
+   </varlistentry>
+'>
+
+<!ENTITY mongodb.parameter.command '
+   <varlistentry xmlns="http://docbook.org/ns/docbook">
+    <term><parameter>command</parameter> (<classname>MongoDB\Driver\Command</classname>)</term>
+    <listitem>
+     <para>
+      Команда, яку потрібно виконати.
+     </para>
+    </listitem>
+   </varlistentry>
+'>
+
+<!ENTITY mongodb.parameter.encryptOpts '
+   <varlistentry xmlns="http://docbook.org/ns/docbook">
+    <term><parameter>options</parameter></term>
+    <listitem>
+     <para>
+      <table>
+       <title>Параметри шифрування</title>
+       <tgroup cols="3">
+        <thead>
+         <row>
+          <entry>Параметр</entry>
+          <entry>Тип</entry>
+          <entry>Опис</entry>
+         </row>
+        </thead>
+        <tbody>
+         <row>
+          <entry>algorithm</entry>
+          <entry><type>string</type></entry>
+          <entry>
+           <para>
+            Алгоритм, що потрібно використати. Цей параметр обов&apos;язковий.
+            Дозволено вказувати одну з
+            <link linkend="mongodb-driver-clientencryption.constants">констант
+            ClientEncryption</link>:
+           </para>
+           <simplelist>
+            <member><constant>MongoDB\Driver\ClientEncryption::AEAD_AES_256_CBC_HMAC_SHA_512_DETERMINISTIC</constant></member>
+            <member><constant>MongoDB\Driver\ClientEncryption::AEAD_AES_256_CBC_HMAC_SHA_512_RANDOM</constant></member>
+            <member><constant>MongoDB\Driver\ClientEncryption::ALGORITHM_INDEXED</constant></member>
+            <member><constant>MongoDB\Driver\ClientEncryption::ALGORITHM_UNINDEXED</constant></member>
+            <member><constant>MongoDB\Driver\ClientEncryption::ALGORITHM_RANGE</constant></member>
+           </simplelist>
+          </entry>
+         </row>
+         <row>
+          <entry>contentionFactor</entry>
+          <entry><type>int</type></entry>
+          <entry>
+           <para>
+            Фактор конкуренції виконання запитів із індексованим зашифрованим
+            корисним навантаженням.
+           </para>
+           <para>
+            Цей параметр застосовується тільки, якщо параметр
+            <literal>algorithm</literal> має значення
+            <constant>MongoDB\Driver\ClientEncryption::ALGORITHM_INDEXED</constant>
+            або
+            <constant>MongoDB\Driver\ClientEncryption::ALGORITHM_RANGE</constant>.
+           </para>
+          </entry>
+         </row>
+         <row>
+          <entry>keyAltName</entry>
+          <entry><type>string</type></entry>
+          <entry>
+           <para>
+            Визначає назву документа колекції з сховищем ключів за
+            <literal>keyAltName</literal>. Цей параметр є взаємовиключним з
+            <literal>keyId</literal>, тож потрібен саме один з них.
+           </para>
+          </entry>
+         </row>
+         <row>
+          <entry>keyId</entry>
+          <entry><classname>MongoDB\BSON\Binary</classname></entry>
+          <entry>
+           <para>
+            Визначає ключ даних за <literal>_id</literal>. Значенням має бути
+            UUID (двійковий підтип 4). Цей параметр є взаємовиключним з
+            <literal>keyAltName</literal>, тож потрібен саме один з них.
+           </para>
+          </entry>
+         </row>
+         <row>
+          <entry>queryType</entry>
+          <entry><type>string</type></entry>
+          <entry>
+           <para>
+            Тип запиту з індексованим зашифорваним корисним навантаженням.
+            Дозволено вказувати одну з
+            <link linkend="mongodb-driver-clientencryption.constants">констант
+            ClientEncryption</link>:
+           </para>
+           <simplelist>
+            <member><constant>MongoDB\Driver\ClientEncryption::QUERY_TYPE_EQUALITY</constant></member>
+            <member><constant>MongoDB\Driver\ClientEncryption::QUERY_TYPE_RANGE</constant></member>
+           </simplelist>
+           <para>
+            Цей параметр застововується тільки, якщо параметр
+            <literal>algorithm</literal> має значення
+            <constant>MongoDB\Driver\ClientEncryption::ALGORITHM_INDEXED</constant>
+            або <constant>MongoDB\Driver\ClientEncryption::ALGORITHM_RANGE</constant>.
+           </para>
+          </entry>
+         </row>
+         <row>
+          <entry>rangeOpts</entry>
+          <entry><type>array</type></entry>
+          <entry>
+           <para>
+            Параметри індексу для запиту зашифрованого поля, яке підтримує
+            "range"-запити. Параметри, що нижче, мають відповідати набору
+            значень в <literal>encryptedFields</literal> обраної колекції. Для
+            полів з BSON-типами "double", "decimal128", параметри
+            <literal>min</literal>, <literal>max</literal> та
+            <literal>precision</literal> потрібно задавати всі або жодного.
+           </para>
+           <para>
+            <table>
+             <title>Параметри індексу діапазону</title>
+             <tgroup cols="3">
+              <thead>
+               <row>
+                <entry>Параметр</entry>
+                <entry>Тип</entry>
+                <entry>Опис</entry>
+               </row>
+              </thead>
+              <tbody>
+               <row>
+                <entry>min</entry>
+                <entry><type>mixed</type></entry>
+                <entry>
+                 Нижня межа діапазону, яка має BSON-значення. Параметр
+                 обов&apos;язковий, якщо задано <literal>precision</literal>.
+                </entry>
+               </row>
+               <row>
+                <entry>max</entry>
+                <entry><type>mixed</type></entry>
+                <entry>
+                 Верхня межа діапазону, яка має BSON-значення. Параметр
+                 обов&apos;язковий, якщо задано <literal>precision</literal>.
+                </entry>
+               </row>
+               <row>
+                <entry>sparsity</entry>
+                <entry><type>int</type></entry>
+                <entry>Обов&apos;язковий. Додатнє ціле 64-бітне число.</entry>
+               </row>
+               <row>
+                <entry>precision</entry>
+                <entry><type>int</type></entry>
+                <entry>
+                 Необов&apos;язковий. Додатнє ціле 32-бітне число, що вказує
+                 точність явного шифрування. Можна задавати тільки для полів з
+                 BSON-типами "double" або "decimal128".
+                </entry>
+               </row>
+               <row>
+                <entry>trimFactor</entry>
+                <entry><type>int</type></entry>
+                <entry>Обов&apos;язковий. Додатнє ціле 32-бітне число.</entry>
+               </row>
+              </tbody>
+             </tgroup>
+            </table>
+           </para>
+          </entry>
+         </row>
+        </tbody>
+       </tgroup>
+      </table>
+     </para>
+    </listitem>
+   </varlistentry>
 '>
 
 <!-- Radius -->
