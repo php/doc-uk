@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 96c9d88bad9a7d7d44bfb7f26c226df7ee9ddf26 Maintainer: ktretyak Status: ready -->
-<!-- $Revision$ -->
- 
+<!-- EN-Revision: 96c9d88bad9a7d7d44bfb7f26c226df7ee9ddf26 Maintainer: mproshchuk Status: ready -->
 <reference xml:id="ref.info" xmlns="http://docbook.org/ns/docbook">
- <title>&Functions; PHP Options/Info</title>
+ <title>&Functions; налаштування та отримання інформації про PHP</title>
 
  &reference.info.entities.functions;
 
