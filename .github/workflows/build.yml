@@ -1,0 +1,36 @@
+name: "Build Ukrainian language documentation"
+
+on:
+  push:
+    branches: "master"
+  pull_request:
+    branches: "master"
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: "Build"
+
+    runs-on: "ubuntu-20.04"
+
+    steps:
+      - name: "Checkout php/doc-uk"
+        uses: "actions/checkout@v4"
+        with:
+          path: "uk"
+          repository: "php/doc-uk"
+
+      - name: "Checkout php/doc-en"
+        uses: "actions/checkout@v4"
+        with:
+          path: "en"
+          repository: "php/doc-en"
+
+      - name: "Checkout php/doc-base"
+        uses: "actions/checkout@v4"
+        with:
+          path: "doc-base"
+          repository: "php/doc-base"
+
+      - name: "Build documentation"
+        run: "php8.0 doc-base/configure.php --disable-libxml-check --enable-xml-details --redirect-stderr-to-stdout --with-lang=uk"
