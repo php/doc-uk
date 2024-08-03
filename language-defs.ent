@@ -8,7 +8,7 @@
 <!ENTITY GettingStarted    "З чого почати">
 <!ENTITY InstallAndConfigure "Встановлення та налаштування">
 <!ENTITY Installation      "Встановлення">
-<!ENTITY LanguageReference "Довідник для PHP">
+<!ENTITY LanguageReference "Довідник з мови">
 <!ENTITY Features          "Можливості">
 <!ENTITY Security          "Безпека">
 <!ENTITY FunctionReference "Довідник функцій">
@@ -43,12 +43,12 @@
 <!ENTITY MiscExtensions                           "Різні розширення">
 <!ENTITY UIExtensions                             "Розширення для роботи з GUI">
 <!ENTITY Appendices        "Доповнення">
-<!ENTITY PEAR              "PEAR: Репозиторій PHP розширень та застосунків">
-<!ENTITY FAQ               "ЧАП: Часті питання й відповіді">
-<!ENTITY FAQabbrev         "ЧАП">
+<!ENTITY PEAR              "PEAR: Репозиторій PHP-розширень та застосунків">
+<!ENTITY FAQ               "ЧаПи: Часті питання">
+<!ENTITY FAQabbrev         "ЧаПи">
 <!ENTITY Internals         "Що в середені PHP та рушія Zend">
 <!ENTITY Internals2        "PHP в Ядрі: Керівництво хакера">
-<!ENTITY ZendAPI           "Zend API: Взламуємо ядро PHP">
+<!ENTITY ZendAPI           "Zend API: Зламуємо ядро PHP">
 <!ENTITY IndexListing      "Список в алфавітному порядку">
 <!ENTITY FunctionListing   "Список функцій та методів">
 <!ENTITY FunctionListingDescription   "Список всіх функцій та методів в керівництві">
@@ -90,7 +90,7 @@ supplemental files to mark section titles -->
 <!ENTITY reftitle.description  '<title xmlns="http://docbook.org/ns/docbook">Опис</title>'>
 <!ENTITY reftitle.encoding     '<title xmlns="http://docbook.org/ns/docbook">Кодування</title>'>
 <!ENTITY reftitle.examples     '<title xmlns="http://docbook.org/ns/docbook">Приклади</title>'>
-<!ENTITY reftitle.exceptions   '<title xmlns="http://docbook.org/ns/docbook">Винятки</title>'>
+<!ENTITY reftitle.exceptions   '<title xmlns="http://docbook.org/ns/docbook">Виключення</title>'>
 <!ENTITY reftitle.errors       '<title xmlns="http://docbook.org/ns/docbook">Помилки/виключення</title>'>
 <!ENTITY reftitle.faq          '<title xmlns="http://docbook.org/ns/docbook">&FAQ;</title>'>
 <!ENTITY reftitle.install      '<title xmlns="http://docbook.org/ns/docbook">Встановлення</title>'>

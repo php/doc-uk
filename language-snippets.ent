@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 54cf5f9e3f1678ded292c9a9fe4b378e2d71fc26 Maintainer: mproshchuk Status: wip -->
+<!-- EN-Revision: d5c509de14490cf1afa727a6d9431c9f878d5d26 Maintainer: mproshchuk Status: ready -->
 
 <!ENTITY installation.enabled.disable
 'Це розширення початково увімкнено. Для вимкнення застосовується наступна опція
@@ -988,7 +988,7 @@ linkend="language.operators.comparison">оператор ===</link>.</simpara></
   Виклик цієї функції для об&apos;єктів є застарілим. Краще перетворити &object;
   в &array;, застосувавши <function>get_mangled_object_vars</function>, або
   використати методи класу, який імплементує
-  <interfacename>Iterator</interfacename>, наприклад,
+  <interfacename>Iterator</interfacename>, наприклад
   <classname>ArrayIterator</classname>.
  </entry>
 </row>
@@ -1471,7 +1471,7 @@ linkend="ini.imap.enable-insecure-rsh">imap.enable_insecure_rsh</link>.
 
 <!ENTITY intl.codepoint.parameter
 '<para xmlns="http://docbook.org/ns/docbook">Значення кодової точки типу
-<type>int</type> (наприклад, <literal>0x2603</literal> для <emphasis>U+2603
+<type>int</type> (наприклад <literal>0x2603</literal> для <emphasis>U+2603
 SNOWMAN</emphasis>) або символ UTF-8 типу <type>string</type> (напр.
 <literal>"\u{2603}"</literal>)</para>'>
 
@@ -3302,7 +3302,7 @@ linkend="imagick.constants.channel">константи каналу</link> по�
 <!-- User streams -->
 <!ENTITY userstream.not.implemented.warning
 '<para xmlns="http://docbook.org/ns/docbook">Виводить
-<constant>E_WARNING</constant>, якщо цей метод не вдалося викликати (напр., не
+<constant>E_WARNING</constant>, якщо цей метод не вдалося викликати (напр. не
 реалізований).</para>'>
 
 <!ENTITY userstream.updates.context
@@ -4636,63 +4636,841 @@ local: {
    </varlistentry>
 '>
 
+<!ENTITY mongodb.parameter.query '
+   <varlistentry xmlns="http://docbook.org/ns/docbook">
+    <term><parameter>query</parameter> (<classname>MongoDB\Driver\Query</classname>)</term>
+    <listitem>
+     <para>
+      Запит для виконання.
+     </para>
+    </listitem>
+   </varlistentry>
+'>
+
+<!ENTITY mongodb.parameter.typeMap '
+   <varlistentry xmlns="http://docbook.org/ns/docbook">
+    <term><parameter>typeMap</parameter> (<type>array</type>)</term>
+    <listitem>
+     <para>
+      <link linkend="mongodb.persistence.typemaps">Налаштування мапи типів</link>.
+     </para>
+    </listitem>
+   </varlistentry>
+'>
+
+<!ENTITY mongodb.parameter.filter '
+   <varlistentry xmlns="http://docbook.org/ns/docbook">
+    <term><parameter>filter</parameter>
+    (<type class="union"><type>array</type><type>object</type></type>)</term>
+    <listitem>
+     <para>
+      <link xlink:href="&url.mongodb.docs;tutorial/query-documents/"
+      xmlns:xlink="http://www.w3.org/1999/xlink">Предикат запиту</link>.
+      Порожній предикат відповідає всім документам у колекції.
+     </para>
+     <note>
+      <simpara>
+       Під час виконання критеріїв запиту MongoDB порівнює типи та значення за
+       власними <link
+       xlink:href="&url.mongodb.docs;reference/bson-type-comparison-order/"
+       xmlns:xlink="http://www.w3.org/1999/xlink">правилами порівняння
+       BSON-типів</link>, що відрізняється від правил
+       <link linkend="types.comparisons">порівняння</link> і
+       <link linkend="language.types.type-juggling">перетворення типів</link> в
+       PHP. Для вибірки даних спеціальних BSON-типів, критерії запиту повинні
+       використовувати відповідний <link linkend="book.bson">клас BSON</link>
+       (напр. <classname>MongoDB\BSON\ObjectId</classname> для вибірки
+       <link xlink:href="&url.mongodb.docs.objectid;"
+       xmlns:xlink="http://www.w3.org/1999/xlink">ObjectId</link>).
+      </simpara>
+     </note>
+    </listitem>
+   </varlistentry>
+'>
+
+<!ENTITY mongodb.returns.cursor
+'<para xmlns="http://docbook.org/ns/docbook">У разі успіху повертає примірника
+<classname>MongoDB\Driver\Cursor</classname>.</para>'>
+
+<!ENTITY mongodb.returns.writeresult
+'<para xmlns="http://docbook.org/ns/docbook">У разі успіху повертає примірника
+<classname>MongoDB\Driver\WriteResult</classname>.</para>'>
+
+<!ENTITY mongodb.throws.std '&mongodb.throws.argumentparsing;&mongodb.throws.connection;&mongodb.throws.authentication;'>
+
+<!ENTITY mongodb.throws.session-readwriteconcern
+'<member xmlns="http://docbook.org/ns/docbook">Якщо в транзакції параметр
+<literal>"session"</literal> використано разом з параметром
+<literal>"readConcern"</literal> або <literal>"writeConcern"</literal>,
+викидається
+<classname>MongoDB\Driver\Exception\InvalidArgumentException</classname>.</member>'>
+
+<!ENTITY mongodb.throws.session-unacknowledged
+'<member xmlns="http://docbook.org/ns/docbook">Якщо використано параметр
+<literal>"session"</literal>, а вимога щодо запису не задоволена, викидається
+<classname>MongoDB\Driver\Exception\InvalidArgumentException</classname>.</member>'>
+
+<!ENTITY mongodb.throws.bulkwriteexception
+'<member xmlns="http://docbook.org/ns/docbook">У разі невдалого запису
+(наприклад, помилка запису, неможливість задовільнити вимогу щодо запису)
+викидається <classname>MongoDB\Driver\Exception\BulkWriteException</classname>.</member>'>
+
+<!ENTITY mongodb.throws.argumentparsing
+'<member xmlns="http://docbook.org/ns/docbook">У разі помилки обробки параметрів
+викидається
+<classname>MongoDB\Driver\Exception\InvalidArgumentException</classname>.</member>'>
+
+<!ENTITY mongodb.throws.authentication
+'<member xmlns="http://docbook.org/ns/docbook">Якщо обов&apos;язкова
+автентифікація провалена, то викидається
+<classname>MongoDB\Driver\Exception\AuthenticationException</classname>.</member>'>
+
+<!ENTITY mongodb.throws.connection
+'<member xmlns="http://docbook.org/ns/docbook">Якщо не вдається з’єднатися з
+сервером (з інших причин, ніж автентифікація), то викидається
+<classname>MongoDB\Driver\Exception\ConnectionException</classname>.</member>'>
+
+<!ENTITY mongodb.throws.bson.unexpected
+'<member xmlns="http://docbook.org/ns/docbook">Якщо вхідні дані не містять точно
+одного документа BSON, викидається
+<classname>MongoDB\Driver\Exception\UnexpectedValueException</classname>.
+Можливі причини: хибний BSON, надлишкові дані (після одного документу BSON) або
+неочікувана помилка бібліотеки <link xlink:href="&url.mongodb.libbson;"
+xmlns:xlink="http://www.w3.org/1999/xlink">libbson</link>.</member>'>
+
+<!-- Not used in EN anymore -->
+<!ENTITY mongodb.note.queryable-encryption-preview ''>
+
+<!ENTITY mongodb.note.decimal128 '
+   <note xmlns="http://docbook.org/ns/docbook">
+    <simpara>
+     Клас <classname>MongoDB\BSON\Decimal128</classname> доступний в MongoDB
+     3.4+. Спроба використати цей BSON-тип в старіших версіях MongoDB викличе
+     помилку.
+    </simpara>
+   </note>
+'>
+
+<!ENTITY mongodb.note.extended-json '
+  <note xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+   <simpara>
+    Вивід узгоджений з функцією <function>MongoDB\BSON\toJSON</function>, яка
+    використовує специфічний для драйвера застарілий розширений формат JSON. Це
+    не обов&apos;язково збігається з інтерпретаціями розширеного JSON, як от
+    <link xlink:href="&url.mongodb.specs.extendedjson;#relaxed-extended-json-example">relaxed</link>
+    або <link xlink:href="&url.mongodb.specs.extendedjson;#canonical-extended-json-example">canonical</link>,
+    що використовують функції
+    <function>MongoDB\BSON\toRelaxedExtendedJSON</function> і
+    <function>MongoDB\BSON\toCanonicalExtendedJSON</function>, відповідно.
+   </simpara>
+  </note>
+'>
+
+<!ENTITY mongodb.note.forking '
+   <note xmlns="http://docbook.org/ns/docbook">
+    <simpara>
+     На платформах Unix розширення чутливе до скриптів, які використовують
+     системний виклик fork() без виклику exec(). Користувачам пропонується не
+     використовувати повторно примірники
+     <classname>MongoDB\Driver\Manager</classname> у відгалужених підпроцесах.
+    </simpara>
+   </note>
+'>
+
+<!ENTITY mongodb.note.uint32 '
+  <note xmlns="http://docbook.org/ns/docbook">
+   <simpara>
+    Через те, що у PHP цілочисельний тип є знаковим, деякі значення, що повертає
+    цей метод, можуть стати від&apos;ємними на 32-бітних платформах. Для подання
+    беззнакового десяткового значення як рядка, використовується функція
+    <function>sprintf</function> зі специфікатором <literal>"&#37;u"</literal>.
+   </simpara>
+  </note>
+'>
+
+<!ENTITY mongodb.note.server.readpreference '
+  <note xmlns="http://docbook.org/ns/docbook">
+   <simpara>
+    Параметр <literal>"readPreference"</literal> впливає не на сервер, котрому
+    драйвер дає команду, а тільки на об&apos;єкт сервера. Натомість, під час
+    надсилання драйвером команди, цей параметр може забезпечувати відповідний
+    мережевий протокол для другорядного вузла з набору реплік, а також
+    встановлювати вимоги щодо читання для mongo-вузла.
+   </simpara>
+  </note>
+'>
+
+<!ENTITY mongodb.note.server.write '
+  <note xmlns="http://docbook.org/ns/docbook">
+   <simpara>
+    На програміста покладено роль визначити спроможність сервера
+    виконувати операції запису. До прикладу, операція запису на другорядному
+    вузлі (за винятком "локальної" БД) буде невдалою.
+   </simpara>
+  </note>
+'>
+
+<!ENTITY mongodb.warning.duplicate-keys '
+   <warning xmlns="http://docbook.org/ns/docbook">
+    <simpara>
+     Технічно, BSON-документи можуть містити повторювані ключі, оскільки
+     зберігаються, як списки пар ключ-значення. Однак програми не повинні
+     створювати документи із дублікатами ключів, бо поведінка сервера та
+     драйвера може бути невизначеною. Також дані можуть бути пошкоджені під час
+     декодування BSON-документа, бо в PHP об&apos;єкти не можуть містити
+     повторювані назви властивостей, а масиви — дубльовані ключі.
+    </simpara>
+   </warning>
+'>
+
 <!-- Radius -->
-<!ENTITY radius.request.required '<note xmlns="http://docbook.org/ns/docbook"><para>A request must be created via <function>radius_create_request</function> before this function can be called.</para></note>'>
-<!ENTITY radius.parameter.attribute-type '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>type</parameter></term><listitem><para>The attribute type.</para></listitem></varlistentry>'>
-<!ENTITY radius.parameter.handle '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>radius_handle</parameter></term><listitem><para>The RADIUS resource.</para></listitem></varlistentry>'>
-<!ENTITY radius.parameter.options '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>options</parameter></term><listitem><para>A bitmask of the attribute options. The available options include <link linkend="constant.radius-option-tagged"><constant>RADIUS_OPTION_TAGGED</constant></link> and <link linkend="constant.radius-option-salt"><constant>RADIUS_OPTION_SALT</constant></link>.</para></listitem></varlistentry>'>
-<!ENTITY radius.parameter.tag '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>tag</parameter></term><listitem><para>The attribute tag. This parameter is ignored unless the <link linkend="constant.radius-option-tagged"><constant>RADIUS_OPTION_TAGGED</constant></link> option is set.</para></listitem></varlistentry>'>
-<!ENTITY radius.parameter.vendor '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>vendor</parameter></term><listitem><para>The vendor ID.</para></listitem></varlistentry>'>
+<!ENTITY radius.request.required
+'<note xmlns="http://docbook.org/ns/docbook"><para>Перед викликом цієї функції
+потрібно створити запит за допомогою функції
+<function>radius_create_request</function>.</para></note>'>
+
+<!ENTITY radius.parameter.attribute-type
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term>
+<parameter>type</parameter></term><listitem><para>Тип
+атрибута.</para></listitem></varlistentry>'>
+
+<!ENTITY radius.parameter.handle
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term>
+<parameter>radius_handle</parameter></term>
+<listitem><para>RADIUS-ресурс.</para></listitem></varlistentry>'>
+
+<!ENTITY radius.parameter.options
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term>
+<parameter>options</parameter></term><listitem><para>Бітова маска параметрів
+атрибута. Доступні такі параметри:
+<link linkend="constant.radius-option-tagged"><constant>RADIUS_OPTION_TAGGED</constant></link>
+і <link linkend="constant.radius-option-salt"><constant>RADIUS_OPTION_SALT</constant></link>.</para>
+</listitem></varlistentry>'>
+
+<!ENTITY radius.parameter.tag
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term>
+<parameter>tag</parameter></term><listitem><para>Тег атрибуту. Якщо встановлено
+параметр <link linkend="constant.radius-option-tagged"><constant>RADIUS_OPTION_TAGGED</constant></link>,
+то цей параметр ігнорується.</para></listitem></varlistentry>'>
+
+<!ENTITY radius.parameter.vendor
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term>
+<parameter>vendor</parameter></term><listitem><para>ID
+постачальника.</para></listitem></varlistentry>'>
 
 <!-- posix snippets -->
-<!ENTITY posix.parameter.fd '<varlistentry xmlns="http://docbook.org/ns/docbook">
- <term><parameter>fd</parameter></term>
+<!ENTITY posix.parameter.fd
+'<varlistentry xmlns="http://docbook.org/ns/docbook">
+ <term><parameter>file_descriptor</parameter></term>
  <listitem>
   <para>
-   The file descriptor, which is expected to be either a file
-   <type>resource</type> or an <type>integer</type>. An <type>integer</type>
-   will be assumed to be a file descriptor that can be passed directly to
-   the underlying system call.
-  </para>
-  <para>
-   In almost all cases, you will want to provide a file <type>resource</type>.
+   Файловий дескриптор типу <type>resource</type> або <type>int</type>.
+   <type>int</type>-дескриптор вважається файловим дескриптором, який можна
+   передати безпосередньо основному системному виклику.
   </para>
  </listitem>
 </varlistentry>'>
 
+<!ENTITY posix.rlimits '
+<para xmlns="http://docbook.org/ns/docbook">
+  З кожним процесом пов&apos;язані м&apos;які та жорсткі межі його ресурсів.
+  М&apos;яка межа — ефективний розмір ресурсу. Жорстка межа — це значення, до
+  якого процес може збільшити ефективний розмір ресурсу. Непривілейований процес
+  може змінювати свої м&apos;які межі, але жорсткі межі — лише зменшувати.
+</para>
+'>
+
 <!-- strings snippets -->
 <!ENTITY strings.parameter.encoding '
  <para xmlns="http://docbook.org/ns/docbook">
-  An optional argument defining the encoding used when converting characters.
+  Необов&apos;язковий параметр. Ним вказується кодування, що застосовуватиметься
+  під час перетворення символів.
  </para>
 
  <para xmlns="http://docbook.org/ns/docbook">
-  If omitted, the default value of the <parameter>encoding</parameter> varies
-  depending on the PHP version in use. In PHP 5.6 and later, the
-  <link linkend="ini.default-charset">default_charset</link> configuration
-  option is used as the default value. PHP 5.4 and 5.5 will use
-  <literal>UTF-8</literal> as the default. Earlier versions of PHP use
-  <literal>ISO-8859-1</literal>.
+  Якщо пропущено, то параметр <parameter>encoding</parameter> отримає значення
+  директиви <link linkend="ini.default-charset">default_charset</link>.
  </para>
 
  <para xmlns="http://docbook.org/ns/docbook">
-  Although this argument is technically optional, you are highly encouraged to
-  specify the correct value for your code if you are using PHP 5.5 or earlier,
-  or if your <link linkend="ini.default-charset">default_charset</link>
-  configuration option may be set incorrectly for the given input.
+  Хоча технічно цей аргумент є необов&apos;язковим, але рекомендується вказати
+  в коді потрібне значення, оскільки директива <link
+  linkend="ini.default-charset">default_charset</link> може бути неправильною
+  для заданих вхідних даних.
  </para>
 '>
+
+<!ENTITY strings.parameter.format '
+<varlistentry xmlns="http://docbook.org/ns/docbook">
+ <term><parameter>format</parameter></term>
+ <listitem>
+  <para>
+   Рядок формату складається з нуля або більше директив: звичайних символів
+   (крім <literal>&#37;</literal>), які відображаються в результаті без змін, та
+   <emphasis>специфікаторів перетворення</emphasis>, для кожного з яких
+   задається свій параметр.
+  </para>
+
+  <para>
+   Специфікатор перетворення відповідає прототипу:
+   <literal>&#37;[argnum$][flags][width][.precision]specifier</literal>.
+  </para>
+
+  <formalpara>
+   <title>Номер параметра</title>
+   <para>
+    Ціле число, слідом за ним — знак долара <literal>$</literal>. Вказує
+    порядковий номер параметра для перетворення.
+   </para>
+  </formalpara>
+
+  <para>
+   <table>
+    <title>Прапорці</title>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>Позначення</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry><literal>-</literal></entry>
+       <entry>
+        Вирівнює по лівому краю в межах заданої ширини. Праве вирівнювання
+        виконується автоматично.
+       </entry>
+      </row>
+      <row>
+       <entry><literal>+</literal></entry>
+       <entry>
+        Дописує до додатнього числа знак <literal>+</literal>. Знак мінуса до
+        від&apos;ємного числа дописується автоматично.
+       </entry>
+      </row>
+      <row>
+       <entry><literal> </literal> (пропуск)</entry>
+       <entry>
+        Доповнює результат пропусками. Також виконується автоматично.
+       </entry>
+      </row>
+      <row>
+       <entry><literal>0</literal></entry>
+       <entry>
+        Доповнює число нулями ліворуч. Разом зі специфікатором
+        <literal>s</literal> доповнює число нулями також праворуч.
+       </entry>
+      </row>
+      <row>
+       <entry><literal>&apos;</literal> (символ)</entry>
+       <entry>
+        Доповнює рядок символом (символ).
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </table>
+  </para>
+
+  <formalpara>
+   <title>Ширина</title>
+   <para>
+    Може бути цілим числом, що вказує найменшу кількість символів в значенні
+    після перетворення, або знак <literal>*</literal>. Якщо використано
+    знак <literal>*</literal>, то ширина вказується як додаткове ціле число,
+    що передує значенню, відформатованому специфікатором.
+   </para>
+  </formalpara>
+
+  <formalpara>
+   <title>Точність</title>
+   <para>
+    Крапка <literal>.</literal>, за якою (необов&apos;язково) слідує ціле число
+    чи знак <literal>*</literal>, значення якого залежить від специфікатора:
+    <itemizedlist>
+     <listitem>
+      <simpara>
+       Для специфікаторів <literal>e</literal>, <literal>E</literal>,
+       <literal>f</literal> і <literal>F</literal> — це кількість знаків, що
+       будуть надруковані після десяткового розділювача (початково: 6).
+      </simpara>
+     </listitem>
+     <listitem>
+      <simpara>
+       Для специфікаторів <literal>g</literal>, <literal>G</literal>,
+       <literal>h</literal> і <literal>H</literal> — найбільша допустима
+       кількість значущих цифр, що будуть надруковані.
+      </simpara>
+     </listitem>
+     <listitem>
+      <simpara>
+       Для специфікатора <literal>s</literal> — діє як точка відсікання,
+       встановлюючи максимальну кількість символів у рядку.
+      </simpara>
+     </listitem>
+    </itemizedlist>
+    <note>
+     <simpara>
+      Якщо крапку вказано без зазначення точності, тоді точністю вважатиметься
+      0. Якщо використано знак <literal>*</literal>, то точність вказується як
+      додаткове ціле число, що передує значенню, відформатованому специфікатором.
+     </simpara>
+    </note>
+   </para>
+  </formalpara>
+
+  <para>
+   <table>
+    <title>Специфікатори</title>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>Назва</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry><literal>&#37;</literal></entry>
+       <entry>
+        Буквальний знак відсотка. Ніяких параметрів не потрібно.
+       </entry>
+      </row>
+      <row>
+       <entry><literal>b</literal></entry>
+       <entry>
+        Параметр розглядається як ціле число і відображається як двійкове число.
+       </entry>
+      </row>
+      <row>
+       <entry><literal>c</literal></entry>
+       <entry>
+        Параметр розглядається як ціле число і відображається як символ з таким
+        кодом ASCII.
+       </entry>
+      </row>
+      <row>
+       <entry><literal>d</literal></entry>
+       <entry>
+        Параметр розглядається як ціле число і відображається як знакове
+        десяткове число.
+       </entry>
+      </row>
+      <row>
+       <entry><literal>e</literal></entry>
+       <entry>
+        Параметр розглядається як експоненційний запис (напр. 1.2e+2).
+       </entry>
+      </row>
+      <row>
+       <entry><literal>E</literal></entry>
+       <entry>
+        Схожий до специфікатора <literal>e</literal>, але використовує знак
+        експоненти з великої букви (напр. 1.2E+2).
+       </entry>
+      </row>
+      <row>
+       <entry><literal>f</literal></entry>
+       <entry>
+        Параметр розглядається і відображається як десятковий дріб (з
+        урахуванням локалі).
+       </entry>
+      </row>
+      <row>
+       <entry><literal>F</literal></entry>
+       <entry>
+        Параметр розглядається і відображається як десятковий дріб (БЕЗ
+        урахування локалі).
+       </entry>
+      </row>
+      <row>
+       <entry><literal>g</literal></entry>
+       <entry>
+        <para>
+         Загальний формат.
+        </para>
+        <para>
+         Нехай <literal>P</literal> дорівнює точності, якщо вона не дорівнює
+         нулю, 6, якщо точність не вказано, або 1, якщо точність дорівнює нулю.
+         Тоді, якщо перетворення в стилі "E" матиме показник степеня
+         <literal>X</literal>:
+        </para>
+        <para>
+         Якщо P > X ≥ −4, перетворення буде в стилі "f" та з точністю P − (X +
+         1). Інакше, перетворення буде в стилі "e" та з точністю P − 1.
+        </para>
+       </entry>
+      </row>
+      <row>
+       <entry><literal>G</literal></entry>
+       <entry>
+        Схожий до специфікатора <literal>g</literal>, але використовує
+        <literal>E</literal> та <literal>f</literal>.
+       </entry>
+      </row>
+      <row>
+       <entry><literal>h</literal></entry>
+       <entry>
+        Схожий до специфікатора <literal>g</literal>, але використовує
+        <literal>F</literal>. Доступний, починаючи з PHP 8.0.0.
+       </entry>
+      </row>
+      <row>
+       <entry><literal>H</literal></entry>
+       <entry>
+        Схожий до специфікатора <literal>g</literal>, але використовує
+        <literal>E</literal> та <literal>F</literal>. Доступний, починаючи з
+        PHP 8.0.0.
+       </entry>
+      </row>
+      <row>
+       <entry><literal>o</literal></entry>
+       <entry>
+        Параметр розглядається як ціле число і відображається як вісімкове число.
+       </entry>
+      </row>
+      <row>
+       <entry><literal>s</literal></entry>
+       <entry>
+        Параметр розглядається і відображається як рядок.
+       </entry>
+      </row>
+      <row>
+       <entry><literal>u</literal></entry>
+       <entry>
+        Параметр розглядається як ціле число і відображається як беззнакове
+        десяткове число.
+       </entry>
+      </row>
+      <row>
+       <entry><literal>x</literal></entry>
+       <entry>
+        Параметр розглядається як ціле число і відображається як шіснадцяткове
+        число (з малими буквами).
+       </entry>
+      </row>
+      <row>
+       <entry><literal>X</literal></entry>
+       <entry>
+        Параметр розглядається як ціле число і відображається як шіснадцяткове
+        число (з великими буквами).
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </table>
+  </para>
+
+  <warning>
+   <para>
+    Специфікатор <literal>"c"</literal> ігнорує заповнення та ширину.
+   </para>
+  </warning>
+
+  <warning>
+   <para>
+    Спроба використати разом рядковий специфікатор та специфікатор ширини з
+    символами, що займають більше одного байта, може призвести до неочікуваного
+    результату.
+   </para>
+  </warning>
+
+  <para>
+   Змінні будуть приведені до відповідного типу для специфікатора:
+   <table>
+    <title>Обробка типів</title>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>Тип</entry>
+       <entry>Специфікатор</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry><type>string</type></entry>
+       <entry><literal>s</literal></entry>
+      </row>
+      <row>
+       <entry><type>int</type></entry>
+       <entry>
+        <literal>d</literal>,
+        <literal>u</literal>,
+        <literal>c</literal>,
+        <literal>o</literal>,
+        <literal>x</literal>,
+        <literal>X</literal>,
+        <literal>b</literal>
+       </entry>
+      </row>
+      <row>
+       <entry><type>float</type></entry>
+       <entry>
+        <literal>e</literal>,
+        <literal>E</literal>,
+        <literal>f</literal>,
+        <literal>F</literal>,
+        <literal>g</literal>,
+        <literal>G</literal>,
+        <literal>h</literal>,
+        <literal>H</literal>
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </table>
+  </para>
+ </listitem>
+</varlistentry>
+'>
+
+<!ENTITY strings.scanf.parameter.format '
+<varlistentry xmlns="http://docbook.org/ns/docbook">
+     <term><parameter>format</parameter></term>
+     <listitem>
+      <para>
+       Це формат інтерпретації рядка <parameter>string</parameter>, який
+       описаний в документації про функцію <function>sprintf</function>, але з
+       деякими відмінностями:
+       <simplelist>
+        <member>
+         Функція не враховує локаль.
+        </member>
+        <member>
+         Специфікатори <literal>F</literal>, <literal>g</literal>,
+         <literal>G</literal> і <literal>b</literal> не підтримуються.
+        </member>
+        <member>
+         Специфікатор <literal>D</literal> означає десяткове число.
+        </member>
+        <member>
+         Специфікатор <literal>i</literal> означає ціле число з визначенням основи.
+        </member>
+        <member>
+         Специфікатор <literal>n</literal> означає кількість оброблених символів.
+        </member>
+        <member>
+         Специфікатор <literal>s</literal> зупиняє зчитування після будь-якого
+         символу пропуску.
+        </member>
+        <member>
+         Знак <literal>*</literal> на відміну від <literal>argnum$</literal>
+         забороняє призначення цього специфікатора перетворення.
+        </member>
+       </simplelist>
+      </para>
+     </listitem>
+    </varlistentry>
+'>
+
+<!ENTITY strings.parameter.needle.non-string '
+ <para xmlns="http://docbook.org/ns/docbook">
+  До версії PHP 8.0.0, якщо параметр <parameter>needle</parameter> не є рядком,
+  він перетворюється на ціле число і розглядається як код символу. Ця поведінка
+  є застарілою, починаючи з PHP 7.3.0. Вкрай не рекомендується на неї
+  покладатися. Залежно від потрібної поведінки, параметр
+  <parameter>needle</parameter> необхідно привести до рядкового типу або
+  обробити функцією <function>chr</function>.
+ </para>
+'>
+
+<!ENTITY strings.changelog.needle-empty '<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.0.0</entry>
+ <entry>
+  Тепер параметр <parameter>needle</parameter> може бути порожнім рядком.
+ </entry>
+</row>'>
 
 <!ENTITY strings.changelog.encoding '
  <row xmlns="http://docbook.org/ns/docbook">
   <entry>5.6.0</entry>
   <entry>
-   The default value for the <parameter>encoding</parameter> parameter was
-   changed to be the value of the
-   <link linkend="ini.default-charset">default_charset</link> configuration
-   option.
+   Тепер початковим значенням параметра <parameter>encoding</parameter> є
+   значення директиви <link
+   linkend="ini.default-charset">default_charset</link>.
   </entry>
  </row>
+'>
+
+<!ENTITY strings.changelog.ascii-case-conversion '
+ <row xmlns="http://docbook.org/ns/docbook">
+  <entry>8.2.0</entry>
+  <entry>
+   Перетворення регістру більше не залежить від локалі, що встановлена функцією
+   <function>setlocale</function>. Перетворюються тільки ASCII-символи.
+  </entry>
+ </row>
+'>
+
+<!ENTITY strings.changelog.ascii-case-folding '
+ <row xmlns="http://docbook.org/ns/docbook">
+  <entry>8.2.0</entry>
+  <entry>
+   Приведення до одного регістру не залежить від локалі, що встановлена функцією
+   <function>setlocale</function>. Перетворюються тільки ASCII-символи. Байти,
+   які не належать до ASCII, порівнюються за своїми значеннями.
+  </entry>
+ </row>
+'>
+
+<!ENTITY strings.changelog.sprintf '
+  <informaltable xmlns="http://docbook.org/ns/docbook">
+   <tgroup cols="2">
+    <thead>
+     <row>
+      <entry>&Version;</entry>
+      <entry>&Description;</entry>
+     </row>
+    </thead>
+    <tbody>
+     <row>
+      <entry>8.0.0</entry>
+      <entry>
+       Ця функція більше не повертає &false; у разі помилки.
+      </entry>
+     </row>
+     <row>
+      <entry>8.0.0</entry>
+      <entry>
+       Викидає <classname>ValueError</classname>, якщо не задано жодного
+       параметра. Раніше ця функція виводила <constant>E_WARNING</constant>.
+      </entry>
+     </row>
+     <row>
+      <entry>8.0.0</entry>
+      <entry>
+       Викидає <classname>ValueError</classname>, якщо значення
+       <literal>[width]</literal> менше за нуль або більше за
+       <constant>PHP_INT_MAX</constant>. Раніше ця функція виводила
+       <constant>E_WARNING</constant>.
+      </entry>
+     </row>
+     <row>
+      <entry>8.0.0</entry>
+      <entry>
+       Викидає <classname>ValueError</classname>, якщо значення
+       <literal>[precision]</literal> менше за нуль або більше за
+       <constant>PHP_INT_MAX</constant>. Раніше ця функція виводила
+       <constant>E_WARNING</constant>.
+      </entry>
+     </row>
+     <row>
+      <entry>8.0.0</entry>
+      <entry>
+       Викидає <classname>ArgumentCountError</classname>, якщо не задано
+       обов&apos;язкові параметри. Раніше ця функція виводила
+       <constant>E_WARNING</constant>.
+      </entry>
+     </row>
+    </tbody>
+   </tgroup>
+  </informaltable>
+'>
+
+<!ENTITY strings.changelog.vsprintf '
+  <informaltable xmlns="http://docbook.org/ns/docbook">
+   <tgroup cols="2">
+    <thead>
+     <row>
+      <entry>&Version;</entry>
+      <entry>&Description;</entry>
+     </row>
+    </thead>
+    <tbody>
+     <row>
+      <entry>8.0.0</entry>
+      <entry>
+       Ця функція більше не повертає &false; у разі помилки.
+      </entry>
+     </row>
+     <row>
+      <entry>8.0.0</entry>
+      <entry>
+       Викидає <classname>ValueError</classname>, якщо не задано жодного
+       параметра. Раніше ця функція виводила <constant>E_WARNING</constant>.
+      </entry>
+     </row>
+     <row>
+      <entry>8.0.0</entry>
+      <entry>
+       Викидає <classname>ValueError</classname>, якщо значення
+       <literal>[width]</literal> менше за нуль або більше за
+       <constant>PHP_INT_MAX</constant>. Раніше ця функція виводила
+       <constant>E_WARNING</constant>.
+      </entry>
+     </row>
+     <row>
+      <entry>8.0.0</entry>
+      <entry>
+       Викидає <classname>ValueError</classname>, якщо значення
+       <literal>[precision]</literal> менше за нуль або більше за
+       <constant>PHP_INT_MAX</constant>. Раніше ця функція виводила
+       <constant>E_WARNING</constant>.
+      </entry>
+     </row>
+     <row>
+      <entry>8.0.0</entry>
+      <entry>
+       Викидає <classname>ValueError</classname>, якщо не задано
+       обов&apos;язкові параметри. Раніше ця функція виводила
+       <constant>E_WARNING</constant>.
+      </entry>
+     </row>
+    </tbody>
+   </tgroup>
+  </informaltable>
+'>
+
+<!ENTITY strings.errors.sprintf '
+  <para xmlns="http://docbook.org/ns/docbook">
+   Починаючи з PHP 8.0.0, якщо не задано жодного параметра, то викидається
+   <classname>ValueError</classname>. Раніше виводилось повідомлення
+   <constant>E_WARNING</constant>.
+  </para>
+  <para xmlns="http://docbook.org/ns/docbook">
+   Починаючи з PHP 8.0.0, якщо значення <literal>[width]</literal> менше за нуль
+   або більше за <constant>PHP_INT_MAX</constant>, то викидається
+   <classname>ValueError</classname>. Раніше виводилось повідомлення
+   <constant>E_WARNING</constant>.
+  </para>
+  <para xmlns="http://docbook.org/ns/docbook">
+   Починаючи з PHP 8.0.0, якщо значення <literal>[precision]</literal> менше за
+   нуль або більше за <constant>PHP_INT_MAX</constant>, то викидається
+   <classname>ValueError</classname>. Раніше виводилось повідомлення
+   <constant>E_WARNING</constant>.
+  </para>
+  <para xmlns="http://docbook.org/ns/docbook">
+   Починаючи з PHP 8.0.0, якщо якщо не задано обов&apos;язкові параметри, то
+   викидається <classname>ArgumentCountError</classname>. Раніше функція
+   повертала &false;, а також виводилося повідомлення
+   <constant>E_WARNING</constant>.
+  </para>
+'>
+
+<!ENTITY strings.errors.vsprintf '
+  <para xmlns="http://docbook.org/ns/docbook">
+   Починаючи з PHP 8.0.0, якщо не задано жодного параметра, то викидається
+   <classname>ValueError</classname>. Раніше виводилось повідомлення
+   <constant>E_WARNING</constant>.
+  </para>
+  <para xmlns="http://docbook.org/ns/docbook">
+   Починаючи з PHP 8.0.0, якщо значення <literal>[width]</literal> менше за нуль
+   або більше за <constant>PHP_INT_MAX</constant>, то викидається
+   <classname>ValueError</classname>. Раніше виводилось повідомлення
+   <constant>E_WARNING</constant>.
+  </para>
+  <para xmlns="http://docbook.org/ns/docbook">
+   Починаючи з PHP 8.0.0, якщо значення <literal>[precision]</literal> менше за
+   нуль або більше за <constant>PHP_INT_MAX</constant>, то викидається
+   <classname>ValueError</classname>. Раніше виводилось повідомлення
+   <constant>E_WARNING</constant>.
+  </para>
+  <para xmlns="http://docbook.org/ns/docbook">
+   Починаючи з PHP 8.0.0, якщо якщо не задано обов&apos;язкові параметри, то
+   викидається <classname>ValueError</classname>. Раніше функція повертала
+   &false;, а також виводилося повідомлення <constant>E_WARNING</constant>.
+  </para>
 '>
 
 <!-- filter snippets -->
@@ -4701,45 +5479,194 @@ local: {
   <term><parameter>filter</parameter></term>
   <listitem>
    <para>
-    The ID of the filter to apply. The <xref linkend="filter.filters" />
-    manual page lists the available filters.
+    ID фільтра, який потрібно застосувати. Список доступних фільтрів наведено на
+    сторінці посібника <xref linkend="filter.filters" />.
    </para>
    <para>
-    If omitted, <constant>FILTER_DEFAULT</constant> will be used, which is
-    equivalent to
+    Якщо не задано, то буде використана константа
+    <constant>FILTER_DEFAULT</constant>, яка однакова з 
     <link linkend="filter.filters.sanitize"><constant>FILTER_UNSAFE_RAW</constant></link>.
-    This will result in no filtering taking place by default.
+    Це призведе до того, що фільтрація не виконається.
    </para>
   </listitem>
  </varlistentry>
 '>
 
+<!-- csprng snippets -->
+<!ENTITY csprng.sources '
+<para xmlns="http://docbook.org/ns/docbook">
+ Генератори випадковостей, впорядковані за пріоритетом:
+</para>
+<itemizedlist xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <listitem>
+  <para>
+   Linux: <link xlink:href="&url.csprng.get-random-2;">getrandom()</link>, <filename>/dev/urandom</filename>
+  </para>
+ </listitem>
+ <listitem>
+  <para>
+   FreeBSD &gt;= 12 (PHP &gt;= 7.3): <link xlink:href="&url.csprng.get-random-2;">getrandom()</link>, <filename>/dev/urandom</filename>
+  </para>
+ </listitem>
+ <listitem>
+  <para>
+   Windows (PHP &gt;= 7.2): <link xlink:href="&url.csprng.cng-api;">CNG-API</link>
+  </para>
+  <para>
+   Windows: <link xlink:href="&url.csprng.crypt-gen-random;">CryptGenRandom</link>
+  </para>
+ </listitem>
+ <listitem>
+  <para>
+   macOS (PHP &gt;= 8.2; &gt;= 8.1.9; &gt;= 8.0.22, якщо CCRandomGenerateBytes доступний під час компіляції): CCRandomGenerateBytes()
+  </para>
+  <para>
+   macOS (PHP &gt;= 8.1; &gt;= 8.0.2): arc4random_buf(), <filename>/dev/urandom</filename>
+  </para>
+ </listitem>
+ <listitem>
+  <para>
+   NetBSD &gt;= 7 (PHP &gt;= 7.1; &gt;= 7.0.1): arc4random_buf(), <filename>/dev/urandom</filename>
+  </para>
+ </listitem>
+ <listitem>
+  <para>
+   OpenBSD &gt;= 5.5 (PHP &gt;= 7.1; &gt;= 7.0.1): arc4random_buf(), <filename>/dev/urandom</filename>
+  </para>
+ </listitem>
+ <listitem>
+  <para>
+   DragonflyBSD (PHP &gt;= 8.1): <link xlink:href="&url.csprng.get-random-2;">getrandom()</link>, <filename>/dev/urandom</filename>
+  </para>
+ </listitem>
+ <listitem>
+  <para>
+   Solaris (PHP &gt;= 8.1): <link xlink:href="&url.csprng.get-random-2;">getrandom()</link>, <filename>/dev/urandom</filename>
+  </para>
+ </listitem>
+ <listitem>
+  <simpara>
+   Для будь-якої іншої комбінації операційної системи та версії PHP: <filename>/dev/urandom</filename>
+  </simpara>
+ </listitem>
+ <listitem>
+  <simpara>
+   Якщо жоден генератор випадковостей не доступний або не працює, то буде
+   викинуто <classname>Random\RandomException</classname>.
+  </simpara>
+ </listitem>
+</itemizedlist>
+'>
+
+<!ENTITY csprng.errors '
+ <listitem xmlns="http://docbook.org/ns/docbook">
+  <simpara>
+   Якщо жоден генератор випадковостей не доступний, то буде викинуто
+   <classname>Random\RandomException</classname>.
+  </simpara>
+ </listitem>
+'>
+<!ENTITY csprng.function.backport '
+ <note xmlns="http://docbook.org/ns/docbook">
+  <simpara>
+   Хоча цю функцію додано в PHP 7.0, для версій від 5.2 до 5.6 включно доступна
+   <link xmlns:xlink="http://www.w3.org/1999/xlink"
+   xlink:href="&url.csprng.compat;">користувацька реалізація</link>.
+  </simpara>
+ </note>
+'>
+
+<!-- Random snippets -->
+<!ENTITY random.engineErrors '
+ <listitem xmlns="http://docbook.org/ns/docbook">
+  <simpara>
+   Будь-який нащадок класу <classname>Throwable</classname>, що викидається
+   методом <methodname>Random\Engine::generate</methodname> основного рушія
+   <link linkend="random-randomizer.props.engine"><literal>Random\Randomizer::$engine</literal></link>.
+  </simpara>
+ </listitem>
+'>
+
+<!-- UOPZ snippets -->
+
+<!ENTITY uopz.warn.removed.function-5-0-0
+'<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
+<emphasis>ВИДАЛЕНА</emphasis> в PECL uopz 5.0.0.</simpara></warning>'>
+
+<!-- XML snippets -->
+<!ENTITY xml.parser.param
+'<varlistentry xmlns="http://docbook.org/ns/docbook">
+ <term><parameter>parser</parameter></term>
+ <listitem>
+  <para>
+   XML-парсер.
+  </para>
+ </listitem>
+</varlistentry>'>
+
+<!ENTITY xml.handler.description
+'<para xmlns="http://docbook.org/ns/docbook">
+ Якщо задано &null; або порожній рядок, обробник буде відновлено до його
+ початкового стану.
+</para>
+<para xmlns="http://docbook.org/ns/docbook">
+ Якщо параметр <parameter>handler</parameter> має тип <type>callable</type>, то
+ обробником стане функція/метод, що має таку назву виклику.
+</para>
+<para xmlns="http://docbook.org/ns/docbook">
+ Параметру <parameter>handler</parameter> дозволяється мати тип
+ <type>string</type>, якщо це назва метода об&apos;єкта, встановленого функцією
+ <function>xml_set_object</function>.
+</para>'>
+
+<!ENTITY xml.handler.parser.param
+'<varlistentry xmlns="http://docbook.org/ns/docbook">
+ <term><parameter>parser</parameter></term>
+ <listitem>
+  <simpara>
+   XML-парсер, якого викликатиме обробник.
+  </simpara>
+ </listitem>
+</varlistentry>'>
+
+<!ENTITY xml.changelog.parser-param
+'<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.0.0</entry>
+ <entry>
+  Тепер параметр <parameter>parser</parameter> має бути примірником
+  <classname>XMLParser</classname>. Раніше очікувався
+  <literal>xml</literal>-<type>resource</type>.
+ </entry>
+</row>'>
+
 <!-- Migration Guide snippets -->
 <!ENTITY migration56.openssl.peer-verification '
    <para xmlns="http://docbook.org/ns/docbook">
-    All encrypted client streams now enable peer verification by default. By
-    default, this will use OpenSSL&apos;s default CA bundle to verify the peer
-    certificate. In most cases, no changes will need to be made to communicate
-    with servers with valid SSL certificates, as distributors generally
-    configure OpenSSL to use known good CA bundles.
+    Усі шифровані клієнтські потоки тепер вмикають однорангову перевірку.
+    Використовується стандартний пакет CA від OpenSSL для перевірки
+    однорангового сертифіката. Здебільшого не потрібно вносити жодних змін для
+    зв&apos;язку із серверами, що мають дійсні сертифікати SSL, оскільки
+    дистриб&apos;ютори зазвичай налаштовують OpenSSL на використання добре
+    відомих пакетів CA.
    </para>
-   
+
    <para xmlns="http://docbook.org/ns/docbook">
-    The default CA bundle may be overridden on a global basis by setting
-    either the openssl.cafile or openssl.capath configuration setting, or on a
-    per request basis by using the
-    <link linkend="context.ssl.cafile"><parameter>cafile</parameter></link> or
+    Стандартний пакет CA може бути змінений для всього сервера за допомогою
+    директив openssl.cafile або openssl.capath, а також для окремого запиту за
+    допомогою опцій контексту
+    <link linkend="context.ssl.cafile"><parameter>cafile</parameter></link> або
     <link linkend="context.ssl.capath"><parameter>capath</parameter></link>
     context options.
    </para>
 
    <para xmlns="http://docbook.org/ns/docbook">
-    While not recommended in general, it is possible to disable peer
-    certificate verification for a request by setting the
+    Хоча це не рекомендується, але можна вимкнути перевірку однорангового
+    сертифіката в запиті, встановивши опцію контексту
     <link linkend="context.ssl.verify-peer"><parameter>verify_peer</parameter></link>
-    context option to &false;, and to disable peer name validation by setting
-    the <link linkend="context.ssl.verify-peer-name"><parameter>verify_peer_name</parameter></link>
-    context option to &false;.
+    як &false;, або вимкнути перевірку імені однорангового пристрою,
+    встановивши опцію контексту
+    <link linkend="context.ssl.verify-peer-name"><parameter>verify_peer_name</parameter></link>
+    як &false;.
    </para>
 '>
 
