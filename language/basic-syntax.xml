@@ -1,63 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 6b09bb638aa64d1fad5f4a630a8da9a2692ce733 Maintainer: mproshchuk Status: wip -->
+<!-- EN-Revision: 6b09bb638aa64d1fad5f4a630a8da9a2692ce733 Maintainer: mproshchuk Status: ready -->
  <chapter xml:id="language.basic-syntax" xmlns="http://docbook.org/ns/docbook">
-  <title>Базовий синтаксис</title>
+  <title>Основний синтаксис</title>
   <sect1 xml:id="language.basic-syntax.phptags">
    <title>Теги PHP</title>
    <para>
-    Коли PHP обробляє файл, вона шукає відкриваючі та закриваючі теги,
-    тобто <literal>&lt;?php</literal> та <literal>?&gt;</literal>,
-    які говорять PHP, що між ними потрібно починати і завершувати інтерпретацію
-    кода. Обробка в такій манері дозволяє PHP бути вбудованою у різного роду
-    документи, оскільки код, за межами пари з відкриваючим та закриваючим
-    тегами, ігнорується обробником PHP.
+    Коли парсер PHP обробляє файл, то шукає спеціальні початковий та кінцевий
+    теги, тобто <literal>&lt;?php</literal> та <literal>?&gt;</literal>, які
+    вказують PHP, що текст між ними потрібно виконати як код. Такий алгоритм
+    дозволяє вбудовувати PHP-код у різні документи, оскільки дані за межами
+    спеціальних тегів ігноруються парсером PHP.
    </para>
 
    <para>
-    PHP має короткий echo-тег <literal>&lt;?=</literal>, який є скороченим
-    варіантом <code>&lt;?php echo</code>.
+    PHP має echo-тег <literal>&lt;?=</literal>, який є скороченим варіантом
+    <code>&lt;?php echo</code>.
    </para>
 
    <para>
     <example>
-     <title>PHP Opening and Closing Tags</title>
+     <title>Початковий та кінцевий теги PHP</title>
      <programlisting role="php">
 <![CDATA[
-1.  <?php echo 'if you want to serve PHP code in XHTML or XML documents,
-                use these tags'; ?>
+1.  <?php echo 'якщо потрібно вставити PHP-код в XHTML- або XML-документи,
+                використовуються ці теги.'; ?>
 
-2.  You can use the short echo tag to <?= 'print this string' ?>.
-    It's equivalent to <?php echo 'print this string' ?>.
+2.  Можна застосувати короткий echo-тег, щоб <?= 'надрукувати цей рядок' ?>.
+    Це те саме, що й <?php echo 'надрукувати оцей рядок' ?>.
 
-3.  <? echo 'this code is within short tags, but will only work '.
-            'if short_open_tag is enabled'; ?>
+3.  <? echo 'Цей код записано всередині коротких тегів, але він спрацює тільки, якщо '.
+            'short_open_tag увімкнено.'; ?>
 ]]>
      </programlisting>
     </example>
    </para>
 
    <para>
-    Short tags (example three) are available by default but can be disabled
-    either via the <link linkend="ini.short-open-tag">short_open_tag</link>
-    &php.ini; configuration file directive, or are disabled by default if
-    PHP is built with the <option>--disable-short-tags</option> configuration.
+    Початково короткі теги (приклад 3) доступні, але можуть бути вимкнені
+    директивою <link linkend="ini.short-open-tag">short_open_tag</link> файлу
+    налаштувань &php.ini;, або під час збирання інтерпретатора, додавши до рядка
+    конфігурації прапорець <option>--disable-short-tags</option>.
    </para>
    <para>
     <note>
      <para>
-      As short tags can be disabled it is recommended to only use the normal
-      tags (<code>&lt;?php ?&gt;</code> and <code>&lt;?= ?&gt;</code>) to
-      maximise compatibility.
+      Оскільки короткі теги можна вимкнути, то для найкращої сумісності
+      рекомендується використовувати звичайні теги (<code>&lt;?php ?&gt;</code>
+      та <code>&lt;?= ?&gt;</code>).
      </para>
     </note>
    </para>
 
    <para>
-    If a file contains only PHP code, it is preferable to omit the PHP closing tag
-    at the end of the file.  This prevents accidental whitespace or new lines
-    being added after the PHP closing tag, which may cause unwanted effects
-    because PHP will start output buffering when there is no intention from
-    the programmer to send any output at that point in the script.
+    Якщо файл містить тільки PHP-код, бажано не використовувати кінцевий
+    PHP-тег. Бо якщо після кінцевого тегу вписані випадкові пропуски або символи
+    початку рядка, PHP розпочне буферизацію виводу, коли програміст не має
+    наміру надсилати будь-який вивід у цій точці сценарію.
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -68,7 +66,7 @@ echo "Hello world";
 
 echo "Останній вивід";
 
-// тут скрипт завершується без додавання закриваючого тега PHP
+// тут скрипт завершується без додавання кінцевого тегу PHP
 ]]>
 
      </programlisting>
@@ -78,32 +76,32 @@ echo "Останній вивід";
   <sect1 xml:id="language.basic-syntax.phpmode">
    <title>Відмежування від HTML</title>
    <para>
-    Все, що за межами пари з відкриваючим та закриваючим тегами, ігнорується
-    обробником PHP. Таким чином можна обробляти PHP-файли зі змішаним вмістом, тобто
-    вбудовувати PHP-код в HTML-документи, наприклад, при створенні
-    шаблонів.
+    Все, що за межами пари початкового та кінцевого тегів, ігнорується
+    парсером PHP. Таким чином можна обробляти PHP-файли зі змішаним
+    вмістом, тобто вбудовувати PHP-код в HTML-документи, наприклад, для
+    створення шаблонів.
     <informalexample>
      <programlisting role="php">
 <![CDATA[
-<p>Ця частина коду буде проігнорована PHP, але показуватиметься через браузер.</p>
+<p>Ця частина коду буде проігнорована PHP, але показана в браузері.</p>
 <?php echo 'В той час, як ця частина коду буде оброблятись.'; ?>
-<p>І цей код - також буде проігноровано PHP, але показуватиметься через браузер.</p>
+<p>І цей код також буде проігноровано PHP, але показано в браузері.</p>
 ]]>
      </programlisting>
     </informalexample>
-    Такий код обробляється як і очікується, оскільки коли інтерпретатор PHP
-    зустрічає закриваючий тег ?&gt; він просто починає виводити все, що
-    знаходить, допоки не зустріне інший відкриваючий тег. Але є два виключення,
-    коли інтерпретатор не виводить вміст після закриваючого тега:
-    по-перше, якщо безпосередньо далі йде символ нового рядка - про це можна
-    прочитати на сторінці
-    <link linkend="language.basic-syntax.instruction-separation">поділ інструкцій</link>;
-    і по-друге, якщо наступний код знаходиться всередині тіла умовного оператора
-    (в такому разі інтерпретатор визначає результат в умові, перед тим як
-    вирішити що потрібно виводити). Дивіться наступний приклад.
+    Такий код обробляється як і очікується, оскільки коли парсер PHP зчитує
+    кінцевий тег ?&gt;, інтерпретатор просто починає виводити все, що записано
+    далі аж до наступного початкового тегу. Але є два винятки, коли
+    інтерпретатор не виводить вміст після кінцевого тегу: по-перше, якщо
+    безпосередньо далі йде символ нового рядка, про це можна прочитати на
+    сторінці <link linkend="language.basic-syntax.instruction-separation">поділ
+    інструкцій</link>; по-друге, якщо наступний текст записано всередині
+    умовного оператора (в такому разі інтерпретатор визначає результат умови,
+    від якого залежить, що саме виводити). Наступний приклад показує, як це
+    виглядає.
    </para>
    <para>
-    Using structures with conditions
+    Використання структур з умовами.
     <example>
      <title>Розмежування коду PHP та HTML з використанням умовних операторів</title>
      <programlisting role="php">
@@ -112,25 +110,25 @@ echo "Останній вивід";
   Цей текст буде показано, якщо змінна $expression матиме значення true,
   тобто вираз if ($expression == true) буде дійсним.
 <?php else: ?>
-  В противному разі буде виводитись цей текст.
+  А інакше буде виводитись цей текст.
 <?php endif; ?>
 ]]>
      </programlisting>
     </example>
-    В даному прикладі PHP буде пропускати ті блоки, де умова виразу не виконується,
-    навіть не дивлячись на те, що ці блоки знаходяться за межами відкриваючого
-    та закриваючого PHP-тегів, PHP-інтерпретатор просто перестрибуватиме їх.
+    В цьому прикладі PHP буде пропускати ті блоки, де умова виразу не
+    виконується навіть, якщо ці блоки знаходяться за межами початкового та
+    кінцевого PHP-тегів. PHP-інтерпретатор просто "перестрибне" їх.
    </para>
    <para>
-    Для виводу великих блоків текста, вихід з PHP-режиму
-    є більш ефективним, ніж відправка всього текста через
-    <function>echo</function> чи <function>print</function>.
+    Для виводу великих блоків тексту, вихід з PHP-режиму є більш ефективним, ніж
+    виведення всього тексту через <function>echo</function> чи
+    <function>print</function>.
    </para>
    <para>
     <note>
      <para>
       Вставляючи блоки PHP всередину XML чи XHTML, потрібно використовувати
-      теги &lt;?php ?&gt;, щоб код відповідав стандартам.
+      теги &lt;?php ?&gt;, щоб код відповідав стандартам цих розміток.
      </para>
     </note>
    </para>
@@ -139,35 +137,34 @@ echo "Останній вивід";
   <sect1 xml:id="language.basic-syntax.instruction-separation">
    <title>Поділ інструкцій</title>
    <para>
-    Так як і C чи Perl, PHP вимагає завершення інструкцій символом
-    крапки з комою в кінці кожного виразу. Закриваючий тег в блоці PHP-коду
-    автоматично зумовить додавання символа крапки з комою; тобто вам не
-    потрібно завершувати останній рядок PHP-блоку символом крапки з комою.
-    Закриваючий тег також зумовить видалення символа нового рядка, що йде
-    безпосередньо зразу після нього, якщо він є.
+    Як і C чи Perl, PHP вимагає завершення інструкцій символом крапки з комою в
+    кінці кожного виразу. Кінцевий тег в блоці PHP-коду автоматично виконуватиме
+    роль символа крапки з комою. Тобто не потрібно завершувати останній рядок
+    PHP-блоку символом крапки з комою. Кінцевий тег також зумовить видалення
+    символа нового рядка, що йде безпосередньо після нього.
     </para>
    <para>
     <example>
-     <title>Example showing the closing tag encompassing the trailing newline</title>
+     <title>Приклад з кінцевим тегом та символом нового рядка</title>
      <programlisting role="php">
 <![CDATA[
-<?php echo "Some text"; ?>
-No newline
-<?= "But newline now" ?>
+<?php echo "Якийсь текст"; ?>
+Немає нового рядка
+<?= "А тут є" ?>
 ]]>
      </programlisting>
      &example.outputs;
      <screen>
 <![CDATA[
-Some textNo newline
-But newline now
+Якийсь текстНемає нового рядка
+А тут є
 ]]>
      </screen>
     </example>
    </para>
 
    <para>
-    Examples of entering and exiting the PHP parser:
+    Приклади входу та виходу з парсера PHP:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -177,19 +174,19 @@ But newline now
 
 <?php echo 'Це перевірка' ?>
 
-<?php echo 'Ми опустили останній закриваючий тег';
+<?php echo 'Ми опустили кінцевий тег';
 ]]>
      </programlisting>
     </informalexample>
     <note>
      <para>
-      Закриваючий тег PHP-блока в кінці файла є необов'язковим,
-      а в деяких випадках його відсутність є корисною при використанні
-      <function>include</function> чи <function>require</function>, оскільки
-      небажаний пробіл в кінці файлів не додається, та у вас все ще
-      залишається можливість додавати заголовки для відповіді пізніше. Це також
-      є зручним, якщо ви використовуєте буферизацію виводу, та не хотіли б
-      бачити небажаних пробілів в кінці файлів при їх підключенні.
+      Кінцевий тег PHP-блока в кінці файлу є необов'язковим, а в деяких випадках
+      з конструкціями <function>include</function> чи
+      <function>require</function> його відсутність є корисною, оскільки
+      випадковий пропуск в кінці файлу не додається у вивід, а також залишається
+      можливість додавати заголовки для відповіді пізніше. Також це зручно під
+      час буферизації виводу, коли пропуски в кінці частини виводу, згенерованої
+      підключеним файлом — небажані.
      </para>
     </note>
    </para>
@@ -197,7 +194,7 @@ But newline now
   <sect1 xml:id="language.basic-syntax.comments">
    <title>Коментарі</title>
    <para>
-    PHP підтримує коментарі в стилі 'C', 'C++', Unix та shell (Perl). Наприклад:
+    PHP підтримує коментарі в стилі "C", "C++", Unix та shell (Perl). Наприклад:
 
     <informalexample>
      <programlisting role="php">
@@ -217,12 +214,12 @@ But newline now
     </informalexample>
    </para>
    <simpara>
-    Однорядкові коментарі закоментовуються тільки до кінця рядка
-    або поточного блока PHP-коду, дивлячись що йде першим.
-    Це означає, що HTML-код після <literal>// ... ?&gt;</literal>
-    чи <literal># ...  ?&gt;</literal> БУДЕ надруковано, оскільки закриваючий
-    тег ?&gt; перериває PHP-режим та включає HTML-режим, і
-    <literal>//</literal> чи <literal>#</literal> не впливають на це.
+    Однорядкові коментарі діють тільки до кінця рядка або блока PHP-коду,
+    дивлячись, що йде першим. Це означає, що HTML-код після
+    <literal>// ... ?&gt;</literal> чи <literal># ...  ?&gt;</literal> БУДЕ
+    надруковано, оскільки кінцевий тег ?&gt; перериває PHP-режим та вмикає
+    вивід тексту і <literal>//</literal> чи <literal>#</literal> не впливають на
+    це.
    </simpara>
    <para>
     <informalexample>
@@ -235,11 +232,10 @@ But newline now
     </informalexample>
    </para>
    <simpara>
-    Коментарі в стилі 'C' завершуються, коли зустрічається перша ж
-    послідовність <literal>*/</literal>. Потрібно обережно використовувати такі
-    коментарі, та перевіряти чи не створили ви вкладених коментарів в такому
-    стилі. Досить легко це зробити, якщо намагатись закоментовувати великий
-    блок коду.
+    Коментарі в стилі "C" завершуються, коли зустрічається перша ж послідовність
+    <literal>*/</literal>. Потрібно обережно використовувати такі коментарі та
+    перевіряти, чи не створено вкладених коментарів в такому ж стилі. Часто це
+    стається, якщо намагатись закоментувати великий блок коду.
    </simpara>
    <para>
     <informalexample>

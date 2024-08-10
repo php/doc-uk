@@ -1,136 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 67cf4f37868965b41fcda4e51a39e3529b544879 Maintainer: mproshchuk Status: wip -->
+<!-- EN-Revision: 161dde4fe721309398dd324edbf02aec409f127b Maintainer: mproshchuk Status: ready -->
 <sect1 xml:id="language.types.integer">
- <title>Цілочисельний (Integers)</title>
+ <title>Цілі числа (integers)</title>
  
  <simpara>
-  Цілочисельним (integer) називають число, що входить в множину
+  Цілим (integer) називають число, що належить множині
   &#8484; = {..., -2, -1, 0, 1, 2, ...}.
  </simpara>
-  
- <para>
-  Прогляньте також:
- </para>
-
- <itemizedlist>
-  <listitem>
-   <simpara>
-    <link linkend="ref.gmp">Функції для роботи з цілим числом довільної довжини / GMP</link>
-   </simpara>
-  </listitem>
-  <listitem>
-   <simpara>
-    <link linkend="language.types.float">Число з плаваючою точкою (дробний тип даних)</link>
-   </simpara>
-  </listitem>
-  <listitem>
-   <simpara>
-    <link linkend="ref.bc">Функції для роботи з числами довільної дробної точності / BCMath</link>
-   </simpara>
-  </listitem>
- </itemizedlist>
+ 
+ <sect2 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><link linkend="language.types.float">Десяткові дроби</link></member>
+    <member><link linkend="book.bc">Числа довільної точності / BCMath</link></member>
+    <member><link linkend="book.gmp">Цілі довільної довжини / GMP</link></member>
+   </simplelist>
+  </para>
+ </sect2>
 
  <sect2 xml:id="language.types.integer.syntax">
   <title>Синтаксис</title>
 
   <simpara>
-   Цілочисельне (integers) можна вказувати в десятковій (основа 10), шістнадцятковій
-   (основа 16), вісімковій (основа 8) або двійковій (основа 2) формі запису,
-   відповідно до системи числення, з необов'язковим попереднім знаком (- чи +).
+   Цілі числа (<type>int</type>) можна вказувати в десятковій (основа 10),
+   шістнадцятковій (основа 16), вісімковій (основа 8) або двійковій (основа 2)
+   формах запису.
+   <link linkend="language.operators.arithmetic">Мінус-оператором</link> можна
+   позначити від'ємне ціле число (<type>int</type>).
   </simpara>
 
   <para>
-   Записування цілочисельного (integer) в двійковій формі доступне
-   починаючи з PHP 5.4.0. 
+   Для вісімкової форми запису перед числом ставиться <literal>0</literal> (нуль).
+   Починаючи з PHP 8.1.0, вісімковій формі запису може передувати
+   <literal>0o</literal> або <literal>0O</literal>.
+   Для шістнадцяткової форми запису перед числом ставиться <literal>0x</literal> (нуль та латинська x).
+   Для двійкової форми запису перед числом ставиться <literal>0b</literal> (нуль та b).
   </para>
 
   <para>
-   Щоб використовувати вісімкову форму запису, ставте перед числом <literal>0</literal> (нуль).
-   Щоб використовувати шістнацядкову форму запису, ставте перед числом <literal>0x</literal> (нуль x).
-   Щоб використовувати двійкову форму запису, ставте перед числом <literal>0b</literal> (нуль b).
+   Починаючи з PHP 7.4.0, для кращої розбірливості цілі числа можуть містити
+   знаки підкреслення (<literal>_</literal>) між цифрами. Потім парсер PHP
+   вилучає ці підкреслення.
   </para>
 
   <example>
-   <title>Запис цілочисельного (integer) літерами</title>
+   <title>Запис цілого числа</title>
    <programlisting role="php">
 <![CDATA[
 <?php
 $a = 1234; // десяткове число
+$a = 1_234_567; // десяткове число (починаючи з PHP 7.4.0)
 $a = -123; // від'ємне десяткове число
-$a = 0123; // вісімкове число (еквівалент деяткового 83)
-$a = 0x1A; // шістнадцяткове число (еквівалент деяткового 26)
-$a = 0b11111111; // двійкове число (еквівалент деяткового 255)
+$a = 0123; // вісімкове число (дорівнює десятковому 83)
+a = 0o123; // вісімкове число (починаючи з PHP 8.1.0)
+$a = 0x1A; // шістнадцяткове число (дорівнює деятковому 26)
+$a = 0b11111111; // двійкове число (дорівнює деятковому 255)
 ?>
 ]]>
    </programlisting>
   </example>
 
   <para>
-   Формально, структуру цілочисельного (integer) можна записати так:
+   Формально, починаючи з PHP 8.1.0, структура цілого числа (<type>int</type>) є
+   такою (раніше вісімкові префікси <literal>0o</literal> та
+   <literal>0O</literal> не були дозволені, а до PHP 7.4.0 не були дозволені
+   символи підкреслення):
   </para>
  
   <informalexample>
    <programlisting>
 <![CDATA[
-десяткове      : [1-9][0-9]*
+десяткове      : [1-9][0-9]*(_[0-9]+)*
                | 0
 
-шістнадцяткове : 0[xX][0-9a-fA-F]+
+шістнадцяткове : 0[xX][0-9a-fA-F]+(_[0-9a-fA-F]+)*
 
-вісімкове      : 0[0-7]+
+вісімкове      : 0[oO]?[0-7]+(_[0-7]+)*
 
-двійкове       : 0b[01]+
+двійкове       : 0[bB][01]+(_[01]+)*
 
-цілочисельне   : [+-]?десяткове
-               | [+-]?шістнадцяткове
-               | [+-]?вісімкове
-               | [+-]?двійкове
+ціле           : десяткове
+               | шістнадцяткове
+               | вісімкове
+               | двійкове
 ]]>
    </programlisting>
   </informalexample>
 
   <para>
-   Розмір цілочисельного (integer) залежить від платформи, хоча, зазвичай,
+   Розмір цілого числа (<type>int</type>) залежить від платформи, хоча, зазвичай,
    максимальне значення близьке до двох мільярдів (це 32-бітне знакове).
-   64-бітні платформи зазвичай мають максимальне значення близьке до 9E18, за
-   виключенням Windows, де воно завжди 32-бітне. PHP не підтримує беззнакове
-   цілочисельне. Розмір цілочисельного можна визначати використовуючи константу
-   <constant>PHP_INT_SIZE</constant>, а максимальне значення - використовуючи
-   константу <constant>PHP_INT_MAX</constant> починаючи PHP 4.4.0 та PHP 5.0.5.
+   64-бітні платформи зазвичай мають максимальне значення близьке до 9E18.
+   PHP не підтримує беззнакові цілі числа. Розмір цілого числа містить константа
+   <constant>PHP_INT_SIZE</constant>, максимальне значення — константа
+   <constant>PHP_INT_MAX</constant> та мінімальне значення — константа
+   <constant>PHP_INT_MIN</constant>.
   </para>
-
-  <warning>
-   <para>
-    Якщо вказують невірну цифру для вісімкової форми запису
-    цілочисельного (напр. 8 чи 9), решту цифр буде проігноровано.
-   </para>
-
-   <example>
-    <title>Дивні ефекти для вісімкової форми запису</title>
-    <programlisting role="php">
-<![CDATA[
-<?php
-var_dump(01090); // 010 вісімкове = 8 десяткове
-?>
-]]>
-    </programlisting>
-   </example>
-  </warning>
  </sect2>
 
  <sect2 xml:id="language.types.integer.overflow">
-  <title>Переповнення цілочисельного</title>
+  <title>Переповнення цілого числа</title>
 
   <para>
-   Якщо PHP зустрічає число, значення якого перебуває за межами максимального
-   значення для цілочисельного типу, вона інтерпретує його як
-   число з дробним типом (<type>float</type>). Аналогічно, при операціях, в
-   яких результат перебуває за межами максимального значення для
-   цілочисельного типу, буде повертатись дробний тип (<type>float</type>).
+   Якщо PHP стикається з числом, що виходить за межі типу <type>int</type>, то
+   інтерпретує його як десятковий дріб (<type>float</type>). Відповідно, в
+   операціях з результатом за межами типу <type>int</type> буде повертатись
+   десятковий дріб (<type>float</type>).
   </para>
 
   <example>
-   <title>Переповнення цілочисельного на 32-бітних системах</title>
+   <title>Переповнення цілого числа в 32-бітних системах</title>
    <programlisting role="php">
 <![CDATA[
 <?php
@@ -149,7 +129,7 @@ var_dump($велике_число);                     // float(50000000000)
   </example>
 
   <example>
-   <title>Переповнення цілочисельного на 64-бітних системах</title>
+   <title>Переповнення цілого числа в 64-бітних системах</title>
    <programlisting role="php">
 <![CDATA[
 <?php
@@ -166,22 +146,23 @@ var_dump($велике_число);                     // float(5.0E+19)
 ]]>
    </programlisting>
   </example>
-  
+
   <para>
-   В PHP не існує оператора для ділення цілих чисел.
-   Дія <literal>1/2</literal> в результаті поверне дробне (<type>float</type>)
-   <literal>0.5</literal>. Значення можна приводити до цілочисельного, при
-   цьому буде відбуватись заокруглення вниз. Використовуючи функцію
-   <function>round</function> можна краще контролювати міру заокруглення.
+   В PHP не існує оператора для ділення цілих чисел (<type>int</type>). Для
+   цього застосовується функція <function>intdiv</function>.
+   Дія <literal>1/2</literal> в результаті поверне десятковий дріб
+   (<type>float</type>) <literal>0.5</literal>. Таке значення можна привести до
+   цілочисельного (<type>int</type>) типу з округленням в бік нуля. Натомість
+   регулювати округлення можна функцією <function>round</function>.
   </para>
 
   <informalexample>
    <programlisting role="php">
 <![CDATA[
 <?php
-var_dump(25/7);         // float(3.5714285714286) 
+var_dump(25/7);         // float(3.5714285714286)
 var_dump((int) (25/7)); // int(3)
-var_dump(round(25/7));  // float(4) 
+var_dump(round(25/7));  // float(4)
 ?>
 ]]>
    </programlisting>
@@ -189,60 +170,87 @@ var_dump(round(25/7));  // float(4)
  </sect2>
 
  <sect2 xml:id="language.types.integer.casting">
-  <title>Конвертування до цілочисельного</title>
+  <title>Перетворення в ціле число</title>
 
   <simpara>
-   Щоб явно конвертувати значення до цілочисельного, використовуйте приведення
-   за допомогою запису <literal>(int)</literal> або <literal>(integer)</literal>.
-   Хоча, в більшості випадків приведення не потрібне, оскільки значення буде
-   автоматично конвертуватись, якщо оператор, функція чи контролююча структура
-   вимагає цілочисельного аргумента. Значення може також конвертуватись до
-   цілочисельного за допомогою функції <function>intval</function>.
+   Щоб явно перетворити значення на ціле число (<type>int</type>),
+   застосовується приведення за допомогою запису <literal>(int)</literal> або
+   <literal>(integer)</literal>. Здебільшого приведення не потрібне, оскільки
+   значення буде автоматично перетворено, якщо оператор, функція чи структура
+   контролю очікують значення типу <type>int</type>. Також тип значення можна
+   перетворити на <type>int</type> функцією <function>intval</function>.
   </simpara>
 
   <simpara>
-   Якщо ресурс (<type>resource</type>) конвертовано до цілого, в результаті
-   виходить унікальне число, яке призначає PHP під час виконання для
-   типу ресурс (<type>resource</type>).
+   Результатом перетворення типу <type>resource</type> на <type>int</type> є
+   унікальне число, яке призначається для ресурсу (<type>resource</type>) під
+   час виконання програми.
   </simpara>
 
   <simpara>
-   Прогляньте також <link linkend="language.types.type-juggling">Маніпуляції з типами</link>.
+   &Seealso;: <link linkend="language.types.type-juggling">Перетворення типів</link>.
   </simpara>
-   
+
   <sect3 xml:id="language.types.integer.casting.from-boolean">
-   <title>З логічного (<link linkend="language.types.boolean">booleans</link>)</title>
+   <title>З <link linkend="language.types.boolean">логічного (bool)</link></title>
 
    <simpara>
-    &false; буде конвертовано в <literal>0</literal> (нуль), а &true; -
-    в <literal>1</literal> (одиницю).
+    &false; буде перетворено на <literal>0</literal> (нуль), а &true; —
+    на <literal>1</literal> (одиницю).
    </simpara>
   </sect3>
 
   <sect3 xml:id="language.types.integer.casting.from-float">
    <title>
-    З дробного (див. <link linkend="language.types.float">число з плаваючою
-    точкою</link>)
-   </title> 
+    З <link linkend="language.types.float">десяткового дробу (float)</link>
+   </title>
 
    <simpara>
-    При конвертуванні з дробного (<type>float</type>) до цілочисельного
-    (integer), число буде заокруглено <emphasis>в бік нуля</emphasis>.
+    Під час перетворення <type>float</type> на <type>int</type> відбувається
+    округлення <emphasis>в бік нуля</emphasis>. Починаючи з PHP 8.1.0, у
+    відповідь на перетворення &float; з ненульовою дробовою частиною на
+    &integer;, що призводить до втрати точності, виводиться повідомлення про
+    застарілий функціонал.
    </simpara>
     
+   <programlisting role="php">
+<![CDATA[
+<?php
+
+function foo($value): int {
+  return $value; 
+}
+
+var_dump(foo(8.1)); // "Deprecated: Implicit conversion from float 8.1 to int loses precision", починаючи з PHP 8.1.0
+var_dump(foo(8.1)); // 8 до PHP 8.1.0
+var_dump(foo(8.0)); // 8 у обох випадках
+
+var_dump((int)8.1); // 8 у обох випадках
+var_dump(intval(8.1)); // 8 у обох випадках
+?>
+]]>
+   </programlisting>
+
    <para>
-    Якщо дробне перевищить верхню межу для цілочисельного (зазвичай це
+    Якщо десятковий дріб вийде за межі типу <type>int</type> (зазвичай це
     <literal>+/- 2.15e+9 = 2^31</literal> на 32-бітних платформах та
-    <literal>+/- 9.22e+18 = 2^63</literal> на 64-бітних платформах, окрім
-    Windows), результат буде невизначеним, оскільки дробне (<type>float</type>)
-    не має достатньої точності, щоб дати саме цілочисельний результат. Не
-    переживайте, ніякого попередження не буде виводитись, якщо таке трапиться!
+    <literal>+/- 9.22e+18 = 2^63</literal> на 64-бітних платформах), результат
+    буде невизначеним, оскільки тип <type>float</type> не має достатньої
+    точності, щоб дати саме цілочисельний результат. Інтерпретатор про це не
+    повідомляє!
    </para>
-    
+
+   <note>
+    <para>
+     Результатом приведення спеціальних чисел "NaN" та "Infinity" до типу
+     <type>int</type> є число нуль (<literal>0</literal>).
+    </para>
+   </note>
+
    <warning>
     <para>
-     Ніколи не приводьте дробне невідомої фракції до цілочисельного, оскільки це
-     інколи може призводити до непередбаченого результата.
+     Не можна перетворювати невідомий дріб на ціле число, оскільки це може
+     призвести до непередбачуваного результату.
     </para>
 
     <informalexample>
@@ -254,31 +262,30 @@ echo (int) ( (0.1+0.7) * 10 ); // виводить 7!
 ]]>
      </programlisting>
     </informalexample>
-    
+
     <para>
-     Прогляньте також <link linkend="warn.float-precision">застереження про
-     дробну точність</link>.
+     Варто переглянути <link linkend="warn.float-precision">застереження про
+     точність десяткового дробу</link>.
     </para>
    </warning>
   </sect3>
-   
+
   <sect3 xml:id="language.types.integer.casting.from-string">
-   <title>З рядкового типу</title>
+   <title>З <link linkend="language.types.float">рядкового (string)</link></title>
 
    <simpara>
-    If the string is
-    <link linkend="language.types.numeric-strings">numeric</link>
-    or leading numeric then it will resolve to the
-    corresponding integer value, otherwise it is converted to zero
-    (<literal>0</literal>).
+    Якщо рядок є
+    <link linkend="language.types.numeric-strings">числовим</link> або
+    починається з числа, то його можна перетворити на відповідне цілочисельне
+    значення, а інакше — на нуль (<literal>0</literal>).
    </simpara>
   </sect3>
 
   <sect3 xml:id="language.types.integer.casting-from-null">
-   <title>From <type>NULL</type></title>
+   <title>З <type>NULL</type></title>
 
    <simpara>
-    &null; is always converted to zero (<literal>0</literal>).
+    &null; завжди перетворюється на нуль (<literal>0</literal>).
    </simpara>
   </sect3>
    
@@ -287,9 +294,9 @@ echo (int) ( (0.1+0.7) * 10 ); // виводить 7!
 
    <caution>
     <simpara>
-     Поведінка при конвертації з інших типів до цілочисельного є невизначеною.
-     <emphasis>Не</emphasis> покладайтесь на поведінку при спостереженні за такою
-     конвертацією, оскільки вона може змінюватись без попереджень.
+     Результат перетворення інших типів на <type>int</type> є невизначеним.
+     <emphasis>НЕ</emphasis> можна покладатись на такі перетворення, оскільки
+     їхній алгоритм може змінюватись без попереджень.
     </simpara>
    </caution>
   </sect3>

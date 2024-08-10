@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: affa37e16f562d9297e83b2e21ec416aadc8b72d Maintainer: mproshchuk Status: wip -->
 <sect1 xml:id="language.types.string">
- <title>Рядковий (Strings)</title>
+ <title>Рядки (Strings)</title>
 
  <para>
-  Рядковий тип (string) представляє собою набір символів, причому
-  кожен символ представлений відповідним байтом. Це означає, що PHP має підтримку
-  всього 256 різних символів, а отже не має вбудованої підтримки Unicode. Див.
+  Рядок (<type>string</type>) — це набір символів, кожному з яких відповідає
+  певний байт. Це означає, що PHP підтримує всього 256 різних символів, а отже
+  не має вбудованої підтримки Unicode. Див.
   <link linkend="language.types.string.details">деталі про рядковий тип</link>.
  </para>
 
  <note>
   <simpara>
-   В 32-бітних збірках значення рядкового типу (string) може бути розміром до
-   2ГБ (максимум 2147483647 байт).
+   В 32-бітних збірках значення типу <type>string</type> може мати розмір до
+   2ГБ (2147483647 байт).
   </simpara>
  </note>
 
@@ -21,19 +21,19 @@
   <title>Синтаксис</title>
 
   <para>
-   Якщо записувати значення рядкового типу (string) літерами, то
-   це можна зробити в чотири різні способи:
+   Записувати символами значення типу <type>string</type> можна чотирма
+   способами:
   </para>
 
   <itemizedlist>
    <listitem>
     <simpara>
-     <link linkend="language.types.string.syntax.single">одинарні лапки</link>
+     <link linkend="language.types.string.syntax.single">апострофи</link>
     </simpara>
    </listitem>
    <listitem>
     <simpara>
-     <link linkend="language.types.string.syntax.double">подвійні лапки</link>
+     <link linkend="language.types.string.syntax.double">лапки</link>
     </simpara>
    </listitem>
    <listitem>
@@ -49,31 +49,32 @@
   </itemizedlist>
 
   <sect3 xml:id="language.types.string.syntax.single">
-   <title>Одинарні лапки</title>
+   <title>Апострофи</title>
 
    <para>
-    Найпростіший спосіб визначити рядкове значення (string) - взяти його в
-    одинарні лапки (наприклад <literal>'це рядкове значення'</literal>).
+    Найпростіший спосіб означити рядок (<type>string</type>) — взяти його в
+    апострофи (наприклад <literal>'це рядкове значення'</literal>).
    </para>
 
    <para>
-    Щоб всередині рядкового значення впасати одинарні лапки, екрануйте їх
-    через зворотній слеш (<literal>\</literal>). Щоб всередині рядкового
-    значення вписати зворотній слеш, продублюйте його (<literal>\\</literal>).
-    Всі наступні символи зворотнього слеша будуть сприйматись буквально як
-    зворотні слеші: це означає, що всі інші екрановані послідовності можна
-    використовувати також, такі як <literal>\r</literal> або <literal>\n</literal>,
-    будуть виводитись буквально як вони записані, а не як такі, які мають
-    спеціальне значення.
+    Щоб вписати в рядок апостроф, цей знак необхідно екранувати
+    оберненою косою рискою (<literal>\</literal>). Щоб всередині рядкового
+    значення вписати обернену косу риску, треба продублювати її
+    (<literal>\\</literal>). Всі наступні символи оберненої косої риски будуть
+    сприйматись буквально: це означає, що всі інші екрановані послідовності,
+    наприклад <literal>\r</literal> або <literal>\n</literal> будуть виводитись
+    буквально, а не як такі, що мають спеціальне значення.
    </para>
 
    <note>
     <simpara>
-     Unlike the <link linkend="language.types.string.syntax.double">double-quoted</link>
-     and <link linkend="language.types.string.syntax.heredoc">heredoc</link> syntaxes,
-     <link linkend="language.variables">variables</link> and escape sequences
-     for special characters will <emphasis>not</emphasis> be expanded when they
-     occur in single quoted (string).
+     На відміну від 
+     <link linkend="language.types.string.syntax.double">лапок</link>
+     та синтаксису
+     <link linkend="language.types.string.syntax.heredoc">heredoc</link>,
+     <link linkend="language.variables">змінні</link> та екрановані
+     послідовності спеціальних символів <emphasis>не</emphasis> будуть
+     розкриті в рядках, взятих в апострофи.
     </simpara>
    </note>
 
@@ -81,26 +82,26 @@
     <programlisting role="php">
 <![CDATA[
 <?php
-echo 'this is a simple string';
+echo 'це звичайний рядок';
 
-echo 'You can also have embedded newlines in
-strings this way as it is
-okay to do';
+echo 'Також можна додавати
+символ нового рядка,
+це допустимо';
 
-// Outputs: Arnold once said: "I'll be back"
-echo 'Arnold once said: "I\'ll be back"';
+// Виводить: Якось Арнольд сказав: "I'll be back"
+echo 'Якось Арнольд сказав: "I\'ll be back"';
 
-// Outputs: You deleted C:\*.*?
-echo 'You deleted C:\\*.*?';
+// Виводить: Ви видалили C:\*.*?
+echo 'Ви видалили C:\\*.*?';
 
-// Outputs: You deleted C:\*.*?
-echo 'You deleted C:\*.*?';
+// Виводить: Ви видалили C:\*.*?
+echo 'Ви видалили C:\*.*?';
 
-// Outputs: This will not expand: \n a newline
-echo 'This will not expand: \n a newline';
+// Виводить: Це не розкриється: \n a newline
+echo 'Це не розкриється: \n a newline';
 
-// Outputs: Variables do not $expand $either
-echo 'Variables do not $expand $either';
+// Виводить: Змінні $також $не_розкриваються
+echo 'Змінні $також $не_розкриваються';
 ?>
 ]]>
     </programlisting>
@@ -109,83 +110,86 @@ echo 'Variables do not $expand $either';
   </sect3>
 
   <sect3 xml:id="language.types.string.syntax.double">
-   <title>Double quoted</title>
+   <title>Лапки</title>
 
    <para>
-    If the <type>string</type> is enclosed in double-quotes ("), PHP will
-    interpret the following escape sequences for special characters:
+    Якщо рядок (<type>string</type>) взято в лапки ("), то PHP інтерпретує
+    наступні екрановані послідовності у спеціальні символи:
    </para>
 
    <table>
-    <title>Escaped characters</title>
+    <title>Екрановані символи</title>
 
     <tgroup cols="2">
      <thead>
       <row>
-       <entry>Sequence</entry>
-       <entry>Meaning</entry>
+       <entry>Послідовність</entry>
+       <entry>Значення</entry>
       </row>
      </thead>
 
      <tbody>
       <row>
        <entry><literal>\n</literal></entry>
-       <entry>linefeed (LF or 0x0A (10) in ASCII)</entry>
+       <entry>новий рядок (LF (linefeed) або 0x0A (10) в ASCII)</entry>
       </row>
       <row>
        <entry><literal>\r</literal></entry>
-       <entry>carriage return (CR or 0x0D (13) in ASCII)</entry>
+       <entry>повернення каретки (CR (carriage return) або 0x0D (13) в ASCII)</entry>
       </row>
       <row>
        <entry><literal>\t</literal></entry>
-       <entry>horizontal tab (HT or 0x09 (9) in ASCII)</entry>
+       <entry>горизонтальна табуляція (HT (horizontal tab) або 0x09 (9) в ASCII)</entry>
       </row>
       <row>
        <entry><literal>\v</literal></entry>
-       <entry>vertical tab (VT or 0x0B (11) in ASCII)</entry>
+       <entry>вертикальна табуляція (VT (vertical tab) або 0x0B (11) в ASCII)</entry>
       </row>
       <row>
        <entry><literal>\e</literal></entry>
-       <entry>escape (ESC or 0x1B (27) in ASCII)</entry>
+       <entry>escape-символ (ESC або 0x1B (27) в ASCII)</entry>
       </row>
       <row>
        <entry><literal>\f</literal></entry>
-       <entry>form feed (FF or 0x0C (12) in ASCII)</entry>
+       <entry>розрив сторінки (FF (form feed) або 0x0C (12) в ASCII)</entry>
       </row>
       <row>
        <entry><literal>\\</literal></entry>
-       <entry>backslash</entry>
+       <entry>обернена коса риска</entry>
       </row>
       <row>
        <entry><literal>\$</literal></entry>
-       <entry>dollar sign</entry>
+       <entry>знак долара</entry>
       </row>
       <row>
        <entry><literal>\"</literal></entry>
-       <entry>double-quote</entry>
+       <entry>лапка</entry>
       </row>
       <row>
        <entry><literal>\[0-7]{1,3}</literal></entry>
        <entry>
-        Octal: the sequence of characters matching the regular expression <literal>[0-7]{1,3}</literal>
-        is a character in octal notation (e.g. <literal>"\101" === "A"</literal>),
-        which silently overflows to fit in a byte (e.g. <literal>"\400" === "\000"</literal>)
+        Вісімкове число: послідовність символів, що відповідає регулярному
+        виразу <literal>[0-7]{1,3}</literal> та є вісімковою формою запису
+        символа (напр. <literal>"\101" === "A"</literal>), що неявно
+        переповнюється, щоб відповідати одному байту (напр.
+        <literal>"\400" === "\000"</literal>)
        </entry>
       </row>
       <row>
        <entry><literal>\x[0-9A-Fa-f]{1,2}</literal></entry>
        <entry>
-        Hexadecimal: the sequence of characters matching the regular expression
-        <literal>[0-9A-Fa-f]{1,2}</literal> is a character in hexadecimal notation
-        (e.g. <literal>"\x41" === "A"</literal>)
+        Шістнадцяткове число: послідовність символів, що відповідає регулярному
+        виразу <literal>[0-9A-Fa-f]{1,2}</literal> та є шістнадцятковою формою
+        запису символа (напр. <literal>"\x41" === "A"</literal>)
        </entry>
       </row>
       <row>
        <entry><literal>\u{[0-9A-Fa-f]+}</literal></entry>
        <entry>
-        Unicode: the sequence of characters matching the regular expression <literal>[0-9A-Fa-f]+</literal>
-        is a Unicode codepoint, which will be output to the string as that codepoint's UTF-8 representation.
-        The braces are required in the sequence. E.g. <literal>"\u{41}" === "A"</literal>
+        Unicode: послідовність символів, що відповідає регулярному виразу
+        <literal>[0-9A-Fa-f]+</literal> та є кодовою точкою UTF-8, символ якої
+        буде вставлено у рядок. Фігурні дужки є обов'язковими у цій
+        послідовності. Наприклад <literal>"\u{41}" === "A"</literal>
        </entry>
       </row>
      </tbody>
@@ -193,15 +197,14 @@ echo 'Variables do not $expand $either';
    </table>
 
    <para>
-    As in single quoted <type>string</type>s, escaping any other character will
-    result in the backslash being printed too.
+    В рядках (<type>string</type>), що взяті в апострофи, екранування інших
+    символів також призведе до друку оберненої косої риски.
    </para>
 
    <para>
-    The most important feature of double-quoted <type>string</type>s is the fact
-    that variable names will be expanded. See
-    <link linkend="language.types.string.parsing">string parsing</link> for
-    details.
+    Найважливішою особливістю рядків (<type>string</type>) в лапках є
+    розкривання значень змінних. Детальніше:
+    <link linkend="language.types.string.parsing">Обробка рядків</link>.
    </para>
   </sect3>
 
@@ -209,74 +212,73 @@ echo 'Variables do not $expand $either';
    <title>Heredoc</title>
 
    <simpara>
-    A third way to delimit <type>string</type>s is the heredoc syntax:
-    <literal>&lt;&lt;&lt;</literal>. After this operator, an identifier is
-    provided, then a newline. The <type>string</type> itself follows, and then
-    the same identifier again to close the quotation.
+    Третій спосіб запису значення типу <type>string</type> — синтаксис heredoc:
+    <literal>&lt;&lt;&lt;</literal>. Після цього оператора слідують
+    мітка та символ нового рядка. Далі — власне, текст (<type>string</type>), а
+    потім та сама мітка з нового рядка. Вона позначає кінець тексту.
    </simpara>
 
    <simpara>
-    The closing identifier may be indented by space or tab, in which case
-    the indentation will be stripped from all lines in the doc string.
-    Prior to PHP 7.3.0, the closing identifier <emphasis>must</emphasis>
-    begin in the first column of the line.
+    В кінці перед міткою можуть бути пропуски або символи табуляції. Тоді такі ж
+    відступи будуть видалені з початку усіх рядків тексту. До PHP 7.3.0, мітка в
+    кінці <emphasis>повинна</emphasis> бути одразу після символа нового рядка.
    </simpara>
 
    <simpara>
-    Also, the closing identifier must follow the same naming rules as any
-    other label in PHP: it must contain only alphanumeric characters and
-    underscores, and must start with a non-digit character or underscore.
+    Також мітка має відповідати правилам називання міткок в PHP: містити тільки
+    букви, цифри, підкреслення та починатися з букви або підкреслення.
    </simpara>
 
    <example>
-    <title>Basic Heredoc example as of PHP 7.3.0</title>
+    <title>Простий приклад Heredoc, починаючи з PHP 7.3.0</title>
     <programlisting role="php">
 <![CDATA[
 <?php
-// no indentation
-echo <<<END
-      a
-     b
-    c
+// без відступів
+echo <<<МІТКА
+      а
+     б
+    в
 \n
-END;
+МІТКА;
 
-// 4 spaces of indentation
-echo <<<END
-      a
-     b
-    c
-    END;
+// відступ з 4-х пропусків
+echo <<<МІТКА
+      а
+     б
+    в
+    МІТКА;
 ]]>
     </programlisting>
     &example.outputs.73;
     <screen>
 <![CDATA[
-      a
-     b
-    c
+      а
+     б
+    в
 
-  a
- b
-c
+  а
+ б
+в
 ]]>
     </screen>
    </example>
 
    <simpara>
-    If the closing identifier is indented further than any lines of the body, then a <classname>ParseError</classname> will be thrown:
+    Якщо кінцева мітка відступає далі ніж будь-який рядок тексту, то викинеться
+    <classname>ParseError</classname>:
    </simpara>
 
    <example>
-    <title>Closing identifier must not be indented further than any lines of the body</title>
+    <title>Кінцева мітка не має відступати далі ніж будь-який рядок тексту</title>
     <programlisting role="php">
 <![CDATA[
 <?php
-echo <<<END
-  a
- b
-c
-   END;
+echo <<<МІТКА
+  а
+ б
+в
+   МІТКА;
 ]]>
     </programlisting>
     &example.outputs.73;
@@ -288,41 +290,40 @@ PHP Parse error:  Invalid body indentation level (expecting an indentation level
    </example>
 
    <simpara>
-    If the closing identifier is indented, tabs can be used as well, however,
-    tabs and spaces <emphasis>must not</emphasis> be intermixed regarding
-    the indentation of the closing identifier and the indentation of the body
-     (up to the closing identifier). In any of these cases, a <classname>ParseError</classname> will be thrown.
+    Для відступу кінцевої мітки можна використовувати табуляцію, однак табуляція
+    та пропуски <emphasis>не повинні</emphasis> змішуватися у відступах тексту
+    чи кінцевої мітки. Інакше, буде викинуто <classname>ParseError</classname>.
 
-    These whitespace constraints have been included because mixing tabs and
-    spaces for indentation is harmful to legibility.
+    Це обмеження було введено у зв'язку з тим, що змішування табуляції та
+    пропусків погіршує розбірливість коду.
    </simpara>
 
    <example>
-    <title>Different indentation for body (spaces) closing identifier</title>
+    <title>Різні відступи</title>
     <programlisting role="php">
 <![CDATA[
 <?php
-// All the following code do not work.
+// Увесь наступний код не працює.
 
-// different indentation for body (spaces) ending marker (tabs)
+// різні відступи в тексті (пропуски) та для кінцевої мітки (табуляція)
 {
-	echo <<<END
-	 a
-		END;
+	echo <<<МІТКА
+	 а
+		МІТКА;
 }
 
-// mixing spaces and tabs in body
+// змішування пропусків та табуляції в тексті
 {
-    echo <<<END
-    	a
-     END;
+    echo <<<МІТКА
+    	а
+     МІТКА;
 }
 
-// mixing spaces and tabs in ending marker
+// змішування пропусків та табуляції для кінцевої мітки
 {
-	echo <<<END
-		  a
-		 END;
+	echo <<<МІТКА
+		  а
+		 МІТКА;
 }
 ]]>
     </programlisting>
@@ -335,34 +336,33 @@ PHP Parse error:  Invalid indentation - tabs and spaces cannot be mixed in examp
    </example>
 
    <simpara>
-    The closing identifier for the body string is not required to be
-    followed by a semicolon or newline. For example, the following code
-    is allowed as of PHP 7.3.0:
+    Крапка з комою чи символ нового рядка після кінцевої мітки не є
+    обов'язковими. До прикладу, наступний код дозволений, починаючи з PHP 7.3.0:
    </simpara>
 
    <example>
-    <title>Continuing an expression after a closing identifier</title>
+    <title>Продовження виразу після кінцевої мітки</title>
     <programlisting role="php">
 <![CDATA[
 <?php
-$values = [<<<END
-a
-  b
-    c
-END, 'd e f'];
-var_dump($values);
+$значення = [<<<МІТКА
+а
+  б
+    в
+МІТКА, 'г ґ д'];
+var_dump($значення);
 ]]>
     </programlisting>
     &example.outputs.73;
     <screen>
 <![CDATA[
 array(2) {
-  [0] =>
-  string(11) "a
-  b
-    c"
-  [1] =>
-  string(5) "d e f"
+  [0]=>
+  string(14) "а
+  б
+    в"
+  [1]=>
+  string(8) "г ґ д"
 }
 ]]>
     </screen>
@@ -370,86 +370,83 @@ array(2) {
 
    <warning>
     <simpara>
-     If the closing identifier was found at the start of a line, then
-     regardless of whether it was a part of another word, it may be considered
-     as the closing identifier and causes a <classname>ParseError</classname>.
+     Якщо назву мітки знайдено одразу після символу початку рядка, то навіть
+     якщо це була частина тексту, вона розглядатиметься як кінцева мітка, що
+     спричинить помилку <classname>ParseError</classname>.
     </simpara>
 
     <example>
-     <title>Closing identifier in body of the string tends to cause ParseError</title>
+     <title>Кінцева мітка в тексті може викликати ParseError</title>
      <programlisting role="php">
 <![CDATA[
 <?php
-$values = [<<<END
-a
-b
-END ING
-END, 'd e f'];
+$значення = [<<<МІТКА
+а
+б
+МІТКА помічає кінець тексту
+МІТКА, 'в г ґ'];
 ]]>
      </programlisting>
      &example.outputs.73;
     <screen>
 <![CDATA[
-PHP Parse error:  syntax error, unexpected identifier "ING", expecting "]" in example.php on line 6
+PHP Parse error:  syntax error, unexpected identifier "помічає", expecting "]" in example.php on line 5
 ]]>
      </screen>
     </example>
 
     <simpara>
-     To avoid this problem, it is safe to follow the simple rule:
-     <emphasis>do not choose as a closing identifier if it appears in the body
-     of the text</emphasis>.
+     Щоб уникнути цієї проблеми, безпечніше дотримуватися простого правила:
+     <emphasis>не обирати мітку, яка може з'явитися в тексті</emphasis>.
     </simpara>
 
    </warning>
 
    <warning>
     <simpara>
-     Prior to PHP 7.3.0, it is very important to note that the line with the
-     closing identifier must contain no other characters, except a semicolon
-     (<literal>;</literal>).
-     That means especially that the identifier
-     <emphasis>may not be indented</emphasis>, and there may not be any spaces
-     or tabs before or after the semicolon. It's also important to realize that
-     the first character before the closing identifier must be a newline as
-     defined by the local operating system. This is <literal>\n</literal> on
-     UNIX systems, including macOS. The closing delimiter must also be
-     followed by a newline.
+     До PHP 7.3.0, необхідно слідкувати за тим, щоб рядок з кінцевою міткою не
+     містив нічого, крім самої мітки та крапки з комою (<literal>;</literal>) за
+     нею. Це означає, що мітка <emphasis>не може відступати</emphasis> від
+     початку рядка, а також не може бути жодних пропусків чи табуляції перед чи
+     після крапки з комою. Також важливо, щоб символом перед кінцевою міткою
+     був символ нового рядка, визначений локальною операційною системою. Це
+     <literal>\n</literal> в системах UNIX, включно з macOS. Також цей символ
+     має бути одразу після крапки з комою.
     </simpara>
 
     <simpara>
-     If this rule is broken and the closing identifier is not "clean", it will
-     not be considered a closing identifier, and PHP will continue looking for
-     one. If a proper closing identifier is not found before the end of the
-     current file, a parse error will result at the last line.
+     Якщо це правило порушено і кінцева мітка неправильна — вона не
+     вважатиметься такою, а PHP продовжить шукати кінцеву мітку. Якщо до кінця
+     поточного файлу мітку не буде знайдено, то на останньому рядку виникне
+     синтаксична помилка.
     </simpara>
 
     <example>
-     <title>Invalid example, prior to PHP 7.3.0</title>
+     <title>Недійсна мітка, до версії PHP 7.3.0</title>
      <programlisting role="php">
       <!-- This is an INVALID example -->
 <![CDATA[
 <?php
 class foo {
-    public $bar = <<<EOT
+    public $bar = <<<МІТКА
 bar
-    EOT;
+    МІТКА;
 }
-// Identifier must not be indented
+// Мітка повинна не мати відступів
 ?>
 ]]>
      </programlisting>
     </example>
     <example>
-     <title>Valid example, even prior to PHP 7.3.0</title>
+     <title>Дійсна мітка, навіть до версії PHP 7.3.0</title>
      <programlisting role="php">
       <!-- This is a VALID example -->
 <![CDATA[
 <?php
 class foo {
-    public $bar = <<<EOT
+    public $bar = <<<МІТКА
 bar
-EOT;
+МІТКА;
 }
 ?>
 ]]>
@@ -457,17 +454,18 @@ EOT;
     </example>
 
     <para>
-     Heredocs containing variables can not be used for initializing class properties.
+     Дані рядкового типу в синтаксисі Heredoc, які містять змінні, не можна
+     використовувати для ініціалізації властивостей класу.
     </para>
 
    </warning>
 
    <para>
-    Heredoc text behaves just like a double-quoted <type>string</type>, without
-    the double quotes. This means that quotes in a heredoc do not need to be
-    escaped, but the escape codes listed above can still be used. Variables are
-    expanded, but the same care must be taken when expressing complex variables
-    inside a heredoc as with <type>string</type>s.
+    Текст Heredoc має ті ж особливості, що і рядок (<type>string</type>) в
+    лапках, просто без лапок. Це означає, що лапки в Heredoc не потрібно
+    екранувати, а перелічені вище екрановані послідовності досі можна
+    використовувати. Змінні так само розкриваються, а складні змінні записуються
+    тим же способом, що і в рядках (<type>string</type>).
    </para>
 
    <example>

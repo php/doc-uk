@@ -6,7 +6,7 @@
  <sect1 xml:id="oop5.intro">
   <title>Вступ</title>
   <para>
-   PHP має повну обʼєктну модель. В переліку можливостей PHP є:
+   PHP має повну об'єктну модель. В переліку можливостей PHP є:
    <link linkend="language.oop5.visibility">область видимості</link>, 
    <link linkend="language.oop5.abstract">абстрактні</link> та 
    <link linkend="language.oop5.final">фінальні</link> класи і методи, 

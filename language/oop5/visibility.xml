@@ -13,7 +13,7 @@
   </para>
 
   <sect2 xml:id="language.oop5.visibility-members">
-   <title>Область Видимості Властивості</title>
+   <title>Видимість властивості</title>
    <para>
     Властивості класу можуть оголошуватись як public, private чи protected.
     Властивість, оголошена без ключового слова видимості, вважається
@@ -21,7 +21,7 @@
    </para>
    <para>
     <example>
-     <title>Оголошення Властивості</title>
+     <title>Оголошення властивості</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -80,7 +80,7 @@ $obj2->printHello(); // Виводить Загальнодоступна2, За
   </sect2>
 
   <sect2 xml:id="language.oop5.visiblity-methods">
-   <title>Область видимості метода</title>
+   <title>Видимість метода</title>
    <para>
     Методи класу можуть бути визначені як public, private чи protected. Метод,
     оголошений без ключового слова видимості, вважається загальнодоступним.
@@ -188,7 +188,7 @@ $myFoo->test(); // Bar::testPrivate
    </para>
    <para>
     <example>
-     <title>Оголошення констатн, починаючи з PHP 7.1.0</title>
+     <title>Оголошення констант, починаючи з PHP 7.1.0</title>
      <programlisting role="php">
 <![CDATA[
 <?php

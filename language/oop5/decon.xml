@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 9f351a14a749721a74df1dc6ac9533cf796a652e Maintainer: mproshchuk Status: wip -->
+<!-- EN-Revision: 9f351a14a749721a74df1dc6ac9533cf796a652e Maintainer: mproshchuk Status: ready -->
  <sect1 xml:id="language.oop5.decon" xmlns="http://docbook.org/ns/docbook">
-  <title>Конструктори та Деструктори</title>
+  <title>Конструктори та деструктори</title>
 
   <sect2 xml:id="language.oop5.decon.constructor">
    <title>Конструктор</title>
@@ -11,18 +11,18 @@
    </methodsynopsis>
    <para>
     PHP дозволяє розробникам оголошувати методи-конструктори. Класи, в яких
-    оголошено метод-конструктор, будуть викликати його при створенні нового об'єкта.
-    Це може бути корисним, коли потрібна ініціалізація об'єкта, перед його
-    використанням.
+    оголошено метод-конструктор, будуть викликати його під час створення нового
+    об'єкта. Це корисно, коли перед використанням об'єкта його потрібно
+    ініціалізувати.
    </para>
    <note>
     <simpara>
-     Батьківський конструктор не викликається автоматично, якщо в дочірньому класі
-     оголошено власний конструктор. Щоб виконався батьківський конструктор, необхідно
-     викликати <function>parent::__construct</function> всередині дочірнього
-     конструктора. Якщо ж в дочірньому класі не оголошено власний конструктор,
-     то він може наслідуватись з батьківського класа як звичайний метод
-     (у випадку, коли його не оголошено як приватний).
+     Батьківський конструктор не викликається автоматично, якщо в дочірньому
+     класі оголошено власний конструктор. Для цього необхідно здійснити виклик
+     <function>parent::__construct</function> всередині дочірнього конструктора.
+     Якщо ж в дочірньому класі не оголошено власний конструктор, то його можна
+     наслідувати з батьківського класу як звичайний метод (якщо той не оголошено
+     як закритий).
     </simpara>
    </note>
    <example>
@@ -32,30 +32,30 @@
 <?php
 class BaseClass {
     function __construct() {
-        print "В конструкторі класа BaseClass\n";
+        print "В конструкторі класу BaseClass\n";
     }
 }
 
 class SubClass extends BaseClass {
    function __construct() {
        parent::__construct();
-       print "В конструкторі класа SubClass\n";
+       print "В конструкторі класу SubClass\n";
    }
 }
 
 class OtherSubClass extends BaseClass {
-    // Успадковує конструктор класа BaseClass
+    // Успадковує конструктор класу BaseClass
 }
 
-// Видає: В конструкторі класа BaseClass
+// Виводить: В конструкторі класу BaseClass
 $obj = new BaseClass();
 
-// Видає:
-// В конструкторі класа BaseClass
-// В конструкторі класа SubClass
+// Виводить:
+// В конструкторі класу BaseClass
+// В конструкторі класу SubClass
 $obj = new SubClass();
 
-// Видає: В конструкторі класа BaseClass
+// Виводить: В конструкторі класу BaseClass
 $obj = new OtherSubClass();
 ?> 
 ]]>
@@ -63,18 +63,19 @@ $obj = new OtherSubClass();
    </example>
    <para>
     На відміну від інших методів, на
-    <link linkend="object.construct">__construct()</link> під час розширення не
-    поширюються звичайні <link linkend="language.oop.lsp">правила сумісності
+    <link linkend="object.construct">__construct()</link> під час наслідування
+    не поширюються звичайні <link linkend="language.oop.lsp">правила сумісності
     сигнатур</link>.
    </para>
    <para>
-    Constructors are ordinary methods which are called during the instantiation of their
-    corresponding object.  As such, they may define an arbitrary number of arguments, which
-    may be required, may have a type, and may have a default value. Constructor arguments
-    are called by placing the arguments in parentheses after the class name.
+    Конструктори — це звичайні методи, виклик яких здійснюється під час
+    створення примірника їхнього класу. Таким чином, для них можна оголошувати
+    довільну кількість параметрів, які можуть бути обов'язковими, мати тип та
+    початкові значення. Параметри конструктору передають в дужках після назви
+    класу.
    </para>
    <example>
-    <title>Using constructor arguments</title>
+    <title>Використання параметрів конструктора</title>
     <programlisting role="php">
 <![CDATA[
 <?php
@@ -88,46 +89,49 @@ class Point {
     }
 }
 
-// Pass both parameters.
+// Вказати обидва параметри.
 $p1 = new Point(4, 5);
-// Pass only the required parameter. $y will take its default value of 0.
+// Вказати тільки обов'язковий параметр. $y отримає початкове значення 0.
 $p2 = new Point(4);
-// With named parameters (as of PHP 8.0):
+// З названими параметрами (починаючи з PHP 8.0):
 $p3 = new Point(y: 5, x: 4);
 ?>
 ]]>
     </programlisting>
    </example>
    <para>
-    If a class has no constructor, or the constructor has no required arguments, the parentheses
-    may be omitted.
+    Якщо клас не має конструктора, або конструктор не вимагає обов'язкових
+    параметрів, дужки можуть бути пропущені.
    </para>
    <sect3>
-    <title>Old-style constructors</title>
+    <title>Конструктори в старому стилі</title>
     <para>
-     Prior to PHP 8.0.0, classes in the global namespace will interpret a method named
-     the same as the class as an old-style constructor.  That syntax is deprecated,
-     and will result in an <constant>E_DEPRECATED</constant> error but still call that function as a constructor.
-     If both <link linkend="object.construct">__construct()</link> and a same-name method are
-     defined, <link linkend="object.construct">__construct()</link> will be called.
+     До PHP 8.0.0, в глобальному просторі імен однойменний з класом метод
+     інтерпретується як конструктор старого зразка. Такий синтаксис є
+     застарілим і призводить до помилки <constant>E_DEPRECATED</constant>, проте
+     досі дозволяє викликати цю функцію, як конструктор. Якщо оголошено і метод
+     <link linkend="object.construct">__construct()</link>, і однойменний метод,
+     то для виклику буде взято <link
+     linkend="object.construct">__construct()</link>.
     </para>
     <para>
-     In namespaced classes, or any class as of PHP 8.0.0, a method named
-     the same as the class never has any special meaning.
+     В класах інших просторів імен, чи будь-яких інших класах, починаючи з PHP
+     8.0.0, однойменний метод не має особливого значення.
     </para>
-    <para>Always use <link linkend="object.construct">__construct()</link> in new code.
+    <para>В новому коді завжди потрібно використовувати метод
+     <link linkend="object.construct">__construct()</link>.
     </para>
    </sect3>
    <sect3 xml:id="language.oop5.decon.constructor.promotion">
-    <title>Constructor Promotion</title>
+    <title>Параметри конструктора як властивості</title>
     <para>
-     As of PHP 8.0.0, constructor parameters may also be promoted to correspond to an
-     object property.  It is very common for constructor parameters to be assigned to
-     a property in the constructor but otherwise not operated upon.  Constructor promotion
-     provides a short-hand for that use case.  The example above could be rewritten as the following.
+     Починаючи з PHP 8.0.0, параметри конструктора можна оголошувати як
+     властивості об'єкта. Дуже часто в тілі конструктора значення його
+     параметрів призначають властивостям і більше не обробляють. Тепер же існує
+     спрощений спосіб це зробити. Приклад вище можна переписати наступним чином.
     </para>
     <example>
-     <title>Using constructor property promotion</title>
+     <title>Оголошення параметрів конструктора як властивостей</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -139,66 +143,73 @@ class Point {
      </programlisting>
     </example>
     <para>
-     When a constructor argument includes a modifier, PHP will interpret it as
-     both an object property and a constructor argument, and assign the argument value to
-     the property.  The constructor body may then be empty or may contain other statements.
-     Any additional statements will be executed after the argument values have been assigned
-     to the corresponding properties.
+     Якщо оголошений параметр конструктора має модифікатора, то PHP інтерпретує
+     параметр також як властивість об'єкта, тож обоє отримають однакові
+     значення. Таким чином тіло конструктора може бути порожнім або містити інші
+     оператори, які будуть виконані після отримання властивостями значень
+     відповідних параметрів.
     </para>
     <para>
-     Not all arguments need to be promoted. It is possible to mix and match promoted and not-promoted
-     arguments, in any order.  Promoted arguments have no impact on code calling the constructor.
+     Не усі параметри необхідно оголошувати, як властивості. Дозволено змішувати
+     їх зі звичними параметрами в будь-якому порядку. Параметри-властивості не
+     впливають на код, що викликає конструктора.
     </para>
     <note>
      <para>
-      Using a <link linkend="language.oop5.visibility">visibility modifier</link> (<literal>public</literal>,
-      <literal>protected</literal> or <literal>private</literal>) is the most likely way to apply property
-      promotion, but any other single modifier (such as <literal>readonly</literal>) will have the same effect.
+      Здебільшого для означення параметра як властивості використовують
+      <link linkend="language.oop5.visibility">модифікатор видимості</link>
+      (<literal>public</literal>, <literal>protected</literal> або
+      <literal>private</literal>). Ту саму роль виконують інші модифікатори (як
+      от <literal>readonly</literal>).
      </para>
     </note>
     <note>
      <para>
-      Object properties may not be typed <type>callable</type> due to engine ambiguity that would
-      introduce. Promoted arguments, therefore, may not be typed <type>callable</type> either. Any
-      other <link linkend="language.types.declarations">type declaration</link> is permitted, however.
+      Властивості об'єкта не можуть мати тип <type>callable</type> через
+      неоднозначність алгоритмів рушія. Отже це стосується і параметрів, що
+      оголошені, як властивості. Однак, будь-яке інше <link
+      linkend="language.types.declarations">оголошення типу</link> — дозволене.
      </para>
     </note>
     <note>
      <para>
-      As promoted properties are desugared to both a property as well as a function parameter, any
-      and all naming restrictions for both properties as well as parameters apply.
+      Оскільки параметри, що оголошені як властивості, виконують подвійну роль,
+      до них застосовуються обмеження щодо назв, які стосуються як параметрів,
+      так і властивостей.
      </para>
     </note>
     <note>
      <para>
-      <link linkend="language.attributes">Attributes</link> placed on a
-      promoted constructor argument will be replicated to both the property
-      and argument.  Default values on a promoted constructor argument will be replicated only to the argument and not the property.
+      <link linkend="language.attributes">Атрибут</link>, встановлений для
+      параметра-властивості, діє і на параметр, і на властивість. Початкове
+      значення параметра, що оголошений, як властивість, буде надано тільки
+      параметру.
      </para>
     </note>
    </sect3>
    
    <sect3 xml:id="language.oop5.decon.constructor.new">
-    <title>New in initializers</title>
+    <title>Ключове слово <literal>new</literal> в ініціалізаторах</title>
     <para>
-     As of PHP 8.1.0, objects can be used as default parameter values,
-     static variables, and global constants, as well as in attribute arguments.
-     Objects can also be passed to <function>define</function> now.
+     Починаючи з PHP 8.1.0, об'єкти можуть бути початковими значеннями
+     параметрів, статичних змінних, глобальних констант, а також параметрів
+     атрибутів. Об'єкти також можуть бути передані в функцію
+     <function>define</function>.
     </para>
     <note>
      <para>
-      The use of a dynamic or non-string class name or an anonymous class is not allowed.
-      The use of argument unpacking is not allowed.
-      The use of unsupported expressions as arguments is not allowed.
+      в таких випадках не дозволено застосовувати: динамічні, нерядкові назви
+      класів або анонімні класи; розпакування параметрів; непідтримувані
+      вирази, як параметри.
      </para>
     </note>
     <example>
-     <title>Using new in initializers</title>
+     <title>Використання <literal>new</literal> в ініціалізаторах</title>
      <programlisting role="php">
 <![CDATA[
 <?php
 
-// All allowed:
+// Дозволено:
 static $x = new Foo;
 
 const C = new Foo;
@@ -212,12 +223,12 @@ class Test {
     ) {}
 }
 
-// All not allowed (compile-time error):
+// Не дозволено (помилка компіляції):
 function test(
-    $a = new (CLASS_NAME_CONSTANT)(), // dynamic class name
-    $b = new class {}, // anonymous class
-    $c = new A(...[]), // argument unpacking
-    $d = new B($abc), // unsupported constant expression
+    $a = new (CLASS_NAME_CONSTANT)(), // динамічна назва класу
+    $b = new class {}, // анонімний клас
+    $c = new A(...[]), // розпакування параметрів
+    $d = new B($abc), // непідтримуваний вираз
 ) {}
 ?>
 ]]>
@@ -226,14 +237,15 @@ function test(
    </sect3>
    
    <sect3 xml:id="language.oop5.decon.constructor.static">
-    <title>Static creation methods</title>
+    <title>Способи статичного створення об'єктів</title>
     <para>
-     PHP only supports a single constructor per class.  In some cases, however, it may be
-     desirable to allow an object to be constructed in different ways with different inputs.
-     The recommended way to do so is by using static methods as constructor wrappers.
+     PHP підтримує тільки один конструктор на клас. Однак, в деяких випадках
+     потрібно будувати об'єкт по-різному з різними вхідними даними.
+     Рекомендованим способом є використання статичних методів, як надбудов над
+     конструкторами.
     </para>
     <example>
-     <title>Using static creation methods</title>
+     <title>Використання способів статичного створення об'єктів</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -258,7 +270,7 @@ class Product {
     }
 
     public static function fromXml(string $xml): static {
-        // Custom logic here.
+        // Користувацька логіка.
         $data = convert_xml_to_array($xml);
         $new = new static();
         $new->id = $data['id'];
@@ -274,26 +286,32 @@ $p3 = Product::fromXml($some_xml_string);
      </programlisting>
     </example>
     <para>
-     The constructor may be made private or protected to prevent it from being called externally.
-     If so, only a static method will be able to instantiate the class. Because they are in the
-     same class definition they have access to private methods, even if not of the same object
-     instance. The private constructor is optional and may or may not make sense depending on
-     the use case.
+     Конструктор можна зробити закритим або захищеним, щоб заборонити виклик
+     його ззовні. В такому випадку тільки статичний метод зможе повернути
+     примірник свого класу. Статичні методи мають доступ до закритих та
+     захищених методів, визначених в спільному класі, навіть якщо останні
+     належать до різних примірників цього класу. Закритий конструктор є
+     необов'язковим і може мати або не мати сенс, залежно від випадку
+     застосування.
     </para>
     <para>
-     The three public static methods then demonstrate different ways of instantiating the object.
+     В прикладі вище три загальнодоступні статичні методи показують різні
+     способи створення об'єктів.
     </para>
     <simplelist>
-     <member><code>fromBasicData()</code> takes the exact parameters that are needed, then creates the
-      object by calling the constructor and returning the result.</member>
-     <member><code>fromJson()</code> accepts a JSON string and does some pre-processing on it itself
-     to convert it into the format desired by the constructor. It then returns the new object.</member>
-     <member><code>fromXml()</code> accepts an XML string, preprocesses it, and then creates a bare
-     object.  The constructor is still called, but as all of the parameters are optional the method
-     skips them.  It then assigns values to the object properties directly before returning the result.</member>
+     <member><code>fromBasicData()</code> приймає основні параметри та передає
+     їх в конструктор, викликає його та повертає отриманий примірник.</member>
+     <member><code>fromJson()</code> приймає JSON-рядок, робить деякі
+     перетворення та у форматі, що підходить конструктору, передає йому. Потім
+     повертає новий об'єкт.</member>
+     <member><code>fromXml()</code> приймає XML-рядок, обробляє його, а потім
+     створює чистий об'єкт. Метод викликає конструктор без параметрів,
+     оскільки всі вони необов'язкові. Далі безпосередньо задає значення
+     властивостям об'єкта та повертає цей об'єкт.</member>
     </simplelist>
     <para>
-     In all three cases, the <code>static</code> keyword is translated into the name of the class the code is in.
+     У всіх трьох випадках ключове слово <code>static</code> транслюється в
+     назву класу, всередині якого воно застосовано.
      In this case, <code>Product</code>.
     </para>
    </sect3>
@@ -306,13 +324,13 @@ $p3 = Product::fromXml($some_xml_string);
     <void />
    </methodsynopsis>
    <para>
-    PHP має концепцію деструктора, схожу з тим, що є в інших
-    об'єктно-орієнтованих мовах, таких як C++. Метод деструктора буде викликатись
-    зразу після того, як на нього не будуть посилатись визначені об'єкти, або
-    в будь-якому порядку, під час завершення роботи скрипта.
+    PHP має концепцію деструктора, схожу з тими, що є в інших
+    об'єктно-орієнтованих мовах, як от C++. Метод деструктора об'єкта буде
+    викликано одразу за відсутності посилань на об'єкт, або в довільному
+    порядку під час процедури завершення скрипта.
    </para>
    <example>
-    <title>Використання Деструктора</title>
+    <title>Використання деструктора</title>
     <programlisting role="php">
 <![CDATA[
 <?php
@@ -333,28 +351,28 @@ $obj = new MyDestructableClass();
     </programlisting>
    </example>
    <para>
-    Схоже з конструктором, батьківський деструктор не буде викликатись
+    Схоже з конструктором, батьківський деструктор не буде викликано
     автоматично. Щоб запустити батьківський деструктор, потрібно явно викликати
-    <function>parent::__destruct</function> в тілі деструктора.
+    <function>parent::__destruct</function> в тілі дочірнього деструктора.
     Також, як і у випадку з конструктором, якщо в дочірньому класі не оголошено
-    деструктор, то він може успадковувати деструктор батька.
+    деструктор, то він може успадковувати деструктор батьківського класу.
    </para>
    <para>
-    Деструктор буде викликатись навіть коли виконання скрипта припиняється з
-    використанням <function>exit</function>. Виклик <function>exit</function>
-    в деструкторі, буде запобігати від виконання решти процедур завершення.
+    Деструктор буде викликано, навіть коли виконання скрипта припиняється
+    функцією <function>exit</function>. Виклик <function>exit</function>
+    в деструкторі запобігає виконанню решти процедур завершення скрипта.
    </para>
    <note>
     <para>
-     Викликаються деструктори, коли скрипти завершення роботи вже відправили
-     HTTP заголовки. Робоча директорія, в фазі завершення скриптів, може
-     відрізнятись в деяких SAPI (наприклад, в Apache).
+     Під час завершення скрипта деструктори викликаються після відправлення
+     HTTP-заголовків. Робоча тека під час завершення скриптів може відрізнятись
+     в деяких SAPI (наприклад в Apache).
     </para>
    </note>
    <note>
     <para>
-     При спробі кинути виняток з деструктора (викликаного під час завершення
-     роботи скрипта) призведе до фатальної помилки.
+     Спроба кинути виключення з деструктора, викликаного під час завершення
+     скрипта, призведе до фатальної помилки.
     </para>
    </note>
   </sect2>

@@ -3,7 +3,7 @@
 
 <!-- Part titles used mostly in manual.xml itself -->
 <!ENTITY PHPManual         "Посібник з PHP">
-<!ENTITY Seealso           "Дивитися також">
+<!ENTITY Seealso           "Дивіться також">
 <!ENTITY Date              "Дата:">
 <!ENTITY GettingStarted    "З чого почати">
 <!ENTITY InstallAndConfigure "Встановлення та налаштування">
