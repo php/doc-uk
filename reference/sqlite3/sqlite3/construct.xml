@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 61374bbe228e8e9c55a24aba59a1e2bb2a871148 Maintainer: mproshchuk Status: wip -->
+<!-- EN-Revision: 61374bbe228e8e9c55a24aba59a1e2bb2a871148 Maintainer: mproshchuk Status: ready -->
 <refentry xml:id="sqlite3.construct" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>SQLite3::__construct</refname>
   <refpurpose>
-   Створює об'єкт класа SQLite3 та відкриває базу даних SQLite 3
+   Створює об'єкт класу SQLite3 та з'єднюється з базою даних SQLite 3
   </refpurpose>
  </refnamediv>
 
@@ -17,9 +17,9 @@
    <methodparam choice="opt"><type>string</type><parameter>encryptionKey</parameter><initializer>""</initializer></methodparam>
   </constructorsynopsis>
   <para>
-   Створює об'єкт класа SQLite3 та відкриває з'єднання для бази даних SQLite 3.
-   Якщо база даних має шифрування, то буде спроба використати <parameter>encryption_key</parameter>
-   (ключ шифрування).
+   Створює об'єкт класу SQLite3 та відкриває з'єднання з базою даних SQLite 3.
+   Якщо база даних має шифрування, то буде спроба використати
+   <parameter>encryption_key</parameter> (ключ шифрування).
   </para>
  </refsect1>
 
@@ -31,11 +31,11 @@
      <term><parameter>filename</parameter></term>
      <listitem>
       <para>
-       Шлях до бази даних SQLite, або рядок із записом <literal>:memory:</literal>,
-       щоб використовувати базу даних в пам'яті.
-       If <parameter>filename</parameter> is an empty string, then a private, temporary on-disk
-       database will be created. This private database will be automatically
-       deleted as soon as the database connection is closed.
+       Шлях до бази даних SQLite, або рядок із записом
+       <literal>:memory:</literal>, щоб використовувати базу даних в пам'яті.
+       Якщо параметр <parameter>filename</parameter> є порожнім рядком, тоді
+       на диску буде створено приватну тимчасову база даних. Ця приватна база
+       даних буде автоматично видалена після закриття з'єднання з нею.
       </para>
      </listitem>
     </varlistentry>
@@ -43,9 +43,9 @@
      <term><parameter>flags</parameter></term>
      <listitem>
       <para>
-       Необов'язковий флаг, для визначення - як саме
-       відкривати базу даних SQLite. Початково, при відкритті використовується
-       <constant>SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE</constant>.
+       Необов'язковий прапорець, що визначає, як саме відкривати базу даних
+       SQLite. Типово: <constant>SQLITE3_OPEN_READWRITE |
+       SQLITE3_OPEN_CREATE</constant>.
        <itemizedlist>
         <listitem>
          <para>
@@ -73,9 +73,9 @@
      <term><parameter>encryptionKey</parameter></term>
      <listitem>
       <para>
-       Необов'язковий ключ шифра, що використовується при шифруванні та
-       дешифруванні бази даних SQLite. If the SQLite encryption module is not installed,
-       this parameter will have no effect.
+       Необов'язковий ключ шифру, що використовується для шифрування та
+       дешифрування бази даних SQLite. Якщо модуль шифрування SQLite не
+       встановлено, то цей параметр ні на що не впливатиме.
       </para>
      </listitem>
     </varlistentry>
@@ -105,8 +105,8 @@
      <row>
       <entry>7.0.10</entry>
       <entry>
-       The <parameter>filename</parameter> can now be empty to use a private,
-       temporary on-disk database.
+       Параметр <parameter>filename</parameter> тепер може бути порожнім, щоб
+       використовувати приватну тимчасову базу даних на диску.
       </entry>
      </row>
     </tbody>
@@ -118,7 +118,7 @@
   &reftitle.examples;
   <para>
    <example>
-    <title><function>SQLite3::__construct</function></title>
+    <title>Використання <function>SQLite3::__construct</function></title>
     <programlisting role="php">
 <![CDATA[
 <?php
@@ -137,7 +137,6 @@ var_dump($result->fetchArray());
  </refsect1>
 
 </refentry>
-
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml

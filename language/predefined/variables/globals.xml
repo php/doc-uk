@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: a6d209f4ff71ccba3f1255902827f5df3e092ff9 Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: d58ee8eaaa7f716c51f66f5f1058ab3c42376d98 Maintainer: mproshchuk Status: ready -->
 <refentry role="variable" xml:id="reserved.variables.globals" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>$GLOBALS</refname>
@@ -24,7 +24,8 @@
     <programlisting role="php">
 <![CDATA[
 <?php
-function test() {
+function test()
+{
     $foo = "це локальна змінна";
 
     echo '$foo в глобальній області: ' . $GLOBALS["foo"] . "\n";
@@ -33,6 +34,7 @@ function test() {
 
 $foo = "це глобальна змінна";
 test();
+
 ?>
 ]]>
     </programlisting>
@@ -53,18 +55,20 @@ $foo в поточній області: це локальна змінна
      <title>Перезапис усього масиву <varname>$GLOBALS</varname> викличе
      помилку.</title>
      <programlisting role="php">
- <![CDATA[
- <?php
- // Генерує помилку компіляції:
- $GLOBALS = [];
- $GLOBALS += [];
- $GLOBALS =& $x;
- $x =& $GLOBALS;
- unset($GLOBALS);
- array_pop($GLOBALS);
- // ... та будь-які інші операції запису/читання-запису щодо $GLOBALS
- ?>
- ]]>
+<![CDATA[
+<?php
+
+// Генерує помилку компіляції:
+$GLOBALS = [];
+$GLOBALS += [];
+$GLOBALS =& $x;
+$x =& $GLOBALS;
+unset($GLOBALS);
+array_pop($GLOBALS);
+// ... та будь-які інші операції запису/читання-запису щодо $GLOBALS
+
+?>
+]]>
      </programlisting>
     </example>
    </para>
@@ -84,18 +88,20 @@ $foo в поточній області: це локальна змінна
   </note>
   <note>
    <para>
-     Починаючи з PHP 8.1.0, <varname>$GLOBALS</varname> тепер є копією
-     глобальної таблиці символів і доступна лише для читання. Отже, глобальні
-     змінні не можна перезаписати за допомогою копії. Раніше ж масив
-     <varname>$GLOBALS</varname> мав особливий механізм роботи, що відрізнявся
-     від звичайних масивів і дозволяв змінювати глобальні змінні через їхню
-     копію.
-     <informalexample>
-     <programlisting role="php">
+    Починаючи з PHP 8.1.0, змінна <varname>$GLOBALS</varname> тепер є копією
+    глобальної <link linkend="features.gc.refcounting-basics">таблиці
+    символів</link> і доступна лише для читання. Отже, глобальні змінні не можна
+    перезаписати за допомогою їхніх копій. Раніше ж масив
+    <varname>$GLOBALS</varname> мав особливий механізм роботи, що відрізнявся
+    від звичайних масивів і дозволяв змінювати глобальні змінні через їхню копію.
+    <informalexample>
+    <programlisting role="php">
 <![CDATA[
 <?php
+
 // До PHP 8.1.0
 $a = 1;
+
 $globals = $GLOBALS; // Нібито змінна-копія
 $globals['a'] = 2;
 var_dump($a); // int(2)
@@ -111,6 +117,7 @@ $globals['a'] = 1;
 foreach ($globals as $key => $value) {
     $GLOBALS[$key] = $value;
 }
+
 ?>
 ]]>
      </programlisting>
@@ -141,4 +148,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-

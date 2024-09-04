@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: e311803cd2fb931ad80bab6fd0f996d2ece6e2b8 Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: d58ee8eaaa7f716c51f66f5f1058ab3c42376d98 Maintainer: mproshchuk Status: ready -->
 
 <refentry xml:id="function.compact" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
@@ -18,10 +18,11 @@
   </para>
   <para>
    Для кожного з переданих параметрів функція <function>compact</function>
-   шукає змінну в поточній таблиці символів та додає її до вихідного масиву
-   таким чином, що назва змінної стає ключем елемента масиву, а її значення —
-   значенням цього елемента. Коротше кажучи — це повна протилежність до
-   <function>extract</function>.
+   шукає змінну в поточній <link
+   linkend="features.gc.refcounting-basics">таблиці</link> символів та додає її
+   до вихідного масиву таким чином, що назва змінної стає ключем елемента
+   масиву, а її значення — значенням цього елемента. Коротше кажучи — це повна
+   протилежність до <function>extract</function>.
   </para>
    <note>
    <para>
@@ -100,6 +101,7 @@
     <programlisting role="php">
 <![CDATA[
 <?php
+
 $city  = "Сан-Франциско";
 $state = "CA";
 $event = "SIGGRAPH";
@@ -108,6 +110,7 @@ $location_vars = array("city", "state");
 
 $result = compact("event", $location_vars);
 print_r($result);
+
 ?>
 ]]>
     </programlisting>
