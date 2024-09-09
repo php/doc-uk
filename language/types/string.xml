@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: affa37e16f562d9297e83b2e21ec416aadc8b72d Maintainer: mproshchuk Status: wip -->
 <sect1 xml:id="language.types.string">
- <title>Рядки (Strings)</title>
+ <title>Рядок (string)</title>
 
  <para>
   Рядок (<type>string</type>) — це набір символів, кожному з яких відповідає
@@ -469,17 +469,17 @@ bar
    </para>
 
    <example>
-    <title>Heredoc string quoting example</title>
+    <title>Вставлення інших рядків в Heredoc</title>
     <programlisting role="php">
 <![CDATA[
 <?php
 $str = <<<EOD
-Example of string
-spanning multiple lines
-using heredoc syntax.
+Приклад тексту
+з синтаксисом heredoc,
+що складається з кількох рядків.
 EOD;
 
-/* More complex example, with variables. */
+/* Складніший приклад, зі змінними. */
 class foo
 {
     var $foo;
@@ -493,12 +493,12 @@ class foo
 }
 
 $foo = new foo();
-$name = 'MyName';
+$name = 'Петро';
 
 echo <<<EOT
-My name is "$name". I am printing some $foo->foo.
-Now, I am printing some {$foo->bar[1]}.
-This should print a capital 'A': \x41
+Мене звати $name. Я друкую $foo->foo.
+Зараз я друкую {$foo->bar[1]}.
+Має надрукуватись велику буква 'A': \x41
 EOT;
 ?>
 ]]>
@@ -506,19 +506,19 @@ EOT;
     &example.outputs;
     <screen>
 <![CDATA[
-My name is "MyName". I am printing some Foo.
-Now, I am printing some Bar2.
-This should print a capital 'A': A]]>
+Мене звати Петро. Я друкую Foo.
+Зараз я друкую Bar2.
+Має надрукуватись велику буква 'A': A]]>
     </screen>
    </example>
 
    <para>
-    It is also possible to use the Heredoc syntax to pass data to function
-    arguments:
+    Також можливо використовувати Heredoc-синтаксис для передавання параметрів
+    до функції:
    </para>
 
    <example>
-    <title>Heredoc in arguments example</title>
+    <title>Heredoc в значеннях параметрів</title>
     <programlisting role="php">
 <![CDATA[
 <?php

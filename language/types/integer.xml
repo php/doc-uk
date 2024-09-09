@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 161dde4fe721309398dd324edbf02aec409f127b Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: c09d80b942f41c7b9961a0773525ac8e1408daf2 Maintainer: mproshchuk Status: ready -->
 <sect1 xml:id="language.types.integer">
- <title>Цілі числа (integers)</title>
+ <title>Ціле число (integer)</title>
  
  <simpara>
   Цілим (integer) називають число, що належить множині
@@ -110,42 +110,23 @@ $a = 0b11111111; // двійкове число (дорівнює деятков
   </para>
 
   <example>
-   <title>Переповнення цілого числа в 32-бітних системах</title>
+   <title>Переповнення цілого числа</title>
    <programlisting role="php">
 <![CDATA[
 <?php
-$велике_число = 2147483647;
-var_dump($велике_число);                     // int(2147483647)
+$велике_число = 50000000000000000000;
+var_dump($велике_число);         // float(5.0E+19)
 
-$велике_число = 2147483648;
-var_dump($велике_число);                     // float(2147483648)
-
-$million = 1000000;
-$велике_число =  50000 * $million;
-var_dump($велике_число);                     // float(50000000000)
+var_dump(PHP_INT_MAX + 1);       // у 32-бітних системах: float(2147483648)
+                                 // у 64-бітних системах: float(9.2233720368548E+18)
 ?>
 ]]>
    </programlisting>
   </example>
+ </sect2>
 
-  <example>
-   <title>Переповнення цілого числа в 64-бітних системах</title>
-   <programlisting role="php">
-<![CDATA[
-<?php
-$велике_число = 9223372036854775807;
-var_dump($велике_число);                     // int(9223372036854775807)
-
-$велике_число = 9223372036854775808;
-var_dump($велике_число);                     // float(9.2233720368548E+18)
-
-$million = 1000000;
-$велике_число =  50000000000000 * $million;
-var_dump($велике_число);                     // float(5.0E+19)
-?>
-]]>
-   </programlisting>
-  </example>
+ <sect2 xml:id="language.types.integer.division">
+  <title>Ділення цілого числа</title>
 
   <para>
    В PHP не існує оператора для ділення цілих чисел (<type>int</type>). Для
@@ -242,7 +223,8 @@ var_dump(intval(8.1)); // 8 у обох випадках
 
    <note>
     <para>
-     Результатом приведення спеціальних чисел "NaN" та "Infinity" до типу
+     Результатом приведення спеціальних чисел <literal>NaN</literal>,
+     <literal>Inf</literal> та <literal>-Inf</literal> до типу
      <type>int</type> є число нуль (<literal>0</literal>).
     </para>
    </note>

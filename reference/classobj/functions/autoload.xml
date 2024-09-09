@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: d6105d5f559885cd3ecc6d03586bc90151d29ab6 Maintainer: ktretyak Status: ready -->
-<!-- $Revision$ -->
-
+<!-- EN-Revision: d88a13cd9ea3689e7e666173d6c19d1dc31673a4 Maintainer: mproshchuk Status: ready -->
 <refentry xml:id="function.autoload" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>__autoload</refname>
-  <refpurpose>Намагається завантажити незнайдений клас</refpurpose>
+  <refpurpose>Намагається завантажити невизначений клас</refpurpose>
  </refnamediv>
+ 
+ <refsynopsisdiv>
+  &warn.deprecated.function-7-2-0.removed-8-0-0;
+ </refsynopsisdiv>
 
  <refsect1 role="description">
   &reftitle.description;
@@ -15,8 +17,8 @@
    <methodparam><type>string</type><parameter>class</parameter></methodparam>
   </methodsynopsis>
   <para>
-   Ви можете визначити цю функцію, щоб використовувати <link
-   linkend="language.oop5.autoload">автоматичне завантаження класів</link>.
+   Цю функція визначають за потреби <link
+   linkend="language.oop5.autoload">автоматичного завантаження класів</link>.
   </para>
 
  </refsect1>
@@ -28,7 +30,7 @@
     <term><parameter>class</parameter></term>
     <listitem>
      <para>
-      Назва класа для завантаження
+      Назва класу для завантаження
      </para>
     </listitem>
    </varlistentry>
