@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 95b8f4df6657b1bc07bcb91679164b7b49ca63ac Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: d23581d55f20027b5a15673224a908cb425513b9 Maintainer: mproshchuk Status: ready -->
 
 <preface xml:id="preface" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://docbook.org/ns/docbook">
  <info><title>Передмова</title>
@@ -23,6 +23,14 @@
   пояснення основних <link linkend="features">особливостей</link> PHP та іншу
   <link linkend="appendices">додаткову</link> інформацію.
  </para>
+  <simpara>
+  Цей посібник охоплює знання про два останні основні випуски PHP (версії 7
+  та 8). В посібник більше не включено інформацію про розширення, які вже не
+  входять в ці версії PHP, а також про зміни у функціях раніших версій мови.
+  Архіви старіших версій посібника, в яких задокументовано попередні випуски
+  PHP, доступні в розділі "Більше документації" на сторінці
+  <link xlink:href="&url.php.docs;">"Документація"</link> сайту мови PHP.
+ </simpara>
  <para>
   Посібник можна отримати <link xlink:href="&url.php.doc.downloads;">в
   декількох форматах</link>. Більше інформації про те, як він розробляється, є в

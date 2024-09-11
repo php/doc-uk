@@ -532,32 +532,32 @@ EOD
    </example>
 
    <para>
-    It's possible to initialize static variables and class
-    properties/constants using the Heredoc syntax:
+    Можна задавати значення статичним змінним та властивостям/константам класу,
+    використовуючи синтаксис Heredoc:
    </para>
 
    <example>
-    <title>Using Heredoc to initialize static values</title>
+    <title>Heredoc як статичне значення</title>
     <programlisting role="php">
 <![CDATA[
 <?php
-// Static variables
+// Поле класу
 function foo()
 {
     static $bar = <<<LABEL
-Nothing in here...
+Тут нічого цікавого...
 LABEL;
 }
 
-// Class properties/constants
+// Властивість, константа класу
 class foo
 {
     const BAR = <<<FOOBAR
-Constant example
+Приклад константи
 FOOBAR;
 
     public $baz = <<<FOOBAR
-Property example
+Приклад властивості
 FOOBAR;
 }
 ?>
@@ -566,17 +566,16 @@ FOOBAR;
    </example>
 
    <para>
-    The opening Heredoc identifier may optionally be
-    enclosed in double quotes:
+    Початкову мітку Heredoc можна брати в лапки:
    </para>
 
    <example>
-    <title>Using double quotes in Heredoc</title>
+    <title>Використання лапок в Heredoc</title>
     <programlisting role="php">
 <![CDATA[
 <?php
 echo <<<"FOOBAR"
-Hello World!
+Привіт, світ!
 FOOBAR;
 ?>
 ]]>
