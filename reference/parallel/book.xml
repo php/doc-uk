@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: bbfa9738785f054752e6cb565cd0a58e71015bc6 Maintainer: mproshchuk Status: ready -->
+<book xml:id="book.parallel" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
+ <?phpdoc extension-membership="pecl" ?>
+ <title>parallel</title>
+ <titleabbrev>parallel</titleabbrev>
+
+ <preface xml:id="intro.parallel">
+  &reftitle.intro;
+  <para>
+  Розширення parallel дозволяє виконувати PHP-код в паралельних процесах.
+  Воно доступне в PHP ≥ 7.2.0. Для parallel ≥ 1.2.0 потрібна версія PHP ≥ 8.0.0.
+  </para>
+  <para>
+   Це стислий опис загального алгоритму parallel. Більше інформації є в цьому
+   розділі посібника.
+  </para>
+  <simplesect>
+   <title>Клас Runtime</title>
+   <para>
+    Клас <classname>parallel\Runtime</classname> представляє потік
+    інтерпретатора PHP. Клас <classname>parallel\Runtime</classname>
+    можна налаштувати за допомогою необов'язкового файлу ініціалізації, який
+    потрібно передати в метод
+    <methodname>parallel\Runtime::__construct</methodname>. Зазвичай цей файл є
+    автозавантажувачем чи чимсь на кшталт процедури попереднього завантаження:
+    він буде підключатися перед виконанням кожного завдання.
+   </para>
+   <para>
+    Після створення, примірник <classname>parallel\Runtime</classname>
+    залишається доступним, допоки його не закриють чи знищать відповідно до
+    правил визначення області видимості об'єктів PHP. Метод
+    <methodname>parallel\Runtime::run</methodname> дозволяє програмісту
+    планувати запуски паралельних завдань. Клас
+    <classname>parallel\Runtime</classname> послуговується принципом FIFO
+    (перший прийшов — перший вийшов), тобто завдання виконуються в тій
+    послідовності, у якій вони були заплановані.
+   </para>
+  </simplesect>
+  <simplesect>
+   <title>Функціональний API</title>
+   <para>
+    parallel реалізує функціональний API вищого рівня поверх
+    <classname>parallel\Runtime</classname>, надаючи єдину функціональну точку
+    входу для паралельного виконання коду з автоматичним плануванням — функцію
+    <function>parallel\run</function>.
+   </para>
+  </simplesect>
+  <simplesect>
+   <title>Завдання</title>
+   <para>
+    Завдання — це просте замикання (<classname>Closure</classname>), яке
+    потрібно буде виконати паралельно. Замикання
+    (<classname>Closure</classname>) може містити більшість інструкцій, навіть
+    вкладені замикання. Проте є інструкції, заборонені в завданнях:
+    <itemizedlist>
+     <listitem>
+     <para>yield</para>
+     </listitem>
+     <listitem>
+     <para>посилання</para>
+     </listitem>
+     <listitem>
+     <para>оголошення класу</para>
+     </listitem>
+     <listitem>
+     <para>оголошення функції з назвою</para>
+     </listitem>
+    </itemizedlist>
+   </para>
+   <note>
+    <para>
+     Вкладеним замиканням дозволяється містити інструкції yield або посилання,
+     але не оголошення класів чи функцій з назвами.
+    </para>
+   </note>
+   <note>
+    <para>
+     Скрипти, що підключені в завданнях, жодних обмежень не мають.
+    </para>
+   </note>
+  </simplesect>
+  <simplesect>
+   <title>Ф'ючерс</title>
+   <para>
+    Клас <classname>parallel\Future</classname> використовується для доступу до
+    значень, що повертає завдання, і надає API для скасування завдання.
+   </para>
+  </simplesect>
+  <simplesect>
+   <title>Канал</title>
+   <para>
+    Завдання можна можна додати в чергу, вказати йому параметри, використовувати
+    змінні лексичної області (тобто за значенням), та отримати результат
+    виконання (через клас <classname>parallel\Future</classname>), таким чином
+    встановивши однонаправлений зв'язок, дозволяючи програмісту передати дані
+    в завдання, а потім отримати від нього відповідь. Для двонаправленого
+    зв'язку між завданнями використовується API
+    <classname>parallel\Channel</classname>, який утворює сокет-подібний зв'язок
+    між завданнями, який програміст може використовувати для надсилання та
+    отримання даних.
+   </para>
+  </simplesect>
+  <simplesect>
+   <title>Події</title>
+   <para>
+    API <classname>parallel\Events</classname> реалізує власний цикл подій
+    (<classname>Traversable</classname>) та метод
+    <methodname>parallel\Events::poll</methodname>. Це дозволяє програмісту
+    працювати з набором каналів та/або ф'ючерсів. Програміст може просто додати
+    канали та ф'ючерси в цикл подій, за бажанням встановивши вхідні дані для
+    запису за допомогою методу
+    <methodname>parallel\Events::setInput</methodname>, та пройтися по подіях
+    в циклі foreach: розширення parallel передаватиме дані від об'єктів та в
+    об'єкти, коли вони стануть доступні, створюючи примірники
+    <classname>parallel\Events\Event</classname>, що описують операції, які
+    відбулися.
+   </para>
+  </simplesect>
+   <simplesect role="seealso">
+   &reftitle.seealso;
+   <simplelist>
+    <member><xref linkend="philosophy.parallel" /></member>
+   </simplelist>
+  </simplesect>
+ </preface>
+
+ &reference.parallel.setup;
+ &reference.parallel.philosophy;
+ &reference.parallel.functional;
+ &reference.parallel.parallel.runtime;
+ &reference.parallel.parallel.future;
+ &reference.parallel.parallel.channel;
+ &reference.parallel.parallel.events;
+ &reference.parallel.parallel.events.input;
+ &reference.parallel.parallel.events.event;
+ &reference.parallel.parallel.events.event.type;
+
+ &reference.parallel.parallel.sync;
+ <!--&reference.parallel.examples;-->
+
+</book>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

@@ -588,13 +588,13 @@ FOOBAR;
    <title>Nowdoc</title>
 
    <para>
-    Nowdocs are to single-quoted strings what heredocs are to double-quoted
-    strings. A nowdoc is specified similarly to a heredoc, but <emphasis>no
-    parsing is done</emphasis> inside a nowdoc. The construct is ideal for
-    embedding PHP code or other large blocks of text without the need for
-    escaping. It shares some features in common with the SGML
-    <literal>&lt;![CDATA[ ]]&gt;</literal> construct, in that it declares a
-    block of text which is not for parsing.
+    Синтаксис nowdoc стосується рядків в апострофах, як heredoc — рядків в
+    лапках, тобто працює схожим способом до heredoc, але <emphasis>без парсингу
+    тексту</emphasis> всередині. Така конструкція прекрасно підходить
+    для вставлення PHP-коду або великих частин тексту без необхідності їхнього
+    екранування. Цей синтаксис має деякі спільні риси з конструкцією SGML
+    <literal>&lt;![CDATA[ ]]&gt;</literal>, оскільки він оголошує блок тексту,
+    який не підлягає аналізу.
    </para>
 
    <para>
