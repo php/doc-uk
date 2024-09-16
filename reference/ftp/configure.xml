@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 96c9d88bad9a7d7d44bfb7f26c226df7ee9ddf26 Maintainer: ktretyak Status: ready -->
-<!-- $Revision$ -->
+<!-- EN-Revision: a0ae28d3bc85f927c22649ebd9a590b921534b7d Maintainer: mproshchuk Status: ready -->
 <section xml:id="ftp.installation" xmlns="http://docbook.org/ns/docbook">
  &reftitle.install;
  <para>
-  Для того щоб використовувати  PHP-функції для FTP, збирати PHP потрібно
-  з параметром <option role="configure">--enable-ftp</option>.
+  Для того щоб використовувати FTP-функції в скриптах, потрібно зібрати PHP
+  з прапорцем <option role="configure">--enable-ftp</option>.
  </para>
- &windows.builtin;
+ <para>
+  У Windows це розширення завжди збирається як спільне і тому його потрібно
+  ввімкнути в &php.ini;.
+ </para>
 </section>
 
 <!-- Keep this comment at the end of the file
