@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 7d5b86855e408d3d15fea8f805032cda610df7e1 Maintainer: tox11 Status: wip -->
-<!-- $Revision$ -->
 <sect1 xml:id="install.unix.litespeed" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>LiteSpeed Web Server/OpenLiteSpeed Web Server on Unix systems</title>
 
