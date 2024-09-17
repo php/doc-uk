@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 7d5b86855e408d3d15fea8f805032cda610df7e1 Maintainer: tox11 Status: ready -->
+<!-- Reviewed: no -->
 <sect1 xml:id="install.unix.litespeed" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
- <title>LiteSpeed Веб-сервер/OpenLiteSpeed Веб-сервер на системах Unix</title>
+ <title>LiteSpeed вебсервер/OpenLiteSpeed вебсервер на системах Unix</title>
 
  <para>
   LiteSpeed PHP - це оптимізована компіляція PHP, створена для роботи з 
@@ -13,23 +14,23 @@
 
  <para>
   LSAPI - це високооптимізований API, який забезпечує зв'язок між
-  LiteSpeed та сторонніми веб-движками. Його протокол схожий на FCGI, але є
+  LiteSpeed та сторонніми вебрушіями. Його протокол схожий на FCGI, але є
   більш ефективний.
  </para>
 
  <para>
   У цій документації описано встановлення та налаштування PHP за допомогою LSAPI
-  для веб-серверів LiteSpeed та OpenLiteSpeed.
+  для вебсерверів LiteSpeed та OpenLiteSpeed.
  </para>
 
  <para>
   У цьому посібнику передбачається, що встановлено LSWS або OLS з їхніми
-  шляхами і прапорами за замовчуванням. Каталог встановлення за замовчуванням для обох веб-серверів
+  шляхами і прапорами за замовчуванням. Каталог встановлення за замовчуванням для обох вебсерверів
   є /usr/local/lsws, і обидва можна запустити з підкаталогу bin.
  </para>
 
  <para>
-  Зверніть увагу, що в цій документації номери версій були замінені на <literal>x</literal>, 
+  Слід зазначити, що в цій документації номери версій були замінені на <literal>x</literal>, 
   щоб забезпечити коректність документації в майбутньому, будь ласка, 
   замініть їх відповідними номерами версій, якщо це необхідно.
  </para>
@@ -37,10 +38,10 @@
  <orderedlist>
   <listitem>
    <para>
-    Щоб отримати та встановити веб-сервер LiteSpeed або веб-сервер OpenLiteSpeed, 
-    відвідайте документацію веб-сервер LiteSpeed 
+    Щоб отримати та встановити вебсервер LiteSpeed або вебсервер OpenLiteSpeed, 
+    відвідайте документацію вебсервер LiteSpeed 
     <link xlink:href="https://docs.litespeedtech.com/products/lsws/installation/">сторінка встановлення</link>
-    або документацію веб-сервер OpenLiteSpeed <link xlink:href="https://openlitespeed.org/kb/category/installation/more-installation-methods/">сторінка встановлення</link>.
+    або документацію вебсервер OpenLiteSpeed <link xlink:href="https://openlitespeed.org/kb/category/installation/more-installation-methods/">сторінка встановлення</link>.
    </para>
   </listitem>
 
@@ -67,7 +68,7 @@ cd php-x.x.x
     Налаштування та збірка PHP. Тут PHP можна налаштувати за допомогою різних параметрів, 
     наприклад, які розширення буде ввімкнено. Запустіть ./configure --help, 
     щоб отримати список доступних опцій. У цьому прикладі використаємо 
-    рекомендовані за замовчуванням параметри конфігурації для веб-сервера LiteSpeed:
+    рекомендовані за замовчуванням параметри конфігурації для вебсервера LiteSpeed:
    </para>
 
    <informalexample xml:id="install.unix.litespeed.build.php">
@@ -122,7 +123,7 @@ Zend Engine v2.6.0, Copyright (c) 1998-2015 Zend Technologies
  </orderedlist>
 
  <para>
-  Після виконання наведених вище кроків веб-сервер LiteSpeed / OpenLiteSpeed
+  Після виконання наведених вище кроків вебсервер LiteSpeed / OpenLiteSpeed
   тепер має працювати з підтримкою PHP як розширення SAPI.
   Для LSWS / OLS і PHP доступно набагато більше параметрів налаштування.
   Для отримання додаткової інформації зверніться до документації LiteSpeed про 
@@ -135,8 +136,8 @@ Zend Engine v2.6.0, Copyright (c) 1998-2015 Zend Technologies
 
  <para>
   Режим командного рядка LSPHP(LSAPI + PHP) використовується для обробки PHP-скриптів,
-  запущених на віддаленому сервері, на якому не обов'язково запущено веб-сервер.
-  Він використовується для обробки PHP-скриптів, що знаходяться на локальному веб-сервері (окремо).
+  запущених на віддаленому сервері, на якому не обов'язково запущено вебсервер.
+  Він використовується для обробки PHP-скриптів, що знаходяться на локальному вебсервері (окремо).
   Таке налаштування підходить для масштабування сервісу, 
   оскільки обробка PHP-скриптів вивантажується на віддалений сервер.
  </para>
@@ -212,10 +213,10 @@ PHP_LSAPI_MAX_REQUESTS=500 PHP_LSAPI_CHILDREN=35 /path/to/lsphp -b IP_address:po
  </informalexample>
 
  <para>
-  Наразі LiteSpeed PHP можна використовувати з веб-сервером LiteSpeed,
-  веб-сервером OpenLiteSpeed та Apache mod_lsapi. Для отримання інформації про налаштування
+  Наразі LiteSpeed PHP можна використовувати з вебсервером LiteSpeed,
+  вебсервером OpenLiteSpeed та Apache mod_lsapi. Для отримання інформації про налаштування
   на стороні сервера, відвідайте сторінки документації для
-  <link xlink:href="https://docs.litespeedtech.com/extapp/php/getting_started/">веб-сервер LiteSpeed</link>
+  <link xlink:href="https://docs.litespeedtech.com/extapp/php/getting_started/">вебсервер LiteSpeed</link>
   та <link xlink:href="https://openlitespeed.org/kb/category/installation/php-installation-guides/">OpenLiteSpeed</link>.
  </para>
 

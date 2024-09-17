@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 093eb6affefe2ef930b08043a668168d2181ecc1 Maintainer: tox11 Status: ready -->
+<!-- Reviewed: no -->
 <sect1 xml:id="install.unix.openbsd" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Рекомендаціі щодо встановлення OpenBSD</title>
  <para>
