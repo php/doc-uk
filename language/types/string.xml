@@ -498,7 +498,7 @@ $name = 'Петро';
 echo <<<EOT
 Мене звати $name. Я друкую $foo->foo.
 Зараз я друкую {$foo->bar[1]}.
-Має надрукуватись велику буква 'A': \x41
+Має надрукуватись велика буква 'A': \x41
 EOT;
 ?>
 ]]>
@@ -628,7 +628,7 @@ echo <<<'МІТКА'
    </example>
 
    <example>
-    <title>Nowdoc string quoting example with variables</title>
+    <title>Текст nowdoc зі змінними всередині</title>
     <programlisting role="php">
 <![CDATA[
 <?php
@@ -645,12 +645,12 @@ class foo
 }
 
 $foo = new foo();
-$name = 'MyName';
+$name = 'Петро';
 
 echo <<<'EOT'
-My name is "$name". I am printing some $foo->foo.
-Now, I am printing some {$foo->bar[1]}.
-This should not print a capital 'A': \x41
+Мене звати $name. Я друкую $foo->foo.
+Зараз я друкую {$foo->bar[1]}.
+Має НЕ надрукуватись велика буква 'A': \x41
 EOT;
 ?>
 ]]>
@@ -658,14 +658,14 @@ EOT;
     &example.outputs;
     <screen>
 <![CDATA[
-My name is "$name". I am printing some $foo->foo.
-Now, I am printing some {$foo->bar[1]}.
-This should not print a capital 'A': \x41]]>
+Мене звати $name. Я друкую $foo->foo.
+Зараз я друкую {$foo->bar[1]}.
+Має НЕ надрукуватись велику буква 'A': \x41]]>
     </screen>
    </example>
 
    <example>
-    <title>Static data example</title>
+    <title>Зі статичними даними</title>
     <programlisting role="php">
 <![CDATA[
 <?php
@@ -682,25 +682,26 @@ EOT;
   </sect3>
 
   <sect3 xml:id="language.types.string.parsing">
-   <title>Variable parsing</title>
+   <title>Обробка змінних</title>
 
    <simpara>
-    When a <type>string</type> is specified in double quotes or with heredoc,
-    <link linkend="language.variables">variables</link> are parsed within it.
+    Якщо рядок (<type>string</type>) записано в лапках або в heredoc, то
+    <link linkend="language.variables">змінні</link> в ньому — обробляються.
    </simpara>
 
    <simpara>
-    There are two types of syntax: a
-    <link linkend="language.types.string.parsing.simple">simple</link> one and a
-    <link linkend="language.types.string.parsing.complex">complex</link> one.
-    The simple syntax is the most common and convenient. It provides a way to
-    embed a variable, an <type>array</type> value, or an <type>object</type>
-    property in a <type>string</type> with a minimum of effort.
+    Є два способи запису:
+    <link linkend="language.types.string.parsing.simple">простий</link> та
+    <link linkend="language.types.string.parsing.complex">складний</link>.
+    Простий синтаксис є найпоширенішим і найзручнішим. Він надає можливість
+    вбудувати змінну, значення масиву (<type>array</type>), або властивість
+    об'єкта (<type>object</type>) в рядок (<type>string</type>) з невеликими
+    зусиллями.
    </simpara>
 
    <simpara>
-    The complex syntax can be recognised by the
-    curly braces surrounding the expression.
+    Складний синтаксис можна розпізнати за фігурними дужками, в які обрамлено
+    вираз.
    </simpara>
 
    <sect4 xml:id="language.types.string.parsing.simple">
