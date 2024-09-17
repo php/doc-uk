@@ -1,52 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 7d5b86855e408d3d15fea8f805032cda610df7e1 Maintainer: tox11 Status: wip -->
+<!-- EN-Revision: 7d5b86855e408d3d15fea8f805032cda610df7e1 Maintainer: tox11 Status: ready -->
+<!-- Reviewed: no -->
 <sect1 xml:id="install.unix.litespeed" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
- <title>LiteSpeed Web Server/OpenLiteSpeed Web Server on Unix systems</title>
+ <title>LiteSpeed вебсервер/OpenLiteSpeed вебсервер на системах Unix</title>
 
  <para>
-  LiteSpeed PHP is an optimized compilation of PHP built to work with LiteSpeed
-  products through the LiteSpeed SAPI. LSPHP runs as its own process and has
-  its own standalone binary, which can be used as a simple command line binary to execute
-  PHP scripts from the command line.
+  LiteSpeed PHP - це оптимізована компіляція PHP, створена для роботи з 
+  продуктами LiteSpeed через LiteSpeed SAPI. LSPHP запускається як власний процес і має
+  власний автономний бінарний файл, який можна використовувати як простий
+  бінарний файл командного рядка для виконання
+  PHP-скрипти з командного рядка.
  </para>
 
  <para>
-  The LSAPI is a highly optimized API that allows communication between
-  LiteSpeed and third party web engines. Its protocol is similar to FCGI, but is
-  more efficient.
+  LSAPI - це високооптимізований API, який забезпечує зв'язок між
+  LiteSpeed та сторонніми вебрушіями. Його протокол схожий на FCGI, але є
+  більш ефективний.
  </para>
 
  <para>
-  This documentation will cover installing and configuring PHP with LSAPI
-  for a LiteSpeed Web Server and OpenLiteSpeed Web Server.
+  У цій документації описано встановлення та налаштування PHP за допомогою LSAPI
+  для вебсерверів LiteSpeed та OpenLiteSpeed.
  </para>
 
  <para>
-  This guide will assume that either LSWS or OLS is installed with their
-  default paths and flags. The default installation directory for both web
-  servers is /usr/local/lsws and both can be run from the bin subdirectory.
+  У цьому посібнику передбачається, що встановлено LSWS або OLS з їхніми
+  шляхами і прапорами за замовчуванням. Каталог встановлення за замовчуванням для обох вебсерверів
+  є /usr/local/lsws, і обидва можна запустити з підкаталогу bin.
  </para>
 
  <para>
-  Please note that throughout this documentation, version numbers have been
-  replaced with an <literal>x</literal> to ensure this documentation stays correct in the future,
-  please replace these, as necessary, with the corresponding version numbers.
+  Слід зазначити, що в цій документації номери версій були замінені на <literal>x</literal>, 
+  щоб забезпечити коректність документації в майбутньому, будь ласка, 
+  замініть їх відповідними номерами версій, якщо це необхідно.
  </para>
 
  <orderedlist>
   <listitem>
    <para>
-    To obtain and install either LiteSpeed Web Server or OpenLiteSpeed Web Server, visit the
-    LiteSpeed Web Server documentation
-    <link xlink:href="https://docs.litespeedtech.com/products/lsws/installation/">install page</link>
-    or OpenLiteSpeed documentation
-    <link xlink:href="https://openlitespeed.org/kb/category/installation/more-installation-methods/">install page</link>.
+    Щоб отримати та встановити вебсервер LiteSpeed або вебсервер OpenLiteSpeed, 
+    відвідайте документацію вебсервер LiteSpeed 
+    <link xlink:href="https://docs.litespeedtech.com/products/lsws/installation/">сторінка встановлення</link>
+    або документацію вебсервер OpenLiteSpeed <link xlink:href="https://openlitespeed.org/kb/category/installation/more-installation-methods/">сторінка встановлення</link>.
    </para>
   </listitem>
 
   <listitem>
    <para>
-    Obtain and unpack the php source:
+    Отримайте та розпакуйте вихідний код php:
    </para>
 
    <informalexample xml:id="install.unix.litespeed.extract.php">
@@ -64,10 +65,10 @@ cd php-x.x.x
 
   <listitem>
    <para>
-    Configure and build PHP. This is where PHP can be customized with various options,
-    such as which extensions will be enabled. Run ./configure --help for a list of available
-    options. In the example, we'll use the default recommended configuration options for
-    LiteSpeed Web Server:
+    Налаштування та збірка PHP. Тут PHP можна налаштувати за допомогою різних параметрів, 
+    наприклад, які розширення буде ввімкнено. Запустіть ./configure --help, 
+    щоб отримати список доступних опцій. У цьому прикладі використаємо 
+    рекомендовані за замовчуванням параметри конфігурації для вебсервера LiteSpeed:
    </para>
 
    <informalexample xml:id="install.unix.litespeed.build.php">
@@ -83,12 +84,12 @@ sudo make install
 
   <listitem>
    <para>
-    Checking The LSPHP Installation
+    Перевірка встановлення LSPHP
    </para>
 
    <para>
-    One of the simplest ways to check whether the installation of PHP was successful
-    is to run the following code:
+    Один з найпростіших способів перевірити, чи встановлення PHP
+    пройшло успішно, - це виконати наступний код:
    </para>
 
    <informalexample>
@@ -101,7 +102,7 @@ cd /usr/local/lsws/fcgi-bin/
    </informalexample>
 
    <para>
-    This should return information about the new PHP build:
+    Це повинно повернути інформацію про нову збірку PHP:
    </para>
 
    <informalexample>
@@ -115,43 +116,44 @@ Zend Engine v2.6.0, Copyright (c) 1998-2015 Zend Technologies
    </informalexample>
 
    <para>
-    Notice the <literal>litespeed</literal> in parenthesis. This means that the PHP binary has been
-    built with LSAPI support.
+    Зверніть увагу на <literal>litespeed</literal> в дужках. 
+    Це означає, що бінарний файл PHP було зібрано з підтримкою LSAPI.
    </para>
   </listitem>
  </orderedlist>
 
  <para>
-  Following the steps above, LiteSpeed / OpenLiteSpeed Web Server should
-  now be running with support for PHP as an SAPI extension. There are many more
-  configuration options available for LSWS / OLS and PHP. For more information,
-  check out the LiteSpeed documentation about
+  Після виконання наведених вище кроків вебсервер LiteSpeed / OpenLiteSpeed
+  тепер має працювати з підтримкою PHP як розширення SAPI.
+  Для LSWS / OLS і PHP доступно набагато більше параметрів налаштування.
+  Для отримання додаткової інформації зверніться до документації LiteSpeed про 
   <link xlink:href="https://docs.litespeedtech.com/extapp/php/configuration/control/">PHP</link>.
  </para>
 
  <para>
-  Using LSPHP from the command line:
+  Використання LSPHP з командного рядка:
  </para>
 
  <para>
-  LSPHP(LSAPI + PHP) command line mode is used to process PHP scripts running
-  on a remote server that does not necessarily have a web server running. It is used
-  to process PHP scripts residing on a local web server (separate). This setup is
-  suitable for service scalability as PHP processing is offloaded to a remote server.
+  Режим командного рядка LSPHP(LSAPI + PHP) використовується для обробки PHP-скриптів,
+  запущених на віддаленому сервері, на якому не обов'язково запущено вебсервер.
+  Він використовується для обробки PHP-скриптів, що знаходяться на локальному вебсервері (окремо).
+  Таке налаштування підходить для масштабування сервісу, 
+  оскільки обробка PHP-скриптів вивантажується на віддалений сервер.
  </para>
 
  <para>
-  Start lsphp from the command line on a remote server:
-  LSPHP is an executable and can be started manually and bound to IPv4, IPv6, or
-  Unix domain socket addresses with the command line option -b socket_address
+  Запустіть lsphp з командного рядка на віддаленому сервері:
+  LSPHP є виконуваним файлом і може бути запущений вручну і прив'язаний до адрес
+  сокетів доменів IPv4, IPv6 або Unix за допомогою параметра командного рядка -b socket_address
  </para>
 
  <para>
-  Examples:
+  Приклади:
  </para>
 
  <para>
-  Have LSPHP bind to port 3000 on all IPv4 and IPv6 addresses:
+  Прив'язати LSPHP до порту 3000 на всіх IPv4 і IPv6-адресах:
  </para>
 
  <informalexample>
@@ -163,7 +165,7 @@ Zend Engine v2.6.0, Copyright (c) 1998-2015 Zend Technologies
  </informalexample>
 
  <para>
-  Have LSPHP bind to port 3000 on all IPv4 addresses:
+  Прив'язати LSPHP до порту 3000 на всіх IPv4-адресах:
  </para>
 
  <informalexample>
@@ -175,7 +177,7 @@ Zend Engine v2.6.0, Copyright (c) 1998-2015 Zend Technologies
  </informalexample>
 
  <para>
-  Have LSPHP bind to address 192.168.0.2:3000:
+  Прив'язати LSPHP до адреси 192.168.0.2:3000:
  </para>
 
  <informalexample>
@@ -187,7 +189,7 @@ Zend Engine v2.6.0, Copyright (c) 1998-2015 Zend Technologies
  </informalexample>
 
  <para>
-  Have LSPHP accept requests on Unix domain socket <literal>/tmp/lsphp_manual.sock</literal>:
+  Прив'язати LSPHP та приймає запити на сокеті домену Unix <literal>/tmp/lsphp_manual.sock</literal>:
  </para>
 
  <informalexample>
@@ -199,7 +201,7 @@ Zend Engine v2.6.0, Copyright (c) 1998-2015 Zend Technologies
  </informalexample>
 
  <para>
-  Environment variables can be added before the LSPHP executable:
+  Змінні оточення можуть бути доданими перед виконуваним файлом LSPHP:
  </para>
 
  <informalexample>
@@ -211,39 +213,39 @@ PHP_LSAPI_MAX_REQUESTS=500 PHP_LSAPI_CHILDREN=35 /path/to/lsphp -b IP_address:po
  </informalexample>
 
  <para>
-  Currently LiteSpeed PHP can be used with LiteSpeed Web Server,
-  OpenLiteSpeed Web Server, and Apache mod_lsapi. For steps on
-  server-side configuration, visit the documentation pages for
-  <link xlink:href="https://docs.litespeedtech.com/extapp/php/getting_started/">LiteSpeed Web Server</link>
-  and <link xlink:href="https://openlitespeed.org/kb/category/installation/php-installation-guides/">OpenLiteSpeed</link>.
+  Наразі LiteSpeed PHP можна використовувати з вебсервером LiteSpeed,
+  вебсервером OpenLiteSpeed та Apache mod_lsapi. Для отримання інформації про налаштування
+  на стороні сервера, відвідайте сторінки документації для
+  <link xlink:href="https://docs.litespeedtech.com/extapp/php/getting_started/">вебсервер LiteSpeed</link>
+  та <link xlink:href="https://openlitespeed.org/kb/category/installation/php-installation-guides/">OpenLiteSpeed</link>.
  </para>
 
  <para>
-  LSPHP can be installed in several other ways as well.
+  LSPHP також можна встановити кількома іншими способами.
  </para>
 
  <para>
-  CentOS:
-  On CentOS, LSPHP can be installed from the LiteSpeed Repository or the Remi
-  Repository  using <link xlink:href="https://docs.litespeedtech.com/extapp/php/getting_started/#litespeed-repo-search-packages">RPM</link>.
+  CentOS: 
+  У CentOS LSPHP можна встановити зі LiteSpeed Repository або Remi Repository за допомогою
+  <link xlink:href="https://docs.litespeedtech.com/extapp/php/getting_started/#litespeed-repo-search-packages">RPM</link>.
  </para>
 
  <para>
-  Debian:
-  On Debian, LSPHP can be installed from the LiteSpeed Repository using
+  Debian: 
+  У Debian LSPHP можна встановити зі LiteSpeed Repository за допомогою
   <link xlink:href="https://docs.litespeedtech.com/extapp/php/getting_started/#litespeed-repo-search-packages">apt</link>.
  </para>
 
  <para>
-  cPanel:
-  Visit the respective <link xlink:href="https://docs.litespeedtech.com/cp/cpanel/quickstart/#easyapache-integration">documentation page</link>
-  about how to install LSPHP with cPanel and LSWS/OLS using EasyApache 4.
+  cPanel: 
+  Відвідайте відповідну <link xlink:href="https://docs.litespeedtech.com/cp/cpanel/quickstart/#easyapache-integration">сторінку документації</link>
+  про те, як встановити LSPHP за допомогою cPanel і LSWS/OLS за допомогою EasyApache 4.
  </para>
 
  <para>
-  Plesk:
-  Plesk can be used with LSPHP on CentOS, CloudLinux, Debian, and Ubuntu,
-  for more details on this, visit the respective <link xlink:href="https://docs.litespeedtech.com/cp/plesk/">documentation page</link>
+  Plesk: 
+  Plesk можна використовувати з LSPHP у CentOS, CloudLinux, Debian та Ubuntu, докладніше про це читайте на відповідній 
+  <link xlink:href="https://docs.litespeedtech.com/cp/plesk/">сторінці документації</link>
  </para>
 </sect1>
 

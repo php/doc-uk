@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 093eb6affefe2ef930b08043a668168d2181ecc1 Maintainer: tox11 Status: wip -->
+<!-- EN-Revision: 093eb6affefe2ef930b08043a668168d2181ecc1 Maintainer: tox11 Status: ready -->
+<!-- Reviewed: no -->
 <sect1 xml:id="install.unix.openbsd" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
- <title>OpenBSD installation notes</title>
+ <title>Рекомендаціі щодо встановлення OpenBSD</title>
  <para>
-  This section contains notes and hints specific to installing
-  PHP on <link xlink:href="&url.openbsd;">OpenBSD</link>.
+  Цей розділ містить примітки та підказки щодо встановлення PHP на <link xlink:href="&url.openbsd;">OpenBSD</link>.
  </para>
  <sect2 xml:id="install.unix.openbsd.packages">
-  <title>Using Binary Packages</title>
+  <title>Використання бінарних пакетів</title>
   <simpara>
-   Using binary packages to install PHP on OpenBSD is the recommended
-   and simplest method.  The core package has been separated from the various
-   modules, and each can be installed and removed independently from the others.
-   The files you need can be found on your OpenBSD CD or on the FTP site.
+   Використання бінарних пакетів для встановлення PHP на OpenBSD є рекомендованим
+   і найпростішим методом.  Основний пакет було відокремлено від різних
+   модулів, і кожен з них може бути встановлений і видалений незалежно від інших.
+   Файли, які вам потрібні, можна знайти на вашому компакт-диску OpenBSD або на FTP-сайті.
   </simpara>
   <simpara>
-   The main package you need to install is <filename>php</filename>,
-   which contains the basic engine (plus fpm, gettext and iconv) and might be
-   available in several versions to choose from.  Next, take a look
-   at the module packages, such as <filename>php-mysqli</filename>
-   or <filename>php-imap</filename>.  You need to use the <command>phpxs</command>
-   command to activate and deactivate these modules in your &php.ini;.
+   Основним пакетом, який потрібно встановити, 
+   є <filename>php</filename>, який містить базовий движок (а також fpm, gettext та iconv) і може бути 
+   доступний у кількох версіях на вибір. Далі зверніть увагу на пакети модулів, 
+   таких як <filename>php-mysqli</filename> або <filename>php-imap</filename>. Вам потрібно використовувати команду <command>phpxs</command> 
+   для активації та деактивації цих модулів у вашому  &php.ini;.
   </simpara>
   <example xml:id="install.unix.openbsd.ports.example">
-   <title>OpenBSD Package Install Example</title>
+   <title>Приклад встановлення пакунків OpenBSD</title>
    <programlisting role="shell">
     <![CDATA[
 # pkg_add php
@@ -32,7 +31,7 @@
   (install the PEAR libraries)
 # pkg_add pear
 
-Follow the instructions shown with each package!
+Дотримуйтесь інструкцій, наведених у кожному пакеті!
 
   (to remove packages)
 # pkg_delete php
@@ -43,49 +42,48 @@ Follow the instructions shown with each package!
    </programlisting>
   </example>
   <simpara>
-   Read the <link xlink:href="&url.openbsd.packages;">packages(7)</link>
-   manual page for more information about binary packages on OpenBSD.
+   Прочитайте сторінку посібника <link xlink:href="&url.openbsd.packages;">packages(7)</link>
+   для отримання додаткової інформації про бінарні пакети у OpenBSD.
   </simpara>
  </sect2>
  <sect2 xml:id="install.unix.openbsd.ports">
-  <title>Using Ports</title>
+  <title>Використання портів</title>
   <simpara>
-   You can also compile up PHP from source using the <link xlink:href="&url.openbsd.ports;">ports tree</link>.
-   However, this is only recommended for users familiar with OpenBSD.  The PHP port
-   is split into core and extensions.  The
-   extensions generate sub-packages for all of the supported
-   PHP modules.  If you find you do not want to create some of these modules,
-   use the <command>no_*</command> FLAVOR.  For example, to skip building
-   the imap module, set the FLAVOR to <command>no_imap</command>.
+   Ви також можете скомпілювати PHP з коду за допомогою <link xlink:href="&url.openbsd.ports;">дерева портів</link>. 
+   Однак, це рекомендується лише користувачам, знайомим з OpenBSD. 
+   Порт PHP поділяється на ядро і розширення. 
+   Розширення генерують підпакети для всіх підтримуваних модулів PHP. 
+   Якщо ви вважаєте, що не хочете створювати деякі з цих модулів, 
+   використовуйте параметр <command>no_*</command> FLAVOR. Наприклад, щоб пропустити збірку 
+   модуля imap, встановіть FLAVOR у значення <command>no_imap</command>.
   </simpara>
  </sect2>
  <sect2 xml:id="install.unix.openbsd.faq">
-  <title>Common Problems</title>
+  <title>Поширені проблеми</title>
   <itemizedlist>
    <listitem>
-    <simpara>Apache and Nginx are no longer the default server on OpenBSD, but they can both be easily
-     found in ports and packages. The new default server is also called 'httpd'.
+    <simpara>Apache та Nginx більше не є серверами за замовчуванням у OpenBSD,
+     але їх можна легко знайти у портах та пакетах.
+     Новий сервер за замовчуванням також називається «httpd».
     </simpara>
    </listitem>
    <listitem>
-    <simpara>The default install of httpd runs inside a
-     <link xlink:href="&url.openbsd.chroot;">chroot(2) jail</link>, which will restrict PHP scripts to
-     accessing files under <filename>/var/www</filename>.  You will therefore need to create a
-     <filename>/var/www/tmp</filename> directory for PHP session files to be stored, or use an
-     alternative session backend.  In addition, database sockets need to be placed inside the
-     jail or listen on the <filename>localhost</filename> interface.  If you use network functions,
-     some files from <filename>/etc</filename> such as <filename>/etc/resolv.conf</filename> and
-     <filename>/etc/services</filename> will need to be moved into <filename>/var/www/etc</filename>.
-     The OpenBSD PEAR package automatically installs into the correct chroot directories.
+    <simpara> За замовчуванням httpd встановлюється у <link xlink:href="&url.openbsd.chroot;">chroot(2) оточені</link>,
+     що обмежує доступ PHP-скриптів до файлів у каталозі <filename>/var/www</filename>. Тому вам потрібно
+     створити каталог <filename>/var/www/tmp</filename> для зберігання файлів сеансів PHP або використати
+     альтернативний сесійний бекенд. Крім того, сокети бази даних повинні бути розміщені всередині
+     оточеня або прослуховуватися через інтерфейс <filename>localhost</filename>. Якщо ви використовуєте мережеві функції,
+     деякі файли з <filename>/etc</filename>, такі як <filename>/etc/resolv.conf</filename>
+     і <filename>/etc/services</filename>, потрібно буде перемістити в <filename>/var/www/etc</filename>.
+     Пакет OpenBSD PEAR автоматично встановлюється у відповідні каталоги chroot.
     </simpara>
    </listitem>
    <listitem>
     <simpara>
-     The OpenBSD package for the <link xlink:href="&url.gd;">gd</link> extension
-     requires Xorg to be installed. Unless already installed at base install by
-     adding the <filename>xbase.tgz</filename> file set, this can be added at
-     post-installation (see
-     <link xlink:href="https://www.openbsd.org/faq/faq4.html#FilesNeeded">OpenBSD FAQ#4</link>).
+     Пакет OpenBSD для розширення <link xlink:href="&url.gd;">gd</link> потребує встановлення Xorg.
+     Якщо його не було встановлено під час базового встановлення шляхом додавання
+     набору файлів <filename>xbase.tgz</filename>, його можна додати після встановлення
+     (див. <link xlink:href="https://www.openbsd.org/faq/faq4.html#FilesNeeded">OpenBSD FAQ#4</link>).
     </simpara>
    </listitem>
   </itemizedlist>

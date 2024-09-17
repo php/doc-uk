@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 4eeb07225f615fcde68cbefb84df2fc9bf278f1f Maintainer: tox11 Status: wip -->
+<!-- EN-Revision: 4eeb07225f615fcde68cbefb84df2fc9bf278f1f Maintainer: tox11 Status: ready -->
+<!-- Reviewed: no -->
 <sect1 xml:id="install.unix.solaris" xmlns="http://docbook.org/ns/docbook">
- <title><productname>Solaris</productname> specific installation tips</title>
+ <title>Поради щодо встановлення для <productname>Solaris</productname></title>
+
  <para>
-  This section contains notes and hints specific to installing
-  PHP on <productname>Solaris</productname> systems.
+  Цей розділ містить примітки та підказки щодо встановлення PHP на системах <productname>Solaris</productname>.
  </para>
  <sect2 xml:id="install.unix.solaris.required">
-  <title>Required software</title>
+  <title>Необхідне програмне забезпечення</title>
   <para>
-   <productname>Solaris</productname> installs often lack C compilers and their related tools.
-   Read <link linkend="faq.installation.needgnu">this FAQ</link>
-   for information on why using GNU versions for some of these
-   tools is necessary.
+   До складу <productname>Solaris</productname> часто не входять компілятори C та пов'язані з ними інструменти.
+   Прочитайте цей <link linkend="faq.installation.needgnu">FAQ</link>,
+   щоб дізнатися, чому для деяких з цих інструментів необхідно використовувати версії GNU.
   </para>
   <para>
-   For unpacking the PHP distribution you need
+   Для розпакування дистрибутива PHP вам потрібно
    <itemizedlist>
     <listitem>
      <simpara>
@@ -24,7 +24,7 @@
     </listitem>
     <listitem>
      <simpara>
-      gzip or
+      gzip або
      </simpara>
     </listitem>
     <listitem>
@@ -35,11 +35,11 @@
    </itemizedlist>
   </para>
   <para>
-   For compiling PHP you need
+   Для компіляції PHP вам потрібно
    <itemizedlist>
     <listitem>
      <simpara>
-      gcc (recommended, other C compilers may work)
+      gcc (рекомендовано, інші компілятори C можуть спрацювати.)
      </simpara>
     </listitem>
     <listitem>
@@ -55,7 +55,7 @@
    </itemizedlist>
   </para>
   <para>
-   For building extra extensions or hacking the code of PHP you might also need
+   Для створення додаткових розширень або злому коду PHP вам також можуть знадобитися
    <itemizedlist>
     <listitem>
      <simpara>
@@ -83,18 +83,18 @@
      </simpara>
     </listitem>
    </itemizedlist>
-   In addition, you will need to install (and possibly compile) any
-   additional software specific to your configuration, such as Oracle
-   or MySQL.
+   Крім того, вам потрібно буде встановити (і, можливо, скомпілювати) будь-яке
+   додаткове програмне забезпечення, специфічне для вашої конфігурації, наприклад, Oracle
+   або MySQL.
   </para>
  </sect2>
  <sect2 xml:id="install.unix.solaris.packages">
-  <title>Using Packages</title>
+  <title>Використання пакетів</title>
   <simpara>
-   You can simplify the <productname>Solaris</productname> install process by using pkgadd to
-   install most of your needed components. The Image Packaging System (IPS) for
-   <productname>Solaris 11 Express</productname> also contains most of the required components
-   for installation using the pkg command.
+   Ви можете спростити процес встановлення <productname>Solaris</productname>, скориставшись pkgadd 
+   для встановлення більшості потрібних вам компонентів. 
+   Система пакування образів (IPS) для <productname>Solaris 11 Express</productname>
+   також містить більшість необхідних компонентів для встановлення за допомогою команди pkg.
   </simpara>
  </sect2>
 </sect1>
