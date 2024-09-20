@@ -3,8 +3,8 @@
 <section xml:id="ftp.installation" xmlns="http://docbook.org/ns/docbook">
  &reftitle.install;
  <para>
-  Для того щоб використовувати FTP-функції в скриптах, потрібно зібрати PHP
-  з прапорцем <option role="configure">--enable-ftp</option>.
+  Для використання FTP-функцій в скриптах потрібно зібрати PHP з прапорцем
+  <option role="configure">--enable-ftp</option>.
  </para>
  <para>
   У Windows це розширення завжди збирається як спільне і тому його потрібно

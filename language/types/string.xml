@@ -508,7 +508,7 @@ EOT;
 <![CDATA[
 Мене звати Петро. Я друкую Foo.
 Зараз я друкую Bar2.
-Має надрукуватись велику буква 'A': A]]>
+Має надрукуватись велика буква 'A': A]]>
     </screen>
    </example>
 
@@ -705,28 +705,27 @@ EOT;
    </simpara>
 
    <sect4 xml:id="language.types.string.parsing.simple">
-    <title>Simple syntax</title>
+    <title>Простий синтаксис</title>
 
     <simpara>
-     If a dollar sign (<literal>$</literal>) is encountered, the parser will
-     greedily take as many tokens as possible to form a valid variable name.
-     Enclose the variable name in curly braces to explicitly specify the end of
-     the name.
+     Якщо трапляється знак долара (<literal>$</literal>), синтаксичний
+     аналізатор "жадібно" бере якомога більше лексем для формування правильної
+     назви змінної.
     </simpara>
 
     <informalexample>
      <programlisting role="php">
 <![CDATA[
 <?php
-$juice = "apple";
+$фрукт = "персик";
 
-echo "He drank some $juice juice." . PHP_EOL;
+echo "Він з'їв $фрукт." . PHP_EOL;
 
-// Unintended. "s" is a valid character for a variable name, so this refers to $juices, not $juice.
-echo "He drank some juice made of $juices." . PHP_EOL;
+// Ненавмисно. "и" є допустимим символом для назви змінної, тому тут йде мова про $фрукти, а не про $фрукт.
+echo "Він поклав в тарілку три $фрукти." . PHP_EOL;
 
-// Explicitly specify the end of the variable name by enclosing the reference in braces.
-echo "He drank some juice made of {$juice}s.";
+// Явно вказано кінець назви змінної, взявши назву у фігурні дужки.
+echo "Він поклав в тарілку три {$фрукт}и.";
 
 ?>
 ]]>
@@ -734,9 +733,9 @@ echo "He drank some juice made of {$juice}s.";
      &example.outputs;
      <screen>
 <![CDATA[
-He drank some apple juice.
-He drank some juice made of .
-He drank some juice made of apples.
+Він з'їв персик.
+Він поклав в тарілку три .
+Він поклав в тарілку три персики.
 ]]>
      </screen>
     </informalexample>

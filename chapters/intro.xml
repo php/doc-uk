@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 2d0ae2133ccc5365c31ac675c88cda06b4877e22 Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: 1fa5c78fa59c402eae86c39a976f2fe98aaa3a9c Maintainer: mproshchuk Status: ready -->
  <chapter xml:id="introduction" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <info><title>Вступ</title></info>
 
@@ -38,14 +38,13 @@
     </example>
    </para>
    <para>
-    Замість багатьох команд для виведення HTML (як це ми бачимо в C або Perl),
-    PHP сторінки містять HTML з вбудованим кодом, який "щось" робить
-    (в нашому випадку, виводить "Привіт, я - PHP скрипт!").
-    Код PHP відокремлюється спеціальними <link
+    Замість багатьох команд для виведення HTML (як це видно в C або Perl),
+    PHP-сторінки містять HTML з вбудованим кодом, який "щось" робить (в цьому
+    випадку виводить <computeroutput>"Привіт, я - PHP
+    скрипт!"</computeroutput>). Код PHP відокремлюється спеціальними <link
     linkend="language.basic-syntax.phpmode">початковими і кінцевими тегами
-  <code>&lt;?php</code> та <code>?&gt;</code>
-  </link>,
-    які дозволяють "перемикатись" в "PHP режим" і виходити з нього.
+    <code>&lt;?php</code> та <code>?&gt;</code></link>, які дозволяють
+    "перемикатись" в "PHP-режим" і виходити з нього.
    </para>
    <para>
     PHP відрізняється від JavaScript тим, що PHP-скрипти виконуються на сервері
@@ -66,7 +65,7 @@
     сфера застосування не обмежується лише цим. Читайте далі, та не пропустіть
     розділ <link linkend="intro-whatcando">Можливості PHP</link>,
     або зразу почніть з <link linkend="tutorial">простого посібника</link>,
-    якщо вас цікавить виключно вебпрограмування.
+    якщо вас цікавить виключно програмування вебу.
    </para>
   </section>
 
