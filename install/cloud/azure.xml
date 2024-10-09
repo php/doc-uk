@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 5d591c30aeef70c8cd325ab914c102333cc9bd8f Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: 2dbf3d9064d4cb07f0a2f7d06641c877a2e5ed24 Maintainer: mproshchuk Status: ready -->
 
 <sect1 xml:id="install.cloud.azure" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Azure App Services</title>
@@ -19,10 +19,6 @@
  
  <para>Таким чином, PHP та його розширення будуть працювати на Azure App 
   Services так само, як і на будь-яких інших серверах Windows.
-  
-  Значна частина бази знань також може застосовуватись і до Azure App Services, 
-  тому дивіться ще <link linkend="install.windows.troubleshooting">сторінку з
-  усунення несправностей у Windows</link>.
   
   Тим не менш, інтерфейс керування для Azure App Services є інакшим:
  </para>

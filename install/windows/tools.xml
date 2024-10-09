@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: c55dde8f549a2f939adfd924fe6e6d242c7754d3 Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: 2dbf3d9064d4cb07f0a2f7d06641c877a2e5ed24 Maintainer: mproshchuk Status: ready -->
 <sect1 xml:id="install.windows.tools" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
- <title>Засоби встановлення PHP на Windows</title>
- <sect2>
-  <title>Засоби встановлення PHP</title>
-  <para>
-   <link xlink:href="https://www.apachefriends.org/index.html">XAMPP</link>,
-   WampServer і BitNami налаштують PHP-застосунки для використання з Apache на
-   Windows.
-  </para>
-
-  <para>
-   Встановлення і налаштування Nginx на Windows потребує трохи більше часу.
-   Більше інформації зі встановлення є у <link xlink:href="https://www.nginx.com/resources/wiki/start/topics/examples/phpfastcgionwindows/">
-    документації Nginx</link>.
-  </para>
- </sect2>
+ <title>Сторонні інструменти для встановлення PHP</title>
+ &warn.install.third-party-support;
+ <para>
+  <link xlink:href="https://www.apachefriends.org/">XAMPP</link>,
+  <link xlink:href="https://www.wampserver.com">WampServer</link>, а також
+  <link xlink:href="https://bitnami.com">Bitnami</link>, який налаштує
+  PHP-програми для використання разом з Apache на Windows.
+ </para>
 </sect1>
 <!-- Keep this comment at the end of the file
 Local variables:

@@ -699,7 +699,7 @@ EOT;
     зусиллями.
    </simpara>
 
-   <sect4 xml:id="language.types.string.parsing.simple">
+   <sect4 xml:id="language.types.string.parsing.basic">
     <title>Основний синтаксис</title>
     <simpara>
      Якщо трапляється знак долара (<literal>$</literal>), а після — символи, що
