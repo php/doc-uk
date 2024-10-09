@@ -116,7 +116,7 @@ make install
     шлях буде відповідати розташуванню <command>apxs</command>, але якщо Apache
     встановлено по-іншому, то потрібно змінити шлях до <command>apxs</command>.
     Варто зауважити, що деякі дистрибутиви можуть перейменувати
-    <command>apxs</command> в <command>apxs2</command>.
+    <command>apxs</command> на <command>apxs2</command>.
    </para>
    <informalexample>
     <screen>
