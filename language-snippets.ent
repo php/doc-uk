@@ -4703,7 +4703,7 @@ local: {
        <link linkend="types.comparisons">порівняння</link> і
        <link linkend="language.types.type-juggling">перетворення типів</link> в
        PHP. Для вибірки даних спеціальних BSON-типів, критерії запиту повинні
-       використовувати відповідний <link linkend="book.bson">клас BSON</link>
+       використовувати відповідний <link linkend="mongodb.bson">клас BSON</link>
        (напр. <classname>MongoDB\BSON\ObjectId</classname> для вибірки
        <link xlink:href="&url.mongodb.docs.objectid;"
        xmlns:xlink="http://www.w3.org/1999/xlink">ObjectId</link>).
