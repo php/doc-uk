@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 2dbf3d9064d4cb07f0a2f7d06641c877a2e5ed24 Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: 77fe98efb3977fcac0bb2051bdfa9725e8cd46ae Maintainer: mproshchuk Status: ready -->
 
 <sect1 xml:id="install.cloud.azure" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Azure App Services</title>
@@ -7,47 +7,53 @@
   PHP часто використовується на Azure App Services (Microsoft Azure, Windows 
   Azure, Azure Web Apps).
  </para>
- <para>Azure App Services керує пулом Windows Web Servers для розміщення вашої 
-  веб-програми як альтернативою керування власним веб-сервером на віртуальних 
+ <para>Azure App Services керує пулом Windows Web Servers для розміщення
+  вебпрограми, тож є альтернативою керування власним вебсервером на віртуальних 
   машинах Azure Compute або інших серверах.
  </para>
- <para>PHP вже увімкнений для вашого сайту на Azure App Services автоматично.
-  Обираючи ваш веб сайт в Azure Portal, ви можете вибрати, яку версію PHP
-  використовувати. Можливо, буде потреба обрати новішу версію, за ту, яка 
-  встановлена початково.
+ <para>PHP увімкнений автоматично для сайту в Azure App Services. Обираючи
+  вебсайт в Azure Portal, можна обрати для нього потрібну версію PHP. Можливо,
+  новішу версію, за ту, яка встановлена початково.
  </para>
  
- <para>Таким чином, PHP та його розширення будуть працювати на Azure App 
-  Services так само, як і на будь-яких інших серверах Windows.
+ <para>Таким чином, PHP та його розширення будуть працювати в Azure App Services
+  так само, як і на будь-яких інших серверах Windows.
   
   Тим не менш, інтерфейс керування для Azure App Services є інакшим:
  </para>
  
  <itemizedlist spacing="compact">
   <listitem>
-   <para>Azure portal: створити, налаштувати, видалити веб сайти <link xlink:href="https://portal.azure.com/">Azure Portal</link>
+   <para>Azure portal: створити, налаштувати, видалити вебсайти.
+    <link xlink:href="https://portal.azure.com/">Azure Portal</link>
    </para>
   </listitem>
   <listitem>
-   <para>Панель Kudu: [назва вашого сайту].azurewebsites.net. Тож панель Kudu — 
-    це <link xlink:href="https://your_web_site_name.scm.azurewebsites.net/">https://[назва вашого сайту].scm.azurewebsites.net/</link>.
-    Панель Kudu  надає доступ до деяких можливостей налагодження, управління 
-    файлами та розширеннями сайтів. Розширення сайту - це механізм Azure для 
-    додавання допоміжних програм на ваш веб-сайт, таких як попередній перегляд 
-    збірки PHP.
+   <para>
+    Панель Kudu: якщо вебсайт має URL
+    <literal><replaceable>site_name</replaceable>.azurewebsites.net</literal>,
+    то панель Kudu буде за адресою
+    <literal>https://<replaceable>site_name</replaceable>.scm.azurewebsites.net/</literal>.
+    Панель Kudu  надає доступ до можливостей налагодження, управління 
+    файлами та розширеннями сайту. Розширення — це механізм Azure для
+    підключення допоміжних програм на вебсайт, як от попередній перегляд збірки
+    PHP. 
    </para>
   </listitem>
   <listitem>
-   <para>Не буде можливим використовувати IIS Manager, Server Manager, чи RDP.</para>
+   <para>Не можливо використовувати IIS Manager, Server Manager, чи RDP.</para>
   </listitem>
  </itemizedlist>
  
- <para>PHP SDK дозволяє в вашому PHP коді використовувати більшість сервісів 
-  Azure. Дивіться: <link xlink:href="https://github.com/Azure/azure-sdk-for-php">Azure SDK для PHP</link>.
+ <para>PHP SDK дозволяє використовувати в PHP-коді більшість сервісів Azure.
+  Див.: <link
+  xlink:href="https://github.com/Azure/azure-sdk-for-php">Azure SDK для
+  PHP</link>.
  </para>
  
- <para>Для докладної інформації перегляньте
-  <link xlink:href="https://azure.microsoft.com/en-us/develop/php/">Azure PHP Developer Center</link>
+ <para>Докладніше: <link
+  xlink:href="https://azure.microsoft.com/en-us/develop/php/">Azure PHP
+  Developer Center</link>
  </para>
  
  <sect2>
@@ -55,17 +61,17 @@
   <para>WinCache є початково увімкненим у Azure App Services і рекомендується 
    його не вимикати.
    
-   Якщо ви встановлюєте власну збірку PHP, вам потрібно увімкнути WinCache в ній
-   також.
+   Якщо розробник встановлює власну збірку PHP, йому потрібно увімкнути WinCache
+   в ній також.
    </para>
  </sect2>
  
  <sect2>
   <title>Власна збірка PHP</title>
-  <para>Ви можете завантажити вашу власну збірку PHP в теку D:\Home (диск C:\ 
-   для запису НЕ доступний).
-   Далі в Azure Portal запишіть абсолютний шлях до файлу php-cgi.exe вашої 
-   збірки у SCRIPT_PROCESSOR для .php.
+  <para>
+   Треба завантажити власну збірку PHP в теку D:\Home (диск C:\ для запису НЕ
+   доступний). Далі в Azure Portal в полі SCRIPT_PROCESSOR для .php записати
+   абсолютний шлях до файлу php-cgi.exe цієї збірки.
   </para>
  </sect2>
  

@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 12081e88fbd683e58a029153afd57f043df9721b Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: 4cb53ecbd763db2db808e90d7eda63afb380e6df Maintainer: mproshchuk Status: ready -->
 <chapter xml:id="install.macosx" xmlns="http://docbook.org/ns/docbook">
  <title>Встановлення на macOS</title>
- <para>
-  Цей розділ містить замітки та підказки щодо встановлення PHP на macOS. PHP
-  входить до складу macOS, з версії macOS X (10.0.0) і до macOS Monterey
-  (12.0.0). Процес збирання подібний до того, що в <link
-  linkend="install.unix">Керівництві зі встановлення на Unix</link>.
- </para>
+ <simpara>
+  PHP входить до складу macOS версії 10 та 11, але не входить до macOS 12
+  (Monterey) та новіших. Для встановлення PHP на свіжих версіях macOS необхідні
+  пакунки зі сторонніх джерел або компіляція з початкового коду.
+ </simpara>
  &install.macos.packages;
- &install.macos.bundled;
  &install.macos.compile;
+ &install.macos.bundled;
 </chapter>
 
 <!-- Keep this comment at the end of the file

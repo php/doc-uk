@@ -800,26 +800,26 @@ string(3) "bar"
 
     <note>
      <simpara>
-      If it is not possible to form a valid name the dollar sign remains
-      as verbatim in the string:
+      Якщо не вдається сформувати прийнятну назву змінної, то знак долара
+      відтворюється в рядку буквально:
      </simpara>
      <informalexample>
       <programlisting role="php">
 <![CDATA[
 <?php
-echo "No interpolation $  has happened\n";
-echo "No interpolation $\n has happened\n";
-echo "No interpolation $2 has happened\n";
+echo "Інтерполяція $  не відбувається\n";
+echo "Інтерполяція $\n не відбувається\n";
+echo "Інтерполяція $2 не відбувається\n";
 ?>
 ]]>
       </programlisting>
       &example.outputs;
       <screen>
 <![CDATA[
-No interpolation $  has happened
-No interpolation $
- has happened
-No interpolation $2 has happened
+Інтерполяція $  не відбувається
+Інтерполяція $
+ не відбувається
+Інтерполяція $2 не відбувається
 ]]>
       </screen>
      </informalexample>
