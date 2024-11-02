@@ -237,7 +237,7 @@ $word = new COM("C:\docs\word.doc");
    <qandaentry xml:id="faq.com.q14">
     <question>
      <para>
-      Отже, PHP працює з COM, як щодо COM+ ?
+      Отже, PHP працює з COM, як щодо COM+?
      </para>
     </question>
     <answer>
