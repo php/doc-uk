@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision$ -->
-<!-- EN-Revision: 33bb5e19aef8b15b0f8b3170cecc3a8f455020bc Maintainer: iSensetivity Status: ready -->
+<!-- EN-Revision: e095023e408c8cb6378ae16bb6870343a3946919 Maintainer: iSensetivity Status: ready -->
 <!-- Reviewed: no -->
 
 <refentry xmlns="http://docbook.org/ns/docbook" xml:id="function.crc32">
@@ -13,11 +12,11 @@
   &reftitle.description;
   <methodsynopsis>
    <type>int</type><methodname>crc32</methodname>
-   <methodparam><type>string</type><parameter>str</parameter></methodparam>
+   <methodparam><type>string</type><parameter>string</parameter></methodparam>
   </methodsynopsis>
   <para>
    Функція обчислює циклічний надлишковий код 32-бітних поліномів
-   для рядка <parameter>str</parameter>. Зазвичай використовується
+   для рядка <parameter>string</parameter>. Зазвичай використовується
    для перевірки цілісності передачі даних.
   </para>
   <warning>
@@ -65,7 +64,7 @@
   <para>
    <variablelist>
     <varlistentry>
-     <term><parameter>str</parameter></term>
+     <term><parameter>string</parameter></term>
      <listitem>
       <para>
        Дані.
@@ -79,7 +78,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Повертає контрольну суму CRC32-рядка <parameter>str</parameter> у вигляді цілого числа.
+   Повертає контрольну суму CRC32-рядка <parameter>string</parameter> у вигляді цілого числа.
   </para>
  </refsect1>
 
@@ -118,7 +117,6 @@ printf("%u\n", $checksum);
  </refsect1>
 
 </refentry>
-
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml
