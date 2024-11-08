@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 96c9d88bad9a7d7d44bfb7f26c226df7ee9ddf26 Maintainer: ktretyak Status: ready -->
+<!-- EN-Revision: 0c9c2dd669fe9395eaa73d487fbd160f9057429a Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
 <refentry xml:id="function.is-null" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
@@ -12,7 +12,7 @@
   &reftitle.description;
   <methodsynopsis>
    <type>bool</type><methodname>is_null</methodname>
-   <methodparam><type>mixed</type><parameter>var</parameter></methodparam>
+   <methodparam><type>mixed</type><parameter>value</parameter></methodparam>
   </methodsynopsis>
   <para>
    Перевіряє чи змінна має значення &null;.
@@ -23,7 +23,7 @@
   <para>
    <variablelist>
     <varlistentry>
-     <term><parameter>var</parameter></term>
+     <term><parameter>value</parameter></term>
      <listitem>
       <para>
        Змінна, яка буде перевірятись.
@@ -36,7 +36,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Повертає &true;, якщо <parameter>var</parameter> має значення
+   Повертає &true;, якщо <parameter>value</parameter> має значення
    <type>null</type>, в противному разі - &false;.
   </para>
  </refsect1>
@@ -84,7 +84,6 @@ bool(true)
   </para>
  </refsect1>
 </refentry>
-
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml
