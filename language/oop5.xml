@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: a9a6224ca97531df0a4e4b9b16b59c3f2baf1b09 Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: c0fa5077c8862405942d8aac7360c5169558b59b Maintainer: mproshchuk Status: ready -->
 
 <chapter xml:id="language.oop5" xmlns="http://docbook.org/ns/docbook">
  <title>Класи та об'єкти</title>
@@ -21,7 +21,7 @@
   </para>
   &tip.userlandnaming;
  </sect1>
- 
+
   &language.oop5.basic;
   &language.oop5.properties;
   &language.oop5.constants;
@@ -45,6 +45,7 @@
   &language.oop5.references;
   &language.oop5.serialization;
   &language.oop5.variance;
+  &language.oop5.lazy-objects;
   &language.oop5.changelog;
 </chapter>
 
