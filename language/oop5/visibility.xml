@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: f5e5b54129045a7d02c5285a88cea0abff8ffb6f Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: 7d7b378abd302430b8ce7cedb4b78c7033f5e88c Maintainer: mproshchuk Status: ready -->
  <sect1 xml:id="language.oop5.visibility" xmlns="http://docbook.org/ns/docbook">
   <title>Область видимості</title>
   <para>
    Області видимості властивостей, методів або (починаючи з PHP 7.1.0) констант
-   можуть визначатись через ключові слова <literal>public</literal>,
-   <literal>protected</literal> чи <literal>private</literal>. Доступ до членів
-   класу, оголошених як public (загальнодоступні), дозволено всюди. Члени класу,
-   оголошені як protected (захищені), доступні лише всередині самого класу, а
-   також через класи-нащадки та батьківські класи. Члени класу, оголошені як
-   private (закриті) можуть бути доступні лише через клас, де вони визначені.
+   можуть визначатись через ключові слова <literal>public</literal>
+   (загальнодоступно), <literal>protected</literal> (захищено) чи
+   <literal>private</literal> (закрито). Доступ до членів класу, оголошених як
+   загальнодоступні, дозволено всюди. Члени класу, оголошені як захищені,
+   доступні лише всередині самого класу, а також через класи-нащадки та
+   батьківські класи. Члени класу, оголошені як закриті можуть бути доступні
+   лише в класі, де вони визначені.
   </para>
 
   <sect2 xml:id="language.oop5.visibility-members">
    <title>Видимість властивості</title>
    <para>
-    Властивості класу можуть оголошуватись як public, private чи protected.
-    Властивість, оголошена без ключового слова видимості, вважається
+    Властивості класу можуть оголошуватись як загальнодоступні, захищені чи
+    закриті. Властивість, оголошена без ключового слова видимості, вважається
     загальнодоступною.
    </para>
-   <para>
-    <example>
-     <title>Оголошення властивості</title>
-     <programlisting role="php">
+   <example>
+    <title>Оголошення властивості</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 /**
@@ -74,9 +74,131 @@ $obj2->printHello(); // Виводить Загальнодоступна2, За
 
 ?> 
 ]]>
+    </programlisting>
+   </example>
+   <sect3 xml:id="language.oop5.visibility-members-aviz">
+    <title>Асиметрична видимість властивості</title>
+    <simpara>
+     Починаючи з PHP 8.4, властивості можуть мати асиметричну видимість, з
+     різними областями видимості для читання (<literal>get</literal>) та запису
+     (<literal>set</literal>). Зокрема видимість <literal>set</literal> можна
+     вказати окремо, якщо та не є ширшою за типову.
+    </simpara>
+    <example>
+     <title>Асиметрична видимість властивості</title>
+     <programlisting role="php">
+<![CDATA[
+<?php
+class Book
+{
+    public function __construct(
+        public private(set) string $title,
+        public protected(set) string $author,
+        protected private(set) int $pubYear,
+    ) {}
+}
+
+class SpecialBook extends Book
+{
+    public function update(string $author, int $year): void
+    {
+        $this->author = $author; // Працює
+        $this->pubYear = $year; // Fatal Error
+    }
+}
+
+$b = new Book('Програмування на PHP', 'Петро Петрук', 2024);
+
+echo $b->title; // Працює
+echo $b->author; // Працює
+echo $b->pubYear; // Fatal Error
+
+$b->title = 'Як не програмувати на PHP'; // Fatal Error
+$b->author = 'Павло Петрук'; // Fatal Error
+$b->pubYear = 2023; // Fatal Error
+?>
+]]>
      </programlisting>
     </example>
-   </para>
+    <para>Є кілька застережень щодо асиметричної видимості:</para>
+    <itemizedlist>
+     <listitem>
+      <simpara>
+       Тільки властивості з вказаним типом можуть мати окрему видимість
+       <literal>set</literal>.
+      </simpara>
+     </listitem>
+     <listitem>
+      <simpara>
+       Видимість <literal>set</literal> має бути однаковою з
+       <literal>get</literal> або вужчою. Тобто код <code>public
+       protected(set)</code> та <code>protected protected(set)</code>
+       працюватиме, але <code>protected public(set)</code> викличе помилку
+       синтаксису.
+      </simpara>
+     </listitem>
+     <listitem>
+      <simpara>
+       Якщо властивість є загальнодоступною (<literal>public</literal>), то
+       основну видимість можна не оголошувати. Тобто, код <code>public
+       private(set)</code> і <code>private(set)</code> працюватиме однаково.
+      </simpara>
+     </listitem>
+     <listitem>
+      <simpara>
+       Властивість з видимістю <literal>private(set)</literal> автоматично є
+       фінальною (<literal>final</literal>), та не може бути змінена в
+       класі-нащадку.
+      </simpara>
+     </listitem>
+     <listitem>
+      <simpara>
+       На отримання посилання впливає видимість <literal>set</literal>, а не
+       <literal>get</literal>. Це тому, що посилання може бути використано, щоб
+       змінити значення властивості.
+      </simpara>
+     </listitem>
+     <listitem>
+      <simpara>
+       Відповідно, запис до властивості-масиву включає в себе як
+       <literal>get</literal>-, так і <literal>set</literal>-операції, а отже до
+       уваги братиметься видимість <literal>set</literal>, як більш
+       обмежувальна.
+      </simpara>
+     </listitem>
+    </itemizedlist>
+    <simpara>
+     Клас-нащадок може перевизначати властивість батьківського класу, якщо та не
+     фінальна (<literal>final</literal>). Таким чином він може розширити основну
+     видимість, або видимість <literal>set</literal>, за умови, що нова
+     видимість є такою самою або ширшою, ніж в батьківського класу. Слід зважати
+     на те, що якщо закрита (<literal>private</literal>) властивість
+     перезаписується, то це не впливає на батьківську властивість, а створює
+     нову властивість з іншою внутрішньою назвою.
+    </simpara>
+    <example>
+     <title>Асиметричне наслідування властивості</title>
+     <programlisting role="php">
+<![CDATA[
+<?php
+class Book
+{
+    protected string $title;
+    public protected(set) string $author;
+    protected private(set) int $pubYear;
+}
+
+class SpecialBook extends Book
+{
+    public protected(set) $title; // Все гаразд. Видимість читання ширша, а запису така сама.
+    public string $author; // Все гаразд. Видимість така сама, а читання ширша.
+    public protected(set) int $pubYear; // Фатальна помилка. властивість з видимістю private(set) є фінальною.
+}
+?>
+]]>
+     </programlisting>
+    </example>
+   </sect3>
   </sect2>
 
   <sect2 xml:id="language.oop5.visiblity-methods">
@@ -85,10 +207,9 @@ $obj2->printHello(); // Виводить Загальнодоступна2, За
     Методи класу можуть бути визначені як public, private чи protected. Метод,
     оголошений без ключового слова видимості, вважається загальнодоступним.
    </para>
-   <para>
-    <example>
-     <title>Оголошення метода</title>
-     <programlisting role="php">
+   <example>
+    <title>Оголошення метода</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 /**
@@ -96,16 +217,16 @@ $obj2->printHello(); // Виводить Загальнодоступна2, За
  */
 class MyClass
 {
-    // Оголошення загальнодоступного (публічного) конструктора
+    // Оголошення загальнодоступного конструктора
     public function __construct() { }
 
-    // Оголошення публічного метода
+    // Оголошення загальнодоступного методу
     public function MyPublic() { }
 
-    // Оголошення захищеного метода
+    // Оголошення захищеного методу
     protected function MyProtected() { }
 
-    // Оголошення закритого метода
+    // Оголошення закритого методу
     private function MyPrivate() { }
 
     // Таке оголошення метода буде оброблятись як public метод
@@ -129,7 +250,7 @@ $myclass->Foo(); // Працюють Public, Protected та Private методи
  */
 class MyClass2 extends MyClass
 {
-    // Таке оголошення метода буде оброблятись як public метод
+    // Таке оголошення методу буде оброблятись як public
     function Foo2()
     {
         $this->MyPublic();
@@ -174,9 +295,8 @@ $myFoo->test(); // Bar::testPrivate
                 // Foo::testPublic
 ?>
 ]]>
-     </programlisting>
-    </example>
-   </para>
+    </programlisting>
+   </example>
   </sect2>
 
   <sect2 xml:id="language.oop5.visiblity-constants">
@@ -186,10 +306,9 @@ $myFoo->test(); // Bar::testPrivate
     private чи protected. Константа, оголошена без ключового слова видимості,
     вважається загальнодоступною.
    </para>
-   <para>
-    <example>
-     <title>Оголошення констант, починаючи з PHP 7.1.0</title>
-     <programlisting role="php">
+   <example>
+    <title>Оголошення констант, починаючи з PHP 7.1.0</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 /**
@@ -240,9 +359,8 @@ echo MyClass2::MY_PUBLIC; // Працює
 $myclass2->foo2(); // Працюють константи Public та Protected, але не Private
 ?>
 ]]>
-     </programlisting>
-    </example>
-   </para>
+    </programlisting>
+   </example>
   </sect2>
 
   <sect2 xml:id="language.oop5.visibility-other-objects">
@@ -269,13 +387,13 @@ class Test
 
     private function bar()
     {
-        echo 'Доступ до закритого метода.';
+        echo 'Доступ до закритого методу.';
     }
 
     public function baz(Test $other)
     {
         // Ми можемо змінити закриту властивість:
-        $other->foo = 'hello';
+        $other->foo = 'привіт';
         var_dump($other->foo);
 
         // Ми також можемо викликати закритий метод:
@@ -292,8 +410,8 @@ $test->baz(new Test('other'));
     &example.outputs;
     <screen>
 <![CDATA[
-string(5) "hello"
-Доступ до закритого метода.
+string(12) "привіт"
+Доступ до закритого методу.
 ]]>
     </screen>
    </example>
