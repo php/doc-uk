@@ -1,54 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: e2788930738ece61eb73efa693bf783b68fc56fa Maintainer: ktretyak Status: ready -->
-<!-- $Revision$ -->
+<!-- EN-Revision: f0261e36dc250410f352fe33ad4c4e699cb18b02 Maintainer: mproshchuk Status: ready -->
 <sect1 xml:id="install.unix.nginx" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Nginx 1.4.x на Unix системах</title>
 
  <para>
-  В цьому розділі описано встановлення та конфігурування PHP з
-  PHP-FPM для HTTP-сервера Nginx 1.4.x.
+  В цьому розділі описано встановлення та налаштування PHP з PHP-FPM для
+  HTTP-сервера Nginx 1.4.x.
  </para>
 
  <para>
-  Якщо ви збирали Nginx з сирців, то всі бінарні та конфігураційні файли
-  зберігаються в <literal>/usr/local/nginx</literal>. В іншому випадку, можете
-  описати ваш процес встановлення на <link xlink:href="&url.nginx;">Nginx Wiki</link>.
+  Передбачається, що Nginx зібрано з початкових файлів, а всі двійкові та
+  конфігураційні файли зберігаються в <literal>/usr/local/nginx</literal>. В
+  іншому випадку, можна описати процес встановлення на <link
+  xlink:href="&url.nginx;">Nginx Wiki</link>.
  </para>
 
  <para>
-  Тут буде описуватись лише основне конфігурування сервера Nginx, щоб він міг
-  обробляти PHP застосунки на 80-му порту. В іншому випадку рекомендуємо
-  прочитати документацію Nginx для PHP-FPM.
+  Тут описано основне налаштування сервера Nginx для обробки PHP-скриптів на
+  80-му порту. Для інших цілей радимо прочитати документацію Nginx для PHP-FPM.
  </para>
 
  <para>
-  Нижче на цій сторінці будуть зустрічатись маски 'x' на місці номера версії.
-  Це зроблено з узагальнюючою метою, оскільки викладені тут рекомендації підійдуть
-  для ряду версій. Дані маски потрібно замінити на відповідний номер вашої версії
-  Nginx.
+  Оскільки викладені тут рекомендації дійсні для багатьох версій, нижче буде
+  траплятись знак 'x' на місці номера версії. За потреби його можна замінити на
+  потрібне число.
  </para>
 
  <orderedlist>
   <listitem>
    <para>
-    Рекомендуємо відвідати Nginx Wiki та прочитати
-    <link xlink:href="&url.nginx.wiki.install;">сторінку встановлення</link>,
+    Рекомендовано відвідати Nginx Wiki та прочитати <link
+    xlink:href="&url.nginx.wiki.install;">керівництво зі встановлення</link>,
     щоб правильно встановити Nginx.
    </para>
   </listitem>
 
   <listitem>
    <para>
-    Скачайте та розпакуйте сирці PHP:
+    Завантажте розпакуйте початкові файли PHP:
    </para>
 
-   <example xml:id="install.unix.nginx.extract.php">
+   <informalexample xml:id="install.unix.nginx.extract.php">
     <screen>
 <![CDATA[
 tar zxf php-x.x.x
 ]]>
     </screen>
-   </example>
+   </informalexample>
   </listitem>
 
   <listitem>
@@ -59,7 +57,7 @@ tar zxf php-x.x.x
     з підтримкою PHP-FPM та MySQL.
    </para>
 
-   <example xml:id="install.unix.nginx.build.php">
+   <informalexample xml:id="install.unix.nginx.build.php">
     <screen>
 <![CDATA[
 cd ../php-x.x.x
@@ -68,59 +66,59 @@ make
 sudo make install
 ]]>
     </screen>
-   </example>
+   </informalexample>
   </listitem>
 
   <listitem>
    <para>
-    Тепер скопіюємо конфігураційні файли в їхнє коректне місцерозташування
+    Тепер скопіюємо конфігураційні файли в їхнє коректне розташування:
    </para>
 
-   <example xml:id="install.unix.nginx.configure.php">
+   <informalexample xml:id="install.unix.nginx.configure.php">
     <screen>
 <![CDATA[
 cp php.ini-development /usr/local/php/php.ini
-cp /usr/local/etc/php-fpm.conf.default /usr/local/etc/php-fpm.conf
+cp /usr/local/etc/php-fpm.d/www.conf.default /usr/local/etc/php-fpm.d/www.conf
 cp sapi/fpm/php-fpm /usr/local/bin
 ]]>
     </screen>
-   </example>
+   </informalexample>
   </listitem>
 
   <listitem>
    <para>
     Важливо, щоб ми убезпечили Nginx від проходження запитів до
-    PHP-FPM, коли файла не існує. Таким чином ми запобігаємо від довільної
+    PHP-FPM, коли файлу не існує. Таким чином ми запобігаємо від довільної
     ін'єкції скрипта.
    </para>
    <para>
     Це можна зробити встановивши директиву
     <link linkend="ini.cgi.fix-pathinfo">cgi.fix_pathinfo</link>
-    в <literal>0</literal> всередині файла php.ini.
+    в <literal>0</literal> всередині файлу php.ini.
    </para>
    <para>
     Відкриваємо файл php.ini:
    </para>
 
-   <example xml:id="install.unix.nginx.configure.ini">
+   <informalexample xml:id="install.unix.nginx.configure.ini">
     <screen>
 <![CDATA[
 vim /usr/local/php/php.ini
 ]]>
     </screen>
-   </example>
+   </informalexample>
 
    <para>
     Знаходимо директиву <literal>cgi.fix_pathinfo=</literal> та змінюємо її так:
    </para>
 
-   <example xml:id="install.unix.nginx.configure.pathinfo">
+   <informalexample xml:id="install.unix.nginx.configure.pathinfo">
     <screen>
 <![CDATA[
 cgi.fix_pathinfo=0
 ]]>
     </screen>
-   </example>
+   </informalexample>
   </listitem>
 
   <listitem>
@@ -129,19 +127,19 @@ cgi.fix_pathinfo=0
     під користувачем www-data та в групі www-data перед тим, як будемо запускати сервіс:
    </para>
 
-   <example xml:id="install.unix.nginx.modify.phpfpm">
+   <informalexample xml:id="install.unix.nginx.modify.phpfpm">
     <screen>
 <![CDATA[
-vim /usr/local/etc/php-fpm.conf
+vim /usr/local/etc/php-fpm.d/www.conf
 ]]>
     </screen>
-   </example>
+   </informalexample>
 
    <para>
     Знайдіть та змініть наступне: 
    </para>
 
-   <example xml:id="install.unix.nginx.modify.phpfpm.usergroup">
+   <informalexample xml:id="install.unix.nginx.modify.phpfpm.usergroup">
     <screen>
 <![CDATA[
 ; Користувач чи група Unix процесів
@@ -151,19 +149,19 @@ user = www-data
 group = www-data
 ]]>
     </screen>
-   </example>
+   </informalexample>
 
    <para>
     Тепер можна запускати сервіс php-fpm:
    </para>
 
-   <example xml:id="install.unix.nginx.start.phpfpm">
+   <informalexample xml:id="install.unix.nginx.start.phpfpm">
     <screen>
 <![CDATA[
 /usr/local/bin/php-fpm
 ]]>
     </screen>
-   </example>
+   </informalexample>
 
    <para>
     На цьому налаштування php-fpm припиняється, але якщо ви зацікавлені в більш
@@ -176,19 +174,19 @@ group = www-data
     Тепер Nginx потрібно налаштувати для обробки PHP застосунків:
    </para>
 
-   <example xml:id="install.unix.nginx.configure.nginx">
+   <informalexample xml:id="install.unix.nginx.configure.nginx">
     <programlisting>
 <![CDATA[
 vim /usr/local/nginx/conf/nginx.conf
 ]]>
     </programlisting>
-   </example>
+   </informalexample>
 
    <para>
     Змінюємо блок "location", щоб додати до індексних файлів розширення .php:
    </para>
 
-   <example xml:id="install.unix.nginx.configure.nginx.location">
+   <informalexample xml:id="install.unix.nginx.configure.nginx.location">
     <programlisting role="nginx-conf">
 <![CDATA[
 location / {
@@ -197,14 +195,14 @@ location / {
 }
 ]]>
     </programlisting>
-   </example>
+   </informalexample>
 
    <para>
     На наступному кроці ми говоримо, щоб всі файли .php передавались до
     PHP-FPM, нижче від закоментованого блоку location, додайте таке:
    </para>
 
-   <example xml:id="install.unix.nginx.configure.nginx.php">
+   <informalexample xml:id="install.unix.nginx.configure.nginx.php">
     <programlisting role="nginx-conf">
 <![CDATA[
 location ~* \.php$ {
@@ -216,20 +214,20 @@ location ~* \.php$ {
 }
 ]]>
     </programlisting>
-   </example>
+   </informalexample>
 
    <para>
     Перезапускаємо Nginx.
    </para>
 
-   <example xml:id="install.unix.nginx.restart.nginx">
+   <informalexample xml:id="install.unix.nginx.restart.nginx">
     <screen>
 <![CDATA[
 sudo /usr/local/nginx/sbin/nginx -s stop
 sudo /usr/local/nginx/sbin/nginx
 ]]>
     </screen>
-   </example>
+   </informalexample>
   </listitem>
 
   <listitem>
@@ -237,14 +235,14 @@ sudo /usr/local/nginx/sbin/nginx
     Створюємо тестовий файл
    </para>
 
-   <example xml:id="install.unix.nginx.test.nginx.php">
+   <informalexample xml:id="install.unix.nginx.test.nginx.php">
     <screen>
 <![CDATA[
 rm /usr/local/nginx/html/index.html
 echo "<?php phpinfo(); ?>" >> /usr/local/nginx/html/index.php
 ]]>
     </screen>
-   </example>
+   </informalexample>
 
    <para>
     Перейдіть за адресою http://localhost. Тепер phpinfo() вже повинно виводитись.
@@ -254,7 +252,7 @@ echo "<?php phpinfo(); ?>" >> /usr/local/nginx/html/index.php
 
  <para>
   Дотримуючись кроків, описаних вище, ви матимете робочий веб-сервер Nginx,
-  який підтримує PHP як модуль <literal>SAPI</literal>. Звичайно є набагато
+  який підтримує PHP як модуль <literal>FPM</literal> <literal>SAPI</literal>. Звичайно є набагато
   більше параметрів конфігурації доступних для Nginx та PHP. Більше інформації
   можна отримати ввівши в консолі <command>./configure --help</command> в їх
   кореневих каталогах.

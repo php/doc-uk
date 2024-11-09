@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 17a5268812b06c23073609c4e8ab976ebfceb61b Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: 5051184c4fb3fcfe5f3f01f4789d0149e3e1f945 Maintainer: mproshchuk Status: ready -->
 
 <!ENTITY installation.enabled.disable
 'Це розширення початково увімкнено. Для вимкнення застосовується наступна опція
@@ -422,6 +422,11 @@ linkend="userlandnaming" />.</simpara></tip>'>
 '<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
 <emphasis>ЗАСТАРІЛА</emphasis>, починаючи з PHP 8.3.0. Вкрай не рекомендується
 на неї покладатися.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.feature-8-4-0 '<warning
+xmlns="http://docbook.org/ns/docbook"><simpara>Цей функціонал
+<emphasis>ЗАСТАРІВ</emphasis>, починаючи з PHP 8.4.0. Вкрай не рекомендується на
+нього покладатися.</simpara></warning>'>
 
 <!ENTITY warn.deprecated.function-8-4-0
 '<warning xmlns="http://docbook.org/ns/docbook"><simpara>Ця функція
