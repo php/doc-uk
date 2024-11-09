@@ -1,183 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 645c1b0252ac20e344c151a5184d9c8e594f4811 Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: 4cb53ecbd763db2db808e90d7eda63afb380e6df Maintainer: mproshchuk Status: ready -->
 
-  <chapter xml:id="install.unix" xmlns="http://docbook.org/ns/docbook">
-   <title>Встановлення на Unix системи</title>
-   <para>
-    Цей розділ описує основне налаштування та встановлення PHP на Unix системи.
-    Варто прочитати всі розділи, призначені для певних платформ чи вебсервера,
-    перш ніж почати процес.
-   </para>
-   <para>
-    Як зазначено в розділі <link linkend="install.general">Загальні інструкції
-    встановлення</link>, ми головним чином працюватимемо над встановленням PHP,
-    що призначається для веб-програмування, хоча згадаємо також і про
-    налаштування PHP для використання в командному рядку.
-   </para>
-   <para> 
-    Є кілька способів встановлення PHP на Unix платформі - або в процесі збірки
-    та конфігурування, або за допомогою готових дистрибутивів. Ця документація в
-    основному сфокусована на процесі збірки та конфігурування PHP. Багато
-    Unix-подібних систем мають певні програми встановлення пакетів. Вони можуть
-    допомогти з налаштуванням стандартної конфігурації, але якщо потрібен інший
-    набір функцій (такий як безпековий сервер, або різні драйвера до баз даних),
-    то може знадобитись компіляція PHP та/або веб-сервера. Якщо ви не знайомі з
-    побудовою та компіляцією вашого програмного забезпечення, варто перевірити
-    чи немає вже готових пакетів, що мають версію PHP з потрібною
-    функціональністю.
-   </para>
-   <para>
-    Необхідні знання та програмне забезпечення для компіляції:
-    <itemizedlist>
-     <listitem>
-      <simpara>
-       Базові знання Unix (вміння оперувати "make" та компілятором C)
-      </simpara>
-     </listitem> 
-     <listitem>
-      <simpara>
-       Компілятор ANSI C
-      </simpara>
-     </listitem> 
-     <listitem>
-      <simpara>
-       Веб-сервер
-      </simpara>
-     </listitem>
-     <listitem>
-      <simpara>
-       Будь-які специфічні компоненти модулів (такі як бібліотеки
-       <acronym>GD</acronym>, <acronym>PDF</acronym>, і т.д.)
-      </simpara>
-     </listitem>
-    </itemizedlist>
-   </para>
+<chapter xml:id="install.unix" xmlns="http://docbook.org/ns/docbook">
+ <title>Встановлення в Unix-системах</title>
+ <simpara>
+  Більшість операційних систем та дистрибутивів на основі Unix (та Linux)
+  надають для встановлення версію PHP та його розширень у вигляді пакунків через
+  свої менеджери пакунків. Нижче є посилання на розділи з основною інформацією
+  про встановлення PHP в цих системах.
+ </simpara>
+ <simpara>
+  Для деяких дистрибутивів існують також сторонні сховища пакунків, які зазвичай
+  містять більшу кількість доступних версій та розширень.
+ </simpara>
+ <simpara>
+  PHP також можна встановити, як компонент деяких сторонніх серверів програм.
+  <!-- such as FrankenPHP and Open Swoole-->.
+ </simpara>
+ <simpara>
+  І нарешті, PHP завжди можна зібрати та встановити з початкових файлів. Такий
+  підхід забезпечує найбільшу гнучкість у виборі функціоналу, розширень та
+  серверних API. Є розділи з інформацією про компіляцію та налаштування PHP,
+  зокрема для використання з різними серверними API.
+ </simpara>
 
-   <para>
-    Для збирання безпосередньо із початкового коду з Git чи після ручних
-    модифікацій також можуть знадобитись:
-    <itemizedlist>
-     <listitem>
-      <simpara>
-       autoconf:
-      </simpara>
-      <itemizedlist>
-       <listitem>
-        <simpara>
-         PHP 7.3 та новіші: 2.68+
-        </simpara>
-       </listitem>
-       <listitem>
-        <simpara>
-         PHP 7.2: 2.64+
-        </simpara>
-       </listitem>
-       <listitem>
-        <simpara>
-         PHP 7.1 та старіші: 2.59+
-        </simpara>
-       </listitem>
-      </itemizedlist>
-     </listitem>
-     <listitem>
-      <simpara>
-       automake: 1.4+
-      </simpara>
-     </listitem>
-     <listitem>
-      <simpara>
-       libtool: 1.4.x+ (окрім 1.4.2)
-      </simpara>
-     </listitem>
-     <listitem>
-      <simpara>
-       re2c:
-      </simpara>
-      <itemizedlist>
-       <listitem>
-        <simpara>
-         PHP 8.3 та новіші: 1.0.3+
-        </simpara>
-       </listitem>
-       <listitem>
-        <simpara>
-         PHP 8.2 та старіші: 0.13.4+
-        </simpara>
-       </listitem>
-      </itemizedlist>
-     </listitem>
-     <listitem>
-      <simpara>
-       bison:
-      </simpara>
-      <itemizedlist>
-       <listitem>
-        <simpara>
-         PHP 7.4 та пізніші: 3.0.0+
-        </simpara>
-       </listitem>
-       <listitem>
-        <simpara>
-         PHP 7.3 та старіші: 2.4+ (включно з Bison 3.x)
-        </simpara>
-       </listitem>
-      </itemizedlist>
-     </listitem>
-    </itemizedlist>
-   </para>
-   
-   <para>
-    Початковий процес встановлення та налаштування PHP контролюється через
-    опції командного рядка під час виконання скрипта
-    <command>configure</command>. Можна побачити список всіх доступних
-    параметрів разом з коротким поясненнями, запустивши <command>./configure
-    --help</command>. Наш посібник документує різні параметри окремо. Можна
-    проглянути <link linkend="configure.about">основні параметри
-    конфігурації</link> в додатковому розділі, тоді як специфічні параметри для
-    різних розширень можна знайти на відповідних сторінках (див. зміст цієї
-    сторінки).
-   </para>
-    
-   <para>
-    Коли PHP сконфігуровано, все готово для побудови модулів та/або виконавчих
-    файлів. Команда <command>make</command> повинна подбати про це. Якщо це не
-    вдається і не зрозуміло, чому — див. розділ <link
-    linkend="install.problems">Проблеми встановлення</link>.
-   </para>
+ <!-- distribution specific nodes -->
+ &install.unix.debian;
+ &install.unix.dnf;
+ &install.unix.openbsd;
+ <!-- general from-source instructions -->
+ &install.unix.source;
+ <!-- web server specific nodes -->
+ &install.unix.commandline;
+ &install.unix.apache2;
+ &install.unix.nginx;
+ &install.unix.lighttpd-14;
+ &install.unix.litespeed;
+ <!-- operating system specific nodes -->
+ &install.unix.solaris;
 
-   <note>
-    <para>
-     З міркувань безпеки деякі системи Unix (як от OpenBSD та SELinux) можуть не
-     дозволяти перезаписувати сторінки пам'яті, що були виділені для інструкцій
-     процесору та навпаки. Цей захист пам'яті називається MPROTECT або W^X.
-     Однак ці обмеження неприпустимі для JIT PCRE, тож PHP має бути побудований
-     <link linkend="pcre.installation">без підтримки PCRE</link>, або двійковий
-     файл повинен бути внесений у білий список будь-якими способами,
-     передбаченими системою.
-    </para>
-   </note>
-
-   <note>
-    <simpara>
-     Перехресне компілювання для ARM за допомогою набору інструментів Android
-     наразі не підтримується.
-    </simpara>
-   </note>
-
-   <!-- web server specific nodes -->
-   &install.unix.apache2;
-   &install.unix.nginx;
-   &install.unix.lighttpd-14;
-   &install.unix.litespeed;
-   &install.unix.commandline;
-   <!-- operating system specific nodes -->
-   &install.unix.openbsd;
-   &install.unix.solaris;
-   <!-- distribution specific nodes -->
-   &install.unix.debian;
-
-   </chapter>
-
+</chapter>
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml
