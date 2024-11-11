@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 5fccbe5195820cd9ec0045674312ec567ef5f6ed  Maintainer: mproshchuk Status: ready -->
-<!-- $Revision$ -->
+<!-- EN-Revision: 117340b0d72bc8884290450ae8b89643528e0f58  Maintainer: mproshchuk Status: ready -->
 <chapter xml:id="language.types" xmlns="http://docbook.org/ns/docbook">
  <title>Типи</title>
 
@@ -27,7 +26,9 @@
    PHP — це динамічно типізована мова, тобто не потрібно вказувати тип змінної,
    оскільки він визначається під час виконання коду. Тим не менш, можливо
    статично типувати деякі аспекти мови за допомогою
-   <link linkend="language.types.declarations">оголошення типів</link>.
+   <link linkend="language.types.declarations">оголошення типів</link>. 
+   Докладніше про типи: <link linkend="language.types.type-system">Система типів
+   PHP</link>.
   </para>
   
    <para>
@@ -36,7 +37,7 @@
    операцію, PHP намагатиметься
    <link linkend="language.types.type-juggling">перетворити тип</link> значення
    в той, що підтримує її.
-   Цей процес залежить від контексту, в якому значення використоваються.
+   Цей процес залежить від контексту, в якому значення використовуються.
    Більше інформації у розділі
    <link linkend="language.types.type-juggling">Перетворення типів</link>.
   </para>
@@ -59,17 +60,17 @@
 
   <para>
     Щоб перевірити тип та значення
-    <link linkend="language.expressions">виразу</link>, використовуйте
-    функцію <function>var_dump</function>.
+    <link linkend="language.expressions">виразу</link>, використовується
+    функція <function>var_dump</function>.
   </para>
 
   <para>
-   Щоб отримати читабельне представлення типів при налагодженні, використовуйте
-   функцію <function>gettype</function>.
-   Для отримання типу <link linkend="language.expressions">виразу</link> є
-   функція <function>get_debug_type</function>.
-   Проте для перевірки відповідності виразу конкретному типу використовується
-   функція <literal>is_<replaceable>type</replaceable></literal>.
+   Для отримання зрозумілого представлення типів під час налагодження
+   використовується функція <function>gettype</function>. Для отримання типу
+   <link linkend="language.expressions">виразу</link> є функція
+   <function>get_debug_type</function>. Проте для перевірки відповідності виразу
+   конкретному типу використовується функція
+   <literal>is_<replaceable>type</replaceable></literal>.
    <!-- TODO When PhD support is there: <function>is_<replaceable>type</replaceable></function> -->
    
    <informalexample>

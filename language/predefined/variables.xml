@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: a71742330defbc0edfbc6822b4f947bf437b2f70  Maintainer: mproshchuk Status: ready -->
-<!-- $Revision$ -->
-<!-- Reviewed: yes Maintainer: mproshchuk -->
-
+<!-- EN-Revision: d6baeae3fa6e100b6b4b4ecd59fda030aa32f694  Maintainer: mproshchuk Status: ready -->
 <reference xml:id="reserved.variables" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
- <title>Предвизначені змінні</title>
+ <title>Попередньо визначені змінні</title>
 
  <partintro>
 
   <para>
-   PHP надає велику кількість предвизначених змінних для всіх скриптів.
-   Змінні представляють все: від
-   <link linkend="language.variables.external">змінних із зовнішній джерел</link>
-   до вбудованих змінних оточення, від останніх повідомлень про помилки до
-   останніх отриманих заголовків.
+   PHP надає попередньо визначені змінні, що представляють <link
+   linkend="language.variables.external">змінні із зовнішній джерел</link>,
+   вбудовані змінні оточення та іншу інформацію про середовище виконання,
+   наприклад, кількість і значення аргументів, переданих скрипту в середовищі
+   CLI.
   </para>
 
  </partintro>

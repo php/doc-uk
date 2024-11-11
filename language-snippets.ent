@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 5051184c4fb3fcfe5f3f01f4789d0149e3e1f945 Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: 976425d4f6eec32448be3cc22ec063015921b753 Maintainer: mproshchuk Status: ready -->
 
 <!ENTITY installation.enabled.disable
 'Це розширення початково увімкнено. Для вимкнення застосовується наступна опція
@@ -1757,8 +1757,8 @@ linkend="memcached.expiration" xmlns="http://docbook.org/ns/docbook">Термі�
 '<para xmlns="http://docbook.org/ns/docbook">
    Повертає масив, проіндексовиний за <parameter>keys</parameter>. Кожен
    елемент, у якого вилучено ключ або ключем є одна з констант
-   <constant>Memcached::RES_*</constant> (коли вилучення невдале), дорівнює
-   &true;.
+   <constant>Memcached::RES_<replaceable>*</replaceable></constant> (коли
+   вилучення невдале), дорівнює &true;.
    </para>
   <para xmlns="http://docbook.org/ns/docbook">
    <methodname>Memcached::getResultCode</methodname> повертає код результату для
