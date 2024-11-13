@@ -65,22 +65,22 @@
   </para>
 
   <para>
-   Для отримання зрозумілого представлення типів під час налагодження
-   використовується функція <function>gettype</function>. Для отримання типу
+   Для перевірки значення та типу <link
+   linkend="language.expressions">виразу</link> використовується функція
+   <function>var_dump</function>. Для отримання типу
    <link linkend="language.expressions">виразу</link> є функція
-   <function>get_debug_type</function>. Проте для перевірки відповідності виразу
+   <function>get_debug_type</function>. А для перевірки відповідності виразу
    конкретному типу використовується функція
    <literal>is_<replaceable>type</replaceable></literal>.
-   <!-- TODO When PhD support is there: <function>is_<replaceable>type</replaceable></function> -->
    
    <informalexample>
     <programlisting role="php">
 <![CDATA[
 <?php
-$a_bool = true;   // логічний тип (англ. boolean)
-$a_str  = "foo";  // рядковий тип (англ. string)
+$a_bool = true;   // логічний тип (bool)
+$a_str  = "foo";  // рядковий тип (string)
 $a_str2 = 'foo';  // теж рядковий тип
-$an_int = 12;     // цілочисельний тип (англ. integer)
+$an_int = 12;     // цілочисельний тип (int)
 
 echo get_debug_type($a_bool), "\n";
 echo get_debug_type($a_str), "\n";

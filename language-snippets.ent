@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 976425d4f6eec32448be3cc22ec063015921b753 Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: d0e23f48165c79327727e3a51b8277104975e3ad Maintainer: mproshchuk Status: ready -->
 
 <!ENTITY installation.enabled.disable
 'Це розширення початково увімкнено. Для вимкнення застосовується наступна опція
@@ -4578,12 +4578,160 @@ xmlns:xlink="http://www.w3.org/1999/xlink">libbson</link>.</member>'>
    </itemizedlist>
 '>
 
+<!ENTITY strings.stripped.unicode '
+ <itemizedlist xmlns="http://docbook.org/ns/docbook">
+    <listitem>
+     <simpara>
+      <literal>" "</literal> (<acronym>Unicode</acronym> U+0020), звичайний пропуск.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <literal>"\t"</literal> (<acronym>Unicode</acronym> U+0009), табуляція.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <literal>"\n"</literal> (<acronym>Unicode</acronym> U+000A), новий рядок.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <literal>"\r"</literal> (<acronym>Unicode</acronym> U+000D), повернення каретки.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <literal>"\0"</literal> (<acronym>Unicode</acronym> U+0000), NUL-байт.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <literal>"\v"</literal> (<acronym>Unicode</acronym> U+000B), вертикальна табуляція.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <literal>"\f"</literal> (<acronym>Unicode</acronym> U+000C), нова сторінка (form feed).
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <literal>"\u00A0"</literal> (<acronym>Unicode</acronym> U+00A0), нерозривний пропуск.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <literal>"\u1680"</literal> (<acronym>Unicode</acronym> U+1680), огамський пропуск.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <literal>"\u2000"</literal> (<acronym>Unicode</acronym> U+2000), EN QUAD (пропуск).
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <literal>"\u2001"</literal> (<acronym>Unicode</acronym> U+2001), EM QUAD (пропуск).
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <literal>"\u2002"</literal> (<acronym>Unicode</acronym> U+2002), пропуск розміром 1 en.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <literal>"\u2003"</literal> (<acronym>Unicode</acronym> U+2003), пропуск розміром 1 em.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <literal>"\u2004"</literal> (<acronym>Unicode</acronym> U+2004), пропуск розміром 1/3 em.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <literal>"\u2005"</literal> (<acronym>Unicode</acronym> U+2005), пропуск розміром 1/4 em.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <literal>"\u2006"</literal> (<acronym>Unicode</acronym> U+2006), пропуск розміром 1/6 em.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+     <literal>"\u2007"</literal> (<acronym>Unicode</acronym> U+2007), фігурний пропуск.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+     <literal>"\u2008"</literal> (<acronym>Unicode</acronym> U+2008), пунктуаційний пропуск.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+     <literal>"\u2009"</literal> (<acronym>Unicode</acronym> U+2009), вузький пропуск.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+     <literal>"\u200A"</literal> (<acronym>Unicode</acronym> U+200A), дуже вузький пропуск .
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+     <literal>"\u2028"</literal> (<acronym>Unicode</acronym> U+2028), роздільник-лінія.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+     <literal>"\u2029"</literal> (<acronym>Unicode</acronym> U+2029), роздільник-параграф.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+     <literal>"\u202F"</literal> (<acronym>Unicode</acronym> U+202F), вузький безперезвний пропуск.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+     <literal>"\u205F"</literal> (<acronym>Unicode</acronym> U+205F), середній математичний пропуск.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+     <literal>"\u3000"</literal> (<acronym>Unicode</acronym> U+3000), ідеографічний пропуск.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+     <literal>"\u0085"</literal> (<acronym>Unicode</acronym> U+0085), наступна лінія (NEL).
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+     <literal>"\u180E"</literal> (<acronym>Unicode</acronym> U+180E), монгольський роздільник голосних.
+     </simpara>
+    </listitem>
+   </itemizedlist>
+'>
+
 <!ENTITY strings.parameter.characters.optional '
  <simpara xmlns="http://docbook.org/ns/docbook">
   Символи, що треба вилучити, можна вказати за допомогою необов&apos;язкового
   параметра <parameter>characters</parameter>. Необхідно просто записати туди
-  усі потрібні символи. За допомогою <literal>..</literal> можна задати діапазон
-  символів за зростанням.
+  усі непотрібні символи. За допомогою <literal>..</literal> можна задати
+  діапазон символів за зростанням.
+ </simpara>
+'>
+
+<!ENTITY strings.parameter.unicode.optional '
+ <simpara xmlns="http://docbook.org/ns/docbook">
+  Символи, що треба вилучити, можна вказати за допомогою необов&apos;язкового
+  параметра <parameter>characters</parameter> Необхідно просто записати туди усі
+  непотрібні символи.
  </simpara>
 '>
 

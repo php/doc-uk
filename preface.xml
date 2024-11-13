@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: d23581d55f20027b5a15673224a908cb425513b9 Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: dee52c067be3be96a735f0c33cbcf0009a996b2e Maintainer: mproshchuk Status: ready -->
 
 <preface xml:id="preface" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://docbook.org/ns/docbook">
- <info><title>Передмова</title>
+ <info>
+  <titleabbrev>Передмова</titleabbrev>
+  <title>Про цей посібник</title>
  <abstract>
   <simpara>
-   <acronym>PHP</acronym>, (рекурсивний акронім словосполучення
-   &quot;<literal>PHP: Hypertext Preprocessor</literal>&quot;) є мовою широкого
-   вжитку — це найпоширеніша мова програмування загального призначення з
-   відкритим початковим кодом. PHP сконструйована спеціально для ведення
-   веброзробок, а її код можна вписувати безпосередньо в HTML. Cинтаксис мови
-   поєднує C, Java і Perl, та її легко вивчати. Основною метою PHP є надання
-   веброзробникам можливості швидкого створення динамічних вебсторінок, але цим
-   сфера її застосування не обмежується.
+   <acronym>PHP</acronym>, що розшифровується як <literal>PHP: Hypertext
+   Preprocessor</literal> — це поширена скриптова мова загального призначення з
+   відкритим початковим кодом, яка найкраще підходить для веброзробки і може
+   бути вбудована в HTML. Cинтаксис мови ґрунтований на C, Java і Perl, також її
+   легко вивчати. Основна мета мови — дозволити веброзробникам швидко писати
+   динамічно генеровані вебсторінки, але за допомогою PHP можна робити набагато
+   більше.
   </simpara>
  </abstract>
 </info>

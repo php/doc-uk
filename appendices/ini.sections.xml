@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: a0ae28d3bc85f927c22649ebd9a590b921534b7d Maintainer: mproshchuk Status: wip -->
+<!-- EN-Revision: d4d5216e7a965ca194f6b1c9dee84cecab2674e5 Maintainer: mproshchuk Status: ready -->
  <section xml:id="ini.sections" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>List of &php.ini; sections</title>
+  <title>Список секцій &php.ini;</title>
   <para>
-   This list includes the &php.ini; sections you can set to configure your
-   PHP setup on a per Host or Path basis. These sections are optional.
+   Список містить секції &php.ini;, які можна використовувати для налаштування
+   PHP для хоста або шляху. Ці секції необов'язкові.
   </para>
   <para>
-   These sections don't directly affect PHP. They are used to group other
-   &php.ini; directives together and to get them to act upon a particular host
-   or on a particular path.
+   Вони не впливають безпосередньо на PHP, а групують директиви &php.ini; і
+   змушують їх діяти на певному хості або шляху.
   </para>
   <para>
-   These sections are used only in CGI/FastCGI mode and they can not set
-   <link linkend="ini.extension">extension</link> and <link
-   linkend="ini.zend-extension">zend_extension</link> directives.
+   Ці секції використовуються тільки в режимі CGI/FastCGI та не можуть
+   задавати директиви <link linkend="ini.extension">extension</link> та <link
+   linkend="ini.zend-extension">zend_extension</link>.
   </para>
   <para>
    <table>
-    <title>Sections</title>
+    <title>Секції</title>
     <tgroup cols="3">
      <thead>
       <row>
@@ -53,12 +52,13 @@
      </term>
      <listitem>
       <para>
-       This section allows you to define a set of &php.ini; directives that
-       will take effect on the named host.
+       Ця секція дозволяє визначити набір директив &php.ini;, що діятимуть для
+       заданого хоста.
       </para>
       <para>
        <example>
-        <title>Activate full on-screen error reporting for dev. domain</title>
+        <title>Увімкнути повне екранне оповіщення про помилки домену для
+         розробки</title>
         <programlisting role="php.ini">
 <![CDATA[
 [HOST=dev.site.com]
@@ -77,12 +77,12 @@ display_errors = On
      </term>
      <listitem>
       <para>
-       This section allows you to define a set of &php.ini; directives that
-       will take effect when a script runs from the named path.
+       Ця секція дозволяє визначити набір директив &php.ini;, що діятимуть для
+       заданого шляху.
       </para>
       <para>
        <example>
-        <title>Add security script for protected areas</title>
+        <title>Додати скрипт безпеки для захищених частин</title>
         <programlisting role="php.ini">
 <![CDATA[
 [PATH=/home/site/public/secure]

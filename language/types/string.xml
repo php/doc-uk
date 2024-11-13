@@ -875,51 +875,51 @@ echo "Значення об'єкту: $o->s.";
      цілочисельні індекси.
     </simpara>
 
-    <example><title>Negative numeric indices</title>
+    <example><title>Від'ємні цілочисельні індекси</title>
      <programlisting role="php">
 <![CDATA[
 <?php
 $string = 'string';
-echo "The character at index -2 is $string[-2].", PHP_EOL;
+echo "Символ з індексом -2 є \"$string[-2]\".", PHP_EOL;
 $string[-3] = 'o';
-echo "Changing the character at index -3 to o gives $string.", PHP_EOL;
+echo "Зміна символа з індексом -3 на \"o\" дає \"$string\".", PHP_EOL;
 ?>
 ]]>
      </programlisting>
      &example.outputs;
      <screen>
 <![CDATA[
-The character at index -2 is n.
-Changing the character at index -3 to o gives strong.
+Символ з індексом -2 є "n".
+Зміна символа з індексом -3 на "o" дає "strong".
 ]]>
      </screen>
     </example>
 
     <simpara>
-     For anything more complex, the
-     <link linkend="language.types.string.parsing.advanced">advanced</link>
-     syntax must be used.
+     Для чогось складнішого використовується <link
+     linkend="language.types.string.parsing.advanced">розширений</link>
+     синтаксис.
     </simpara>
    </sect4>
 
    <sect4 xml:id="language.types.string.parsing.advanced">
-    <title>Advanced (curly) syntax</title>
+    <title>Розширений синтаксис</title>
 
     <simpara>
-     The advanced syntax permits the interpolation of
-     <emphasis>variables</emphasis> with arbitrary accessors.
+     Розширений синтаксис дозволяє інтерполяцію <emphasis>змінних</emphasis>
+     довільної форми.
     </simpara>
 
     <simpara>
-     Any scalar variable, array element or object property
-     (<modifier>static</modifier> or not) with a
-     <type>string</type> representation can be included via this syntax.
-     The expression is written the same way as it would appear outside the
-     <type>string</type>, and then wrapped in <literal>{</literal> and
-     <literal>}</literal>. Since <literal>{</literal> can not be escaped, this
-     syntax will only be recognised when the <literal>$</literal> immediately
-     follows the <literal>{</literal>. Use <literal>{\$</literal> to get a
-     literal <literal>{$</literal>. Some examples to make it clear:
+     Будь-яка скалярна змінна, елемент масиву або властивість об'єкту
+     (<modifier>static</modifier> чи ні) з рядковим (<type>string</type>)
+     представленням можна вставити в рядок за допомогою цього синтаксису. Вираз
+     записується так, як він виглядає поза рядком (<type>string</type>) та
+     береться в фігурні дужки (<literal>{</literal> та <literal>}</literal>).
+     Оскільки <literal>{</literal> не екранується, то цей синтаксис правильний
+     тільки, якщо <literal>$</literal> слідує одразу після <literal>{</literal>.
+     Щоб буквально вивести послідовність <literal>{$</literal>, треба записати
+     її так: <literal>{\$</literal>. Ось кілька прикладів для наочності:
     </simpara>
 
     <informalexample>
