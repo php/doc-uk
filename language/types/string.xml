@@ -927,23 +927,23 @@ echo "Зміна символа з індексом -3 на \"o\" дає \"$stri
 <![CDATA[
 <?php
 
-const DATA_KEY = 'const-key';
-$great = 'fantastic';
+const DATA_KEY = 'ключ-константа';
+$great = 'фантастично';
 $arr = [
     '1',
     '2',
     '3',
     [41, 42, 43],
-    'key' => 'Indexed value',
-    'const-key' => 'Key with minus sign',
+    'ключ' => 'Індексоване значення',
+    'ключ-константа' => 'Від\'ємний ключ',
     'foo' => ['foo1', 'foo2', 'foo3']
 ];
 
-// Won't work, outputs: This is { fantastic}
-echo "This is { $great}";
+// Не працює, виводить: Це { фантастично}
+echo "Це { $great}";
 
-// Works, outputs: This is fantastic
-echo "This is {$great}";
+// Працює, виводить: Це фантастично
+echo "Це {$great}";
 
 class Square {
     public $width;
@@ -953,31 +953,31 @@ class Square {
 
 $square = new Square(5);
 
-// Works
-echo "This square is {$square->width}00 centimeters wide.";
+// Працює
+echo "Цей квадрат має ширину {$square->width}00 сантиметрів.";
 
 
-// Works, quoted keys only work using the curly brace syntax
-echo "This works: {$arr['key']}";
+// Працює, ключі в апострофах чи лапках працюють тільки в розширеному синтаксисі
+echo "Це працює: {$arr['ключ']}";
 
 
-// Works
-echo "This works: {$arr[3][2]}";
+// Працює
+echo "Це працює: {$arr[3][2]}";
 
-echo "This works: {$arr[DATA_KEY]}";
+echo "Це працює: {$arr[DATA_KEY]}";
 
-// When using multidimensional arrays, always use braces around arrays
-// when inside of strings
-echo "This works: {$arr['foo'][2]}";
+// Вставляючи елементи багатовимірних масивів в рядок, завжди потрібно брати їх
+// у фігурні дужки
+echo "це працює: {$arr['foo'][2]}";
 
-echo "This works: {$obj->values[3]->name}";
+echo "Це працює: {$obj->values[3]->name}";
 
-echo "This works: {$obj->$staticProp}";
+echo "Це працює: {$obj->$staticProp}";
 
-// Won't work, outputs: C:\folder\{fantastic}.txt
+// Не працює, виводить: C:\folder\{фантастично}.txt
 echo "C:\folder\{$great}.txt";
 
-// Works, outputs: C:\folder\fantastic.txt
+// Працює, виводить: C:\folder\фантастично.txt
 echo "C:\\folder\\{$great}.txt";
 ?>
 ]]>

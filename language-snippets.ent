@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: d0e23f48165c79327727e3a51b8277104975e3ad Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: 9cd8eb0f11edb4e59fd22f723137bbb91d6ab64f Maintainer: mproshchuk Status: ready -->
 
 <!ENTITY installation.enabled.disable
 'Це розширення початково увімкнено. Для вимкнення застосовується наступна опція
@@ -5460,28 +5460,66 @@ xmlns:xlink="http://www.w3.org/1999/xlink">libbson</link>.</member>'>
 
 <!ENTITY xml.handler.description
 '<para xmlns="http://docbook.org/ns/docbook">
- Якщо задано &null; або порожній рядок, обробник буде відновлено до його
- початкового стану.
+ Якщо задано &null;, обробник буде скинуто до його початкового стану.
+ <warning>
+  <simpara>
+    Якщо задано порожній рядок, обробник також буде скинуто, проте така дія
+    застаріла, починаючи з PHP 8.4.0.
+  </simpara>
+ </warning>
 </para>
 <para xmlns="http://docbook.org/ns/docbook">
  Якщо параметр <parameter>handler</parameter> має тип <type>callable</type>, то
  обробником стане функція/метод, що має таку назву виклику.
 </para>
 <para xmlns="http://docbook.org/ns/docbook">
- Параметру <parameter>handler</parameter> дозволяється мати тип
- <type>string</type>, якщо це назва метода об&apos;єкта, встановленого функцією
+ Параметр <parameter>handler</parameter> може мати тип <type>string</type>, якщо
+ це назва метода об&apos;єкта, встановленого функцією
  <function>xml_set_object</function>.
-</para>'>
+ <warning>
+  <simpara>
+   Це є застарілим, починаючи з PHP 8.4.0.
+  </simpara>
+ </warning>
+</para>
+<warning xmlns="http://docbook.org/ns/docbook">
+ <simpara>
+  Починаючи з PHP 8.4.0, назва виклику перевіряється на правильність під час
+  встановлення обробника, а не під час його виклику. Це означає, що функцію
+  <function>xml_set_object</function> потрібно викликати перед встановленням
+  назви метода, як зворотнього виклику. Однак, оскільки ця поведінка також є
+  застарілою, починаючи з PHP 8.4.0, рекомендується використовувати правильну
+  назву виклику (<type>callable</type>) методу.
+ </simpara>
+</warning>
+'>
 
 <!ENTITY xml.handler.parser.param
 '<varlistentry xmlns="http://docbook.org/ns/docbook">
  <term><parameter>parser</parameter></term>
  <listitem>
   <simpara>
-   XML-парсер, якого викликатиме обробник.
+   XML-парсер, що викликає обробника.
   </simpara>
  </listitem>
 </varlistentry>'>
+
+<!ENTITY xml.changelog.handler-param '<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.4.0</entry>
+ <entry>
+  Використання не-<type>callable</type> рядків (<type>string</type>) як
+  параметра <parameter>handler</parameter> тепер є застарілим. Необхідно
+  задавати правильну назву виклику методів або &null; для скидання обробника.
+ </entry>
+</row>
+<row xmlns="http://docbook.org/ns/docbook">
+ <entry>8.4.0</entry>
+ <entry>
+  Правильність параметра <parameter>handler</parameter>, як назви виклику
+  (<type>callable</type>) тепер перевіряється на правильність під час
+  встановлення обробника, а не під час його виклику.
+ </entry>
+</row>'>
 
 <!ENTITY xml.changelog.parser-param
 '<row xmlns="http://docbook.org/ns/docbook">
