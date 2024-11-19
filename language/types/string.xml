@@ -986,34 +986,34 @@ echo "C:\\folder\\{$great}.txt";
 
     <note>
      <simpara>
-      As this syntax allows arbitrary expressions it is possible to use
-      <link linkend="language.variables.variable">variable variables</link>
-      within the advanced syntax.
+      Оскільки розширений синтаксис підтримує довільні вирази, то використання
+      <link linkend="language.variables.variable">змінних змінних</link> —
+      дозволено.
      </simpara>
     </note>
    </sect4>
   </sect3>
 
   <sect3 xml:id="language.types.string.substr">
-   <title>String access and modification by character</title>
+   <title>Зміна рядка та посимвольне редагування</title>
 
    <para>
-    Characters within <type>string</type>s may be accessed and modified by
-    specifying the zero-based offset of the desired character after the
-    <type>string</type> using square <type>array</type> brackets, as in
-    <varname>$str[42]</varname>. Think of a <type>string</type> as an
-    <type>array</type> of characters for this purpose. The functions
-    <function>substr</function> and <function>substr_replace</function>
-    can be used when you want to extract or replace more than 1 character.
+    Доступ до символа в рядку (<type>string</type>) можна отримати, як до
+    елемента масиву (<type>array</type>), вказавши в квадратних дужках позицію
+    символа, рахуючи від нуля, наприклад, <varname>$str[42]</varname> (43-й
+    символ рядка <varname>str</varname>). Тобто, з цією метою потрібно вважати
+    рядок (<type>string</type>) масивом (<type>array</type>) символів. Функції
+    <function>substr</function> та <function>substr_replace</function> можна
+    використати для зчитування або заміни більше ніж одного символа.
    </para>
 
    <note>
     <simpara>
-     As of PHP 7.1.0, negative string offsets are also supported. These specify
-     the offset from the end of the string.
-     Formerly, negative offsets emitted <constant>E_NOTICE</constant> for reading
-     (yielding an empty string) and <constant>E_WARNING</constant> for writing
-     (leaving the string untouched).
+     Починаючи з PHP 7.1.0, також підтримуються від'ємні позиції. Їх
+     відраховують з кінця рядка. Раніше використання від'ємних позицій викликало
+     повідомлення <constant>E_NOTICE</constant> під час зчитування (повертаючи
+     порожній рядок) та <constant>E_WARNING</constant> під час запису (не
+     змінюючи рядка).
     </simpara>
    </note>
 

@@ -1,30 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: f8682cd86a71640bf8771186d1d40881c7a0295e Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: 4cb53ecbd763db2db808e90d7eda63afb380e6df Maintainer: mproshchuk Status: ready -->
 <sect1 xml:id="install.unix.debian" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
- <title>Замітки для Debian GNU/Linux</title>
+ <title>Примітки щодо встановлення в Debian GNU/Linux</title>
  <para>
-  Ця сторінка містить замітки та підказки призначені для встановлення PHP на
-  <link xlink:href="&url.debian;">Debian GNU/Linux</link>.
+  Хоча PHP можна зібрати з початкового коду, він також доступний у вигляді
+  пакетів в <link xlink:href="&url.debian;">Debian GNU/Linux</link>. Це діє і
+  для інших дистрибутивів на основі Debian, як от Ubuntu, Kali Linux і Linux
+  Mint.
  </para>
- <warning>
-  <para>
-   Неофіційні збірки від третіх сторін тут не згадуються. Про будь-які
-   несправності потрібно звітувати команді Debian, якщо їх не можна відтворити,
-   використовуючи останні збірки з нашої
-   <link xlink:href="&url.php.downloads;">сторінки завантажень</link>.
-  </para>
- </warning>
+ &warn.install.third-party-support;
  <para>
-  Хоча загальні інструкції для встановлення PHP на Unix застосовуються також і
-  до Debian, ця сторінка містить специфічну інформацію щодо інших моментів,
-  як наприклад використання команд <literal>apt</literal> або
-  <literal>aptitude</literal>. Тут використовуються ці дві команди по черзі.
+  Пакунки можна встановити командою <literal>apt</literal> або
+  <literal>aptitude</literal>. Ці дві команди вважаються рівнозначними.
  </para>
  <sect2 xml:id="install.unix.debian.apt">
   <title>Використання APT</title>
    <simpara>
     По-перше, варто зауважити, що інші пов'язані пакети можуть потребувати
-    <literal>libapache2-mod-php</literal> для інтеграції з Apache 2, та
+    <literal>libapache2-mod-php</literal> для інтеграції з Apache 2 та
     <literal>php-pear</literal> для PEAR.
    </simpara>
    <simpara>
@@ -32,7 +25,7 @@
     Типово, це робиться через запуск команди <command>apt update</command>.
    </simpara>
    <example xml:id="install.unix.debian.apt.example">
-    <title>Приклад встановлення Debian з Apache 2</title>
+    <title>Приклад встановлення з Apache 2 в Debian</title>
     <programlisting role="shell">
 <![CDATA[
 # apt install php-common libapache2-mod-php php-cli
@@ -40,12 +33,12 @@
     </programlisting>
    </example>
    <simpara>
-    APT буде автоматично встановлювати модуль PHP для Apache 2 та всі його
-    залежності, а потім активує його. Apache потрібно перезапустити, щоб зміни
-    набули чинності. Наприклад:
+    APT автоматично встановить модуль PHP для Apache 2 та всі його залежності, а
+    потім активує його. Apache потрібно перезапустити, щоб зміни набули
+    чинності. Наприклад:
    </simpara>
    <example xml:id="install.unix.debian.apt.example2">
-    <title>Зупинка та запуск Apache, коли PHP встановлено</title>
+    <title>Зупинка та запуск Apache після встановлення PHP</title>
     <programlisting role="shell">
 <![CDATA[
 # /etc/init.d/apache2 stop
@@ -57,12 +50,11 @@
  <sect2 xml:id="install.unix.debian.config">
   <title>Розширене налаштування</title>
    <simpara>
-    В останньому прикладі, PHP було встановлено з основними модулями. Ймовірно,
-    потрібно буде доставити інші модулі, наприклад
+    В останньому прикладі PHP було встановлено з основними модулями. Ймовірно,
+    потрібно буде додати інші модулі, наприклад,
     <link linkend="book.mysql">MySQL</link>,
-    <link linkend="book.curl">cURL</link>,
-    <link linkend="book.image">GD</link>,
-    та інші. Їх також можна встановити через команду <literal>apt</literal>.
+    <link linkend="book.curl">cURL</link>, <link linkend="book.image">GD</link>
+    та інші. Їх також можна встановити через команду <command>apt</command>.
    </simpara>
    <example xml:id="install.unix.debian.config.example">
     <title>Методи пошуку додаткових пакетів для PHP</title>
@@ -75,11 +67,11 @@
     </programlisting>
    </example>
    <simpara>
-    Ці методи покажуть великий список пакетів, включаючи деякі специфічні для
-    PHP, такі як php-cgi, php-cli та php-dev. Вони встановлюються за допомогою
-    <literal>apt</literal> або <literal>aptitude</literal>. Оскільки Debian
-    виконує перевірку залежностей, буде запропоновано, наприклад, встановити
-    MySQL та cURL:
+    Список складатиметься з великої кількості пакунків, що містять основні
+    компоненти PHP, як от <literal>php-cgi</literal>, <literal>php-cli</literal>
+    та <literal>php-dev</literal>, а також багато інших розширень PHP. Під час
+    встановлення розширень будуть автоматично встановлені додаткові пакунки,
+    необхідні для задоволення залежностей цих розширень.
    </simpara>
    <example xml:id="install.unix.debian.config.example2">
     <title>Встановлення PHP з MySQL та cURL</title>
@@ -90,12 +82,12 @@
     </programlisting>
    </example>
    <simpara>
-    APT буде автоматично додавати відповідні рядки для різних &php.ini;
-    пов'язаних файлів, як от <filename>/etc/php/7.4/php.ini</filename>,
-    <filename>/etc/php/7.4/conf.d/*.ini</filename>, і схожих, та залежно від
+    APT буде автоматично додає відповідні рядки для різних пов'язаних &php.ini;
+     файлів, як от <filename>/etc/php/7.4/php.ini</filename>,
+    <filename>/etc/php/7.4/conf.d/*.ini</filename> і схожих, та залежно від
     розширень, буде додавати записи, наприклад
-    <literal>extension=foo.so</literal>. Перезапуск вебсервера також є
-    необхідним, щоб зміни набули чинності.
+    <literal>extension=foo.so</literal>. Необхідно перезапустити вебсервер, щоб
+    зміни набули чинності.
    </simpara>
  </sect2>
  <sect2 xml:id="install.unix.debian.faq">
@@ -104,7 +96,7 @@
    <listitem>
     <simpara>
      Якщо скрипти PHP не обробляються вебсервером, то ймовірно, що PHP ще не
-     додано до конфігураційного файла вебсервера, який на Debian може
+     додано до конфігураційного файлу вебсервера, який на Debian може
      знаходитись тут: <filename>/etc/apache2/apache2.conf</filename>. Докладніша
      інформація є у керівництві Debian.
     </simpara>
@@ -114,13 +106,6 @@
      Якщо розширення встановлено, але функції не доступні, треба переконатись,
      що завантажується відповідний ini-файл та вебсервер було перезапущено
      після встановлення цих розширень.
-    </simpara>
-   </listitem>
-   <listitem>
-    <simpara>
-     Є дві базові команди для встановлення пакетів на Debian (та інші варіанти
-     Linux): <literal>apt</literal> і <literal>aptitude</literal>. Але пояснення
-     тонкощів, в чому вони відрізняються, виходить за межі цього посібника.
     </simpara>
    </listitem>
   </itemizedlist>
