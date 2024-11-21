@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 9f351a14a749721a74df1dc6ac9533cf796a652e Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: 376d3f9c2ef7fcd64d8b8503d552013acefb8b5b Maintainer: mproshchuk Status: ready -->
  <sect1 xml:id="language.oop5.decon" xmlns="http://docbook.org/ns/docbook">
   <title>Конструктори та деструктори</title>
 
@@ -361,6 +361,23 @@ $obj = new MyDestructableClass();
     Деструктор буде викликано, навіть коли виконання скрипта припиняється
     функцією <function>exit</function>. Виклик <function>exit</function>
     в деструкторі запобігає виконанню решти процедур завершення скрипта.
+   </para>
+   <para>
+    Якщо деструктор створює нові посилання на свій об'єкт, його не буде
+    викликано вдруге, коли кількість посилань знову досягне нуля чи під час
+    завершення скрипта.
+   </para>
+   <para>
+    Починаючи з PHP 8.4.0, якщо <link
+    linkend="features.gc.collecting-cycles">збирання циклів</link> вмикається
+    під час виконання <link linkend="language.fibers">файбера</link>, то
+    заплановані деструктори об'єктів виконуються в окремому файбері з назвою
+    <literal>gc_destructor_fiber</literal>. Якщо цей файбер призупинено, то
+    створюється новий, щоб довиконати деструктори. Збирач сміття більше не
+    посилатиметься на попередній файбер <literal>gc_destructor_fiber</literal>,
+    який буде знищений під час наступного збирання сміття. Об'єкт, чий
+    деструктор призупинено, не знищиться, допоки деструктор не буде виконано
+    або не буде знищено файбер.
    </para>
    <note>
     <para>

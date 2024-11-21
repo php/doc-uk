@@ -1019,36 +1019,36 @@ echo "C:\\folder\\{$great}.txt";
 
    <note>
     <simpara>
-     Prior to PHP 8.0.0, <type>string</type>s could also be accessed using braces, as in
-     <varname>$str{42}</varname>, for the same purpose.
-     This curly brace syntax was deprecated as of PHP 7.4.0 and no longer supported as of PHP 8.0.0.
+     До PHP 8.0.0, з тією самою метою рядки (<type>string</type>) підтримують
+     фігурні дужки, напр. <varname>$str{42}</varname>. Такий синтаксис
+     застарілий, починаючи з PHP 7.4.0, та видалений в PHP 8.0.0.
     </simpara>
    </note>
 
    <warning>
     <simpara>
-     Writing to an out of range offset pads the string with spaces.
-     Non-integer types are converted to integer.
-     Illegal offset type emits <constant>E_WARNING</constant>.
-     Only the first character of an assigned string is used.
-     As of PHP 7.1.0, assigning an empty string throws a fatal error. Formerly,
-     it assigned a NULL byte.
+     Запис в позицію за межами рядка доповнює рядок пропусками. Не цілочисельні
+     позиції перетворюються в цілі числа. Якщо задано недопустимий тип позиції,
+     виводиться <constant>E_WARNING</constant>. Записується тільки перший символ
+     заданого рядка. Починаючи з PHP 7.1.0, заданий порожній рядок викликає
+     фатальну помилку. Раніше, він перетворювався в NULL-байт.
     </simpara>
    </warning>
 
    <warning>
     <simpara>
-     Internally, PHP strings are byte arrays. As a result, accessing or
-     modifying a string using array brackets is not multi-byte safe, and
-     should only be done with strings that are in a single-byte encoding such
-     as ISO-8859-1.
+     Всередині інтерпретатора рядки є масивами байтів. Як наслідок, доступ до
+     рядка або його редагування, як масиву, не є безпечним для багатобайтових
+     кодувань і має здійснюватися лише з рядками в однобайтовому кодуванні,
+     наприклад, ISO-8859-1.
     </simpara>
    </warning>
 
    <note>
     <simpara>
-     As of PHP 7.1.0, applying the empty index operator on an empty string throws a fatal
-     error. Formerly, the empty string was silently converted to an array.
+     Починаючи з PHP 7.1.0, застосування порожнього оператора індексу до
+     порожнього рядка призводить до фатальної помилки. Раніше порожній рядок
+     автоматично перетворювався на масив.
     </simpara>
    </note>
 
