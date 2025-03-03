@@ -11,7 +11,7 @@ jobs:
   build:
     name: "Build"
 
-    runs-on: "ubuntu-20.04"
+    runs-on: "ubuntu-latest"
 
     steps:
       - name: "Checkout php/doc-uk"
@@ -33,4 +33,4 @@ jobs:
           repository: "php/doc-base"
 
       - name: "Build documentation"
-        run: "php8.0 doc-base/configure.php --disable-libxml-check --enable-xml-details --redirect-stderr-to-stdout --with-lang=uk"
+        run: "php doc-base/configure.php --disable-libxml-check --enable-xml-details --redirect-stderr-to-stdout --with-lang=uk"
