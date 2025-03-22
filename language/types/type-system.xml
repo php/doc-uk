@@ -93,7 +93,7 @@
                         <listitem>
                             <simpara>
                                 <link linkend="language.types.relative-class-types">Відносні типи класів</link>:
-                                <type>self</type>, <type>parent</type>, та
+                                <type>self</type>, <type>parent</type> та
                                 <type>static</type>
                             </simpara>
                         </listitem>
