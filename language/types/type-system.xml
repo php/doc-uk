@@ -163,7 +163,7 @@
             <title>Скалярні типи</title>
             <simpara>
                 Значення вважається скалярним, якщо воно має тип <type>int</type>,
-                <type>float</type>, <type>string</type> or <type>bool</type>.
+                <type>float</type>, <type>string</type> або <type>bool</type>.
             </simpara>
         </sect3>
 
