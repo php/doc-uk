@@ -209,7 +209,7 @@
                 Перетин типів приймає значення, які відповідають не одному,
                 а одночасно кільком класовим типам.
                 Окремі типи, що утворюють перетин, об’єднуються за допомогою символу <literal>&amp;</literal>.
-                Тому перетину типів <literal>T</literal>, <literal>U</literal> та
+                Тому перетин типів <literal>T</literal>, <literal>U</literal> та
                 <literal>V</literal>
                 записується як <literal>T&amp;U&amp;V</literal>.
             </para>
