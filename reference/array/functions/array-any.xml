@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 679cf93fa1e54cde82fc9cf545966eb13bcb0638 Maintainer: pmlkvch Status: wip -->
+<!-- EN-Revision: 679cf93fa1e54cde82fc9cf545966eb13bcb0638 Maintainer: pmlkvch Status: ready -->
 <!-- Reviewed: no -->
 <refentry xml:id="function.array-any" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>array_any</refname>
-  <refpurpose>Checks if at least one &array; element satisfies a callback function</refpurpose>
+  <refpurpose>Перевіряє, чи задовольняє хоча б один елемент &array; умову, задану callback-функцією</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -15,9 +15,9 @@
    <methodparam><type>callable</type><parameter>callback</parameter></methodparam>
   </methodsynopsis>
   <simpara>
-   <function>array_any</function> returns &true;, if the given
-   <parameter>callback</parameter> returns &true; for any element.
-   Otherwise the function returns &false;.
+   Функція <function>array_any</function> повертає &true;, якщо
+   <parameter>callback</parameter>-функція повертає &true; хоча б для одного елемента вхідного масиву.
+   В іншому випадку функція повертає &false;.
   </simpara>
  </refsect1>
 
@@ -28,7 +28,7 @@
     <term><parameter>array</parameter></term>
     <listitem>
      <simpara>
-      The &array; that should be searched.
+      Масив &array;, в якому здійснюється пошук.
      </simpara>
     </listitem>
    </varlistentry>
@@ -36,15 +36,14 @@
     <term><parameter>callback</parameter></term>
     <listitem>
      <para>
-      The callback function to call to check each element, which must be
+      Callback-функція, яка викликається для перевірки кожного елемента вхідного масиву. Вона повинна мати наступну сигнатуру:
       <methodsynopsis>
        <type>bool</type><methodname><replaceable>callback</replaceable></methodname>
        <methodparam><type>mixed</type><parameter>value</parameter></methodparam>
        <methodparam><type>mixed</type><parameter>key</parameter></methodparam>
       </methodsynopsis>
-      If this function returns &true;, &true; is returned from
-      <function>array_any</function> and the callback will not be called for
-      further elements.
+      Функція <function>array_any</function> поверне &true; та не
+      буде викликати callback-функцію для інших елементів вхідного масиву, якщо callback-функція поверне &true;.
      </para>
     </listitem>
    </varlistentry>
@@ -54,16 +53,16 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <simpara>
-   The function returns &true;, if there is at least one element for which
-   <parameter>callback</parameter> returns &true;. Otherwise the function
-   returns &false;.
+   Функція повертає &true;, якщо існує хоча б один елемент вхідного масиву, для якого
+   <parameter>callback</parameter>-функція повертає &true;. В іншому випадку функція
+   повертає &false;.
   </simpara>
  </refsect1>
 
  <refsect1 role="examples">
   &reftitle.examples;
   <example>
-   <title><function>array_any</function> example</title>
+   <title>Приклад використання <function>array_any</function></title>
    <programlisting role="php">
 <![CDATA[
 <?php
@@ -76,17 +75,17 @@ $array = [
     'f' => 'elephant'
 ];
 
-// Check, if any animal name is longer than 5 letters.
+// Перевіримо, чи містить масив хоча б одну назву тварини довшу за 5 літер.
 var_dump(array_any($array, function (string $value) {
     return strlen($value) > 5;
 }));
 
-// Check, if any animal name is shorter than 3 letters.
+// Перевіримо, чи містить масив хоча б одну назву тварини коротшу за 3 літери.
 var_dump(array_any($array, function (string $value) {
     return strlen($value) < 3;
 }));
 
-// Check, if any array key is not a string.
+// Перевіримо, чи містить масив хоча б один ключ, який не є рядком.
 var_dump(array_any($array, function (string $value, $key) {
    return !is_string($key);
 }));

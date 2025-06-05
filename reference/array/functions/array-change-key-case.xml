@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 58d11dfe19531e1355980b2892964c07dd8e8068 Maintainer: pmlkvch Status: wip -->
+<!-- EN-Revision: 58d11dfe19531e1355980b2892964c07dd8e8068 Maintainer: pmlkvch Status: ready -->
 <!-- Reviewed: no -->
 <refentry xml:id="function.array-change-key-case" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>array_change_key_case</refname>
-  <refpurpose>Changes the case of all keys in an array</refpurpose>
+  <refpurpose>Змінює регістр ключів у масиві</refpurpose>
  </refnamediv>
  
  <refsect1 role="description">
@@ -15,8 +15,8 @@
    <methodparam choice="opt"><type>int</type><parameter>case</parameter><initializer><constant>CASE_LOWER</constant></initializer></methodparam>
   </methodsynopsis>
   <para>
-   Returns an array with all keys from <parameter>array</parameter> lowercased
-   or uppercased. Numbered indices are left as is.
+   Функція повертає масив <parameter>array</parameter>, у якому всі ключі переведені у нижній
+   або верхній регістр. Числові індекси залишаються без змін.
   </para>
  </refsect1>
 
@@ -29,7 +29,7 @@
      <term><parameter>array</parameter></term>
      <listitem>
       <para>
-       The array to work on
+       Масив, над яким виконується операція
       </para>
      </listitem>
     </varlistentry>
@@ -38,8 +38,7 @@
      <term><parameter>case</parameter></term>
      <listitem>
       <para>
-       Either <constant>CASE_UPPER</constant> or
-       <constant>CASE_LOWER</constant> (default)
+       Константа <constant>CASE_UPPER</constant> або <constant>CASE_LOWER</constant> (типово)
       </para>
      </listitem>
     </varlistentry>
@@ -51,7 +50,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   Returns an array with its keys lower or uppercased.
+   Функція повертає масив із ключами у нижньому або верхньому регістрі.
   </para>
  </refsect1>
 
@@ -59,7 +58,7 @@
   &reftitle.examples;
   <para>
    <example xml:id="function.array-change-key-case.example-1">
-    <title><function>array_change_key_case</function> example</title>
+    <title>Приклад використання функції <function>array_change_key_case</function></title>
     <programlisting role="php">
 <![CDATA[
 <?php
@@ -86,9 +85,8 @@ Array
   &reftitle.notes;
   <note>
    <para>
-    If an array has indices that will be the same once run through this
-    function (e.g. "<literal>keY</literal>" and "<literal>kEY</literal>"), 
-    the value that is later in the array will override other indices.
+    Якщо у масиві є ключі, які після зміни регістру стануть однаковими (наприклад, "<literal>keY</literal>" і "<literal>kEY</literal>"),
+    то значення, яке знаходиться далі у масиві, замінить попереднє.
    </para>
   </note>
  </refsect1>
