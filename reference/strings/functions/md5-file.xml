@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 71e12e2df7b0bcf0dc2743681b73790ac0d45ccc Maintainer: iSensetivity Status: ready -->
+<!-- EN-Revision: 45042fef652f1b4e904e809fcbfcf31f6c60670b Maintainer: iSensetivity Status: ready -->
 <!-- Reviewed: no -->
 
 <!-- splitted from ./en/functions/strings.xml, last change in rev 1.2 -->
@@ -63,7 +63,7 @@
     <programlisting role="php">
 <![CDATA[
 <?php
-$file = 'php-5.3.0alpha2-Win32-VC9-x64.zip';
+$file = '/examples/book.xml';
 
 echo 'MD5-хеш файлу ' . $file . ': ' . md5_file($file);
 ?>

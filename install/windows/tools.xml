@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 2dbf3d9064d4cb07f0a2f7d06641c877a2e5ed24 Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: e8ac70bf549a723cb36465667a6109d9933b8619 Maintainer: mproshchuk Status: ready -->
 <sect1 xml:id="install.windows.tools" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Сторонні інструменти для встановлення PHP</title>
  &warn.install.third-party-support;
  <para>
-  <link xlink:href="https://www.apachefriends.org/">XAMPP</link>,
-  <link xlink:href="https://www.wampserver.com">WampServer</link>, а також
-  <link xlink:href="https://bitnami.com">Bitnami</link>, який налаштує
+  <link xlink:href="&url.xampp;">XAMPP</link>,
+  <link xlink:href="&url.xampp;">XAMPP</link>, а також
+  <link xlink:href="&url.bitnami;">Bitnami</link>, який налаштує
   PHP-програми для використання разом з Apache на Windows.
  </para>
 </sect1>

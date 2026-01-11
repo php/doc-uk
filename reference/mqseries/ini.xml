@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 96c9d88bad9a7d7d44bfb7f26c226df7ee9ddf26 Maintainer: ktretyak Status: ready -->
+<!-- EN-Revision: 957965dc1cd96c7d7974dc8b7965090cc53e7d24 Maintainer: ktretyak Status: ready -->
 <!-- $Revision$ -->
 
 <section xml:id="mqseries.ini" xmlns="http://docbook.org/ns/docbook">
  &reftitle.runtime;
  &extension.runtime;
- <para>Додаткові параметри конфігурації відсутні.</para>
+ &no.config;
 </section>
 
 <!-- Keep this comment at the end of the file

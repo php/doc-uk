@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: a6d209f4ff71ccba3f1255902827f5df3e092ff9 Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: a124543dd3f6b1e5567b07420d23899e582514dc Maintainer: mproshchuk Status: ready -->
 <refentry role="variable" xml:id="reserved.variables.server" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>$_SERVER</refname>
@@ -48,7 +48,7 @@
        (document root). Наприклад, <varname>$_SERVER['PHP_SELF']</varname> в
        скрипті за адресою <filename>http://example.com/foo/bar.php</filename>
        буде <filename>/foo/bar.php</filename>. Константа
-       <link linkend="language.constants.predefined">__FILE__</link> містить
+       <link linkend="language.constants.magic">__FILE__</link> містить
        повний шлях та назву поточного (тобто підключеного) файлу.
       </simpara>
       <simpara>
@@ -340,7 +340,7 @@
       <simpara>
        Містить шлях до поточного скрипта. Це є корисним для сторінок, які
        повинні посилатись на самих себе. Константа <link
-       linkend="language.constants.predefined">__FILE__</link> містить повний
+       linkend="language.constants.magic">__FILE__</link> містить повний
        шлях та назву поточного файлу.
       </simpara>
      </listitem>
