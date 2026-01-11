@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 8cd7c0d8c574903e149c1da0689a8728cdf909d4 Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: 2e60c5134e7a847c99f81eb3f7ecee1f5efeeace Maintainer: mproshchuk Status: ready -->
 
 <refentry xml:id="function.in-array" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
@@ -158,8 +158,8 @@ if (in_array('o', $a)) {
     &example.outputs;
     <screen>
 <![CDATA[
-  'ph' знайдено
-  'o' знайдено
+'ph' знайдено
+'o' знайдено
 ]]>
     </screen>
    </example>

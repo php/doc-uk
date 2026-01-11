@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 77fe98efb3977fcac0bb2051bdfa9725e8cd46ae Maintainer: mproshchuk Status: ready -->
+<!-- EN-Revision: e8ac70bf549a723cb36465667a6109d9933b8619 Maintainer: mproshchuk Status: ready -->
 
 <sect1 xml:id="install.cloud.azure" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Azure App Services</title>
@@ -25,7 +25,7 @@
  <itemizedlist spacing="compact">
   <listitem>
    <para>Azure portal: створити, налаштувати, видалити вебсайти.
-    <link xlink:href="https://portal.azure.com/">Azure Portal</link>
+    <link xlink:href="&url.azure.portal;">Azure Portal</link>
    </para>
   </listitem>
   <listitem>
@@ -46,14 +46,10 @@
  </itemizedlist>
  
  <para>PHP SDK дозволяє використовувати в PHP-коді більшість сервісів Azure.
-  Див.: <link
-  xlink:href="https://github.com/Azure/azure-sdk-for-php">Azure SDK для
-  PHP</link>.
+  Див.: <link xlink:href="&url.azure.php.sdk;">Azure SDK для PHP</link>.
  </para>
  
- <para>Докладніше: <link
-  xlink:href="https://azure.microsoft.com/en-us/develop/php/">Azure PHP
-  Developer Center</link>
+ <para>Докладніше: <link xlink:href="&url.azure.php;">Azure PHP Developer Center</link>
  </para>
  
  <sect2>
