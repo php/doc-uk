@@ -45,6 +45,20 @@
        </para> 
       </listitem>
      </varlistentry>
+     <varlistentry xml:id="log-limit">
+      <term>
+       <parameter>log_limit</parameter>
+       <type>int</type>
+      </term>
+      <listitem>
+       <para>
+        Ліміт для рядків журналу, що дозволяє записувати повідомлення довші
+        за 1024 символи без перенесення.
+        Початкове значення: 1024.
+        Доступно починаючи з PHP 7.3.0.
+       </para>
+      </listitem>
+     </varlistentry>
      <varlistentry xml:id="emergency-restart-threshold">
       <term>
        <parameter>emergency_restart_threshold</parameter>
