@@ -45,6 +45,33 @@
        </para> 
       </listitem>
      </varlistentry>
+     <varlistentry xml:id="log-limit">
+      <term>
+       <parameter>log_limit</parameter>
+       <type>int</type>
+      </term>
+      <listitem>
+       <para>
+        Обмеження журналу для рядків, що записуються до журналу, яке дозволяє
+        записувати повідомлення довші за 1024 символи без обрізання.
+        Початкове значення: 1024.
+        Доступно з PHP 7.3.0.
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry xml:id="log-buffering">
+      <term>
+       <parameter>log_buffering</parameter>
+       <type>bool</type>
+      </term>
+      <listitem>
+       <para>
+        Експериментальне буферизоване журналювання без додаткового виділення пам'яті.
+        Початкове значення: yes.
+        Доступно з PHP 7.3.0.
+       </para>
+      </listitem>
+     </varlistentry>
      <varlistentry xml:id="emergency-restart-threshold">
       <term>
        <parameter>emergency_restart_threshold</parameter>
